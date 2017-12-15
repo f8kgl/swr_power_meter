@@ -1,0 +1,65 @@
+
+# This file was written by gpsim.
+
+# You can use this file for example like this:
+#     gpsim -s mycode.cod -c netlist.stc
+
+# If you want to add commands, you can create another .stc file
+# and load this file from it. Something like this:
+# ----------- myproject.stc ---------------
+# load s mycode.cod
+# frequency 12000000
+# load c netlist.stc
+# -----------------------------------------
+# You can then just load this new file:
+#     gpsim -c myproject.stc
+# and use netlist.stc whenever you save from the breadboard.
+#
+
+
+# Processor position:
+module library libgpsim
+module library libgpsim_extras
+module library libgpsim_modules
+
+
+# Modules:
+p16f628a.BreakOnReset = true
+p16f628a.SafeMode = true
+p16f628a.UnknownMode = true
+p16f628a.WarnMode = true
+p16f628a.tmr1_freq = 32768
+p16f628a.xpos = 72
+p16f628a.ypos = 72
+
+module load lcd_display lcd_display
+lcd_display.xpos = 324
+lcd_display.ypos = 90
+
+
+
+# Connections:
+node n1
+attach n1 p16f628a.portb2 lcd_display.DC
+
+node n2
+attach n2 p16f628a.portb3 lcd_display.E
+
+node n3
+attach n3 p16f628a.portb4 lcd_display.d4
+
+node n4
+attach n4 p16f628a.portb5 lcd_display.d5
+
+node n5
+attach n5 p16f628a.portb6 lcd_display.d6
+
+node n6
+attach n6 p16f628a.portb7 lcd_display.d7
+
+node n7
+
+
+
+
+# End.
