@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>C:\Users\HP640\Documents\TOSMETRE\TOSMETRE.sch</source>
+    <date>14/12/2017 10:36:23</date>
+    <tool>Eeschema 4.0.7</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>TOSMETRE.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="DS1">
+      <value>WC1602A</value>
+      <footprint>Displays:WC1602A</footprint>
+      <libsource lib="display" part="WC1602A"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A3242FC</tstamp>
+    </comp>
+    <comp ref="U1">
+      <value>MCP23008_SSOP</value>
+      <libsource lib="microchip" part="MCP23008_SSOP"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A324369</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>Barrel_Jack</value>
+      <libsource lib="conn" part="Barrel_Jack"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A32442F</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="conn" part="Barrel_Jack">
+      <aliases>
+        <alias>Jack-DC</alias>
+      </aliases>
+      <description>DC Barrel Jack</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Barrel_Jack</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+        <pin num="3" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="microchip" part="MCP23008_SSOP">
+      <description>8-Bit I/O Expander with I²C Interface (SSOP)</description>
+      <docs>http://ww1.microchip.com/downloads/en/DeviceDoc/21919e.pdf</docs>
+      <footprints>
+        <fp>SSOP-20</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MCP23008_SSOP</field>
+      </fields>
+      <pins>
+        <pin num="1" name="SCL" type="input"/>
+        <pin num="2" name="SDA" type="BiDi"/>
+        <pin num="3" name="A2" type="input"/>
+        <pin num="4" name="A1" type="input"/>
+        <pin num="5" name="A0" type="input"/>
+        <pin num="6" name="~RESET" type="input"/>
+        <pin num="8" name="INT" type="output"/>
+        <pin num="9" name="GND" type="power_in"/>
+        <pin num="12" name="GPB0" type="BiDi"/>
+        <pin num="13" name="GPB1" type="BiDi"/>
+        <pin num="14" name="GPB2" type="BiDi"/>
+        <pin num="15" name="GPB3" type="BiDi"/>
+        <pin num="16" name="GPB4" type="BiDi"/>
+        <pin num="17" name="GPB5" type="BiDi"/>
+        <pin num="18" name="GPB6" type="BiDi"/>
+        <pin num="19" name="GPB7" type="BiDi"/>
+        <pin num="20" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="display" part="WC1602A">
+      <description>LCD 16x2 Alphanumeric , 8 bit parallel bus, 5V VDD</description>
+      <docs>http://www.wincomlcd.com/pdf/WC1602A-SFYLYHTC06.pdf</docs>
+      <footprints>
+        <fp>*WC*1602A*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">DS</field>
+        <field name="Value">WC1602A</field>
+        <field name="Footprint">Displays:WC1602A</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VSS" type="power_in"/>
+        <pin num="2" name="VDD" type="power_in"/>
+        <pin num="3" name="VO" type="input"/>
+        <pin num="4" name="RS" type="input"/>
+        <pin num="5" name="R/W" type="input"/>
+        <pin num="6" name="E" type="input"/>
+        <pin num="7" name="D0" type="input"/>
+        <pin num="8" name="D1" type="input"/>
+        <pin num="9" name="D2" type="input"/>
+        <pin num="10" name="D3" type="input"/>
+        <pin num="11" name="D4" type="input"/>
+        <pin num="12" name="D5" type="input"/>
+        <pin num="13" name="D6" type="input"/>
+        <pin num="14" name="D7" type="input"/>
+        <pin num="15" name="LED(+)" type="power_in"/>
+        <pin num="16" name="LED(-)" type="power_in"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="microchip">
+      <uri>C:\Program Files\KiCad\share\kicad\library\microchip.lib</uri>
+    </library>
+    <library logical="display">
+      <uri>C:\Program Files\KiCad\share\kicad\library\display.lib</uri>
+    </library>
+    <library logical="conn">
+      <uri>C:\Program Files\KiCad\share\kicad\library\conn.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="Net-(J1-Pad1)">
+      <node ref="J1" pin="1"/>
+    </net>
+    <net code="2" name="Net-(U1-Pad9)">
+      <node ref="U1" pin="9"/>
+    </net>
+    <net code="3" name="Net-(U1-Pad20)">
+      <node ref="U1" pin="20"/>
+    </net>
+    <net code="4" name="Net-(DS1-Pad7)">
+      <node ref="U1" pin="12"/>
+      <node ref="DS1" pin="7"/>
+    </net>
+    <net code="5" name="Net-(DS1-Pad8)">
+      <node ref="U1" pin="13"/>
+      <node ref="DS1" pin="8"/>
+    </net>
+    <net code="6" name="Net-(DS1-Pad9)">
+      <node ref="U1" pin="14"/>
+      <node ref="DS1" pin="9"/>
+    </net>
+    <net code="7" name="Net-(DS1-Pad10)">
+      <node ref="DS1" pin="10"/>
+      <node ref="U1" pin="15"/>
+    </net>
+    <net code="8" name="Net-(DS1-Pad11)">
+      <node ref="DS1" pin="11"/>
+      <node ref="U1" pin="16"/>
+    </net>
+    <net code="9" name="Net-(DS1-Pad12)">
+      <node ref="DS1" pin="12"/>
+      <node ref="U1" pin="17"/>
+    </net>
+    <net code="10" name="Net-(DS1-Pad13)">
+      <node ref="DS1" pin="13"/>
+      <node ref="U1" pin="18"/>
+    </net>
+    <net code="11" name="Net-(DS1-Pad14)">
+      <node ref="DS1" pin="14"/>
+      <node ref="U1" pin="19"/>
+    </net>
+    <net code="12" name="Net-(U1-Pad8)">
+      <node ref="U1" pin="8"/>
+    </net>
+    <net code="13" name="Net-(J1-Pad2)">
+      <node ref="J1" pin="2"/>
+    </net>
+    <net code="14" name="Net-(J1-Pad3)">
+      <node ref="J1" pin="3"/>
+    </net>
+    <net code="15" name="Net-(DS1-Pad2)">
+      <node ref="DS1" pin="2"/>
+    </net>
+    <net code="16" name="Net-(DS1-Pad3)">
+      <node ref="DS1" pin="3"/>
+    </net>
+    <net code="17" name="Net-(DS1-Pad4)">
+      <node ref="DS1" pin="4"/>
+    </net>
+    <net code="18" name="Net-(DS1-Pad5)">
+      <node ref="DS1" pin="5"/>
+    </net>
+    <net code="19" name="Net-(DS1-Pad6)">
+      <node ref="DS1" pin="6"/>
+    </net>
+    <net code="20" name="Net-(DS1-Pad1)">
+      <node ref="DS1" pin="1"/>
+    </net>
+    <net code="21" name="Net-(DS1-Pad15)">
+      <node ref="DS1" pin="15"/>
+    </net>
+    <net code="22" name="Net-(DS1-Pad16)">
+      <node ref="DS1" pin="16"/>
+    </net>
+    <net code="23" name="Net-(U1-Pad1)">
+      <node ref="U1" pin="1"/>
+    </net>
+    <net code="24" name="Net-(U1-Pad2)">
+      <node ref="U1" pin="2"/>
+    </net>
+    <net code="25" name="Net-(U1-Pad3)">
+      <node ref="U1" pin="3"/>
+    </net>
+    <net code="26" name="Net-(U1-Pad4)">
+      <node ref="U1" pin="4"/>
+    </net>
+    <net code="27" name="Net-(U1-Pad5)">
+      <node ref="U1" pin="5"/>
+    </net>
+    <net code="28" name="Net-(U1-Pad6)">
+      <node ref="U1" pin="6"/>
+    </net>
+  </nets>
+</export>
