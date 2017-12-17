@@ -248,5 +248,6 @@ lcd_affchar	; Send the Character to the LCD
 	global lcd_init
 	global lcd_affchar
 	global lcd_setposcursor
+	global lcd_clear
 	 
 	end 
