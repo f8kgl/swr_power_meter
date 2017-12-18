@@ -1,4 +1,4 @@
-	include "p16f628a.inc" ;include the defaults for the chip
+	include "p16f88.inc" ;include the defaults for the chip
 	include "lcd.inc"
 	include "eep.inc"
 	
@@ -163,7 +163,7 @@ calibmsgL2
 lcd_affboot 
 	movlw 0x00
 	movwf v_charpos
-_lcd_affboot2 
+_lcd_affboot_2 
 	movf v_charpos, w ; put counter value in W
 	call bootmsgL1 ; get a character from the text table
 	xorlw 0x00 ; is it a zero?
@@ -171,7 +171,7 @@ _lcd_affboot2
 	goto _lcd_affboot_3 ; display next message if finished
 	call lcd_affchar
 	incf v_charpos, f
-	goto _lcd_affboot2
+	goto _lcd_affboot_2
 _lcd_affboot_3
 	movlw 0x10
 	call lcd_setposcursor
@@ -195,10 +195,8 @@ _lcd_affboot_7
 	movwf v_charpos
 _lcd_affboot_8
 	movf v_charpos,w
-	bsf STATUS,RP0
-	movwf EEADR
 	call eep_readbyte
-	bcf STATUS, RP0
+	bcf STATUS, RP1
 	xorlw 0x00 ; is it a zero?
 	btfsc STATUS, Z
 	goto _lcd_affboot_9 ; finished

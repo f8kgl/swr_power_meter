@@ -1,4 +1,4 @@
-	include "p16f628a.inc" ;include the defaults for the chip
+	include "p16f88.inc" ;include the defaults for the chip
 	include "lcd.inc"
 
   	udata
@@ -11,6 +11,7 @@ v_poscursor res 1
 	code
 ;-----------------------------------------
 Pulse_e
+	BANKSEL PORTB
 	bsf LCD_PORT, LCD_E ; LCD Enable pulse to write data from PORTB
 	nop ; into LCD module.
 	bcf LCD_PORT, LCD_E ; 
@@ -81,6 +82,7 @@ Del_0
 ;Traitement : 
 ;-----------------------------------------
 lcd_sendcmd	; Send the Instruction to the LCD
+	BANKSEL	PORTB
 	movwf v_temp ; Save the Value
 	andlw 0xF0 ; Most Significant Nibble first
 	movwf LCD_PORT ;
@@ -192,6 +194,7 @@ lcd_convtoascii
 ;Traitement : 4 Bit Initialization...
 ;-----------------------------------------
 lcd_init
+	BANKSEL PORTB
 	call Del05 ; Wait 15 msecs
 	call Del05 ;
 	call Del05 ;
@@ -231,6 +234,7 @@ lcd_init
 ;Traitement : 
 ;-----------------------------------------
 lcd_affchar	; Send the Character to the LCD
+	BANKSEL PORTB
 	movwf v_temp ; Save the Value
 	andlw 0xF0 ; Most Significant Nibble first
 	movwf LCD_PORT ;

@@ -1,8 +1,8 @@
 NAME = swr_power_meter_f8kgl-
-export VERSION := V0.3
+export VERSION := V1.0
 OUTPUT = $(NAME)$(VERSION).hex
 
-export PROCESSOR = 16f628a
+export PROCESSOR = 16f88
 export LKR_DIR =/usr/share/gputils/lkr/
 export SCRIPT = $(LKR_DIR)$(PROCESSOR).lkr
 LD = gplink

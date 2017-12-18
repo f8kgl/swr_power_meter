@@ -1,4 +1,4 @@
-	include "p16f628a.inc" ;include the defaults for the chip
+	include "p16f88.inc" ;include the defaults for the chip
 	include "eep.inc"
 
 
@@ -7,7 +7,7 @@
 ;Fonction : Lecture d'un octet en EEPROM
 ;Nom : eep_readbyte
 ;Entrée :
-;	-EEADDR : contient l'adresse de l'octer à lire en EEPROM
+;	-W : contient l'adresse de l'octer à lire en EEPROM
 ;Sortie :
 ; 	-W : contient l'octet lu
 ;Traitement :
@@ -15,7 +15,12 @@
 ;	-W = EEDATA
 ;----------------------------------------- 	
 eep_readbyte
+	BANKSEL EEADR
+	movwf EEADR
+	BANKSEL EECON1
+	bcf EECON1, EEPGD
 	bsf EECON1,RD
+	BANKSEL EEDATA
 	movfw EEDATA
 	return
 

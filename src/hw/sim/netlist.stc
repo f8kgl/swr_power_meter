@@ -18,47 +18,46 @@
 
 
 # Processor position:
-module library libgpsim
 module library libgpsim_extras
 module library libgpsim_modules
 
 
 # Modules:
-p16f628a.BreakOnReset = true
-p16f628a.SafeMode = true
-p16f628a.UnknownMode = true
-p16f628a.WarnMode = true
-p16f628a.tmr1_freq = 32768
-p16f628a.xpos = 72
-p16f628a.ypos = 72
+p16f88.BreakOnReset = true
+p16f88.SafeMode = true
+p16f88.UnknownMode = true
+p16f88.WarnMode = true
+p16f88.tmr1_freq = 32768
+p16f88.xpos = 72
+p16f88.ypos = 72
 
 module load lcd_display lcd_display
-lcd_display.xpos = 324
-lcd_display.ypos = 90
+lcd_display.xpos = 312
+lcd_display.ypos = 96
 
 
 
 # Connections:
-node n1
-attach n1 p16f628a.portb2 lcd_display.DC
+node nRW
+attach nRW lcd_display.RW
 
-node n2
-attach n2 p16f628a.portb3 lcd_display.E
+node nRS
+attach nRS lcd_display.DC p16f88.portb2
 
-node n3
-attach n3 p16f628a.portb4 lcd_display.d4
+node nE
+attach nE lcd_display.E p16f88.portb3
 
-node n4
-attach n4 p16f628a.portb5 lcd_display.d5
+node nD4
+attach nD4 lcd_display.d4 p16f88.portb4
 
-node n5
-attach n5 p16f628a.portb6 lcd_display.d6
+node nD5
+attach nD5 lcd_display.d5 p16f88.portb5
 
-node n6
-attach n6 p16f628a.portb7 lcd_display.d7
+node nD6
+attach nD6 lcd_display.d6 p16f88.portb6
 
-node n7
-
+node nD7
+attach nD7 lcd_display.d7 p16f88.portb7
 
 
 

@@ -1,19 +1,9 @@
-	include "p16f628a.inc" ;include the defaults for the chip
+	include "p16f88.inc" ;include the defaults for the chip
 
 	ERRORLEVEL 0, -302 ;suppress bank selection messages
-	;sets the configuration settings (osc type etc.)
-	;; CP- x x x x CPD- LVP BOREN MCLRE FOSC2 PWRTE- WDTE FOSC1 FOSC0
-	;   1  x x x x 1    0   0     0     1     1      0    0     0 ;
-	;; CP- :code protection is OFF
-	;; data memory code protection is OFF
-	;; RB4/PGM is digital I/O, HV on MCLR must be used for programming, low voltage programming is disabled
-	;; BOR Reset disabled
-	;; RA5/MCLR/VPP pin function is digital Input, MCLR internally tied to VDD
-	;; PWRT disabled
-	;; WDT disabled
-	;; INTOSC oscillator	
 	
-	__config 0x3D18 ;sets the configuration settings (osc type etc.) 
+        __CONFIG  _CONFIG1, _CP_OFF & _WDT_OFF &  _XT_OSC & _PWRTE_ON & _LVP_OFF & _BODEN_OFF & _MCLR_OFF
+        __CONFIG    _CONFIG2, _IESO_OFF & _FCMEN_OFF
 
 	extern lcd_init
 	extern lcd_affboot
@@ -31,15 +21,19 @@ v_timer2 res 1
 
 Start
 ; Initialisation PIC
+	BANKSEL CMCON
 	movlw 0x07 ; Turn comparators off and
 	movwf CMCON ; enable pins for I/O functions
-	bsf STATUS, RP0 ; select bank 1 
+	BANKSEL ANSEL
+	movlw 0x03
+	movwf ANSEL 		;AN0, AN1 analog I/O
+	BANKSEL PORTA	
 	clrf PORTA ; Initialize PORTA by setting output data latches
+	BANKSEL TRISA	
 	movlw b'00000000' ; PortA Outputs
 	movwf TRISA ; All portA pins are inputs
 	movlw b'00000000' ; PortB Outputs
 	movwf TRISB ; Change PortB I/O
-	bcf STATUS, RP0 ; select bank 0
 
 ; Initialisation LCD 
 	call lcd_init ; Initialize the LCD Display 
