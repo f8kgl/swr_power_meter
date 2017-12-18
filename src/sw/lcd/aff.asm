@@ -4,10 +4,14 @@
 	
   	udata
 v_charpos res 1
+v_tmp res 1
 	
 	extern lcd_affchar
 	extern lcd_setposcursor
+	extern lcd_convtoascii
 	extern eep_readbyte
+	extern v_adcfwd
+	extern v_adcfwd
 
 ;-----------------------------------------
 ;Fonction : Message de version courante du logiciel
@@ -214,8 +218,8 @@ _lcd_affboot_9
 ;Sortie :
 ; 	Sur le LCD :
 ;       1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
-; 	A D C f w d   x x x  x
-; 	A D C r e f   y y y  y
+; 	A D C f w d   
+; 	A D C r e f   
 ;Traitement :
 ;	1.v_charpos = 0
 ;	2.Afficher le message de calibration ligne 1 
@@ -263,8 +267,88 @@ _lcd_affcalib_5
 	goto _lcd_affcalib_5
 _lcd_affcalib_6
 	return
+
+;-----------------------------------------
+;Fonction : Affichage d'1 octet en hexa sur le LCD
+;Nom : lcd_affhexa
+;Entrée :
+;	-W : contient l'octet en hexa à afficher
+;Sortie :
+;Traitement :
+;	1.v_tmp= W
+;	2.W=W&F0
+;	3.W=W>>4
+;	4.Convertir le quartet de poids faible en ASCII
+;	5.afficher un caractère sur le LCD
+;	6.W=v_tmp&0F
+;	7.Convertir le quartet de poids faible en ASCII
+;	8.afficher un caractère sur le LCD
+;----------------------------------------- 
+lcd_affhexa
+	movwf v_tmp
+lcd_affhexa_2
+	andlw 0xF0
+lcd_affhexa_3
+	rrf W,f
+	rrf W,f
+	rrf W,f
+	rrf W,f
+lcd_affhexa_4
+	call lcd_convtoascii
+lcd_affhexa_5
+	call lcd_affchar
+lcd_affhexa_6
+	movfw v_tmp
+	andlw 0x0F
+lcd_affhexa_7
+	call lcd_convtoascii
+lcd_affhexa_8
+	call lcd_affchar
+	return
+
+;-----------------------------------------
+;Fonction : Affichage de la mesure de calibration sur le LCD
+;Nom : lcd_affhexa
+;Entrée :
+;	-v_adcfwd (2 bytes) : résultat de l'ADC AN0 du 10 bits
+; 	-v_adcref (2 bytes) : résultat de l'ADC AN1 du 10 bits
+;Sortie :
+; 	Sur le LCD :
+;       1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+; 	              x x x  x
+;                     y y y  y 	   
+	
+;Traitement :
+;	1.positionner le curseur sur la ligne 1, 8ème case
+;	2.W=v_adcfwd
+;	3.Afficher un octet en hexa (lcd_affhexa)
+;       4. positionner le curseur sur la ligne 2, 8ème case
+;	5.W =v_adcfwd +1 
+;	6.Afficher un octet en hexa (lcd_affhexa)
+
+;----------------------------------------- 
+lcd_affadc
+	movlw 0x08
+	call lcd_setposcursor
+lcd_affadc_2
+	bcf STATUS,RP0
+	bcf STATUS,RP1
+	movfw v_adcfwd
+lcd_affadc_3
+	call lcd_affhexa
+lcd_affadc_4
+	movlw 0x18
+	call lcd_setposcursor
+lcd_affadc_5
+	bcf STATUS,RP0
+	bcf STATUS,RP1
+	movfw v_adcfwd+1
+lcd_affadc_6
+	call lcd_affhexa
+	return
 	
 	global lcd_affboot
 	global lcd_affcalib
-
+	global lcd_affadc
+	
 	end 

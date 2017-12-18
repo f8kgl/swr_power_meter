@@ -57,6 +57,8 @@ _adc_tempo20us
 	
 	
 	global adc_readAN0
+	global v_adcfwd
+	global v_adcref
 
 	end
 	

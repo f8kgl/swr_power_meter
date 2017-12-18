@@ -10,6 +10,7 @@
 	extern lcd_affcalib
 	extern lcd_clear
 	extern lcd_setposcursor
+	extern lcd_affadc
 	extern adc_readAN0
 	
 	udata
@@ -69,6 +70,7 @@ Start
 ; Infinate loop 
 Stop
 	call adc_readAN0
+	call lcd_affadc
 	goto Stop ;endless loop
 
 
