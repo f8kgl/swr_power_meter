@@ -10,6 +10,7 @@
 	extern lcd_affcalib
 	extern lcd_clear
 	extern lcd_setposcursor
+	extern adc_readAN0
 	
 	udata
 v_timer0 res 1 
@@ -24,20 +25,29 @@ Start
 	BANKSEL CMCON
 	movlw 0x07 ; Turn comparators off and
 	movwf CMCON ; enable pins for I/O functions
-	BANKSEL ANSEL
-	movlw 0x03
-	movwf ANSEL 		;AN0, AN1 analog I/O
 	BANKSEL PORTA	
 	clrf PORTA ; Initialize PORTA by setting output data latches
 	BANKSEL TRISA	
-	movlw b'00000000' ; PortA Outputs
-	movwf TRISA ; All portA pins are inputs
+	movlw b'00000011' ; PortA Outputs
+	movwf TRISA ; RA0, RA1 input
 	movlw b'00000000' ; PortB Outputs
 	movwf TRISB ; Change PortB I/O
 
 ; Initialisation LCD 
 	call lcd_init ; Initialize the LCD Display 
 ; Initialisation ADC
+	BANKSEL ANSEL
+	movlw b'00000011'
+	movwf ANSEL 		;AN0, AN1 analog I/O
+	BANKSEL ADCON1
+	bcf ADCON1 , VCFG0 ; VCFG0 = 0
+	bcf ADCON1 , VCFG1 ; VCFG1 = 0
+	bsf ADCON1 , ADFM  ; ADRESH = 0 0 0 0 0 0 b9 b8;
+	   		   ;ADRESL = b7 b6 b5 b4 b3 b2 b1 b0 ;
+	bsf ADCON1, ADCS2
+	BANKSEL ADCON0
+	bcf ADCON0, ADCS1
+	bsf ADCON0, ADCS0 ;Tad = 16xTosc = 16/4Mhz = 4uS
 
 ; Afficher le message de boot
 	call lcd_affboot
@@ -58,6 +68,7 @@ Start
 
 ; Infinate loop 
 Stop
+	call adc_readAN0
 	goto Stop ;endless loop
 
 

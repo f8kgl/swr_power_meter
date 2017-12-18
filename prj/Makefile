@@ -11,7 +11,7 @@ LDFLAGS = --map -c -s
 COMPS = lcd
 COMPS += eep
 #COMPS +=calc
-#COMPS +=readadc
+COMPS +=readadc
 
 LIBS = $(COMPS:%=../bin/%.a)
 

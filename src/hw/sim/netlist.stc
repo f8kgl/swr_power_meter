@@ -35,6 +35,13 @@ module load lcd_display lcd_display
 lcd_display.xpos = 312
 lcd_display.ypos = 96
 
+module load pullup Vfwd
+Vfwd.capacitance = 0
+Vfwd.resistance = 10000
+Vfwd.voltage = 5
+Vfwd.xpos = 312
+Vfwd.ypos = 228
+
 
 
 # Connections:
@@ -58,6 +65,12 @@ attach nD6 lcd_display.d6 p16f88.portb6
 
 node nD7
 attach nD7 lcd_display.d7 p16f88.portb7
+
+node nFWD
+attach nFWD p16f88.porta0 Vfwd.pin
+
+node nREF
+attach nREF p16f88.porta1
 
 
 
