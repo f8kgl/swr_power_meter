@@ -1,11 +1,13 @@
 	include "p16f628a.inc" ;include the defaults for the chip
 	include "lcd.inc"
+	include "eep.inc"
 	
   	udata
 v_charpos res 1
 	
 	extern lcd_affchar
 	extern lcd_setposcursor
+	extern eep_readbyte
 
 ;-----------------------------------------
 ;Fonction : Message de version courante du logiciel
@@ -20,7 +22,7 @@ v_charpos res 1
 ; cette zone de mémoire est placée en 0x2100 systématiquement par le compilateur
 ; cette zone est remplie par le compilateur
 ;-----------------------------------------  
-c_swversion code __EEPROM_START
+c_swversion code __SW_VERSION_EEP_ADDR
 	DE SW_VERSION
 	DE 0x00 		;marqueur de fin
 	
@@ -195,8 +197,7 @@ _lcd_affboot_8
 	movf v_charpos,w
 	bsf STATUS,RP0
 	movwf EEADR
-	bsf EECON1,RD
-	movfw EEDATA
+	call eep_readbyte
 	bcf STATUS, RP0
 	xorlw 0x00 ; is it a zero?
 	btfsc STATUS, Z

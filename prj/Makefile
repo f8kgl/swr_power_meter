@@ -1,5 +1,5 @@
 NAME = swr_power_meter_f8kgl-
-export VERSION := V0.2
+export VERSION := V0.3
 OUTPUT = $(NAME)$(VERSION).hex
 
 export PROCESSOR = 16f628a
@@ -9,6 +9,7 @@ LD = gplink
 LDFLAGS = --map -c -s
 
 COMPS = lcd
+COMPS += eep
 #COMPS +=calc
 #COMPS +=readadc
 
