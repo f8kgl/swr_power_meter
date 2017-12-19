@@ -181,10 +181,26 @@ lcd_setposL2
 ;		 +taille = 1 byte
 ;		 +description = contient la valeur convertie
 ;Traitement : 
-;		W=W+0x30
+;		
 ;----------------------------------------- 
 lcd_convtoascii
-	addlw 0x30 ; add 0x30 to convert to ASCII
+	addwf PCL, f
+	retlw 0x30		;'0'
+	retlw 0x31		;'1'
+	retlw 0x32		;'2'
+	retlw 0x33		;'3'
+	retlw 0x34		;'4'
+	retlw 0x35		;'5'
+	retlw 0x36		;'6'
+	retlw 0x37		;'7'
+	retlw 0x38		;'8'
+	retlw 0x39		;'9'
+	retlw 0x41		;'A'
+	retlw 0x42		;'B'
+	retlw 0x43		;'C'
+	retlw 0x44		;'D'
+	retlw 0x45		;'E'
+	retlw 0x46		;'F'
 	return	
 
 ;Fonction : Initialisation du LCD

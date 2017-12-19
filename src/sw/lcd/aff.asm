@@ -276,8 +276,8 @@ _lcd_affcalib_6
 ;Sortie :
 ;Traitement :
 ;	1.v_tmp= W
-;	2.W=W&F0
-;	3.W=W>>4
+;	2.swapper les quartets de v_tmp, et mettre le résultat dans W
+;	3.W=W&F0
 ;	4.Convertir le quartet de poids faible en ASCII
 ;	5.afficher un caractère sur le LCD
 ;	6.W=v_tmp&0F
@@ -287,12 +287,9 @@ _lcd_affcalib_6
 lcd_affhexa
 	movwf v_tmp
 lcd_affhexa_2
-	andlw 0xF0
+	swapf v_tmp,W
 lcd_affhexa_3
-	rrf W,f
-	rrf W,f
-	rrf W,f
-	rrf W,f
+	andlw 0x0F
 lcd_affhexa_4
 	call lcd_convtoascii
 lcd_affhexa_5
@@ -308,7 +305,7 @@ lcd_affhexa_8
 
 ;-----------------------------------------
 ;Fonction : Affichage de la mesure de calibration sur le LCD
-;Nom : lcd_affhexa
+;Nom : lcd_affadc
 ;Entrée :
 ;	-v_adcfwd (2 bytes) : résultat de l'ADC AN0 du 10 bits
 ; 	-v_adcref (2 bytes) : résultat de l'ADC AN1 du 10 bits
@@ -322,10 +319,13 @@ lcd_affhexa_8
 ;	1.positionner le curseur sur la ligne 1, 8ème case
 ;	2.W=v_adcfwd
 ;	3.Afficher un octet en hexa (lcd_affhexa)
-;       4. positionner le curseur sur la ligne 2, 8ème case
-;	5.W =v_adcfwd +1 
-;	6.Afficher un octet en hexa (lcd_affhexa)
-
+;	4.W =v_adcfwd +1 
+;	5.Afficher un octet en hexa (lcd_affhexa)
+;	6. positionner le curseur sur la ligne 2, 8ème case
+;	7.W=v_adcref
+;	8.Afficher un octet en hexa (lcd_affhexa)
+;	9.W =v_adcref +1 
+;	10.Afficher un octet en hexa (lcd_affhexa)	
 ;----------------------------------------- 
 lcd_affadc
 	movlw 0x08
@@ -337,14 +337,14 @@ lcd_affadc_2
 lcd_affadc_3
 	call lcd_affhexa
 lcd_affadc_4
-	movlw 0x18
-	call lcd_setposcursor
-lcd_affadc_5
 	bcf STATUS,RP0
 	bcf STATUS,RP1
 	movfw v_adcfwd+1
-lcd_affadc_6
+lcd_affadc_5
 	call lcd_affhexa
+lcd_affadc_6
+	movlw 0x18
+	call lcd_setposcursor
 	return
 	
 	global lcd_affboot
