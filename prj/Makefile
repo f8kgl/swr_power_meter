@@ -1,5 +1,5 @@
 NAME = swr_power_meter_f8kgl-
-export VERSION := V1.0
+export VERSION := V0.4
 OUTPUT = $(NAME)$(VERSION).hex
 
 export PROCESSOR = 16f88
