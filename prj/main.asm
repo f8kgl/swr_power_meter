@@ -1,5 +1,6 @@
 	include "p16f88.inc" ;include the defaults for the chip
-
+	include "eep.inc"
+	
 	ERRORLEVEL 0, -302 ;suppress bank selection messages
 	
         __CONFIG  _CONFIG1, _CP_OFF & _WDT_OFF &  _XT_OSC & _PWRTE_ON & _LVP_OFF & _BODEN_OFF & _MCLR_OFF
@@ -12,11 +13,14 @@
 	extern lcd_setposcursor
 	extern lcd_affadc
 	extern adc_readAN0
+	extern adc_readAN1
+	extern eep_readbyte
 	
 	udata
 v_timer0 res 1 
 v_timer1 res 1
 v_timer2 res 1
+v_mode_calib res 1
 
 	code
 	goto Start ;
@@ -62,28 +66,34 @@ Start
 	;;Positionner le curseur du LCD sur la ligne 1
 	movlw 0x00
 	call lcd_setposcursor
-;; Tester le mode calibration (TBD strap de soudure à la masse ou VCC) ;
-;; Si le boitier est en mode de calibration (TBD)
-;; 	afficher le message de calibration (lcd_affcalib TBD)
+;; Tester le mode calibration (test l'octet __MODE_CALIB_OR_NOT placé en eeprom)
+	movlw __MODE_CALIB_OR_NOT
+	call eep_readbyte
+	xorlw 0xFF ; is it a 0xFF in EEPROM at this addresse ?
+	btfsc STATUS, Z
+	goto meas_loop; 0xFF calibration effectuée, passer en mode mesure
+
+
+;; 	afficher le message de calibration (lcd_affcalib)
 	call lcd_affcalib
 
-; Infinate loop 
-Stop
-	call adc_readAN0
-	call lcd_affadc
-	goto Stop ;endless loop
-
-
 ;; 	Dans une boucle infinie
+calib_loop
 ;; 		lire les registres ADCfwd et ADCref
+	call adc_readAN0
+	call adc_readAN1
 ;; 		afficher le message de mesure (lcd_affmeas TBD)
+	call lcd_affadc
+	goto calib_loop ;endless loop
+
+meas_loop
 ;; Sinon	;
 ;; 	Dans une boucle infinie (TBD) : ;
 ;; 		lire les registres ADCfwd et ADCref
 ;; 		calculer la puissance FWD et REF
 ;; 		Calculer le SWR
 ;; 		Afficher le message de mesure
- 
+	goto meas_loop
 
 ;-----------------------------------------
 ;Fonction : temporisation de 2.5s

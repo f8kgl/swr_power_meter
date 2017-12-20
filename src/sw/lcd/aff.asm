@@ -11,7 +11,7 @@ v_tmp res 1
 	extern lcd_convtoascii
 	extern eep_readbyte
 	extern v_adcfwd
-	extern v_adcfwd
+	extern v_adcref
 
 ;-----------------------------------------
 ;Fonction : Message de version courante du logiciel
@@ -165,6 +165,8 @@ calibmsgL2
 ;	9. FIN
 ;----------------------------------------- 
 lcd_affboot 
+	bcf STATUS,RP0
+	bcf STATUS,RP1
 	movlw 0x00
 	movwf v_charpos
 _lcd_affboot_2 
@@ -239,6 +241,8 @@ _lcd_affboot_9
 ;	6. FIN
 ;----------------------------------------- 
 lcd_affcalib 
+	bcf STATUS,RP0
+	bcf STATUS,RP1
 	movlw 0x00
 	movwf v_charpos
 _lcd_affcalib2 
@@ -321,7 +325,7 @@ lcd_affhexa_8
 ;	3.Afficher un octet en hexa (lcd_affhexa)
 ;	4.W =v_adcfwd +1 
 ;	5.Afficher un octet en hexa (lcd_affhexa)
-;	6. positionner le curseur sur la ligne 2, 8ème case
+;	6.positionner le curseur sur la ligne 2, 8ème case
 ;	7.W=v_adcref
 ;	8.Afficher un octet en hexa (lcd_affhexa)
 ;	9.W =v_adcref +1 
@@ -345,6 +349,18 @@ lcd_affadc_5
 lcd_affadc_6
 	movlw 0x18
 	call lcd_setposcursor
+lcd_affadc_7
+	bcf STATUS,RP0
+	bcf STATUS,RP1
+	movfw v_adcref
+lcd_affadc_8
+	call lcd_affhexa
+lcd_affadc_9
+	bcf STATUS,RP0
+	bcf STATUS,RP1
+	movfw v_adcref+1
+lcd_affadc_10
+	call lcd_affhexa
 	return
 	
 	global lcd_affboot
