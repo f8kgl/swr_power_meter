@@ -1,0 +1,263 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:switches
+LIBS:relays
+LIBS:motors
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:TOSMETRE-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L R R1
+U 1 1 5A324C00
+P 4900 3600
+F 0 "R1" V 4980 3600 50  0000 C CNN
+F 1 "R" V 4900 3600 50  0000 C CNN
+F 2 "Resistors_SMD:R_1206_HandSoldering" V 4830 3600 50  0001 C CNN
+F 3 "" H 4900 3600 50  0001 C CNN
+	1    4900 3600
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R2
+U 1 1 5A324C3D
+P 5200 3300
+F 0 "R2" V 5280 3300 50  0000 C CNN
+F 1 "R" V 5200 3300 50  0000 C CNN
+F 2 "Resistors_SMD:R_1206_HandSoldering" V 5130 3300 50  0001 C CNN
+F 3 "" H 5200 3300 50  0001 C CNN
+	1    5200 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R3
+U 1 1 5A324C70
+P 5500 3050
+F 0 "R3" V 5580 3050 50  0000 C CNN
+F 1 "R" V 5500 3050 50  0000 C CNN
+F 2 "Resistors_SMD:R_1206_HandSoldering" V 5430 3050 50  0001 C CNN
+F 3 "" H 5500 3050 50  0001 C CNN
+	1    5500 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R4
+U 1 1 5A324CBB
+P 5700 2650
+F 0 "R4" V 5780 2650 50  0000 C CNN
+F 1 "R" V 5700 2650 50  0000 C CNN
+F 2 "Resistors_SMD:R_1206_HandSoldering" V 5630 2650 50  0001 C CNN
+F 3 "" H 5700 2650 50  0001 C CNN
+	1    5700 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R5
+U 1 1 5A324D04
+P 4150 4000
+F 0 "R5" V 4230 4000 50  0000 C CNN
+F 1 "R" V 4150 4000 50  0000 C CNN
+F 2 "Resistors_SMD:R_1206_HandSoldering" V 4080 4000 50  0001 C CNN
+F 3 "" H 4150 4000 50  0001 C CNN
+	1    4150 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L D D1
+U 1 1 5A324E39
+P 1700 2450
+F 0 "D1" H 1700 2550 50  0000 C CNN
+F 1 "D" H 1700 2350 50  0000 C CNN
+F 2 "Diodes_SMD:D_1206" H 1700 2450 50  0001 C CNN
+F 3 "" H 1700 2450 50  0001 C CNN
+	1    1700 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L D D2
+U 1 1 5A324E8A
+P 1800 3000
+F 0 "D2" H 1800 3100 50  0000 C CNN
+F 1 "D" H 1800 2900 50  0000 C CNN
+F 2 "Diodes_SMD:D_1206" H 1800 3000 50  0001 C CNN
+F 3 "" H 1800 3000 50  0001 C CNN
+	1    1800 3000
+	1    0    0    -1  
+$EndComp
+$Comp
+L D D3
+U 1 1 5A324EB7
+P 3400 2100
+F 0 "D3" H 3400 2200 50  0000 C CNN
+F 1 "D" H 3400 2000 50  0000 C CNN
+F 2 "Diodes_SMD:D_1206" H 3400 2100 50  0001 C CNN
+F 3 "" H 3400 2100 50  0001 C CNN
+	1    3400 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L D D4
+U 1 1 5A324F06
+P 4600 2150
+F 0 "D4" H 4600 2250 50  0000 C CNN
+F 1 "D" H 4600 2050 50  0000 C CNN
+F 2 "Diodes_SMD:D_1206" H 4600 2150 50  0001 C CNN
+F 3 "" H 4600 2150 50  0001 C CNN
+	1    4600 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L MCP23008_SSOP U1
+U 1 1 5A324369
+P 4200 2850
+F 0 "U1" H 4100 3475 50  0000 R CNN
+F 1 "16F628A_SSOP" H 4100 3400 50  0000 R CNN
+F 2 "Wire_Pads:SolderWirePad_3x_2-5mmDrill" H 4250 2200 50  0001 L CNN
+F 3 "" H 4450 3450 50  0001 C CNN
+	1    4200 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L WC1602A DS1
+U 1 1 5A3242FC
+P 2650 3050
+F 0 "DS1" H 2420 3800 50  0000 C CNN
+F 1 "WC1602A" H 2860 3800 50  0000 C CNN
+F 2 "Displays:WC1602A" H 2650 2150 50  0001 C CIN
+F 3 "" H 3350 3050 50  0001 C CNN
+	1    2650 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Conn_Coaxial_Power J2
+U 1 1 5A33E01A
+P 2250 4450
+F 0 "J2" V 2050 4400 50  0000 C CNN
+F 1 "Conn_Coaxial_Power" V 2125 4400 50  0000 C CNN
+F 2 "Connectors:JACK_ALIM" H 2250 4400 50  0001 C CNN
+F 3 "" H 2250 4400 50  0001 C CNN
+	1    2250 4450
+	0    1    1    0   
+$EndComp
+$Comp
+L L7805 U2
+U 1 1 5A33E692
+P 3400 4450
+F 0 "U2" H 3250 4575 50  0000 C CNN
+F 1 "L7805" H 3400 4575 50  0000 L CNN
+F 2 "TO_SOT_Packages_THT:TO-220-3_Horizontal" H 3425 4300 50  0001 L CIN
+F 3 "" H 3400 4400 50  0001 C CNN
+	1    3400 4450
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_DPST_x2 SW1
+U 1 1 5A325329
+P 2750 4450
+F 0 "SW1" H 2750 4575 50  0000 C CNN
+F 1 "SW_DPST_x2" H 2750 4350 50  0000 C CNN
+F 2 "Buttons_Switches_SMD:Nidec_Copal_SH-7010A" H 2750 4450 50  0001 C CNN
+F 3 "" H 2750 4450 50  0001 C CNN
+	1    2750 4450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2950 4450 3100 4450
+Wire Wire Line
+	2550 4450 2350 4450
+Wire Wire Line
+	2850 4700 2650 3850
+Wire Wire Line
+	3400 4750 2850 4700
+Wire Wire Line
+	3950 4000 3050 2450
+Wire Wire Line
+	3400 4850 3400 4750
+Wire Wire Line
+	2050 4850 3400 4850
+Wire Wire Line
+	2050 4450 2050 4850
+Wire Wire Line
+	3950 4450 3950 4000
+Wire Wire Line
+	3700 4450 3950 4450
+Wire Wire Line
+	5150 2100 5000 1600
+Wire Wire Line
+	4750 2150 5150 2100
+Wire Wire Line
+	2650 2250 3250 2100
+Wire Wire Line
+	4450 2150 4200 2250
+Wire Wire Line
+	4200 3550 4150 3850
+Wire Wire Line
+	1850 2450 2250 2450
+Wire Wire Line
+	1950 3000 2250 2650
+Wire Wire Line
+	5700 2500 4700 2550
+Wire Wire Line
+	5500 2900 4700 2950
+Wire Wire Line
+	5200 3150 4700 3150
+Wire Wire Line
+	4900 3350 4700 3350
+Wire Wire Line
+	4900 3450 4900 3350
+Wire Wire Line
+	3700 2650 2250 3050
+Wire Wire Line
+	3700 3250 2250 3650
+Wire Wire Line
+	3700 3150 2250 3550
+Wire Wire Line
+	3700 3050 2250 3450
+Wire Wire Line
+	3700 2950 2250 3350
+Wire Wire Line
+	3700 2850 2250 3250
+Wire Wire Line
+	3700 2750 2250 3150
+Wire Wire Line
+	3700 2550 2250 2950
+$EndSCHEMATC
