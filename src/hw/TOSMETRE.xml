@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <export version="D">
   <design>
-    <source>C:/Users/HP640/Documents/TOSMETRE/TOSMETRE.sch</source>
-    <date>15/12/2017 23:08:36</date>
+    <source>C:/Users/hp640/Desktop/swr_power_meter/trunk/src/hw/TOSMETRE.sch</source>
+    <date>14/03/2018 16:06:42</date>
     <tool>Eeschema 4.0.7</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -26,20 +26,6 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5A324E39</tstamp>
     </comp>
-    <comp ref="U1">
-      <value>16F628A_SSOP</value>
-      <footprint>Housings_SSOP:SSOP-20_5.3x7.2mm_Pitch0.65mm</footprint>
-      <libsource lib="microchip" part="MCP23008_SSOP"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamp>5A324369</tstamp>
-    </comp>
-    <comp ref="J2">
-      <value>Conn_Power</value>
-      <footprint>Connectors:JACK_ALIM</footprint>
-      <libsource lib="conn" part="Conn_Coaxial_Power"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamp>5A33E01A</tstamp>
-    </comp>
     <comp ref="U2">
       <value>L7805</value>
       <footprint>TO_SOT_Packages_THT:TO-220-3_Horizontal</footprint>
@@ -47,12 +33,54 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5A33E692</tstamp>
     </comp>
-    <comp ref="SW1">
-      <value>SW_DPDT_x2</value>
-      <footprint>Buttons_Switches_SMD:SW_SPDT_CK-JS102011SAQN</footprint>
-      <libsource lib="switches" part="SW_DPDT_x2"/>
+    <comp ref="C1">
+      <value>C</value>
+      <footprint>Capacitors_SMD:C_1206</footprint>
+      <libsource lib="device" part="C"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamp>5A343DF6</tstamp>
+      <tstamp>5A3C3936</tstamp>
+    </comp>
+    <comp ref="Y1">
+      <value>Crystal</value>
+      <footprint>Crystals:Crystal_HC49-U_Vertical</footprint>
+      <libsource lib="device" part="Crystal"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A3C39C5</tstamp>
+    </comp>
+    <comp ref="C3">
+      <value>C</value>
+      <footprint>Capacitors_SMD:C_1206</footprint>
+      <libsource lib="device" part="C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A3C4ADF</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>C</value>
+      <footprint>Capacitors_SMD:C_1206</footprint>
+      <libsource lib="device" part="C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A3C4BA7</tstamp>
+    </comp>
+    <comp ref="C4">
+      <value>C</value>
+      <footprint>Capacitors_SMD:C_1206</footprint>
+      <libsource lib="device" part="C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5AA44E9D</tstamp>
+    </comp>
+    <comp ref="C5">
+      <value>CP_Small</value>
+      <footprint>Capacitors_SMD:CP_Elec_3x5.3</footprint>
+      <libsource lib="device" part="CP_Small"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5AA53058</tstamp>
+    </comp>
+    <comp ref="U1">
+      <value>16F88_SSOP</value>
+      <footprint>SMD_Packages:SSOP-20</footprint>
+      <libsource lib="16F88" part="16F88_SSOP"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5AA53019</tstamp>
     </comp>
     <comp ref="DS1">
       <value>WC1602A</value>
@@ -61,25 +89,111 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamp>5A3242FC</tstamp>
     </comp>
+    <comp ref="J3">
+      <value>Conn_01x01_Female</value>
+      <footprint>Connectors:Banana_Jack_1Pin</footprint>
+      <libsource lib="conn" part="Conn_01x01_Female"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5AA6A2DC</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>Conn_01x01_Female</value>
+      <libsource lib="conn" part="Conn_01x01_Female"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5AA6A32D</tstamp>
+    </comp>
   </components>
   <libparts>
-    <libpart lib="conn" part="Conn_Coaxial_Power">
-      <description>coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, ...)</description>
+    <libpart lib="16F88" part="16F88_SSOP">
+      <description>8-Bit I/O Expander with I²C Interface (SSOP)</description>
+      <docs>http://ww1.microchip.com/downloads/en/DeviceDoc/21919e.pdf</docs>
+      <footprints>
+        <fp>SSOP-20</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">16F88_SSOP</field>
+      </fields>
+      <pins>
+        <pin num="1" name="RA2/AN2/CVREF/VREF-" type="input"/>
+        <pin num="2" name="RA3/AN3/VREF+/C1OUT" type="input"/>
+        <pin num="3" name="RA4/AN4/T0CKI/C2OUT" type="BiDi"/>
+        <pin num="4" name="RA5/MCLR1/VPP" type="BiDi"/>
+        <pin num="5" name="VSS" type="BiDi"/>
+        <pin num="6" name="VSS" type="BiDi"/>
+        <pin num="7" name="RB0/INT/CCP1" type="BiDi"/>
+        <pin num="8" name="RB1/SDI/SDA" type="BiDi"/>
+        <pin num="9" name="RB2/SDO/RX/DT" type="BiDi"/>
+        <pin num="10" name="RB3/PGM/CCP1" type="BiDi"/>
+        <pin num="11" name="RB4/SCK/SCL" type="input"/>
+        <pin num="12" name="RB5/SS/TX/CK" type="input"/>
+        <pin num="13" name="RB6/AN5/PGC/T1OSO/T1CKI" type="input"/>
+        <pin num="14" name="RB7/AN6/PGD/T1OSI" type="input"/>
+        <pin num="15" name="VDD" type="input"/>
+        <pin num="16" name="VDD" type="input"/>
+        <pin num="17" name="RA6/OSC2/CLK0" type="input"/>
+        <pin num="18" name="RA7/OSC1/CLKI" type="input"/>
+        <pin num="19" name="RA0/AN0" type="input"/>
+        <pin num="20" name="RA1/AN1" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="C">
+      <description>Unpolarized capacitor</description>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="CP_Small">
+      <description>Polarised capacitor</description>
+      <footprints>
+        <fp>CP_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">CP_Small</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="conn" part="Conn_01x01_Female">
+      <description>Generic connector, single row, 01x01</description>
       <docs>~</docs>
       <footprints>
-        <fp>*BNC*</fp>
-        <fp>*SMA*</fp>
-        <fp>*SMB*</fp>
-        <fp>*SMC*</fp>
-        <fp>*Cinch*</fp>
+        <fp>Connector*:*_??x*mm*</fp>
+        <fp>Connector*:*1x??x*mm*</fp>
+        <fp>Socket?Strip?Straight?1X*</fp>
+        <fp>Socket?Strip?Angled?1X*</fp>
       </footprints>
       <fields>
         <field name="Reference">J</field>
-        <field name="Value">Conn_Coaxial_Power</field>
+        <field name="Value">Conn_01x01_Female</field>
       </fields>
       <pins>
-        <pin num="1" name="In" type="passive"/>
-        <pin num="2" name="Ext" type="passive"/>
+        <pin num="1" name="Pin_1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="Crystal">
+      <description>Two pin crystal</description>
+      <footprints>
+        <fp>Crystal*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Y</field>
+        <field name="Value">Crystal</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
       </pins>
     </libpart>
     <libpart lib="device" part="D">
@@ -128,54 +242,6 @@
         <pin num="3" name="OUT" type="power_out"/>
       </pins>
     </libpart>
-    <libpart lib="microchip" part="MCP23008_SSOP">
-      <description>8-Bit I/O Expander with I²C Interface (SSOP)</description>
-      <docs>http://ww1.microchip.com/downloads/en/DeviceDoc/21919e.pdf</docs>
-      <footprints>
-        <fp>SSOP-20</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">U</field>
-        <field name="Value">MCP23008_SSOP</field>
-      </fields>
-      <pins>
-        <pin num="1" name="SCL" type="input"/>
-        <pin num="2" name="SDA" type="BiDi"/>
-        <pin num="3" name="A2" type="input"/>
-        <pin num="4" name="A1" type="input"/>
-        <pin num="5" name="A0" type="input"/>
-        <pin num="6" name="~RESET" type="input"/>
-        <pin num="8" name="INT" type="output"/>
-        <pin num="9" name="GND" type="power_in"/>
-        <pin num="12" name="GPB0" type="BiDi"/>
-        <pin num="13" name="GPB1" type="BiDi"/>
-        <pin num="14" name="GPB2" type="BiDi"/>
-        <pin num="15" name="GPB3" type="BiDi"/>
-        <pin num="16" name="GPB4" type="BiDi"/>
-        <pin num="17" name="GPB5" type="BiDi"/>
-        <pin num="18" name="GPB6" type="BiDi"/>
-        <pin num="19" name="GPB7" type="BiDi"/>
-        <pin num="20" name="VCC" type="power_in"/>
-      </pins>
-    </libpart>
-    <libpart lib="switches" part="SW_DPDT_x2">
-      <description>Switch, dual pole double throw, separate symbols</description>
-      <footprints>
-        <fp>SW*DPDT*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">SW</field>
-        <field name="Value">SW_DPDT_x2</field>
-      </fields>
-      <pins>
-        <pin num="1" name="A" type="passive"/>
-        <pin num="2" name="B" type="passive"/>
-        <pin num="3" name="C" type="passive"/>
-        <pin num="4" name="A" type="passive"/>
-        <pin num="5" name="B" type="passive"/>
-        <pin num="6" name="C" type="passive"/>
-      </pins>
-    </libpart>
     <libpart lib="display" part="WC1602A">
       <description>LCD 16x2 Alphanumeric , 8 bit parallel bus, 5V VDD</description>
       <docs>http://www.wincomlcd.com/pdf/WC1602A-SFYLYHTC06.pdf</docs>
@@ -208,122 +274,137 @@
     </libpart>
   </libparts>
   <libraries>
-    <library logical="device">
-      <uri>C:\Program Files\KiCad\share\kicad\library\device.lib</uri>
-    </library>
-    <library logical="switches">
-      <uri>C:\Program Files\KiCad\share\kicad\library\switches.lib</uri>
-    </library>
-    <library logical="conn">
-      <uri>C:\Program Files\KiCad\share\kicad\library\conn.lib</uri>
+    <library logical="16F88">
+      <uri>C:\Users\hp640\Desktop\swr_power_meter\trunk\src\hw\16F88.lib</uri>
     </library>
     <library logical="regul">
       <uri>C:\Program Files\KiCad\share\kicad\library\regul.lib</uri>
     </library>
-    <library logical="microchip">
-      <uri>C:\Program Files\KiCad\share\kicad\library\microchip.lib</uri>
-    </library>
     <library logical="display">
       <uri>C:\Program Files\KiCad\share\kicad\library\display.lib</uri>
+    </library>
+    <library logical="conn">
+      <uri>C:\Program Files\KiCad\share\kicad\library\conn.lib</uri>
+    </library>
+    <library logical="device">
+      <uri>C:\Program Files\KiCad\share\kicad\library\device.lib</uri>
     </library>
   </libraries>
   <nets>
     <net code="1" name="Net-(DS1-Pad6)">
       <node ref="DS1" pin="6"/>
+      <node ref="U1" pin="10"/>
     </net>
-    <net code="2" name="Net-(DS1-Pad15)">
-      <node ref="DS1" pin="15"/>
+    <net code="2" name="Net-(DS1-Pad4)">
+      <node ref="U1" pin="9"/>
+      <node ref="DS1" pin="4"/>
     </net>
-    <net code="3" name="Net-(DS1-Pad14)">
-      <node ref="DS1" pin="14"/>
+    <net code="3" name="Net-(DS1-Pad12)">
+      <node ref="DS1" pin="12"/>
+      <node ref="U1" pin="12"/>
+    </net>
+    <net code="4" name="Net-(U1-Pad20)">
+      <node ref="U1" pin="20"/>
+    </net>
+    <net code="5" name="Net-(U1-Pad19)">
       <node ref="U1" pin="19"/>
     </net>
-    <net code="4" name="Net-(DS1-Pad13)">
-      <node ref="DS1" pin="13"/>
-      <node ref="U1" pin="18"/>
-    </net>
-    <net code="5" name="Net-(DS1-Pad12)">
-      <node ref="DS1" pin="12"/>
-      <node ref="U1" pin="17"/>
-    </net>
     <net code="6" name="Net-(DS1-Pad11)">
+      <node ref="U1" pin="11"/>
       <node ref="DS1" pin="11"/>
-      <node ref="U1" pin="16"/>
     </net>
-    <net code="7" name="Net-(DS1-Pad10)">
-      <node ref="U1" pin="15"/>
-      <node ref="DS1" pin="10"/>
-    </net>
-    <net code="8" name="Net-(DS1-Pad9)">
-      <node ref="U1" pin="14"/>
-      <node ref="DS1" pin="9"/>
-    </net>
-    <net code="9" name="Net-(DS1-Pad8)">
+    <net code="7" name="Net-(DS1-Pad13)">
       <node ref="U1" pin="13"/>
-      <node ref="DS1" pin="8"/>
+      <node ref="DS1" pin="13"/>
     </net>
-    <net code="10" name="Net-(DS1-Pad7)">
-      <node ref="DS1" pin="7"/>
-      <node ref="U1" pin="12"/>
+    <net code="8" name="Net-(DS1-Pad14)">
+      <node ref="DS1" pin="14"/>
+      <node ref="U1" pin="14"/>
+    </net>
+    <net code="9" name="Net-(C5-Pad2)">
+      <node ref="U1" pin="16"/>
+      <node ref="C5" pin="2"/>
+      <node ref="U1" pin="15"/>
+    </net>
+    <net code="10" name="Net-(DS1-Pad15)">
+      <node ref="DS1" pin="15"/>
     </net>
     <net code="11" name="Net-(DS1-Pad16)">
       <node ref="DS1" pin="16"/>
     </net>
-    <net code="12" name="Net-(DS1-Pad5)">
-      <node ref="DS1" pin="5"/>
+    <net code="12" name="Net-(D1-Pad2)">
+      <node ref="D1" pin="2"/>
+      <node ref="J1" pin="1"/>
     </net>
-    <net code="13" name="Net-(DS1-Pad4)">
-      <node ref="DS1" pin="4"/>
+    <net code="13" name="GNDREF">
+      <node ref="U1" pin="6"/>
+      <node ref="U1" pin="5"/>
+      <node ref="C2" pin="1"/>
+      <node ref="C4" pin="2"/>
+      <node ref="C3" pin="1"/>
+      <node ref="C1" pin="2"/>
+      <node ref="U2" pin="2"/>
+      <node ref="J3" pin="1"/>
+      <node ref="DS1" pin="1"/>
     </net>
     <net code="14" name="Net-(DS1-Pad3)">
       <node ref="DS1" pin="3"/>
     </net>
-    <net code="15" name="Net-(D1-Pad1)">
-      <node ref="U2" pin="1"/>
-      <node ref="D1" pin="1"/>
-    </net>
-    <net code="16" name="+BATT">
-      <node ref="SW1" pin="1"/>
-    </net>
-    <net code="17" name="GNDREF">
-      <node ref="J2" pin="2"/>
-      <node ref="U1" pin="9"/>
-      <node ref="DS1" pin="1"/>
-      <node ref="U2" pin="2"/>
-    </net>
-    <net code="18" name="Net-(DS1-Pad2)">
-      <node ref="U2" pin="3"/>
-      <node ref="DS1" pin="2"/>
-      <node ref="U1" pin="20"/>
-    </net>
-    <net code="19" name="Net-(J2-Pad1)">
-      <node ref="J2" pin="1"/>
-      <node ref="SW1" pin="3"/>
-    </net>
-    <net code="20" name="Net-(D1-Pad2)">
-      <node ref="SW1" pin="2"/>
-      <node ref="D1" pin="2"/>
-    </net>
-    <net code="21" name="Net-(U1-Pad8)">
+    <net code="15" name="Net-(U1-Pad8)">
       <node ref="U1" pin="8"/>
     </net>
-    <net code="22" name="Net-(U1-Pad6)">
-      <node ref="U1" pin="6"/>
+    <net code="16" name="Net-(DS1-Pad5)">
+      <node ref="DS1" pin="5"/>
     </net>
-    <net code="23" name="Net-(U1-Pad5)">
-      <node ref="U1" pin="5"/>
+    <net code="17" name="Net-(DS1-Pad7)">
+      <node ref="DS1" pin="7"/>
     </net>
-    <net code="24" name="Net-(U1-Pad4)">
-      <node ref="U1" pin="4"/>
+    <net code="18" name="Net-(DS1-Pad8)">
+      <node ref="DS1" pin="8"/>
     </net>
-    <net code="25" name="Net-(U1-Pad3)">
-      <node ref="U1" pin="3"/>
+    <net code="19" name="Net-(DS1-Pad9)">
+      <node ref="DS1" pin="9"/>
     </net>
-    <net code="26" name="Net-(U1-Pad2)">
+    <net code="20" name="Net-(DS1-Pad10)">
+      <node ref="DS1" pin="10"/>
+    </net>
+    <net code="21" name="Net-(C2-Pad2)">
+      <node ref="C2" pin="2"/>
+      <node ref="Y1" pin="2"/>
+      <node ref="U1" pin="17"/>
+    </net>
+    <net code="22" name="Net-(C3-Pad2)">
+      <node ref="Y1" pin="1"/>
+      <node ref="U1" pin="18"/>
+      <node ref="C3" pin="2"/>
+    </net>
+    <net code="23" name="Net-(C5-Pad1)">
+      <node ref="DS1" pin="2"/>
+      <node ref="C5" pin="1"/>
+      <node ref="U2" pin="3"/>
+    </net>
+    <net code="24" name="Net-(U1-Pad1)">
+      <node ref="U1" pin="1"/>
+    </net>
+    <net code="25" name="Net-(U1-Pad2)">
       <node ref="U1" pin="2"/>
     </net>
-    <net code="27" name="Net-(U1-Pad1)">
-      <node ref="U1" pin="1"/>
+    <net code="26" name="Net-(U1-Pad3)">
+      <node ref="U1" pin="3"/>
+    </net>
+    <net code="27" name="Net-(U1-Pad4)">
+      <node ref="U1" pin="4"/>
+    </net>
+    <net code="28" name="Net-(U1-Pad7)">
+      <node ref="U1" pin="7"/>
+    </net>
+    <net code="29" name="Net-(C4-Pad1)">
+      <node ref="C4" pin="1"/>
+    </net>
+    <net code="30" name="Net-(C1-Pad1)">
+      <node ref="D1" pin="1"/>
+      <node ref="C1" pin="1"/>
+      <node ref="U2" pin="1"/>
     </net>
   </nets>
 </export>
