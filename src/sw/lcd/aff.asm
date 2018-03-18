@@ -136,7 +136,7 @@ calibmsgL2
 ; 	Sur le LCD :
 ;       1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
 ; 	S W R - P O W E R    m  e  t  e  r
-; 	F 8 K G L                  v  0  .  1
+; 	      F 8 K G L   V  0  .  5
 ;Traitement :
 ;	1.v_charpos = 0
 ;	2.Afficher le message de boot ligne 1 
@@ -144,8 +144,8 @@ calibmsgL2
 ;		récupérer le caractère de boot ligne 1
 ;		afficher 1 caractère sur le LCD
 ; 		incrémenter v_charpos
-;	3.positionner le curseur sur la ligne 2
-;		W=0x10
+;	3.positionner le curseur sur la ligne 2, 4ème case
+;		W=0x13
 ;	 	postionner le curseur
 ;	4.v_charpos = 0
 ;	5.Afficher le message de boot ligne 2
@@ -153,7 +153,7 @@ calibmsgL2
 ;		récupérer le caractère de boot ligne 2
 ;		afficher 1 caractère sur le LCD
 ;		incrémenter v_charpos
-;	6.positionner le curseur sur la ligne 2, 13 ème colonne
+;	6.positionner le curseur sur la ligne 2, 10 ème case
 ;		W=0x1C
 ;		positionner le curseur
 ;	7. v_charpos=0
@@ -179,7 +179,7 @@ _lcd_affboot_2
 	incf v_charpos, f
 	goto _lcd_affboot_2
 _lcd_affboot_3
-	movlw 0x10
+	movlw 0x13
 	call lcd_setposcursor
 _lcd_affboot_4
 	movlw 0x00
@@ -194,7 +194,7 @@ _lcd_affboot_5
 	incf v_charpos, f
 	goto _lcd_affboot_5
 _lcd_affboot_6
-	movlw 0x1C
+	movlw 0x19
 	call lcd_setposcursor
 _lcd_affboot_7
 	movlw 0x00
