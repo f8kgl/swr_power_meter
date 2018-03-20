@@ -1,5 +1,4 @@
 EESchema Schematic File Version 2
-LIBS:TOSMETRE-rescue
 LIBS:power
 LIBS:device
 LIBS:switches
@@ -32,7 +31,6 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-LIBS:16F88
 LIBS:TOSMETRE-cache
 EELAYER 25 0
 EELAYER END
@@ -405,4 +403,26 @@ F 3 "" H 5900 2450 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	5900 2350 5900 2450
+$Comp
+L Conn_01x01 J4
+U 1 1 5AB12A8D
+P 5600 5400
+F 0 "J4" H 5600 5500 50  0000 C CNN
+F 1 "Conn_01x01" H 5600 5300 50  0000 C CNN
+F 2 "Connectors:Pin_d0.9mm_L10.0mm_W2.4mm_FlatFork" H 5600 5400 50  0001 C CNN
+F 3 "" H 5600 5400 50  0001 C CNN
+	1    5600 5400
+	0    1    1    0   
+$EndComp
+$Comp
+L Conn_01x01 J3
+U 1 1 5AB12B4B
+P 5350 5400
+F 0 "J3" H 5350 5500 50  0000 C CNN
+F 1 "Conn_01x01" H 5350 5300 50  0000 C CNN
+F 2 "Connectors:Pin_d0.9mm_L10.0mm_W2.4mm_FlatFork" H 5350 5400 50  0001 C CNN
+F 3 "" H 5350 5400 50  0001 C CNN
+	1    5350 5400
+	0    1    1    0   
+$EndComp
 $EndSCHEMATC
