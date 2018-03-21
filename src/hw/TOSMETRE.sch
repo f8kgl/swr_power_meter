@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:TOSMETRE-rescue
 LIBS:power
 LIBS:device
 LIBS:switches
@@ -31,6 +32,7 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
+LIBS:16F88
 LIBS:TOSMETRE-cache
 EELAYER 25 0
 EELAYER END
@@ -341,7 +343,7 @@ U 1 1 5AA94180
 P 3550 1950
 F 0 "J1" H 3550 2050 50  0000 C CNN
 F 1 "Conn_01x01_Female" H 3550 1850 50  0000 C CNN
-F 2 "Connectors:Banana_Jack_1Pin" H 3550 1950 50  0001 C CNN
+F 2 "Measurement_Points:Measurement_Point_Round-SMD-Pad_Big" H 3550 1950 50  0001 C CNN
 F 3 "" H 3550 1950 50  0001 C CNN
 	1    3550 1950
 	-1   0    0    1   
@@ -352,7 +354,7 @@ U 1 1 5AA941DB
 P 3550 2300
 F 0 "J2" H 3550 2400 50  0000 C CNN
 F 1 "Conn_01x01_Female" H 3550 2200 50  0000 C CNN
-F 2 "Connectors:Banana_Jack_1Pin" H 3550 2300 50  0001 C CNN
+F 2 "Measurement_Points:Measurement_Point_Round-SMD-Pad_Big" H 3550 2300 50  0001 C CNN
 F 3 "" H 3550 2300 50  0001 C CNN
 	1    3550 2300
 	-1   0    0    1   
