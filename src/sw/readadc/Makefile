@@ -9,12 +9,12 @@ COMP = readadc
 
 SRC = adc.asm
 
-OBJ = $(SRC:.asm=.o)
+OBJ_TEST = $(SRC:.asm=.TEST.o)
 
-../../../bin/$(COMP).a : $(OBJ)
-	$(LD) $(LDFLAGS) ../../../bin/$(COMP).a $(OBJ)
+../../../bin/$(COMP).TEST.a : $(OBJ_TEST)
+	$(LD) $(LDFLAGS) ../../../bin/$(COMP).TEST.a $(OBJ_TEST)
 	rm *.o
 	rm *.lst
 
-%.o : %.asm
-	$(AS) $(ASFLAGS) $(INC_DIR) -p $(PROCESSOR) $<
+%.TEST.o : %.asm
+	$(AS) $(ASFLAGS) $(INC_DIR) -p $(PROCESSOR) $< -o $@
