@@ -8,7 +8,7 @@ OUTPUT = $(NAME)$(VERSION).hex
 export LKR_DIR =/usr/share/gputils/lkr/
 export SCRIPT = $(LKR_DIR)$(PROCESSOR).lkr
 INC_DIR = -I../src/sw/inc/
-CALIBRATION_ADDR = 0xC00
+HF_DETECT_CAL_FLH_ADDR = 0xC00
 
 #Tools
 AS = gpasm
@@ -50,7 +50,7 @@ main.o: main.asm
 	gpasm -c -D $(TEST_FLAGS) -p $(PROCESSOR) $(INC_DIR) $<
 
 cal.o: cal.asm
-	gpasm -c -D $(TEST_FLAGS) -p $(PROCESSOR) -D__SW_CALIBRATION_FLH_ADDR=$(CALIBRATION_ADDR) $(INC_DIR) $<
+	gpasm -c -D $(TEST_FLAGS) -p $(PROCESSOR) -D__HF_DETECT_CAL_FLH_ADDR=$(HF_DETECT_CAL_FLH_ADDR) $(INC_DIR) $<
 
 clean:
 	rm ../bin/*

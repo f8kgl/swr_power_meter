@@ -17,7 +17,7 @@
 ; 	0x3FF 0x1383
 ;-----------------------------------------
 
-c_calibration_table code __SW_CALIBRATION_FLH_ADDR
+c_calibration_table code __HF_DETECT_CAL_FLH_ADDR
 #IFDEF TEST
 	DE 0x0
 	DE 0x5
