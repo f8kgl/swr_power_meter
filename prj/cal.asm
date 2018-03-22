@@ -17,7 +17,8 @@
 ; 	0x3FF 0x1383
 ;-----------------------------------------
 
-c_hf_detect_cal_table code __HF_DETECT_CAL_FLH_ADDR
+s_hf_detect_cal_table code __HF_DETECT_CAL_FLH_ADDR
+hf_detect_cal_table_addr	
 #IFDEF TEST
 	DE 0x0
 	DE 0x5
@@ -1044,4 +1045,5 @@ c_hf_detect_cal_table code __HF_DETECT_CAL_FLH_ADDR
 	DE 0x137E
 	DE 0x1383
 #ENDIF
+hf_detect_cal_table_end_addr
 	end

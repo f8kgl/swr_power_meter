@@ -26,7 +26,8 @@ v_tmp res 1
 ; cette zone de mémoire est placée en 0x2100 systématiquement par le compilateur
 ; cette zone est remplie par le compilateur
 ;-----------------------------------------  
-c_swversion code __SW_VERSION_EEP_ADDR
+s_swversion code __SW_VERSION_EEP_ADDR
+c_swversion	
 	DE SW_VERSION
 	DE 0x00 		;marqueur de fin
 	

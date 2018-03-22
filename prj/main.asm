@@ -22,7 +22,7 @@ v_timer1 res 1
 v_timer2 res 1
 v_mode_calib res 1
 
-	code
+start	code 0x0
 	goto Start ;
 
 Start
