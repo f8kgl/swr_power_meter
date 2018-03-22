@@ -37,7 +37,7 @@ all : $(OUTPUT_TEST)
 rule_test : $(OUTPUT_TEST)
 
 $(OUTPUT_TEST) : main.o cal.o $(LIBS_TEST)
-	$(LD) $(LDFLAGS) $(SCRIPT) -o ../bin/$(OUTPUT_TEST) main.o $(LIBS_TEST)
+	$(LD) $(LDFLAGS) $(SCRIPT) -o ../bin/$(OUTPUT_TEST) main.o cal.o $(LIBS_TEST)
 	rm main.o
 	rm main.lst
 	rm cal.o
