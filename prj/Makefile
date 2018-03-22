@@ -8,7 +8,6 @@ OUTPUT = $(NAME)$(VERSION).hex
 export LKR_DIR =/usr/share/gputils/lkr/
 export SCRIPT = $(LKR_DIR)$(PROCESSOR).lkr
 INC_DIR = -I../src/sw/inc/
-HF_DETECT_CAL_FLH_ADDR = 0xC00
 
 #Tools
 AS = gpasm
@@ -16,6 +15,7 @@ LD = gplink
 
 #Flags
 LDFLAGS = --map -c -s
+ASFLAGS = -c
 export TEST_FLAGS = TEST
 export CALIBRATION_FLAGS = CALIBRATION
 
@@ -35,22 +35,23 @@ all : $(OUTPUT_TEST)
 	rm ../bin/*.a
 
 rule_test : $(OUTPUT_TEST)
+	rm ../bin/*.a
 
-$(OUTPUT_TEST) : main.o cal.o $(LIBS_TEST)
-	$(LD) $(LDFLAGS) $(SCRIPT) -o ../bin/$(OUTPUT_TEST) main.o cal.o $(LIBS_TEST)
-	rm main.o
-	rm main.lst
-	rm cal.o
-	rm cal.lst
+$(OUTPUT_TEST) : main.TEST.o cal.TEST.o $(LIBS_TEST)
+	$(LD) $(LDFLAGS) $(SCRIPT) -o ../bin/$(OUTPUT_TEST) main.TEST.o cal.TEST.o $(LIBS_TEST)
+	rm main.TEST.o
+	rm main.TEST.lst
+	rm cal.TEST.o
+	rm cal.TEST.lst
 
 ../bin/%.TEST.a:
 	make -C $(@:../bin/%.TEST.a=../src/sw/%)
 
-main.o: main.asm
-	gpasm -c -D $(TEST_FLAGS) -p $(PROCESSOR) $(INC_DIR) $<
+main.TEST.o: main.asm
+	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
 
-cal.o: cal.asm
-	gpasm -c -D $(TEST_FLAGS) -p $(PROCESSOR) -D__HF_DETECT_CAL_FLH_ADDR=$(HF_DETECT_CAL_FLH_ADDR) $(INC_DIR) $<
+cal.TEST.o: cal.asm
+	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
 
 clean:
 	rm ../bin/*

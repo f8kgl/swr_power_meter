@@ -8,6 +8,29 @@ v_delay res 1
 
 	code
 ;-----------------------------------------
+;Fonction : Initialisation adc
+;Nom : adc_init
+;Entrée :
+;Sortie :
+;Traitement :
+;-----------------------------------------
+adc_init	
+	BANKSEL ANSEL
+	movlw b'00000011'
+	movwf ANSEL 		;AN0, AN1 analog I/O
+	BANKSEL ADCON1
+	bcf ADCON1 , VCFG0 ; VCFG0 = 0
+	bcf ADCON1 , VCFG1 ; VCFG1 = 0
+	bsf ADCON1 , ADFM  ; ADRESH = 0 0 0 0 0 0 b9 b8;
+	   		   ;ADRESL = b7 b6 b5 b4 b3 b2 b1 b0 ;
+	bsf ADCON1, ADCS2
+	BANKSEL ADCON0
+	bcf ADCON0, ADCS1
+	bsf ADCON0, ADCS0 ;Tad = 16xTosc = 16/4Mhz = 4uS
+	return
+
+	
+;-----------------------------------------
 ;Fonction : Lire le résultat de la conversion A/N AN0
 ;Nom : adc_readAN0
 ;Entrée :
@@ -96,6 +119,7 @@ _adc_tempo20us
 	return ;
 	
 	
+	global adc_init
 	global adc_readAN0
 	global adc_readAN1
 	global v_adcfwd

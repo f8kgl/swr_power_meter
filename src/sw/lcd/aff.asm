@@ -13,24 +13,6 @@ v_tmp res 1
 	extern v_adcfwd
 	extern v_adcref
 
-;-----------------------------------------
-;Fonction : Message de version courante du logiciel
-;Nom : 
-;Entrée : 
-;	SW_VERSION(define du makefile)
-;Sortie :
-;	SW_VERSION
-;Traitement :
-;	Zone de mémoire (5 bytes) dédiée au stokage de la version logcielle
-; 	"V1.0" par exemple
-; cette zone de mémoire est placée en 0x2100 systématiquement par le compilateur
-; cette zone est remplie par le compilateur
-;-----------------------------------------  
-s_swversion code __SW_VERSION_EEP_ADDR
-c_swversion	
-	DE SW_VERSION
-	DE 0x00 		;marqueur de fin
-	
 	code
 ;-----------------------------------------
 ;Fonction : Message de boot ligne 1 du LCD
@@ -168,6 +150,8 @@ calibmsgL2
 lcd_affboot 
 	bcf STATUS,RP0
 	bcf STATUS,RP1
+	movlw 0x04
+	movwf PCLATH
 	movlw 0x00
 	movwf v_charpos
 _lcd_affboot_2 

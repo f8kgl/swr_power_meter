@@ -2,28 +2,22 @@
 	include "eep.inc"
 
 
-	code
 ;-----------------------------------------
-;Fonction : Lecture d'un octet en EEPROM
-;Nom : eep_readbyte
-;Entrée :
-;	-W : contient l'adresse de l'octer à lire en EEPROM
+;Fonction : Message de version courante du logiciel
+;Nom : 
+;Entrée : 
+;	SW_VERSION(define du makefile)
 ;Sortie :
-; 	-W : contient l'octet lu
+;	SW_VERSION
 ;Traitement :
-;	-EECON(RF) = b(1)
-;	-W = EEDATA
-;----------------------------------------- 	
-eep_readbyte
-	BANKSEL EEADR
-	movwf EEADR
-	BANKSEL EECON1
-	bcf EECON1, EEPGD
-	bsf EECON1,RD
-	BANKSEL EEDATA
-	movfw EEDATA
-	return
-
-	global eep_readbyte
+;	Zone de mémoire (5 bytes) dédiée au stokage de la version logcielle
+; 	"V1.0" par exemple
+; cette zone de mémoire est placée en 0x2100 systématiquement par le compilateur
+; cette zone est remplie par le compilateur
+;-----------------------------------------  
+.s_eep code __SW_VERSION_EEP_ADDR
+c_swversion	
+	DE SW_VERSION
+	DE 0x00 		;marqueur de fin
 
 	end

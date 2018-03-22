@@ -12,6 +12,7 @@
 	extern lcd_clear
 	extern lcd_setposcursor
 	extern lcd_affadc
+	extern adc_init
 	extern adc_readAN0
 	extern adc_readAN1
 	extern eep_readbyte
@@ -22,10 +23,10 @@ v_timer1 res 1
 v_timer2 res 1
 v_mode_calib res 1
 
-start	code 0x0
-	goto Start ;
+	code
+	goto Init ;
 
-Start
+Init
 ; Initialisation PIC
 	BANKSEL CMCON
 	movlw 0x07 ; Turn comparators off and
@@ -41,19 +42,8 @@ Start
 ; Initialisation LCD 
 	call lcd_init ; Initialize the LCD Display 
 ; Initialisation ADC
-	BANKSEL ANSEL
-	movlw b'00000011'
-	movwf ANSEL 		;AN0, AN1 analog I/O
-	BANKSEL ADCON1
-	bcf ADCON1 , VCFG0 ; VCFG0 = 0
-	bcf ADCON1 , VCFG1 ; VCFG1 = 0
-	bsf ADCON1 , ADFM  ; ADRESH = 0 0 0 0 0 0 b9 b8;
-	   		   ;ADRESL = b7 b6 b5 b4 b3 b2 b1 b0 ;
-	bsf ADCON1, ADCS2
-	BANKSEL ADCON0
-	bcf ADCON0, ADCS1
-	bsf ADCON0, ADCS0 ;Tad = 16xTosc = 16/4Mhz = 4uS
-
+	call adc_init
+	
 ; Afficher le message de boot
 	call lcd_affboot
 	
@@ -61,6 +51,14 @@ Start
 	call tempo_boot
 	call tempo_boot
 
+IFDEF TEST
+loop
+	goto loop
+
+	
+ENDIF	
+	
+IF 0
 ;; Effacer le LCD (lcd_clear)
 	call lcd_clear
 	;;Positionner le curseur du LCD sur la ligne 1
@@ -94,7 +92,8 @@ meas_loop
 ;; 		Calculer le SWR
 ;; 		Afficher le message de mesure
 	goto meas_loop
-
+ENDIF
+	
 ;-----------------------------------------
 ;Fonction : temporisation de 2.5s
 ;Nom : tempo_boot 

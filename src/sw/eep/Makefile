@@ -8,6 +8,7 @@ INC_DIR = -I../inc/
 COMP = eep
 
 SRC = eep.asm
+SRC += driver.asm
 
 OBJ_TEST = $(SRC:.asm=.TEST.o)
 
