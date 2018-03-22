@@ -1044,6 +1044,4 @@ c_calibration_table code __SW_CALIBRATION_FLH_ADDR
 	DE 0x137E
 	DE 0x1383
 #ENDIF
-	DE 0x00 		;marqueur de fin
-
 	end

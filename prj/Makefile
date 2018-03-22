@@ -8,7 +8,7 @@ OUTPUT = $(NAME)$(VERSION).hex
 export LKR_DIR =/usr/share/gputils/lkr/
 export SCRIPT = $(LKR_DIR)$(PROCESSOR).lkr
 INC_DIR = -I../src/sw/inc/
-CALIBRATION_ADDR = 0x1000
+CALIBRATION_ADDR = 0xC00
 
 #Tools
 AS = gpasm
