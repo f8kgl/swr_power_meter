@@ -5,12 +5,13 @@
   	udata
 v_charpos res 1
 v_tmp res 1
+v_lcd_wtmp res 1	
 	
 	extern lcd_affchar
 	extern lcd_setposcursor
 	extern lcd_convtoascii
-	extern eep_readbyte
-	extern v_adcfwd
+ 	extern eep_readbyte
+	extern v_adcfwd		;
 	extern v_adcref
 
 	code
@@ -64,30 +65,28 @@ bootmsgL2
 	retlw 'L'
 	retlw 0x00
 
+IFDEF TEST
 ;-----------------------------------------
-;Fonction : Message de calibration ligne 1 du LCD
-;Nom : calibmsgL1
+;Fonction : Message du mode de test ligne 1 du LCD
+;Nom : testmsgL1
 ;Entrée : 
 ;	v_charpos (1 byte) :position du caractère à retourner
 ;Sortie :
 ;	W (1 byte) : contient le caractère ou 0x00 si pas de caractère
 ;Traitement :
 ;	Zone de mémoire dédiée au stokage du message de calibration (L1 du LCD)
-; 	"ADCfwd "
+; 	"FWD "
 ;-----------------------------------------  
-calibmsgL1 
+testmsgL1
 	addwf PCL, f
-	retlw 'A'
+	retlw 'F'
+	retlw 'W'
 	retlw 'D'
-	retlw 'C'
-	retlw 'f'
-	retlw 'w'
-	retlw 'd'
 	retlw ' '
 	retlw 0x00
 
 ;-----------------------------------------
-;Fonction : Message de calibration ligne 2 du LCD
+;Fonction : Message du mode de test ligne 2 du LCD
 ;Nom : calibmsgL2
 ;Entrée : 
 ;	v_charpos (1 byte) :position du caractère à retourner
@@ -95,19 +94,16 @@ calibmsgL1
 ;	W (1 byte) : contient le caractère ou 0x00 si pas de caractère
 ;Traitement :
 ;	Zone de mémoire dédiée au stokage du message de calibration (L2 du LCD)
-; 	"ADCref "
+; 	"REF "
 ;-----------------------------------------  
-calibmsgL2 
+testmsgL2 
 	addwf PCL, f
-	retlw 'A'
-	retlw 'D'
-	retlw 'C'
-	retlw 'r'
-	retlw 'e'
-	retlw 'f'
+	retlw 'R'
+	retlw 'E'
+	retlw 'F'
 	retlw ' '
 	retlw 0x00
-
+ENDIF
 	
 ;-----------------------------------------
 ;Fonction : Affichage du message de boot
@@ -152,7 +148,7 @@ lcd_affboot
 	bcf STATUS,RP1
 	movlw 0x00
 	movwf v_charpos
-_lcd_affboot_2 
+_lcd_affboot_2
 	movlw HIGH bootmsgL1
 	movwf PCLATH
 	movf v_charpos, w ; put counter value in W
@@ -160,49 +156,280 @@ _lcd_affboot_2
 	xorlw 0x00 ; is it a zero?
 	btfsc STATUS, Z
 	goto _lcd_affboot_3 ; display next message if finished
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_affchar
+	movwf PCLATH
+	movf v_lcd_wtmp,w
 	call lcd_affchar
 	incf v_charpos, f
 	goto _lcd_affboot_2
 _lcd_affboot_3
-	movlw 0x13
+	movlw 0x10
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_setposcursor
+	movwf PCLATH
+	movf v_lcd_wtmp,w
 	call lcd_setposcursor
 _lcd_affboot_4
 	movlw 0x00
 	movwf v_charpos
 _lcd_affboot_5
 	movf v_charpos, w ; put counter value in W
+	movwf v_lcd_wtmp
+	movlw HIGH bootmsgL2
+	movwf PCLATH
+	movf v_lcd_wtmp,w
 	call bootmsgL2 ; get a character from the text table
 	xorlw 0x00 ; is it a zero?
 	btfsc STATUS, Z
 	goto _lcd_affboot_6 ; display next message if finished
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_affchar
+	movwf PCLATH
+	movf v_lcd_wtmp,w
 	call lcd_affchar
 	incf v_charpos, f
 	goto _lcd_affboot_5
 _lcd_affboot_6
-	movlw 0x19
+;	movlw 0x19 idem
+	movlw 0x1C
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_setposcursor
+	movwf PCLATH
+	movf v_lcd_wtmp,w
 	call lcd_setposcursor
 _lcd_affboot_7
 	movlw 0x00
 	movwf v_charpos
 _lcd_affboot_8
+	movf v_charpos,w
+	movwf v_lcd_wtmp
 	movlw HIGH eep_readbyte
 	movwf PCLATH
-	movf v_charpos,w
+	movf v_lcd_wtmp,w
 	call eep_readbyte
 	bcf STATUS, RP1
 	xorlw 0x00 ; is it a zero?
 	btfsc STATUS, Z
 	goto _lcd_affboot_9 ; finished
-	movwf v_tmp
+	movwf v_lcd_wtmp
 	movlw HIGH lcd_affchar
 	movwf PCLATH
-	movf v_tmp,w
+	movf v_lcd_wtmp,w
 	call lcd_affchar
 	incf v_charpos, f
-	goto _lcd_affboot_8
+	goto _lcd_affboot_8	
 _lcd_affboot_9	
 	return
 
+IFDEF TEST
+;-----------------------------------------
+;Fonction : Affichage du message du mode test
+;Nom : lcd_aff_fwd_and_ref
+;Entrée :
+;	testmsgL1: zone mémoire (7bytes) contenant le message de calibration L1
+;	testmsgL2 : zone mémoire (7bytes) contenant le message de calibration L2 ;
+;Sortie :
+; 	Sur le LCD :
+;       1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+; 	F W D
+; 	REF
+;Traitement :
+;	1.v_charpos = 0
+;	2.Afficher le message de test ligne 1 
+;	tant que W !=0
+;		récupérer le caractère de test ligne 1
+;		afficher 1 caractère sur le LCD
+; 		incrémenter v_charpos
+;	3.positionner le curseur sur la ligne 2
+;		W=0x10
+;	 	postionner le curseur
+;	4.v_charpos = 0
+;	5.Afficher le message de boot ligne 2
+;	tant que W !=0
+;		récupérer le caractère de test ligne 2
+;		afficher 1 caractère sur le LCD
+;		incrémenter v_charpos
+;----------------------------------------- 
+
+lcd_aff_fwd_and_ref
+	bcf STATUS,RP0
+	bcf STATUS,RP1
+	movlw 0x00
+	movwf v_charpos
+_lcd_aff_fwd_and_ref_2
+	movf v_charpos, w ; put counter value in W
+	movwf v_lcd_wtmp
+	movlw HIGH testmsgL1
+	movwf PCLATH
+	movf v_lcd_wtmp,w
+	call testmsgL1 ; get a character from the text table
+	xorlw 0x00 ; is it a zero?
+	btfsc STATUS, Z
+	goto _lcd_aff_fwd_and_ref_3 ; display next message if finished
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_affchar
+	movwf PCLATH
+	movf v_lcd_wtmp,w
+	call lcd_affchar
+	incf v_charpos, f
+	goto _lcd_aff_fwd_and_ref_2
+_lcd_aff_fwd_and_ref_3
+	movlw 0x10
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_setposcursor
+	movwf PCLATH
+	movf v_lcd_wtmp,w
+	call lcd_setposcursor
+_lcd_aff_fwd_and_ref_4
+	movlw 0x00
+	movwf v_charpos
+_lcd_aff_fwd_and_ref_5
+	movf v_charpos, w ; put counter value in W
+	movwf v_lcd_wtmp
+	movlw HIGH testmsgL2
+	movwf PCLATH
+	movf v_lcd_wtmp,w
+	call testmsgL2 ; get a character from the text table
+	xorlw 0x00 ; is it a zero?
+	btfsc STATUS, Z
+	goto _lcd_aff_fwd_and_ref_6 ; display next message if finished
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_affchar
+	movwf PCLATH
+	movf v_lcd_wtmp,w
+	call lcd_affchar
+	incf v_charpos, f
+	goto _lcd_aff_fwd_and_ref_5
+_lcd_aff_fwd_and_ref_6	
+	return
+ENDIF
+	
+;-----------------------------------------
+;Fonction : Affichage d'1 octet en hexa sur le LCD
+;Nom : lcd_affhexa
+;Entrée :
+;	-W : contient l'octet en hexa à afficher
+;Sortie :
+;Traitement :
+;	1.v_tmp= W
+;	2.swapper les quartets de v_tmp, et mettre le résultat dans W
+;	3.W=W&F0
+;	4.Convertir le quartet de poids faible en ASCII
+;	5.afficher un caractère sur le LCD
+;	6.W=v_tmp&0F
+;	7.Convertir le quartet de poids faible en ASCII
+;	8.afficher un caractère sur le LCD
+;----------------------------------------- 
+lcd_affhexa
+	movwf v_tmp
+_lcd_affhexa_2
+	swapf v_tmp,W
+_lcd_affhexa_3
+	andlw 0x0F
+_lcd_affhexa_4
+	call lcd_convtoascii
+_lcd_affhexa_5
+	call lcd_affchar
+_lcd_affhexa_6
+	movfw v_tmp
+	andlw 0x0F
+_lcd_affhexa_7
+	call lcd_convtoascii
+_lcd_affhexa_8
+	call lcd_affchar
+	return
+
+IFDEF TEST
+;-----------------------------------------
+;Fonction : Affichage de la mesure de calibration sur le LCD
+;Nom : lcd_affadc
+;Entrée :
+;	-v_adcfwd (2 bytes) : résultat de l'ADC AN0 du 10 bits
+; 	-v_adcref (2 bytes) : résultat de l'ADC AN1 du 10 bits
+;Sortie :
+; 	Sur le LCD :
+;       1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+; 	        x x x x h -
+;               y y y y h -	   	
+;Traitement :
+;	1.positionner le curseur sur la ligne 1, 5ème case
+;	2.W=v_adcfwd
+;	3.Afficher un octet en hexa (lcd_affhexa)
+;	4.W =v_adcfwd +1 
+;	5.Afficher un octet en hexa (lcd_affhexa)
+;	6. W='h'
+;	7. Afficher 1 caractère sur le LCD (lcd_affchar)
+;	8. W='-'
+;	9. Afficher 1 caractère sur le LCD (lcd_affchar)	
+;	10.positionner le curseur sur la ligne 2, 5ème case
+;	11.W=v_adcref
+;	12.Afficher un octet en hexa (lcd_affhexa)
+;	13.W =v_adcref +1 
+;	14.Afficher un octet en hexa (lcd_affhexa)
+;	15. W='h'
+;	16. Afficher 1 caractère sur le LCD (lcd_affchar)
+;	17. W='-'
+;	18. Afficher 1 caractère sur le LCD (lcd_affchar)
+;----------------------------------------- 
+lcd_affadc
+	movlw 0x08
+	call lcd_setposcursor
+_lcd_affadc_2
+	bcf STATUS,RP0
+	bcf STATUS,RP1
+	movfw v_adcfwd
+_lcd_affadc_3
+	call lcd_affhexa
+_lcd_affadc_4
+	bcf STATUS,RP0
+	bcf STATUS,RP1
+	movfw v_adcfwd+1
+_lcd_affadc_5
+	call lcd_affhexa
+_lcd_affadc_6
+	bcf STATUS,RP0
+	bcf STATUS,RP1
+	movlw 'h'
+_lcd_affadc_7
+	call lcd_affchar
+_lcd_affadc_8
+	bcf STATUS,RP0
+	bcf STATUS,RP1
+	movlw '-'
+_lcd_affadc_9
+	call lcd_affchar
+_lcd_affadc_10
+	movlw 0x15
+	call lcd_setposcursor
+_lcd_affadc_11
+	bcf STATUS,RP0
+	bcf STATUS,RP1
+	movfw v_adcref
+_lcd_affadc_12
+	call lcd_affhexa
+_lcd_affadc_13
+	bcf STATUS,RP0
+	bcf STATUS,RP1
+	movfw v_adcref+1
+_lcd_affadc_14
+	call lcd_affhexa
+_lcd_affadc_15
+	bcf STATUS,RP0
+	bcf STATUS,RP1
+	movlw 'h'
+_lcd_affadc_16
+	call lcd_affchar
+_lcd_affadc_17
+	bcf STATUS,RP0
+	bcf STATUS,RP1
+	movlw '-'
+_lcd_affadc_18
+	call lcd_affchar
+	return
+ENDIF
+	
+IF 0
 ;-----------------------------------------
 ;Fonction : Affichage du message de calibration
 ;Nom : lcd_affcalib
@@ -262,100 +489,14 @@ _lcd_affcalib_5
 	goto _lcd_affcalib_5
 _lcd_affcalib_6
 	return
+ENDIF
 
-;-----------------------------------------
-;Fonction : Affichage d'1 octet en hexa sur le LCD
-;Nom : lcd_affhexa
-;Entrée :
-;	-W : contient l'octet en hexa à afficher
-;Sortie :
-;Traitement :
-;	1.v_tmp= W
-;	2.swapper les quartets de v_tmp, et mettre le résultat dans W
-;	3.W=W&F0
-;	4.Convertir le quartet de poids faible en ASCII
-;	5.afficher un caractère sur le LCD
-;	6.W=v_tmp&0F
-;	7.Convertir le quartet de poids faible en ASCII
-;	8.afficher un caractère sur le LCD
-;----------------------------------------- 
-lcd_affhexa
-	movwf v_tmp
-lcd_affhexa_2
-	swapf v_tmp,W
-lcd_affhexa_3
-	andlw 0x0F
-lcd_affhexa_4
-	call lcd_convtoascii
-lcd_affhexa_5
-	call lcd_affchar
-lcd_affhexa_6
-	movfw v_tmp
-	andlw 0x0F
-lcd_affhexa_7
-	call lcd_convtoascii
-lcd_affhexa_8
-	call lcd_affchar
-	return
-
-;-----------------------------------------
-;Fonction : Affichage de la mesure de calibration sur le LCD
-;Nom : lcd_affadc
-;Entrée :
-;	-v_adcfwd (2 bytes) : résultat de l'ADC AN0 du 10 bits
-; 	-v_adcref (2 bytes) : résultat de l'ADC AN1 du 10 bits
-;Sortie :
-; 	Sur le LCD :
-;       1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
-; 	              x x x  x
-;                     y y y  y 	   
-	
-;Traitement :
-;	1.positionner le curseur sur la ligne 1, 8ème case
-;	2.W=v_adcfwd
-;	3.Afficher un octet en hexa (lcd_affhexa)
-;	4.W =v_adcfwd +1 
-;	5.Afficher un octet en hexa (lcd_affhexa)
-;	6.positionner le curseur sur la ligne 2, 8ème case
-;	7.W=v_adcref
-;	8.Afficher un octet en hexa (lcd_affhexa)
-;	9.W =v_adcref +1 
-;	10.Afficher un octet en hexa (lcd_affhexa)	
-;----------------------------------------- 
-lcd_affadc
-	movlw 0x08
-	call lcd_setposcursor
-lcd_affadc_2
-	bcf STATUS,RP0
-	bcf STATUS,RP1
-	movfw v_adcfwd
-lcd_affadc_3
-	call lcd_affhexa
-lcd_affadc_4
-	bcf STATUS,RP0
-	bcf STATUS,RP1
-	movfw v_adcfwd+1
-lcd_affadc_5
-	call lcd_affhexa
-lcd_affadc_6
-	movlw 0x18
-	call lcd_setposcursor
-lcd_affadc_7
-	bcf STATUS,RP0
-	bcf STATUS,RP1
-	movfw v_adcref
-lcd_affadc_8
-	call lcd_affhexa
-lcd_affadc_9
-	bcf STATUS,RP0
-	bcf STATUS,RP1
-	movfw v_adcref+1
-lcd_affadc_10
-	call lcd_affhexa
-	return
 	
 	global lcd_affboot
-	global lcd_affcalib
+;	global lcd_affcalib
 	global lcd_affadc
+IFDEF TEST
+	global lcd_aff_fwd_and_ref
+ENDIF
 	
 	end 

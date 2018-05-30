@@ -1,5 +1,5 @@
 AS = gpasm
-ASFLAGS = -c -DSW_VERSION="\"$(VERSION)\""
+ASFLAGS = -c
 
 LD = gplib
 LDFLAGS = -c
@@ -12,8 +12,8 @@ SRC +=aff.asm
 
 OBJ_TEST = $(SRC:.asm=.TEST.o)
 
-../../../bin/$(COMP).TEST.a : $(OBJ_TEST)
-	$(LD) $(LDFLAGS) ../../../bin/$(COMP).TEST.a $(OBJ_TEST)
+../../../bin/libtest$(COMP).a : $(OBJ_TEST)
+	$(LD) $(LDFLAGS) $@ $^
 	rm *.o
 	rm *.lst
 

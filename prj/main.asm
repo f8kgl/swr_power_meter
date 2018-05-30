@@ -1,5 +1,5 @@
 	include "p16f88.inc" ;include the defaults for the chip
-	include "eep.inc"
+;	include "eep.inc"
 	
 	ERRORLEVEL 0, -302 ;suppress bank selection messages
 	
@@ -8,14 +8,15 @@
 
 	extern lcd_init
 	extern lcd_affboot
-	extern lcd_affcalib
 	extern lcd_clear
 	extern lcd_setposcursor
-	extern lcd_affadc
+IFDEF TEST
+	extern lcd_aff_fwd_and_ref
+ENDIF
+	;extern lcd_affadc	
 	extern adc_init
-	extern adc_readAN0
-	extern adc_readAN1
-	extern eep_readbyte
+	;extern adc_readAN0
+	;extern adc_readAN1
 	
 	udata
 v_timer0 res 1 
@@ -38,12 +39,13 @@ Init
 	movwf TRISA ; RA0, RA1 input
 	movlw b'00000000' ; PortB Outputs
 	movwf TRISB ; Change PortB I/O
-
+	
 ; Initialisation LCD 
 	call lcd_init ; Initialize the LCD Display 
+
 ; Initialisation ADC
-	call adc_init
-	
+ 	call adc_init		;
+
 ; Afficher le message de boot
 	call lcd_affboot
 	
@@ -51,19 +53,18 @@ Init
 	call tempo_boot
 	call tempo_boot
 
-IFDEF TEST
-loop
-	goto loop
-
-	
-ENDIF	
-	
-IF 0
 ;; Effacer le LCD (lcd_clear)
 	call lcd_clear
 	;;Positionner le curseur du LCD sur la ligne 1
 	movlw 0x00
 	call lcd_setposcursor
+
+IFDEF TEST
+	call lcd_aff_fwd_and_ref
+ENDIF	
+
+
+IFDEF CALIBRATION
 ;; Tester le mode calibration (test l'octet __MODE_CALIB_OR_NOT placé en eeprom)
 	movlw __MODE_CALIB_OR_NOT
 	call eep_readbyte
@@ -74,16 +75,21 @@ IF 0
 
 ;; 	afficher le message de calibration (lcd_affcalib)
 	call lcd_affcalib
+ENDIF
 
 ;; 	Dans une boucle infinie
 calib_loop
+IF 0
 ;; 		lire les registres ADCfwd et ADCref
 	call adc_readAN0
 	call adc_readAN1
 ;; 		afficher le message de mesure (lcd_affmeas TBD)
 	call lcd_affadc
+ENDIF
 	goto calib_loop ;endless loop
 
+
+IF 0
 meas_loop
 ;; Sinon	;
 ;; 	Dans une boucle infinie (TBD) : ;

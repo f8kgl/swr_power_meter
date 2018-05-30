@@ -14,8 +14,9 @@ AS = gpasm
 LD = gplink
 
 #Flags
-LDFLAGS = --map -c -s
-ASFLAGS = -c
+LDFLAGS = --map -c
+DEBUG_LDFLAGS = -S2
+ASFLAGS = -c -DSW_VERSION="\"$(VERSION)\""
 export TEST_FLAGS = TEST
 export CALIBRATION_FLAGS = CALIBRATION
 
@@ -24,34 +25,51 @@ COMPS = lcd
 COMPS += eep
 #COMPS +=calc
 COMPS +=readadc
+#COMPS +=flh
+
+#Sources
+SRC_COMMUN = main.asm
+SRC_COMMUN +=../src/sw/data/swversion.asm
+SRC_TEST = ../src/sw/data/adc_theoric_cal.asm
+
+#Objets
+OBJS_COMMUN_TEST = $(SRC_COMMUN:%.asm=%.TEST.o)
+OBJS_TEST_FW = $(SRC_TEST:%.asm=%.o)
+OBJS_TEST = $(OBJS_COMMUN_TEST)
+OBJS_TEST += $(OBJS_TEST_FW)
 
 #Librairies
-LIBS_TEST = $(COMPS:%=../bin/%.TEST.a)
-LIBS_CALIBRATION = $(COMPS:%=../bin/%.CALIBRATION.a)
+LIBS_TEST = $(COMPS:%=../bin/libtest%.a)
+LIBS_CALIBRATION = $(COMPS:%=../bin/libcalib%.a)
 LIBS = $(COMPS:%=../bin/%.a)
 
 #Rules
 all : $(OUTPUT_TEST)
-	rm ../bin/*.a
 
 rule_test : $(OUTPUT_TEST)
-	rm ../bin/*.a
 
-$(OUTPUT_TEST) : main.TEST.o cal.TEST.o $(LIBS_TEST)
-	$(LD) $(LDFLAGS) $(SCRIPT) -o ../bin/$(OUTPUT_TEST) main.TEST.o cal.TEST.o $(LIBS_TEST)
-	rm main.TEST.o
-	rm main.TEST.lst
-	rm cal.TEST.o
-	rm cal.TEST.lst
+#Règle du firmware de test
+$(OUTPUT_TEST) : $(OBJS_TEST) $(LIBS_TEST)
+	$(LD) $(LDFLAGS) $(DEBUG_LDFLAGS) -s $(SCRIPT) -o ../bin/$(OUTPUT_TEST) $^
+	rm $^
+	rm *.lst
 
-../bin/%.TEST.a:
-	make -C $(@:../bin/%.TEST.a=../src/sw/%)
+#Règle d'une librairie de test
+../bin/libtest%.a:
+	make -C $(@:../bin/libtest%.a=../src/sw/%)
 
-main.TEST.o: main.asm
+#Règle d’un objet de test issus des sources commun à tous les firmware 
+%.TEST.o : %.asm
 	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
 
-cal.TEST.o: cal.asm
+#Règle d’un objet du firmware test
+%.o : %.asm
 	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
 
 clean:
-	rm ../bin/*
+	rm -f *.o
+	rm -f *.lst
+	rm -f ../bin/*
+	rm -f ../src/sw/data/*.o
+	rm -f ../src/sw/data/*.lst
+

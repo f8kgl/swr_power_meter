@@ -11,6 +11,8 @@
 ;Sortie :
 ; 	-W : contient l'octet lu
 ;Traitement :
+;	-EEADR = W
+;	-EECON(EEPGD) = b(0)
 ;	-EECON(RF) = b(1)
 ;	-W = EEDATA
 ;----------------------------------------- 	
