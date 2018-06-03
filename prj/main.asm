@@ -13,16 +13,17 @@
 IFDEF TEST
 	extern lcd_aff_fwd_and_ref
 ENDIF
-	;extern lcd_affadc	
+	extern lcd_affadc	
 	extern adc_init
-	;extern adc_readAN0
-	;extern adc_readAN1
+	extern adc_readAN0
+	extern adc_readAN1
 	
 	udata
 v_timer0 res 1 
 v_timer1 res 1
 v_timer2 res 1
 v_mode_calib res 1
+v_main_wtmp res 1
 
 	code
 	goto Init ;
@@ -40,27 +41,75 @@ Init
 	movlw b'00000000' ; PortB Outputs
 	movwf TRISB ; Change PortB I/O
 	
-; Initialisation LCD 
+; Initialisation LCD
+	movwf v_main_wtmp
+	movlw HIGH lcd_init
+	movwf PCLATH
+	movf v_main_wtmp,w	
 	call lcd_init ; Initialize the LCD Display 
 
 ; Initialisation ADC
+	movwf v_main_wtmp
+	movlw HIGH adc_init
+	movwf PCLATH
+	movf v_main_wtmp,w	
  	call adc_init		;
 
 ; Afficher le message de boot
+	movwf v_main_wtmp
+	movlw HIGH lcd_affboot
+	movwf PCLATH
+	movf v_main_wtmp,w	
 	call lcd_affboot
 	
 ;; Tempo de 5s
+	movwf v_main_wtmp
+	movlw HIGH tempo_boot
+	movwf PCLATH
+	movf v_main_wtmp,w	
 	call tempo_boot
 	call tempo_boot
 
 ;; Effacer le LCD (lcd_clear)
+	movwf v_main_wtmp
+	movlw HIGH lcd_clear
+	movwf PCLATH
+	movf v_main_wtmp,w	
 	call lcd_clear
 	;;Positionner le curseur du LCD sur la ligne 1
 	movlw 0x00
+	movwf v_main_wtmp
+	movlw HIGH lcd_setposcursor
+	movwf PCLATH
+	movf v_main_wtmp,w	
 	call lcd_setposcursor
 
 IFDEF TEST
+	movwf v_main_wtmp
+	movlw HIGH lcd_aff_fwd_and_ref
+	movwf PCLATH
+	movf v_main_wtmp,w	
 	call lcd_aff_fwd_and_ref
+test_loop
+;; 		lire les registres ADCfwd et ADCref
+	movwf v_main_wtmp
+	movlw HIGH adc_readAN0
+	movwf PCLATH
+	movf v_main_wtmp,w	
+	call adc_readAN0
+	movwf v_main_wtmp
+	movlw HIGH adc_readAN1
+	movwf PCLATH
+	movf v_main_wtmp,w	
+	call adc_readAN1
+;; 		afficher le message de mesure (lcd_affmeas TBD)
+	movwf v_main_wtmp
+	movlw HIGH lcd_affadc
+	movwf PCLATH
+	movf v_main_wtmp,w	
+	call lcd_affadc
+	
+	goto test_loop
 ENDIF	
 
 
@@ -77,16 +126,17 @@ IFDEF CALIBRATION
 	call lcd_affcalib
 ENDIF
 
+IF 0
 ;; 	Dans une boucle infinie
 calib_loop
-IF 0
+
 ;; 		lire les registres ADCfwd et ADCref
 	call adc_readAN0
 	call adc_readAN1
 ;; 		afficher le message de mesure (lcd_affmeas TBD)
 	call lcd_affadc
-ENDIF
 	goto calib_loop ;endless loop
+ENDIF
 
 
 IF 0

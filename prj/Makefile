@@ -30,6 +30,7 @@ COMPS +=readadc
 #Sources
 SRC_COMMUN = main.asm
 SRC_COMMUN +=../src/sw/data/swversion.asm
+SRC_COMMUN +=../src/sw/data/lcdmsg.asm
 SRC_TEST = ../src/sw/data/adc_theoric_cal.asm
 
 #Objets

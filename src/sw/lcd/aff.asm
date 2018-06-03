@@ -13,98 +13,15 @@ v_lcd_wtmp res 1
  	extern eep_readbyte
 	extern v_adcfwd		;
 	extern v_adcref
+	extern bootmsgL1
+	extern bootmsgL2
+IFDEF TEST
+	extern testmsgL1
+	extern testmsgL2
+ENDIF
 
 	code
-;-----------------------------------------
-;Fonction : Message de boot ligne 1 du LCD
-;Nom : bootmsgL1
-;Entrée : 
-;	v_charpos (1 byte) :position du caractère à retourner
-;Sortie :
-;	W (1 byte) : contient le caractère ou 0x00 si pas de caractère
-;Traitement :
-;	Zone de mémoire dédiée au stokage du message de boot (L1 du LCD)
-; 	"SWR-POWER meter"
-;-----------------------------------------  
-bootmsgL1 
-	addwf PCL, f
-	retlw 'S'
-	retlw 'W'
-	retlw 'R'
-	retlw '-'
-	retlw 'P'
-	retlw 'O'
-	retlw 'W'
-	retlw 'E'
-	retlw 'R'
-	retlw ' '
-	retlw 'm'
-	retlw 'e'
-	retlw 't'
-	retlw 'e'
-	retlw 'r'
-	retlw 0x00
 
-;-----------------------------------------
-;Fonction : Message de boot ligne 2 du LCD
-;Nom : bootmsgL2
-;Entrée : 
-;	v_charpos (1 byte) :position du caractère à retourner
-;Sortie :
-;	W (1 byte) : contient le caractère ou 0x00 si pas de caractère
-;Traitement :
-;	Zone de mémoire dédiée au stokage du message de boot (L2 du LCD)
-; 	"F8KGL"
-;-----------------------------------------  
-bootmsgL2 
-	addwf PCL, f
-	retlw 'F'
-	retlw '8'
-	retlw 'K'
-	retlw 'G'
-	retlw 'L'
-	retlw 0x00
-
-IFDEF TEST
-;-----------------------------------------
-;Fonction : Message du mode de test ligne 1 du LCD
-;Nom : testmsgL1
-;Entrée : 
-;	v_charpos (1 byte) :position du caractère à retourner
-;Sortie :
-;	W (1 byte) : contient le caractère ou 0x00 si pas de caractère
-;Traitement :
-;	Zone de mémoire dédiée au stokage du message de calibration (L1 du LCD)
-; 	"FWD "
-;-----------------------------------------  
-testmsgL1
-	addwf PCL, f
-	retlw 'F'
-	retlw 'W'
-	retlw 'D'
-	retlw ' '
-	retlw 0x00
-
-;-----------------------------------------
-;Fonction : Message du mode de test ligne 2 du LCD
-;Nom : calibmsgL2
-;Entrée : 
-;	v_charpos (1 byte) :position du caractère à retourner
-;Sortie :
-;	W (1 byte) : contient le caractère ou 0x00 si pas de caractère
-;Traitement :
-;	Zone de mémoire dédiée au stokage du message de calibration (L2 du LCD)
-; 	"REF "
-;-----------------------------------------  
-testmsgL2 
-	addwf PCL, f
-	retlw 'R'
-	retlw 'E'
-	retlw 'F'
-	retlw ' '
-	retlw 0x00
-ENDIF
-	
 ;-----------------------------------------
 ;Fonction : Affichage du message de boot
 ;Nom : lcd_affboot
@@ -149,9 +66,11 @@ lcd_affboot
 	movlw 0x00
 	movwf v_charpos
 _lcd_affboot_2
+	movf v_charpos, w ; put counter value in W
+	movwf v_lcd_wtmp
 	movlw HIGH bootmsgL1
 	movwf PCLATH
-	movf v_charpos, w ; put counter value in W
+	movf v_lcd_wtmp,w
 	call bootmsgL1 ; get a character from the text table
 	xorlw 0x00 ; is it a zero?
 	btfsc STATUS, Z
@@ -374,58 +293,130 @@ IFDEF TEST
 ;----------------------------------------- 
 lcd_affadc
 	movlw 0x08
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_setposcursor
+	movwf PCLATH
+	movf v_lcd_wtmp,w
 	call lcd_setposcursor
 _lcd_affadc_2
 	bcf STATUS,RP0
 	bcf STATUS,RP1
 	movfw v_adcfwd
 _lcd_affadc_3
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_affhexa
+	movwf PCLATH
+	movf v_lcd_wtmp,w
 	call lcd_affhexa
 _lcd_affadc_4
 	bcf STATUS,RP0
 	bcf STATUS,RP1
 	movfw v_adcfwd+1
 _lcd_affadc_5
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_affhexa
+	movwf PCLATH
+	movf v_lcd_wtmp,w
 	call lcd_affhexa
 _lcd_affadc_6
 	bcf STATUS,RP0
 	bcf STATUS,RP1
 	movlw 'h'
 _lcd_affadc_7
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_affhexa
+	movwf PCLATH
+	movf v_lcd_wtmp,w
 	call lcd_affchar
 _lcd_affadc_8
 	bcf STATUS,RP0
 	bcf STATUS,RP1
 	movlw '-'
 _lcd_affadc_9
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_affhexa
+	movwf PCLATH
+	movf v_lcd_wtmp,w
 	call lcd_affchar
 _lcd_affadc_10
 	movlw 0x15
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_setposcursor
+	movwf PCLATH
+	movf v_lcd_wtmp,w
 	call lcd_setposcursor
 _lcd_affadc_11
 	bcf STATUS,RP0
 	bcf STATUS,RP1
 	movfw v_adcref
 _lcd_affadc_12
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_affhexa
+	movwf PCLATH
+	movf v_lcd_wtmp,w
 	call lcd_affhexa
 _lcd_affadc_13
 	bcf STATUS,RP0
 	bcf STATUS,RP1
 	movfw v_adcref+1
 _lcd_affadc_14
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_affhexa
+	movwf PCLATH
+	movf v_lcd_wtmp,w
 	call lcd_affhexa
 _lcd_affadc_15
 	bcf STATUS,RP0
 	bcf STATUS,RP1
 	movlw 'h'
 _lcd_affadc_16
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_affhexa
+	movwf PCLATH
+	movf v_lcd_wtmp,w
 	call lcd_affchar
 _lcd_affadc_17
 	bcf STATUS,RP0
 	bcf STATUS,RP1
 	movlw '-'
 _lcd_affadc_18
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_affhexa
+	movwf PCLATH
+	movf v_lcd_wtmp,w
 	call lcd_affchar
+	return
+ENDIF
+
+IFDEF TEST
+;-----------------------------------------
+;Fonction : Affichage de la mesure en tension des ADC en mode test
+;Nom : lcd_affadcmV
+;Entrée :
+;	v_adcfwd_mV (2bytes) : résultat de l'ADC en mV compris entre [0;5000]
+;	v_adcref_mV (2bytes) : résultat de l'ADC en mV compris entre [0	5000]
+;Sortie :
+; 	Sur le LCD :
+;       1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+; 	                     v  v  v  v   m  V   
+; 	                     y  y  y  y   m  V
+;Traitement :
+;	1.positionner le curseur sur la ligne 1, 11ème case
+; 	2.v_hexa_to_conv = v_adcfwd_mV
+; 	3.v_hexa_to_conv +1 = v_adcfwd_mV +1
+; 	4. Conversion hexa-BCD (lcd_convtobcd)
+; 	5. W = v_bcd
+; 	6. Affichage d'un octet en hexa (lcd_affhexa)
+; 	7. W = v_bcd+1
+; 	8.positionner le curseur sur la ligne 2, 11ème case
+; 	9.v_hexa_to_conv = v_adcref_mV
+; 	10.v_hexa_to_conv +1 = v_adcref_mV +1
+; 	11. Conversion hexa-BCD (lcd_convtobcd)
+; 	12. W = v_bcd
+; 	13. Affichage d'un octet en hexa (lcd_affhexa)
+; 	14. W = v_bcd+1
+;----------------------------------------- 
+lcd_affadcmV	
 	return
 ENDIF
 	
