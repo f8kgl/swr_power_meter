@@ -247,15 +247,31 @@ _lcd_affhexa_2
 _lcd_affhexa_3
 	andlw 0x0F
 _lcd_affhexa_4
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_convtoascii
+	movwf PCLATH
+	movf v_lcd_wtmp,w
 	call lcd_convtoascii
 _lcd_affhexa_5
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_affchar
+	movwf PCLATH
+	movf v_lcd_wtmp,w
 	call lcd_affchar
 _lcd_affhexa_6
 	movfw v_tmp
 	andlw 0x0F
 _lcd_affhexa_7
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_convtoascii
+	movwf PCLATH
+	movf v_lcd_wtmp,w
 	call lcd_convtoascii
 _lcd_affhexa_8
+	movwf v_lcd_wtmp
+	movlw HIGH lcd_affchar
+	movwf PCLATH
+	movf v_lcd_wtmp,w
 	call lcd_affchar
 	return
 
@@ -324,7 +340,7 @@ _lcd_affadc_6
 	movlw 'h'
 _lcd_affadc_7
 	movwf v_lcd_wtmp
-	movlw HIGH lcd_affhexa
+	movlw HIGH lcd_affchar
 	movwf PCLATH
 	movf v_lcd_wtmp,w
 	call lcd_affchar
@@ -334,7 +350,7 @@ _lcd_affadc_8
 	movlw '-'
 _lcd_affadc_9
 	movwf v_lcd_wtmp
-	movlw HIGH lcd_affhexa
+	movlw HIGH lcd_affchar
 	movwf PCLATH
 	movf v_lcd_wtmp,w
 	call lcd_affchar
@@ -371,7 +387,7 @@ _lcd_affadc_15
 	movlw 'h'
 _lcd_affadc_16
 	movwf v_lcd_wtmp
-	movlw HIGH lcd_affhexa
+	movlw HIGH lcd_affchar
 	movwf PCLATH
 	movf v_lcd_wtmp,w
 	call lcd_affchar
@@ -381,7 +397,7 @@ _lcd_affadc_17
 	movlw '-'
 _lcd_affadc_18
 	movwf v_lcd_wtmp
-	movlw HIGH lcd_affhexa
+	movlw HIGH lcd_affchar
 	movwf PCLATH
 	movf v_lcd_wtmp,w
 	call lcd_affchar
