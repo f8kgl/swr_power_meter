@@ -203,8 +203,6 @@ Wire Wire Line
 Wire Wire Line
 	9500 4200 9500 2350
 Wire Wire Line
-	6900 4100 9600 4100
-Wire Wire Line
 	9600 4100 9600 2350
 Wire Wire Line
 	6800 4000 9700 4000
@@ -366,8 +364,6 @@ Wire Wire Line
 Connection ~ 6800 2400
 Wire Wire Line
 	6500 2400 6400 2400
-Wire Wire Line
-	7450 4100 7450 4100
 $Comp
 L Conn_01x05 J5
 U 1 1 5B140FD8
@@ -384,18 +380,6 @@ Wire Wire Line
 Wire Wire Line
 	7350 4900 7350 5450
 Connection ~ 7350 5450
-Wire Wire Line
-	7250 4800 8200 4800
-Wire Wire Line
-	7250 4100 7300 4100
-Wire Wire Line
-	7350 4700 8200 4700
-Wire Wire Line
-	7350 4700 7350 4000
-Connection ~ 7350 4000
-Wire Wire Line
-	7250 4800 7250 4100
-Connection ~ 7250 4100
 $Comp
 L GNDREF #PWR010
 U 1 1 5B1453B6
@@ -411,4 +395,16 @@ Wire Wire Line
 	8000 5000 8000 5200
 Wire Wire Line
 	8200 5000 8000 5000
+Wire Wire Line
+	8200 4700 7650 4700
+Wire Wire Line
+	7650 4700 7650 4100
+Connection ~ 7650 4100
+Wire Wire Line
+	8200 4800 7500 4800
+Wire Wire Line
+	7500 4800 7500 4000
+Connection ~ 7500 4000
+Wire Wire Line
+	9600 4100 6900 4100
 $EndSCHEMATC
