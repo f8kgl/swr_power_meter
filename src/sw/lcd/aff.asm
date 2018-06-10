@@ -308,7 +308,7 @@ IFDEF TEST
 ;	18. Afficher 1 caractère sur le LCD (lcd_affchar)
 ;----------------------------------------- 
 lcd_affadc
-	movlw 0x08
+	movlw 0x05
 	movwf v_lcd_wtmp
 	movlw HIGH lcd_setposcursor
 	movwf PCLATH
