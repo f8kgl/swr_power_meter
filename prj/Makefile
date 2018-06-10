@@ -54,6 +54,7 @@ $(OUTPUT_TEST) : $(OBJS_TEST) $(LIBS_TEST)
 	$(LD) $(LDFLAGS) $(DEBUG_LDFLAGS) -s $(SCRIPT) -o ../bin/$(OUTPUT_TEST) $^
 	rm $^
 	rm *.lst
+	rm -f ../src/sw/data/*.lst
 
 #Règle d'une librairie de test
 ../bin/libtest%.a:
