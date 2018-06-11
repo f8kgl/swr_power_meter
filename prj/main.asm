@@ -6,17 +6,17 @@
         __CONFIG  _CONFIG1, _CP_OFF & _WDT_OFF &  _XT_OSC & _PWRTE_ON & _LVP_OFF & _BODEN_OFF & _MCLR_OFF
         __CONFIG    _CONFIG2, _IESO_OFF & _FCMEN_OFF
 
-	extern lcd_init
-	extern lcd_affboot
-	extern lcd_clear
-	extern lcd_setposcursor
+	extern f_lcd_init
+	extern f_lcd_affboot
+	extern f_lcd_clear
+	extern f_lcd_setposcursor
 IFDEF TEST
-	extern lcd_aff_fwd_and_ref
+	extern f_lcd_aff_fwd_and_ref
+	extern f_lcd_affadc
 ENDIF
-	extern lcd_affadc	
-	extern adc_init
-	extern adc_readAN0
-	extern adc_readAN1
+	extern f_adc_init
+	extern f_adc_readAN0
+	extern f_adc_readAN1
 	
 	udata
 v_timer0 res 1 
@@ -43,71 +43,71 @@ Init
 	
 ; Initialisation LCD
 	movwf v_main_wtmp
-	movlw HIGH lcd_init
+	movlw HIGH f_lcd_init
 	movwf PCLATH
 	movf v_main_wtmp,w	
-	call lcd_init ; Initialize the LCD Display 
+	call f_lcd_init ; Initialize the LCD Display 
 
 ; Initialisation ADC
 	movwf v_main_wtmp
-	movlw HIGH adc_init
+	movlw HIGH f_adc_init
 	movwf PCLATH
 	movf v_main_wtmp,w	
- 	call adc_init		;
+ 	call f_adc_init		;
 
 ; Afficher le message de boot
 	movwf v_main_wtmp
-	movlw HIGH lcd_affboot
+	movlw HIGH f_lcd_affboot
 	movwf PCLATH
 	movf v_main_wtmp,w	
-	call lcd_affboot
+	call f_lcd_affboot
 	
 ;; Tempo de 5s
 	movwf v_main_wtmp
-	movlw HIGH tempo_boot
+	movlw HIGH f_tempo_boot
 	movwf PCLATH
 	movf v_main_wtmp,w	
-	call tempo_boot
-	call tempo_boot
+	call f_tempo_boot
+	call f_tempo_boot
 
 ;; Effacer le LCD (lcd_clear)
 	movwf v_main_wtmp
-	movlw HIGH lcd_clear
+	movlw HIGH f_lcd_clear
 	movwf PCLATH
 	movf v_main_wtmp,w	
-	call lcd_clear
+	call f_lcd_clear
 	;;Positionner le curseur du LCD sur la ligne 1
 	movlw 0x00
 	movwf v_main_wtmp
-	movlw HIGH lcd_setposcursor
+	movlw HIGH f_lcd_setposcursor
 	movwf PCLATH
 	movf v_main_wtmp,w	
-	call lcd_setposcursor
+	call f_lcd_setposcursor
 
 IFDEF TEST
 	movwf v_main_wtmp
-	movlw HIGH lcd_aff_fwd_and_ref
+	movlw HIGH f_lcd_aff_fwd_and_ref
 	movwf PCLATH
 	movf v_main_wtmp,w	
-	call lcd_aff_fwd_and_ref
+	call f_lcd_aff_fwd_and_ref
 test_loop
 ;; 		lire les registres ADCfwd et ADCref
 	movwf v_main_wtmp
-	movlw HIGH adc_readAN0
+	movlw HIGH f_adc_readAN0
 	movwf PCLATH
 	movf v_main_wtmp,w	
-	call adc_readAN0
+	call f_adc_readAN0
 	movwf v_main_wtmp
-	movlw HIGH adc_readAN1
+	movlw HIGH f_adc_readAN1
 	movwf PCLATH
 	movf v_main_wtmp,w	
-	call adc_readAN1
+	call f_adc_readAN1
 ;; 		afficher le message de mesure (lcd_affmeas TBD)
 	movwf v_main_wtmp
-	movlw HIGH lcd_affadc
+	movlw HIGH f_lcd_affadc
 	movwf PCLATH
 	movf v_main_wtmp,w	
-	call lcd_affadc
+	call f_lcd_affadc
 	
 	goto test_loop
 ENDIF	
@@ -116,14 +116,14 @@ ENDIF
 IFDEF CALIBRATION
 ;; Tester le mode calibration (test l'octet __MODE_CALIB_OR_NOT placé en eeprom)
 	movlw __MODE_CALIB_OR_NOT
-	call eep_readbyte
+	call f_eep_readbyte
 	xorlw 0xFF ; is it a 0xFF in EEPROM at this addresse ?
 	btfsc STATUS, Z
 	goto meas_loop; 0xFF calibration effectuée, passer en mode mesure
 
 
 ;; 	afficher le message de calibration (lcd_affcalib)
-	call lcd_affcalib
+	call f_lcd_affcalib
 ENDIF
 
 IF 0
@@ -159,7 +159,7 @@ ENDIF
 ;		1.	appeler 10x une temporisation de 250ms
 ;-----------------------------------------
 
-tempo_boot
+f_tempo_boot
 	call delay_250ms
 	call delay_250ms
 	call delay_250ms

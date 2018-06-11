@@ -18,7 +18,7 @@
 ; 	0x3FF 0x1383
 ;-----------------------------------------
 
-	code 
+	code
 c_data_adc_theoric_caltable
 #IFDEF TEST
 	DE 0x0

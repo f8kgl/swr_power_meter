@@ -14,7 +14,7 @@ v_delay res 1
 ;Sortie :
 ;Traitement :
 ;-----------------------------------------
-adc_init	
+f_adc_init	
 	BANKSEL ANSEL
 	movlw b'00000011'
 	movwf ANSEL 		;AN0, AN1 analog I/O
@@ -46,7 +46,7 @@ adc_init
 	;; 6. v_adcfwd = ADRESH
 	;;    v_adcfwd(+1) = ADRESL
 ;----------------------------------------- 	
-adc_readAN0
+f_adc_readAN0
 	BANKSEL ADCON0
 	bcf ADCON0,CHS2
 	bcf ADCON0,CHS1
@@ -86,7 +86,7 @@ _adc_readAN0_5
 	;; 6. v_adcref = ADRESH
 	;;    v_adcref(+1) = ADRESL
 ;----------------------------------------- 	
-adc_readAN1
+f_adc_readAN1
 	BANKSEL ADCON0
 	bcf ADCON0,CHS2
 	bcf ADCON0,CHS1
@@ -119,9 +119,9 @@ _adc_tempo20us
 	return ;
 	
 	
-	global adc_init
-	global adc_readAN0
-	global adc_readAN1
+	global f_adc_init
+	global f_adc_readAN0
+	global f_adc_readAN1
 	global v_adcfwd
 	global v_adcref
 

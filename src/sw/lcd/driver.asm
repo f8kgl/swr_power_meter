@@ -81,7 +81,7 @@ Del_0
 ;Sortie : 
 ;Traitement : 
 ;-----------------------------------------
-lcd_sendcmd	; Send the Instruction to the LCD
+f_lcd_sendcmd	; Send the Instruction to the LCD
 	BANKSEL	PORTB
 	movwf v_temp ; Save the Value
 	andlw 0xF0 ; Most Significant Nibble first
@@ -117,7 +117,7 @@ lcd_sendcmd	; Send the Instruction to the LCD
 ;			W = W + 0xB0
 ;		2.	Appeler lcd_sendcmd
 ;-----------------------------------------
-lcd_setposcursor
+f_lcd_setposcursor
 	movwf v_poscursor
 	sublw 0x10
 	btfss STATUS,C
@@ -137,7 +137,7 @@ _setposcursorL2
 	movf v_poscursor,w
 	addlw 0xB0
 _lcd_setposcursor
-	call lcd_sendcmd
+	call f_lcd_sendcmd
 _lcd_setposcursor_error
 	return ;	
 
@@ -150,9 +150,9 @@ _lcd_setposcursor_error
 ;		1.	W=0x01
 ;		2.	Appeler lcd_sendcmd
 ;-----------------------------------------
-lcd_clear
+f_lcd_clear
 	movlw 0x01 ; Clear display
-	call lcd_sendcmd
+	call f_lcd_sendcmd
 	return
 
 ;-----------------------------------------
@@ -164,9 +164,9 @@ lcd_clear
 ;		1.	W=0xC0
 ;		2.	Appeler lcd_sendcmd
 ;-----------------------------------------
-lcd_setposL2
+f_lcd_setposL2
 	movlw 0xc0 ; move to 2nd row, first column
-	call lcd_sendcmd ;
+	call f_lcd_sendcmd ;
 	return
 	 
 ;-----------------------------------------
@@ -183,7 +183,7 @@ lcd_setposL2
 ;Traitement : 
 ;		
 ;----------------------------------------- 
-lcd_convtoascii
+f_lcd_convtoascii
 	addwf PCL, f
 	retlw 0x30		;'0'
 	retlw 0x31		;'1'
@@ -204,12 +204,12 @@ lcd_convtoascii
 	return	
 
 ;Fonction : Initialisation du LCD
-;Nom : lcd_init
+;Nom : f_lcd_init
 ;Entrée : 
 ;Sortie : 
 ;Traitement : 4 Bit Initialization...
 ;-----------------------------------------
-lcd_init
+f_lcd_init
 	BANKSEL PORTB
 	call Del05 ; Wait 15 msecs
 	call Del05 ;
@@ -227,16 +227,16 @@ lcd_init
 	call Pulse_e ; Pulse LCD_E
 	call D160us ; Delay of 160us
 	movlw 0x028 ; Set Interface Length
-	call lcd_sendcmd ;
+	call f_lcd_sendcmd ;
 	movlw 0x010 ; Turn Off Display
-	call lcd_sendcmd ; 
+	call f_lcd_sendcmd ; 
 	movlw 0x001 ; Clear Display RAM
-	call lcd_sendcmd ;
+	call f_lcd_sendcmd ;
 	movlw 0x006 ; Set Cursor Movement
-	call lcd_sendcmd ;
+	call f_lcd_sendcmd ;
 	movlw 0x00C ; Turn on Display/Cursor
-	call lcd_sendcmd ;
-	call lcd_clear ; Clear the LCD
+	call f_lcd_sendcmd ;
+	call f_lcd_clear ; Clear the LCD
 	return ;
 	 
 ;-----------------------------------------
@@ -249,7 +249,7 @@ lcd_init
 ;Sortie : 
 ;Traitement : 
 ;-----------------------------------------
-lcd_affchar	; Send the Character to the LCD
+f_lcd_affchar	; Send the Character to the LCD
 	BANKSEL PORTB
 	movwf v_temp ; Save the Value
 	andlw 0xF0 ; Most Significant Nibble first
@@ -265,10 +265,10 @@ lcd_affchar	; Send the Character to the LCD
 	nop ;
 	return ;
 
-	global lcd_init
-	global lcd_affchar
-	global lcd_setposcursor
-	global lcd_clear
-	global lcd_convtoascii
+	global f_lcd_init
+	global f_lcd_affchar
+	global f_lcd_setposcursor
+	global f_lcd_clear
+	global f_lcd_convtoascii
 	
 	end 

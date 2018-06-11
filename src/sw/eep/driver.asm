@@ -16,7 +16,7 @@
 ;	-EECON(RF) = b(1)
 ;	-W = EEDATA
 ;----------------------------------------- 	
-eep_readbyte
+f_eep_readbyte
 	BANKSEL EEADR
 	movwf EEADR
 	BANKSEL EECON1
@@ -26,6 +26,6 @@ eep_readbyte
 	movfw EEDATA
 	return
 
-	global eep_readbyte
+	global f_eep_readbyte
 
 	end

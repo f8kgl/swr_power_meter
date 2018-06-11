@@ -12,7 +12,7 @@
 ;	Zone de mémoire dédiée au stokage du message de boot (L1 du LCD)
 ; 	"SWR-POWER meter"
 ;-----------------------------------------  
-bootmsgL1 
+c_bootmsgL1 
 	addwf PCL, f
 	retlw 'S'
 	retlw 'W'
@@ -42,7 +42,7 @@ bootmsgL1
 ;	Zone de mémoire dédiée au stokage du message de boot (L2 du LCD)
 ; 	"F8KGL"
 ;-----------------------------------------  
-bootmsgL2 
+c_bootmsgL2 
 	addwf PCL, f
 	retlw 'F'
 	retlw '8'
@@ -63,7 +63,7 @@ IFDEF TEST
 ;	Zone de mémoire dédiée au stokage du message de calibration (L1 du LCD)
 ; 	"FWD "
 ;-----------------------------------------  
-testmsgL1
+c_testmsgL1
 	addwf PCL, f
 	retlw 'F'
 	retlw 'W'
@@ -82,7 +82,7 @@ testmsgL1
 ;	Zone de mémoire dédiée au stokage du message de calibration (L2 du LCD)
 ; 	"REF "
 ;-----------------------------------------  
-testmsgL2 
+c_testmsgL2 
 	addwf PCL, f
 	retlw 'R'
 	retlw 'E'
@@ -91,11 +91,11 @@ testmsgL2
 	retlw 0x00
 ENDIF
 
-	global bootmsgL1
-	global bootmsgL2
+	global c_bootmsgL1
+	global c_bootmsgL2
 IFDEF TEST
-	global testmsgL1
-	global testmsgL2
+	global c_testmsgL1
+	global c_testmsgL2
 ENDIF
 	
 	end
