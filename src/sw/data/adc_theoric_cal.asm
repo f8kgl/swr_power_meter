@@ -1047,4 +1047,7 @@ c_data_adc_theoric_caltable
 	DE 0x1383
 #ENDIF
 c_data_adc_theoric_caltable_end
+
+	global c_data_adc_theoric_caltable
+	
 	end

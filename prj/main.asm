@@ -13,6 +13,7 @@
 IFDEF TEST
 	extern f_lcd_aff_fwd_and_ref
 	extern f_lcd_affadc
+	extern f_calc_adcmV
 ENDIF
 	extern f_adc_init
 	extern f_adc_readAN0
@@ -102,13 +103,19 @@ test_loop
 	movwf PCLATH
 	movf v_main_wtmp,w	
 	call f_adc_readAN1
-;; 		afficher le message de mesure (lcd_affmeas TBD)
 	movwf v_main_wtmp
 	movlw HIGH f_lcd_affadc
 	movwf PCLATH
 	movf v_main_wtmp,w	
 	call f_lcd_affadc
-	
+	movlw HIGH f_calc_adcmV
+	movwf PCLATH
+	movf v_main_wtmp,w
+	call f_calc_adcmV
+
+	movlw HIGH test_loop
+	movwf PCLATH
+	movf v_main_wtmp,w
 	goto test_loop
 ENDIF	
 
