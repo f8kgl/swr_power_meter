@@ -10,6 +10,7 @@
 ;Zone de mémoire dédiée au stockage de la calibration du détecteur HF.
 ;Zone en flash à l'adresse défini dans le makefile
 ;#Le code ci-dessous est assemblé uniquement dans le firmware de test ;
+;cette table est la conversion brute d'une valeur hexa en mV (§3.1)
 ;	0x0000 0x0000
 ;	0x0001 0x0005
 ; 	0x0002 0x000A

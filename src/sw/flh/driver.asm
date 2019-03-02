@@ -28,15 +28,19 @@
 ; 15. v_flh_read=W;
 ;-----------------------------------------
 f_flh_readword
+	BANKSEL v_flh_offset_addr+1
+	movf v_flh_offset_addr+1,W
+	addlw c_data_adc_theoric_caltable
+	btfss STATUS,C
+	goto f_flh_readword_5
+	incf v_flh_offset_addr,f
+f_flh_readword_5
+	BANKSEL EEADR
+	movwf EEADR
 	BANKSEL v_flh_offset_addr
 	movf v_flh_offset_addr,W
 	BANKSEL EEADRH
 	movwf EEADRH
-	BANKSEL v_flh_offset_addr+1
-	movf v_flh_offset_addr+1,W
-	addlw c_data_adc_theoric_caltable
-	BANKSEL EEADR
-	movwf EEADR
 	BANKSEL EECON1
 	bsf EECON1, EEPGD
 	bsf EECON1,RD

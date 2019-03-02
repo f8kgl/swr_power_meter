@@ -92,7 +92,7 @@ IFDEF TEST
 	movf v_main_wtmp,w	
 	call f_lcd_aff_fwd_and_ref
 test_loop
-;; 		lire les registres ADCfwd et ADCref
+	;;lire les registres ADCfwd et ADCref
 	movwf v_main_wtmp
 	movlw HIGH f_adc_readAN0
 	movwf PCLATH
@@ -103,11 +103,15 @@ test_loop
 	movwf PCLATH
 	movf v_main_wtmp,w	
 	call f_adc_readAN1
+	;; afficher la mesure des ADC en mode test
 	movwf v_main_wtmp
 	movlw HIGH f_lcd_affadc
 	movwf PCLATH
 	movf v_main_wtmp,w	
 	call f_lcd_affadc
+	;; Convertir la mesure des ADC en mV
+	movwf v_main_wtmp
+	movlw HIGH f_lcd_affadc
 	movlw HIGH f_calc_adcmV
 	movwf PCLATH
 	movf v_main_wtmp,w
