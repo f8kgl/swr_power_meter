@@ -5,7 +5,6 @@ v_flh_offset_addr res 2
 v_flh_read res 2
 v_adcfwd_mV res 2
 v_adcref_mV res 2
-v_calc_wtmp res 1
 	
 	extern v_adcfwd
 	extern v_adcref
@@ -41,19 +40,18 @@ f_calc_adcmV
 	movwf v_flh_offset_addr+1
 	movlw HIGH f_flh_readword
 	movwf PCLATH
-	movf v_calc_wtmp,w
 	call f_flh_readword
 	movf v_flh_read,W
 	movwf v_adcfwd_mV
 	movf v_flh_read+1,W
 	movwf v_adcfwd_mV+1
+f_calc_adcmV_6
 	movf v_adcref,W
 	movwf v_flh_offset_addr
 	movf v_adcref+1,W
 	movwf v_flh_offset_addr+1
 	movlw HIGH f_flh_readword
 	movwf PCLATH
-	movf v_calc_wtmp,w
 	call f_flh_readword
 	movf v_flh_read,W
 	movwf v_adcref_mV
