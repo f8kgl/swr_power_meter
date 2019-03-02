@@ -111,7 +111,6 @@ test_loop
 	call f_lcd_affadc
 	;; Convertir la mesure des ADC en mV
 	movwf v_main_wtmp
-	movlw HIGH f_lcd_affadc
 	movlw HIGH f_calc_adcmV
 	movwf PCLATH
 	movf v_main_wtmp,w
