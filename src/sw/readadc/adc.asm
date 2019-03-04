@@ -1,4 +1,4 @@
-	include "p16f88.inc" ;include the defaults for the chip
+	include "p18f1320.inc" ;include the defaults for the chip
 
 	udata
 v_adcfwd res 2
@@ -15,9 +15,6 @@ v_delay res 1
 ;Traitement :
 ;-----------------------------------------
 f_adc_init	
-	BANKSEL ANSEL
-	movlw b'00000011'
-	movwf ANSEL 		;AN0, AN1 analog I/O
 	BANKSEL ADCON1
 	bcf ADCON1 , VCFG0 ; VCFG0 = 0
 	bcf ADCON1 , VCFG1 ; VCFG1 = 0
@@ -61,12 +58,10 @@ _adc_readAN0_5
 	btfsc ADCON0,GO
 	goto _adc_readAN0_5
 	BANKSEL ADRESH
-	movfw ADRESH
+	movf ADRESH,w
 	movwf v_adcfwd
 	BANKSEL ADRESL
-	movfw ADRESL
-	bcf STATUS,RP0 		;bank0 (là ou se trouve v_adcfwd)
-	bcf STATUS,RP1
+	movf ADRESL,w
 	movwf v_adcfwd+1
 	return
 
@@ -101,12 +96,10 @@ _adc_readAN1_5
 	btfsc ADCON0,GO
 	goto _adc_readAN1_5
 	BANKSEL ADRESH
-	movfw ADRESH
+	movf ADRESH,w
 	movwf v_adcref
 	BANKSEL ADRESL
-	movfw ADRESL
-	bcf STATUS,RP0 		;bank0 (là ou se trouve v_adcref)
-	bcf STATUS,RP1
+	movf ADRESL,w
 	movwf v_adcref+1
 	return
 	

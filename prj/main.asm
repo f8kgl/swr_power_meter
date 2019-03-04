@@ -1,11 +1,18 @@
-	include "p16f88.inc" ;include the defaults for the chip
+	include "p18f1320.inc" ;include the defaults for the chip
 ;	include "eep.inc"
 	
 	ERRORLEVEL 0, -302 ;suppress bank selection messages
 	
-        __CONFIG  _CONFIG1, _CP_OFF & _WDT_OFF &  _XT_OSC & _PWRTE_ON & _LVP_OFF & _BODEN_OFF & _MCLR_OFF
-        __CONFIG    _CONFIG2, _IESO_OFF & _FCMEN_OFF
-
+	config OSC = XT ; External RC on OSC1, OSC2 as FOSC/4
+	config FSCM = OFF ; Fail-Safe Clock Monitor disabled
+	config IESO = OFF ; Internal External Switch Over mode disabled
+	config PWRT = OFF ; Power up timer disabled
+	config BOR = OFF ; Brown out reset disabled
+	config WDT = OFF ; Watch dog timer off
+	config MCLRE = OFF ; MCLRE off (pin available for input)
+	config LVP = OFF ; Low voltage programming disabled
+	config DEBUG = OFF ; Background debugger off 	CONFIG  _CONFIG2L, _PWRT_ON_2L & _BOR_OFF_2L & _BORV_27_2L
+	
 	extern f_lcd_init
 	extern f_lcd_affboot
 	extern f_lcd_clear
@@ -31,9 +38,6 @@ v_main_wtmp res 1
 
 Init
 ; Initialisation PIC
-	BANKSEL CMCON
-	movlw 0x07 ; Turn comparators off and
-	movwf CMCON ; enable pins for I/O functions
 	BANKSEL PORTA	
 	clrf PORTA ; Initialize PORTA by setting output data latches
 	BANKSEL TRISA	

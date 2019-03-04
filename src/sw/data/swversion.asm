@@ -1,4 +1,4 @@
-	include "p16f88.inc" ;include the defaults for the chip
+	include "p18f1320.inc" ;include the defaults for the chip
 	include "eep.inc"
 
 

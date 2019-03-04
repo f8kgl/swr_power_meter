@@ -1,4 +1,4 @@
-	include "p16f88.inc" ;include the defaults for the chip
+	include "p18f1320.inc" ;include the defaults for the chip
 	include "lcd.inc"
 	include "eep.inc"
 	
@@ -61,8 +61,6 @@ ENDIF
 ;	9. FIN
 ;----------------------------------------- 
 f_lcd_affboot 
-	bcf STATUS,RP0
-	bcf STATUS,RP1
 	movlw 0x00
 	movwf v_charpos
 _lcd_affboot_2
@@ -127,7 +125,6 @@ _lcd_affboot_8
 	movwf PCLATH
 	movf v_lcd_wtmp,w
 	call f_eep_readbyte
-	bcf STATUS, RP1
 	xorlw 0x00 ; is it a zero?
 	btfsc STATUS, Z
 	goto _lcd_affboot_9 ; finished
@@ -172,8 +169,6 @@ IFDEF TEST
 ;----------------------------------------- 
 
 f_lcd_aff_fwd_and_ref
-	bcf STATUS,RP0
-	bcf STATUS,RP1
 	movlw 0x00
 	movwf v_charpos
 _lcd_aff_fwd_and_ref_2
@@ -259,7 +254,7 @@ _lcd_affhexa_5
 	movf v_lcd_wtmp,w
 	call f_lcd_affchar
 _lcd_affhexa_6
-	movfw v_tmp
+	movf v_tmp,w
 	andlw 0x0F
 _lcd_affhexa_7
 	movwf v_lcd_wtmp
@@ -315,9 +310,7 @@ f_lcd_affadc
 	movf v_lcd_wtmp,w
 	call f_lcd_setposcursor
 _lcd_affadc_2
-	bcf STATUS,RP0
-	bcf STATUS,RP1
-	movfw v_adcfwd
+	movf v_adcfwd,w
 _lcd_affadc_3
 	movwf v_lcd_wtmp
 	movlw HIGH f_lcd_affhexa
@@ -325,9 +318,7 @@ _lcd_affadc_3
 	movf v_lcd_wtmp,w
 	call f_lcd_affhexa
 _lcd_affadc_4
-	bcf STATUS,RP0
-	bcf STATUS,RP1
-	movfw v_adcfwd+1
+	movf v_adcfwd+1,w
 _lcd_affadc_5
 	movwf v_lcd_wtmp
 	movlw HIGH f_lcd_affhexa
@@ -335,8 +326,6 @@ _lcd_affadc_5
 	movf v_lcd_wtmp,w
 	call f_lcd_affhexa
 _lcd_affadc_6
-	bcf STATUS,RP0
-	bcf STATUS,RP1
 	movlw 'h'
 _lcd_affadc_7
 	movwf v_lcd_wtmp
@@ -345,8 +334,6 @@ _lcd_affadc_7
 	movf v_lcd_wtmp,w
 	call f_lcd_affchar
 _lcd_affadc_8
-	bcf STATUS,RP0
-	bcf STATUS,RP1
 	movlw '-'
 _lcd_affadc_9
 	movwf v_lcd_wtmp
@@ -362,9 +349,7 @@ _lcd_affadc_10
 	movf v_lcd_wtmp,w
 	call f_lcd_setposcursor
 _lcd_affadc_11
-	bcf STATUS,RP0
-	bcf STATUS,RP1
-	movfw v_adcref
+	movf v_adcref,w
 _lcd_affadc_12
 	movwf v_lcd_wtmp
 	movlw HIGH f_lcd_affhexa
@@ -372,9 +357,7 @@ _lcd_affadc_12
 	movf v_lcd_wtmp,w
 	call f_lcd_affhexa
 _lcd_affadc_13
-	bcf STATUS,RP0
-	bcf STATUS,RP1
-	movfw v_adcref+1
+	movf v_adcref+1,w
 _lcd_affadc_14
 	movwf v_lcd_wtmp
 	movlw HIGH f_lcd_affhexa
@@ -382,8 +365,6 @@ _lcd_affadc_14
 	movf v_lcd_wtmp,w
 	call f_lcd_affhexa
 _lcd_affadc_15
-	bcf STATUS,RP0
-	bcf STATUS,RP1
 	movlw 'h'
 _lcd_affadc_16
 	movwf v_lcd_wtmp
@@ -392,8 +373,6 @@ _lcd_affadc_16
 	movf v_lcd_wtmp,w
 	call f_lcd_affchar
 _lcd_affadc_17
-	bcf STATUS,RP0
-	bcf STATUS,RP1
 	movlw '-'
 _lcd_affadc_18
 	movwf v_lcd_wtmp
@@ -466,8 +445,6 @@ IF 0
 ;	6. FIN
 ;----------------------------------------- 
 f_lcd_affcalib 
-	bcf STATUS,RP0
-	bcf STATUS,RP1
 	movlw 0x00
 	movwf v_charpos
 _lcd_affcalib2 

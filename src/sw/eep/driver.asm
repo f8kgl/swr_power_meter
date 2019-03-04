@@ -1,4 +1,4 @@
-	include "p16f88.inc" ;include the defaults for the chip
+	include "p18f1320.inc" ;include the defaults for the chip
 	include "eep.inc"
 
 
@@ -23,7 +23,7 @@ f_eep_readbyte
 	bcf EECON1, EEPGD
 	bsf EECON1,RD
 	BANKSEL EEDATA
-	movfw EEDATA
+	movf EEDATA,w
 	return
 
 	global f_eep_readbyte
