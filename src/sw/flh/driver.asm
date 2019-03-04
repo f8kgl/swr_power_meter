@@ -41,7 +41,7 @@ f_flh_readword_5
 	movf v_flh_offset_addr,W
 	BANKSEL EEADRH
 	movwf EEADRH
-	BANKSEL EECON1
+ 	BANKSEL EECON1		;
 	bsf EECON1, EEPGD
 	bsf EECON1,RD
 	nop
