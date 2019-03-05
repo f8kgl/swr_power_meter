@@ -11,8 +11,10 @@ v_lcd_wtmp res 1
 	extern f_lcd_setposcursor
 	extern f_lcd_convtoascii
  	extern f_eep_readbyte
+IF 0
 	extern v_adcfwd		;
 	extern v_adcref
+ENDIF
 	extern c_bootmsgL1
 	extern c_bootmsgL2
 IFDEF TEST
@@ -65,73 +67,41 @@ f_lcd_affboot
 	movwf v_charpos
 _lcd_affboot_2
 	movf v_charpos, w ; put counter value in W
-	movwf v_lcd_wtmp
-	movlw HIGH c_bootmsgL1
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call c_bootmsgL1 ; get a character from the text table
 	xorlw 0x00 ; is it a zero?
 	btfsc STATUS, Z
 	goto _lcd_affboot_3 ; display next message if finished
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_affchar
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_affchar
 	incf v_charpos, f
 	goto _lcd_affboot_2
 _lcd_affboot_3
 	movlw 0x10
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_setposcursor
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_setposcursor
 _lcd_affboot_4
 	movlw 0x00
 	movwf v_charpos
 _lcd_affboot_5
 	movf v_charpos, w ; put counter value in W
-	movwf v_lcd_wtmp
-	movlw HIGH c_bootmsgL2
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call c_bootmsgL2 ; get a character from the text table
 	xorlw 0x00 ; is it a zero?
 	btfsc STATUS, Z
 	goto _lcd_affboot_6 ; display next message if finished
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_affchar
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_affchar
 	incf v_charpos, f
 	goto _lcd_affboot_5
 _lcd_affboot_6
 ;	movlw 0x19 idem
 	movlw 0x1C
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_setposcursor
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_setposcursor
 _lcd_affboot_7
 	movlw 0x00
 	movwf v_charpos
 _lcd_affboot_8
 	movf v_charpos,w
-	movwf v_lcd_wtmp
-	movlw HIGH f_eep_readbyte
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_eep_readbyte
 	xorlw 0x00 ; is it a zero?
 	btfsc STATUS, Z
 	goto _lcd_affboot_9 ; finished
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_affchar
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_affchar
 	incf v_charpos, f
 	goto _lcd_affboot_8	
@@ -173,45 +143,25 @@ f_lcd_aff_fwd_and_ref
 	movwf v_charpos
 _lcd_aff_fwd_and_ref_2
 	movf v_charpos, w ; put counter value in W
-	movwf v_lcd_wtmp
-	movlw HIGH c_testmsgL1
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call c_testmsgL1 ; get a character from the text table
 	xorlw 0x00 ; is it a zero?
 	btfsc STATUS, Z
 	goto _lcd_aff_fwd_and_ref_3 ; display next message if finished
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_affchar
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_affchar
 	incf v_charpos, f
 	goto _lcd_aff_fwd_and_ref_2
 _lcd_aff_fwd_and_ref_3
 	movlw 0x10
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_setposcursor
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_setposcursor
 _lcd_aff_fwd_and_ref_4
 	movlw 0x00
 	movwf v_charpos
 _lcd_aff_fwd_and_ref_5
 	movf v_charpos, w ; put counter value in W
-	movwf v_lcd_wtmp
-	movlw HIGH c_testmsgL2
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call c_testmsgL2 ; get a character from the text table
 	xorlw 0x00 ; is it a zero?
 	btfsc STATUS, Z
 	goto _lcd_aff_fwd_and_ref_6 ; display next message if finished
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_affchar
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_affchar
 	incf v_charpos, f
 	goto _lcd_aff_fwd_and_ref_5
@@ -242,34 +192,19 @@ _lcd_affhexa_2
 _lcd_affhexa_3
 	andlw 0x0F
 _lcd_affhexa_4
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_convtoascii
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_convtoascii
 _lcd_affhexa_5
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_affchar
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_affchar
 _lcd_affhexa_6
 	movf v_tmp,w
 	andlw 0x0F
 _lcd_affhexa_7
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_convtoascii
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_convtoascii
 _lcd_affhexa_8
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_affchar
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_affchar
 	return
 
+IF 0
 IFDEF TEST
 ;-----------------------------------------
 ;Fonction : Affichage de la mesure de calibration sur le LCD
@@ -304,85 +239,48 @@ IFDEF TEST
 ;----------------------------------------- 
 f_lcd_affadc
 	movlw 0x05
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_setposcursor
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_setposcursor
 _lcd_affadc_2
 	movf v_adcfwd,w
 _lcd_affadc_3
 	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_affhexa
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_affhexa
 _lcd_affadc_4
 	movf v_adcfwd+1,w
 _lcd_affadc_5
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_affhexa
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_affhexa
 _lcd_affadc_6
 	movlw 'h'
 _lcd_affadc_7
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_affchar
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_affchar
 _lcd_affadc_8
 	movlw '-'
 _lcd_affadc_9
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_affchar
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_affchar
 _lcd_affadc_10
 	movlw 0x15
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_setposcursor
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_setposcursor
 _lcd_affadc_11
 	movf v_adcref,w
 _lcd_affadc_12
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_affhexa
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_affhexa
 _lcd_affadc_13
 	movf v_adcref+1,w
 _lcd_affadc_14
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_affhexa
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_affhexa
 _lcd_affadc_15
 	movlw 'h'
 _lcd_affadc_16
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_affchar
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_affchar
 _lcd_affadc_17
 	movlw '-'
 _lcd_affadc_18
-	movwf v_lcd_wtmp
-	movlw HIGH f_lcd_affchar
-	movwf PCLATH
-	movf v_lcd_wtmp,w
 	call f_lcd_affchar
 	return
 ENDIF
+ENDIF
 
+IF 0
 IFDEF TEST
 ;-----------------------------------------
 ;Fonction : Affichage de la mesure en tension des ADC en mode test
@@ -413,6 +311,7 @@ IFDEF TEST
 ;----------------------------------------- 
 f_lcd_affadcmV	
 	return
+	ENDIF
 ENDIF
 	
 IF 0
@@ -477,8 +376,8 @@ ENDIF
 
 	
 	global f_lcd_affboot
-;	global lcd_affcalib
-	global f_lcd_affadc
+	;	global lcd_affcalib
+	;; 	global f_lcd_affadc
 IFDEF TEST
 	global f_lcd_aff_fwd_and_ref
 ENDIF

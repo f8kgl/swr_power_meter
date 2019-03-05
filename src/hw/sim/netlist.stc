@@ -23,13 +23,13 @@ module library libgpsim_modules
 
 
 # Modules:
-p16f88.BreakOnReset = true
-p16f88.SafeMode = true
-p16f88.UnknownMode = true
-p16f88.WarnMode = true
-p16f88.tmr1_freq = 32768
-p16f88.xpos = 72
-p16f88.ypos = 72
+p18f1320.BreakOnReset = true
+p18f1320.SafeMode = true
+p18f1320.UnknownMode = true
+p18f1320.WarnMode = true
+p18f1320.tmr1_freq = 32768
+p18f1320.xpos = 72
+p18f1320.ypos = 72
 
 module load lcd_display lcd_display
 lcd_display.xpos = 312
@@ -56,28 +56,28 @@ node nRW
 attach nRW lcd_display.RW
 
 node nRS
-attach nRS lcd_display.DC p16f88.portb2
+attach nRS lcd_display.DC p18f1320.portb2
 
 node nE
-attach nE lcd_display.E p16f88.portb3
+attach nE lcd_display.E p18f1320.portb3
 
 node nD4
-attach nD4 lcd_display.d4 p16f88.portb4
+attach nD4 lcd_display.d4 p18f1320.portb4
 
 node nD5
-attach nD5 lcd_display.d5 p16f88.portb5
+attach nD5 lcd_display.d5 p18f1320.portb5
 
 node nD6
-attach nD6 lcd_display.d6 p16f88.portb6
+attach nD6 lcd_display.d6 p18f1320.portb6
 
 node nD7
-attach nD7 lcd_display.d7 p16f88.portb7
+attach nD7 lcd_display.d7 p18f1320.portb7
 
 node nFWD
-attach nFWD p16f88.porta0 Vfwd.pin
+attach nFWD p18f1320.porta0 Vfwd.pin
 
 node nREF
-attach nREF p16f88.porta1 Vref.pin
+attach nREF p18f1320.porta1 Vref.pin
 
 
 

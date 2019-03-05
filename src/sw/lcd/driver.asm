@@ -11,7 +11,6 @@ v_poscursor res 1
 	code
 ;-----------------------------------------
 Pulse_e
-	BANKSEL PORTB
 	bsf LCD_PORT, LCD_E ; LCD Enable pulse to write data from PORTB
 	nop ; into LCD module.
 	bcf LCD_PORT, LCD_E ; 
@@ -49,6 +48,7 @@ Del05
 Del01
 	movlw 0x01 ; delay 1.000 ms (4 MHz clock)
 d0
+	BANKSEL v_timer 
 	movwf v_timer ;
 d1
 	movlw 0xC7 ; delay 1mS
@@ -57,7 +57,7 @@ d1
 	movwf v_timerB ;
 Del_0
 	decfsz v_timerA,f ;
-	goto $+2 ;
+	goto $+0x0a ;
 	decfsz v_timerB,f ;
 	goto Del_0 ;
 	decfsz v_timer,f ;
@@ -82,7 +82,6 @@ Del_0
 ;Traitement : 
 ;-----------------------------------------
 f_lcd_sendcmd	; Send the Instruction to the LCD
-	BANKSEL	PORTB
 	movwf v_temp ; Save the Value
 	andlw 0xF0 ; Most Significant Nibble first
 	movwf LCD_PORT ;
@@ -210,7 +209,6 @@ f_lcd_convtoascii
 ;Traitement : 4 Bit Initialization...
 ;-----------------------------------------
 f_lcd_init
-	BANKSEL PORTB
 	call Del05 ; Wait 15 msecs
 	call Del05 ;
 	call Del05 ;
@@ -250,7 +248,6 @@ f_lcd_init
 ;Traitement : 
 ;-----------------------------------------
 f_lcd_affchar	; Send the Character to the LCD
-	BANKSEL PORTB
 	movwf v_temp ; Save the Value
 	andlw 0xF0 ; Most Significant Nibble first
 	movwf LCD_PORT ;

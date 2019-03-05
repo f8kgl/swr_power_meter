@@ -28,6 +28,7 @@ c_data_adc_theoric_caltable
 	DE 0xF
 	DE 0x14
 	DE 0x18
+IF 0
 	DE 0x1D
 	DE 0x22
 	DE 0x27
@@ -1046,6 +1047,7 @@ c_data_adc_theoric_caltable
 	DE 0x1379
 	DE 0x137E
 	DE 0x1383
+ENDIF
 #ENDIF
 c_data_adc_theoric_caltable_end
 

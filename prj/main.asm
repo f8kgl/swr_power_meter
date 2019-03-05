@@ -20,18 +20,19 @@
 IFDEF TEST
 	extern f_lcd_aff_fwd_and_ref
 	extern f_lcd_affadc
-	extern f_calc_adcmV
+	;; 	extern f_calc_adcmV
 ENDIF
+IF 0	
 	extern f_adc_init
 	extern f_adc_readAN0
 	extern f_adc_readAN1
+ENDIF
 	
 	udata
 v_timer0 res 1 
 v_timer1 res 1
 v_timer2 res 1
 v_mode_calib res 1
-v_main_wtmp res 1
 
 	code
 	goto Init ;
@@ -47,82 +48,38 @@ Init
 	movwf TRISB ; Change PortB I/O
 	
 ; Initialisation LCD
-	movwf v_main_wtmp
-	movlw HIGH f_lcd_init
-	movwf PCLATH
-	movf v_main_wtmp,w	
 	call f_lcd_init ; Initialize the LCD Display 
 
 ; Initialisation ADC
-	movwf v_main_wtmp
-	movlw HIGH f_adc_init
-	movwf PCLATH
-	movf v_main_wtmp,w	
+IF 0	
  	call f_adc_init		;
-
+ENDIF
+	
 ; Afficher le message de boot
-	movwf v_main_wtmp
-	movlw HIGH f_lcd_affboot
-	movwf PCLATH
-	movf v_main_wtmp,w	
 	call f_lcd_affboot
 	
 ;; Tempo de 5s
-	movwf v_main_wtmp
-	movlw HIGH f_tempo_boot
-	movwf PCLATH
-	movf v_main_wtmp,w	
 	call f_tempo_boot
 	call f_tempo_boot
 
 ;; Effacer le LCD (lcd_clear)
-	movwf v_main_wtmp
-	movlw HIGH f_lcd_clear
-	movwf PCLATH
-	movf v_main_wtmp,w	
 	call f_lcd_clear
 	;;Positionner le curseur du LCD sur la ligne 1
 	movlw 0x00
-	movwf v_main_wtmp
-	movlw HIGH f_lcd_setposcursor
-	movwf PCLATH
-	movf v_main_wtmp,w	
 	call f_lcd_setposcursor
 
 IFDEF TEST
-	movwf v_main_wtmp
-	movlw HIGH f_lcd_aff_fwd_and_ref
-	movwf PCLATH
-	movf v_main_wtmp,w	
 	call f_lcd_aff_fwd_and_ref
 test_loop
+IF 0	
 	;;lire les registres ADCfwd et ADCref
-	movwf v_main_wtmp
-	movlw HIGH f_adc_readAN0
-	movwf PCLATH
-	movf v_main_wtmp,w	
 	call f_adc_readAN0
-	movwf v_main_wtmp
-	movlw HIGH f_adc_readAN1
-	movwf PCLATH
-	movf v_main_wtmp,w	
 	call f_adc_readAN1
 	;; afficher la mesure des ADC en mode test
-	movwf v_main_wtmp
-	movlw HIGH f_lcd_affadc
-	movwf PCLATH
-	movf v_main_wtmp,w	
 	call f_lcd_affadc
 	;; Convertir la mesure des ADC en mV
-	movwf v_main_wtmp
-	movlw HIGH f_calc_adcmV
-	movwf PCLATH
-	movf v_main_wtmp,w
 	call f_calc_adcmV
-
-	movlw HIGH test_loop
-	movwf PCLATH
-	movf v_main_wtmp,w
+ENDIF
 	goto test_loop
 ENDIF	
 
