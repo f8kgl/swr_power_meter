@@ -57,14 +57,16 @@ Init
 	clrf    EECON1              ;clear EEPROM control register
 	bcf		WDTCON,SWDTEN		;stop watchdog
 	clrf   CCP1CON
-	
-; Initialisation LCD
-	call f_lcd_init ; Initialize the LCD Display 
 
 ; Initialisation ADC
+	movlw B'01111111'
+	movwf ADCON1
 IF 0	
  	call f_adc_init		;
-ENDIF
+ENDIF	
+
+; Initialisation LCD
+	call f_lcd_init ; Initialize the LCD Display 
 	
 ; Afficher le message de boot
 	call f_lcd_affboot
