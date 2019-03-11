@@ -3,7 +3,7 @@
 	
 	ERRORLEVEL 0, -302 ;suppress bank selection messages
 	
-	config OSC = INTIO1 ; Internal Oscillator with FOSC/4 output on RA6 and I/O on RA7
+	config OSC = INTIO2 ; Internal Oscillator with FOSC/4 output on RA6 and I/O on RA7
 	config FSCM = OFF ; Fail-Safe Clock Monitor disabled
 	config IESO = OFF ; Internal External Switch Over mode disabled
 	config PWRT = OFF ; Power up timer disabled
@@ -46,8 +46,8 @@ Init
 	movwf TRISB ; Change PortB I/O
 
 	clrf    INTCON              ;disable all interrupts part one
-	movlw	B'11110000'         ;disable all interrupts part two & 
-	movwf   INTCON2             ;PORTB pull-up disable, rising edge on INT0/1/2
+	movlw	B'10000000'         ;disable all interrupts part two & 
+	movwf   INTCON2             ;PORTB pull-up disable
 	clrf    INTCON3             ;disable all interrupts part three
 	clrf    IPR1                ;clear, no priority is used
 	clrf    IPR2                ;clear, no priority is used
@@ -56,6 +56,7 @@ Init
 	bcf     RCON,IPEN           ;Disable priority levels
 	clrf    EECON1              ;clear EEPROM control register
 	bcf		WDTCON,SWDTEN		;stop watchdog
+	clrf   CCP1CON
 	
 ; Initialisation LCD
 	call f_lcd_init ; Initialize the LCD Display 
