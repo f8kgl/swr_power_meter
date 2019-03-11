@@ -80,7 +80,7 @@ Del_0
 ;Sortie : 
 ;Traitement : 
 ;-----------------------------------------
-f_lcd_sendcmd	; Send the Instruction to the LCD
+_f_lcd_sendcmd	; Send the Instruction to the LCD
 	movwf v_temp ; Save the Value
 	andlw 0xF0 ; Most Significant Nibble first
 	movwf LCD_PORT ;
@@ -135,7 +135,7 @@ _setposcursorL2
 	movf v_poscursor,w
 	addlw 0xB0
 _lcd_setposcursor
-	call f_lcd_sendcmd
+	call _f_lcd_sendcmd
 _lcd_setposcursor_error
 	return ;	
 
@@ -150,7 +150,7 @@ _lcd_setposcursor_error
 ;-----------------------------------------
 f_lcd_clear
 	movlw 0x01 ; Clear display
-	call f_lcd_sendcmd
+	call _f_lcd_sendcmd
 	return
 
 ;-----------------------------------------
@@ -164,7 +164,7 @@ f_lcd_clear
 ;-----------------------------------------
 f_lcd_setposL2
 	movlw 0xc0 ; move to 2nd row, first column
-	call f_lcd_sendcmd ;
+	call _f_lcd_sendcmd ;
 	return
 	 
 ;-----------------------------------------
@@ -224,15 +224,15 @@ f_lcd_init
 	call Pulse_e ; Pulse LCD_E
 	call D160us ; Delay of 160us
 	movlw 0x028 ; Set Interface Length
-	call f_lcd_sendcmd ;
+	call _f_lcd_sendcmd ;
 	movlw 0x010 ; Turn Off Display
-	call f_lcd_sendcmd ; 
+	call _f_lcd_sendcmd ; 
 	movlw 0x001 ; Clear Display RAM
-	call f_lcd_sendcmd ;
+	call _f_lcd_sendcmd ;
 	movlw 0x006 ; Set Cursor Movement
-	call f_lcd_sendcmd ;
+	call _f_lcd_sendcmd ;
 	movlw 0x00C ; Turn on Display/Cursor
-	call f_lcd_sendcmd ;
+	call _f_lcd_sendcmd ;
 	call f_lcd_clear ; Clear the LCD
 	return ;
 	 
@@ -250,12 +250,12 @@ f_lcd_affchar	; Send the Character to the LCD
 	movwf v_temp ; Save the Value
 	andlw 0xF0 ; Most Significant Nibble first
 	movwf LCD_PORT ;
-	bsf LCD_PORT, LCD_RS ; 
+ 	bsf LCD_PORT, LCD_RS ;
 	call Pulse_e ;
 	swapf v_temp, w ; Least Significant Nibble Second
 	andlw 0xF0 ;
 	movwf LCD_PORT ;
-	bsf LCD_PORT, LCD_RS ;
+ 	bsf LCD_PORT, LCD_RS ;
 	call Pulse_e ;
 	call Del05 ;
 	return ;
