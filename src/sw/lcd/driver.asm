@@ -48,7 +48,6 @@ Del05
 Del01
 	movlw 0x01 ; delay 1.000 ms (4 MHz clock)
 d0
-	BANKSEL v_timer 
 	movwf v_timer ;
 d1
 	movlw 0xC7 ; delay 1mS
@@ -259,7 +258,6 @@ f_lcd_affchar	; Send the Character to the LCD
 	bsf LCD_PORT, LCD_RS ;
 	call Pulse_e ;
 	call Del05 ;
-	nop ;
 	return ;
 
 	global f_lcd_init

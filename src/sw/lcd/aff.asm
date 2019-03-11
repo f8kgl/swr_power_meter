@@ -73,6 +73,7 @@ _lcd_affboot_2
 	goto _lcd_affboot_3 ; display next message if finished
 	call f_lcd_affchar
 	incf v_charpos, f
+	incf v_charpos, f
 	goto _lcd_affboot_2
 _lcd_affboot_3
 	movlw 0x10
@@ -87,6 +88,7 @@ _lcd_affboot_5
 	btfsc STATUS, Z
 	goto _lcd_affboot_6 ; display next message if finished
 	call f_lcd_affchar
+	incf v_charpos, f
 	incf v_charpos, f
 	goto _lcd_affboot_5
 _lcd_affboot_6
@@ -103,6 +105,7 @@ _lcd_affboot_8
 	btfsc STATUS, Z
 	goto _lcd_affboot_9 ; finished
 	call f_lcd_affchar
+	incf v_charpos, f
 	incf v_charpos, f
 	goto _lcd_affboot_8	
 _lcd_affboot_9	
@@ -149,6 +152,7 @@ _lcd_aff_fwd_and_ref_2
 	goto _lcd_aff_fwd_and_ref_3 ; display next message if finished
 	call f_lcd_affchar
 	incf v_charpos, f
+	incf v_charpos, f
 	goto _lcd_aff_fwd_and_ref_2
 _lcd_aff_fwd_and_ref_3
 	movlw 0x10
@@ -163,6 +167,7 @@ _lcd_aff_fwd_and_ref_5
 	btfsc STATUS, Z
 	goto _lcd_aff_fwd_and_ref_6 ; display next message if finished
 	call f_lcd_affchar
+	incf v_charpos, f
 	incf v_charpos, f
 	goto _lcd_aff_fwd_and_ref_5
 _lcd_aff_fwd_and_ref_6	
@@ -354,6 +359,7 @@ _lcd_affcalib2
 	goto _lcd_affcalib_3 ; display next message if finished
 	call f_lcd_affchar
 	incf v_charpos, f
+	incf v_charpos, f
 	goto _lcd_affcalib2
 _lcd_affcalib_3
 	movlw 0x10
@@ -368,6 +374,7 @@ _lcd_affcalib_5
 	btfsc STATUS, Z
 	goto _lcd_affcalib_6 ; display next message if finished
 	call f_lcd_affchar
+	incf v_charpos, f
 	incf v_charpos, f
 	goto _lcd_affcalib_5
 _lcd_affcalib_6
