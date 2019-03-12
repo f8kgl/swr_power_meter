@@ -22,10 +22,10 @@ export CALIBRATION_FLAGS = CALIBRATION
 
 #Composants
 COMPS = lcd
-COMPS += eep
+COMPS +=eep
 COMPS +=readadc
-#COMPS +=flh
-#COMPS +=calc
+COMPS +=flh
+COMPS +=calc
 
 #Sources
 SRC_COMMUN = main.asm

@@ -20,7 +20,7 @@
 IFDEF TEST
 	extern f_lcd_aff_fwd_and_ref
 	extern f_lcd_affadc
-	;; 	extern f_calc_adcmV
+	extern f_calc_adcmV
 ENDIF
 	extern f_adc_init
 	extern f_adc_readAN0
@@ -87,9 +87,8 @@ test_loop
 	;; afficher la mesure des ADC en mode test
 	call f_lcd_affadc
 	;; Convertir la mesure des ADC en mV
-IF 0
 	call f_calc_adcmV
-ENDIF
+
 	goto test_loop
 ENDIF	
 

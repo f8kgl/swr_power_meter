@@ -38,8 +38,6 @@ f_calc_adcmV
 	movwf v_flh_offset_addr
 	movf v_adcfwd+1,W
 	movwf v_flh_offset_addr+1
-	movlw HIGH f_flh_readword
-	movwf PCLATH
 	call f_flh_readword
 	movf v_flh_read,W
 	movwf v_adcfwd_mV
@@ -50,8 +48,6 @@ f_calc_adcmV_6
 	movwf v_flh_offset_addr
 	movf v_adcref+1,W
 	movwf v_flh_offset_addr+1
-	movlw HIGH f_flh_readword
-	movwf PCLATH
 	call f_flh_readword
 	movf v_flh_read,W
 	movwf v_adcref_mV
