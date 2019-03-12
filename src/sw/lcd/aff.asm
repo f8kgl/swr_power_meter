@@ -11,10 +11,9 @@ v_lcd_wtmp res 1
 	extern f_lcd_setposcursor
 	extern f_lcd_convtoascii
  	extern f_eep_readbyte
-IF 0
 	extern v_adcfwd		;
 	extern v_adcref
-ENDIF
+
 	extern c_bootmsgL1
 	extern c_bootmsgL2
 IFDEF TEST
@@ -208,7 +207,6 @@ _lcd_affhexa_8
 	call f_lcd_affchar
 	return
 
-IF 0
 IFDEF TEST
 ;-----------------------------------------
 ;Fonction : Affichage de la mesure de calibration sur le LCD
@@ -281,7 +279,6 @@ _lcd_affadc_17
 _lcd_affadc_18
 	call f_lcd_affchar
 	return
-ENDIF
 ENDIF
 
 IF 0
@@ -383,7 +380,7 @@ ENDIF
 	
 	global f_lcd_affboot
 	;	global lcd_affcalib
-	;; 	global f_lcd_affadc
+	global f_lcd_affadc
 IFDEF TEST
 	global f_lcd_aff_fwd_and_ref
 ENDIF

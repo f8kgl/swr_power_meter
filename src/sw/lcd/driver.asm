@@ -182,6 +182,10 @@ f_lcd_setposL2
 ;		
 ;----------------------------------------- 
 f_lcd_convtoascii
+	mullw 0x02
+	movlw HIGH f_lcd_convtoascii
+	movwf PCLATH
+	movf PRODL,w
 	addwf PCL, f
 	retlw 0x30		;'0'
 	retlw 0x31		;'1'

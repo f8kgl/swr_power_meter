@@ -83,10 +83,11 @@ test_loop
 	;;lire les registres ADCfwd et ADCref
 	call f_adc_readAN0
 	call f_adc_readAN1
-IF 0
+
 	;; afficher la mesure des ADC en mode test
 	call f_lcd_affadc
 	;; Convertir la mesure des ADC en mV
+IF 0
 	call f_calc_adcmV
 ENDIF
 	goto test_loop
