@@ -22,11 +22,9 @@ IFDEF TEST
 	extern f_lcd_affadc
 	;; 	extern f_calc_adcmV
 ENDIF
-IF 0	
 	extern f_adc_init
 	extern f_adc_readAN0
 	extern f_adc_readAN1
-ENDIF
 	
 	udata
 v_timer0 res 1 
@@ -61,11 +59,7 @@ Init
 	clrf   CCP1CON
 
 ; Initialisation ADC
-	movlw B'01111111'
-	movwf ADCON1
-IF 0	
  	call f_adc_init		;
-ENDIF	
 
 ; Initialisation LCD
 	call f_lcd_init ; Initialize the LCD Display 
@@ -86,10 +80,10 @@ ENDIF
 IFDEF TEST
 	call f_lcd_aff_fwd_and_ref
 test_loop
-IF 0	
 	;;lire les registres ADCfwd et ADCref
 	call f_adc_readAN0
 	call f_adc_readAN1
+IF 0
 	;; afficher la mesure des ADC en mode test
 	call f_lcd_affadc
 	;; Convertir la mesure des ADC en mV

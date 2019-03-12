@@ -13,17 +13,17 @@ v_delay res 1
 ;Entrée :
 ;Sortie :
 ;Traitement :
+;ADRESH = 0 0 0 0 0 0 b9 b8;
+;ADRESL = b7 b6 b5 b4 b3 b2 b1 b0 ;
+;Tad = 16xTosc = 16/4Mhz = 4uS
 ;-----------------------------------------
 f_adc_init	
-	BANKSEL ADCON1
-	bcf ADCON1 , VCFG0 ; VCFG0 = 0
-	bcf ADCON1 , VCFG1 ; VCFG1 = 0
-	bsf ADCON1 , ADFM  ; ADRESH = 0 0 0 0 0 0 b9 b8;
-	   		   ;ADRESL = b7 b6 b5 b4 b3 b2 b1 b0 ;
-	bsf ADCON1, ADCS2
-	BANKSEL ADCON0
-	bcf ADCON0, ADCS1
-	bsf ADCON0, ADCS0 ;Tad = 16xTosc = 16/4Mhz = 4uS
+	movlw B'00000000'
+	movwf ADCON0
+	movlw B'01111100' 	;RA0-RA1 analog channel
+	movwf ADCON1
+	movlw B'10110101'
+	movwf ADCON2
 	return
 
 	
@@ -44,7 +44,6 @@ f_adc_init
 	;;    v_adcfwd(+1) = ADRESL
 ;----------------------------------------- 	
 f_adc_readAN0
-	BANKSEL ADCON0
 	bcf ADCON0,CHS2
 	bcf ADCON0,CHS1
 	bcf ADCON0,CHS0
@@ -57,10 +56,8 @@ _adc_readAN0_4
 _adc_readAN0_5
 	btfsc ADCON0,GO
 	goto _adc_readAN0_5
-	BANKSEL ADRESH
 	movf ADRESH,w
 	movwf v_adcfwd
-	BANKSEL ADRESL
 	movf ADRESL,w
 	movwf v_adcfwd+1
 	return
@@ -82,7 +79,6 @@ _adc_readAN0_5
 	;;    v_adcref(+1) = ADRESL
 ;----------------------------------------- 	
 f_adc_readAN1
-	BANKSEL ADCON0
 	bcf ADCON0,CHS2
 	bcf ADCON0,CHS1
 	bsf ADCON0,CHS0
@@ -95,10 +91,8 @@ _adc_readAN1_4
 _adc_readAN1_5
 	btfsc ADCON0,GO
 	goto _adc_readAN1_5
-	BANKSEL ADRESH
 	movf ADRESH,w
 	movwf v_adcref
-	BANKSEL ADRESL
 	movf ADRESL,w
 	movwf v_adcref+1
 	return
