@@ -106,7 +106,6 @@ _lcd_affboot_8
 	goto _lcd_affboot_9 ; finished
 	call f_lcd_affchar
 	incf v_charpos, f
-	incf v_charpos, f
 	goto _lcd_affboot_8	
 _lcd_affboot_9	
 	return

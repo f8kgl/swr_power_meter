@@ -17,13 +17,12 @@
 ;	-W = EEDATA
 ;----------------------------------------- 	
 f_eep_readbyte
-	BANKSEL EEADR
 	movwf EEADR
-	BANKSEL EECON1
+	bcf 	EECON1,CFGS
 	bcf EECON1, EEPGD
 	bsf EECON1,RD
-	BANKSEL EEDATA
 	movf EEDATA,w
+	clrf	EECON1
 	return
 
 	global f_eep_readbyte
