@@ -3,7 +3,7 @@
 	
 	ERRORLEVEL 0, -302 ;suppress bank selection messages
 	
-	config OSC = INTIO2 ; Internal Oscillator with FOSC/4 output on RA6 and I/O on RA7
+	config OSC = INTIO2 ; Internal Oscillator with FOSC/4 -RA6 and RA7 = I/O
 	config FSCM = OFF ; Fail-Safe Clock Monitor disabled
 	config IESO = OFF ; Internal External Switch Over mode disabled
 	config PWRT = OFF ; Power up timer disabled
@@ -39,6 +39,8 @@ v_mode_calib res 1
 
 Init
 ; Initialisation PIC
+	movlw   B'01100010'			;4 MHz 
+	movwf   OSCCON
 	clrf PORTA ; Initialize PORTA by setting output data latches
 	movlw b'00000011' ; PortA Outputs
 	movwf TRISA ; RA0, RA1 input
@@ -167,7 +169,7 @@ delay1
 	movwf v_timer2 ;
 delay
 	decfsz v_timer1,f ;
-	goto $+2 ;
+	goto $+6 ;
 	decfsz v_timer2,f ;
 	goto delay ;
 	decfsz v_timer0,f ;
