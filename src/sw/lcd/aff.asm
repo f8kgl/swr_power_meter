@@ -380,8 +380,8 @@ ENDIF
 	
 	global f_lcd_affboot
 	;	global lcd_affcalib
-	global f_lcd_affadc
 IFDEF TEST
+	global f_lcd_affadc
 	global f_lcd_aff_fwd_and_ref
 ENDIF
 	
