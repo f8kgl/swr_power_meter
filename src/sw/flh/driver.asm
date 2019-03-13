@@ -9,7 +9,7 @@
 ;Fonction Lecture d'un octer en flash
 ;Nom f_flh_readword		;
 ;Paramètres entrée v_flh_offset_addr
-;Paramètres sorties v_flh_read
+;Paramètres sorties v_flh_read(MSB) v_flh_read+1 (LSB)
 ;Traitements
 	;; 
 ;-----------------------------------------

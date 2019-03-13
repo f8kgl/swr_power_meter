@@ -35,21 +35,22 @@ IFDEF TEST
 ;10.v_adcref_mV +1 = v_flh_read+1	
 ;-----------------------------------------
 f_calc_adcmV
+	movf v_adcfwd+1,W
+	movwf v_flh_offset_addr+1
+	movlw 0x02
+	mulwf v_flh_offset_addr+1
+	movf PRODL,W
+	movwf v_flh_offset_addr+1
+	movf PRODH,W
+	movwf v_calctmp
+	
 	movf v_adcfwd,W
 	movwf v_flh_offset_addr
 	movlw 0x02
 	mulwf v_flh_offset_addr
 	movf PRODL,W
-	movwf v_flh_offset_addr
-	movf PRODH,W
-	movwf v_calctmp
-	
-	movf v_adcfwd+1,W
-	movlw 0x02
-	mulwf v_flh_offset_addr+1
-	movf PRODL,W
 	addwf v_calctmp,W
-	movwf v_flh_offset_addr+1
+	movwf v_flh_offset_addr
 	
 	call f_flh_readword
 
@@ -58,11 +59,25 @@ f_calc_adcmV
 	movf v_flh_read+1,W
 	movwf v_adcfwd_mV+1
 f_calc_adcmV_6
-	movf v_adcref,W
-	movwf v_flh_offset_addr
 	movf v_adcref+1,W
 	movwf v_flh_offset_addr+1
+	movlw 0x02
+	mulwf v_flh_offset_addr+1
+	movf PRODL,W
+	movwf v_flh_offset_addr+1
+	movf PRODH,W
+	movwf v_calctmp
+	
+	movf v_adcref,W
+	movwf v_flh_offset_addr
+	movlw 0x02
+	mulwf v_flh_offset_addr
+	movf PRODL,W
+	addwf v_calctmp,W
+	movwf v_flh_offset_addr
+	
 	call f_flh_readword
+
 	movf v_flh_read,W
 	movwf v_adcref_mV
 	movf v_flh_read+1,W
