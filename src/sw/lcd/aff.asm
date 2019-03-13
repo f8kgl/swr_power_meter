@@ -27,7 +27,7 @@ ENDIF
 ;Fonction : Affichage du message de boot
 ;Nom : lcd_affboot
 ;Entrée :
-;	-message de boot L1 et L2 en mémoire bootmsgL1 bootmsgL2 
+;	-message de boot L1 et L2 en mémoire c_bootmsgL1 c_bootmsgL2 
 ;	-SW_VERSION (EEPROM)
 ;Sortie :
 ; 	Sur le LCD :
@@ -42,7 +42,7 @@ ENDIF
 ;		afficher 1 caractère sur le LCD
 ; 		incrémenter v_charpos
 ;	3.positionner le curseur sur la ligne 2, 4ème case
-;		W=0x13
+;		W=0x10
 ;	 	postionner le curseur
 ;	4.v_charpos = 0
 ;	5.Afficher le message de boot ligne 2
@@ -91,7 +91,6 @@ _lcd_affboot_5
 	incf v_charpos, f
 	goto _lcd_affboot_5
 _lcd_affboot_6
-;	movlw 0x19 idem
 	movlw 0x1C
 	call f_lcd_setposcursor
 _lcd_affboot_7
@@ -379,7 +378,6 @@ ENDIF
 
 	
 	global f_lcd_affboot
-	;	global lcd_affcalib
 IFDEF TEST
 	global f_lcd_affadc
 	global f_lcd_aff_fwd_and_ref

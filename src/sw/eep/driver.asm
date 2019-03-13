@@ -7,13 +7,13 @@
 ;Fonction : Lecture d'un octet en EEPROM
 ;Nom : eep_readbyte
 ;Entrée :
-;	-W : contient l'adresse de l'octer à lire en EEPROM
+;	-W : contient l’offset à partir de __EEPROM_START de l'adresse à lire en EEPROM
 ;Sortie :
 ; 	-W : contient l'octet lu
 ;Traitement :
 ;	-EEADR = W
 ;	-EECON(EEPGD) = b(0)
-;	-EECON(RF) = b(1)
+;	-EECON(RD) = b(1)
 ;	-W = EEDATA
 ;----------------------------------------- 	
 f_eep_readbyte

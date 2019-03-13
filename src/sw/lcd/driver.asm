@@ -209,7 +209,7 @@ f_lcd_convtoascii
 ;Nom : f_lcd_init
 ;Entrée : 
 ;Sortie : 
-;Traitement : 4 Bit Initialization...
+;Traitement : 
 ;-----------------------------------------
 f_lcd_init
 	call Del05 ; Wait 15 msecs
