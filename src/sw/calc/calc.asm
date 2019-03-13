@@ -5,6 +5,7 @@ v_flh_offset_addr res 2
 v_flh_read res 2
 v_adcfwd_mV res 2
 v_adcref_mV res 2
+v_calctmp res 1	
 	
 	extern v_adcfwd
 	extern v_adcref
@@ -36,9 +37,22 @@ IFDEF TEST
 f_calc_adcmV
 	movf v_adcfwd,W
 	movwf v_flh_offset_addr
+	movlw 0x02
+	mulwf v_flh_offset_addr
+	movf PRODL,W
+	movwf v_flh_offset_addr
+	movf PRODH,W
+	movwf v_calctmp
+	
 	movf v_adcfwd+1,W
+	movlw 0x02
+	mulwf v_flh_offset_addr+1
+	movf PRODL,W
+	addwf v_calctmp,W
 	movwf v_flh_offset_addr+1
+	
 	call f_flh_readword
+
 	movf v_flh_read,W
 	movwf v_adcfwd_mV
 	movf v_flh_read+1,W
