@@ -3,17 +3,19 @@
 	include "eep.inc"
 	
   	udata
+v_hexa_to_conv res 2
+v_bcd res 2
 v_charpos res 1
 v_tmp res 1
-v_lcd_wtmp res 1	
+v_lcd_wtmp res 1
 	
 	extern f_lcd_affchar
 	extern f_lcd_setposcursor
 	extern f_lcd_convtoascii
+	extern f_lcd_convtobcd
  	extern f_eep_readbyte
 	extern v_adcfwd		;
 	extern v_adcref
-
 	extern c_bootmsgL1
 	extern c_bootmsgL2
 IFDEF TEST
@@ -119,7 +121,7 @@ IFDEF TEST
 ; 	Sur le LCD :
 ;       1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
 ; 	F W D
-; 	REF
+; 	R E F
 ;Traitement :
 ;	1.v_charpos = 0
 ;	2.Afficher le message de test ligne 1 
@@ -294,55 +296,33 @@ _lcd_affadc_18
 ;1.positionner le curseur sur la ligne 1, 11ème case
 ;2.v_hexa_to_conv = v_adcfwd_mV
 ;3.v_hexa_to_conv +1 = v_adcfwd_mV +1
-;4. Conversion hexa-BCD (_f_lcd_convtobcd) ;
+;4. Conversion hexa-BCD (f_lcd_convtobcd) ;
 ;5. W = v_bcd
 ;6. Affichage d'un octet en hexa (_f_lcd_affhexa)
 ;7. W = v_bcd+1
 ;8.positionner le curseur sur la ligne 2, 11ème case
 ;2.v_hexa_to_conv = v_adcref_mV
 ;3.v_hexa_to_conv +1 = v_adcref_mV +1
-;4. Conversion hexa-BCD (_f_lcd_convtobcd)
+;4. Conversion hexa-BCD (f_lcd_convtobcd)
 ;5. W = v_bcd
 ;6. Affichage d'un octet en hexa (_f_lcd_affhexa)
 ;7. W = v_bcd+1
 ;-----------------------------------------
 f_lcd_aff_adcmV
+	movlw 0x0B
+	call f_lcd_setposcursor
+	movf v_adcfwd_mV,w
+	movwf v_hexa_to_conv
+	movf v_adcfwd_mV+1,w
+	movwf v_hexa_to_conv+1
+_f_lcd_aff_adcmV_4
+	call f_lcd_convtobcd
+_f_lcd_aff_adcmV_8
+	movlw 0x1B
+	call f_lcd_setposcursor
 	return
 ENDIF
 
-IF 0
-IFDEF TEST
-;-----------------------------------------
-;Fonction : Affichage de la mesure en tension des ADC en mode test
-;Nom : lcd_affadcmV
-;Entrée :
-;	v_adcfwd_mV (2bytes) : résultat de l'ADC en mV compris entre [0;5000]
-;	v_adcref_mV (2bytes) : résultat de l'ADC en mV compris entre [0	5000]
-;Sortie :
-; 	Sur le LCD :
-;       1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
-; 	                     v  v  v  v   m  V   
-; 	                     y  y  y  y   m  V
-;Traitement :
-;	1.positionner le curseur sur la ligne 1, 11ème case
-; 	2.v_hexa_to_conv = v_adcfwd_mV
-; 	3.v_hexa_to_conv +1 = v_adcfwd_mV +1
-; 	4. Conversion hexa-BCD (lcd_convtobcd)
-; 	5. W = v_bcd
-; 	6. Affichage d'un octet en hexa (lcd_affhexa)
-; 	7. W = v_bcd+1
-; 	8.positionner le curseur sur la ligne 2, 11ème case
-; 	9.v_hexa_to_conv = v_adcref_mV
-; 	10.v_hexa_to_conv +1 = v_adcref_mV +1
-; 	11. Conversion hexa-BCD (lcd_convtobcd)
-; 	12. W = v_bcd
-; 	13. Affichage d'un octet en hexa (lcd_affhexa)
-; 	14. W = v_bcd+1
-;----------------------------------------- 
-f_lcd_affadcmV	
-	return
-	ENDIF
-ENDIF
 	
 IF 0
 ;-----------------------------------------

@@ -6,7 +6,7 @@ v_timer res 1
 v_timerA res 1
 v_timerB res 1
 v_temp res 1
-v_poscursor res 1	
+v_poscursor res 1
 
 	code
 ;-----------------------------------------
@@ -205,6 +205,24 @@ f_lcd_convtoascii
 	retlw 0x46		;'F'
 	return	
 
+;-----------------------------------------
+;Fonction : Conversion hexa-ASCII
+;Nom : f_lcd_convtobcd
+;Entrée : 
+;	v_hexa_to_conv (2 bytes) : 2 octets à convertir en BCD
+;Sortie : 
+;	v_bcd (2 bytes) : 2 octets convertis en BCD		
+
+;Traitement : 
+;http://www.microchip.com/forums/m322713.aspx
+; v_bcd = R1
+; v_bcd + 1 = R2		
+;----------------------------------------- 
+f_lcd_convtobcd
+	return
+
+
+	
 ;Fonction : Initialisation du LCD
 ;Nom : f_lcd_init
 ;Entrée : 
@@ -269,5 +287,6 @@ f_lcd_affchar	; Send the Character to the LCD
 	global f_lcd_setposcursor
 	global f_lcd_clear
 	global f_lcd_convtoascii
+	global f_lcd_convtobcd
 	
 	end 
