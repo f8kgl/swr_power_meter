@@ -16,6 +16,8 @@ v_lcd_wtmp res 1
  	extern f_eep_readbyte
 	extern v_adcfwd		;
 	extern v_adcref
+	extern v_adcfwd_mV		;
+	extern v_adcref_mV
 	extern c_bootmsgL1
 	extern c_bootmsgL2
 IFDEF TEST
@@ -386,7 +388,9 @@ _lcd_affcalib_6
 	return
 ENDIF
 
-	
+	global v_hexa_to_conv
+	global v_bcd
+
 	global f_lcd_affboot
 IFDEF TEST
 	global f_lcd_affadc

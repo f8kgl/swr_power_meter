@@ -8,6 +8,9 @@ v_timerB res 1
 v_temp res 1
 v_poscursor res 1
 
+	extern v_hexa_to_conv
+	extern v_bcd
+	
 	code
 ;-----------------------------------------
 Pulse_e
