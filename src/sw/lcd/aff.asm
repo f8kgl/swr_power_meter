@@ -187,7 +187,7 @@ ENDIF
 ;	7.Convertir le quartet de poids faible en ASCII
 ;	8.afficher un caractère sur le LCD
 ;----------------------------------------- 
-f_lcd_affhexa
+_f_lcd_affhexa
 	movwf v_tmp
 _lcd_affhexa_2
 	swapf v_tmp,W
@@ -245,11 +245,11 @@ _lcd_affadc_2
 	movf v_adcfwd,w
 _lcd_affadc_3
 	movwf v_lcd_wtmp
-	call f_lcd_affhexa
+	call _f_lcd_affhexa
 _lcd_affadc_4
 	movf v_adcfwd+1,w
 _lcd_affadc_5
-	call f_lcd_affhexa
+	call _f_lcd_affhexa
 _lcd_affadc_6
 	movlw 'h'
 _lcd_affadc_7
@@ -264,11 +264,11 @@ _lcd_affadc_10
 _lcd_affadc_11
 	movf v_adcref,w
 _lcd_affadc_12
-	call f_lcd_affhexa
+	call _f_lcd_affhexa
 _lcd_affadc_13
 	movf v_adcref+1,w
 _lcd_affadc_14
-	call f_lcd_affhexa
+	call _f_lcd_affhexa
 _lcd_affadc_15
 	movlw 'h'
 _lcd_affadc_16
@@ -277,6 +277,36 @@ _lcd_affadc_17
 	movlw '-'
 _lcd_affadc_18
 	call f_lcd_affchar
+	return
+
+;-----------------------------------------
+;Fonction : Affichage de la mesure de calibration sur le LCD
+;Nom : lcd_affadc
+;Entrée :
+; 	v_adcfwd_mV (2bytes) : résultat de l'ADC en mV compris entre [0;5000] (v_adcfwd_mV+1 = LSB)
+; 	v_adcref_mV (2bytes) : résultat de l'ADC en mV compris entre [0;5000]
+;Sortie :
+; 	Sur le LCD :
+;       1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+; 	                      v  v  v  v m  V
+;                             y  y  y  y m  V	   	
+;Traitement :
+;1.positionner le curseur sur la ligne 1, 11ème case
+;2.v_hexa_to_conv = v_adcfwd_mV
+;3.v_hexa_to_conv +1 = v_adcfwd_mV +1
+;4. Conversion hexa-BCD (_f_lcd_convtobcd) ;
+;5. W = v_bcd
+;6. Affichage d'un octet en hexa (_f_lcd_affhexa)
+;7. W = v_bcd+1
+;8.positionner le curseur sur la ligne 2, 11ème case
+;2.v_hexa_to_conv = v_adcref_mV
+;3.v_hexa_to_conv +1 = v_adcref_mV +1
+;4. Conversion hexa-BCD (_f_lcd_convtobcd)
+;5. W = v_bcd
+;6. Affichage d'un octet en hexa (_f_lcd_affhexa)
+;7. W = v_bcd+1
+;-----------------------------------------
+f_lcd_aff_adcmV
 	return
 ENDIF
 
@@ -381,6 +411,7 @@ ENDIF
 IFDEF TEST
 	global f_lcd_affadc
 	global f_lcd_aff_fwd_and_ref
+	global f_lcd_aff_adcmV
 ENDIF
 	
 	end 
