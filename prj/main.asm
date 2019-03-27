@@ -105,6 +105,7 @@ ENDIF
 	call f_lcd_affcalib
 
 IFNDEF CALIBRATION
+	;; phase mesure
 ENDIF
 	
 ENDIF
