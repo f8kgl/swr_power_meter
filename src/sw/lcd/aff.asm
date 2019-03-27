@@ -4,7 +4,7 @@
 	
   	udata
 v_hexa_to_conv res 2
-v_bcd res 2
+v_bcd res 3
 v_charpos res 1
 v_tmp res 1
 v_lcd_wtmp res 1
@@ -302,13 +302,20 @@ _lcd_affadc_18
 ;5. W = v_bcd
 ;6. Affichage d'un octet en hexa (_f_lcd_affhexa)
 ;7. W = v_bcd+1
-;8.positionner le curseur sur la ligne 2, 11ème case
-;2.v_hexa_to_conv = v_adcref_mV
-;3.v_hexa_to_conv +1 = v_adcref_mV +1
-;4. Conversion hexa-BCD (f_lcd_convtobcd)
-;5. W = v_bcd
-;6. Affichage d'un octet en hexa (_f_lcd_affhexa)
-;7. W = v_bcd+1
+;8. Affichage d'un octet en hexa (_f_lcd_affhexa)
+;9. W = v_bcd+2
+;10. Affichage d'un octet en hexa (_f_lcd_affhexa)
+;11. Afficher "mV" 
+;12.positionner le curseur sur la ligne 2, 11ème case
+;13.v_hexa_to_conv = v_adcref_mV
+;14.v_hexa_to_conv +1 = v_adcref_mV +1
+;15. Conversion hexa-BCD (f_lcd_convtobcd) ;
+;16. W = v_bcd
+;17. Affichage d'un octet en hexa (_f_lcd_affhexa)
+;18. W = v_bcd+1
+;19. Affichage d'un octet en hexa (_f_lcd_affhexa)
+;20. W = v_bcd+2
+;21. Afficher "mV" 	
 ;-----------------------------------------
 f_lcd_aff_adcmV
 	movlw 0x0B
@@ -319,9 +326,44 @@ f_lcd_aff_adcmV
 	movwf v_hexa_to_conv+1
 _f_lcd_aff_adcmV_4
 	call f_lcd_convtobcd
-_f_lcd_aff_adcmV_8
+_f_lcd_aff_adcmV_5
+	;; pour la V0.5, n'affiche pas le poids fort
+	;; car l'ADC du PIC est sur 10 bits, et donc 4 digits suffisent
+	;; la question se reposera quand nous passerons à l'ADC 16 bits
+	;; 	movf v_bcd,W
+	;; 	call _f_lcd_affhexa
+	movf v_bcd+1,W
+	call _f_lcd_affhexa
+	movf v_bcd+2,W
+	call _f_lcd_affhexa
+	movlw 'm'
+	call f_lcd_affchar
+	movlw 'V'
+	call f_lcd_affchar
+_f_lcd_aff_adcmV_12
 	movlw 0x1B
 	call f_lcd_setposcursor
+	movf v_adcref_mV,w
+	movwf v_hexa_to_conv
+	movf v_adcref_mV+1,w
+	movwf v_hexa_to_conv+1
+_f_lcd_aff_adcmV_15
+	call f_lcd_convtobcd
+_f_lcd_aff_adcmV_16
+	;; pour la V0.5, n'affiche pas le poids fort
+	;; car l'ADC du PIC est sur 10 bits, et donc 4 digits suffisent
+	;; la question se reposera quand nous passerons à l'ADC 16 bits
+	;; 	movf v_bcd,W
+	;; 	call _f_lcd_affhexa
+	movf v_bcd+1,W
+	call _f_lcd_affhexa
+	movf v_bcd+2,W
+	call _f_lcd_affhexa
+	movlw 'm'
+	call f_lcd_affchar
+	movlw 'V'
+	call f_lcd_affchar
+	
 	return
 ENDIF
 

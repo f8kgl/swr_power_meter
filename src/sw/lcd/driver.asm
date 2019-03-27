@@ -7,6 +7,7 @@ v_timerA res 1
 v_timerB res 1
 v_temp res 1
 v_poscursor res 1
+v_count res 1
 
 	extern v_hexa_to_conv
 	extern v_bcd
@@ -212,9 +213,9 @@ f_lcd_convtoascii
 ;Fonction : Conversion hexa-ASCII
 ;Nom : f_lcd_convtobcd
 ;Entrée : 
-;	v_hexa_to_conv (2 bytes) : 2 octets à convertir en BCD
+;	v_hexa_to_conv (2 bytes) : 1 octets à convertir en BCD
 ;Sortie : 
-;	v_bcd (2 bytes) : 2 octets convertis en BCD		
+;	v_bcd (3 bytes) : 3 octets convertis en BCD		
 
 ;Traitement : 
 ;http://www.microchip.com/forums/m322713.aspx
@@ -222,7 +223,27 @@ f_lcd_convtoascii
 ; v_bcd + 1 = R2		
 ;----------------------------------------- 
 f_lcd_convtobcd
-	return
+	clrf     v_bcd
+        clrf    v_bcd+1
+        clrf    v_bcd+2
+ 
+        movlw   D'16'
+        movwf   v_count
+_f_lcd_convtobcd_1
+        rlcf    v_hexa_to_conv+1,F
+        rlcf    v_hexa_to_conv,F
+        movf    v_bcd+2,W
+        addwfc  v_bcd+2,W
+        daw
+        movwf   v_bcd+2
+        movf    v_bcd+1,W
+        addwfc  v_bcd+1,W
+        daw
+        movwf   v_bcd+1
+        rlcf    v_bcd,F
+        decfsz  v_count
+        bra     _f_lcd_convtobcd_1
+        return
 
 
 	
