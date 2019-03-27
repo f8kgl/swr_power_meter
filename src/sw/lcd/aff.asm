@@ -37,7 +37,7 @@ ENDIF
 ; 	Sur le LCD :
 ;       1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
 ; 	S W R - P O W E R    m  e  t  e  r
-; 	      F 8 K G L   V  0  .  5
+; 	F 8 K G L                   V  0  .  5
 ;Traitement :
 ;	1.v_charpos = 0
 ;	2.Afficher le message de boot ligne 1 

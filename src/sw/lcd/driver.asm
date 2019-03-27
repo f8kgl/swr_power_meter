@@ -210,7 +210,7 @@ f_lcd_convtoascii
 	return	
 
 ;-----------------------------------------
-;Fonction : Conversion hexa-ASCII
+;Fonction : Conversion hexa-bcd
 ;Nom : f_lcd_convtobcd
 ;Entrée : 
 ;	v_hexa_to_conv (2 bytes) : 1 octets à convertir en BCD
@@ -219,8 +219,6 @@ f_lcd_convtoascii
 
 ;Traitement : 
 ;http://www.microchip.com/forums/m322713.aspx
-; v_bcd = R1
-; v_bcd + 1 = R2		
 ;----------------------------------------- 
 f_lcd_convtobcd
 	clrf     v_bcd

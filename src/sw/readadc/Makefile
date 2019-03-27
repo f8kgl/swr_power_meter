@@ -7,7 +7,7 @@ INC_DIR = -I../inc/
 
 COMP = readadc
 
-SRC = adc.asm
+SRC = adc_pic.asm
 
 OBJ_TEST = $(SRC:.asm=.TEST.o)
 

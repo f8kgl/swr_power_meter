@@ -24,12 +24,14 @@ IFDEF TEST
 ;	v_adcref_mV (2bytes) : résultat de l'ADC en mV en hexa 
 ;Traitements
 ;1. v_flh_offset_addr = v_adcfwd
-;2. v_flh_offset_addr + 1 = v_adcfwd + 1
+;   v_flh_offset_addr + 1 = v_adcfwd + 1
+;2 v_flh_offset_addr = 2*v_flh_offset_addr et propager la retenue
 ;3. Lecture d'un octet en flash (f_flh_readword)
 ;4.v_adcfwd_mV = v_flh_read
 ;5.v_adcfwd_mV +1 = v_flh_read+1
 ;6. v_flh_offset_addr = v_adcref
-;7. v_flh_offset_addr + 1= v_adcref + 1
+;   v_flh_offset_addr + 1= v_adcref + 1
+;7. v_flh_offset_addr = 2*v_flh_offset_addr et propager la retenue
 ;8. Lecture d'un octet en flash (f_flh_readword)
 ;9.v_adcref_mV = v_flh_read
 ;10.v_adcref_mV +1 = v_flh_read+1	
