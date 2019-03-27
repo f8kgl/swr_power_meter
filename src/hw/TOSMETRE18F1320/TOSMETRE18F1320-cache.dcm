@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP 18F1320
+D 8-Bit I/O Expander with I²C Interface (SSOP)
+K IO Expander I²C IIC I2C
+F http://ww1.microchip.com/downloads/en/DeviceDoc/21919e.pdf
+$ENDCMP
+#
+#End Doc Library
