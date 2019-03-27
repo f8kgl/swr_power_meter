@@ -95,17 +95,18 @@ test_loop
 ENDIF	
 
 
-IFDEF CALIBRATION
-;; Tester le mode calibration (test l'octet __MODE_CALIB_OR_NOT placé en eeprom)
-	movlw __MODE_CALIB_OR_NOT
-	call f_eep_readbyte
-	xorlw 0xFF ; is it a 0xFF in EEPROM at this addresse ?
+IFNDEF TEST
+IFNDEF CALIBRATION
+	;; test du strap de calibration/mesure
 	btfsc STATUS, Z
 	goto meas_loop; 0xFF calibration effectuée, passer en mode mesure
-
-
+ENDIF
 ;; 	afficher le message de calibration (lcd_affcalib)
 	call f_lcd_affcalib
+
+IFNDEF CALIBRATION
+ENDIF
+	
 ENDIF
 
 
