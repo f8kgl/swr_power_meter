@@ -108,30 +108,7 @@ IFDEF CALIBRATION
 	call f_lcd_affcalib
 ENDIF
 
-IF 0
-;; 	Dans une boucle infinie
-calib_loop
 
-;; 		lire les registres ADCfwd et ADCref
-	call adc_readAN0
-	call adc_readAN1
-;; 		afficher le message de mesure (lcd_affmeas TBD)
-	call lcd_affadc
-	goto calib_loop ;endless loop
-ENDIF
-
-
-IF 0
-meas_loop
-;; Sinon	;
-;; 	Dans une boucle infinie (TBD) : ;
-;; 		lire les registres ADCfwd et ADCref
-;; 		calculer la puissance FWD et REF
-;; 		Calculer le SWR
-;; 		Afficher le message de mesure
-	goto meas_loop
-ENDIF
-	
 ;-----------------------------------------
 ;Fonction : temporisation de 2.5s
 ;Nom : tempo_boot 
