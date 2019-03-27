@@ -1,7 +1,7 @@
 #Variables
 NAME = swr_power_meter_f8kgl-
 export PROCESSOR = 18f1320
-export VERSION := V0.5
+export VERSION := V0.6
 OUTPUT_TEST = $(NAME)$(VERSION).TEST.hex
 OUTPUT_CALIBRATION = $(NAME)$(VERSION).CALIBRATION.hex
 OUTPUT = $(NAME)$(VERSION).hex
