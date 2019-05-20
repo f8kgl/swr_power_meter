@@ -1,40 +1,6 @@
-EESchema Schematic File Version 2
-LIBS:TOSMETRE-rescue
-LIBS:power
-LIBS:device
-LIBS:switches
-LIBS:relays
-LIBS:motors
-LIBS:transistors
-LIBS:conn
-LIBS:linear
-LIBS:regul
-LIBS:74xx
-LIBS:cmos4000
-LIBS:adc-dac
-LIBS:memory
-LIBS:xilinx
-LIBS:microcontrollers
-LIBS:dsp
-LIBS:microchip
-LIBS:analog_switches
-LIBS:motorola
-LIBS:texas
-LIBS:intel
-LIBS:audio
-LIBS:interface
-LIBS:digital-audio
-LIBS:philips
-LIBS:display
-LIBS:cypress
-LIBS:siliconi
-LIBS:opto
-LIBS:atmel
-LIBS:contrib
-LIBS:valves
-LIBS:16F88
+EESchema Schematic File Version 4
 LIBS:TOSMETRE-cache
-EELAYER 25 0
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -49,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L D D1
+L Device:D D1
 U 1 1 5A324E39
 P 3950 2000
 F 0 "D1" H 3950 2100 50  0000 C CNN
@@ -60,7 +26,7 @@ F 3 "" H 3950 2000 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L L7805 U2
+L TOSMETRE-rescue:L7805 U2
 U 1 1 5A33E692
 P 5350 2000
 F 0 "U2" H 5200 2125 50  0000 C CNN
@@ -71,7 +37,7 @@ F 3 "" H 5350 1950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GNDREF #PWR01
+L power:GNDREF #PWR01
 U 1 1 5A343ADA
 P 6200 3150
 F 0 "#PWR01" H 6200 2900 50  0001 C CNN
@@ -82,7 +48,7 @@ F 3 "" H 6200 3150 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L GNDREF #PWR02
+L power:GNDREF #PWR02
 U 1 1 5A343C5D
 P 10550 2000
 F 0 "#PWR02" H 10550 1750 50  0001 C CNN
@@ -93,7 +59,7 @@ F 3 "" H 10550 2000 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L C C1
+L Device:C C1
 U 1 1 5A3C3936
 P 4500 2250
 F 0 "C1" H 4525 2350 50  0000 L CNN
@@ -104,7 +70,7 @@ F 3 "" H 4500 2250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GNDREF #PWR03
+L power:GNDREF #PWR03
 U 1 1 5A3C3EAC
 P 6600 6050
 F 0 "#PWR03" H 6600 5800 50  0001 C CNN
@@ -115,7 +81,7 @@ F 3 "" H 6600 6050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GNDREF #PWR04
+L power:GNDREF #PWR04
 U 1 1 5AA42E24
 P 5350 2500
 F 0 "#PWR04" H 5350 2250 50  0001 C CNN
@@ -126,7 +92,7 @@ F 3 "" H 5350 2500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GNDREF #PWR05
+L power:GNDREF #PWR05
 U 1 1 5AA44D09
 P 4500 2500
 F 0 "#PWR05" H 4500 2250 50  0001 C CNN
@@ -137,7 +103,7 @@ F 3 "" H 4500 2500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GNDREF #PWR06
+L power:GNDREF #PWR06
 U 1 1 5AA44E43
 P 4500 2500
 F 0 "#PWR06" H 4500 2250 50  0001 C CNN
@@ -148,7 +114,7 @@ F 3 "" H 4500 2500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CP_Small C5
+L Device:CP_Small C5
 U 1 1 5AA53058
 P 6400 3150
 F 0 "C5" H 6410 3220 50  0000 L CNN
@@ -159,7 +125,7 @@ F 3 "" H 6400 3150 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L 16F88_SSOP U1
+L 16F88:16F88_SSOP U1
 U 1 1 5AA53019
 P 6600 4900
 F 0 "U1" H 6500 5475 50  0000 R CNN
@@ -174,7 +140,7 @@ FWD
 Text Notes 5150 3900 0    60   ~ 0
 REF
 $Comp
-L WC1602A DS1
+L TOSMETRE-rescue:WC1602A DS1
 U 1 1 5A3242FC
 P 9500 2000
 F 0 "DS1" H 9270 2750 50  0000 C CNN
@@ -185,7 +151,7 @@ F 3 "" H 10200 2000 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GNDREF #PWR07
+L power:GNDREF #PWR07
 U 1 1 5AA93D0C
 P 3300 2500
 F 0 "#PWR07" H 3300 2250 50  0001 C CNN
@@ -196,7 +162,7 @@ F 3 "" H 3300 2500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GNDREF #PWR08
+L power:GNDREF #PWR08
 U 1 1 5AA93D13
 P 3300 2500
 F 0 "#PWR08" H 3300 2250 50  0001 C CNN
@@ -207,7 +173,7 @@ F 3 "" H 3300 2500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Conn_01x01_Female J1
+L TOSMETRE-rescue:Conn_01x01_Female J1
 U 1 1 5AA94180
 P 2950 2000
 F 0 "J1" H 2950 2100 50  0000 C CNN
@@ -218,7 +184,7 @@ F 3 "" H 2950 2000 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Conn_01x01_Female J2
+L TOSMETRE-rescue:Conn_01x01_Female J2
 U 1 1 5AA941DB
 P 2950 2350
 F 0 "J2" H 2950 2450 50  0000 C CNN
@@ -229,7 +195,7 @@ F 3 "" H 2950 2350 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L C C2
+L Device:C C2
 U 1 1 5AACE979
 P 6050 2250
 F 0 "C2" H 6075 2350 50  0000 L CNN
@@ -240,7 +206,7 @@ F 3 "" H 6050 2250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GNDREF #PWR09
+L power:GNDREF #PWR09
 U 1 1 5AAD17B7
 P 6050 2500
 F 0 "#PWR09" H 6050 2250 50  0001 C CNN
@@ -251,7 +217,7 @@ F 3 "" H 6050 2500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Conn_01x01 J4
+L TOSMETRE-rescue:Conn_01x01 J4
 U 1 1 5AB12A8D
 P 4950 3950
 F 0 "J4" H 4950 4050 50  0000 C CNN
@@ -262,7 +228,7 @@ F 3 "" H 4950 3950 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Conn_01x01 J3
+L TOSMETRE-rescue:Conn_01x01 J3
 U 1 1 5AB12B4B
 P 4950 3650
 F 0 "J3" H 4950 3750 50  0000 C CNN
@@ -273,7 +239,7 @@ F 3 "" H 4950 3650 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Conn_01x05 J5
+L TOSMETRE-rescue:Conn_01x05 J5
 U 1 1 5B140FD8
 P 8400 4800
 F 0 "J5" H 8400 5000 50  0000 C CNN
@@ -284,7 +250,7 @@ F 3 "" H 8400 4800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GNDREF #PWR010
+L power:GNDREF #PWR010
 U 1 1 5B1453B6
 P 8000 5650
 F 0 "#PWR010" H 8000 5400 50  0001 C CNN
@@ -295,14 +261,14 @@ F 3 "" H 8000 5650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6600 5400 6600 6050
+	6600 5400 6600 6000
 Connection ~ 6600 2000
 Wire Wire Line
 	3150 2000 3800 2000
 Wire Wire Line
 	10550 2000 10300 2000
 Wire Wire Line
-	4100 2000 5050 2000
+	4100 2000 4500 2000
 Wire Wire Line
 	5350 2300 5350 2500
 Wire Wire Line
@@ -317,7 +283,7 @@ Wire Wire Line
 Wire Wire Line
 	7000 4200 9900 4200
 Wire Wire Line
-	6800 4000 10100 4000
+	6800 4000 7500 4000
 Wire Wire Line
 	7000 5400 7000 6000
 Wire Wire Line
@@ -363,8 +329,6 @@ Wire Wire Line
 Wire Wire Line
 	6300 3650 6300 4400
 Wire Wire Line
-	6300 4400 6350 4400
-Wire Wire Line
 	6700 3150 6700 4400
 Wire Wire Line
 	10100 4000 10100 2400
@@ -379,7 +343,7 @@ Wire Wire Line
 Wire Wire Line
 	7100 5400 7100 5900
 Wire Wire Line
-	7100 5900 8900 5900
+	7100 5900 7500 5900
 Wire Wire Line
 	8200 4900 7500 4900
 Wire Wire Line
@@ -390,7 +354,7 @@ Wire Wire Line
 Wire Wire Line
 	6900 4100 6900 4400
 Wire Wire Line
-	10000 4100 6900 4100
+	10000 4100 8000 4100
 Wire Wire Line
 	8200 4700 8000 4700
 Wire Wire Line
@@ -400,5 +364,19 @@ Wire Wire Line
 	6050 2100 6050 2000
 Connection ~ 6050 2000
 Wire Wire Line
-	5650 2000 8700 2000
+	5650 2000 6050 2000
+Wire Wire Line
+	6600 2000 8700 2000
+Wire Wire Line
+	4500 2000 5050 2000
+Wire Wire Line
+	6600 6000 6600 6050
+Wire Wire Line
+	7500 4000 10100 4000
+Wire Wire Line
+	7500 5900 8900 5900
+Wire Wire Line
+	8000 4100 6900 4100
+Wire Wire Line
+	6050 2000 6600 2000
 $EndSCHEMATC

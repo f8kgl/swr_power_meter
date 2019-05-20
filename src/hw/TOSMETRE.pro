@@ -1,4 +1,4 @@
-update=12/03/2018 16:34:05
+update=20/05/2019 21:48:13
 version=1
 last_client=kicad
 [cvpcb]
@@ -6,44 +6,6 @@ version=1
 NetIExt=net
 [general]
 version=1
-[eeschema]
-version=1
-LibDir=
-[eeschema/libraries]
-LibName1=TOSMETRE-rescue
-LibName2=power
-LibName3=device
-LibName4=switches
-LibName5=relays
-LibName6=motors
-LibName7=transistors
-LibName8=conn
-LibName9=linear
-LibName10=regul
-LibName11=74xx
-LibName12=cmos4000
-LibName13=adc-dac
-LibName14=memory
-LibName15=xilinx
-LibName16=microcontrollers
-LibName17=dsp
-LibName18=microchip
-LibName19=analog_switches
-LibName20=motorola
-LibName21=texas
-LibName22=intel
-LibName23=audio
-LibName24=interface
-LibName25=digital-audio
-LibName26=philips
-LibName27=display
-LibName28=cypress
-LibName29=siliconi
-LibName30=opto
-LibName31=atmel
-LibName32=contrib
-LibName33=valves
-LibName34=16F88
 [pcbnew]
 version=1
 PageLayoutDescrFile=
@@ -63,3 +25,6 @@ SolderMaskMinWidth=0
 DrawSegmentWidth=0.2
 BoardOutlineThickness=0.09999999999999999
 ModuleOutlineThickness=0.15
+[eeschema]
+version=1
+LibDir=
