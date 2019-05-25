@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name TOSMETRE-rescue)(type Legacy)(uri ${KIPRJMOD}/TOSMETRE-rescue.lib)(options "")(descr ""))
+  (lib (name 16F88)(type Legacy)(uri ${KIPRJMOD}/16F88.lib)(options "")(descr ""))
+)
