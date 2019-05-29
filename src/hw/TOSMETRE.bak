@@ -333,17 +333,6 @@ Connection ~ 10350 4050
 Wire Wire Line
 	10350 1100 10350 4050
 $Comp
-L TOSMETRE-rescue:Conn_01x05 J5
-U 1 1 5B140FD8
-P 10800 4050
-F 0 "J5" H 10800 4250 50  0000 C CNN
-F 1 "Conn_01x03" H 10800 3850 50  0000 C CNN
-F 2 "Connector_PinHeader_1.27mm:PinHeader_1x05_P1.27mm_Vertical" H 10800 4050 50  0001 C CNN
-F 3 "" H 10800 4050 50  0001 C CNN
-	1    10800 4050
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:GNDREF #PWR010
 U 1 1 5B1453B6
 P 10400 4900
@@ -380,5 +369,16 @@ F 2 "Connector_PinHeader_1.27mm:PinHeader_1x02_P1.27mm_Vertical" H 1100 1100 50 
 F 3 "~" H 1100 1100 50  0001 C CNN
 	1    1100 1100
 	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x05_Male J?
+U 1 1 5CEF1706
+P 10800 4050
+F 0 "J?" H 10772 3982 50  0000 R CNN
+F 1 "Conn_01x05_Male" H 10772 4073 50  0000 R CNN
+F 2 "Connector_PinHeader_1.27mm:PinHeader_1x05_P1.27mm_Vertical" H 10800 4050 50  0001 C CNN
+F 3 "~" H 10800 4050 50  0001 C CNN
+	1    10800 4050
+	-1   0    0    1   
 $EndComp
 $EndSCHEMATC
