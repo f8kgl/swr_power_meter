@@ -6,25 +6,31 @@ K IO Expander I²C IIC I2C
 F http://ww1.microchip.com/downloads/en/DeviceDoc/21919e.pdf
 $ENDCMP
 #
-$CMP ENC28J60-C/SS
+$CMP 18F1320
+D 8-Bit I/O Expander with I²C Interface (SSOP)
+K IO Expander I²C IIC I2C
+F http://ww1.microchip.com/downloads/en/DeviceDoc/21919e.pdf
+$ENDCMP
+#
+$CMP ENC28J60-C_SS
 D ENC28J60 Single Chip Ethernet Interface, SSOP-28
 K ENC Ethernet
 F http://ww1.microchip.com/downloads/en/devicedoc/39662a.pdf
 $ENDCMP
 #
-$CMP ENC28J60-I/ML
+$CMP ENC28J60-I_ML
 D ENC28J60 Single Chip Ethernet Interface, QFN-28+EP
 K ENC Ethernet
 F http://ww1.microchip.com/downloads/en/devicedoc/39662a.pdf
 $ENDCMP
 #
-$CMP ENC28J60-I/SO
+$CMP ENC28J60-I_SO
 D ENC28J60 Single Chip Ethernet Interface, SOIC-28
 K ENC Ethernet
 F http://ww1.microchip.com/downloads/en/devicedoc/39662a.pdf
 $ENDCMP
 #
-$CMP ENC28J60-I/SP
+$CMP ENC28J60-I_SP
 D ENC28J60 Single Chip Ethernet Interface, PDIP-28
 K ENC Ethernet
 F http://ww1.microchip.com/downloads/en/devicedoc/39662a.pdf
@@ -42,37 +48,37 @@ K ETH PHY RMII
 F http://ww1.microchip.com/downloads/en/DeviceDoc/8720a.pdf
 $ENDCMP
 #
-$CMP MCP2050-330-E/MQ
+$CMP MCP2050-330-E_MQ
 D LIN Transceiver with Voltage Regulator, 3.3V, QFN
 K LIN transceiver regulator
 F http://ww1.microchip.com/downloads/en/DeviceDoc/22299B.pdf
 $ENDCMP
 #
-$CMP MCP2050-330-E/P
+$CMP MCP2050-330-E_P
 D LIN Transceiver with Voltage Regulator, 3.3V, PDIP
 K LIN transceiver regulator
 F http://ww1.microchip.com/downloads/en/DeviceDoc/22299B.pdf
 $ENDCMP
 #
-$CMP MCP2050-330-E/SL
+$CMP MCP2050-330-E_SL
 D LIN Transceiver with Voltage Regulator, 3.3V, SOIC
 K LIN transceiver regulator
 F http://ww1.microchip.com/downloads/en/DeviceDoc/22299B.pdf
 $ENDCMP
 #
-$CMP MCP2050-500-E/MQ
+$CMP MCP2050-500-E_MQ
 D LIN Transceiver with Voltage Regulator, 5V, QFN
 K LIN transceiver regulator
 F http://ww1.microchip.com/downloads/en/DeviceDoc/22299B.pdf
 $ENDCMP
 #
-$CMP MCP2050-500-E/P
+$CMP MCP2050-500-E_P
 D LIN Transceiver with Voltage Regulator, 5V, PDIP
 K LIN transceiver regulator
 F http://ww1.microchip.com/downloads/en/DeviceDoc/22299B.pdf
 $ENDCMP
 #
-$CMP MCP2050-500-E/SL
+$CMP MCP2050-500-E_SL
 D LIN Transceiver with Voltage Regulator, 5V, SOIC
 K LIN transceiver regulator
 F http://ww1.microchip.com/downloads/en/DeviceDoc/22299B.pdf
@@ -120,13 +126,13 @@ K IO Expander SPI
 F http://ww1.microchip.com/downloads/en/DeviceDoc/20001952C.pdf
 $ENDCMP
 #
-$CMP MCP2515-E/ST
+$CMP MCP2515-E_ST
 D Stand-Alone CAN Controller with SPI Interface, TSSOP-20, Extended temperature range
 K CAN Controller SPI
 F http://ww1.microchip.com/downloads/en/DeviceDoc/21801e.pdf
 $ENDCMP
 #
-$CMP MCP2515-I/ST
+$CMP MCP2515-I_ST
 D Stand-Alone CAN Controller with SPI Interface, TSSOP-20, Industrial temperature range
 K CAN Controller SPI
 F http://ww1.microchip.com/downloads/en/DeviceDoc/21801e.pdf
