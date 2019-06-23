@@ -5,7 +5,7 @@ export VERSION := V0.6
 OUTPUT_TEST = $(NAME)$(VERSION).TEST.hex
 OUTPUT_CALIBRATION = $(NAME)$(VERSION).CALIBRATION.hex
 OUTPUT = $(NAME)$(VERSION).hex
-export LKR_DIR =/usr/share/gputils/lkr/
+export LKR_DIR =./
 export SCRIPT = $(LKR_DIR)$(PROCESSOR)_g.lkr
 INC_DIR = -I../src/sw/inc/
 
