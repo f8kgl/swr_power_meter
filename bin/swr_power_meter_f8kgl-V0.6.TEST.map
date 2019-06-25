@@ -1,0 +1,310 @@
+gplink-1.5.0 #1285 (Sep 12 2016)
+Map File - Created 6-22-2019  21:42:40
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+.config_300001_MAIN.TEST.O    romdata   0x300001    program   0x000001
+.config_300002_MAIN.TEST.O    romdata   0x300002    program   0x000001
+.config_300003_MAIN.TEST.O    romdata   0x300003    program   0x000001
+.config_300005_MAIN.TEST.O    romdata   0x300005    program   0x000001
+.config_300006_MAIN.TEST.O    romdata   0x300006    program   0x000001
+                    .code       code   0x000000    program   0x000cc2
+                    s_eep       code   0xf00000    program   0x000005
+                   .udata      udata   0x000080       data   0x000020
+
+
+
+                              Program Memory Usage
+                               Start         End
+                           ---------   ---------
+                            0x000000    0x000cc1
+                            0x300001    0x300001
+                            0x300002    0x300002
+                            0x300003    0x300003
+                            0x300005    0x300005
+                            0x300006    0x300006
+                            0xf00000    0xf00004
+                            3276 program addresses used
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File
+                ---------  ---------  ---------  --------- ---------
+                   D160us   0x000904    program     static driver.asm
+                    Del01   0x000936    program     static driver.asm
+                    Del05   0x000930    program     static driver.asm
+                   Del100   0x00091e    program     static driver.asm
+                    Del20   0x00092a    program     static driver.asm
+                   Del200   0x000918    program     static driver.asm
+                   Del255   0x000912    program     static driver.asm
+                    Del50   0x000924    program     static driver.asm
+                    Del_0   0x000942    program     static driver.asm
+                     Init   0x000004    program     static main.asm
+                  Pulse_e   0x0008fa    program     static driver.asm
+            _.code_000012   0x00090c    program     static driver.asm
+            _.code_000014   0x00090e    program     static driver.asm
+            _.code_00004A   0x000944    program     static driver.asm
+            _.code_00004C   0x000946    program     static driver.asm
+            _.code_000052   0x000c42    program     static adc_pic.asm
+            _.code_000054   0x000c44    program     static adc_pic.asm
+            _.code_0000A0   0x0000a0    program     static main.asm
+            _.code_0000A2   0x0000a2    program     static main.asm
+           _adc_readAN0_2   0x000c04    program     static adc_pic.asm
+           _adc_readAN0_3   0x000c06    program     static adc_pic.asm
+           _adc_readAN0_4   0x000c0a    program     static adc_pic.asm
+           _adc_readAN0_5   0x000c0c    program     static adc_pic.asm
+           _adc_readAN1_2   0x000c22    program     static adc_pic.asm
+           _adc_readAN1_3   0x000c24    program     static adc_pic.asm
+           _adc_readAN1_4   0x000c28    program     static adc_pic.asm
+           _adc_readAN1_5   0x000c2a    program     static adc_pic.asm
+           _adc_tempo20us   0x000c3a    program     static adc_pic.asm
+        _f_flh_readword_3   0x000ca8    program     static driver.asm
+        _f_flh_readword_4   0x000caa    program     static driver.asm
+      _f_lcd_aff_adcmV_12   0x000bb6    program     static aff.asm
+      _f_lcd_aff_adcmV_15   0x000bc4    program     static aff.asm
+      _f_lcd_aff_adcmV_16   0x000bc8    program     static aff.asm
+       _f_lcd_aff_adcmV_4   0x000b9a    program     static aff.asm
+       _f_lcd_aff_adcmV_5   0x000b9e    program     static aff.asm
+           _f_lcd_affhexa   0x000b30    program     static aff.asm
+       _f_lcd_convtobcd_1   0x0009f4    program     static driver.asm
+           _f_lcd_sendcmd   0x000956    program     static driver.asm
+   _lcd_aff_fwd_and_ref_2   0x000af0    program     static aff.asm
+   _lcd_aff_fwd_and_ref_3   0x000b0a    program     static aff.asm
+   _lcd_aff_fwd_and_ref_4   0x000b10    program     static aff.asm
+   _lcd_aff_fwd_and_ref_5   0x000b14    program     static aff.asm
+   _lcd_aff_fwd_and_ref_6   0x000b2e    program     static aff.asm
+           _lcd_affadc_10   0x000b6c    program     static aff.asm
+           _lcd_affadc_11   0x000b72    program     static aff.asm
+           _lcd_affadc_12   0x000b74    program     static aff.asm
+           _lcd_affadc_13   0x000b78    program     static aff.asm
+           _lcd_affadc_14   0x000b7a    program     static aff.asm
+           _lcd_affadc_15   0x000b7e    program     static aff.asm
+           _lcd_affadc_16   0x000b80    program     static aff.asm
+           _lcd_affadc_17   0x000b84    program     static aff.asm
+           _lcd_affadc_18   0x000b86    program     static aff.asm
+            _lcd_affadc_2   0x000b52    program     static aff.asm
+            _lcd_affadc_3   0x000b54    program     static aff.asm
+            _lcd_affadc_4   0x000b5a    program     static aff.asm
+            _lcd_affadc_5   0x000b5c    program     static aff.asm
+            _lcd_affadc_6   0x000b60    program     static aff.asm
+            _lcd_affadc_7   0x000b62    program     static aff.asm
+            _lcd_affadc_8   0x000b66    program     static aff.asm
+            _lcd_affadc_9   0x000b68    program     static aff.asm
+           _lcd_affboot_2   0x000a8a    program     static aff.asm
+           _lcd_affboot_3   0x000aa4    program     static aff.asm
+           _lcd_affboot_4   0x000aaa    program     static aff.asm
+           _lcd_affboot_5   0x000aae    program     static aff.asm
+           _lcd_affboot_6   0x000ac8    program     static aff.asm
+           _lcd_affboot_7   0x000ace    program     static aff.asm
+           _lcd_affboot_8   0x000ad2    program     static aff.asm
+           _lcd_affboot_9   0x000aea    program     static aff.asm
+           _lcd_affhexa_2   0x000b32    program     static aff.asm
+           _lcd_affhexa_3   0x000b34    program     static aff.asm
+           _lcd_affhexa_4   0x000b36    program     static aff.asm
+           _lcd_affhexa_5   0x000b3a    program     static aff.asm
+           _lcd_affhexa_6   0x000b3e    program     static aff.asm
+           _lcd_affhexa_7   0x000b42    program     static aff.asm
+           _lcd_affhexa_8   0x000b46    program     static aff.asm
+        _lcd_setposcursor   0x0009a8    program     static driver.asm
+  _lcd_setposcursor_error   0x0009ac    program     static driver.asm
+  _lcd_setposcursor_testZ   0x000992    program     static driver.asm
+          _setposcursorL1   0x00099c    program     static driver.asm
+          _setposcursorL2   0x0009a4    program     static driver.asm
+              c_bootmsgL1   0x0000b2    program     extern ../src/sw/data/lcdmsg.asm
+              c_bootmsgL2   0x0000d4    program     extern ../src/sw/data/lcdmsg.asm
+c_data_adc_theoric_caltable   0x0000fa    program     extern ../src/sw/data/adc_theoric_cal.asm
+c_data_adc_theoric_caltable_end   0x0008fa    program     static ../src/sw/data/adc_theoric_cal.asm
+              c_testmsgL1   0x0000e2    program     extern ../src/sw/data/lcdmsg.asm
+              c_testmsgL2   0x0000ee    program     extern ../src/sw/data/lcdmsg.asm
+                       d0   0x000938    program     static driver.asm
+                       d1   0x00093a    program     static driver.asm
+                    delay   0x00009e    program     static main.asm
+                   delay1   0x000096    program     static main.asm
+              delay_250ms   0x00008e    program     static main.asm
+               f_adc_init   0x000bf0    program     extern adc_pic.asm
+            f_adc_readAN0   0x000bfe    program     extern adc_pic.asm
+            f_adc_readAN1   0x000c1c    program     extern adc_pic.asm
+             f_calc_adcmV   0x000c48    program     extern calc.asm
+           f_calc_adcmV_6   0x000c72    program     static calc.asm
+           f_eep_readbyte   0x000be2    program     extern driver.asm
+           f_flh_readword   0x000c9e    program     extern driver.asm
+          f_lcd_aff_adcmV   0x000b8c    program     extern aff.asm
+    f_lcd_aff_fwd_and_ref   0x000aec    program     extern aff.asm
+             f_lcd_affadc   0x000b4c    program     extern aff.asm
+            f_lcd_affboot   0x000a86    program     extern aff.asm
+            f_lcd_affchar   0x000a68    program     extern driver.asm
+              f_lcd_clear   0x0009ae    program     extern driver.asm
+        f_lcd_convtoascii   0x0009be    program     extern driver.asm
+          f_lcd_convtobcd   0x0009ea    program     extern driver.asm
+               f_lcd_init   0x000a10    program     extern driver.asm
+           f_lcd_setposL2   0x0009b6    program     static driver.asm
+       f_lcd_setposcursor   0x00097e    program     extern driver.asm
+             f_tempo_boot   0x000064    program     static main.asm
+                test_loop   0x00004c    program     static main.asm
+                 v_adcfwd   0x000092       data     extern adc_pic.asm
+              v_adcfwd_mV   0x00009b       data     extern calc.asm
+                 v_adcref   0x000094       data     extern adc_pic.asm
+              v_adcref_mV   0x00009d       data     extern calc.asm
+                    v_bcd   0x00008c       data     extern aff.asm
+                v_calctmp   0x00009f       data     static calc.asm
+                v_charpos   0x00008f       data     static aff.asm
+                  v_count   0x000089       data     static driver.asm
+                  v_delay   0x000096       data     static adc_pic.asm
+        v_flh_offset_addr   0x000097       data     extern calc.asm
+               v_flh_read   0x000099       data     extern calc.asm
+           v_hexa_to_conv   0x00008a       data     extern aff.asm
+               v_lcd_wtmp   0x000091       data     static aff.asm
+             v_mode_calib   0x000083       data     static main.asm
+              v_poscursor   0x000088       data     static driver.asm
+                   v_temp   0x000087       data     static driver.asm
+                  v_timer   0x000084       data     static driver.asm
+                 v_timer0   0x000080       data     static main.asm
+                 v_timer1   0x000081       data     static main.asm
+                 v_timer2   0x000082       data     static main.asm
+                 v_timerA   0x000085       data     static driver.asm
+                 v_timerB   0x000086       data     static driver.asm
+                    v_tmp   0x000090       data     static aff.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File
+                ---------  ---------  ---------  --------- ---------
+                     Init   0x000004    program     static main.asm
+                test_loop   0x00004c    program     static main.asm
+             f_tempo_boot   0x000064    program     static main.asm
+                 v_timer0   0x000080       data     static main.asm
+                 v_timer1   0x000081       data     static main.asm
+                 v_timer2   0x000082       data     static main.asm
+             v_mode_calib   0x000083       data     static main.asm
+                  v_timer   0x000084       data     static driver.asm
+                 v_timerA   0x000085       data     static driver.asm
+                 v_timerB   0x000086       data     static driver.asm
+                   v_temp   0x000087       data     static driver.asm
+              v_poscursor   0x000088       data     static driver.asm
+                  v_count   0x000089       data     static driver.asm
+           v_hexa_to_conv   0x00008a       data     extern aff.asm
+                    v_bcd   0x00008c       data     extern aff.asm
+              delay_250ms   0x00008e    program     static main.asm
+                v_charpos   0x00008f       data     static aff.asm
+                    v_tmp   0x000090       data     static aff.asm
+               v_lcd_wtmp   0x000091       data     static aff.asm
+                 v_adcfwd   0x000092       data     extern adc_pic.asm
+                 v_adcref   0x000094       data     extern adc_pic.asm
+                  v_delay   0x000096       data     static adc_pic.asm
+                   delay1   0x000096    program     static main.asm
+        v_flh_offset_addr   0x000097       data     extern calc.asm
+               v_flh_read   0x000099       data     extern calc.asm
+              v_adcfwd_mV   0x00009b       data     extern calc.asm
+              v_adcref_mV   0x00009d       data     extern calc.asm
+                    delay   0x00009e    program     static main.asm
+                v_calctmp   0x00009f       data     static calc.asm
+            _.code_0000A0   0x0000a0    program     static main.asm
+            _.code_0000A2   0x0000a2    program     static main.asm
+              c_bootmsgL1   0x0000b2    program     extern ../src/sw/data/lcdmsg.asm
+              c_bootmsgL2   0x0000d4    program     extern ../src/sw/data/lcdmsg.asm
+              c_testmsgL1   0x0000e2    program     extern ../src/sw/data/lcdmsg.asm
+              c_testmsgL2   0x0000ee    program     extern ../src/sw/data/lcdmsg.asm
+c_data_adc_theoric_caltable   0x0000fa    program     extern ../src/sw/data/adc_theoric_cal.asm
+c_data_adc_theoric_caltable_end   0x0008fa    program     static ../src/sw/data/adc_theoric_cal.asm
+                  Pulse_e   0x0008fa    program     static driver.asm
+                   D160us   0x000904    program     static driver.asm
+            _.code_000012   0x00090c    program     static driver.asm
+            _.code_000014   0x00090e    program     static driver.asm
+                   Del255   0x000912    program     static driver.asm
+                   Del200   0x000918    program     static driver.asm
+                   Del100   0x00091e    program     static driver.asm
+                    Del50   0x000924    program     static driver.asm
+                    Del20   0x00092a    program     static driver.asm
+                    Del05   0x000930    program     static driver.asm
+                    Del01   0x000936    program     static driver.asm
+                       d0   0x000938    program     static driver.asm
+                       d1   0x00093a    program     static driver.asm
+                    Del_0   0x000942    program     static driver.asm
+            _.code_00004A   0x000944    program     static driver.asm
+            _.code_00004C   0x000946    program     static driver.asm
+           _f_lcd_sendcmd   0x000956    program     static driver.asm
+       f_lcd_setposcursor   0x00097e    program     extern driver.asm
+  _lcd_setposcursor_testZ   0x000992    program     static driver.asm
+          _setposcursorL1   0x00099c    program     static driver.asm
+          _setposcursorL2   0x0009a4    program     static driver.asm
+        _lcd_setposcursor   0x0009a8    program     static driver.asm
+  _lcd_setposcursor_error   0x0009ac    program     static driver.asm
+              f_lcd_clear   0x0009ae    program     extern driver.asm
+           f_lcd_setposL2   0x0009b6    program     static driver.asm
+        f_lcd_convtoascii   0x0009be    program     extern driver.asm
+          f_lcd_convtobcd   0x0009ea    program     extern driver.asm
+       _f_lcd_convtobcd_1   0x0009f4    program     static driver.asm
+               f_lcd_init   0x000a10    program     extern driver.asm
+            f_lcd_affchar   0x000a68    program     extern driver.asm
+            f_lcd_affboot   0x000a86    program     extern aff.asm
+           _lcd_affboot_2   0x000a8a    program     static aff.asm
+           _lcd_affboot_3   0x000aa4    program     static aff.asm
+           _lcd_affboot_4   0x000aaa    program     static aff.asm
+           _lcd_affboot_5   0x000aae    program     static aff.asm
+           _lcd_affboot_6   0x000ac8    program     static aff.asm
+           _lcd_affboot_7   0x000ace    program     static aff.asm
+           _lcd_affboot_8   0x000ad2    program     static aff.asm
+           _lcd_affboot_9   0x000aea    program     static aff.asm
+    f_lcd_aff_fwd_and_ref   0x000aec    program     extern aff.asm
+   _lcd_aff_fwd_and_ref_2   0x000af0    program     static aff.asm
+   _lcd_aff_fwd_and_ref_3   0x000b0a    program     static aff.asm
+   _lcd_aff_fwd_and_ref_4   0x000b10    program     static aff.asm
+   _lcd_aff_fwd_and_ref_5   0x000b14    program     static aff.asm
+   _lcd_aff_fwd_and_ref_6   0x000b2e    program     static aff.asm
+           _f_lcd_affhexa   0x000b30    program     static aff.asm
+           _lcd_affhexa_2   0x000b32    program     static aff.asm
+           _lcd_affhexa_3   0x000b34    program     static aff.asm
+           _lcd_affhexa_4   0x000b36    program     static aff.asm
+           _lcd_affhexa_5   0x000b3a    program     static aff.asm
+           _lcd_affhexa_6   0x000b3e    program     static aff.asm
+           _lcd_affhexa_7   0x000b42    program     static aff.asm
+           _lcd_affhexa_8   0x000b46    program     static aff.asm
+             f_lcd_affadc   0x000b4c    program     extern aff.asm
+            _lcd_affadc_2   0x000b52    program     static aff.asm
+            _lcd_affadc_3   0x000b54    program     static aff.asm
+            _lcd_affadc_4   0x000b5a    program     static aff.asm
+            _lcd_affadc_5   0x000b5c    program     static aff.asm
+            _lcd_affadc_6   0x000b60    program     static aff.asm
+            _lcd_affadc_7   0x000b62    program     static aff.asm
+            _lcd_affadc_8   0x000b66    program     static aff.asm
+            _lcd_affadc_9   0x000b68    program     static aff.asm
+           _lcd_affadc_10   0x000b6c    program     static aff.asm
+           _lcd_affadc_11   0x000b72    program     static aff.asm
+           _lcd_affadc_12   0x000b74    program     static aff.asm
+           _lcd_affadc_13   0x000b78    program     static aff.asm
+           _lcd_affadc_14   0x000b7a    program     static aff.asm
+           _lcd_affadc_15   0x000b7e    program     static aff.asm
+           _lcd_affadc_16   0x000b80    program     static aff.asm
+           _lcd_affadc_17   0x000b84    program     static aff.asm
+           _lcd_affadc_18   0x000b86    program     static aff.asm
+          f_lcd_aff_adcmV   0x000b8c    program     extern aff.asm
+       _f_lcd_aff_adcmV_4   0x000b9a    program     static aff.asm
+       _f_lcd_aff_adcmV_5   0x000b9e    program     static aff.asm
+      _f_lcd_aff_adcmV_12   0x000bb6    program     static aff.asm
+      _f_lcd_aff_adcmV_15   0x000bc4    program     static aff.asm
+      _f_lcd_aff_adcmV_16   0x000bc8    program     static aff.asm
+           f_eep_readbyte   0x000be2    program     extern driver.asm
+               f_adc_init   0x000bf0    program     extern adc_pic.asm
+            f_adc_readAN0   0x000bfe    program     extern adc_pic.asm
+           _adc_readAN0_2   0x000c04    program     static adc_pic.asm
+           _adc_readAN0_3   0x000c06    program     static adc_pic.asm
+           _adc_readAN0_4   0x000c0a    program     static adc_pic.asm
+           _adc_readAN0_5   0x000c0c    program     static adc_pic.asm
+            f_adc_readAN1   0x000c1c    program     extern adc_pic.asm
+           _adc_readAN1_2   0x000c22    program     static adc_pic.asm
+           _adc_readAN1_3   0x000c24    program     static adc_pic.asm
+           _adc_readAN1_4   0x000c28    program     static adc_pic.asm
+           _adc_readAN1_5   0x000c2a    program     static adc_pic.asm
+           _adc_tempo20us   0x000c3a    program     static adc_pic.asm
+            _.code_000052   0x000c42    program     static adc_pic.asm
+            _.code_000054   0x000c44    program     static adc_pic.asm
+             f_calc_adcmV   0x000c48    program     extern calc.asm
+           f_calc_adcmV_6   0x000c72    program     static calc.asm
+           f_flh_readword   0x000c9e    program     extern driver.asm
+        _f_flh_readword_3   0x000ca8    program     static driver.asm
+        _f_flh_readword_4   0x000caa    program     static driver.asm
+
+
