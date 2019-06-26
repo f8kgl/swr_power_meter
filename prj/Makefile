@@ -1,3 +1,10 @@
+#Détermine l'OS sur lequel est compilé le firmware
+ifeq ($(OS),Windows_NT) 
+    detected_OS := Windows
+else
+    detected_OS := $(shell sh -c 'uname 2>/dev/null || echo Unknown')
+endif
+
 #Variables
 NAME = swr_power_meter_f8kgl-
 export PROCESSOR = 18f1320
@@ -5,7 +12,11 @@ export VERSION := V0.6
 OUTPUT_TEST = $(NAME)$(VERSION).TEST.hex
 OUTPUT_CALIBRATION = $(NAME)$(VERSION).CALIBRATION.hex
 OUTPUT = $(NAME)$(VERSION).hex
+ifeq ($(detected_OS),Linux)
+export LKR_DIR =/usr/share/gputils/lkr/
+else
 export LKR_DIR =./
+endif
 export SCRIPT = $(LKR_DIR)$(PROCESSOR)_g.lkr
 INC_DIR = -I../src/sw/inc/
 
