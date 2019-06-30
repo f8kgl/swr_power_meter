@@ -1,0 +1,50 @@
+<Qucs Schematic 0.0.20>
+<Properties>
+  <View=-19,2,2094,3197,0.564478,0,503>
+  <Grid=10,10,0>
+  <DataSet=SWR_POWER_METER_F8KGL_detecteur.dat>
+  <DataDisplay=SWR_POWER_METER_F8KGL_detecteur.sch>
+  <OpenDisplay=1>
+  <Script=SWR_POWER_METER_F8KGL_detecteur.m>
+  <RunScript=0>
+  <showFrame=0>
+  <FrameText0=Titre>
+  <FrameText1=Auteur :>
+  <FrameText2=Date :>
+  <FrameText3=Version :>
+</Properties>
+<Symbol>
+  <.ID -20 -16 SUB>
+  <Line -20 20 40 0 #000080 2 1>
+  <Line 20 20 0 -40 #000080 2 1>
+  <Line -20 -20 40 0 #000080 2 1>
+  <Line -20 20 0 -40 #000080 2 1>
+</Symbol>
+<Components>
+</Components>
+<Wires>
+</Wires>
+<Diagrams>
+  <Rect 80 447 643 407 3 #c0c0c0 1 00 1 0 5e-10 5e-09 1 -8.48528 2 8.48528 1 -1 0.2 1 315 0 225 "" "" "" "">
+	<"Output.Vt" #0000ff 0 3 0 0 0>
+	<"Input.Vt" #ff0000 0 3 0 0 0>
+  </Rect>
+  <Rect 80 927 643 407 3 #c0c0c0 1 00 0 9e-08 5e-10 1e-07 1 -8.48528 2 8.48528 1 -1 0.2 1 315 0 225 "" "" "" "">
+	<"Output.Vt" #0000ff 0 3 0 0 0>
+	<"Input.Vt" #ff0000 0 3 0 0 0>
+  </Rect>
+  <Rect 810 464 1040 394 3 #c0c0c0 1 00 1 0 5e-07 1e-05 1 -0.0005 0.0005 0.002 1 -1 0.2 1 315 0 225 "" "" "" "">
+	<"Output.Vt" #0000ff 0 3 0 0 0>
+  </Rect>
+  <Rect 70 2080 1882 1110 3 #c0c0c0 1 00 0 9e-06 5e-07 1e-05 1 -0.668322 1 7.35154 1 -1 0.2 1 315 0 225 "" "" "" "">
+	<"Output.Vt" #0000ff 0 3 0 0 0>
+	  <Mkr 9.50195e-06/-7.5 1015 -76 3 0 0>
+	  <Mkr 9.50795e-06/-0.5 1026 -170 3 0 0>
+	  <Mkr 9.51395e-06/13.5 1007 -409 3 0 0>
+	  <Mkr 9.51595e-06/6.5 1021 -246 3 0 0>
+	  <Mkr 9.51395e-06/27.5 1027 -1099 3 0 0>
+	  <Mkr 9.50295e-06/20.5 1007 -581 3 0 0>
+  </Rect>
+</Diagrams>
+<Paintings>
+</Paintings>

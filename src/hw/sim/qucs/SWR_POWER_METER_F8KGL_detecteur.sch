@@ -1,0 +1,51 @@
+<Qucs Schematic 0.0.20>
+<Properties>
+  <View=0,-94,1441,686,0.826447,0,0>
+  <Grid=10,10,1>
+  <DataSet=SWR_POWER_METER_F8KGL_detecteur.dat>
+  <DataDisplay=SWR_POWER_METER_F8KGL_detecteur.dpl>
+  <OpenDisplay=1>
+  <Script=SWR_POWER_METER_F8KGL_detecteur.m>
+  <RunScript=0>
+  <showFrame=0>
+  <FrameText0=Titre>
+  <FrameText1=Auteur :>
+  <FrameText2=Date :>
+  <FrameText3=Version :>
+</Properties>
+<Symbol>
+  <.ID -20 -16 SUB>
+  <Line -20 20 40 0 #000080 2 1>
+  <Line 20 20 0 -40 #000080 2 1>
+  <Line -20 -20 40 0 #000080 2 1>
+  <Line -20 20 0 -40 #000080 2 1>
+</Symbol>
+<Components>
+  <GND * 5 660 260 0 0 0 0>
+  <GND * 5 560 260 0 0 0 0>
+  <.SW SW1 0 870 270 0 73 0 0 "TR1" 1 "lin" 1 "freq" 1 "1MHz" 1 "100MHz" 1 "10" 1>
+  <Eqn Eqn1 1 900 570 -30 16 0 0 "Pout_dBm=10*log10(1000*((Output.Vt^2)/50))" 1 "Vin=sqrt(50*(0.001*10^(Pin_dBm/10)))" 1 "yes" 0>
+  <Eqn Eqn2 1 900 490 -30 16 0 0 "freq=500*10^6" 1 "yes" 0>
+  <C C1 1 560 210 17 -26 0 1 "1nF" 1 "" 0 "neutral" 0>
+  <.TR TR1 1 880 100 0 73 0 0 "lin" 1 "0" 1 "10u" 1 "10000" 0 "Trapezoidal" 0 "2" 0 "1 ns" 0 "1e-16" 0 "150" 0 "0.001" 0 "1 pA" 0 "1 uV" 0 "26.85" 0 "1e-3" 0 "1e-6" 0 "1" 0 "CroutLU" 0 "no" 0 "yes" 0 "0" 0>
+  <Eqn Eqn3 0 1050 490 -30 16 0 0 "Pin_dBm=30" 1 "yes" 0>
+  <Diode BAS70_1 1 500 160 -26 -32 0 2 "3.22e-09" 0 "1.018" 0 "1.655e-12" 0 "0.3583" 0 "0.349" 0 "0.5" 0 "0" 0 "0" 0 "2" 0 "20.89" 0 "0" 0 "0" 0 "0" 0 "1" 0 "1" 0 "77" 0 "1.67e-07" 0 "26.85" 0 "2" 0 "0.69" 0 "0" 0 "0" 0 "0" 0 "0" 0 "0" 0 "0" 0 "26.85" 0 "1.0" 0 "normal" 0>
+  <Vac V1 1 420 190 18 -26 0 1 "Vin" 1 "freq" 0 "0" 0 "0" 0>
+  <GND * 5 420 260 0 0 0 0>
+  <.SW SW2 1 1010 270 0 73 0 0 "TR1" 1 "lin" 1 "Pin_dBm" 1 "-7.5" 1 "27.5" 1 "6" 1>
+  <R R1 1 660 210 15 -26 0 1 "1k Ohm" 1 "26.85" 0 "0.0" 0 "0.0" 0 "26.85" 0 "european" 0>
+</Components>
+<Wires>
+  <660 160 660 180 "" 0 0 0 "">
+  <660 240 660 260 "" 0 0 0 "">
+  <560 160 660 160 "Output" 670 130 76 "">
+  <560 160 560 180 "" 0 0 0 "">
+  <560 240 560 260 "" 0 0 0 "">
+  <530 160 560 160 "" 0 0 0 "">
+  <420 160 470 160 "Input" 480 110 0 "">
+  <420 220 420 260 "" 0 0 0 "">
+</Wires>
+<Diagrams>
+</Diagrams>
+<Paintings>
+</Paintings>
