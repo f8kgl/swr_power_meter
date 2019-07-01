@@ -1,0 +1,73 @@
+<Qucs Schematic 0.0.20>
+<Properties>
+  <View=43,-120,7508,1135,0.620922,2802,0>
+  <Grid=10,10,0>
+  <DataSet=SWR_POWER_METER_F8KGL_etude_coupleur_directif.dat>
+  <DataDisplay=SWR_POWER_METER_F8KGL_etude_coupleur_directif.sch>
+  <OpenDisplay=1>
+  <Script=SWR_POWER_METER_F8KGL_etude_coupleur_directif.m>
+  <RunScript=0>
+  <showFrame=0>
+  <FrameText0=Titre>
+  <FrameText1=Auteur :>
+  <FrameText2=Date :>
+  <FrameText3=Version :>
+</Properties>
+<Symbol>
+</Symbol>
+<Components>
+</Components>
+<Wires>
+</Wires>
+<Diagrams>
+  <Rect 180 487 721 407 3 #c0c0c0 1 00 1 2e+08 2e+08 4.2e+09 0 -50 10 10 1 -1 0.2 1 315 0 225 "Freq" "" "" "">
+	<"through" #0000ff 2 3 0 0 0>
+	<"reflect" #ff0000 2 3 0 0 0>
+	<"isolated" #ff00ff 2 3 0 0 0>
+	<"coupled" #00ff00 2 3 0 0 0>
+  </Rect>
+  <Rect 180 935 711 405 3 #c0c0c0 1 00 1 0 0.2 1 1 -0.1 0.5 1.1 1 -0.1 0.5 1.1 315 0 225 "Freq" "" "" "">
+	<"ndcoupled" #0000ff 0 3 0 0 0>
+	<"ndisolated" #ff0000 0 3 0 0 0>
+	<"ndreflect" #ff00ff 0 3 0 0 0>
+	<"ndthrough" #00ff00 0 3 0 0 0>
+  </Rect>
+  <Rect 5870 517 721 407 3 #c0c0c0 1 00 0 4.3e+08 1e+06 4.4e+08 1 -50 10 10 1 -1 0.2 1 315 0 225 "Freq" "" "" "">
+	<"through" #0000ff 2 3 0 0 0>
+	<"reflect" #ff0000 2 3 0 0 0>
+	<"isolated" #ff00ff 2 3 0 0 0>
+	<"coupled" #00ff00 2 3 0 0 0>
+  </Rect>
+  <Rect 4980 527 721 407 3 #c0c0c0 1 00 0 1.44e+08 500000 1.46e+08 1 -50 10 10 1 -1 0.2 1 315 0 225 "Freq" "" "" "">
+	<"through" #0000ff 2 3 0 0 0>
+	<"reflect" #ff0000 2 3 0 0 0>
+	<"isolated" #ff00ff 2 3 0 0 0>
+	<"coupled" #00ff00 2 3 0 0 0>
+  </Rect>
+  <Rect 4110 547 721 407 3 #c0c0c0 1 00 0 5e+07 500000 5.5e+07 1 -50 10 10 1 -1 0.2 1 315 0 225 "Freq" "" "" "">
+	<"through" #0000ff 2 3 0 0 0>
+	<"reflect" #ff0000 2 3 0 0 0>
+	<"isolated" #ff00ff 2 3 0 0 0>
+	<"coupled" #00ff00 2 3 0 0 0>
+  </Rect>
+  <Rect 3260 567 721 407 3 #c0c0c0 1 00 0 2.7e+07 100000 3e+07 1 -50 10 10 1 -1 0.2 1 315 0 225 "Freq" "" "" "">
+	<"through" #0000ff 2 3 0 0 0>
+	<"reflect" #ff0000 2 3 0 0 0>
+	<"isolated" #ff00ff 2 3 0 0 0>
+	<"coupled" #00ff00 2 3 0 0 0>
+  </Rect>
+  <Rect 2390 577 721 407 3 #c0c0c0 1 00 0 6.5e+06 100000 7.5e+06 1 -50 10 10 1 -1 0.2 1 315 0 225 "Freq" "" "" "">
+	<"through" #0000ff 2 3 0 0 0>
+	<"reflect" #ff0000 2 3 0 0 0>
+	<"isolated" #ff00ff 2 3 0 0 0>
+	<"coupled" #00ff00 2 3 0 0 0>
+  </Rect>
+  <Rect 1520 567 721 407 3 #c0c0c0 1 00 0 3e+06 100000 4e+06 1 -50 10 10 1 -1 0.2 1 315 0 225 "Freq" "" "" "">
+	<"through" #0000ff 2 3 0 0 0>
+	<"reflect" #ff0000 2 3 0 0 0>
+	<"isolated" #ff00ff 2 3 0 0 0>
+	<"coupled" #00ff00 2 3 0 0 0>
+  </Rect>
+</Diagrams>
+<Paintings>
+</Paintings>
