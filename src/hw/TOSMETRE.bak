@@ -37,17 +37,6 @@ F 3 "" H 3450 1100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GNDREF #PWR01
-U 1 1 5A343ADA
-P 7750 2300
-F 0 "#PWR01" H 7750 2050 50  0001 C CNN
-F 1 "GNDREF" H 7750 2150 50  0000 C CNN
-F 2 "" H 7750 2300 50  0001 C CNN
-F 3 "" H 7750 2300 50  0001 C CNN
-	1    7750 2300
-	0    1    1    0   
-$EndComp
-$Comp
 L Device:C C1
 U 1 1 5A3C3936
 P 2600 1400
@@ -101,17 +90,6 @@ F 2 "" H 2600 1650 50  0001 C CNN
 F 3 "" H 2600 1650 50  0001 C CNN
 	1    2600 1650
 	1    0    0    -1  
-$EndComp
-$Comp
-L Device:CP_Small C5
-U 1 1 5AA53058
-P 7950 2300
-F 0 "C5" H 7960 2370 50  0000 L CNN
-F 1 "CP_Small" H 7960 2220 50  0000 L CNN
-F 2 "Capacitor_SMD:C_1206_3216Metric" H 7950 2300 50  0001 C CNN
-F 3 "" H 7950 2300 50  0001 C CNN
-	1    7950 2300
-	0    1    1    0   
 $EndComp
 Text Notes 6450 4950 0    60   ~ 0
 FWD
@@ -186,8 +164,6 @@ Connection ~ 2600 1150
 Wire Wire Line
 	2600 1650 2600 1550
 Wire Wire Line
-	8150 1150 8150 2300
-Wire Wire Line
 	8250 5200 8150 5200
 Wire Wire Line
 	8250 4600 8250 5200
@@ -199,10 +175,6 @@ Wire Wire Line
 Wire Wire Line
 	4150 1550 4150 1650
 Wire Wire Line
-	8050 2300 8150 2300
-Wire Wire Line
-	7850 2300 7750 2300
-Wire Wire Line
 	10800 4000 10600 4000
 Wire Wire Line
 	4150 1250 4150 1150
@@ -213,7 +185,6 @@ Wire Wire Line
 	2600 1150 3150 1150
 Wire Wire Line
 	8150 5200 8150 5250
-Connection ~ 8150 2300
 $Comp
 L Connector:Conn_01x02_Male J2
 U 1 1 5CF58592
@@ -297,8 +268,6 @@ Wire Wire Line
 	8550 3350 8550 3600
 Wire Wire Line
 	8650 3450 8650 3600
-Wire Wire Line
-	8150 2300 8150 3150
 $Comp
 L Connector:Conn_01x04_Male J3
 U 1 1 5CFBE9AE
@@ -528,4 +497,35 @@ Wire Wire Line
 Connection ~ 9450 3350
 Wire Wire Line
 	9450 3350 10200 3350
+Connection ~ 8150 2300
+Wire Wire Line
+	8150 2300 8150 3150
+Wire Wire Line
+	8150 1150 8150 2300
+Wire Wire Line
+	7850 2300 7750 2300
+Wire Wire Line
+	8050 2300 8150 2300
+$Comp
+L Device:CP_Small C5
+U 1 1 5AA53058
+P 7950 2300
+F 0 "C5" H 7960 2370 50  0000 L CNN
+F 1 "CP_Small" H 7960 2220 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric" H 7950 2300 50  0001 C CNN
+F 3 "" H 7950 2300 50  0001 C CNN
+	1    7950 2300
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GNDREF #PWR01
+U 1 1 5A343ADA
+P 7750 2300
+F 0 "#PWR01" H 7750 2050 50  0001 C CNN
+F 1 "GNDREF" H 7750 2150 50  0000 C CNN
+F 2 "" H 7750 2300 50  0001 C CNN
+F 3 "" H 7750 2300 50  0001 C CNN
+	1    7750 2300
+	0    1    1    0   
+$EndComp
 $EndSCHEMATC
