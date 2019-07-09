@@ -1,5 +1,4 @@
 #Détermine l'OS sur lequel est compilé le firmware
-#test
 ifeq ($(OS),Windows_NT) 
     detected_OS := Windows
 else
