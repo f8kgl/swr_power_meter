@@ -528,15 +528,4 @@ F 3 "" H 7750 2300 50  0001 C CNN
 	1    7750 2300
 	0    1    1    0   
 $EndComp
-$Comp
-L 74xx:74CBTLV3257 U?
-U 1 1 5D20CC3D
-P 2900 5900
-F 0 "U?" H 2900 6242 50  0000 C CNN
-F 1 "74CBTLV3257" H 2900 6151 50  0000 C CNN
-F 2 "" H 2850 5900 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/sn74cbtlv3257.pdf" H 2850 5900 50  0001 C CNN
-	1    2900 5900
-	1    0    0    -1  
-$EndComp
 $EndSCHEMATC
