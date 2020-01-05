@@ -1,5 +1,5 @@
 #Détermine l'OS sur lequel est compilé le firmware
-ifeq ($(OS),Windows_NT) 
+ifeq ($(OS),Windows_NT)
     detected_OS := Windows
 else
     detected_OS := $(shell sh -c 'uname 2>/dev/null || echo Unknown')
@@ -13,7 +13,7 @@ OUTPUT_TEST = $(NAME)$(VERSION).TEST.hex
 OUTPUT_CALIBRATION = $(NAME)$(VERSION).CALIBRATION.hex
 OUTPUT = $(NAME)$(VERSION).hex
 ifeq ($(detected_OS),Linux)
-export LKR_DIR =/usr/share/gputils/lkr/
+export LKR_DIR =/usr/local/share/gputils/lkr/
 else
 export LKR_DIR =./
 endif
@@ -56,9 +56,9 @@ LIBS_CALIBRATION = $(COMPS:%=../bin/libcalib%.a)
 LIBS = $(COMPS:%=../bin/%.a)
 
 #Rules
-all : $(OUTPUT_TEST)
+all : project $(OUTPUT_TEST)
 
-rule_test : $(OUTPUT_TEST)
+rule_test : project $(OUTPUT_TEST)
 
 #Règle du firmware de test
 $(OUTPUT_TEST) : $(OBJS_TEST) $(LIBS_TEST)
@@ -71,7 +71,7 @@ $(OUTPUT_TEST) : $(OBJS_TEST) $(LIBS_TEST)
 ../bin/libtest%.a:
 	make -C $(@:../bin/libtest%.a=../src/sw/%)
 
-#Règle d’un objet de test issus des sources commun à tous les firmware 
+#Règle d’un objet de test issus des sources commun à tous les firmware
 %.TEST.o : %.asm
 	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
 
@@ -86,3 +86,5 @@ clean:
 	rm -f ../src/sw/data/*.o
 	rm -f ../src/sw/data/*.lst
 
+project:
+	mkdir -p ../bin
