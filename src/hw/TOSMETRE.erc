@@ -1,0 +1,39 @@
+Rapport d'erreur (lun. 09 mars 2020 20:52:09 CET, Encodage UTF8 )
+
+***** Feuille /
+ErrType(3): Pin connectée à d'autres pins, mais aucune pin pour la piloter
+    @(140,39 mm, 65,25 mm): Pin 1 (Power input) du composant #PWR0101 non pilotée (Net 2).
+ErrType(3): Pin connectée à d'autres pins, mais aucune pin pour la piloter
+    @(196,85 mm, 116,84 mm): Pin 1 (Entrée) du composant U1 non pilotée (Net 3).
+ErrType(3): Pin connectée à d'autres pins, mais aucune pin pour la piloter
+    @(80,01 mm, 29,21 mm): Pin 1 (Power input) du composant U2 non pilotée (Net 8).
+ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
+    @(204,47 mm, 91,44 mm): La pin 17 (Entrée) du composant U1 est non connectée.
+ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
+    @(201,93 mm, 91,44 mm): La pin 18 (Entrée) du composant U1 est non connectée.
+ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
+    @(199,39 mm, 91,44 mm): La pin 19 (Entrée) du composant U1 est non connectée.
+ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
+    @(199,39 mm, 116,84 mm): La pin 2 (Entrée) du composant U1 est non connectée.
+ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
+    @(201,93 mm, 116,84 mm): La pin 3 (Bidirectionnel) du composant U1 est non connectée.
+ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
+    @(204,47 mm, 116,84 mm): La pin 4 (Bidirectionnel) du composant U1 est non connectée.
+ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
+    @(214,63 mm, 116,84 mm): La pin 8 (Bidirectionnel) du composant U1 est non connectée.
+ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
+    @(217,17 mm, 116,84 mm): La pin 9 (Bidirectionnel) du composant U1 est non connectée.
+ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
+    @(144,78 mm, 57,15 mm): La pin 1 (Entrée) du composant U4 est non connectée.
+ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
+    @(168,91 mm, 57,15 mm): La pin 10 (Entrée) du composant U4 est non connectée.
+ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
+    @(219,71 mm, 116,84 mm): La pin 10 (Bidirectionnel) du composant U1 est non connectée.
+ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
+    @(144,78 mm, 64,77 mm): La pin 4 (Entrée) du composant U4 est non connectée.
+ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
+    @(144,78 mm, 67,31 mm): La pin 5 (Entrée) du composant U4 est non connectée.
+ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
+    @(168,91 mm, 59,69 mm): La pin 9 (Entrée) du composant U4 est non connectée.
+
+** messages ERC: 17  Erreurs 0  Avertissements 17
