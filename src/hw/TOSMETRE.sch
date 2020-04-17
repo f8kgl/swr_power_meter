@@ -574,18 +574,6 @@ Wire Wire Line
 	2500 5400 1200 5400
 Wire Wire Line
 	2300 5300 2500 5300
-Wire Wire Line
-	2100 3550 1650 3550
-Wire Wire Line
-	1650 3550 1650 3200
-Wire Wire Line
-	1650 3200 2700 3200
-Wire Wire Line
-	2700 3200 2700 3800
-Wire Wire Line
-	1250 3800 1250 4150
-Wire Wire Line
-	1250 3800 2700 3800
 NoConn ~ 5300 2250
 NoConn ~ 5300 2650
 NoConn ~ 6250 2450
