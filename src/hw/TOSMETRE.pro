@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 update=28/03/2020 12:57:54
-=======
-update=27/03/2020 16:28:11
->>>>>>> bd57986487da5dccbcd92860cb46673b95276ced
 version=1
 last_client=kicad
 [cvpcb]
