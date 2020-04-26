@@ -608,6 +608,4 @@ Wire Wire Line
 	4850 3250 2350 3250
 Wire Wire Line
 	2500 5300 2350 5300
-Text Notes 5050 4400 0    50   ~ 0
-CECI EST UN MESSAGE DE TEST POUR ANDRE, F0EOS\nA supprimer dès la fiche #106 sera résolue
 $EndSCHEMATC
