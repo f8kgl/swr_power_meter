@@ -1,5 +1,6 @@
 EESchema Schematic File Version 4
-EELAYER 30 0
+LIBS:TOSMETRE-cache
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -641,6 +642,4 @@ F 3 "" H 1000 5000 50  0001 C CNN
 	1    1000 5000
 	-1   0    0    1   
 $EndComp
-Text Notes 5250 5950 0    50   ~ 0
-Test de Desktop Github pour André\nA supprimer
 $EndSCHEMATC
