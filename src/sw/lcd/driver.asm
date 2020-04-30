@@ -2,75 +2,34 @@
 	include "lcd.inc"
 
   	udata
-v_timer res 1 
-v_timerA res 1
-v_timerB res 1
 v_temp res 1
 v_poscursor res 1
-v_count res 1
+v_lcd_count res 1
 
+	extern D160us
+	extern Del255
+	extern Del200
+	extern Del100
+	extern Del50
+	extern Del20
+	extern Del05
+	extern Del01
 	extern v_hexa_to_conv
 	extern v_bcd
-	
+
 	code
 ;-----------------------------------------
 Pulse_e
 	bsf LCD_PORT, LCD_E ; LCD Enable pulse to write data from PORTB
 	nop ; into LCD module.
-	bcf LCD_PORT, LCD_E ; 
+	bcf LCD_PORT, LCD_E ;
 	nop ;
 	retlw 0x00 ;
-	 
-;----------------------------------------- 
-; Delay routines...
-D160us
-	clrf v_timer ; 
-	bsf v_timer, 5 ; Delay 160 usecs
-	bsf v_timer, 4 ;
-	decfsz v_timer, f ;
-	goto $ - 1 ;
-	return ;
-	 
-Del255
-	movlw 0xff ; delay 255 mS
-	goto d0 ;
-Del200
-	movlw d'200' ; delay 200mS
-	goto d0 ;
-Del100
-	movlw d'100' ; delay 100mS
-	goto d0 ;
-Del50	
-	movlw d'50' ; delay 50mS
-	goto d0 ;
-Del20
-	movlw d'20' ; delay 20mS
-	goto d0 ;
-Del05
-	movlw 0x05 ; delay 5.000 ms (4 MHz clock)
-	goto d0 ;
-Del01
-	movlw 0x01 ; delay 1.000 ms (4 MHz clock)
-d0
-	movwf v_timer ;
-d1
-	movlw 0xC7 ; delay 1mS
-	movwf v_timerA ;
-	movlw 0x01 ;
-	movwf v_timerB ;
-Del_0
-	decfsz v_timerA,f ;
-	goto $+0x0a ;
-	decfsz v_timerB,f ;
-	goto Del_0 ;
-	decfsz v_timer,f ;
-	goto d1 ;
-	retlw 0x00 ;
-	
+
 ;-----------------------------------------
 ;Fonction : Envoi d’une commande au LCD
-;Nom : lcd_sendcmd 
-;Entrée : 
+;Nom : lcd_sendcmd
+;Entrée :
 ;		-W
 ;		 +taille = 1 byte
 ;		 +description = contient la commande
@@ -81,8 +40,8 @@ Del_0
 ;		 	0x0C  Turn on Display/Cursor
 ;			0x01  Clear display
 ;			0xc0  move to 2nd row, first column
-;Sortie : 
-;Traitement : 
+;Sortie :
+;Traitement :
 ;-----------------------------------------
 _f_lcd_sendcmd	; Send the Instruction to the LCD
 	movwf v_temp ; Save the Value
@@ -104,18 +63,18 @@ _f_lcd_sendcmd	; Send the Instruction to the LCD
 
 ;-----------------------------------------
 ;Fonction : Positionne le curseur du LCD
-;Nom : lcd_setposcursor 
-;Entrée : 
+;Nom : lcd_setposcursor
+;Entrée :
 ;		-W
 ;		 +taille = 1 byte
 ;		 +description = contient la position du curseur
 ;  			0-15 : 1ère ligne
 ;			16-31 : 2ème ligne
-;Sortie : 
-;Traitement : 
-;		1.	Si le curseur doit être positionné sur la première ligne : 
+;Sortie :
+;Traitement :
+;		1.	Si le curseur doit être positionné sur la première ligne :
 ;			W = W + 0x80
-;			Si le curseur doit être positionné sur la deuxième ligne : 
+;			Si le curseur doit être positionné sur la deuxième ligne :
 ;			W = W + 0xB0
 ;		2.	Appeler lcd_sendcmd
 ;-----------------------------------------
@@ -127,10 +86,10 @@ f_lcd_setposcursor
 	btfss STATUS,Z; C=1
 	goto  _setposcursorL1; C=1;Z=0
 	goto _setposcursorL2; C=1;Z=1
-_lcd_setposcursor_testZ	   
+_lcd_setposcursor_testZ
 	btfss STATUS,Z; C=0
 	goto _setposcursorL2;C=0;Z=0
-	goto _lcd_setposcursor_error;; C=0;Z=1	
+	goto _lcd_setposcursor_error;; C=0;Z=1
 _setposcursorL1
 	movf v_poscursor,w
 	addlw 0x80
@@ -141,14 +100,14 @@ _setposcursorL2
 _lcd_setposcursor
 	call _f_lcd_sendcmd
 _lcd_setposcursor_error
-	return ;	
+	return ;
 
 ;-----------------------------------------
 ;Fonction : Efface le LCD
 ;Nom : lcd_clear
-;Entrée : 
-;Sortie : 
-;Traitement : 
+;Entrée :
+;Sortie :
+;Traitement :
 ;		1.	W=0x01
 ;		2.	Appeler lcd_sendcmd
 ;-----------------------------------------
@@ -160,9 +119,9 @@ f_lcd_clear
 ;-----------------------------------------
 ;Fonction : Positionne le curseur sur la 2ème ligne
 ;Nom : lcd_setposL2
-;Entrée : 
-;Sortie : 
-;Traitement : 
+;Entrée :
+;Sortie :
+;Traitement :
 ;		1.	W=0xC0
 ;		2.	Appeler lcd_sendcmd
 ;-----------------------------------------
@@ -170,21 +129,21 @@ f_lcd_setposL2
 	movlw 0xc0 ; move to 2nd row, first column
 	call _f_lcd_sendcmd ;
 	return
-	 
+
 ;-----------------------------------------
 ;Fonction : Conversion hexa-ASCII
 ;Nom : lcd_convtoascii
-;Entrée : 
+;Entrée :
 ;		-W
 ;		 +taille = 1 byte (données utile sur le quartet de poid faible)
 ;		 +description = contient la valeur à convertir
-;Sortie : 
+;Sortie :
 ;		-W
 ;		 +taille = 1 byte
 ;		 +description = contient la valeur convertie
-;Traitement : 
-;		
-;----------------------------------------- 
+;Traitement :
+;
+;-----------------------------------------
 f_lcd_convtoascii
 	mullw 0x02
 	movlw HIGH f_lcd_convtoascii
@@ -207,26 +166,26 @@ f_lcd_convtoascii
 	retlw 0x44		;'D'
 	retlw 0x45		;'E'
 	retlw 0x46		;'F'
-	return	
+	return
 
 ;-----------------------------------------
 ;Fonction : Conversion hexa-bcd
 ;Nom : f_lcd_convtobcd
-;Entrée : 
+;Entrée :
 ;	v_hexa_to_conv (2 bytes) : 1 octets à convertir en BCD
-;Sortie : 
-;	v_bcd (3 bytes) : 3 octets convertis en BCD		
+;Sortie :
+;	v_bcd (3 bytes) : 3 octets convertis en BCD
 
-;Traitement : 
+;Traitement :
 ;http://www.microchip.com/forums/m322713.aspx
-;----------------------------------------- 
+;-----------------------------------------
 f_lcd_convtobcd
 	clrf     v_bcd
         clrf    v_bcd+1
         clrf    v_bcd+2
- 
+
         movlw   D'16'
-        movwf   v_count
+        movwf   v_lcd_count
 _f_lcd_convtobcd_1
         rlcf    v_hexa_to_conv+1,F
         rlcf    v_hexa_to_conv,F
@@ -239,17 +198,17 @@ _f_lcd_convtobcd_1
         daw
         movwf   v_bcd+1
         rlcf    v_bcd,F
-        decfsz  v_count
+        decfsz  v_lcd_count
         bra     _f_lcd_convtobcd_1
         return
 
 
-	
+
 ;Fonction : Initialisation du LCD
 ;Nom : f_lcd_init
-;Entrée : 
-;Sortie : 
-;Traitement : 
+;Entrée :
+;Sortie :
+;Traitement :
 ;-----------------------------------------
 f_lcd_init
 	call Del05 ; Wait 15 msecs
@@ -270,7 +229,7 @@ f_lcd_init
 	movlw 0x028 ; Set Interface Length
 	call _f_lcd_sendcmd ;
 	movlw 0x010 ; Turn Off Display
-	call _f_lcd_sendcmd ; 
+	call _f_lcd_sendcmd ;
 	movlw 0x001 ; Clear Display RAM
 	call _f_lcd_sendcmd ;
 	movlw 0x006 ; Set Cursor Movement
@@ -279,16 +238,16 @@ f_lcd_init
 	call _f_lcd_sendcmd ;
 	call f_lcd_clear ; Clear the LCD
 	return ;
-	 
+
 ;-----------------------------------------
 ;Fonction : Affichage d'un caractère
-;Nom : lcd_affchar 
-;Entrée : 
+;Nom : lcd_affchar
+;Entrée :
 ;		-W
 ;		 +taille = 1 byte
 ;		 +description = contient le caractère à afficher à la position courante du curseur
-;Sortie : 
-;Traitement : 
+;Sortie :
+;Traitement :
 ;-----------------------------------------
 f_lcd_affchar	; Send the Character to the LCD
 	movwf v_temp ; Save the Value
@@ -310,5 +269,5 @@ f_lcd_affchar	; Send the Character to the LCD
 	global f_lcd_clear
 	global f_lcd_convtoascii
 	global f_lcd_convtobcd
-	
-	end 
+
+	end

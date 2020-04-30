@@ -28,6 +28,7 @@ p18f1320.SafeMode = true
 p18f1320.UnknownMode = true
 p18f1320.WarnMode = true
 p18f1320.tmr1_freq = 32768
+p18f1320.tmr3_freq = 32768
 p18f1320.xpos = 72
 p18f1320.ypos = 72
 
@@ -48,6 +49,11 @@ Vref.resistance = 10000
 Vref.voltage = 5
 Vref.xpos = 312
 Vref.ypos = 276
+
+module load i2c2par i2c2par
+i2c2par.Slave_Address = 39
+i2c2par.xpos = 108
+i2c2par.ypos = 252
 
 
 
@@ -78,6 +84,12 @@ attach nFWD p18f1320.porta0 Vfwd.pin
 
 node nREF
 attach nREF p18f1320.porta1 Vref.pin
+
+node nSDA
+attach nSDA p18f1320.porta2 i2c2par.SDA
+
+node nSCL
+attach nSCL p18f1320.porta3 i2c2par.SCL
 
 
 

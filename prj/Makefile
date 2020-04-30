@@ -27,15 +27,17 @@ LD = gplink
 #Flags
 LDFLAGS = --map -c
 DEBUG_LDFLAGS = -S2
-ASFLAGS = -c -DSW_VERSION="\"$(VERSION)\""
+ASFLAGS = -c -e ON -DSW_VERSION="\"$(VERSION)\""
 export TEST_FLAGS = TEST
 export CALIBRATION_FLAGS = CALIBRATION
 
 #Composants
-COMPS = lcd
+COMPS =tempo
+COMPS +=lcd
+COMPS +=i2c
 COMPS +=eep
-COMPS +=readadc
 COMPS +=flh
+COMPS +=adc
 COMPS +=calc
 
 #Sources
@@ -83,8 +85,9 @@ clean:
 	rm -f *.o
 	rm -f *.lst
 	rm -f ../bin/*
-	rm -f ../src/sw/data/*.o
-	rm -f ../src/sw/data/*.lst
+	find ../ -name '*.o' -exec rm -r {} \;
+	find ../ -name '*.lst' -exec rm -r {} \;
+
 
 project:
 	mkdir -p ../bin
