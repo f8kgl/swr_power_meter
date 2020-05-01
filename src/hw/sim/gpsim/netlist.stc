@@ -55,6 +55,20 @@ i2c2par.Slave_Address = 39
 i2c2par.xpos = 108
 i2c2par.ypos = 252
 
+module load pullup pullup_1
+pullup_1.capacitance = 0
+pullup_1.resistance = 10000
+pullup_1.voltage = 5
+pullup_1.xpos = 120
+pullup_1.ypos = 360
+
+module load pullup pullup_2
+pullup_2.capacitance = 0
+pullup_2.resistance = 10000
+pullup_2.voltage = 5
+pullup_2.xpos = 120
+pullup_2.ypos = 420
+
 
 
 # Connections:
@@ -86,10 +100,10 @@ node nREF
 attach nREF p18f1320.porta1 Vref.pin
 
 node nSDA
-attach nSDA p18f1320.porta2 i2c2par.SDA
+attach nSDA p18f1320.porta2 i2c2par.SDA pullup_1.pin
 
 node nSCL
-attach nSCL p18f1320.porta3 i2c2par.SCL
+attach nSCL p18f1320.porta3 i2c2par.SCL pullup_2.pin
 
 
 
