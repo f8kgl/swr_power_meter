@@ -79,7 +79,7 @@ c_testmsgL1
 ;Sortie :
 ;	W (1 byte) : contient le caractère ou 0x00 si pas de caractère
 ;Traitement :
-;	Zone de mémoire dédiée au stokage du message de calibration (L2 du LCD)
+;	Zone de mémoire dédiée au stockage du message de calibration (L2 du LCD)
 ; 	"REF "
 ;-----------------------------------------
 c_testmsgL2
