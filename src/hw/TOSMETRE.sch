@@ -24,9 +24,9 @@ F 3 "" H 8150 5250 50  0001 C CNN
 	1    8150 5250
 	1    0    0    -1  
 $EndComp
-Text Notes 1300 5310 2    60   ~ 0
+Text Notes 1610 6450 3    60   ~ 0
 FWD
-Text Notes 1950 5060 2    60   ~ 0
+Text Notes 1900 4100 1    60   ~ 0
 REF
 $Comp
 L power:GNDREF #PWR010
@@ -538,9 +538,7 @@ F 3 "" V 3500 5450 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	2500 5200 1900 5200
-Wire Wire Line
-	2500 5400 1200 5400
+	2500 5400 1700 5400
 NoConn ~ 8650 4600
 NoConn ~ 8550 4600
 NoConn ~ 8450 4600
@@ -596,49 +594,139 @@ Wire Wire Line
 $Comp
 L Connector:Conn_Coaxial J5
 U 1 1 5EA8C71B
-P 1700 5200
-F 0 "J5" H 1800 5082 50  0000 L CNN
-F 1 "Conn_Coaxial" H 1800 5173 50  0000 L CNN
-F 2 "Connector_Coaxial:SMA_Amphenol_901-144_Vertical" H 1700 5200 50  0001 C CNN
-F 3 " ~" H 1700 5200 50  0001 C CNN
-	1    1700 5200
-	-1   0    0    1   
+P 1700 3850
+F 0 "J5" H 1800 3732 50  0000 L CNN
+F 1 "Conn_Coaxial" H 1800 3823 50  0000 L CNN
+F 2 "Connector_Coaxial:SMA_Amphenol_901-144_Vertical" H 1700 3850 50  0001 C CNN
+F 3 " ~" H 1700 3850 50  0001 C CNN
+	1    1700 3850
+	0    -1   -1   0   
 $EndComp
 $Comp
 L Connector:Conn_Coaxial J2
 U 1 1 5EA8D686
-P 1000 5400
-F 0 "J2" H 1100 5282 50  0000 L CNN
-F 1 "Conn_Coaxial" H 1100 5373 50  0000 L CNN
-F 2 "Connector_Coaxial:SMA_Amphenol_901-144_Vertical" H 1000 5400 50  0001 C CNN
-F 3 " ~" H 1000 5400 50  0001 C CNN
-	1    1000 5400
-	-1   0    0    1   
+P 1700 6750
+F 0 "J2" H 1800 6632 50  0000 L CNN
+F 1 "Conn_Coaxial" H 1800 6723 50  0000 L CNN
+F 2 "Connector_Coaxial:SMA_Amphenol_901-144_Vertical" H 1700 6750 50  0001 C CNN
+F 3 " ~" H 1700 6750 50  0001 C CNN
+	1    1700 6750
+	0    1    1    0   
 $EndComp
 Wire Wire Line
-	1700 5000 1700 4800
-Wire Wire Line
-	1000 5200 1000 5000
-$Comp
-L power:GNDREF #PWR0108
-U 1 1 5EAA3BAA
-P 1700 4800
-F 0 "#PWR0108" H 1700 4550 50  0001 C CNN
-F 1 "GNDREF" H 1705 4627 50  0000 C CNN
-F 2 "" H 1700 4800 50  0001 C CNN
-F 3 "" H 1700 4800 50  0001 C CNN
-	1    1700 4800
-	-1   0    0    1   
-$EndComp
+	1500 6750 1300 6750
 $Comp
 L power:GNDREF #PWR0109
 U 1 1 5EAA45E2
-P 1000 5000
-F 0 "#PWR0109" H 1000 4750 50  0001 C CNN
-F 1 "GNDREF" H 1005 4827 50  0000 C CNN
-F 2 "" H 1000 5000 50  0001 C CNN
-F 3 "" H 1000 5000 50  0001 C CNN
-	1    1000 5000
-	-1   0    0    1   
+P 1300 6750
+F 0 "#PWR0109" H 1300 6500 50  0001 C CNN
+F 1 "GNDREF" H 1305 6577 50  0000 C CNN
+F 2 "" H 1300 6750 50  0001 C CNN
+F 3 "" H 1300 6750 50  0001 C CNN
+	1    1300 6750
+	0    1    1    0   
 $EndComp
+$Comp
+L librairie_projet:BAT54XV2 D?
+U 1 1 5EAD20A2
+P 1700 6100
+F 0 "D?" H 1700 6317 50  0000 C CNN
+F 1 "BAT54XV2" H 1700 6226 50  0000 C CNN
+F 2 "Diode_SMD:D_SOD-523" H 1700 5925 50  0001 C CNN
+F 3 "https://www.diodes.com/assets/Datasheets/ds30396.pdf" H 1700 6100 50  0001 C CNN
+	1    1700 6100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1700 5950 1700 5400
+Wire Wire Line
+	1700 6550 1700 6350
+Wire Wire Line
+	1700 6350 1450 6350
+Connection ~ 1700 6350
+Wire Wire Line
+	1700 6350 1700 6250
+$Comp
+L Device:C C?
+U 1 1 5EAEBEF7
+P 1300 6350
+F 0 "C?" H 1325 6450 50  0000 L CNN
+F 1 "C" H 1325 6250 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric" H 1338 6200 50  0001 C CNN
+F 3 "" H 1300 6350 50  0001 C CNN
+	1    1300 6350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1150 6350 1000 6350
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5EAF3264
+P 1000 6350
+F 0 "#PWR?" H 1000 6100 50  0001 C CNN
+F 1 "GNDREF" V 1005 6222 50  0000 R CNN
+F 2 "" H 1000 6350 50  0001 C CNN
+F 3 "" H 1000 6350 50  0001 C CNN
+	1    1000 6350
+	0    1    1    0   
+$EndComp
+$Comp
+L librairie_projet:BAT54XV2 D?
+U 1 1 5EAF4ABA
+P 1700 4750
+F 0 "D?" H 1700 4967 50  0000 C CNN
+F 1 "BAT54XV2" H 1700 4876 50  0000 C CNN
+F 2 "Diode_SMD:D_SOD-523" H 1700 4575 50  0001 C CNN
+F 3 "https://www.diodes.com/assets/Datasheets/ds30396.pdf" H 1700 4750 50  0001 C CNN
+	1    1700 4750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1700 4600 1700 4300
+Wire Wire Line
+	1700 4300 1450 4300
+$Comp
+L Device:C C?
+U 1 1 5EAF4AC5
+P 1300 4300
+F 0 "C?" H 1325 4400 50  0000 L CNN
+F 1 "C" H 1325 4200 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric" H 1338 4150 50  0001 C CNN
+F 3 "" H 1300 4300 50  0001 C CNN
+	1    1300 4300
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1150 4300 1000 4300
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5EAF4ACC
+P 1000 4300
+F 0 "#PWR?" H 1000 4050 50  0001 C CNN
+F 1 "GNDREF" V 1005 4172 50  0000 R CNN
+F 2 "" H 1000 4300 50  0001 C CNN
+F 3 "" H 1000 4300 50  0001 C CNN
+	1    1000 4300
+	0    1    1    0   
+$EndComp
+Connection ~ 1700 4300
+Wire Wire Line
+	1700 4300 1700 4050
+Wire Wire Line
+	1700 4900 1700 5200
+Wire Wire Line
+	1700 5200 2500 5200
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5EB0E0EA
+P 2100 3850
+F 0 "#PWR?" H 2100 3600 50  0001 C CNN
+F 1 "GNDREF" V 2105 3722 50  0000 R CNN
+F 2 "" H 2100 3850 50  0001 C CNN
+F 3 "" H 2100 3850 50  0001 C CNN
+	1    2100 3850
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1900 3850 2100 3850
 $EndSCHEMATC
