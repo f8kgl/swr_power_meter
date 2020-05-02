@@ -22,7 +22,7 @@ _v_i2c_data_type res 1
   code
 
 _f_i2c_send
-  btfsc _v_i2c_data_type,0
+  btfsc _v_i2c_data_type,0 ;0 pour un octet d'adresse / 1 pour un octet de donnée
   goto _f_i2c_send_3
 _f_i2c_send_2 ; octet d'adresse
   movf v_i2c_adress_byte,W
