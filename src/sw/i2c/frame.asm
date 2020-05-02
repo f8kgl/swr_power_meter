@@ -68,9 +68,9 @@ f_i2c_write_in_device
   clrf _v_i2c_data_type
   call _f_i2c_send
 _f_i2c_write_in_device_2
-  movf v_i2c_p_send_data,W
-  movwf FSR0H
   movf v_i2c_p_send_data+1,W
+  movwf FSR0H
+  movf v_i2c_p_send_data,W
   movwf FSR0L
 _f_i2c_write_in_device_2_2
   bsf _v_i2c_data_type,0
