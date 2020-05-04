@@ -80,6 +80,7 @@ _f_i2c_send_byte_next_data_s
 	bcf	I2C_PORT,SDA		;SDA a 0
 	bsf	I2C_PORT,SCL		;SCL a 1
 	CALL	Del_11us
+	incf  v_i2c_count,f
 	decfsz	v_i2c_count,f		;Si I!=0
 	goto	_f_i2c_send_byte_next_data_s
 
@@ -108,6 +109,7 @@ _f_i2c_send_byte_next_data_next_data_r:
 
 	rlcf	v_i2c_data_byte_received,f	;décallage à gauche et met la carry dans le LSB
 
+	incf v_i2c_count,f
 	decfsz	v_i2c_count,f		;Si I!=0
 	goto	_f_i2c_send_byte_next_data_next_data_r
 
@@ -135,6 +137,7 @@ _f_i2c_receive_last_byte_next_data_r
 
 	rlcf	v_i2c_data_byte_received,f	;décallage à gauche et met la carry dans le LSB
 
+	incf v_i2c_count,f
 	decfsz	v_i2c_count,f		;Si I!=0
 	goto	_f_i2c_receive_last_byte_next_data_r
 

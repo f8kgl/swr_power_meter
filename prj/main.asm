@@ -40,16 +40,6 @@ Init
 ; Initialisation PIC
 	movlw   B'01100010'			;4 MHz
 	movwf   OSCCON
-	clrf PORTA ; Initialize PORTA by setting output data latches
-	movlw b'00000000' ; PortA Outputs
-	movwf TRISA ;
-	movlw b'00000000' ; PortB Outputs
-	movwf TRISB ; Change PortB I/O
-  movlw B'00000000'
-	movwf ADCON0
-	movlw B'01111111' 	;digital input on PORTA
-	movwf ADCON1
-	clrf ADCON2
 	clrf    INTCON              ;disable all interrupts part one
 	movlw	B'10000000'         ;disable all interrupts part two &
 	movwf   INTCON2             ;PORTB pull-up disable
@@ -62,6 +52,17 @@ Init
 	clrf    EECON1              ;clear EEPROM control register
 	bcf		WDTCON,SWDTEN		;stop watchdog
 	clrf   CCP1CON
+  clrf ADCON0
+	movlw B'01111111' 	;digital input on PORTA
+	movwf ADCON1
+	clrf ADCON2
+
+	movlw b'00000000' ; PortA Outputs
+	movwf TRISA ;
+	clrf PORTA
+	movlw b'00000000' ; PortB Outputs
+	movwf TRISB ; Change PortB I/O
+	clrf PORTB
 
 ; Initialisation ADC
  	call f_adc_init		;
