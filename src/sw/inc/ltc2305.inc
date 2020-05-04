@@ -1,0 +1,1 @@
+#define I2C_ADDR_DEVICE_LTC2305 0x08

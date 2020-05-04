@@ -1,4 +1,5 @@
 	include "p18f1320.inc" ;include the defaults for the chip
+	include "ltc2305.inc"
 
 	udata
 v_adcfwd res 2
@@ -38,7 +39,7 @@ f_adc_readAN0
 	movlw 0xAA
 	movwf v_adcfwd
 
-	movlw 0x27
+	movlw I2C_ADDR_DEVICE_LTC2305
 	movwf v_i2c_device_addr
 	movlw 0x01
 	movwf v_i2c_data_size

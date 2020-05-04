@@ -18,6 +18,7 @@
 
 
 # Processor position:
+module library lib_swrpowermeterf8kgl_modules
 module library libgpsim_extras
 module library libgpsim_modules
 
@@ -50,11 +51,6 @@ Vref.voltage = 5
 Vref.xpos = 312
 Vref.ypos = 276
 
-module load i2c2par i2c2par
-i2c2par.Slave_Address = 39
-i2c2par.xpos = 108
-i2c2par.ypos = 252
-
 module load pullup pullup_1
 pullup_1.capacitance = 0
 pullup_1.resistance = 10000
@@ -68,6 +64,11 @@ pullup_2.resistance = 10000
 pullup_2.voltage = 5
 pullup_2.xpos = 120
 pullup_2.ypos = 420
+
+module load ltc2305 ltc2305
+ltc2305.Slave_Address = 8
+ltc2305.xpos = 96
+ltc2305.ypos = 228
 
 
 
@@ -100,10 +101,10 @@ node nREF
 attach nREF p18f1320.porta1 Vref.pin
 
 node nSDA
-attach nSDA p18f1320.porta2 i2c2par.SDA pullup_1.pin
+attach nSDA p18f1320.porta2 pullup_1.pin ltc2305.SDA
 
 node nSCL
-attach nSCL p18f1320.porta3 i2c2par.SCL pullup_2.pin
+attach nSCL p18f1320.porta3 pullup_2.pin ltc2305.SCL
 
 
 
