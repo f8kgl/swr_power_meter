@@ -70,7 +70,7 @@ support:
 #include "ttl.h"
 #include "i2c-eeprom.h"
 #include "i2c.h"
-#include "i2c2par.h"
+#include "ltc2305.h"
 
 
 Module_Types available_modules[] = {
@@ -82,7 +82,7 @@ Module_Types available_modules[] = {
   { {"parallel_interface",         "paraface"}, Paraface::construct},
   */
 #endif
-  { {"ltc2305", "LTC2305"},   I2C2PAR_Modules::i2c2par::construct },
+  { {"ltc2305", "LTC2305"},   LTC2305_Modules::ltc2305::construct },
 
   // No more modules
   { {0, 0}, 0}

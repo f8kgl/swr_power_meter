@@ -48,14 +48,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "src/value.h"
 #include "src/packages.h"
 #include "src/gpsim_interface.h"
-#include "i2c2par.h"
+#include "ltc2305.h"
 
 
 class AddAttribute : public Integer {
 public:
-  I2C2PAR_Modules::i2c2par *i2cpt;
+  LTC2305_Modules::ltc2305 *i2cpt;
 
-  explicit AddAttribute(I2C2PAR_Modules::i2c2par *_i2cpt) :
+  explicit AddAttribute(LTC2305_Modules::ltc2305 *_i2cpt) :
     Integer("Slave_Address", 0x08, "I2C Slave Address"), i2cpt(_i2cpt)
   {
     gint64 v;
@@ -148,10 +148,10 @@ void IOPort::update_pin_directions(unsigned int new_direction)
 }
 
 
-namespace I2C2PAR_Modules {
+namespace LTC2305_Modules {
 
-i2c2par::i2c2par(const char *_name)
-  : i2c_slave(), Module(_name, "i2c2par")
+ltc2305::ltc2305(const char *_name)
+  : i2c_slave(), Module(_name, "ltc2305")
 {
   io_port = new IOPort(8);
   Addattr = new AddAttribute(this);
@@ -160,7 +160,7 @@ i2c2par::i2c2par(const char *_name)
 }
 
 
-i2c2par::~i2c2par()
+ltc2305::~ltc2305()
 {
   delete io_port;
   delete Addattr;
@@ -179,43 +179,43 @@ i2c2par::~i2c2par()
 }
 
 
-void i2c2par::put_data(unsigned int data)
+void ltc2305::put_data(unsigned int data)
 {
-  Dprintf(("i2c2par::put_data() 0x%x\n", data));
+  Dprintf(("ltc2305::put_data() 0x%x\n", data));
   io_port->put(data);
 }
 
 
-unsigned int i2c2par::get_data()
+unsigned int ltc2305::get_data()
 {
-  Dprintf(("i2c2par::get_data() 0x%x\n", io_port->get()));
+  Dprintf(("ltc2305::get_data() 0x%x\n", io_port->get()));
   return io_port->get();
 }
 
 
-void i2c2par::slave_transmit(bool input)
+void ltc2305::slave_transmit(bool input)
 {
   io_port->update_pin_directions(input == false);
 }
 
 
-bool i2c2par::match_address()
+bool ltc2305::match_address()
 {
-  Dprintf(("i2c2par::match_address() 0x%x\n", xfr_data));
+  Dprintf(("ltc2305::match_address() 0x%x\n", xfr_data));
   return ((xfr_data & 0xfe) == i2c_slave_address);
 }
 
 
-Module *i2c2par::construct(const char *_new_name)
+Module *ltc2305::construct(const char *_new_name)
 {
   std::string att_name = _new_name;
-  i2c2par *pEE = new i2c2par(_new_name);
+  ltc2305 *pEE = new ltc2305(_new_name);
   pEE->create_iopin_map();
   return pEE;
 }
 
 
-void i2c2par::create_iopin_map()
+void ltc2305::create_iopin_map()
 {
   pins = new IO_bi_directional_pu *[8];
   char pin_name[] = "p0";
@@ -235,4 +235,4 @@ void i2c2par::create_iopin_map()
 }
 
 
-} // end of namespace I2C2PAR_Modules
+} // end of namespace LTC2305_Modules

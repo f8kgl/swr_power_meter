@@ -19,8 +19,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef MODULES_I2C2PAR_H_
-#define MODULES_I2C2PAR_H_
+#ifndef MODULES_LTC2305_H_
+#define MODULES_LTC2305_H_
 
 /* IN_MODULE should be defined for modules */
 #define IN_MODULE
@@ -34,12 +34,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 class IOPort;
 class AddAttribute;
-namespace I2C2PAR_Modules {
+namespace LTC2305_Modules {
 
-class i2c2par : public i2c_slave, public Module { //, public TriggerObject
+class ltc2305 : public i2c_slave, public Module { //, public TriggerObject
 public:
-  explicit i2c2par(const char *_name);
-  ~i2c2par();
+  explicit ltc2305(const char *_name);
+  ~ltc2305();
 
   static Module *construct(const char *new_name);
   virtual void create_iopin_map();
@@ -57,6 +57,6 @@ protected:
 };
 
 
-} // end of namespace I2C2PAR_Modules
+} // end of namespace LTC2305_Modules
 
-#endif // MODULES_I2C2PAR_H_
+#endif // MODULES_LTC2305_H_
