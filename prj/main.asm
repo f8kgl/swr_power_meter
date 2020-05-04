@@ -73,8 +73,7 @@ Init
 ; Afficher le message de boot
 	call f_lcd_affboot
 
-;; Tempo de 5s
-	call f_tempo_boot
+;; Tempo de 3s
 	call f_tempo_boot
 
 ;; Effacer le LCD (lcd_clear)
@@ -117,15 +116,17 @@ ENDIF
 
 
 ;-----------------------------------------
-;Fonction : temporisation de 2.5s
+;Fonction : temporisation de 3s
 ;Nom : tempo_boot
 ;Entrée :
 ;Sortie :
 ;Traitement :
-;		1.	appeler 10x une temporisation de 250ms
+;		1.	appeler 12x une temporisation de 250ms
 ;-----------------------------------------
 
 f_tempo_boot
+	call delay_250ms
+	call delay_250ms
 	call delay_250ms
 	call delay_250ms
 	call delay_250ms
