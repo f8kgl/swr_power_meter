@@ -124,7 +124,8 @@ unsigned int IOPort::get()
     }
   }
 
-  return value;
+  return 0xFD;
+  //return value;
 }
 
 

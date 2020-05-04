@@ -70,6 +70,20 @@ ltc2305.Slave_Address = 8
 ltc2305.xpos = 96
 ltc2305.ypos = 228
 
+module load pullup high
+high.capacitance = 0
+high.resistance = 0
+high.voltage = 5
+high.xpos = 312
+high.ypos = 336
+
+module load pulldown low
+low.capacitance = 0
+low.resistance = 0
+low.voltage = 0
+low.xpos = 312
+low.ypos = 384
+
 
 
 # Connections:
@@ -105,6 +119,12 @@ attach nSDA p18f1320.porta2 pullup_1.pin ltc2305.SDA
 
 node nSCL
 attach nSCL p18f1320.porta3 pullup_2.pin ltc2305.SCL
+
+node nH
+attach nH high.pin ltc2305.p7 ltc2305.p5 ltc2305.p3 ltc2305.p1
+
+node nL
+attach nL low.pin ltc2305.p6 ltc2305.p4 ltc2305.p2 ltc2305.p0
 
 
 

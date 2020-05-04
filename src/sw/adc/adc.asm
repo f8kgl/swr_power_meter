@@ -9,8 +9,10 @@ v_delay res 1
 	extern v_i2c_device_addr
   extern v_i2c_data_size
 	extern v_i2c_p_send_data
+	extern v_i2c_p_receive_data
 	extern f_i2c_init
 	extern f_i2c_write_in_device
+	extern f_i2c_read_in_device
 
 
 	code
@@ -44,8 +46,8 @@ f_adc_readAN0
 	movlw 0x01
 	movwf v_i2c_data_size
 	movlw v_adcfwd
-	movwf v_i2c_p_send_data
-	call f_i2c_write_in_device
+	movwf v_i2c_p_receive_data
+	call f_i2c_read_in_device
 
 	return
 

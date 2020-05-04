@@ -3,6 +3,7 @@
     udata
 v_i2c_device_addr res 1
 v_i2c_p_send_data res 2
+v_i2c_p_receive_data res 2
 v_i2c_received_data res 1
 v_i2c_data_size res 1
 v_i2c_adress_byte res 1
@@ -16,6 +17,7 @@ _v_i2c_data_type res 1
 	extern f_i2c_start
 	extern f_i2c_stop
 	extern f_i2c_send_byte
+	extern f_i2c_receive_byte
 
   code
 
@@ -37,6 +39,10 @@ _f_i2c_send_4
 _f_i2c_send_stop
   call f_i2c_stop
   return
+
+_f_i2c_receive
+	call f_i2c_receive_byte
+	return
 
 ;-----------------------------------------
 ;Fonction : Ecriture de données sur un device
@@ -84,17 +90,36 @@ _f_i2c_write_in_device_2_2
 ;Entrée :
 ;Sortie :
 ;Traitement :
-;	1.faire une trame write complète (adresse +donnée)
+;	1.faire une trame read complète (adresse +donnée)
 ; 2.envoyer cette trame
 ; 3. faire une trame read incomplète (seule avec la partie adresse
 ; 4.lire la trame reçue)
 
 f_i2c_read_in_device
+  rlcf v_i2c_device_addr,W
+  iorlw 0x01    ;R/W = 1
+  movwf v_i2c_adress_byte
+  clrf _v_i2c_data_type
+  call _f_i2c_send
+  call _f_i2c_receive
+	movf v_i2c_p_receive_data+1,W
+  movwf FSR0H
+  movf v_i2c_p_receive_data,W
+  movwf FSR0L
+_f_i2c_read_in_device_2
+	movf v_i2c_data_byte_received,W
+	movwf POSTINC0
+  decfsz v_i2c_data_size,f
+  goto _f_i2c_read_in_device_2
+  call _f_i2c_send_stop
+  return
+
 
   return
 
   global v_i2c_device_addr
   global v_i2c_p_send_data
+  global v_i2c_p_receive_data
   global v_i2c_received_data
   global v_i2c_data_size
   global v_i2c_adress_byte
