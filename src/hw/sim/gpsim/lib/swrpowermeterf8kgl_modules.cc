@@ -78,12 +78,11 @@ Module_Types available_modules[] = {
 #ifndef _WIN32
   // Parallel port interface
   /*
-    TSD - removed 16APR06 - The parallel port interface uses the deprecated
     IOPORT class.
   { {"parallel_interface",         "paraface"}, Paraface::construct},
   */
 #endif
-  { {"i2c2par", "I2C2PAR"},   I2C2PAR_Modules::i2c2par::construct },
+  { {"ltc2305", "LTC2305"},   I2C2PAR_Modules::i2c2par::construct },
 
   // No more modules
   { {0, 0}, 0}
