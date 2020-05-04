@@ -16,8 +16,6 @@ _v_i2c_data_type res 1
 	extern f_i2c_start
 	extern f_i2c_stop
 	extern f_i2c_send_byte
-	extern f_i2c_check_slave_ack
-
 
   code
 
@@ -34,8 +32,6 @@ _f_i2c_send_3 ;octet de donnée
   movwf v_i2c_data_byte_to_send
 _f_i2c_send_4
   call f_i2c_send_byte
-  call f_i2c_check_slave_ack
-
   return
 
 _f_i2c_send_stop
