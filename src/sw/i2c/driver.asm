@@ -70,7 +70,6 @@ f_i2c_send_byte
 	movlw	d'8'
 	movwf	v_i2c_count
 _f_i2c_send_byte_next_data_s
-	decf	v_i2c_count,f
 	bcf	I2C_PORT,SCL		;SCL a 0
 	CALL	Del_11us
 	rlcf	v_i2c_data_byte_to_send,f	;Rotation a gauche bit(I) dans la carry
@@ -80,7 +79,6 @@ _f_i2c_send_byte_next_data_s
 	bcf	I2C_PORT,SDA		;SDA a 0
 	bsf	I2C_PORT,SCL		;SCL a 1
 	CALL	Del_11us
-	incf  v_i2c_count,f
 	decfsz	v_i2c_count,f		;Si I!=0
 	goto	_f_i2c_send_byte_next_data_s
 
@@ -97,7 +95,6 @@ f_i2c_receive_byte
 	clrf	v_i2c_data_byte_received
 	m_sda_input			;SDA en entrée
 _f_i2c_send_byte_next_data_next_data_r:
-	decf	v_i2c_count,f
 	bcf	I2C_PORT,SCL		;SCL a 0
 	CALL	Del_11us
 	bsf	I2C_PORT,SCL		;SCL a 1
@@ -109,7 +106,6 @@ _f_i2c_send_byte_next_data_next_data_r:
 
 	rlcf	v_i2c_data_byte_received,f	;décallage à gauche et met la carry dans le LSB
 
-	incf v_i2c_count,f
 	decfsz	v_i2c_count,f		;Si I!=0
 	goto	_f_i2c_send_byte_next_data_next_data_r
 
@@ -125,7 +121,6 @@ f_i2c_receive_last_byte
 	movwf	v_i2c_count
 	m_sda_input			;SDA en entrée
 _f_i2c_receive_last_byte_next_data_r
-	decf	v_i2c_count,f
 	bcf	I2C_PORT,SCL		;SCL a 0
 	CALL	Del_11us
 	bsf	I2C_PORT,SCL		;SCL a 1
@@ -137,7 +132,6 @@ _f_i2c_receive_last_byte_next_data_r
 
 	rlcf	v_i2c_data_byte_received,f	;décallage à gauche et met la carry dans le LSB
 
-	incf v_i2c_count,f
 	decfsz	v_i2c_count,f		;Si I!=0
 	goto	_f_i2c_receive_last_byte_next_data_r
 
