@@ -18,6 +18,7 @@ _v_i2c_data_type res 1
 	extern f_i2c_stop
 	extern f_i2c_send_byte
 	extern f_i2c_receive_byte
+	extern f_i2c_receive_last_byte
 
   code
 
@@ -42,6 +43,10 @@ _f_i2c_send_stop
 
 _f_i2c_receive
 	call f_i2c_receive_byte
+	return
+
+_f_i2c_receive_last_byte
+	call f_i2c_receive_last_byte
 	return
 
 ;-----------------------------------------
@@ -101,17 +106,24 @@ f_i2c_read_in_device
   movwf v_i2c_adress_byte
   clrf _v_i2c_data_type
   call _f_i2c_send
-  call _f_i2c_receive
+_f_i2c_read_in_device_2
 	movf v_i2c_p_receive_data+1,W
   movwf FSR0H
   movf v_i2c_p_receive_data,W
   movwf FSR0L
-_f_i2c_read_in_device_2
+	decf v_i2c_data_size,f ;on décrémente déjà un premier coup,
+												 ;afin de pouvoir gérer le cas du last_byte
+_f_i2c_read_in_device_3
+  call _f_i2c_receive
+_f_i2c_read_in_device_4
 	movf v_i2c_data_byte_received,W
 	movwf POSTINC0
   decfsz v_i2c_data_size,f
-  goto _f_i2c_read_in_device_2
+  goto _f_i2c_read_in_device_3
+  call 	f_i2c_receive_last_byte
   call _f_i2c_send_stop
+	movf v_i2c_data_byte_received,W
+	movwf POSTINC0
   return
 
 

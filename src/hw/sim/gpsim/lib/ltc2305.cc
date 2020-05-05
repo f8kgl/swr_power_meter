@@ -107,7 +107,7 @@ void IOPort::put(unsigned int value)
   }
 }
 
-
+unsigned int byte_to_send=0;
 unsigned int IOPort::get()
 {
   double voltage = 0.0;
@@ -121,31 +121,21 @@ unsigned int IOPort::get()
       voltage = (2.5*voltage)/0.036946;
   }
 
-  unsigned int converted = (unsigned int)( 256* voltage )/5;
-  printf("FDEC result=%lf 0x%02x\n", voltage, converted);
+  unsigned int converted = (unsigned int)( 4096* voltage )/4.096;
+  converted = converted&0xFFF; //12 bits
+
+  if (byte_to_send) {
+    converted = (converted&0x0F)<<4; //bits de poids faible
+    byte_to_send = 0;
+  }else {
+    converted = (converted&0xFF0)>>4;
+    byte_to_send = 1;
+  }
+
+  //  printf("FDEC result=%lf 0x%02x\n", voltage, converted);
 
   return converted;
 }
-#if 0
-
-  unsigned int value = 0;
-
-  for (int i = 0; i < 8; i++) {
-    IOPIN *m_pin;
-
-    unsigned int bit = 1 << i;
-
-    if ((m_pin = getPin(i))) {
-      if (m_pin->getState()) {
-        value |= bit;
-      }
-    }
-  }
-
-  return 0xFD;
-  //return value;
-}
-#endif
 
 void IOPort::update_pin_directions(unsigned int new_direction)
 {

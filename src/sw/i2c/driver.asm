@@ -130,7 +130,7 @@ _f_i2c_receive_last_byte_next_data_r
 	btfss	I2C_PORT,SDA		;Si SDA=0
 	bcf	carry_bit
 
-	rlcf	v_i2c_data_byte_received,f	;décallage à gauche et met la carry dans le LSB
+	rlcf	v_i2c_data_byte_received,f	;décalage à gauche et met la carry dans le LSB
 
 	decfsz	v_i2c_count,f		;Si I!=0
 	goto	_f_i2c_receive_last_byte_next_data_r
@@ -172,5 +172,6 @@ _f_i2c_no_ack_received
 	global f_i2c_send_byte
 	global f_i2c_check_slave_ack
 	global f_i2c_receive_byte
+	global f_i2c_receive_last_byte
 
 	end
