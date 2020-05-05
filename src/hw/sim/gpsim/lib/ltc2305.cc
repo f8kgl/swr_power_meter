@@ -110,6 +110,24 @@ void IOPort::put(unsigned int value)
 
 unsigned int IOPort::get()
 {
+  double voltage = 0.0;
+
+  //Dprintf(("ltc2305::get_data() 0x%x\n", io_port->get()));
+    IOPIN *m_pin;
+
+
+    if ((m_pin = getPin(0))) {
+      voltage = m_pin->get_nodeVoltage();
+      voltage = (2.5*voltage)/0.036946;
+  }
+
+  unsigned int converted = (unsigned int)( 256* voltage )/5;
+  printf("FDEC result=%lf 0x%02x\n", voltage, converted);
+
+  return converted;
+}
+#if 0
+
   unsigned int value = 0;
 
   for (int i = 0; i < 8; i++) {
@@ -127,7 +145,7 @@ unsigned int IOPort::get()
   return 0xFD;
   //return value;
 }
-
+#endif
 
 void IOPort::update_pin_directions(unsigned int new_direction)
 {
@@ -154,7 +172,7 @@ namespace LTC2305_Modules {
 ltc2305::ltc2305(const char *_name)
   : i2c_slave(), Module(_name, "ltc2305")
 {
-  io_port = new IOPort(8);
+  io_port = new IOPort(4);
   Addattr = new AddAttribute(this);
   addSymbol(Addattr);
   //Addattr->set(0x27);
@@ -189,10 +207,9 @@ void ltc2305::put_data(unsigned int data)
 
 unsigned int ltc2305::get_data()
 {
-  Dprintf(("ltc2305::get_data() 0x%x\n", io_port->get()));
+  Dprintf(("i2c2par::get_data() 0x%x\n", io_port->get()));
   return io_port->get();
 }
-
 
 void ltc2305::slave_transmit(bool input)
 {
@@ -218,21 +235,23 @@ Module *ltc2305::construct(const char *_new_name)
 
 void ltc2305::create_iopin_map()
 {
-  pins = new IO_bi_directional_pu *[8];
-  char pin_name[] = "p0";
+  pins = new IO_bi_directional_pu *[2];
+  char pin_name[] = "CH0";
   addSymbol((IOPIN *)sda);
   addSymbol((IOPIN *)scl);
-  package = new Package(10);
+  package = new Package(4);
 
-  for (int i = 0; i < 8; i++) {
-    pin_name[1] = '0' + i;
+  for (int i = 0; i < 2; i++) {
+    pin_name[2] = '0' + i;
     pins[i] = new IO_bi_directional_pu(pin_name);
-    package->assign_pin(i < 4 ? i + 1 : i + 3, io_port->addPin(pins[i], i));
+    package->assign_pin(i + 1, io_port->addPin(pins[i], i));
     addSymbol(pins[i]);
   }
 
-  package->assign_pin(5, (IOPIN *)(sda));
-  package->assign_pin(6, (IOPIN *)(scl));
+  package->assign_pin(3, (IOPIN *)(sda));
+  package->assign_pin(4, (IOPIN *)(scl));
+
+
 }
 
 

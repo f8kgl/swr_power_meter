@@ -65,11 +65,6 @@ pullup_2.voltage = 5
 pullup_2.xpos = 120
 pullup_2.ypos = 420
 
-module load ltc2305 ltc2305
-ltc2305.Slave_Address = 8
-ltc2305.xpos = 96
-ltc2305.ypos = 228
-
 module load pullup high
 high.capacitance = 0
 high.resistance = 0
@@ -83,6 +78,11 @@ low.resistance = 0
 low.voltage = 0
 low.xpos = 312
 low.ypos = 384
+
+module load ltc2305 ltc2305
+ltc2305.Slave_Address = 8
+ltc2305.xpos = 96
+ltc2305.ypos = 240
 
 
 
@@ -109,7 +109,7 @@ node nD7
 attach nD7 lcd_display.d7 p18f1320.portb7
 
 node nFWD
-attach nFWD p18f1320.porta0 Vfwd.pin
+attach nFWD p18f1320.porta0 Vfwd.pin ltc2305.CH0
 
 node nREF
 attach nREF p18f1320.porta1 Vref.pin
@@ -121,10 +121,10 @@ node nSCL
 attach nSCL p18f1320.porta3 pullup_2.pin ltc2305.SCL
 
 node nH
-attach nH high.pin ltc2305.p7 ltc2305.p5 ltc2305.p3 ltc2305.p1
+attach nH high.pin
 
 node nL
-attach nL low.pin ltc2305.p6 ltc2305.p4 ltc2305.p2 ltc2305.p0
+attach nL low.pin
 
 
 
