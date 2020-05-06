@@ -112,7 +112,7 @@ node nFWD
 attach nFWD p18f1320.porta0 Vfwd.pin ltc2305.CH0
 
 node nREF
-attach nREF p18f1320.porta1 Vref.pin
+attach nREF p18f1320.porta1 Vref.pin ltc2305.CH1
 
 node nSDA
 attach nSDA p18f1320.porta2 pullup_1.pin ltc2305.SDA

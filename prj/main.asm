@@ -25,7 +25,7 @@ IFDEF TEST
 ENDIF
 	extern f_adc_init
 	extern f_adc_read_vfwd
-	extern f_adc_readAN1
+	extern f_adc_read_vref
 
 	udata
 v_timer0 res 1
@@ -87,7 +87,7 @@ IFDEF TEST
 test_loop
 	;;lire les registres ADCfwd et ADCref
 	call f_adc_read_vfwd
-	call f_adc_readAN1
+	call f_adc_read_vref
 
 	;; afficher la mesure des ADC en mode test
 	call f_lcd_affadc

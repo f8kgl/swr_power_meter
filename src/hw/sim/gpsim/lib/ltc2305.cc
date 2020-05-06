@@ -93,33 +93,62 @@ IOPort::IOPort(unsigned int _num_iopins)
 {
 }
 
-
+#define S_D 7
+#define O_S 6
+#define UNI 3
+#define SLP 2
+unsigned int config=0;
 void IOPort::put(unsigned int value)
 {
-  for (int i = 0; i < 8; i++) {
-    IOPIN *m_pin;
 
-    unsigned int bit = 1 << i;
-
-    if ((m_pin = getPin(i))) {
-      m_pin->putState((value & bit) == bit);
-    }
-  }
+  config = value;
 }
 
 unsigned int byte_to_send=0;
 unsigned int IOPort::get()
 {
   double voltage = 0.0;
+  double voltage0 = 0.0;
+  double voltage1 = 0.0;
 
   //Dprintf(("ltc2305::get_data() 0x%x\n", io_port->get()));
-    IOPIN *m_pin;
+    IOPIN *m_pin0;
+    IOPIN *m_pin1;
 
-
-    if ((m_pin = getPin(0))) {
-      voltage = m_pin->get_nodeVoltage();
+switch (config&0xC0) {
+  case  ((0<<S_D)|(0<<O_S)):
+    if ((m_pin0 = getPin(0))&&(m_pin1 = getPin(1))) {
+      voltage0 = m_pin0->get_nodeVoltage();
+      voltage0 = (2.5*voltage0)/0.036946;
+      voltage1 = m_pin1->get_nodeVoltage();
+      voltage1 = (2.5*voltage1)/0.036946;
+      voltage = voltage0 - voltage1;
+  }
+  case  ((0<<S_D)|(1<<O_S)):
+    if ((m_pin0 = getPin(0))&&(m_pin1 = getPin(1))) {
+      voltage0 = m_pin0->get_nodeVoltage();
+      voltage0 = (2.5*voltage0)/0.036946;
+      voltage1 = m_pin1->get_nodeVoltage();
+      voltage1 = (2.5*voltage1)/0.036946;
+      voltage = - voltage0 + voltage1;
+  }
+  break;
+  case  ((1<<S_D)|(0<<O_S)):
+    if ((m_pin0 = getPin(0))) {
+      voltage = m_pin0->get_nodeVoltage();
       voltage = (2.5*voltage)/0.036946;
   }
+  break;
+  case  ((1<<S_D)|(1<<O_S)):
+    if ((m_pin1 = getPin(1))) {
+      voltage = m_pin1->get_nodeVoltage();
+      voltage = (2.5*voltage)/0.036946;
+  }
+  break;
+}
+
+  if (voltage >4.096)
+    voltage = 4.096;
 
   unsigned int converted = (unsigned int)( 4096* voltage )/4.096;
   converted = converted&0xFFF; //12 bits
