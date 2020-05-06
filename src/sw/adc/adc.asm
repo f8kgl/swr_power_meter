@@ -5,7 +5,6 @@
 v_adcfwd res 2
 v_adcref res 2
 v_adccde res 1
-v_delay res 1
 v_adc_count res 1
 
 	extern v_i2c_device_addr
@@ -99,20 +98,7 @@ _f_adc_read_vref_4
 	rrcf v_adcref+1,f
 	decfsz v_adc_count,f
 	goto _f_adc_read_vref_4
-
-
-
-
-
 	return
-
-_adc_tempo20us
-	clrf v_delay ;
-	bsf v_delay, 0 ; Delay 20 usecs
-	bsf v_delay, 1 ;
-	decfsz v_delay, f ;
-	goto $ - 1 ;
-	return ;
 
 
 	global f_adc_init

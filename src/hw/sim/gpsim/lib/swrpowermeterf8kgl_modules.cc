@@ -71,6 +71,7 @@ support:
 #include "i2c-eeprom.h"
 #include "i2c.h"
 #include "ltc2305.h"
+#include "ad5175.h"
 
 
 Module_Types available_modules[] = {
@@ -83,6 +84,7 @@ Module_Types available_modules[] = {
   */
 #endif
   { {"ltc2305", "LTC2305"},   LTC2305_Modules::ltc2305::construct },
+  { {"ad5175", "AD5175"},   AD5175_Modules::ad5175::construct },
 
   // No more modules
   { {0, 0}, 0}
