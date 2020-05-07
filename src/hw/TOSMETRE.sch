@@ -597,7 +597,7 @@ U 1 1 5EA8C71B
 P 1700 3850
 F 0 "J5" H 1800 3732 50  0000 L CNN
 F 1 "Conn_Coaxial" H 1800 3823 50  0000 L CNN
-F 2 "Connector_Coaxial:SMA_Amphenol_901-144_Vertical" H 1700 3850 50  0001 C CNN
+F 2 "Connector_Coaxial:SMA_Amphenol_132203-12_Horizontal" H 1700 3850 50  0001 C CNN
 F 3 " ~" H 1700 3850 50  0001 C CNN
 	1    1700 3850
 	0    -1   -1   0   
@@ -608,7 +608,7 @@ U 1 1 5EA8D686
 P 1700 6750
 F 0 "J2" H 1800 6632 50  0000 L CNN
 F 1 "Conn_Coaxial" H 1800 6723 50  0000 L CNN
-F 2 "Connector_Coaxial:SMA_Amphenol_901-144_Vertical" H 1700 6750 50  0001 C CNN
+F 2 "Connector_Coaxial:SMA_Amphenol_132203-12_Horizontal" H 1700 6750 50  0001 C CNN
 F 3 " ~" H 1700 6750 50  0001 C CNN
 	1    1700 6750
 	0    1    1    0   
