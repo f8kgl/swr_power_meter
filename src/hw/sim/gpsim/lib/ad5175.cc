@@ -73,14 +73,14 @@ public:
 };
 
 
-class IOPort : public PortModule
+class IOPort_ad5175 : public PortModule
 //class IOPort : public PortRegister
 {
 public:
   unsigned int direction;
 
   //    virtual void put(unsigned int new_value);
-  explicit IOPort(unsigned int _num_iopins = 8);
+  explicit IOPort_ad5175(unsigned int _num_iopins = 4);
   void update_pin_directions(unsigned int);
   void put(unsigned int);
   unsigned int get();
@@ -88,13 +88,13 @@ public:
 
 
 //IOPort::IOPort(unsigned int _num_iopins) : PortRegister(_num_iopins, "P", "")
-IOPort::IOPort(unsigned int _num_iopins)
+IOPort_ad5175::IOPort_ad5175(unsigned int _num_iopins)
   : PortModule(_num_iopins), direction(0)
 {
 }
 
 #define CDE_WRITE_RDAC 0x01
-void IOPort::put(unsigned int value)
+void IOPort_ad5175::put(unsigned int value)
 {
   unsigned int cde = (value & 0x3C) >>2;
   IOPIN *m_pin_in;
@@ -124,13 +124,13 @@ void IOPort::put(unsigned int value)
 }
 
 
-unsigned int IOPort::get()
+unsigned int IOPort_ad5175::get()
 {
 
   return 0xFF;
 }
 
-void IOPort::update_pin_directions(unsigned int new_direction)
+void IOPort_ad5175::update_pin_directions(unsigned int new_direction)
 {
   if ((new_direction ^ direction) & 1) {
     direction = new_direction & 1;
@@ -155,7 +155,7 @@ namespace AD5175_Modules {
 ad5175::ad5175(const char *_name)
   : i2c_slave(), Module(_name, "ad5175")
 {
-  io_port = new IOPort(4);
+  io_port = new IOPort_ad5175(4);
   Addattr = new AddAttribute(this);
   addSymbol(Addattr);
   //Addattr->set(0x27);
@@ -190,7 +190,7 @@ void ad5175::put_data(unsigned int data)
 
 unsigned int ad5175::get_data()
 {
-  Dprintf(("i2c2par::get_data() 0x%x\n", io_port->get()));
+  Dprintf(("ad5175::get_data() 0x%x\n", io_port->get()));
   return io_port->get();
 }
 

@@ -73,14 +73,14 @@ public:
 };
 
 
-class IOPort : public PortModule
+class IOPort_ltc2305 : public PortModule
 //class IOPort : public PortRegister
 {
 public:
   unsigned int direction;
 
   //    virtual void put(unsigned int new_value);
-  explicit IOPort(unsigned int _num_iopins = 8);
+  explicit IOPort_ltc2305(unsigned int _num_iopins = 4);
   void update_pin_directions(unsigned int);
   void put(unsigned int);
   unsigned int get();
@@ -88,7 +88,7 @@ public:
 
 
 //IOPort::IOPort(unsigned int _num_iopins) : PortRegister(_num_iopins, "P", "")
-IOPort::IOPort(unsigned int _num_iopins)
+IOPort_ltc2305::IOPort_ltc2305(unsigned int _num_iopins)
   : PortModule(_num_iopins), direction(0)
 {
 }
@@ -98,14 +98,14 @@ IOPort::IOPort(unsigned int _num_iopins)
 #define UNI 3
 #define SLP 2
 unsigned int config=0;
-void IOPort::put(unsigned int value)
+void IOPort_ltc2305::put(unsigned int value)
 {
 
   config = value;
 }
 
 unsigned int byte_to_send=0;
-unsigned int IOPort::get()
+unsigned int IOPort_ltc2305::get()
 {
   double voltage = 0.0;
   double voltage0 = 0.0;
@@ -166,7 +166,7 @@ switch (config&0xC0) {
   return converted;
 }
 
-void IOPort::update_pin_directions(unsigned int new_direction)
+void IOPort_ltc2305::update_pin_directions(unsigned int new_direction)
 {
   if ((new_direction ^ direction) & 1) {
     direction = new_direction & 1;
@@ -191,7 +191,7 @@ namespace LTC2305_Modules {
 ltc2305::ltc2305(const char *_name)
   : i2c_slave(), Module(_name, "ltc2305")
 {
-  io_port = new IOPort(4);
+  io_port = new IOPort_ltc2305(4);
   Addattr = new AddAttribute(this);
   addSymbol(Addattr);
   //Addattr->set(0x27);
@@ -226,7 +226,7 @@ void ltc2305::put_data(unsigned int data)
 
 unsigned int ltc2305::get_data()
 {
-  Dprintf(("i2c2par::get_data() 0x%x\n", io_port->get()));
+  Dprintf(("ltc2305::get_data() 0x%x\n", io_port->get()));
   return io_port->get();
 }
 

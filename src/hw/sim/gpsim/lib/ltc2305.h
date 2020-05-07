@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "src/i2c-ee.h"
 
 
-class IOPort;
+class IOPort_ltc2305;
 class AddAttribute;
 namespace LTC2305_Modules {
 
@@ -49,7 +49,7 @@ public:
   virtual unsigned int get_data();
   virtual void slave_transmit(bool yes);
 
-  IOPort *io_port;
+  IOPort_ltc2305 *io_port;
 
 protected:
   AddAttribute *Addattr;
