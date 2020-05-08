@@ -22,8 +22,8 @@ f_digit_pot_set_gain_fwd
 	movlw CDE_AD5175_SET_RDAC
   clrf  v_digit_pot_cde
   movwf v_digit_pot_cde
-  rlncf v_digit_pot_cde
-  rlncf v_digit_pot_cde
+  rlncf v_digit_pot_cde,f
+  rlncf v_digit_pot_cde,f
 	movlw v_digit_pot_cde
 	movwf v_i2c_p_send_data
 	call f_i2c_write_in_device
