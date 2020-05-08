@@ -1,5 +1,8 @@
 ## Process this file with automake to produce Makefile.in
 ##créer un fichier swrpowermeterf8kgl_modules.cc qui est la librairie
+##créer des liens symboliques des sources dans .../gpsim0.31/modules
+## ex : cd ...gpsim0.31/modules
+## ln -s ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/Makefile.am
 ##modifier le makefile.am comme ci-dessous
 ##cd .../gpsim.0.31
 ## autoreconf
@@ -35,8 +38,7 @@ libgpsim_modules_la_SOURCES = \
 	m_stimuli.h m_stimuli.cc \
 	ttl.cc ttl.h \
 	video.cc video.h \
-	i2c.cc i2c.h 
-#	ltc2305.cc ltc2305.h
+	i2c.cc i2c.h \
  # TSD - removed 17APR06 #PGS added back
 ##	paraface.cc paraface.h \  # TSD - removed 16APR06
 
