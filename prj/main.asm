@@ -83,11 +83,12 @@ Init
 	movlw 0x00
 	call f_lcd_setposcursor
 
+	;; Initialise le gain de la chaîne
+	call f_digit_pot_set_gain_fwd
+
 IFDEF TEST
 	call f_lcd_aff_fwd_and_ref
 test_loop
-	;; Initialise le gain de la chaîne
-	call f_digit_pot_set_gain_fwd
 	;;lire les registres ADCfwd et ADCref
 	call f_adc_read_vfwd
 	call f_adc_read_vref
