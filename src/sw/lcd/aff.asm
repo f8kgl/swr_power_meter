@@ -145,16 +145,7 @@ IFDEF TEST
 f_lcd_aff_fwd_and_ref
 	movlw 0x00
 	movwf v_charpos
-_lcd_aff_fwd_and_ref_2_1
-	movlw c_testmsgL1
-	addlw 0x02 ;pour pointer sur le début de la table (ignore addwd pcl)
-	addwf v_charpos,W
-	btfss STATUS,C
-	goto _lcd_aff_fwd_and_ref_2_2 ;retenu à 0 => pas de changement de page dans le programme
-  movlw HIGH c_testmsgL1 ;sinon la retenue est à 1, et il faut changer de page
- 	addlw 0x01
-	movwf PCLATH
-_lcd_aff_fwd_and_ref_2_2
+_lcd_aff_fwd_and_ref_2
 	movf v_charpos, w ; put counter value in W
 	call c_testmsgL1 ; get a character from the text table
 	xorlw 0x00 ; is it a zero?
@@ -163,23 +154,14 @@ _lcd_aff_fwd_and_ref_2_2
 	call f_lcd_affchar
 	incf v_charpos, f
 	incf v_charpos, f
-	goto _lcd_aff_fwd_and_ref_2_1
+	goto _lcd_aff_fwd_and_ref_2
 _lcd_aff_fwd_and_ref_3
 	movlw 0x10
 	call f_lcd_setposcursor
 _lcd_aff_fwd_and_ref_4
 	movlw 0x00
 	movwf v_charpos
-_lcd_aff_fwd_and_ref_5_1
-	movlw c_testmsgL2
-	addlw 0x02 ;pour pointer sur le début de la table (ignore addwd pcl)
-	addwf v_charpos,W
-	btfss STATUS,C
-	goto _lcd_aff_fwd_and_ref_5_2 ;retenu à 0 => pas de changement de page dans le programme
-  movlw HIGH c_testmsgL2 ;sinon la retenue est à 1, et il faut changer de page
- 	addlw 0x01
-	movwf PCLATH
-_lcd_aff_fwd_and_ref_5_2
+_lcd_aff_fwd_and_ref_5
 	movf v_charpos, w ; put counter value in W
 	call c_testmsgL2 ; get a character from the text table
 	xorlw 0x00 ; is it a zero?
@@ -188,7 +170,7 @@ _lcd_aff_fwd_and_ref_5_2
 	call f_lcd_affchar
 	incf v_charpos, f
 	incf v_charpos, f
-	goto _lcd_aff_fwd_and_ref_5_1
+	goto _lcd_aff_fwd_and_ref_5
 _lcd_aff_fwd_and_ref_6
 	return
 ENDIF
