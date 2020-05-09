@@ -41,7 +41,7 @@ lcd_display.ypos = 96
 module load pullup Vfwd
 Vfwd.capacitance = 0
 Vfwd.resistance = 10000
-Vfwd.voltage = 2
+Vfwd.voltage = 0.035
 Vfwd.xpos = 36
 Vfwd.ypos = 60
 
@@ -72,7 +72,7 @@ ltc2305.xpos = 144
 ltc2305.ypos = 192
 
 module load ad5175 ad5175
-ad5175.Slave_Address = 0
+ad5175.Slave_Address = 47
 ad5175.xpos = 144
 ad5175.ypos = 108
 
