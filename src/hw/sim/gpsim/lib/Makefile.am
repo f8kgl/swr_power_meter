@@ -2,7 +2,10 @@
 ##créer un fichier swrpowermeterf8kgl_modules.cc qui est la librairie
 ##créer des liens symboliques des sources dans .../gpsim0.31/modules
 ## ex : cd ...gpsim0.31/modules
-## ln -s ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/Makefile.am
+## ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/Makefile.am
+## ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/ltc2305.cc
+##ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/libswrpowermeterf8kgl_modules.cc
+## etc etc (ne pas oublier les header, et autres sources)
 ##modifier le makefile.am comme ci-dessous
 ##cd .../gpsim.0.31
 ## autoreconf
@@ -19,8 +22,8 @@ lib_LTLIBRARIES = libgpsim_modules.la \
 libswrpowermeterf8kgl_modules_la_SOURCES = \
 	swrpowermeterf8kgl_modules.cc \
 	module_attribute.h \
-	ltc2305.cc ltc2305.h
-#  ad5715.cc ad5175.h
+	ltc2305.cc ltc2305.h \
+	ad5175.cc ad5175.h
 
 libswrpowermeterf8kgl_modules_la_LIBADD = ../eXdbm/libgpsim_eXdbm.la -lstdc++ -lpopt \
   @X_LDFLAGS@ @Y_LDFLAGS@ @LIBREADLINE@ ../src/libgpsim.la
