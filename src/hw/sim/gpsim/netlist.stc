@@ -21,6 +21,7 @@
 module library lib_swrpowermeterf8kgl_modules
 module library libgpsim_extras
 module library libgpsim_modules
+module library libswrpowermeterf8kgl_modules
 
 
 # Modules:
@@ -30,59 +31,45 @@ p18f1320.UnknownMode = true
 p18f1320.WarnMode = true
 p18f1320.tmr1_freq = 32768
 p18f1320.tmr3_freq = 32768
-p18f1320.xpos = 72
-p18f1320.ypos = 72
+p18f1320.xpos = 228
+p18f1320.ypos = 84
 
 module load lcd_display lcd_display
-lcd_display.xpos = 312
+lcd_display.xpos = 408
 lcd_display.ypos = 96
 
 module load pullup Vfwd
 Vfwd.capacitance = 0
 Vfwd.resistance = 10000
 Vfwd.voltage = 2
-Vfwd.xpos = 312
-Vfwd.ypos = 228
+Vfwd.xpos = 24
+Vfwd.ypos = 84
 
 module load pullup Vref
 Vref.capacitance = 0
 Vref.resistance = 10000
 Vref.voltage = 5
-Vref.xpos = 312
-Vref.ypos = 276
+Vref.xpos = 24
+Vref.ypos = 180
 
 module load pullup pullup_1
 pullup_1.capacitance = 0
 pullup_1.resistance = 10000
 pullup_1.voltage = 5
-pullup_1.xpos = 120
-pullup_1.ypos = 360
+pullup_1.xpos = 216
+pullup_1.ypos = 240
 
 module load pullup pullup_2
 pullup_2.capacitance = 0
 pullup_2.resistance = 10000
 pullup_2.voltage = 5
-pullup_2.xpos = 120
-pullup_2.ypos = 420
-
-module load pullup high
-high.capacitance = 0
-high.resistance = 0
-high.voltage = 5
-high.xpos = 312
-high.ypos = 336
-
-module load pulldown low
-low.capacitance = 0
-low.resistance = 0
-low.voltage = 0
-low.xpos = 312
-low.ypos = 384
+pullup_2.xpos = 192
+pullup_2.ypos = 36
 
 module load ltc2305 ltc2305
 ltc2305.Slave_Address = 8
-ltc2305.xpos = 96
-ltc2305.ypos = 240
+ltc2305.xpos = 108
+ltc2305.ypos = 120
 
 
 
@@ -109,10 +96,10 @@ node nD7
 attach nD7 lcd_display.d7 p18f1320.portb7
 
 node nFWD
-attach nFWD p18f1320.porta0 Vfwd.pin ltc2305.CH0
+attach nFWD Vfwd.pin ltc2305.CH0
 
 node nREF
-attach nREF p18f1320.porta1 Vref.pin ltc2305.CH1
+attach nREF Vref.pin ltc2305.CH1
 
 node nSDA
 attach nSDA p18f1320.porta2 pullup_1.pin ltc2305.SDA
@@ -121,10 +108,10 @@ node nSCL
 attach nSCL p18f1320.porta3 pullup_2.pin ltc2305.SCL
 
 node nH
-attach nH high.pin
+
 
 node nL
-attach nL low.pin
+
 
 
 

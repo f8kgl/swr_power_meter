@@ -13,15 +13,16 @@
 
 AM_CPPFLAGS = @X_CFLAGS@
 
-lib_LTLIBRARIES = libgpsim_modules.la
-#	lib_swrpowermeterf8kgl_modules.la
+lib_LTLIBRARIES = libgpsim_modules.la \
+	libswrpowermeterf8kgl_modules.la
 
-#lib_swrpowermeterf8kgl_modules_la_SOURCES = \
-#	swrpowermeterf8kgl_modules.cc \
-#	module_attribute.h \
-#	ltc2305.cc ltc2305.h
+libswrpowermeterf8kgl_modules_la_SOURCES = \
+	swrpowermeterf8kgl_modules.cc \
+	module_attribute.h \
+	ltc2305.cc ltc2305.h
+#  ad5715.cc ad5175.h
 
-#lib_swrpowermeterf8kgl_modules_la_LIBADD = ../eXdbm/libgpsim_eXdbm.la -lstdc++ -lpopt \
+libswrpowermeterf8kgl_modules_la_LIBADD = ../eXdbm/libgpsim_eXdbm.la -lstdc++ -lpopt \
   @X_LDFLAGS@ @Y_LDFLAGS@ @LIBREADLINE@ ../src/libgpsim.la
 
 libgpsim_modules_la_SOURCES = \
@@ -39,6 +40,7 @@ libgpsim_modules_la_SOURCES = \
 	ttl.cc ttl.h \
 	video.cc video.h \
 	i2c.cc i2c.h \
+	i2c2par.cc i2c2par.h
  # TSD - removed 17APR06 #PGS added back
 ##	paraface.cc paraface.h \  # TSD - removed 16APR06
 
