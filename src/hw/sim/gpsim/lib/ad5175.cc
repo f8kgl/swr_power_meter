@@ -120,6 +120,8 @@ void IOPort_ad5175::put(unsigned int value)
     m_pin_out->set_nodeVoltage(voltage_out);
   }
 
+  printf("F4BJH AD5175 voltage_in=%lf voltage_out=%lf \n", voltage_in, voltage_out);
+
 
 }
 

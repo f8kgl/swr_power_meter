@@ -83,6 +83,15 @@ Init
 	movlw 0x00
 	call f_lcd_setposcursor
 
+
+IFDEF DEBUG_ISSUE_134
+	;Fiche #121 #157 #134
+	;appelle l'init des composants branchés sur le bus i2c
+	;pour contourner le NACK reçu uniquement lors de la 1ère trame sous GPSIM
+	call f_digit_pot_set_gain_fwd
+	call f_adc_read_vfwd
+ENDIF
+
 	;; Initialise le gain de la chaîne
 	call f_digit_pot_set_gain_fwd
 

@@ -161,7 +161,7 @@ switch (config&0xC0) {
     byte_to_send = 1;
   }
 
-  //  printf("FDEC result=%lf 0x%02x\n", voltage, converted);
+  printf("F4BJH ltc2305 result=%lf 0x%02x\n", voltage, converted);
 
   return converted;
 }
