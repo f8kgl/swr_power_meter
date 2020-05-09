@@ -111,17 +111,6 @@ F 3 "~" H 11000 3900 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	8150 1150 9800 1150
-$Comp
-L TOSMETRE-rescue:MAX11100-16F88 U4
-U 1 1 5CFD76E0
-P 5400 2250
-F 0 "U4" V 5917 2577 50  0000 L CNN
-F 1 "MAX11100" V 5995 2457 50  0000 L CNN
-F 2 "Package_SO:MSOP-10_3x3mm_P0.5mm" V 6050 2600 50  0001 C CNN
-F 3 "" V 5100 2550 50  0001 C CNN
-	1    5400 2250
-	0    1    1    0   
-$EndComp
 Connection ~ 8150 1150
 Wire Wire Line
 	8250 3600 8250 3150
@@ -220,7 +209,7 @@ F 3 "" H 7750 1450 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	8350 3150 8350 3600
-Text Notes 4700 2500 0    50   ~ 0
+Text Notes 4200 1300 0    50   ~ 0
 +5V
 $Comp
 L Device:C C3
@@ -393,8 +382,6 @@ Wire Wire Line
 Wire Wire Line
 	3800 1150 3450 1150
 Connection ~ 3800 1150
-Wire Wire Line
-	4150 5300 3250 5300
 Connection ~ 4150 1150
 $Comp
 L power:GNDREF #PWR0102
@@ -406,19 +393,6 @@ F 2 "" H 4600 1900 50  0001 C CNN
 F 3 "" H 4600 1900 50  0001 C CNN
 	1    4600 1900
 	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	4650 2550 4650 2600
-$Comp
-L power:GNDREF #PWR0101
-U 1 1 5E7F5C1D
-P 4650 2600
-F 0 "#PWR0101" H 4650 2350 50  0001 C CNN
-F 1 "GNDREF" H 4655 2427 50  0000 C CNN
-F 2 "" H 4650 2600 50  0001 C CNN
-F 3 "" H 4650 2600 50  0001 C CNN
-	1    4650 2600
-	1    0    0    -1  
 $EndComp
 $Comp
 L Device:C C4
@@ -435,8 +409,6 @@ Text Notes 6750 2750 0    50   ~ 0
 VREF
 Wire Wire Line
 	6500 1150 6500 1600
-Wire Wire Line
-	6250 2550 6500 2550
 Text Notes 6500 1300 0    50   ~ 0
 +5V
 $Comp
@@ -456,27 +428,6 @@ Wire Wire Line
 	4150 2450 4600 2450
 Wire Wire Line
 	4150 1150 4150 2450
-Connection ~ 4150 2450
-Wire Wire Line
-	4150 2450 4150 5300
-Connection ~ 4600 2450
-Wire Wire Line
-	4600 2450 5300 2450
-$Comp
-L power:GNDREF #PWR0103
-U 1 1 5E82596D
-P 4950 1900
-F 0 "#PWR0103" H 4950 1650 50  0001 C CNN
-F 1 "GNDREF" H 4955 1727 50  0000 C CNN
-F 2 "" H 4950 1900 50  0001 C CNN
-F 3 "" H 4950 1900 50  0001 C CNN
-	1    4950 1900
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	5300 2350 4950 2350
-Wire Wire Line
-	4950 2350 4950 1900
 Wire Wire Line
 	4600 2150 4600 1900
 $Comp
@@ -509,7 +460,6 @@ Wire Wire Line
 	6500 2650 6500 2750
 Wire Wire Line
 	6500 2650 6800 2650
-Connection ~ 6500 2650
 Wire Wire Line
 	2250 1150 2850 1150
 Connection ~ 6500 1150
@@ -517,28 +467,6 @@ Wire Wire Line
 	6500 1150 8150 1150
 Wire Wire Line
 	6500 1600 6150 1600
-Wire Wire Line
-	6250 2650 6500 2650
-Wire Wire Line
-	7750 4600 7750 5400
-Connection ~ 6500 1600
-Wire Wire Line
-	6500 1600 6500 2550
-Wire Wire Line
-	3250 5400 7750 5400
-$Comp
-L TOSMETRE-rescue:MAX4624-16F88 U3
-U 1 1 5CFD8181
-P 3150 5400
-F 0 "U3" V 3437 5671 50  0000 C CNN
-F 1 "MAX4624" V 3503 5668 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23-6" V 3650 5650 50  0001 C CNN
-F 3 "" V 3500 5450 50  0001 C CNN
-	1    3150 5400
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	2500 5400 1700 5400
 NoConn ~ 8650 4600
 NoConn ~ 8550 4600
 NoConn ~ 8450 4600
@@ -548,49 +476,6 @@ NoConn ~ 7850 4600
 Connection ~ 8150 1450
 Wire Wire Line
 	8150 1450 8150 3150
-Wire Wire Line
-	6250 2350 7850 2350
-Wire Wire Line
-	7850 2350 7850 3600
-Wire Wire Line
-	6250 2250 7950 2250
-Wire Wire Line
-	7950 2250 7950 3600
-Wire Wire Line
-	5300 2250 5150 2250
-Wire Wire Line
-	5150 2250 5150 2100
-Wire Wire Line
-	5150 2100 8050 2100
-Wire Wire Line
-	8050 2100 8050 3600
-Wire Wire Line
-	6250 2450 7250 2450
-Wire Wire Line
-	7250 2450 7250 2800
-$Comp
-L power:GNDREF #PWR0107
-U 1 1 5EA31A54
-P 7250 2800
-F 0 "#PWR0107" H 7250 2550 50  0001 C CNN
-F 1 "GNDREF" H 7255 2627 50  0000 C CNN
-F 2 "" H 7250 2800 50  0001 C CNN
-F 3 "" H 7250 2800 50  0001 C CNN
-	1    7250 2800
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2350 3250 2350 5300
-Wire Wire Line
-	4650 2550 5300 2550
-Wire Wire Line
-	4850 3250 4850 2650
-Wire Wire Line
-	4850 2650 5300 2650
-Wire Wire Line
-	4850 3250 2350 3250
-Wire Wire Line
-	2500 5300 2350 5300
 $Comp
 L Connector:Conn_Coaxial J5
 U 1 1 5EA8C71B
@@ -704,8 +589,6 @@ F 3 "" H 1000 5050 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1700 4900 1700 5050
-Wire Wire Line
-	1700 5200 2500 5200
 $Comp
 L power:GNDREF #PWR0111
 U 1 1 5EB0E0EA
@@ -719,14 +602,8 @@ F 3 "" H 2100 3850 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1900 3850 2100 3850
-Connection ~ 1700 5750
-Wire Wire Line
-	1700 5750 1700 5400
 Wire Wire Line
 	1700 6250 1700 6550
-Connection ~ 1700 5050
-Wire Wire Line
-	1700 5050 1700 5200
 Wire Wire Line
 	1700 4050 1700 4600
 $EndSCHEMATC
