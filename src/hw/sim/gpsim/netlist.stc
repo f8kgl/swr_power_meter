@@ -18,7 +18,6 @@
 
 
 # Processor position:
-module library lib_swrpowermeterf8kgl_modules
 module library libgpsim_extras
 module library libgpsim_modules
 module library libswrpowermeterf8kgl_modules
@@ -66,6 +65,11 @@ pullup_2.voltage = 5
 pullup_2.xpos = 348
 pullup_2.ypos = 36
 
+module load ltc2305 ltc2305
+ltc2305.Slave_Address = 8
+ltc2305.xpos = 168
+ltc2305.ypos = 132
+
 
 
 # Connections:
@@ -91,16 +95,16 @@ node nD7
 attach nD7 lcd_display.d7 p18f1320.portb7
 
 node nFWD
-attach nFWD Vfwd.pin
+attach nFWD Vfwd.pin ltc2305.CH0
 
 node nREF
 attach nREF Vref.pin
 
 node nSDA
-attach nSDA p18f1320.porta2 pullup_1.pin
+attach nSDA p18f1320.porta2 pullup_1.pin ltc2305.SDA
 
 node nSCL
-attach nSCL p18f1320.porta3 pullup_2.pin
+attach nSCL p18f1320.porta3 pullup_2.pin ltc2305.SCL
 
 node nH
 

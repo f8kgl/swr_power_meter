@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <cstdio>
 
-//#define DEBUG
+#define DEBUG
 #if defined(DEBUG)
 #define Dprintf(arg) {printf("%s:%d ",__FILE__,__LINE__); printf arg; }
 #else
@@ -119,31 +119,25 @@ unsigned int IOPort_ltc2305::get()
       case  ((0<<S_D)|(0<<O_S)):
       if ((m_pin0 = getPin(0))&&(m_pin1 = getPin(1))) {
         voltage0 = m_pin0->get_nodeVoltage();
-        voltage0 = (2.5*voltage0)/0.036946;
         voltage1 = m_pin1->get_nodeVoltage();
-        voltage1 = (2.5*voltage1)/0.036946;
         voltage = voltage0 - voltage1;
       }
       break;
       case  ((0<<S_D)|(1<<O_S)):
       if ((m_pin0 = getPin(0))&&(m_pin1 = getPin(1))) {
         voltage0 = m_pin0->get_nodeVoltage();
-        voltage0 = (2.5*voltage0)/0.036946;
         voltage1 = m_pin1->get_nodeVoltage();
-        voltage1 = (2.5*voltage1)/0.036946;
         voltage = - voltage0 + voltage1;
       }
       break;
       case  ((1<<S_D)|(0<<O_S)):
       if ((m_pin0 = getPin(0))) {
         voltage = m_pin0->get_nodeVoltage();
-        voltage = (2.5*voltage)/0.036946;
       }
       break;
       case  ((1<<S_D)|(1<<O_S)):
       if ((m_pin1 = getPin(1))) {
         voltage = m_pin1->get_nodeVoltage();
-        voltage = (2.5*voltage)/0.036946;
       }
       break;
     }
@@ -163,7 +157,7 @@ unsigned int IOPort_ltc2305::get()
       byte_to_send = 1;
     }
 
-    printf("F4BJH ltc2305 result=%lf 0x%02x\n", voltage, converted);
+    Dprintf(("result=%lf 0x%02x\n", voltage, converted));
 
   return converted;
 }
