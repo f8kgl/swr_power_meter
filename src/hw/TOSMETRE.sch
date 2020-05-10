@@ -457,4 +457,15 @@ F 3 "https://www.diodes.com/assets/Datasheets/ds30396.pdf" H 1700 4300 50  0001 
 	1    1700 4300
 	-1   0    0    1   
 $EndComp
+$Comp
+L librairie_projet:AD5175 U?
+U 1 1 5EB81854
+P 4700 3650
+F 0 "U?" H 4700 4117 50  0000 C CNN
+F 1 "AD5175" H 4700 4026 50  0000 C CNN
+F 2 "Package_SO:MSOP-10_3x3mm_P0.5mm" H 4800 4150 50  0001 C CNN
+F 3 "" H 4700 3650 50  0001 C CNN
+	1    4700 3650
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
