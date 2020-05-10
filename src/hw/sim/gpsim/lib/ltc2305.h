@@ -31,6 +31,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "src/trigger.h"
 #include "src/i2c-ee.h"
 
+#define S_D 7
+#define O_S 6
+#define UNI 3
+#define SLP 2
+
+#define MSB 0
+#define LSB 1
+
 
 class IOPort_ltc2305;
 class AddAttribute;
@@ -50,6 +58,10 @@ public:
   virtual void slave_transmit(bool yes);
 
   IOPort_ltc2305 *io_port;
+  unsigned int data_byte_to_send;
+  unsigned int config_word;
+  unsigned int converted = 0;
+
 
 protected:
   AddAttribute *Addattr;

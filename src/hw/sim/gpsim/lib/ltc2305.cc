@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <cstdio>
 
-#define DEBUG
+//#define DEBUG
 #if defined(DEBUG)
 #define Dprintf(arg) {printf("%s:%d ",__FILE__,__LINE__); printf arg; }
 #else
@@ -82,8 +82,7 @@ public:
   //    virtual void put(unsigned int new_value);
   explicit IOPort_ltc2305(unsigned int _num_iopins = 4);
   void update_pin_directions(unsigned int);
-  void put(unsigned int);
-  unsigned int get();
+  unsigned int get(unsigned int config);
 };
 
 
@@ -93,19 +92,7 @@ IOPort_ltc2305::IOPort_ltc2305(unsigned int _num_iopins)
 {
 }
 
-#define S_D 7
-#define O_S 6
-#define UNI 3
-#define SLP 2
-unsigned int config=0;
-void IOPort_ltc2305::put(unsigned int value)
-{
-
-  config = value;
-}
-
-unsigned int byte_to_send=0;
-unsigned int IOPort_ltc2305::get()
+unsigned int IOPort_ltc2305::get(unsigned int config)
 {
   double voltage = 0.0;
   double voltage0 = 0.0;
@@ -120,6 +107,14 @@ unsigned int IOPort_ltc2305::get()
       if ((m_pin0 = getPin(0))&&(m_pin1 = getPin(1))) {
         voltage0 = m_pin0->get_nodeVoltage();
         voltage1 = m_pin1->get_nodeVoltage();
+        voltage0 = (2.5*voltage0)/0.036946;
+        voltage1 = (2.5*voltage1)/0.036946;
+        if (voltage0 >4.096) {
+          voltage = 4.096;
+        }
+        if (voltage1 >4.096) {
+          voltage = 4.096;
+        }
         voltage = voltage0 - voltage1;
       }
       break;
@@ -127,39 +122,43 @@ unsigned int IOPort_ltc2305::get()
       if ((m_pin0 = getPin(0))&&(m_pin1 = getPin(1))) {
         voltage0 = m_pin0->get_nodeVoltage();
         voltage1 = m_pin1->get_nodeVoltage();
+        voltage0 = (2.5*voltage0)/0.036946;
+        voltage1 = (2.5*voltage1)/0.036946;
+        if (voltage0 >4.096) {
+          voltage = 4.096;
+        }
+        if (voltage1 >4.096) {
+          voltage = 4.096;
+        }
         voltage = - voltage0 + voltage1;
       }
       break;
       case  ((1<<S_D)|(0<<O_S)):
       if ((m_pin0 = getPin(0))) {
         voltage = m_pin0->get_nodeVoltage();
+        voltage = (2.5*voltage)/0.036946;
       }
       break;
       case  ((1<<S_D)|(1<<O_S)):
       if ((m_pin1 = getPin(1))) {
         voltage = m_pin1->get_nodeVoltage();
+        voltage = (2.5*voltage)/0.036946;
       }
       break;
     }
 
     if (voltage >4.096) {
       voltage = 4.096;
-
-    }
-    unsigned int converted = (unsigned int)( 4096* voltage )/4.096;
-    converted = converted&0xFFF; //12 bits
-
-    if (byte_to_send) {
-      converted = (converted&0x0F)<<4; //bits de poids faible
-      byte_to_send = 0;
-    }else {
-      converted = (converted&0xFF0)>>4;
-      byte_to_send = 1;
     }
 
-    Dprintf(("result=%lf 0x%02x\n", voltage, converted));
 
-  return converted;
+    unsigned int adc_value = (unsigned int)( 4096* voltage )/4.096;
+    adc_value = adc_value&0x0FFF; //12 bits
+
+
+    Dprintf(("voltage=%lf (0x%04x)\n", voltage, adc_value));
+
+  return adc_value;
 }
 
 void IOPort_ltc2305::update_pin_directions(unsigned int new_direction)
@@ -190,6 +189,8 @@ ltc2305::ltc2305(const char *_name)
   io_port = new IOPort_ltc2305(4);
   Addattr = new AddAttribute(this);
   addSymbol(Addattr);
+  data_byte_to_send=MSB;
+  config_word = 0;
   //Addattr->set(0x27);
 }
 
@@ -216,14 +217,28 @@ ltc2305::~ltc2305()
 void ltc2305::put_data(unsigned int data)
 {
   Dprintf(("ltc2305::put_data() 0x%x\n", data));
-  io_port->put(data);
-}
+  config_word = data;
+//normalement il devrait y avoir une petite tempo là
+  converted = io_port->get(config_word);
 
+}
 
 unsigned int ltc2305::get_data()
 {
-  Dprintf(("ltc2305::get_data() 0x%x\n", io_port->get()));
-  return io_port->get();
+  unsigned int data;
+
+  Dprintf(("ltc2305::get_data() 0x%04x %d\n", converted,data_byte_to_send));
+
+  if (data_byte_to_send==LSB) {
+    data = (converted&0x0F)<<4; //bits de poids faible
+    data_byte_to_send = MSB;
+  }else {
+    data = (converted&0xFF0)>>4;
+    data_byte_to_send = LSB;
+  }
+  Dprintf(("ltc2305::get_data() 0x%02x\n", data));
+
+  return data;
 }
 
 void ltc2305::slave_transmit(bool input)
