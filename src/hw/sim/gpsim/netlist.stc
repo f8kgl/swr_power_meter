@@ -40,7 +40,7 @@ lcd_display.ypos = 96
 module load pullup Vfwd
 Vfwd.capacitance = 0
 Vfwd.resistance = 10000
-Vfwd.voltage = 1
+Vfwd.voltage = 0.01
 Vfwd.xpos = 36
 Vfwd.ypos = 60
 
@@ -67,8 +67,13 @@ pullup_2.ypos = 36
 
 module load ltc2305 ltc2305
 ltc2305.Slave_Address = 8
-ltc2305.xpos = 168
-ltc2305.ypos = 132
+ltc2305.xpos = 156
+ltc2305.ypos = 180
+
+module load ad5175 ad5175
+ad5175.Slave_Address = 47
+ad5175.xpos = 156
+ad5175.ypos = 108
 
 
 
@@ -95,16 +100,16 @@ node nD7
 attach nD7 lcd_display.d7 p18f1320.portb7
 
 node nFWD
-attach nFWD Vfwd.pin ltc2305.CH0
+attach nFWD Vfwd.pin ad5175.in
 
 node nREF
 attach nREF Vref.pin
 
 node nSDA
-attach nSDA p18f1320.porta2 pullup_1.pin ltc2305.SDA
+attach nSDA p18f1320.porta2 pullup_1.pin ltc2305.SDA ad5175.SDA
 
 node nSCL
-attach nSCL p18f1320.porta3 pullup_2.pin ltc2305.SCL
+attach nSCL p18f1320.porta3 pullup_2.pin ltc2305.SCL ad5175.SCL
 
 node nH
 
@@ -113,9 +118,15 @@ node nL
 
 
 node nFWD_adc
-
+attach nFWD_adc ltc2305.CH0 ad5175.out
 
 node nREF_adc
+
+
+node adc_fwd
+
+
+node adc_ref
 
 
 
