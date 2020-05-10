@@ -115,53 +115,55 @@ unsigned int IOPort_ltc2305::get()
     IOPIN *m_pin0;
     IOPIN *m_pin1;
 
-switch (config&0xC0) {
-  case  ((0<<S_D)|(0<<O_S)):
-    if ((m_pin0 = getPin(0))&&(m_pin1 = getPin(1))) {
-      voltage0 = m_pin0->get_nodeVoltage();
-      voltage0 = (2.5*voltage0)/0.036946;
-      voltage1 = m_pin1->get_nodeVoltage();
-      voltage1 = (2.5*voltage1)/0.036946;
-      voltage = voltage0 - voltage1;
-  }
-  case  ((0<<S_D)|(1<<O_S)):
-    if ((m_pin0 = getPin(0))&&(m_pin1 = getPin(1))) {
-      voltage0 = m_pin0->get_nodeVoltage();
-      voltage0 = (2.5*voltage0)/0.036946;
-      voltage1 = m_pin1->get_nodeVoltage();
-      voltage1 = (2.5*voltage1)/0.036946;
-      voltage = - voltage0 + voltage1;
-  }
-  break;
-  case  ((1<<S_D)|(0<<O_S)):
-    if ((m_pin0 = getPin(0))) {
-      voltage = m_pin0->get_nodeVoltage();
-      voltage = (2.5*voltage)/0.036946;
-  }
-  break;
-  case  ((1<<S_D)|(1<<O_S)):
-    if ((m_pin1 = getPin(1))) {
-      voltage = m_pin1->get_nodeVoltage();
-      voltage = (2.5*voltage)/0.036946;
-  }
-  break;
-}
+    switch (config&0xC0) {
+      case  ((0<<S_D)|(0<<O_S)):
+      if ((m_pin0 = getPin(0))&&(m_pin1 = getPin(1))) {
+        voltage0 = m_pin0->get_nodeVoltage();
+        voltage0 = (2.5*voltage0)/0.036946;
+        voltage1 = m_pin1->get_nodeVoltage();
+        voltage1 = (2.5*voltage1)/0.036946;
+        voltage = voltage0 - voltage1;
+      }
+      break;
+      case  ((0<<S_D)|(1<<O_S)):
+      if ((m_pin0 = getPin(0))&&(m_pin1 = getPin(1))) {
+        voltage0 = m_pin0->get_nodeVoltage();
+        voltage0 = (2.5*voltage0)/0.036946;
+        voltage1 = m_pin1->get_nodeVoltage();
+        voltage1 = (2.5*voltage1)/0.036946;
+        voltage = - voltage0 + voltage1;
+      }
+      break;
+      case  ((1<<S_D)|(0<<O_S)):
+      if ((m_pin0 = getPin(0))) {
+        voltage = m_pin0->get_nodeVoltage();
+        voltage = (2.5*voltage)/0.036946;
+      }
+      break;
+      case  ((1<<S_D)|(1<<O_S)):
+      if ((m_pin1 = getPin(1))) {
+        voltage = m_pin1->get_nodeVoltage();
+        voltage = (2.5*voltage)/0.036946;
+      }
+      break;
+    }
 
-  if (voltage >4.096)
-    voltage = 4.096;
+    if (voltage >4.096) {
+      voltage = 4.096;
 
-  unsigned int converted = (unsigned int)( 4096* voltage )/4.096;
-  converted = converted&0xFFF; //12 bits
+    }
+    unsigned int converted = (unsigned int)( 4096* voltage )/4.096;
+    converted = converted&0xFFF; //12 bits
 
-  if (byte_to_send) {
-    converted = (converted&0x0F)<<4; //bits de poids faible
-    byte_to_send = 0;
-  }else {
-    converted = (converted&0xFF0)>>4;
-    byte_to_send = 1;
-  }
+    if (byte_to_send) {
+      converted = (converted&0x0F)<<4; //bits de poids faible
+      byte_to_send = 0;
+    }else {
+      converted = (converted&0xFF0)>>4;
+      byte_to_send = 1;
+    }
 
-  printf("F4BJH ltc2305 result=%lf 0x%02x\n", voltage, converted);
+    printf("F4BJH ltc2305 result=%lf 0x%02x\n", voltage, converted);
 
   return converted;
 }
