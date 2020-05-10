@@ -19,8 +19,8 @@ f_digit_pot_set_gain_fwd
 	movwf v_i2c_device_addr
 	movlw 0x01
 	movwf v_i2c_data_size
-	movlw CDE_AD5175_SET_RDAC
   clrf  v_digit_pot_cde
+	movlw CDE_AD5175_SET_RDAC
   movwf v_digit_pot_cde
   rlncf v_digit_pot_cde,f
   rlncf v_digit_pot_cde,f

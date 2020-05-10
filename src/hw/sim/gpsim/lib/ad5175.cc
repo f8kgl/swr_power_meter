@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <cstdio>
 
-//#define DEBUG
+#define DEBUG
 #if defined(DEBUG)
 #define Dprintf(arg) {printf("%s:%d ",__FILE__,__LINE__); printf arg; }
 #else
@@ -83,7 +83,6 @@ public:
   explicit IOPort_ad5175(unsigned int _num_iopins = 4);
   void update_pin_directions(unsigned int);
   void put(unsigned int);
-  unsigned int get();
 };
 
 
@@ -120,17 +119,11 @@ void IOPort_ad5175::put(unsigned int value)
     m_pin_out->set_nodeVoltage(voltage_out);
   }
 
-  printf("F4BJH AD5175 voltage_in=%lf voltage_out=%lf \n", voltage_in, voltage_out);
+  Dprintf(("voltage_in=%lf voltage_out=%lf \n", voltage_in, voltage_out));
 
 
 }
 
-
-unsigned int IOPort_ad5175::get()
-{
-
-  return 0xFF;
-}
 
 void IOPort_ad5175::update_pin_directions(unsigned int new_direction)
 {
@@ -192,8 +185,7 @@ void ad5175::put_data(unsigned int data)
 
 unsigned int ad5175::get_data()
 {
-  Dprintf(("ad5175::get_data() 0x%x\n", io_port->get()));
-  return io_port->get();
+  return 0;
 }
 
 void ad5175::slave_transmit(bool input)
