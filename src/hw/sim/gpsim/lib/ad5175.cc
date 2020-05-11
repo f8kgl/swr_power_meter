@@ -82,7 +82,7 @@ public:
   //    virtual void put(unsigned int new_value);
   explicit IOPort_ad5175(unsigned int _num_iopins = 4);
   void update_pin_directions(unsigned int);
-  void put(unsigned int);
+  double put(unsigned int);
 };
 
 
@@ -93,11 +93,10 @@ IOPort_ad5175::IOPort_ad5175(unsigned int _num_iopins)
 }
 
 #define CDE_WRITE_RDAC 0x01
-void IOPort_ad5175::put(unsigned int value)
+double IOPort_ad5175::put(unsigned int value)
 {
   unsigned int cde = (value & 0x3C) >>2;
   IOPIN *m_pin_in;
-  IOPIN *m_pin_out;
   double voltage_in=0.0;
   double voltage_out=0.0;
   unsigned int rdac=0;
@@ -115,13 +114,9 @@ void IOPort_ad5175::put(unsigned int value)
 
   voltage_out = voltage_in*(1+rdac/25);
 
-  if ((m_pin_out = getPin(1))) {
-    m_pin_out->set_nodeVoltage(voltage_out);
-  }
-
   Dprintf(("voltage_in=%lf voltage_out=%lf \n", voltage_in, voltage_out));
 
-
+  return voltage_out;
 }
 
 
@@ -151,6 +146,8 @@ ad5175::ad5175(const char *_name)
   : i2c_slave(), Module(_name, "ad5175")
 {
   io_port = new IOPort_ad5175(4);
+  res_out = new IO_bi_directional_pu("out");
+  res_out->set_Vpullup(2.0);
   Addattr = new AddAttribute(this);
   addSymbol(Addattr);
   //Addattr->set(0x27);
@@ -161,6 +158,7 @@ ad5175::~ad5175()
 {
   delete io_port;
   delete Addattr;
+  delete res_out;
 
   for (int i = 0; i < 8; i++) {
     removeSymbol(pins[i]);
@@ -178,8 +176,15 @@ ad5175::~ad5175()
 
 void ad5175::put_data(unsigned int data)
 {
+  double voltage_out=0.0;
   Dprintf(("ad5175::put_data() 0x%x\n", data));
-  io_port->put(data);
+  voltage_out = io_port->put(data);
+
+  res_out->set_Vpullup(voltage_out);
+  res_out->updateNode();
+  Dprintf(("vPullup=%lf \n", res_out->get_Vpullup()));
+
+
 }
 
 
@@ -205,6 +210,11 @@ Module *ad5175::construct(const char *_new_name)
 {
   std::string att_name = _new_name;
   ad5175 *pEE = new ad5175(_new_name);
+  pEE->res_out->set_Vpullup(2.0);
+  pEE->res_out->set_Vth(2.0);
+  pEE->res_out->setDriving(false);
+  pEE->res_out->update_pullup('1', true);
+  pEE->res_out->updateNode();
   pEE->create_iopin_map();
   return pEE;
 }
@@ -212,9 +222,8 @@ Module *ad5175::construct(const char *_new_name)
 
 void ad5175::create_iopin_map()
 {
-  pins = new IO_bi_directional_pu *[2];
+  pins = new IO_bi_directional_pu *[1];
   char pin_name_in[]="in";
-  char pin_name_out[]="out";
   addSymbol((IOPIN *)sda);
   addSymbol((IOPIN *)scl);
   package = new Package(4);
@@ -222,9 +231,8 @@ void ad5175::create_iopin_map()
   pins[0] =  new IO_bi_directional_pu(pin_name_in);
   package->assign_pin(1, io_port->addPin(pins[0], 0));
   addSymbol(pins[0]);
-  pins[1] =  new IO_bi_directional_pu(pin_name_out);
-  package->assign_pin(2, io_port->addPin(pins[1], 1));
-  addSymbol(pins[1]);
+  package->assign_pin(2, res_out);
+  addSymbol(res_out);
 
   package->assign_pin(3, (IOPIN *)(sda));
   package->assign_pin(4, (IOPIN *)(scl));
