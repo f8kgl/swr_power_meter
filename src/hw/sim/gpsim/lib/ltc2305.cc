@@ -218,7 +218,7 @@ void ltc2305::put_data(unsigned int data)
 {
   Dprintf(("ltc2305::put_data() 0x%x\n", data));
   config_word = data;
-//normalement il devrait y avoir une petite tempo là
+//normalement il faudrait démarrer un timer
   converted = io_port->get(config_word);
 
 }
@@ -229,6 +229,8 @@ unsigned int ltc2305::get_data()
 
   Dprintf(("ltc2305::get_data() 0x%04x %d\n", converted,data_byte_to_send));
 
+//si le timer est arrivé à échéance, alors on calcule data comme ci-dessous
+//sinon, que vaut data d'ailleurs ?
   if (data_byte_to_send==LSB) {
     data = (converted&0x0F)<<4; //bits de poids faible
     data_byte_to_send = MSB;
