@@ -98,7 +98,6 @@ unsigned int IOPort_ltc2305::get(unsigned int config)
   double voltage0 = 0.0;
   double voltage1 = 0.0;
 
-  //Dprintf(("ltc2305::get_data() 0x%x\n", io_port->get()));
     IOPIN *m_pin0;
     IOPIN *m_pin1;
 

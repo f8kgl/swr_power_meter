@@ -196,10 +196,10 @@ void ad5175::slave_transmit(bool input)
 
 bool ad5175::match_address()
 {
-  Dprintf(("ad5175::match_address() 0x%x\n", xfr_data));
+  if((xfr_data & 0xfe) == i2c_slave_address)
+    Dprintf(("ad5175::match_address() 0x%x\n", xfr_data));
   return ((xfr_data & 0xfe) == i2c_slave_address);
 }
-
 
 Module *ad5175::construct(const char *_new_name)
 {
