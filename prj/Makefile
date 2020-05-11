@@ -78,11 +78,11 @@ $(OUTPUT_TEST) : $(OBJS_TEST) $(LIBS_TEST)
 
 #Règle d’un objet de test issus des sources commun à tous les firmware
 %.TEST.o : %.asm
-	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) (DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
+	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) $(DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
 
 #Règle d’un objet du firmware test
 %.o : %.asm
-	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) (DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
+	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) $(DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
 
 clean:
 	rm -f *.o

@@ -14,6 +14,7 @@
 	config DEBUG = OFF ; Background debugger off 	CONFIG  _CONFIG2L, _PWRT_ON_2L & _BOR_OFF_2L & _BORV_27_2L
 
 	extern f_lcd_init
+	extern f_i2c_init
 	extern f_lcd_affboot
 	extern f_lcd_clear
 	extern f_lcd_setposcursor
