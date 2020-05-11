@@ -28,8 +28,8 @@ LD = gplink
 LDFLAGS = --map -c
 DEBUG_LDFLAGS = -S2
 ASFLAGS = -c -e ON -DSW_VERSION="\"$(VERSION)\""
-#export DEBUG_ISSUE_n =NO_ISSUE
-export DEBUG_ISSUE_n = DEBUG_ISSUE_134
+#export DEBUG_ISSUE_n =
+export DEBUG_ISSUE_n = -D$DEBUG_ISSUE_134
 export TEST_FLAGS = TEST
 export CALIBRATION_FLAGS = CALIBRATION
 
@@ -78,11 +78,11 @@ $(OUTPUT_TEST) : $(OBJS_TEST) $(LIBS_TEST)
 
 #Règle d’un objet de test issus des sources commun à tous les firmware
 %.TEST.o : %.asm
-	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) -D$(DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
+	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) (DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
 
 #Règle d’un objet du firmware test
 %.o : %.asm
-	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) -D$(DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
+	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) (DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
 
 clean:
 	rm -f *.o
