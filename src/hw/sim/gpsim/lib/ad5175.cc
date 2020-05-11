@@ -212,6 +212,7 @@ Module *ad5175::construct(const char *_new_name)
   ad5175 *pEE = new ad5175(_new_name);
   pEE->res_out->set_Vpullup(2.0);
   pEE->res_out->set_Vth(2.0);
+  pEE->res_out->set_Zpullup(10e3);
   pEE->res_out->setDriving(false);
   pEE->res_out->update_pullup('1', true);
   pEE->res_out->updateNode();
