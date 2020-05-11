@@ -5,6 +5,9 @@
 v_temp res 1
 v_poscursor res 1
 v_lcd_count res 1
+v_lcd_change_page res 1
+v_lcd_addr_offset res 1
+
 
 	extern D160us
 	extern Del255
@@ -148,6 +151,28 @@ f_lcd_convtoascii
 	mullw 0x02
 	movlw HIGH f_lcd_convtoascii
 	movwf PCLATH
+	movlw _f_lcd_convtoascii_2
+	movwf v_lcd_addr_offset
+	movlw f_lcd_convtoascii
+	subwf v_lcd_addr_offset,f         ;v_lcd_addr_offset = v_lcdmsg_addr_offset - W = c_testmsgL1_2 - c_testmsgL1
+
+	movlw f_lcd_convtoascii
+	addwf v_lcd_addr_offset,w ;pour pointer sur le début de la table (ignore addwd pcl)
+	btfsc STATUS,C
+	bsf	v_lcd_change_page,0
+	addlw 0x02 ;pour ignore l'instruction addwf pcl
+	btfsc STATUS,C
+	bsf	v_lcd_change_page,0
+	addwf PRODL,W
+	btfsc STATUS,C
+	bsf	v_lcd_change_page,0
+
+	btfss v_lcd_change_page,0
+	goto _f_lcd_convtoascii_2 ;retenu à 0 => pas de changement de page dans le programme
+  movlw HIGH f_lcd_convtoascii ;sinon la retenue est à 1, et il faut changer de page
+ 	addlw 0x01
+	movwf PCLATH
+_f_lcd_convtoascii_2
 	movf PRODL,w
 	addwf PCL, f
 	retlw 0x30		;'0'
