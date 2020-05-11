@@ -6,7 +6,7 @@ v_lcdmsg_change_page res 1
 v_lcdmsg_addr_offset res 1
 
 	code
-	
+
 ;-----------------------------------------
 ;Fonction : Message de boot ligne 1 du LCD
 ;Nom : bootmsgL1
@@ -62,7 +62,7 @@ IFDEF TEST
 ;Fonction : Message du mode de test ligne 1 du LCD
 ;Nom : testmsgL1
 ;Entrée :
-;	v_charpos (1 byte) :position du caractère à retourner
+;	w (1 byte) :position du caractère à retourner
 ;Sortie :
 ;	W (1 byte) : contient le caractère ou 0x00 si pas de caractère
 ;Traitement :
@@ -71,6 +71,8 @@ IFDEF TEST
 ;-----------------------------------------
 c_testmsgL1
 	movwf v_lcdmsg_temp
+  movlw HIGH c_testmsgL1 
+	movwf PCLATH
 	movlw _c_testmsgL1_2
 	movwf v_lcdmsg_addr_offset
 	movlw c_testmsgL1
@@ -105,7 +107,7 @@ _c_testmsgL1_2
 ;Fonction : Message du mode de test ligne 2 du LCD
 ;Nom : calibmsgL2
 ;Entrée :
-;	v_charpos (1 byte) :position du caractère à retourner
+;	w (1 byte) :position du caractère à retourner
 ;Sortie :
 ;	W (1 byte) : contient le caractère ou 0x00 si pas de caractère
 ;Traitement :
@@ -114,6 +116,8 @@ _c_testmsgL1_2
 ;-----------------------------------------
 c_testmsgL2
 	movwf v_lcdmsg_temp
+  movlw HIGH c_testmsgL2
+	movwf PCLATH
 	movlw _c_testmsgL2_2
 	movwf v_lcdmsg_addr_offset
 	movlw c_testmsgL2
@@ -128,7 +132,7 @@ c_testmsgL2
 
 	btfss v_lcdmsg_change_page,0
 	goto _c_testmsgL2_2 ;retenu à 0 => pas de changement de page dans le programme
-  movlw HIGH c_testmsgL1 ;sinon la retenue est à 1, et il faut changer de page
+  movlw HIGH c_testmsgL2 ;sinon la retenue est à 1, et il faut changer de page
  	addlw 0x01
 _c_testmsgL2_2
 	movf v_lcdmsg_temp,w
