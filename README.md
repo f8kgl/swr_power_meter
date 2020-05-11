@@ -40,78 +40,64 @@ https://sourceforge.net/projects/gputils/files/gputils/1.5.0/gputils-1.5.0-1.tar
 	$sudo make install
 
 
-3.2-GPSIM
-Sous linux, la suite « gpsim » permet la simulation d’un code compilé par GPUTILS
-3.2.1-Installation:
+***GPSIM
 1. Désinstaller la version courante de la distribution
-2.
-3. Télécharger la version 0.31.0 en suivant ce lien :
+2.Télécharger la version 0.31.0 en suivant ce lien :
 https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 4. Installation
 
+	$tar -xvzf gpsim-0.31.0.tar.gz
+	
+	$cd gpsim-0.31.0/
+	
+	$./configure
+
+	
+	$make
+	
+	$sudo make install
+	
+	$sudo /sbin/ldconfig
 
 
+5.Utilisation
+	1.
+	$ gpsim –s nom_du_fichier.cod
+	
+	2. Aller dans File->Open et choisir le fichier .stc
+	3.Par défaut, la fréquence est fixée à 20MHz. Il faut fixer la fréquence de travail à 4MHz
+	**gpsim> frequency 4000000
+	**gpsim> frequency
+	Clock frequency: 4 MHz.
+	
+6.Librairie et module
+	1. Création de lien symboliques vers les sources de la librairie, des modules, et le Makefile
+	
+	$cd .../gpsim0.31/modules
+	
+	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/Makefile.am
+	
+	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/ltc2305.cc
+	
+	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/ltc2305.h
+	
+	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/ad5175.cc
+	
+	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/ad5175.h
+	
+	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/swrpowermeterf8kgl.cc
 
-3.2.2-Utilisation
-1.
-2. Aller dans File->Open et choisir le fichier .stc
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Pour générer le .hex : 
-
-$ cd swr_power_meter/prj
-$ make
-
-
-Pour la simulation sous gpsim0.31
-$ cd gpsim-0.31.0/modules
-$ ln -s .../swr_power_meter/src/hw/sim/gpsim/lib/ltc2305.cc
-$ ln -s .../swr_power_meter/src/hw/sim/gpsim/lib/ltc2305.h
-$ ln -s .../swr_power_meter/src/hw/sim/gpsim/lib/swrpowermeterf8kgl_modules.cc 
-
-$ cd ..
-$ $ autoreconf
-$./configure
-$make
-$sudo make install
-$sudo /sbin/ldconfig
-
-$ cd swr_power_meter/bin
-$ gpsim -s <nom_du_fichier>.cod
+	2. compiler les fichiers ajoutés
+	
+	$cd .../gpsim0.31/
+	
+	$ autoreconf
+	
+	$./configure
+	
+	$make
+	
+	$sudo make install
+	
+	$sudo /sbin/ldconfig
+	
