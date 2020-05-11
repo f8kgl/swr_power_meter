@@ -65,6 +65,10 @@ Init
 	movwf TRISB ; Change PortB I/O
 	clrf PORTB
 
+	;Initialisation I2C
+	call f_i2c_init
+
+
 ; Initialisation ADC
  	call f_adc_init		;
 

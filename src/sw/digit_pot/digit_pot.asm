@@ -8,7 +8,6 @@ v_digit_pot_cde res 1
   extern v_i2c_data_size
 	extern v_i2c_p_send_data
 	extern v_i2c_p_receive_data
-	extern f_i2c_init
 	extern f_i2c_write_in_device
 	extern f_i2c_read_in_device
 
