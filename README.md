@@ -22,6 +22,77 @@ Ce dispositif a été conçu par les OM du club radioamateur « Vauréal Amiti�
 Le projet a été développé par André F0EOS, et Fabrice F4BJH. Portons également à l’attention du lecteur, que l’idée initiale vient de Pierre F1FDD.
 
 
+3.1-GPUTILS
+
+1. Désinstaller la version courante de la distribution
+
+2. Télécharger la version 1.5.0-1 en suivant ce lien :
+https://sourceforge.net/projects/gputils/files/gputils/1.5.0/gputils-1.5.0-1.tar.gz/download
+3. Installation
+3.2-GPSIM
+Sous linux, la suite « gpsim » permet la simulation d’un code compilé par GPUTILS
+3.2.1-Installation:
+1. Désinstaller la version courante de la distribution
+2.
+3. Télécharger la version 0.31.0 en suivant ce lien :
+https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
+4. Installation
+
+$ tar –xvzf gputils-1.5.0-1.tar.gz
+
+$ cd gputils-1.5.0-1.tar.gz
+
+$ ./configure
+
+$make
+
+$sudo make install
+
+
+
+
+3.2.2-Utilisation
+1.
+2. Aller dans File->Open et choisir le fichier .stc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Pour générer le .hex : 
 
 $ cd swr_power_meter/prj
