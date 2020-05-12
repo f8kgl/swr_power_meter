@@ -20,6 +20,7 @@
 	extern f_lcd_setposcursor
 IFDEF TEST
 	extern f_digit_pot_set_gain_fwd
+	extern f_digit_pot_set_gain_ref
 	extern f_lcd_aff_fwd_and_ref
 	extern f_lcd_affadc
 	extern f_calc_adcmV
@@ -69,7 +70,6 @@ Init
 	;Initialisation I2C
 	call f_i2c_init
 
-
 ; Initialisation ADC
  	call f_adc_init		;
 
@@ -94,11 +94,13 @@ IFDEF DEBUG_ISSUE_134
 	;appelle l'init des composants branchés sur le bus i2c
 	;pour contourner le NACK reçu uniquement lors de la 1ère trame sous GPSIM
 	call f_digit_pot_set_gain_fwd
+	call f_digit_pot_set_gain_ref
 	call f_adc_read_vfwd
 ENDIF
 
-	;; Initialise le gain de la chaîne
+	;; Initialise le gain des voies FWD et REF
 	call f_digit_pot_set_gain_fwd
+	call f_digit_pot_set_gain_ref
 
 IFDEF TEST
 	call f_lcd_aff_fwd_and_ref

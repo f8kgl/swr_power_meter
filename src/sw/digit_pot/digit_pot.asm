@@ -28,7 +28,23 @@ f_digit_pot_set_gain_fwd
 	call f_i2c_write_in_device
   return
 
+f_digit_pot_set_gain_ref
+	movlw I2C_ADDR_DEVICE_AD5175_REF
+	movwf v_i2c_device_addr
+	movlw 0x01
+	movwf v_i2c_data_size
+  clrf  v_digit_pot_cde
+	movlw CDE_AD5175_SET_RDAC
+  movwf v_digit_pot_cde
+  rlncf v_digit_pot_cde,f
+  rlncf v_digit_pot_cde,f
+	movlw v_digit_pot_cde
+	movwf v_i2c_p_send_data
+	call f_i2c_write_in_device
+  return
+
 
   global f_digit_pot_set_gain_fwd
+  global f_digit_pot_set_gain_ref
 
   end
