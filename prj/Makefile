@@ -9,7 +9,7 @@ endif
 NAME = swr_power_meter_f8kgl-
 export PROCESSOR = 18f1320
 export VERSION := V0.7
-OUTPUT_TEST = $(NAME)$(VERSION).TEST.hex
+OUTPUT_TEST = $(NAME)$(VERSION).TEST.I2C.hex
 OUTPUT_CALIBRATION = $(NAME)$(VERSION).CALIBRATION.hex
 OUTPUT = $(NAME)$(VERSION).hex
 ifeq ($(detected_OS),Linux)
@@ -27,16 +27,21 @@ LD = gplink
 #Flags
 LDFLAGS = --map -c
 DEBUG_LDFLAGS = -S2
-ASFLAGS = -c -DSW_VERSION="\"$(VERSION)\""
+ASFLAGS = -c -e ON -DSW_VERSION="\"$(VERSION)\""
+#export DEBUG_ISSUE_n =
+export DEBUG_ISSUE_n = -DDEBUG_ISSUE_134
 export TEST_FLAGS = TEST
 export CALIBRATION_FLAGS = CALIBRATION
 
 #Composants
-COMPS = lcd
+COMPS =tempo
+COMPS +=lcd
+COMPS +=i2c
 COMPS +=eep
-COMPS +=readadc
 COMPS +=flh
+COMPS +=adc
 COMPS +=calc
+COMPS +=digit_pot
 
 #Sources
 SRC_COMMUN = main.asm
@@ -73,18 +78,19 @@ $(OUTPUT_TEST) : $(OBJS_TEST) $(LIBS_TEST)
 
 #Règle d’un objet de test issus des sources commun à tous les firmware
 %.TEST.o : %.asm
-	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
+	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) $(DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
 
 #Règle d’un objet du firmware test
 %.o : %.asm
-	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
+	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) $(DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
 
 clean:
 	rm -f *.o
 	rm -f *.lst
 	rm -f ../bin/*
-	rm -f ../src/sw/data/*.o
-	rm -f ../src/sw/data/*.lst
+	find ../ -name '*.o' -exec rm -r {} \;
+	find ../ -name '*.lst' -exec rm -r {} \;
+
 
 project:
 	mkdir -p ../bin
