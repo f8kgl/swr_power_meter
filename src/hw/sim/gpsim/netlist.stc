@@ -116,24 +116,11 @@ attach nSDA p18f1320.porta2 pullup_1.pin ltc2305.SDA ad5175_fwd.SDA ad5175_ref.S
 node nSCL
 attach nSCL p18f1320.porta3 pullup_2.pin ltc2305.SCL ad5175_fwd.SCL ad5175_ref.SCL
 
-node nH
-
-
-node nL
-
-
 node nFWD_adc
 attach nFWD_adc ltc2305.CH0 ad5175_fwd.out
 
 node nREF_adc
 attach nREF_adc ad5175_ref.out ltc2305.CH1
-
-node adc_fwd
-
-
-node adc_ref
-
-
 
 
 # End.
