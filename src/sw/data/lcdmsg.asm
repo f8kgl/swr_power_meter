@@ -20,32 +20,15 @@ v_lcdmsg_addr_offset res 1
 ;-----------------------------------------
 c_bootmsgL1
 	movwf v_lcdmsg_temp
-	movlw HIGH c_bootmsgL1
+	movlw HIGH _c_bootmsgL1_2
 	movwf PCLATH
 	movlw _c_bootmsgL1_2
-	movwf v_lcdmsg_addr_offset
-	movlw c_bootmsgL1
-	subwf v_lcdmsg_addr_offset,f         ;v_lcdmsg_addr_offset = v_lcdmsg_addr_offset - W = c_testmsgL1_2 - c_testmsgL1
-
-	movlw c_bootmsgL1
-	addwf v_lcdmsg_addr_offset,w ;pour pointer sur le début de la table (ignore addwd pcl)
-	btfsc STATUS,C
-	bsf	v_lcdmsg_change_page,0
-	addlw 0x02 ;pour ignore l'instruction addwf pcl
-	btfsc STATUS,C
-	bsf	v_lcdmsg_change_page,0
 	addwf v_lcdmsg_temp,W
 	btfsc STATUS,C
-	bsf	v_lcdmsg_change_page,0
-
-	btfss v_lcdmsg_change_page,0
-	goto _c_bootmsgL1_2 ;retenu à 0 => pas de changement de page dans le programme
-	movlw HIGH c_bootmsgL1 ;sinon la retenue est à 1, et il faut changer de page
-	addlw 0x01
-	movwf PCLATH
-_c_bootmsgL1_2
+	incf PCLATH ;retenu à 1 => pas de changement de page
 	movf v_lcdmsg_temp,w
 	addwf PCL, f
+_c_bootmsgL1_2
 	retlw ' '
 	retlw ' '
 	retlw ' '
@@ -76,32 +59,15 @@ _c_bootmsgL1_2
 ;-----------------------------------------
 c_bootmsgL2
 	movwf v_lcdmsg_temp
-	movlw HIGH c_bootmsgL2
+	movlw HIGH _c_bootmsgL2_2
 	movwf PCLATH
 	movlw _c_bootmsgL2_2
-	movwf v_lcdmsg_addr_offset
-	movlw c_bootmsgL2
-	subwf v_lcdmsg_addr_offset,f         ;v_lcdmsg_addr_offset = v_lcdmsg_addr_offset - W = c_testmsgL1_2 - c_testmsgL1
-
-	movlw c_bootmsgL2
-	addwf v_lcdmsg_addr_offset,w ;pour pointer sur le début de la table (ignore addwd pcl)
-	btfsc STATUS,C
-	bsf	v_lcdmsg_change_page,0
-	addlw 0x02 ;pour ignore l'instruction addwf pcl
-	btfsc STATUS,C
-	bsf	v_lcdmsg_change_page,0
 	addwf v_lcdmsg_temp,W
 	btfsc STATUS,C
-	bsf	v_lcdmsg_change_page,0
-
-	btfss v_lcdmsg_change_page,0
-	goto _c_bootmsgL2_2 ;retenu à 0 => pas de changement de page dans le programme
-	movlw HIGH c_bootmsgL2 ;sinon la retenue est à 1, et il faut changer de page
-	addlw 0x01
-	movwf PCLATH
-_c_bootmsgL2_2
+	incf PCLATH ;retenu à 1 => pas de changement de page
 	movf v_lcdmsg_temp,w
 	addwf PCL, f
+_c_bootmsgL2_2
 	retlw 'F'
 	retlw '8'
 	retlw 'K'
@@ -123,32 +89,15 @@ IFDEF TEST
 ;-----------------------------------------
 c_testmsgL1
 	movwf v_lcdmsg_temp
-  movlw HIGH c_testmsgL1
+	movlw HIGH _c_testmsgL1_2
 	movwf PCLATH
 	movlw _c_testmsgL1_2
-	movwf v_lcdmsg_addr_offset
-	movlw c_testmsgL1
-	subwf v_lcdmsg_addr_offset,f         ;v_lcdmsg_addr_offset = v_lcdmsg_addr_offset - W = c_testmsgL1_2 - c_testmsgL1
-
-	movlw c_testmsgL1
-	addwf v_lcdmsg_addr_offset,w ;pour pointer sur le début de la table (ignore addwd pcl)
-	btfsc STATUS,C
-	bsf	v_lcdmsg_change_page,0
-	addlw 0x02 ;pour ignore l'instruction addwf pcl
-	btfsc STATUS,C
-	bsf	v_lcdmsg_change_page,0
 	addwf v_lcdmsg_temp,W
 	btfsc STATUS,C
-	bsf	v_lcdmsg_change_page,0
-
-	btfss v_lcdmsg_change_page,0
-	goto _c_testmsgL1_2 ;retenu à 0 => pas de changement de page dans le programme
-  movlw HIGH c_testmsgL1 ;sinon la retenue est à 1, et il faut changer de page
- 	addlw 0x01
-	movwf PCLATH
-_c_testmsgL1_2
+	incf PCLATH ;retenu à 1 => pas de changement de page
 	movf v_lcdmsg_temp,w
 	addwf PCL, f
+_c_testmsgL1_2
 	retlw 'F'
 	retlw 'W'
 	retlw 'D'
@@ -168,27 +117,15 @@ _c_testmsgL1_2
 ;-----------------------------------------
 c_testmsgL2
 	movwf v_lcdmsg_temp
-  movlw HIGH c_testmsgL2
+	movlw HIGH _c_testmsgL2_2
 	movwf PCLATH
 	movlw _c_testmsgL2_2
-	movwf v_lcdmsg_addr_offset
-	movlw c_testmsgL2
-	subwf v_lcdmsg_addr_offset,f         ;v_lcdmsg_addr_offset = v_lcdmsg_addr_offset - W = c_testmsgL1_2 - c_testmsgL1
-	movlw c_testmsgL2
-	addwf  v_lcdmsg_addr_offset,w ;pour pointer sur le début de la table
-	btfsc STATUS,C
-	bsf	v_lcdmsg_change_page,0
 	addwf v_lcdmsg_temp,W
 	btfsc STATUS,C
-	bsf	v_lcdmsg_change_page,0
-
-	btfss v_lcdmsg_change_page,0
-	goto _c_testmsgL2_2 ;retenu à 0 => pas de changement de page dans le programme
-  movlw HIGH c_testmsgL2 ;sinon la retenue est à 1, et il faut changer de page
- 	addlw 0x01
-_c_testmsgL2_2
+	incf PCLATH ;retenu à 1 => pas de changement de page
 	movf v_lcdmsg_temp,w
 	addwf PCL, f
+_c_testmsgL2_2
 	retlw 'R'
 	retlw 'E'
 	retlw 'F'
