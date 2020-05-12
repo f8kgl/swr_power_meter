@@ -12,6 +12,12 @@ K IO Expander I²C IIC I2C
 F http://ww1.microchip.com/downloads/en/DeviceDoc/21919e.pdf
 $ENDCMP
 #
+$CMP AD5175
+D 16-Bit, Multi-Channel ΔΣ Analog-to-Digital Converter with I2C Interface and On-Board Reference, MSOP-10
+K adc 2ch 16bit i2c
+F http://ww1.microchip.com/downloads/en/DeviceDoc/22226a.pdf
+$ENDCMP
+#
 $CMP ENC28J60-C_SS
 D ENC28J60 Single Chip Ethernet Interface, SSOP-28
 K ENC Ethernet
