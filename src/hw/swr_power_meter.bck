@@ -24,7 +24,19 @@ K diode
 F https://www.diodes.com/assets/Datasheets/ds30396.pdf
 $ENDCMP
 #
+$CMP DS1825
+D Programmable Resolution 1-Wire Digital Thermometer With 4-Bit ID MSOP-8
+K 1Wire OneWire Maxim Dallas
+F http://datasheets.maximintegrated.com/en/ds/DS1825.pdf
+$ENDCMP
+#
 $CMP LD3985G18R_TSOT23
+D 150mA Low Dropout Voltage Regulator, Fixed Output 1.8V, TSOT-23-5
+K 150mA LDO Regulator Fixed Positive
+F http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00003395.pdf
+$ENDCMP
+#
+$CMP LD3985G18R_TSOT23_copy
 D 150mA Low Dropout Voltage Regulator, Fixed Output 1.8V, TSOT-23-5
 K 150mA LDO Regulator Fixed Positive
 F http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00003395.pdf
@@ -36,7 +48,19 @@ K 150mA LDO Regulator Fixed Positive
 F http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00003395.pdf
 $ENDCMP
 #
+$CMP LD3985G25R_TSOT23_copy
+D 150mA Low Dropout Voltage Regulator, Fixed Output 2.5V, TSOT-23-5
+K 150mA LDO Regulator Fixed Positive
+F http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00003395.pdf
+$ENDCMP
+#
 $CMP LD3985G26R_TSOT23
+D 150mA Low Dropout Voltage Regulator, Fixed Output 2.6V, TSOT-23-5
+K 150mA LDO Regulator Fixed Positive
+F http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00003395.pdf
+$ENDCMP
+#
+$CMP LD3985G26R_TSOT23_copy
 D 150mA Low Dropout Voltage Regulator, Fixed Output 2.6V, TSOT-23-5
 K 150mA LDO Regulator Fixed Positive
 F http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00003395.pdf
@@ -48,7 +72,19 @@ K 150mA LDO Regulator Fixed Positive
 F http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00003395.pdf
 $ENDCMP
 #
+$CMP LD3985G27R_TSOT23_copy
+D 150mA Low Dropout Voltage Regulator, Fixed Output 2.7V, TSOT-23-5
+K 150mA LDO Regulator Fixed Positive
+F http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00003395.pdf
+$ENDCMP
+#
 $CMP LD3985G28R_TSOT23
+D 150mA Low Dropout Voltage Regulator, Fixed Output 2.8V, TSOT-23-5
+K 150mA LDO Regulator Fixed Positive
+F http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00003395.pdf
+$ENDCMP
+#
+$CMP LD3985G28R_TSOT23_copy
 D 150mA Low Dropout Voltage Regulator, Fixed Output 2.8V, TSOT-23-5
 K 150mA LDO Regulator Fixed Positive
 F http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00003395.pdf
@@ -60,7 +96,19 @@ K 150mA LDO Regulator Fixed Positive
 F http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00003395.pdf
 $ENDCMP
 #
+$CMP LD3985G30R_TSOT23_copy
+D 150mA Low Dropout Voltage Regulator, Fixed Output 3.0V, TSOT-23-5
+K 150mA LDO Regulator Fixed Positive
+F http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00003395.pdf
+$ENDCMP
+#
 $CMP LD3985G33R_TSOT23
+D 150mA Low Dropout Voltage Regulator, Fixed Output 3.3V, TSOT-23-5
+K 150mA LDO Regulator Fixed Positive
+F http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00003395.pdf
+$ENDCMP
+#
+$CMP LD3985G33R_TSOT23_copy
 D 150mA Low Dropout Voltage Regulator, Fixed Output 3.3V, TSOT-23-5
 K 150mA LDO Regulator Fixed Positive
 F http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00003395.pdf
@@ -72,10 +120,28 @@ K 150mA LDO Regulator Fixed Positive
 F http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00003395.pdf
 $ENDCMP
 #
+$CMP LD3985G47R_TSOT23_copy
+D 150mA Low Dropout Voltage Regulator, Fixed Output 4.7V, TSOT-23-5
+K 150mA LDO Regulator Fixed Positive
+F http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00003395.pdf
+$ENDCMP
+#
+$CMP LT1818
+D 150mA Low Dropout Voltage Regulator, Fixed Output 1.22V, TSOT-23-5
+K 150mA LDO Regulator Fixed Positive
+F http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00003395.pdf
+$ENDCMP
+#
 $CMP LT818
 D 150mA Low Dropout Voltage Regulator, Fixed Output 1.22V, TSOT-23-5
 K 150mA LDO Regulator Fixed Positive
 F http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00003395.pdf
+$ENDCMP
+#
+$CMP LTC2305
+D 1-Wire Digital Temperature Sensor with 1Kb Lockable EEPROM MSOP-8
+K 1Wire OneWire Maxim Dallas
+F http://datasheets.maximintegrated.com/en/ds/MAX31826.pdf
 $ENDCMP
 #
 #End Doc Library
