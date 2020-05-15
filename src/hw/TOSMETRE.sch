@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:TOSMETRE-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -500,6 +499,17 @@ F 1 "AD5175" H 5800 4026 50  0000 C CNN
 F 2 "Package_SO:MSOP-10_3x3mm_P0.5mm" H 5900 4150 50  0001 C CNN
 F 3 "" H 5800 3650 50  0001 C CNN
 	1    5800 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L librairie_projet:LTC2305 U?
+U 1 1 5EBEB456
+P 4750 5650
+F 0 "U?" H 4750 6117 50  0000 C CNN
+F 1 "LTC2305" H 4750 6026 50  0000 C CNN
+F 2 "Package_SO:MSOP-8_3x3mm_P0.65mm" H 3800 5300 50  0001 C CNN
+F 3 "http://datasheets.maximintegrated.com/en/ds/MAX31826.pdf" H 4550 5500 50  0001 C CNN
+	1    4750 5650
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC
