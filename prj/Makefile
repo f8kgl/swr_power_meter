@@ -29,7 +29,7 @@ export TEST_FLAGS = TEST
 export CALIBRATION_FLAGS = CALIBRATION
 GPSIM_FLAGS := Y # mettre n pour la version non GPSIM
 #export DEBUG_ISSUE_n =
-ifeq ($(GPSIM_FLAGS,n)
+ifeq ($(GPSIM_FLAGS),n)
 export DEBUG_ISSUE_n =
 OUTPUT_TEST = $(NAME)$(VERSION).TEST.hex
 OUTPUT_CALIBRATION = $(NAME)$(VERSION).CALIBRATION.hex

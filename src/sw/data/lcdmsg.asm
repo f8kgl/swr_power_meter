@@ -63,8 +63,7 @@ IFDEF SWR_POWER_METER
 	retlw 't'
 	retlw 'e'
 	retlw 'r'
-ELSE
-IFDEF xWATT_METER
+ELIFDEF xWATT_METER
 	retlw ' '
 	retlw ' '
 	retlw ' '
@@ -80,10 +79,11 @@ IFDEF xWATT_METER
 	retlw 't'
 	retlw 'e'
 	retlw 'r'
-ENDIF
+ENDIF ;#ifdef CALIBRATION ou OPERATIONNEL
+ENDIF ;#ifdef TEST
 	retlw 0x00
-	
-	
+
+
 ;-----------------------------------------
 ;Fonction : Message de boot ligne 2 du LCD
 ;Nom : bootmsgL2
