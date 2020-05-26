@@ -8,10 +8,7 @@ endif
 #Variables
 NAME = swr_power_meter_f8kgl-
 export PROCESSOR = 18f1320
-export VERSION := V0.7
-OUTPUT_TEST = $(NAME)$(VERSION).TEST.hex
-OUTPUT_CALIBRATION = $(NAME)$(VERSION).CALIBRATION.hex
-OUTPUT = $(NAME)$(VERSION).hex
+export VERSION := V0.8
 ifeq ($(detected_OS),Linux)
 export LKR_DIR =/usr/local/share/gputils/lkr/
 else
@@ -28,10 +25,21 @@ LD = gplink
 LDFLAGS = --map -c
 DEBUG_LDFLAGS = -S2
 ASFLAGS = -c -e ON -DSW_VERSION="\"$(VERSION)\""
-#export DEBUG_ISSUE_n =
-export DEBUG_ISSUE_n = -DDEBUG_ISSUE_134
 export TEST_FLAGS = TEST
 export CALIBRATION_FLAGS = CALIBRATION
+GPSIM_FLAGS := Y # mettre n pour la version non GPSIM
+#export DEBUG_ISSUE_n =
+ifeq ($(GPSIM_FLAGS,n)
+export DEBUG_ISSUE_n =
+OUTPUT_TEST = $(NAME)$(VERSION).TEST.hex
+OUTPUT_CALIBRATION = $(NAME)$(VERSION).CALIBRATION.hex
+OUTPUT = $(NAME)$(VERSION).hex
+else
+export DEBUG_ISSUE_n = -DDEBUG_ISSUE_134
+OUTPUT_TEST = $(NAME)$(VERSION).TEST.GPSIM.hex
+OUTPUT_CALIBRATION = $(NAME)$(VERSION).CALIBRATION.GPSIM.hex
+OUTPUT = $(NAME)$(VERSION).GPISM.hex
+endif
 
 #Composants
 COMPS =tempo
