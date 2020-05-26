@@ -1,0 +1,6 @@
+#ENDIF
+c_data_adc_theoric_caltable_end
+
+	global c_data_adc_theoric_caltable
+	
+	end
