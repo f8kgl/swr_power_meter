@@ -1,6 +1,6 @@
 #define I2C_PORT PORTA
-#define SDA 2
-#define SCL 3
+#define SDA 1
+#define SCL 0
 #define carry_bit STATUS,C
 
 m_sda_input	macro

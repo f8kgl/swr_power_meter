@@ -111,10 +111,10 @@ node nREF
 attach nREF Vref.pin ad5175_ref.in
 
 node nSDA
-attach nSDA p18f1320.porta2 pullup_1.pin ltc2305.SDA ad5175_fwd.SDA ad5175_ref.SDA
+attach nSDA p18f1320.porta1 pullup_1.pin ltc2305.SDA ad5175_fwd.SDA ad5175_ref.SDA
 
 node nSCL
-attach nSCL p18f1320.porta3 pullup_2.pin ltc2305.SCL ad5175_fwd.SCL ad5175_ref.SCL
+attach nSCL p18f1320.porta0 pullup_2.pin ltc2305.SCL ad5175_fwd.SCL ad5175_ref.SCL
 
 node nFWD_adc
 attach nFWD_adc ltc2305.CH0 ad5175_fwd.out
