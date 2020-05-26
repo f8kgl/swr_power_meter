@@ -46,7 +46,7 @@ COMPS =tempo
 COMPS +=lcd
 COMPS +=i2c
 COMPS +=eep
-COMPS +=flh
+#COMPS +=flh
 COMPS +=adc
 COMPS +=calc
 COMPS +=aop
@@ -55,7 +55,6 @@ COMPS +=aop
 SRC_COMMUN = main.asm
 SRC_COMMUN +=../src/sw/data/swversion.asm
 SRC_COMMUN +=../src/sw/data/lcdmsg.asm
-SRC_TEST = ../src/sw/data/adc_theoric_cal.asm
 
 #Objets
 OBJS_COMMUN_TEST = $(SRC_COMMUN:%.asm=%.TEST.o)
