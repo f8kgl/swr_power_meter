@@ -4370,7 +4370,7 @@
    <text:p text:style-name="P14"/>
    <text:p text:style-name="P14"><draw:frame draw:style-name="fr1" draw:name="Cadre5" text:anchor-type="paragraph" svg:x="7.019cm" svg:y="0.339cm" svg:width="2.297cm" svg:height="1.037cm" draw:z-index="22">
      <draw:text-box>
-      <text:p text:style-name="P148">digit_pot</text:p>
+      <text:p text:style-name="P148">aop</text:p>
      </draw:text-box>
     </draw:frame></text:p>
    <text:p text:style-name="P14"/>
@@ -4540,7 +4540,7 @@
     </table:table-row>
     <table:table-row table:style-name="Tableau3.1">
      <table:table-cell table:style-name="Tableau3.A7" office:value-type="string">
-      <text:p text:style-name="P49">swr_power_meter/<text:span text:style-name="T149">src/</text:span>sw/<text:span text:style-name="T25">digit_pot</text:span></text:p>
+      <text:p text:style-name="P49">swr_power_meter/<text:span text:style-name="T149">src/</text:span>sw/<text:span text:style-name="T25">aop</text:span></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau3.A7" office:value-type="string">
       <text:p text:style-name="P67">Composant <text:span text:style-name="T148">logiciel</text:span> <text:span text:style-name="T149">DIGIT_POT</text:span></text:p>
@@ -4686,7 +4686,7 @@
       <text:p text:style-name="P110">Composants</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau50.B2" office:value-type="string">
-      <text:p text:style-name="P103"><text:span text:style-name="T40">Composants : tempo,</text:span>lcd, <text:span text:style-name="T151">i2c, </text:span>eep, <text:span text:style-name="T151">flh, adc, calc, digit_pot</text:span></text:p>
+      <text:p text:style-name="P103"><text:span text:style-name="T40">Composants : tempo,</text:span>lcd, <text:span text:style-name="T151">i2c, </text:span>eep, <text:span text:style-name="T151">flh, adc, calc, aop</text:span></text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row>

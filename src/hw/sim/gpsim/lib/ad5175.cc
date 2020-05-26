@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <cstdio>
 
-//#define DEBUG
+#define DEBUG
 #if defined(DEBUG)
 #define Dprintf(arg) {printf("%s:%d ",__FILE__,__LINE__); printf arg; }
 #else
@@ -92,27 +92,21 @@ IOPort_ad5175::IOPort_ad5175(unsigned int _num_iopins)
 {
 }
 
+#define R_non_inv 510
 #define CDE_WRITE_RDAC 0x01
 double IOPort_ad5175::put(unsigned int value)
 {
-  unsigned int cde = (value & 0x3C) >>2;
   IOPIN *m_pin_in;
   double voltage_in=0.0;
   double voltage_out=0.0;
-  unsigned int rdac=0;
+  unsigned int rdac=value;
 
-
-  switch (cde) {
-    case CDE_WRITE_RDAC:
-      rdac = 5000;
-      break;
-  }
   if ((m_pin_in = getPin(0))) {
     voltage_in = m_pin_in->get_nodeVoltage();
     voltage_in = (2.5*voltage_in)/0.036946;
   }
 
-  voltage_out = 2.048 + voltage_in*(1+rdac/510);
+  voltage_out = 2.048 + voltage_in*(1+rdac/R_non_inv);
 
   Dprintf(("voltage_in=%lf voltage_out=%lf \n", voltage_in, voltage_out));
 
@@ -177,13 +171,36 @@ ad5175::~ad5175()
 void ad5175::put_data(unsigned int data)
 {
   double voltage_out=0.0;
+
   Dprintf(("ad5175::put_data() 0x%x\n", data));
-  voltage_out = io_port->put(data);
 
-  res_out->set_Vpullup(voltage_out);
-  res_out->updateNode();
-  Dprintf(("vPullup=%lf \n", res_out->get_Vpullup()));
+  if (byte_number==0) {
+    current_cde = (data & 0x3C) >>2;
+    switch (current_cde) {
+    case CDE_WRITE_RDAC:
+      rdac_value = (data&0x03)<<8;
+      Dprintf(("set rdac to 0x%02x\n",rdac_value));
+      break;
+    default:
+      Dprintf(("unknown command 0x%x \n",current_cde ));
+    }
+    byte_number=1;
+  }else {
+    switch (current_cde) {
+    case CDE_WRITE_RDAC:
+      rdac_value |= data;
+      Dprintf(("set rdac to 0x%02x\n",rdac_value));
+      voltage_out = io_port->put(rdac_value);
+      res_out->set_Vpullup(voltage_out);
+      res_out->updateNode();
+      Dprintf(("vPullup=%lf \n", res_out->get_Vpullup()));
+      break;
+    default:
+      Dprintf(("unknown command 0x%x \n",current_cde ));
 
+    }
+    byte_number =0;
+  }
 
 }
 

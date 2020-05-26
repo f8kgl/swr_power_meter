@@ -51,7 +51,9 @@ public:
 
   IOPort_ad5175 *io_port;
   IO_bi_directional_pu *res_out;
-
+  unsigned int current_cde;
+  unsigned int rdac_value;
+  unsigned int byte_number=0;
 
 protected:
   AddAttribute *Addattr;
