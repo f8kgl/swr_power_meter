@@ -18,6 +18,7 @@ v_lcdmsg_addr_offset res 1
 ;	Zone de mémoire dédiée au stokage du message de boot (L1 du LCD)
 ; 	"SWR-POWER meter"
 ;-----------------------------------------
+
 c_bootmsgL1
 	movwf v_lcdmsg_temp
 	movlw HIGH _c_bootmsgL1_2
@@ -29,6 +30,7 @@ c_bootmsgL1
 	movf v_lcdmsg_temp,w
 	addwf PCL, f
 _c_bootmsgL1_2
+IFDEF TEST
 	retlw 'S'
 	retlw 'W'
 	retlw 'R'
@@ -44,8 +46,44 @@ _c_bootmsgL1_2
 	retlw 't'
 	retlw 'e'
 	retlw 'r'
+ELSE
+IFDEF SWR_POWER_METER
+	retlw 'S'
+	retlw 'W'
+	retlw 'R'
+	retlw '-'
+	retlw 'P'
+	retlw 'O'
+	retlw 'W'
+	retlw 'E'
+	retlw 'R'
+	retlw ' '
+	retlw 'm'
+	retlw 'e'
+	retlw 't'
+	retlw 'e'
+	retlw 'r'
+ELSE
+IFDEF xWATT_METER
+	retlw ' '
+	retlw ' '
+	retlw ' '
+	retlw ' '
+	retlw 'x'
+	retlw 'W'
+	retlw 'A'
+	retlw 'T'
+	retlw 'T'
+	retlw ' '
+	retlw 'm'
+	retlw 'e'
+	retlw 't'
+	retlw 'e'
+	retlw 'r'
+ENDIF
 	retlw 0x00
-
+	
+	
 ;-----------------------------------------
 ;Fonction : Message de boot ligne 2 du LCD
 ;Nom : bootmsgL2
