@@ -112,7 +112,7 @@ double IOPort_ad5175::put(unsigned int value)
     voltage_in = (2.5*voltage_in)/0.036946;
   }
 
-  voltage_out = voltage_in*(1+rdac/25);
+  voltage_out = voltage_in*(1+rdac/510);
 
   Dprintf(("voltage_in=%lf voltage_out=%lf \n", voltage_in, voltage_out));
 
