@@ -5,9 +5,9 @@ LD = gplib
 LDFLAGS = -c
 INC_DIR = -I../inc/
 
-COMP = digit_pot
+COMP = aop
 
-SRC = digit_pot.asm
+SRC = aop.asm
 
 OBJ_TEST = $(SRC:.asm=.TEST.o)
 

@@ -41,7 +41,7 @@ COMPS +=eep
 COMPS +=flh
 COMPS +=adc
 COMPS +=calc
-COMPS +=digit_pot
+COMPS +=aop
 
 #Sources
 SRC_COMMUN = main.asm
