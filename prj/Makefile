@@ -101,3 +101,5 @@ clean:
 
 project:
 	mkdir -p ../bin
+	ln -s -t ../bin ../prj/swr_power_meter.stc
+	ln -s -t ../bin ../src/hw/sim/gpsim/netlist.stc
