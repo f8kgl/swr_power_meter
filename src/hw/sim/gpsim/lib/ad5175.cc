@@ -93,13 +93,14 @@ IOPort_ad5175::IOPort_ad5175(unsigned int _num_iopins)
 }
 
 #define R_non_inv 510
+#define END_TO_END_RESISTANCE 10000 //ne tient pas compte de la valeur calibrée
 #define CDE_WRITE_RDAC 0x01
 double IOPort_ad5175::put(unsigned int value)
 {
   IOPIN *m_pin_in;
   double voltage_in=0.0;
   double voltage_out=0.0;
-  unsigned int rdac=value;
+  unsigned int rdac=value*END_TO_END_RESISTANCE/1024;
 
   if ((m_pin_in = getPin(0))) {
     voltage_in = m_pin_in->get_nodeVoltage();

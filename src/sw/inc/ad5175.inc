@@ -3,3 +3,5 @@
 
 
 #define CDE_AD5175_SET_RDAC 0x01
+
+#define RDAC_REG_AD5175_GAIN_IS_2 0x34 ;valeur du registre Rdac pour G=2
