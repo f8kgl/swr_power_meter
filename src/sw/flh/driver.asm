@@ -8,14 +8,14 @@
 ;-----------------------------------------
 ;Fonction Lecture d'un octer en flash
 ;Nom f_flh_readword		;
-;Paramètres entrée v_flh_offset_addr
+;Paramètres entrée v_flh_offset_addr v_flh_start_adress
 ;Paramètres sorties v_flh_read(MSB) v_flh_read+1 (LSB)
 ;Traitements
 	;; 
 ;-----------------------------------------
 f_flh_readword
 	movf v_flh_offset_addr+1,W
-	addlw c_data_adc_theoric_caltable
+	addwf  v_flh_start_adress
 	btfss STATUS,C
 	goto _f_flh_readword_4
 _f_flh_readword_3
