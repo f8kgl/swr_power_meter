@@ -34,8 +34,9 @@ ENDIF
 v_timer0 res 1
 v_timer1 res 1
 v_timer2 res 1
-v_mode_calib res 1
+IFDEF TEST
 v_menu res 1
+ENDIF
 
 	code
 	goto Init ;
