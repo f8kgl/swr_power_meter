@@ -102,7 +102,6 @@ ENDIF
 
 
 IFDEF TEST
-	call f_lcd_aff_fwd_and_ref
 	clrf v_menu ; menu ADC par défaut au démarrage
 
 test_loop
@@ -116,6 +115,14 @@ test_loop
 	
 menu_adc
 	clrf v_menu
+	;; Effacer le LCD (lcd_clear)
+	call f_lcd_clear
+	;;Positionner le curseur du LCD sur la ligne 1
+	movlw 0x00
+	call f_lcd_setposcursor
+	call f_lcd_aff_fwd_and_ref
+
+
 	;; Initialise le gain des voies FWD et REF
 	call f_aop_set_gain_fwd
 	call f_aop_set_gain_ref
@@ -137,6 +144,12 @@ menu_adc
 menu_aop
 	clrf v_menu
 	bsf v_menu,0
+	;; Effacer le LCD (lcd_clear)
+	call f_lcd_clear
+	;;Positionner le curseur du LCD sur la ligne 1
+	movlw 0x00
+	call f_lcd_setposcursor
+
 	;; Initialise le gain des voies FWD et REF
 	call f_aop_set_gain_fwd
 	call f_aop_set_gain_ref
