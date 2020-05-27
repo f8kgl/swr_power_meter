@@ -100,7 +100,9 @@ double IOPort_ad5175::put(unsigned int value)
   IOPIN *m_pin_in;
   double voltage_in=0.0;
   double voltage_out=0.0;
-  unsigned int rdac=value*END_TO_END_RESISTANCE/1024;
+  double rdac=(double) value*END_TO_END_RESISTANCE/1024;
+
+  Dprintf(("rdac=%lf\n", rdac));
 
   if ((m_pin_in = getPin(0))) {
     voltage_in = m_pin_in->get_nodeVoltage();
@@ -144,7 +146,7 @@ ad5175::ad5175(const char *_name)
   res_out = new IO_bi_directional_pu("out");
   res_out->set_Vpullup(2.0);
   Addattr = new AddAttribute(this);
-  
+
   addSymbol(Addattr);
   //Addattr->set(0x27);
 }

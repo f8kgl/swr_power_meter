@@ -15,15 +15,6 @@ v_aop_G_fwd res 1
 
 	code
 
-c_conv_G_to_Rdac
-	DW 0x0
-	DW 0x34
-	DW 0x9D
-	DW 0x16F
-	DW 0x312
-c_conv_G_to_Rdac_end
-
-
 f_aop_set_gain_fwd
 	movlw I2C_ADDR_DEVICE_AD5175_FWD
 	movwf v_i2c_device_addr

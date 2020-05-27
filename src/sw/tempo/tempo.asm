@@ -13,8 +13,9 @@ D160us
 	clrf v_timer ;
 	bsf v_timer, 5 ; Delay 160 usecs
 	bsf v_timer, 4 ;
+_D160us_2
 	decfsz v_timer, f ;
-	goto $ - 1 ;
+	goto _D160us_2
 	return ;
 
 Del255
