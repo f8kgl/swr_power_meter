@@ -1,5 +1,5 @@
 	include "p18f1320.inc" ;include the defaults for the chip
-;	include "eep.inc"
+	include "bp.inc"
 
 	ERRORLEVEL 0, -302 ;suppress bank selection messages
 
@@ -107,7 +107,8 @@ IFDEF TEST
 test_loop
 
 	;;Appui sur le bouton bande ?
-	;;si oui, changement de menu  : incf v_menu
+	btfsc BP_BANDE
+	incf v_menu
 
 	btfss v_menu,0
 	goto menu_adc

@@ -1,0 +1,3 @@
+#define BP_PORT PORTA
+#define BP_CALIBRATION  BP_PORT,2
+#define BP_BANDE BP_PORT,3
