@@ -1,0 +1,3 @@
+load s swr_power_meter_f8kgl-V0.8.TEST.GPSIM.cod
+frequency 4000000
+load c netlist.stc
