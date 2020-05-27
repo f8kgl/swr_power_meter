@@ -131,10 +131,11 @@ menu_adc
 	call f_adc_read_vfwd
 	call f_adc_read_vref
 
+	;; Convertir la mesure des ADC en hexa (rien à faire) et en mV
+	call f_calc_adcmV
+
 	;; afficher la mesure des ADC en hexadécimal
 	call f_lcd_affadc
-	;; Convertir la mesure des ADC en mV
-	call f_calc_adcmV
 	;; afficher la mesure des ADC en mV
 	call f_lcd_aff_adcmV
 	
