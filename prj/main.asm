@@ -62,7 +62,7 @@ Init
 	movwf ADCON1
 	clrf ADCON2
 
-	movlw b'00000000' ; PortA Outputs
+	movlw b'00001100' ; RA2/3 input
 	movwf TRISA ;
 	clrf PORTA
 	movlw b'00000000' ; PortB Outputs
@@ -107,17 +107,21 @@ IFDEF TEST
 test_loop
 
 	;;Appui sur le bouton bande ?
-	btfsc BP_BANDE
-	incf v_menu
+	btfss BP_BANDE
+	goto choix_menu
 
+	incf v_menu
+	;; Effacer le LCD (lcd_clear)
+	call f_lcd_clear
+
+
+choix_menu
 	btfss v_menu,0
 	goto menu_adc
 	goto menu_aop
-	
+
 menu_adc
 	clrf v_menu
-	;; Effacer le LCD (lcd_clear)
-	call f_lcd_clear
 	;;Positionner le curseur du LCD sur la ligne 1
 	movlw 0x00
 	call f_lcd_setposcursor
@@ -139,15 +143,13 @@ menu_adc
 	call f_lcd_affadc
 	;; afficher la mesure des ADC en mV
 	call f_lcd_aff_adcmV
-	
+
 	goto test_loop
-	
-	
+
+
 menu_aop
 	clrf v_menu
 	bsf v_menu,0
-	;; Effacer le LCD (lcd_clear)
-	call f_lcd_clear
 	;;Positionner le curseur du LCD sur la ligne 1
 	movlw 0x00
 	call f_lcd_setposcursor
@@ -155,10 +157,10 @@ menu_aop
 	;; Initialise le gain des voies FWD et REF
 	call f_aop_set_gain_fwd
 	call f_aop_set_gain_ref
-	
+
 	;;calcul des tensions calibrées
 	;;affichage des valeurs des tensions en entrée de l'AOP
-		
+
 	;test le bouton gain. Si pas changé, on retourn à test_loop
 	;sinon, mise à jour du gain, et retour à menu_aop
 	goto test_loop

@@ -80,6 +80,10 @@ ad5175_ref.Slave_Address = 44
 ad5175_ref.xpos = 180
 ad5175_ref.ypos = 312
 
+module load push_button bande
+bande.xpos = 180
+bande.ypos = 384
+
 
 
 # Connections:
@@ -121,6 +125,10 @@ attach nFWD_adc ltc2305.CH0 ad5175_fwd.out
 
 node nREF_adc
 attach nREF_adc ad5175_ref.out ltc2305.CH1
+
+node bp_bande
+attach bp_bande p18f1320.porta3 bande.out
+
 
 
 # End.
