@@ -109,7 +109,7 @@ test_loop
 	;;Appui sur le bouton bande ?
 	;;si oui, changement de menu  : incf v_menu
 
-	;btfss v_menu,0
+	btfss v_menu,0
 	goto menu_adc
 	goto menu_aop
 	
