@@ -92,7 +92,7 @@ IOPort_ad5175::IOPort_ad5175(unsigned int _num_iopins)
 {
 }
 
-#define R_non_inv 510
+#define R_inv 510
 #define END_TO_END_RESISTANCE 10000 //ne tient pas compte de la valeur calibrée
 #define CDE_WRITE_RDAC 0x01
 double IOPort_ad5175::put(unsigned int value)
@@ -107,7 +107,7 @@ double IOPort_ad5175::put(unsigned int value)
     voltage_in = (2.5*voltage_in)/0.036946;
   }
 
-  voltage_out = 2.048 + voltage_in*(1+rdac/R_non_inv);
+  voltage_out = 2.048 + voltage_in*(1+rdac/R_inv);
 
   Dprintf(("voltage_in=%lf voltage_out=%lf \n", voltage_in, voltage_out));
 
@@ -144,6 +144,7 @@ ad5175::ad5175(const char *_name)
   res_out = new IO_bi_directional_pu("out");
   res_out->set_Vpullup(2.0);
   Addattr = new AddAttribute(this);
+  
   addSymbol(Addattr);
   //Addattr->set(0x27);
 }
