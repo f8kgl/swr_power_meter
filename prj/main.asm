@@ -35,6 +35,7 @@ v_timer0 res 1
 v_timer1 res 1
 v_timer2 res 1
 v_mode_calib res 1
+v_menu res 1
 
 	code
 	goto Init ;
@@ -98,39 +99,54 @@ IFDEF DEBUG_ISSUE_134
 	call f_adc_read_vfwd
 ENDIF
 
+
+IFDEF TEST
+	call f_lcd_aff_fwd_and_ref
+	clrf v_menu ; menu ADC par défaut au démarrage
+
+test_loop
+
+	;;Appui sur le bouton bande ?
+	;;si oui, changement de menu  : incf v_menu
+
+	;btfss v_menu,0
+	goto menu_adc
+	goto menu_aop
+	
+menu_adc
+	clrf v_menu
 	;; Initialise le gain des voies FWD et REF
 	call f_aop_set_gain_fwd
 	call f_aop_set_gain_ref
 
-IFDEF TEST
-	call f_lcd_aff_fwd_and_ref
-test_loop
 	;;lire les registres ADCfwd et ADCref
 	call f_adc_read_vfwd
 	call f_adc_read_vref
 
-	;; afficher la mesure des ADC en mode test
+	;; afficher la mesure des ADC en hexadécimal
 	call f_lcd_affadc
 	;; Convertir la mesure des ADC en mV
 	call f_calc_adcmV
+	;; afficher la mesure des ADC en mV
 	call f_lcd_aff_adcmV
-
+	
 	goto test_loop
-ENDIF
+	
+	
+menu_aop
+	clrf v_menu
+	bsf v_menu,0
+	;; Initialise le gain des voies FWD et REF
+	call f_aop_set_gain_fwd
+	call f_aop_set_gain_ref
+	
+	;;calcul des tensions calibrées
+	;;affichage des valeurs des tensions en entrée de l'AOP
+		
+	;test le bouton gain. Si pas changé, on retourn à test_loop
+	;sinon, mise à jour du gain, et retour à menu_aop
+	goto test_loop
 
-
-IFNDEF TEST
-IFNDEF CALIBRATION
-	;; test du strap de calibration/mesure
-	btfsc STATUS, Z
-	goto meas_loop; 0xFF calibration effectuée, passer en mode mesure
-ENDIF
-;; 	afficher le message de calibration (lcd_affcalib)
-	call f_lcd_affcalib
-
-IFNDEF CALIBRATION
-	;; phase mesure
-ENDIF
 
 ENDIF
 
