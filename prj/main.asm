@@ -24,6 +24,7 @@
 	extern f_adc_read_ref
 	extern f_aop_set_rdac_fwd
 	extern f_aop_set_rdac_ref
+	extern delay_250ms
 IFDEF TEST
 	extern f_lcd_aff_fwd_and_ref
 	extern f_lcd_aff_G_and_rdac
@@ -35,9 +36,7 @@ IFDEF TEST
 ENDIF
 
 	udata
-v_timer0 res 1
-v_timer1 res 1
-v_timer2 res 1
+
 IFDEF TEST
 v_menu res 1
 ENDIF
@@ -196,23 +195,6 @@ f_tempo_boot
 	call delay_250ms
 	return
 
-delay_250ms
-	movlw d'250' ; delay 250mS
-	movwf v_timer0 ;
-	goto delay1
-delay1
-	movlw 0xC7 ; delay 1mS
-	movwf v_timer1 ;
-	movlw 0x01 ;
-	movwf v_timer2 ;
-delay
-	decfsz v_timer1,f ;
-	goto $+6 ;
-	decfsz v_timer2,f ;
-	goto delay ;
-	decfsz v_timer0,f ;
-	goto delay1 ;
-	retlw 0x00 ;
 
 IFDEF TEST
 	global v_menu

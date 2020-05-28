@@ -30,7 +30,7 @@ IFDEF TEST
 	extern c_testmsgL2
 	extern v_menu
 	extern v_calc_port
-	extern Del200
+	extern delay_250ms
 ENDIF
 
 	code
@@ -206,31 +206,19 @@ f_lcd_aff_G_and_rdac
 	goto _f_lcd_aff_G_and_rdac_4
 	bsf  v_lcd_toggle_port,PORT_FWD_BIT
 _f_lcd_aff_G_and_rdac_2
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
+	call delay_250ms
+	call delay_250ms
 	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
+	call delay_250ms
+	call delay_250ms
 	bcf  v_lcd_toggle_port,PORT_FWD_BIT
 	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
+	call delay_250ms
+	call delay_250ms
 	bsf  v_lcd_toggle_port,PORT_FWD_BIT
 	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
+	call delay_250ms
+	call delay_250ms
 	bsf  v_lcd_toggle_port,PORT_REF_BIT
 	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
 	goto _f_lcd_aff_G_and_rdac_5
@@ -238,31 +226,19 @@ _f_lcd_aff_G_and_rdac_4
 	bsf  v_lcd_toggle_port,PORT_FWD_BIT
 	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
 	bsf  v_lcd_toggle_port,PORT_REF_BIT
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
+	call delay_250ms
+	call delay_250ms
 	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
+	call delay_250ms
+	call delay_250ms
 	bcf  v_lcd_toggle_port,PORT_REF_BIT
 	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
+	call delay_250ms
+	call delay_250ms
 	bsf  v_lcd_toggle_port,PORT_REF_BIT
 	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
-	call Del200 ;200ms
+	call delay_250ms
+	call delay_250ms
 
 _f_lcd_aff_G_and_rdac_5
 	btfss BP_BANDE
