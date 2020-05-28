@@ -21,7 +21,7 @@ IFDEF TEST
 ;	v_adcref_mV (2bytes) : résultat de l'ADC en mV en hexa
 ;Traitements
 ;-----------------------------------------
-f_calc_adcmV
+f_calc_calibrated_voltage_fwd_and_ref
 	movf v_adcfwd,W
 	movwf v_adcfwd_mV
 	movf v_adcfwd+1,W
@@ -35,7 +35,7 @@ f_calc_adcmV
 ENDIF
 
 IFDEF TEST
-	global f_calc_adcmV
+	global f_calc_calibrated_voltage_fwd_and_ref
 ENDIF
 	global v_adcfwd_mV
 	global v_adcref_mV

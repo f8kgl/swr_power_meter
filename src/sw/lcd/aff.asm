@@ -242,7 +242,7 @@ IFDEF TEST
 ;	17. W='-'
 ;	18. Afficher 1 caractère sur le LCD (lcd_affchar)
 ;-----------------------------------------
-f_lcd_affadc
+f_lcd_aff_hexa
 	movlw 0x05
 	call f_lcd_setposcursor
 _lcd_affadc_2
@@ -435,7 +435,7 @@ ENDIF
 
 	global f_lcd_affboot
 IFDEF TEST
-	global f_lcd_affadc
+	global f_lcd_aff_hexa
 	global f_lcd_aff_fwd_and_ref
 	global f_lcd_aff_adcmV
 ENDIF

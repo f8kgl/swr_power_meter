@@ -19,16 +19,16 @@
 	extern f_lcd_clear
 	extern f_lcd_setposcursor
 IFDEF TEST
-	extern f_aop_set_gain_fwd
-	extern f_aop_set_gain_ref
+	extern f_aop_set_rdac_fwd
+	extern f_aop_set_rdac_ref
 	extern f_lcd_aff_fwd_and_ref
-	extern f_lcd_affadc
-	extern f_calc_adcmV
+	extern f_lcd_aff_hexa
+	extern f_calc_calibrated_voltage_fwd_and_ref
 	extern f_lcd_aff_adcmV
 ENDIF
 	extern f_adc_init
-	extern f_adc_read_vfwd
-	extern f_adc_read_vref
+	extern f_adc_read_fwd
+	extern f_adc_read_ref
 
 	udata
 v_timer0 res 1
@@ -95,9 +95,9 @@ IFDEF DEBUG_ISSUE_134
 	;Fiche #121 #157 #134
 	;appelle l'init des composants branchés sur le bus i2c
 	;pour contourner le NACK reçu uniquement lors de la 1ère trame sous GPSIM
-	call f_aop_set_gain_fwd
-	call f_aop_set_gain_ref
-	call f_adc_read_vfwd
+	call f_aop_set_rdac_fwd
+	call f_aop_set_rdac_ref
+	call f_adc_read_fwd
 ENDIF
 
 
@@ -122,25 +122,25 @@ choix_menu
 
 menu_mesure
 	clrf v_menu
-	;;Positionner le curseur du LCD sur la ligne 1
+
+	;; Initialise le gain des voies FWD et REF
+	call f_aop_set_rdac_fwd
+	call f_aop_set_rdac_ref
+
+	;;lire les registres ADCfwd et ADCref
+	call f_adc_read_fwd
+	call f_adc_read_ref
+
+	;; Convertir la mesure des ADC en hexa (rien à faire) et en mV
+	call f_calc_calibrated_voltage_fwd_and_ref
+
+	;Affiche "FWD et REF" sur les 1ères et 2èmes lignes
 	movlw 0x00
 	call f_lcd_setposcursor
 	call f_lcd_aff_fwd_and_ref
 
-
-	;; Initialise le gain des voies FWD et REF
-	call f_aop_set_gain_fwd
-	call f_aop_set_gain_ref
-
-	;;lire les registres ADCfwd et ADCref
-	call f_adc_read_vfwd
-	call f_adc_read_vref
-
-	;; Convertir la mesure des ADC en hexa (rien à faire) et en mV
-	call f_calc_adcmV
-
 	;; afficher la mesure des ADC en hexadécimal
-	call f_lcd_affadc
+	call f_lcd_aff_hexa
 	;; afficher la mesure des ADC en mV
 	call f_lcd_aff_adcmV
 
@@ -155,8 +155,8 @@ menu_calibration
 	call f_lcd_setposcursor
 
 	;; Initialise le gain des voies FWD et REF
-	call f_aop_set_gain_fwd
-	call f_aop_set_gain_ref
+	call f_aop_set_rdac_fwd
+	call f_aop_set_rdac_ref
 
 	;;calcul des tensions calibrées
 	;;affichage des valeurs des tensions en entrée de l'AOP
