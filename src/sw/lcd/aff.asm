@@ -205,10 +205,9 @@ f_lcd_aff_G_and_rdac
 	btfss v_calc_port,PORT_FWD_BIT
 	goto _f_lcd_aff_G_and_rdac_4
 	bsf  v_lcd_toggle_port,PORT_FWD_BIT
-_f_lcd_aff_G_and_rdac_2
-	call delay_250ms
-	call delay_250ms
+	bsf  v_lcd_toggle_port,PORT_REF_BIT
 	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
+_f_lcd_aff_G_and_rdac_2
 	call delay_250ms
 	call delay_250ms
 	bcf  v_lcd_toggle_port,PORT_FWD_BIT
@@ -219,15 +218,10 @@ _f_lcd_aff_G_and_rdac_2
 	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
 	call delay_250ms
 	call delay_250ms
-	bsf  v_lcd_toggle_port,PORT_REF_BIT
-	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
 	goto _f_lcd_aff_G_and_rdac_5
 _f_lcd_aff_G_and_rdac_4
 	bsf  v_lcd_toggle_port,PORT_FWD_BIT
-	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
 	bsf  v_lcd_toggle_port,PORT_REF_BIT
-	call delay_250ms
-	call delay_250ms
 	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
 	call delay_250ms
 	call delay_250ms
