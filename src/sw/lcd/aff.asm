@@ -206,6 +206,39 @@ _lcd_aff_ref_3
 	return
 
 f_lcd_aff_G_and_rdac
+	movlw 0x04
+	call f_lcd_setposcursor
+	movlw 'G'
+	call f_lcd_affchar
+	movlw '='
+	call f_lcd_affchar
+	movlw 0x08
+	call f_lcd_setposcursor
+	movlw 'D'
+	call f_lcd_affchar
+	movlw 'A'
+	call f_lcd_affchar
+	movlw 'C'
+	call f_lcd_affchar
+	movlw '='
+	call f_lcd_affchar
+	movlw 0x14
+	call f_lcd_setposcursor
+	movlw 'G'
+	call f_lcd_affchar
+	movlw '='
+	call f_lcd_affchar
+	movlw 0x18
+	call f_lcd_setposcursor
+	movlw 'D'
+	call f_lcd_affchar
+	movlw 'A'
+	call f_lcd_affchar
+	movlw 'C'
+	call f_lcd_affchar
+	movlw '='
+	call f_lcd_affchar
+
 	btfss v_calc_port,PORT_FWD_BIT
 	goto _f_lcd_aff_G_and_rdac_4
 	bsf  v_lcd_toggle_port,PORT_FWD_BIT
@@ -231,6 +264,7 @@ _f_lcd_aff_G_and_rdac_4
 	call delay_50ms
 
 _f_lcd_aff_G_and_rdac_5
+
 	btfss BP_BANDE
 	goto _f_lcd_aff_G_and_rdac_6
 	goto _f_lcd_aff_G_and_rdac_9

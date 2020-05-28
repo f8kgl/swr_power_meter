@@ -152,10 +152,14 @@ menu_calibration
 	bsf v_menu,0
 
 	call f_lcd_aff_G_and_rdac
-	btfss v_menu,0
+	btfsc v_menu,0
+	goto menu_calibration_2
+
+	;; Effacer le LCD (lcd_clear)
+	call f_lcd_clear
 	goto menu_mesure
 
-
+menu_calibration_2
 	;; Initialise le gain des voies FWD et REF
 	call f_aop_set_rdac_fwd
 	call f_aop_set_rdac_ref
