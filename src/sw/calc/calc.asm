@@ -1,4 +1,7 @@
 	include "p18f1320.inc" ;include the defaults for the chip
+  include "calc.inc"
+
+
 
 	udata
 v_adcfwd_mV res 2
@@ -13,6 +16,12 @@ v_calctmp res 1
 
 	code
 IFDEF TEST
+f_calc_init
+	;Port = FWD
+	clrf v_calc_port
+	bsf v_calc_port,PORT_FWD_BIT
+
+	return
 ;-----------------------------------------
 ;Fonction Convertir la mesure des ADC en mV
 ;Nom 		;
@@ -40,6 +49,7 @@ ENDIF
 IFDEF TEST
 	global f_calc_calibrated_voltage_fwd_and_ref
 	global v_calc_port
+	global f_calc_init
 ENDIF
 	global v_adcfwd_mV
 	global v_adcref_mV

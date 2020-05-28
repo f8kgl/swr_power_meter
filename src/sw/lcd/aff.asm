@@ -2,6 +2,7 @@
 	include "lcd.inc"
 	include "eep.inc"
 	include "bp.inc"
+	include "calc.inc"
 
   	udata
 v_hexa_to_conv res 2
@@ -9,6 +10,9 @@ v_bcd res 3
 v_charpos res 1
 v_tmp res 1
 v_lcd_wtmp res 1
+IFDEF TEST
+v_lcd_toggle_port res 1
+ENDIF
 
 	extern f_lcd_affchar
 	extern f_lcd_setposcursor
@@ -25,6 +29,8 @@ IFDEF TEST
 	extern c_testmsgL1
 	extern c_testmsgL2
 	extern v_menu
+	extern v_calc_port
+	extern Del200
 ENDIF
 
 	code
@@ -127,29 +133,40 @@ IFDEF TEST
 ; 	F W D
 ; 	R E F
 ;Traitement :
-;	1.v_charpos = 0
-;	2.Afficher le message de test ligne 1
-;	tant que W !=0
-;		récupérer le caractère de test ligne 1
-;		afficher 1 caractère sur le LCD
-; 		incrémenter v_charpos
-;	3.positionner le curseur sur la ligne 2
-;		W=0x10
-;	 	postionner le curseur
-;	4.v_charpos = 0
-;	5.Afficher le message de boot ligne 2
-;	tant que W !=0
-;		récupérer le caractère de test ligne 2
-;		afficher 1 caractère sur le LCD
-;		incrémenter v_charpos
 ;-----------------------------------------
 
 f_lcd_aff_fwd_and_ref
+	btfss v_lcd_toggle_port,PORT_FWD_BIT
+	goto _f_lcd_aff_no_fwd
 	call _f_lcd_aff_fwd
+	goto _f_lcd_aff_fwd_and_ref_2
+_f_lcd_aff_no_fwd
+	movlw 0x00
+	call f_lcd_setposcursor
+	movlw ' '
+	call f_lcd_affchar
+	call f_lcd_affchar
+	call f_lcd_affchar
+_f_lcd_aff_fwd_and_ref_2
+	btfss v_lcd_toggle_port,PORT_REF_BIT
+	goto _f_lcd_aff_no_ref
 	call _f_lcd_aff_ref
+	goto _f_lcd_aff_fwd_and_ref_3
+_f_lcd_aff_no_ref
+	movlw 0x10
+	call f_lcd_setposcursor
+	movlw ' '
+	call f_lcd_affchar
+	call f_lcd_affchar
+	call f_lcd_affchar
+_f_lcd_aff_fwd_and_ref_3
 	return
 
+
+
 _f_lcd_aff_fwd
+	movlw 0x00
+	call f_lcd_setposcursor
 	movlw 0x00
 	movwf v_charpos
 _lcd_aff_fwd_2
@@ -185,21 +202,81 @@ _lcd_aff_ref_3
 	return
 
 f_lcd_aff_G_and_rdac
-	movlw 0x00	;;Positionner le curseur du LCD sur la ligne 1
-	call f_lcd_setposcursor
-	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
-	btfss BP_BANDE
-	goto _f_lcd_aff_G_and_rdac_2
-	clrf v_menu
-	goto _f_lcd_aff_G_and_rdac_5
+	btfss v_calc_port,PORT_FWD_BIT
+	goto _f_lcd_aff_G_and_rdac_4
+	bsf  v_lcd_toggle_port,PORT_FWD_BIT
 _f_lcd_aff_G_and_rdac_2
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	bcf  v_lcd_toggle_port,PORT_FWD_BIT
+	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	bsf  v_lcd_toggle_port,PORT_FWD_BIT
+	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	bsf  v_lcd_toggle_port,PORT_REF_BIT
+	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
+	goto _f_lcd_aff_G_and_rdac_5
+_f_lcd_aff_G_and_rdac_4
+	bsf  v_lcd_toggle_port,PORT_FWD_BIT
+	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
+	bsf  v_lcd_toggle_port,PORT_REF_BIT
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	bcf  v_lcd_toggle_port,PORT_REF_BIT
+	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	bsf  v_lcd_toggle_port,PORT_REF_BIT
+	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+	call Del200 ;200ms
+
+_f_lcd_aff_G_and_rdac_5
+	btfss BP_BANDE
+	goto _f_lcd_aff_G_and_rdac_6
+	clrf v_menu
+	goto _f_lcd_aff_G_and_rdac_9
+_f_lcd_aff_G_and_rdac_6
 	movlw 0x0C   ;masque sur bouton cal+ et cal-
 	andwf BP_PORT,W
 	btfsc STATUS,Z 	;si Z=1, c'est qu'il n'y a pas eu d'appui sur cal
 	goto f_lcd_aff_G_and_rdac
-_f_lcd_aff_G_and_rdac_4
+_f_lcd_aff_G_and_rdac_8
 
-_f_lcd_aff_G_and_rdac_5
+_f_lcd_aff_G_and_rdac_9
 	return
 
 ENDIF
@@ -467,6 +544,7 @@ IFDEF TEST
 	global f_lcd_aff_fwd_and_ref
 	global f_lcd_aff_G_and_rdac
 	global f_lcd_aff_adcmV
+	global v_lcd_toggle_port
 ENDIF
 
 	end

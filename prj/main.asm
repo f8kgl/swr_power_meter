@@ -1,5 +1,6 @@
 	include "p18f1320.inc" ;include the defaults for the chip
 	include "bp.inc"
+	include "calc.inc"
 
 	ERRORLEVEL 0, -302 ;suppress bank selection messages
 
@@ -29,6 +30,8 @@ IFDEF TEST
 	extern f_lcd_aff_hexa
 	extern f_calc_calibrated_voltage_fwd_and_ref
 	extern f_lcd_aff_adcmV
+	extern f_calc_init
+	extern v_lcd_toggle_port
 ENDIF
 
 	udata
@@ -87,10 +90,8 @@ Init
 
 ;; Effacer le LCD (lcd_clear)
 	call f_lcd_clear
-	;;Positionner le curseur du LCD sur la ligne 1
-	movlw 0x00
-	call f_lcd_setposcursor
 
+	call f_calc_init
 
 IFDEF DEBUG_ISSUE_134
 	;Fiche #121 #157 #134
@@ -134,9 +135,10 @@ menu_mesure
 	call f_calc_calibrated_voltage_fwd_and_ref
 
 	;Affiche "FWD et REF" sur les 1ères et 2èmes lignes
-	movlw 0x00
-	call f_lcd_setposcursor
+	bsf v_lcd_toggle_port,PORT_FWD_BIT
+	bsf v_lcd_toggle_port,PORT_REF_BIT
 	call f_lcd_aff_fwd_and_ref
+	clrf v_lcd_toggle_port
 
 	;; afficher la mesure des ADC en hexadécimal
 	call f_lcd_aff_hexa

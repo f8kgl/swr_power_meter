@@ -133,10 +133,10 @@ node nREF_adc
 attach nREF_adc ad5175_ref.out ltc2305.CH1
 
 node bp_cal_p
-attach bp_bande p18f1320.porta2 cal_p.out
+attach bp_cal_p p18f1320.porta2 cal_p.out
 
 node bp_cal_m
-attach bp_bande p18f1320.porta3 cal_m.out
+attach bp_cal_m p18f1320.porta3 cal_m.out
 
 node bp_bande
 attach bp_bande p18f1320.porta4 bande.out
