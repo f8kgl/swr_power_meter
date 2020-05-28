@@ -117,10 +117,10 @@ test_loop
 
 choix_menu
 	btfss v_menu,0
-	goto menu_adc
-	goto menu_aop
+	goto menu_mesure
+	goto menu_calibration
 
-menu_adc
+menu_mesure
 	clrf v_menu
 	;;Positionner le curseur du LCD sur la ligne 1
 	movlw 0x00
@@ -147,7 +147,7 @@ menu_adc
 	goto test_loop
 
 
-menu_aop
+menu_calibration
 	clrf v_menu
 	bsf v_menu,0
 	;;Positionner le curseur du LCD sur la ligne 1
