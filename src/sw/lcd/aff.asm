@@ -30,8 +30,12 @@ IFDEF TEST
 	extern c_testmsgL2
 	extern v_menu
 	extern v_calc_port
+	extern delay_50ms
+IFDEF DEBUG_ISSUE_256
 	extern delay_250ms
 ENDIF
+ENDIF
+
 
 	code
 
@@ -208,36 +212,27 @@ f_lcd_aff_G_and_rdac
 	bsf  v_lcd_toggle_port,PORT_REF_BIT
 	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
 _f_lcd_aff_G_and_rdac_2
-	call delay_250ms
-	call delay_250ms
+	call delay_50ms
+	call delay_50ms
 	bcf  v_lcd_toggle_port,PORT_FWD_BIT
 	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
-	call delay_250ms
-	call delay_250ms
-	bsf  v_lcd_toggle_port,PORT_FWD_BIT
-	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
-	call delay_250ms
-	call delay_250ms
+	call delay_50ms
+	call delay_50ms
 	goto _f_lcd_aff_G_and_rdac_5
 _f_lcd_aff_G_and_rdac_4
 	bsf  v_lcd_toggle_port,PORT_FWD_BIT
 	bsf  v_lcd_toggle_port,PORT_REF_BIT
 	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
-	call delay_250ms
-	call delay_250ms
+	call delay_50ms
+	call delay_50ms
 	bcf  v_lcd_toggle_port,PORT_REF_BIT
 	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
-	call delay_250ms
-	call delay_250ms
-	bsf  v_lcd_toggle_port,PORT_REF_BIT
-	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
-	call delay_250ms
-	call delay_250ms
+	call delay_50ms
+	call delay_50ms
 
 _f_lcd_aff_G_and_rdac_5
 	btfss BP_BANDE
 	goto _f_lcd_aff_G_and_rdac_6
-	clrf v_menu
 	goto _f_lcd_aff_G_and_rdac_9
 _f_lcd_aff_G_and_rdac_6
 	movlw 0x0C   ;masque sur bouton cal+ et cal-
@@ -247,6 +242,22 @@ _f_lcd_aff_G_and_rdac_6
 _f_lcd_aff_G_and_rdac_8
 
 _f_lcd_aff_G_and_rdac_9
+	clrf v_menu
+IFDEF DEBUG_ISSUE_256
+	call delay_50ms
+	call delay_50ms
+	call delay_50ms
+	call delay_50ms
+	call delay_50ms
+	call delay_50ms
+	call delay_50ms
+	call delay_50ms
+	call delay_50ms
+	call delay_50ms
+	call delay_50ms
+	call delay_50ms
+ENDIF
+_f_lcd_aff_G_and_rdac_10
 	return
 
 ENDIF
