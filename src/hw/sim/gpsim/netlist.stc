@@ -91,10 +91,10 @@ node nRW
 attach nRW lcd_display.RW
 
 node nRS
-attach nRS lcd_display.DC p18f1320.portb2
+attach nRS lcd_display.DC p18f1320.portb0
 
 node nE
-attach nE lcd_display.E p18f1320.portb3
+attach nE lcd_display.E p18f1320.portb1
 
 node nD4
 attach nD4 lcd_display.d4 p18f1320.portb4
