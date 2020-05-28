@@ -18,17 +18,18 @@
 	extern f_lcd_affboot
 	extern f_lcd_clear
 	extern f_lcd_setposcursor
-IFDEF TEST
+	extern f_adc_init
+	extern f_adc_read_fwd
+	extern f_adc_read_ref
 	extern f_aop_set_rdac_fwd
 	extern f_aop_set_rdac_ref
+IFDEF TEST
 	extern f_lcd_aff_fwd_and_ref
+	extern f_lcd_aff_G_and_rdac
 	extern f_lcd_aff_hexa
 	extern f_calc_calibrated_voltage_fwd_and_ref
 	extern f_lcd_aff_adcmV
 ENDIF
-	extern f_adc_init
-	extern f_adc_read_fwd
-	extern f_adc_read_ref
 
 	udata
 v_timer0 res 1
@@ -62,7 +63,7 @@ Init
 	movwf ADCON1
 	clrf ADCON2
 
-	movlw b'00001100' ; RA2/3 input
+	movlw b'00011100' ; RA2/3/4 input
 	movwf TRISA ;
 	clrf PORTA
 	movlw b'00000000' ; PortB Outputs
@@ -124,8 +125,6 @@ menu_mesure
 	clrf v_menu
 
 	;; Initialise le gain des voies FWD et REF
-	call f_aop_set_rdac_fwd
-	call f_aop_set_rdac_ref
 
 	;;lire les registres ADCfwd et ADCref
 	call f_adc_read_fwd
@@ -150,9 +149,11 @@ menu_mesure
 menu_calibration
 	clrf v_menu
 	bsf v_menu,0
-	;;Positionner le curseur du LCD sur la ligne 1
-	movlw 0x00
-	call f_lcd_setposcursor
+
+	call f_lcd_aff_G_and_rdac
+	btfss v_menu,0
+	goto menu_mesure
+
 
 	;; Initialise le gain des voies FWD et REF
 	call f_aop_set_rdac_fwd
@@ -210,5 +211,10 @@ delay
 	decfsz v_timer0,f ;
 	goto delay1 ;
 	retlw 0x00 ;
+
+IFDEF TEST
+	global v_menu
+ENDIF
+
 
 	end

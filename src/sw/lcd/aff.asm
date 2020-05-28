@@ -1,6 +1,7 @@
 	include "p18f1320.inc" ;include the defaults for the chip
 	include "lcd.inc"
 	include "eep.inc"
+	include "bp.inc"
 
   	udata
 v_hexa_to_conv res 2
@@ -23,6 +24,7 @@ v_lcd_wtmp res 1
 IFDEF TEST
 	extern c_testmsgL1
 	extern c_testmsgL2
+	extern v_menu
 ENDIF
 
 	code
@@ -143,36 +145,63 @@ IFDEF TEST
 ;-----------------------------------------
 
 f_lcd_aff_fwd_and_ref
+	call _f_lcd_aff_fwd
+	call _f_lcd_aff_ref
+	return
+
+_f_lcd_aff_fwd
 	movlw 0x00
 	movwf v_charpos
-_lcd_aff_fwd_and_ref_2
+_lcd_aff_fwd_2
 	movf v_charpos, w ; put counter value in W
 	call c_testmsgL1 ; get a character from the text table
 	xorlw 0x00 ; is it a zero?
 	btfsc STATUS, Z
-	goto _lcd_aff_fwd_and_ref_3 ; display next message if finished
+	goto _lcd_aff_fwd_3 ; display next message if finished
 	call f_lcd_affchar
 	incf v_charpos, f
 	incf v_charpos, f
-	goto _lcd_aff_fwd_and_ref_2
-_lcd_aff_fwd_and_ref_3
+	goto _lcd_aff_fwd_2
+_lcd_aff_fwd_3
+	return
+
+_f_lcd_aff_ref
 	movlw 0x10
 	call f_lcd_setposcursor
-_lcd_aff_fwd_and_ref_4
+_lcd_aff_ref_1
 	movlw 0x00
 	movwf v_charpos
-_lcd_aff_fwd_and_ref_5
+_lcd_aff_ref_2
 	movf v_charpos, w ; put counter value in W
 	call c_testmsgL2 ; get a character from the text table
 	xorlw 0x00 ; is it a zero?
 	btfsc STATUS, Z
-	goto _lcd_aff_fwd_and_ref_6 ; display next message if finished
+	goto _lcd_aff_ref_3 ; display next message if finished
 	call f_lcd_affchar
 	incf v_charpos, f
 	incf v_charpos, f
-	goto _lcd_aff_fwd_and_ref_5
-_lcd_aff_fwd_and_ref_6
+	goto _lcd_aff_ref_2
+_lcd_aff_ref_3
 	return
+
+f_lcd_aff_G_and_rdac
+	movlw 0x00	;;Positionner le curseur du LCD sur la ligne 1
+	call f_lcd_setposcursor
+	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
+	btfss BP_BANDE
+	goto _f_lcd_aff_G_and_rdac_2
+	clrf v_menu
+	goto _f_lcd_aff_G_and_rdac_5
+_f_lcd_aff_G_and_rdac_2
+	movlw 0x0C   ;masque sur bouton cal+ et cal-
+	andwf BP_PORT,W
+	btfsc STATUS,Z 	;si Z=1, c'est qu'il n'y a pas eu d'appui sur cal
+	goto f_lcd_aff_G_and_rdac
+_f_lcd_aff_G_and_rdac_4
+
+_f_lcd_aff_G_and_rdac_5
+	return
+
 ENDIF
 
 ;-----------------------------------------
@@ -432,11 +461,11 @@ ENDIF
 
 	global v_hexa_to_conv
 	global v_bcd
-
 	global f_lcd_affboot
 IFDEF TEST
 	global f_lcd_aff_hexa
 	global f_lcd_aff_fwd_and_ref
+	global f_lcd_aff_G_and_rdac
 	global f_lcd_aff_adcmV
 ENDIF
 

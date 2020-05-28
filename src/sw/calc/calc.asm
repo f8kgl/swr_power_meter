@@ -3,6 +3,9 @@
 	udata
 v_adcfwd_mV res 2
 v_adcref_mV res 2
+IFDEF TEST
+v_calc_port res 1
+ENDIF
 v_calctmp res 1
 
 	extern v_adcfwd
@@ -36,6 +39,7 @@ ENDIF
 
 IFDEF TEST
 	global f_calc_calibrated_voltage_fwd_and_ref
+	global v_calc_port
 ENDIF
 	global v_adcfwd_mV
 	global v_adcref_mV
