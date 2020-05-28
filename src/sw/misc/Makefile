@@ -5,7 +5,7 @@ LD = gplib
 LDFLAGS = -c
 INC_DIR = -I../inc/
 
-COMP = tempo
+COMP = misc
 
 SRC = tempo.asm
 
