@@ -1,6 +1,8 @@
 	include "p18f1320.inc" ;include the defaults for the chip
 	include "lcd.inc"
 	include "eep.inc"
+	include "bp.inc"
+	include "calc.inc"
 
   	udata
 v_hexa_to_conv res 2
@@ -8,6 +10,9 @@ v_bcd res 3
 v_charpos res 1
 v_tmp res 1
 v_lcd_wtmp res 1
+IFDEF TEST
+v_lcd_toggle_port res 1
+ENDIF
 
 	extern f_lcd_affchar
 	extern f_lcd_setposcursor
@@ -20,10 +25,20 @@ v_lcd_wtmp res 1
 	extern v_adcref_mV
 	extern c_bootmsgL1
 	extern c_bootmsgL2
+	extern v_calc_n_fwd
+	extern v_calc_n_ref
 IFDEF TEST
 	extern c_testmsgL1
 	extern c_testmsgL2
+	extern c_testG_and_DAC
+	extern v_menu
+	extern v_calc_port
+	extern delay_50ms
+IFDEF DEBUG_ISSUE_256
+	extern delay_250ms
 ENDIF
+ENDIF
+
 
 	code
 
@@ -125,54 +140,170 @@ IFDEF TEST
 ; 	F W D
 ; 	R E F
 ;Traitement :
-;	1.v_charpos = 0
-;	2.Afficher le message de test ligne 1
-;	tant que W !=0
-;		récupérer le caractère de test ligne 1
-;		afficher 1 caractère sur le LCD
-; 		incrémenter v_charpos
-;	3.positionner le curseur sur la ligne 2
-;		W=0x10
-;	 	postionner le curseur
-;	4.v_charpos = 0
-;	5.Afficher le message de boot ligne 2
-;	tant que W !=0
-;		récupérer le caractère de test ligne 2
-;		afficher 1 caractère sur le LCD
-;		incrémenter v_charpos
 ;-----------------------------------------
 
 f_lcd_aff_fwd_and_ref
+	btfss v_lcd_toggle_port,PORT_FWD_BIT
+	goto _f_lcd_aff_no_fwd
+	call _f_lcd_aff_fwd
+	goto _f_lcd_aff_fwd_and_ref_2
+_f_lcd_aff_no_fwd
+	movlw 0x00
+	call f_lcd_setposcursor
+	movlw ' '
+	call f_lcd_affchar
+	call f_lcd_affchar
+	call f_lcd_affchar
+_f_lcd_aff_fwd_and_ref_2
+	btfss v_lcd_toggle_port,PORT_REF_BIT
+	goto _f_lcd_aff_no_ref
+	call _f_lcd_aff_ref
+	goto _f_lcd_aff_fwd_and_ref_3
+_f_lcd_aff_no_ref
+	movlw 0x10
+	call f_lcd_setposcursor
+	movlw ' '
+	call f_lcd_affchar
+	call f_lcd_affchar
+	call f_lcd_affchar
+_f_lcd_aff_fwd_and_ref_3
+	return
+
+
+
+_f_lcd_aff_fwd
+	movlw 0x00
+	call f_lcd_setposcursor
 	movlw 0x00
 	movwf v_charpos
-_lcd_aff_fwd_and_ref_2
+_lcd_aff_fwd_2
 	movf v_charpos, w ; put counter value in W
 	call c_testmsgL1 ; get a character from the text table
 	xorlw 0x00 ; is it a zero?
 	btfsc STATUS, Z
-	goto _lcd_aff_fwd_and_ref_3 ; display next message if finished
+	goto _lcd_aff_fwd_3 ; display next message if finished
 	call f_lcd_affchar
 	incf v_charpos, f
 	incf v_charpos, f
-	goto _lcd_aff_fwd_and_ref_2
-_lcd_aff_fwd_and_ref_3
+	goto _lcd_aff_fwd_2
+_lcd_aff_fwd_3
+	return
+
+_f_lcd_aff_ref
 	movlw 0x10
 	call f_lcd_setposcursor
-_lcd_aff_fwd_and_ref_4
+_lcd_aff_ref_1
 	movlw 0x00
 	movwf v_charpos
-_lcd_aff_fwd_and_ref_5
+_lcd_aff_ref_2
 	movf v_charpos, w ; put counter value in W
 	call c_testmsgL2 ; get a character from the text table
 	xorlw 0x00 ; is it a zero?
 	btfsc STATUS, Z
-	goto _lcd_aff_fwd_and_ref_6 ; display next message if finished
+	goto _lcd_aff_ref_3 ; display next message if finished
 	call f_lcd_affchar
 	incf v_charpos, f
 	incf v_charpos, f
-	goto _lcd_aff_fwd_and_ref_5
-_lcd_aff_fwd_and_ref_6
+	goto _lcd_aff_ref_2
+_lcd_aff_ref_3
 	return
+
+_f_lcd_aff_G_and_DAC
+	movlw 0x00
+	movwf v_charpos
+f_lcd_aff_G_and_DAC_2
+	movf v_charpos, w ; put counter value in W
+	call c_testG_and_DAC ; get a character from the text table
+	xorlw 0x00 ; is it a zero?
+	btfsc STATUS, Z
+	goto f_lcd_aff_G_and_DAC_3 ; display next message if finished
+	call f_lcd_affchar
+	incf v_charpos, f
+	incf v_charpos, f
+	goto f_lcd_aff_G_and_DAC_2
+f_lcd_aff_G_and_DAC_3
+	return
+
+_f_lcd_aff_n
+	movlw 0x06
+	call f_lcd_setposcursor
+	movf v_calc_n_fwd,w
+	andlw 0x0F
+	call f_lcd_convtoascii
+	call f_lcd_affchar
+	movlw 0x16
+	call f_lcd_setposcursor
+	movf v_calc_n_ref,w
+	andlw 0x0F
+	call f_lcd_convtoascii
+	call f_lcd_affchar
+	return
+
+f_lcd_aff_G_and_rdac
+	movlw 0x04
+	call f_lcd_setposcursor
+	call _f_lcd_aff_G_and_DAC ;affiche la chaine de char G= DAC=
+	movlw 0x14
+	call f_lcd_setposcursor
+	call _f_lcd_aff_G_and_DAC ;affiche la chaine de char G= DAC=
+
+	call _f_lcd_aff_n   ;affiche la valeur de n
+
+	btfss v_calc_port,PORT_FWD_BIT
+	goto _f_lcd_aff_G_and_rdac_4
+	bsf  v_lcd_toggle_port,PORT_FWD_BIT
+	bsf  v_lcd_toggle_port,PORT_REF_BIT
+	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
+_f_lcd_aff_G_and_rdac_2
+	call delay_50ms
+	call delay_50ms
+	bcf  v_lcd_toggle_port,PORT_FWD_BIT
+	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
+	call delay_50ms
+	call delay_50ms
+	goto _f_lcd_aff_G_and_rdac_5
+_f_lcd_aff_G_and_rdac_4
+	bsf  v_lcd_toggle_port,PORT_FWD_BIT
+	bsf  v_lcd_toggle_port,PORT_REF_BIT
+	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
+	call delay_50ms
+	call delay_50ms
+	bcf  v_lcd_toggle_port,PORT_REF_BIT
+	call f_lcd_aff_fwd_and_ref ;affiche FWD et REF
+	call delay_50ms
+	call delay_50ms
+
+_f_lcd_aff_G_and_rdac_5
+
+	btfss BP_BANDE
+	goto _f_lcd_aff_G_and_rdac_6
+	goto _f_lcd_aff_G_and_rdac_9
+_f_lcd_aff_G_and_rdac_6
+	movlw 0x0C   ;masque sur bouton cal+ et cal-
+	andwf BP_PORT,W
+	btfsc STATUS,Z 	;si Z=1, c'est qu'il n'y a pas eu d'appui sur cal
+	goto f_lcd_aff_G_and_rdac
+_f_lcd_aff_G_and_rdac_8
+
+_f_lcd_aff_G_and_rdac_9
+	clrf v_menu
+IFDEF DEBUG_ISSUE_256
+	call delay_50ms
+	call delay_50ms
+	call delay_50ms
+	call delay_50ms
+	call delay_50ms
+	call delay_50ms
+	call delay_50ms
+	call delay_50ms
+	call delay_50ms
+	call delay_50ms
+	call delay_50ms
+	call delay_50ms
+ENDIF
+_f_lcd_aff_G_and_rdac_10
+	return
+
 ENDIF
 
 ;-----------------------------------------
@@ -242,7 +373,7 @@ IFDEF TEST
 ;	17. W='-'
 ;	18. Afficher 1 caractère sur le LCD (lcd_affchar)
 ;-----------------------------------------
-f_lcd_affadc
+f_lcd_aff_hexa
 	movlw 0x05
 	call f_lcd_setposcursor
 _lcd_affadc_2
@@ -432,12 +563,13 @@ ENDIF
 
 	global v_hexa_to_conv
 	global v_bcd
-
 	global f_lcd_affboot
 IFDEF TEST
-	global f_lcd_affadc
+	global f_lcd_aff_hexa
 	global f_lcd_aff_fwd_and_ref
+	global f_lcd_aff_G_and_rdac
 	global f_lcd_aff_adcmV
+	global v_lcd_toggle_port
 ENDIF
 
 	end

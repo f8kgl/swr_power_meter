@@ -169,6 +169,27 @@ _c_testmsgL2_2
 	retlw 'F'
 	retlw ' '
 	retlw 0x00
+
+c_testG_and_DAC
+	movwf v_lcdmsg_temp
+	movlw HIGH _c_testG_and_DAC_2
+	movwf PCLATH
+	movlw _c_testG_and_DAC_2
+	addwf v_lcdmsg_temp,W
+	btfsc STATUS,C
+	incf PCLATH ;retenu à 1 => pas de changement de page
+	movf v_lcdmsg_temp,w
+	addwf PCL, f
+_c_testG_and_DAC_2
+	retlw 'G'
+	retlw '='
+	retlw ' '
+	retlw ' '
+	retlw 'D'
+	retlw 'A'
+	retlw 'C'
+	retlw '='
+	retlw 0x00
 ENDIF
 
 	global c_bootmsgL1
@@ -176,6 +197,7 @@ ENDIF
 IFDEF TEST
 	global c_testmsgL1
 	global c_testmsgL2
+	global c_testG_and_DAC
 ENDIF
 
 	end

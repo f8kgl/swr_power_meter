@@ -15,7 +15,7 @@ v_aop_G_fwd res 1
 
 	code
 
-f_aop_set_gain_fwd
+f_aop_set_rdac_fwd
 	movlw I2C_ADDR_DEVICE_AD5175_FWD
 	movwf v_i2c_device_addr
 	movlw 0x02
@@ -38,7 +38,7 @@ ENDIF
 	call f_i2c_write_in_device
   return
 
-f_aop_set_gain_ref
+f_aop_set_rdac_ref
 	movlw I2C_ADDR_DEVICE_AD5175_REF
 	movwf v_i2c_device_addr
 	movlw 0x02
@@ -63,7 +63,7 @@ ENDIF
   return
 
 
-  global f_aop_set_gain_fwd
-  global f_aop_set_gain_ref
+  global f_aop_set_rdac_fwd
+  global f_aop_set_rdac_ref
 
   end
