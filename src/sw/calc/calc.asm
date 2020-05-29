@@ -6,6 +6,8 @@
 	udata
 v_adcfwd_mV res 2
 v_adcref_mV res 2
+v_calc_n_fwd res 1
+v_calc_n_ref res 1
 IFDEF TEST
 v_calc_port res 1
 ENDIF
@@ -20,6 +22,10 @@ f_calc_init
 	;Port = FWD
 	clrf v_calc_port
 	bsf v_calc_port,PORT_FWD_BIT
+	movlw 0x01
+	movwf v_calc_n_fwd
+	movwf v_calc_n_ref
+
 
 	return
 ;-----------------------------------------
@@ -53,5 +59,7 @@ IFDEF TEST
 ENDIF
 	global v_adcfwd_mV
 	global v_adcref_mV
+	global v_calc_n_fwd
+	global v_calc_n_ref
 
 	end

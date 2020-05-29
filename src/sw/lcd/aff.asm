@@ -25,9 +25,12 @@ ENDIF
 	extern v_adcref_mV
 	extern c_bootmsgL1
 	extern c_bootmsgL2
+	extern v_calc_n_fwd
+	extern v_calc_n_ref
 IFDEF TEST
 	extern c_testmsgL1
 	extern c_testmsgL2
+	extern c_testG_and_DAC
 	extern v_menu
 	extern v_calc_port
 	extern delay_50ms
@@ -205,39 +208,46 @@ _lcd_aff_ref_2
 _lcd_aff_ref_3
 	return
 
+_f_lcd_aff_G_and_DAC
+	movlw 0x00
+	movwf v_charpos
+f_lcd_aff_G_and_DAC_2
+	movf v_charpos, w ; put counter value in W
+	call c_testG_and_DAC ; get a character from the text table
+	xorlw 0x00 ; is it a zero?
+	btfsc STATUS, Z
+	goto f_lcd_aff_G_and_DAC_3 ; display next message if finished
+	call f_lcd_affchar
+	incf v_charpos, f
+	incf v_charpos, f
+	goto f_lcd_aff_G_and_DAC_2
+f_lcd_aff_G_and_DAC_3
+	return
+
+_f_lcd_aff_n
+	movlw 0x06
+	call f_lcd_setposcursor
+	movf v_calc_n_fwd,w
+	andlw 0x0F
+	call f_lcd_convtoascii
+	call f_lcd_affchar
+	movlw 0x16
+	call f_lcd_setposcursor
+	movf v_calc_n_ref,w
+	andlw 0x0F
+	call f_lcd_convtoascii
+	call f_lcd_affchar
+	return
+
 f_lcd_aff_G_and_rdac
 	movlw 0x04
 	call f_lcd_setposcursor
-	movlw 'G'
-	call f_lcd_affchar
-	movlw '='
-	call f_lcd_affchar
-	movlw 0x08
-	call f_lcd_setposcursor
-	movlw 'D'
-	call f_lcd_affchar
-	movlw 'A'
-	call f_lcd_affchar
-	movlw 'C'
-	call f_lcd_affchar
-	movlw '='
-	call f_lcd_affchar
+	call _f_lcd_aff_G_and_DAC ;affiche la chaine de char G= DAC=
 	movlw 0x14
 	call f_lcd_setposcursor
-	movlw 'G'
-	call f_lcd_affchar
-	movlw '='
-	call f_lcd_affchar
-	movlw 0x18
-	call f_lcd_setposcursor
-	movlw 'D'
-	call f_lcd_affchar
-	movlw 'A'
-	call f_lcd_affchar
-	movlw 'C'
-	call f_lcd_affchar
-	movlw '='
-	call f_lcd_affchar
+	call _f_lcd_aff_G_and_DAC ;affiche la chaine de char G= DAC=
+
+	call _f_lcd_aff_n   ;affiche la valeur de n
 
 	btfss v_calc_port,PORT_FWD_BIT
 	goto _f_lcd_aff_G_and_rdac_4
