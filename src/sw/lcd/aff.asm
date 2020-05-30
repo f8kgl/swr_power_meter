@@ -18,9 +18,7 @@ ENDIF
 
 	extern f_lcd_affchar
 	extern f_lcd_setposcursor
-	extern f_lcd_convtoascii
-	extern f_lcd_convtobcd
- 	extern f_eep_readbyte
+	extern f_eep_readbyte
 	extern c_bootmsgL1
 	extern c_bootmsgL2
 IFDEF TEST
@@ -37,6 +35,8 @@ IFDEF TEST
 	extern v_calc_port
 	extern delay_10ms
 	extern f_lcd_fsm_toggle_state
+	extern f_lcd_convtoascii
+	extern f_lcd_convtobcd
 ENDIF
 
 
