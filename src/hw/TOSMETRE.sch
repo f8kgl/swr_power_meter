@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:TOSMETRE-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
@@ -1333,4 +1332,15 @@ Wire Wire Line
 	11800 2850 11950 2850
 Wire Wire Line
 	11950 3250 11800 3250
+$Comp
+L librairie_projet:24AA256 U?
+U 1 1 5ED2FD7E
+P 9450 8450
+F 0 "U?" H 9450 9067 50  0000 C CNN
+F 1 "24AA256" H 9450 8976 50  0000 C CNN
+F 2 "" H 9450 8450 50  0001 C CNN
+F 3 "http://www.nxp.com/documents/data_sheet/P82B96.pdf" H 9450 8450 50  0001 C CNN
+	1    9450 8450
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
