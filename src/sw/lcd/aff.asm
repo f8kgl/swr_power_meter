@@ -13,6 +13,9 @@ v_lcd_wtmp res 1
 IFDEF TEST
 v_lcd_fsm_toggle_state res 1
 v_lcd_fsm_timer_count res 1
+v_lcd_fsm_string res 3 ;a priori, la taille max est de 3 : FWD, REF, ADC
+v_lcd_fsm_string_len res 1
+v_lcd_fsm_string_pos res 1
 ENDIF
 
 	extern f_lcd_affchar
@@ -170,11 +173,12 @@ _lcd_aff_ref_2
 _lcd_aff_ref_3
 	return
 
-_f_lcd_aff_no_port
+_f_lcd_aff_not
 	movlw ' '
+_f_lcd_aff_not_2
 	call f_lcd_affchar
-	call f_lcd_affchar
-	call f_lcd_affchar
+	decfsz v_lcd_fsm_string_len
+	goto _f_lcd_aff_not_2
 	return
 
 _f_lcd_fsm_toggle_state
@@ -237,7 +241,7 @@ _fsm_lcd_toggle_state2
 _fsm_lcd_toggle_state2_do
 	movlw 0x00 ;à généraliser
 	call f_lcd_setposcursor
-	call _f_lcd_aff_no_port
+	call _f_lcd_aff_not
 	call delay_10ms
 _fsm_lcd_toggle_state2_calc_next_state
 	decfsz v_lcd_fsm_timer_count,f
@@ -282,8 +286,18 @@ f_lcd_aff_n
 f_lcd_toggle_fwd_port
 	;mettre les paramètres de la fsm :
 	;position de la chaine
+	movlw 0x00
+	movwf v_lcd_fsm_string_pos
 	;contenu de la chaine
+	movlw 'F'
+	movwf v_lcd_fsm_string
+	movlw 'W'
+	movwf v_lcd_fsm_string+1
+	movlw 'D'
+	movwf v_lcd_fsm_string+2
 	;nb de char de la chaine
+	movlw 0x03
+	movwf v_lcd_fsm_string_len
 	;paramètre à modifier
 	call _f_lcd_fsm_toggle_state
 	return
