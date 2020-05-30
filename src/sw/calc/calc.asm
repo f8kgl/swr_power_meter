@@ -21,7 +21,7 @@ IFDEF TEST
 f_calc_init
 	;Port = FWD
 	clrf v_calc_port
-	bsf v_calc_port,PORT_FWD_BIT
+	bsf v_calc_port,PORT_BIT ;Port=FWD
 	movlw 0x01
 	movwf v_calc_n_fwd
 	movwf v_calc_n_ref

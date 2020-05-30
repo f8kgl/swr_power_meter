@@ -32,14 +32,15 @@ IFDEF TEST
 	extern f_calc_calibrated_voltage_fwd_and_ref
 	extern f_lcd_aff_adc_mV
 	extern f_calc_init
-	extern f_lcd_toggle_port
+	extern f_lcd_toggle_fwd_port
+	extern f_lcd_toggle_ref_port
+	extern v_calc_port
 ENDIF
 
 	udata
 
 IFDEF TEST
 v_menu res 1
-v_cal_menu_state res 1
 ENDIF
 
 	code
@@ -149,7 +150,6 @@ menu_mesure
 menu_calibration
 	clrf v_menu
 	bsf v_menu,0
-	clrf v_cal_menu_state
 
 	;Affiche "FWD et REF" sur les 1ères et 2èmes lignes
 	call f_lcd_aff_fwd_and_ref
@@ -161,8 +161,18 @@ menu_calibration
 	call f_lcd_setposcursor
 	call f_lcd_aff_G_and_rdac
 
-	call f_lcd_toggle_port
+_menu_cal_toggle_port
+	btfsc v_calc_port,0
+	goto _menu_cal_toggle_fwd_port
+	call f_lcd_toggle_ref_port
 
+_menu_cal_toggle_fwd_port
+	call f_lcd_toggle_fwd_port
+	btfsc v_calc_port,0
+	goto _menu_cal_toggle_n_value;1=>valeur non modifié. On est sortie de la FSM par un appui sur BP_BANDE
+	goto _menu_cal_toggle_port;0=>valeur modifié. Il faut recommencer le même clignotement !!!
+
+_menu_cal_toggle_n_value ;faire clignoter la valeur de n
 	goto test_loop
 ENDIF
 

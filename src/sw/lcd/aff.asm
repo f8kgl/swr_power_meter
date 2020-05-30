@@ -10,6 +10,10 @@ v_bcd res 3
 v_charpos res 1
 v_tmp res 1
 v_lcd_wtmp res 1
+IFDEF TEST
+v_lcd_fsm_toggle_state res 1
+v_lcd_fsm_timer_count res 1
+ENDIF
 
 	extern f_lcd_affchar
 	extern f_lcd_setposcursor
@@ -136,8 +140,6 @@ _f_lcd_aff_adc_mV_16
 
 _f_lcd_aff_fwd
 	movlw 0x00
-	call f_lcd_setposcursor
-	movlw 0x00
 	movwf v_charpos
 _lcd_aff_fwd_2
 	movf v_charpos, w ; put counter value in W
@@ -153,9 +155,6 @@ _lcd_aff_fwd_3
 	return
 
 _f_lcd_aff_ref
-	movlw 0x10
-	call f_lcd_setposcursor
-_lcd_aff_ref_1
 	movlw 0x00
 	movwf v_charpos
 _lcd_aff_ref_2
@@ -171,22 +170,127 @@ _lcd_aff_ref_2
 _lcd_aff_ref_3
 	return
 
-f_lcd_aff_fwd_and_ref
-	call _f_lcd_aff_fwd
-	call _f_lcd_aff_ref
-	return
-
-f_lcd_aff_no_port
+_f_lcd_aff_no_port
 	movlw ' '
 	call f_lcd_affchar
 	call f_lcd_affchar
 	call f_lcd_affchar
 	return
 
+_f_lcd_fsm_toggle_state
+	clrf v_lcd_fsm_toggle_state
+
+_f_lcd_fsm_toggle_start
+	movf	v_lcd_fsm_toggle_state,w
+	xorlw	D'0'
+	btfsc	STATUS,Z
+	goto	_fsm_lcd_toggle_state0
+	xorlw	D'1'
+	btfsc	STATUS,Z
+	goto	_fsm_lcd_toggle_state1
+	xorlw	D'2'
+	btfsc	STATUS,Z
+	goto	_fsm_lcd_toggle_state2
+	xorlw	D'3'
+	btfsc	STATUS,Z
+	goto	_fsm_lcd_toggle_state3
+	xorlw	D'4'
+	btfsc	STATUS,Z
+	goto	_fsm_lcd_toggle_end
+_fsm_lcd_toggle_end
+	return
+
+_fsm_lcd_toggle_state0
+_fsm_lcd_toggle_state0_do
+	movlw D'50'
+	movwf v_lcd_fsm_timer_count
+_fsm_lcd_toggle_state0_calc_next_state
+	incf v_lcd_fsm_toggle_state,f
+	goto _fsm_lcd_toggle_exit
+
+
+
+_fsm_lcd_toggle_state1
+_fsm_lcd_toggle_state1_do
+	movlw 0x00 ;à généraliser
+	call f_lcd_setposcursor
+	call _f_lcd_aff_fwd
+	call delay_10ms
+_fsm_lcd_toggle_state1_calc_next_state
+	decfsz v_lcd_fsm_timer_count,f
+	goto __fsm_lcd_toggle_state1_calc_next_state ;si timer<500ms
+	movlw D'50' ;si timer>500ms
+	movwf v_lcd_fsm_timer_count
+	incf v_lcd_fsm_toggle_state,f;si timer>500ms => state 2
+	goto _fsm_lcd_toggle_exit
+__fsm_lcd_toggle_state1_calc_next_state;si timer<500ms
+		;si cal+/cal-=>state 3
+		;si bande => state 4
+		;sinon => state 1
+	goto _fsm_lcd_toggle_exit
+
+_fsm_lcd_toggle_state2
+_fsm_lcd_toggle_state2_do
+	movlw 0x00 ;à généraliser
+	call f_lcd_setposcursor
+	call _f_lcd_aff_no_port
+	call delay_10ms
+_fsm_lcd_toggle_state2_calc_next_state
+	decfsz v_lcd_fsm_timer_count,f
+	goto __fsm_lcd_toggle_state2_calc_next_state ;si timer<500ms
+	movlw D'50' ;si timer>500ms
+	movwf v_lcd_fsm_timer_count
+	decf v_lcd_fsm_toggle_state,f;si timer>500ms => state 1
+	goto _fsm_lcd_toggle_exit
+__fsm_lcd_toggle_state2_calc_next_state;si timer<500ms
+		;si cal+/cal-=>state 3
+		;si bande => state 4
+		;sinon => state 2
+	goto _fsm_lcd_toggle_exit
+
+_fsm_lcd_toggle_state3
+_fsm_lcd_toggle_state3_do
+	incf v_calc_port,f ;à généraliser
+_fsm_lcd_toggle_state3_calc_next_state
+	incf v_lcd_fsm_toggle_state
+	goto _fsm_lcd_toggle_exit
+
+
+
+_fsm_lcd_toggle_exit
+	goto _f_lcd_fsm_toggle_start
+
+
+
+
+f_lcd_aff_fwd_and_ref
+	movlw 0x00
+	call f_lcd_setposcursor
+	call _f_lcd_aff_fwd
+	movlw 0x10
+	call f_lcd_setposcursor
+	call _f_lcd_aff_ref
+	return
+
 f_lcd_aff_n
 	return
 
-f_lcd_toogle_port
+f_lcd_toggle_fwd_port
+	;mettre les paramètres de la fsm :
+	;position de la chaine
+	;contenu de la chaine
+	;nb de char de la chaine
+	;paramètre à modifier
+	call _f_lcd_fsm_toggle_state
+	return
+
+f_lcd_toggle_ref_port
+	;mettre les paramètres de la fsm :
+	;position de la chaine
+	;contenu de la chaine
+	;nb de char de la chaine
+	;paramètre à modifier
+	call _f_lcd_fsm_toggle_state
 	return
 
 f_lcd_aff_G_and_rdac
@@ -241,7 +345,8 @@ IFDEF TEST
 	global f_lcd_aff_adc_hexa
 	global f_lcd_aff_fwd_and_ref
 	global f_lcd_aff_G_and_rdac
-	global f_lcd_toogle_port
+	global f_lcd_toggle_fwd_port
+	global f_lcd_toggle_ref_port
 	global f_lcd_aff_adc_mV
 ENDIF
 

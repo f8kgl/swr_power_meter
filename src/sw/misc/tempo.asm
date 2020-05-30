@@ -66,7 +66,7 @@ Del_11:
 	return
 
 delay_10ms
-	movlw d'100' ; delay 100mS
+	movlw d'10' ; delay 10mS
 	movwf v_timer0 ;
 	goto delay1
 
