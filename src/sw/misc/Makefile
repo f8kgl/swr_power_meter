@@ -5,7 +5,7 @@ LD = gplib
 LDFLAGS = -c
 INC_DIR = -I../inc/
 
-COMP = tempo
+COMP = misc
 
 SRC = tempo.asm
 
@@ -17,4 +17,4 @@ OBJ_TEST = $(SRC:.asm=.TEST.o)
 	rm *.lst
 
 %.TEST.o : %.asm
-	$(AS) $(ASFLAGS) $(INC_DIR) -DTEST -p $(PROCESSOR) $< -o $@
+	$(AS) $(ASFLAGS) $(INC_DIR) -DTEST $(DEBUG_ISSUE_n) -p $(PROCESSOR) $< -o $@

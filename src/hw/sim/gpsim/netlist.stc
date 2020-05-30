@@ -82,19 +82,25 @@ ad5175_ref.ypos = 312
 
 module load push_button bande
 bande.xpos = 180
-bande.ypos = 384
+bande.ypos = 350
 
+module load push_button cal_p
+cal_p.xpos = 180
+cal_p.ypos = 400
 
+module load push_button cal_m
+cal_m.xpos = 180
+cal_m.ypos = 450
 
 # Connections:
 node nRW
 attach nRW lcd_display.RW
 
 node nRS
-attach nRS lcd_display.DC p18f1320.portb2
+attach nRS lcd_display.DC p18f1320.portb0
 
 node nE
-attach nE lcd_display.E p18f1320.portb3
+attach nE lcd_display.E p18f1320.portb1
 
 node nD4
 attach nD4 lcd_display.d4 p18f1320.portb4
@@ -126,9 +132,13 @@ attach nFWD_adc ltc2305.CH0 ad5175_fwd.out
 node nREF_adc
 attach nREF_adc ad5175_ref.out ltc2305.CH1
 
+node bp_cal_p
+attach bp_cal_p p18f1320.porta2 cal_p.out
+
+node bp_cal_m
+attach bp_cal_m p18f1320.porta3 cal_m.out
+
 node bp_bande
-attach bp_bande p18f1320.porta3 bande.out
-
-
+attach bp_bande p18f1320.porta4 bande.out
 
 # End.

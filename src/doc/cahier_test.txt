@@ -1,0 +1,8 @@
+1/Vin_fwd=0,010mV => affiche 20mV ?
+2/Vin_ref = 0,001 => affiche 2mv ?
+
+
+3/Test bouton "bande"
+3.1/bascule dans le menu calibration
+affiche G, Rdac ?
+retour au menu mesure ?

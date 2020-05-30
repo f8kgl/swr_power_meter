@@ -42,7 +42,7 @@ OUTPUT = $(NAME)$(VERSION).GPISM.hex
 endif
 
 #Composants
-COMPS =tempo
+COMPS =misc
 COMPS +=lcd
 COMPS +=i2c
 COMPS +=eep

@@ -1,5 +1,6 @@
 	include "p18f1320.inc" ;include the defaults for the chip
 	include "bp.inc"
+	include "calc.inc"
 
 	ERRORLEVEL 0, -302 ;suppress bank selection messages
 
@@ -18,22 +19,26 @@
 	extern f_lcd_affboot
 	extern f_lcd_clear
 	extern f_lcd_setposcursor
-IFDEF TEST
-	extern f_aop_set_gain_fwd
-	extern f_aop_set_gain_ref
-	extern f_lcd_aff_fwd_and_ref
-	extern f_lcd_affadc
-	extern f_calc_adcmV
-	extern f_lcd_aff_adcmV
-ENDIF
 	extern f_adc_init
-	extern f_adc_read_vfwd
-	extern f_adc_read_vref
+	extern f_adc_read_fwd
+	extern f_adc_read_ref
+	extern f_aop_set_rdac_fwd
+	extern f_aop_set_rdac_ref
+	extern delay_250ms
+IFDEF TEST
+	extern f_lcd_aff_fwd_and_ref
+	extern f_lcd_aff_G_and_rdac
+	extern f_lcd_aff_adc_hexa
+	extern f_calc_calibrated_voltage_fwd_and_ref
+	extern f_lcd_aff_adc_mV
+	extern f_calc_init
+	extern f_lcd_toggle_fwd_port
+	extern f_lcd_toggle_ref_port
+	extern v_calc_port
+ENDIF
 
 	udata
-v_timer0 res 1
-v_timer1 res 1
-v_timer2 res 1
+
 IFDEF TEST
 v_menu res 1
 ENDIF
@@ -62,7 +67,7 @@ Init
 	movwf ADCON1
 	clrf ADCON2
 
-	movlw b'00001100' ; RA2/3 input
+	movlw b'00011100' ; RA2/3/4 input
 	movwf TRISA ;
 	clrf PORTA
 	movlw b'00000000' ; PortB Outputs
@@ -86,27 +91,28 @@ Init
 
 ;; Effacer le LCD (lcd_clear)
 	call f_lcd_clear
-	;;Positionner le curseur du LCD sur la ligne 1
-	movlw 0x00
-	call f_lcd_setposcursor
 
+	call f_calc_init
 
 IFDEF DEBUG_ISSUE_134
 	;Fiche #121 #157 #134
 	;appelle l'init des composants branchés sur le bus i2c
 	;pour contourner le NACK reçu uniquement lors de la 1ère trame sous GPSIM
-	call f_aop_set_gain_fwd
-	call f_aop_set_gain_ref
-	call f_adc_read_vfwd
+	call f_aop_set_rdac_fwd
+	call f_aop_set_rdac_ref
+	call f_adc_read_fwd
 ENDIF
 
 
 IFDEF TEST
-	clrf v_menu ; menu ADC par défaut au démarrage
+	clrf v_menu ; menu mesure par défaut au démarrage
 
 test_loop
 
 	;;Appui sur le bouton bande ?
+	btfsc BP_BANDE
+	call delay_250ms
+	call delay_250ms
 	btfss BP_BANDE
 	goto choix_menu
 
@@ -117,55 +123,57 @@ test_loop
 
 choix_menu
 	btfss v_menu,0
-	goto menu_adc
-	goto menu_aop
+	goto menu_mesure
+	goto menu_calibration
 
-menu_adc
+menu_mesure
 	clrf v_menu
-	;;Positionner le curseur du LCD sur la ligne 1
-	movlw 0x00
-	call f_lcd_setposcursor
-	call f_lcd_aff_fwd_and_ref
 
-
-	;; Initialise le gain des voies FWD et REF
-	call f_aop_set_gain_fwd
-	call f_aop_set_gain_ref
-
-	;;lire les registres ADCfwd et ADCref
-	call f_adc_read_vfwd
-	call f_adc_read_vref
+		;;lire les registres ADCfwd et ADCref
+	call f_adc_read_fwd
+	call f_adc_read_ref
 
 	;; Convertir la mesure des ADC en hexa (rien à faire) et en mV
-	call f_calc_adcmV
+	call f_calc_calibrated_voltage_fwd_and_ref
+
+	;Affiche "FWD et REF" sur les 1ères et 2èmes lignes
+	call f_lcd_aff_fwd_and_ref
 
 	;; afficher la mesure des ADC en hexadécimal
-	call f_lcd_affadc
+	call f_lcd_aff_adc_hexa
 	;; afficher la mesure des ADC en mV
-	call f_lcd_aff_adcmV
+	call f_lcd_aff_adc_mV
 
 	goto test_loop
 
 
-menu_aop
+menu_calibration
 	clrf v_menu
 	bsf v_menu,0
-	;;Positionner le curseur du LCD sur la ligne 1
-	movlw 0x00
+
+	;Affiche "FWD et REF" sur les 1ères et 2èmes lignes
+	call f_lcd_aff_fwd_and_ref
+
+	movlw 0x04
 	call f_lcd_setposcursor
+	call f_lcd_aff_G_and_rdac
+	movlw 0x14
+	call f_lcd_setposcursor
+	call f_lcd_aff_G_and_rdac
 
-	;; Initialise le gain des voies FWD et REF
-	call f_aop_set_gain_fwd
-	call f_aop_set_gain_ref
+_menu_cal_toggle_port
+	btfsc v_calc_port,0
+	goto _menu_cal_toggle_fwd_port
+	call f_lcd_toggle_ref_port
 
-	;;calcul des tensions calibrées
-	;;affichage des valeurs des tensions en entrée de l'AOP
+_menu_cal_toggle_fwd_port
+	call f_lcd_toggle_fwd_port
+	btfsc v_calc_port,0
+	goto _menu_cal_toggle_n_value;1=>valeur non modifié. On est sortie de la FSM par un appui sur BP_BANDE
+	goto _menu_cal_toggle_port;0=>valeur modifié. Il faut recommencer le même clignotement !!!
 
-	;test le bouton gain. Si pas changé, on retourn à test_loop
-	;sinon, mise à jour du gain, et retour à menu_aop
+_menu_cal_toggle_n_value ;faire clignoter la valeur de n
 	goto test_loop
-
-
 ENDIF
 
 
@@ -193,22 +201,10 @@ f_tempo_boot
 	call delay_250ms
 	return
 
-delay_250ms
-	movlw d'250' ; delay 250mS
-	movwf v_timer0 ;
-	goto delay1
-delay1
-	movlw 0xC7 ; delay 1mS
-	movwf v_timer1 ;
-	movlw 0x01 ;
-	movwf v_timer2 ;
-delay
-	decfsz v_timer1,f ;
-	goto $+6 ;
-	decfsz v_timer2,f ;
-	goto delay ;
-	decfsz v_timer0,f ;
-	goto delay1 ;
-	retlw 0x00 ;
+
+IFDEF TEST
+	global v_menu
+ENDIF
+
 
 	end

@@ -4,6 +4,9 @@
 v_timer res 1
 v_timerA res 1
 v_timerB res 1
+v_timer0 res 1
+v_timer1 res 1
+v_timer2 res 1
 
 
   code
@@ -62,6 +65,31 @@ Del_11:
 	goto	Del_11	;2 cycles
 	return
 
+delay_10ms
+	movlw d'10' ; delay 10mS
+	movwf v_timer0 ;
+	goto delay1
+
+delay_250ms
+	movlw d'250' ; delay 250mS
+	movwf v_timer0 ;
+	goto delay1
+delay1
+	movlw 0xC7 ; delay 1mS
+	movwf v_timer1 ;
+	movlw 0x01 ;
+	movwf v_timer2 ;
+delay
+	decfsz v_timer1,f ;
+	goto delay2 ;
+	decfsz v_timer2,f ;
+delay2
+	goto delay ;
+	decfsz v_timer0,f ;
+	goto delay1 ;
+	retlw 0x00 ;
+
+
 	global D160us
 	global Del255
 	global Del200
@@ -71,6 +99,8 @@ Del_11:
 	global Del05
 	global Del01
   global Del_11us
+  global delay_250ms
+  global delay_10ms
 
 
   end
