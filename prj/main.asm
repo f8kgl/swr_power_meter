@@ -28,17 +28,18 @@
 IFDEF TEST
 	extern f_lcd_aff_fwd_and_ref
 	extern f_lcd_aff_G_and_rdac
-	extern f_lcd_aff_hexa
+	extern f_lcd_aff_adc_hexa
 	extern f_calc_calibrated_voltage_fwd_and_ref
-	extern f_lcd_aff_adcmV
+	extern f_lcd_aff_adc_mV
 	extern f_calc_init
-	extern v_lcd_toggle_port
+	extern f_lcd_toggle_port
 ENDIF
 
 	udata
 
 IFDEF TEST
 v_menu res 1
+v_cal_menu_state res 1
 ENDIF
 
 	code
@@ -103,11 +104,14 @@ ENDIF
 
 
 IFDEF TEST
-	clrf v_menu ; menu ADC par défaut au démarrage
+	clrf v_menu ; menu mesure par défaut au démarrage
 
 test_loop
 
 	;;Appui sur le bouton bande ?
+	btfsc BP_BANDE
+	call delay_250ms
+	call delay_250ms
 	btfss BP_BANDE
 	goto choix_menu
 
@@ -124,9 +128,7 @@ choix_menu
 menu_mesure
 	clrf v_menu
 
-	;; Initialise le gain des voies FWD et REF
-
-	;;lire les registres ADCfwd et ADCref
+		;;lire les registres ADCfwd et ADCref
 	call f_adc_read_fwd
 	call f_adc_read_ref
 
@@ -134,15 +136,12 @@ menu_mesure
 	call f_calc_calibrated_voltage_fwd_and_ref
 
 	;Affiche "FWD et REF" sur les 1ères et 2èmes lignes
-	bsf v_lcd_toggle_port,PORT_FWD_BIT
-	bsf v_lcd_toggle_port,PORT_REF_BIT
 	call f_lcd_aff_fwd_and_ref
-	clrf v_lcd_toggle_port
 
 	;; afficher la mesure des ADC en hexadécimal
-	call f_lcd_aff_hexa
+	call f_lcd_aff_adc_hexa
 	;; afficher la mesure des ADC en mV
-	call f_lcd_aff_adcmV
+	call f_lcd_aff_adc_mV
 
 	goto test_loop
 
@@ -150,28 +149,21 @@ menu_mesure
 menu_calibration
 	clrf v_menu
 	bsf v_menu,0
+	clrf v_cal_menu_state
 
+	;Affiche "FWD et REF" sur les 1ères et 2èmes lignes
+	call f_lcd_aff_fwd_and_ref
+
+	movlw 0x04
+	call f_lcd_setposcursor
 	call f_lcd_aff_G_and_rdac
-	btfsc v_menu,0
-	goto menu_calibration_2
+	movlw 0x14
+	call f_lcd_setposcursor
+	call f_lcd_aff_G_and_rdac
 
-	;; Effacer le LCD (lcd_clear)
-	call f_lcd_clear
-	goto menu_mesure
+	call f_lcd_toggle_port
 
-menu_calibration_2
-	;; Initialise le gain des voies FWD et REF
-	call f_aop_set_rdac_fwd
-	call f_aop_set_rdac_ref
-
-	;;calcul des tensions calibrées
-	;;affichage des valeurs des tensions en entrée de l'AOP
-
-	;test le bouton gain. Si pas changé, on retourn à test_loop
-	;sinon, mise à jour du gain, et retour à menu_aop
 	goto test_loop
-
-
 ENDIF
 
 

@@ -125,17 +125,17 @@ IFDEF TEST
 ;	Zone de mémoire dédiée au stokage du message de calibration (L1 du LCD)
 ; 	"FWD "
 ;-----------------------------------------
-c_testmsgL1
+c_msg_fwd
 	movwf v_lcdmsg_temp
-	movlw HIGH _c_testmsgL1_2
+	movlw HIGH _c_msg_fwd_2
 	movwf PCLATH
-	movlw _c_testmsgL1_2
+	movlw _c_msg_fwd_2
 	addwf v_lcdmsg_temp,W
 	btfsc STATUS,C
 	incf PCLATH ;retenu à 1 => pas de changement de page
 	movf v_lcdmsg_temp,w
 	addwf PCL, f
-_c_testmsgL1_2
+_c_msg_fwd_2
 	retlw 'F'
 	retlw 'W'
 	retlw 'D'
@@ -153,34 +153,34 @@ _c_testmsgL1_2
 ;	Zone de mémoire dédiée au stockage du message de calibration (L2 du LCD)
 ; 	"REF "
 ;-----------------------------------------
-c_testmsgL2
+c_msg_ref
 	movwf v_lcdmsg_temp
-	movlw HIGH _c_testmsgL2_2
+	movlw HIGH _c_msg_ref_2
 	movwf PCLATH
-	movlw _c_testmsgL2_2
+	movlw _c_msg_ref_2
 	addwf v_lcdmsg_temp,W
 	btfsc STATUS,C
 	incf PCLATH ;retenu à 1 => pas de changement de page
 	movf v_lcdmsg_temp,w
 	addwf PCL, f
-_c_testmsgL2_2
+_c_msg_ref_2
 	retlw 'R'
 	retlw 'E'
 	retlw 'F'
 	retlw ' '
 	retlw 0x00
 
-c_testG_and_DAC
+c_msg_n_and_rdac
 	movwf v_lcdmsg_temp
-	movlw HIGH _c_testG_and_DAC_2
+	movlw HIGH _c_msg_n_and_rdac_2
 	movwf PCLATH
-	movlw _c_testG_and_DAC_2
+	movlw _c_msg_n_and_rdac_2
 	addwf v_lcdmsg_temp,W
 	btfsc STATUS,C
 	incf PCLATH ;retenu à 1 => pas de changement de page
 	movf v_lcdmsg_temp,w
 	addwf PCL, f
-_c_testG_and_DAC_2
+_c_msg_n_and_rdac_2
 	retlw 'G'
 	retlw '='
 	retlw ' '
@@ -195,9 +195,9 @@ ENDIF
 	global c_bootmsgL1
 	global c_bootmsgL2
 IFDEF TEST
-	global c_testmsgL1
-	global c_testmsgL2
-	global c_testG_and_DAC
+	global c_msg_fwd
+	global c_msg_ref
+	global c_msg_n_and_rdac
 ENDIF
 
 	end

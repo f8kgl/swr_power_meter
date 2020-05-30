@@ -65,8 +65,8 @@ Del_11:
 	goto	Del_11	;2 cycles
 	return
 
-delay_50ms
-	movlw d'50' ; delay 100mS
+delay_10ms
+	movlw d'100' ; delay 100mS
 	movwf v_timer0 ;
 	goto delay1
 
@@ -100,7 +100,7 @@ delay2
 	global Del01
   global Del_11us
   global delay_250ms
-  global delay_50ms
+  global delay_10ms
 
 
   end
