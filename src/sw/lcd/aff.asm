@@ -9,7 +9,7 @@ v_hexa_to_conv res 2
 v_bcd res 3
 v_charpos res 1
 v_tmp res 1
-v_lcd_wtmp res 1
+v_lcd_fsm_tmp res 1
 IFDEF TEST
 v_lcd_fsm_toggle_state res 1
 v_lcd_fsm_timer_count res 1
@@ -174,10 +174,11 @@ _lcd_aff_ref_3
 	return
 
 _f_lcd_aff_not
+	movff v_lcd_fsm_string_len, v_lcd_fsm_tmp
 	movlw ' '
 _f_lcd_aff_not_2
 	call f_lcd_affchar
-	decfsz v_lcd_fsm_string_len
+	decfsz v_lcd_fsm_tmp
 	goto _f_lcd_aff_not_2
 	return
 
@@ -331,7 +332,6 @@ f_lcd_aff_adc_hexa
 	movlw 0x05
 	call f_lcd_setposcursor
 	movf v_adcfwd,w
-	movwf v_lcd_wtmp
 	call _f_lcd_aff_hexa
 	movf v_adcfwd+1,w
 	call _f_lcd_aff_hexa
