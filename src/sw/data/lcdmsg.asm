@@ -2,8 +2,6 @@
 
 	udata
 v_lcdmsg_temp res 1
-v_lcdmsg_change_page res 1
-v_lcdmsg_addr_offset res 1
 
 	code
 
@@ -114,62 +112,6 @@ _c_bootmsgL2_2
 	retlw 0x00
 
 IFDEF TEST
-;-----------------------------------------
-;Fonction : Message du mode de test ligne 1 du LCD
-;Nom : testmsgL1
-;Entrée :
-;	w (1 byte) :position du caractère à retourner
-;Sortie :
-;	W (1 byte) : contient le caractère ou 0x00 si pas de caractère
-;Traitement :
-;	Zone de mémoire dédiée au stokage du message de calibration (L1 du LCD)
-; 	"FWD "
-;-----------------------------------------
-c_msg_fwd
-	movwf v_lcdmsg_temp
-	movlw HIGH _c_msg_fwd_2
-	movwf PCLATH
-	movlw _c_msg_fwd_2
-	addwf v_lcdmsg_temp,W
-	btfsc STATUS,C
-	incf PCLATH ;retenu à 1 => pas de changement de page
-	movf v_lcdmsg_temp,w
-	addwf PCL, f
-_c_msg_fwd_2
-	retlw 'F'
-	retlw 'W'
-	retlw 'D'
-	retlw ' '
-	retlw 0x00
-
-;-----------------------------------------
-;Fonction : Message du mode de test ligne 2 du LCD
-;Nom : calibmsgL2
-;Entrée :
-;	w (1 byte) :position du caractère à retourner
-;Sortie :
-;	W (1 byte) : contient le caractère ou 0x00 si pas de caractère
-;Traitement :
-;	Zone de mémoire dédiée au stockage du message de calibration (L2 du LCD)
-; 	"REF "
-;-----------------------------------------
-c_msg_ref
-	movwf v_lcdmsg_temp
-	movlw HIGH _c_msg_ref_2
-	movwf PCLATH
-	movlw _c_msg_ref_2
-	addwf v_lcdmsg_temp,W
-	btfsc STATUS,C
-	incf PCLATH ;retenu à 1 => pas de changement de page
-	movf v_lcdmsg_temp,w
-	addwf PCL, f
-_c_msg_ref_2
-	retlw 'R'
-	retlw 'E'
-	retlw 'F'
-	retlw ' '
-	retlw 0x00
-
 c_msg_n_and_rdac
 	movwf v_lcdmsg_temp
 	movlw HIGH _c_msg_n_and_rdac_2
@@ -195,8 +137,6 @@ ENDIF
 	global c_bootmsgL1
 	global c_bootmsgL2
 IFDEF TEST
-	global c_msg_fwd
-	global c_msg_ref
 	global c_msg_n_and_rdac
 ENDIF
 

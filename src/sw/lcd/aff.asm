@@ -28,8 +28,6 @@ IFDEF TEST
 	extern v_adcref_mV
 	extern v_calc_n_fwd
 	extern v_calc_n_ref
-	extern c_msg_fwd
-	extern c_msg_ref
 	extern c_msg_n_and_rdac
 	extern v_menu
 	extern v_calc_port
@@ -52,22 +50,6 @@ _f_lcd_aff_hexa
 	andlw 0x0F
 	call f_lcd_convtoascii
 	call f_lcd_affchar
-	return
-
-_f_lcd_aff_ref
-	movlw 0x00
-	movwf v_lcd_charpos
-_lcd_aff_ref_2
-	movf v_lcd_charpos, w ; put counter value in W
-	call c_msg_ref ; get a character from the text table
-	xorlw 0x00 ; is it a zero?
-	btfsc STATUS, Z
-	goto _lcd_aff_ref_3 ; display next message if finished
-	call f_lcd_affchar
-	incf v_lcd_charpos, f
-	incf v_lcd_charpos, f
-	goto _lcd_aff_ref_2
-_lcd_aff_ref_3
 	return
 ENDIF
 
@@ -198,7 +180,18 @@ f_lcd_aff_fwd_and_ref
 	call f_lcd_aff
 	movlw 0x10
 	call f_lcd_setposcursor
-	call _f_lcd_aff_ref
+	movlw 'R'
+	movwf v_lcd_string
+	movlw 'E'
+	movwf v_lcd_string+1
+	movlw 'F'
+	movwf v_lcd_string+2
+	movlw v_lcd_string
+	movwf v_lcd_p_string
+	;nb de char de la chaine
+	movlw 0x03
+	movwf v_lcd_string_len
+	call f_lcd_aff
 	return
 
 f_lcd_aff_n
