@@ -57,7 +57,7 @@ _fsm_lcd_toggle_state0_calc_next_state
 
 _fsm_lcd_toggle_state1
 _fsm_lcd_toggle_state1_do
-  movlw 0x00 ;à généraliser
+  movf v_lcd_string_pos,w
   call f_lcd_setposcursor
   call f_lcd_aff
   call delay_10ms
@@ -76,7 +76,7 @@ __fsm_lcd_toggle_state1_calc_next_state;si timer<500ms
 
 _fsm_lcd_toggle_state2
 _fsm_lcd_toggle_state2_do
-  movlw 0x00 ;à généraliser
+  movf v_lcd_string_pos,w
   call f_lcd_setposcursor
   call f_lcd_aff_not
   call delay_10ms
