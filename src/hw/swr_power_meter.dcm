@@ -12,6 +12,12 @@ K diode
 F http://www.mouser.com/ds/2/149/1N4148WT-461550.pdf
 $ENDCMP
 #
+$CMP 24AA256
+D Dual I2C Bus Buffer, DIP8/SO8/TSSOP8
+K I2C Bus Buffer
+F http://www.nxp.com/documents/data_sheet/P82B96.pdf
+$ENDCMP
+#
 $CMP BAS516
 D 100V, 0.25A, High-speed Switching Diode, SOD-523
 K diode
