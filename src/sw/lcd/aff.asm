@@ -185,15 +185,19 @@ _f_lcd_fsm_toggle_start
 	xorlw	D'0'
 	btfsc	STATUS,Z
 	goto	_fsm_lcd_toggle_state0
+	movf	v_lcd_fsm_toggle_state,w
 	xorlw	D'1'
 	btfsc	STATUS,Z
 	goto	_fsm_lcd_toggle_state1
+	movf	v_lcd_fsm_toggle_state,w
 	xorlw	D'2'
 	btfsc	STATUS,Z
 	goto	_fsm_lcd_toggle_state2
+	movf	v_lcd_fsm_toggle_state,w
 	xorlw	D'3'
 	btfsc	STATUS,Z
 	goto	_fsm_lcd_toggle_state3
+	movf	v_lcd_fsm_toggle_state,w
 	xorlw	D'4'
 	btfsc	STATUS,Z
 	goto	_fsm_lcd_toggle_end
