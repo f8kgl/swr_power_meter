@@ -11,7 +11,7 @@ v_lcdmsg_addr_offset res 1
 ;Fonction : Message de boot ligne 1 du LCD
 ;Nom : bootmsgL1
 ;Entrée :
-;	v_charpos (1 byte) :position du caractère à retourner
+;	v_lcd_charpos (1 byte) :position du caractère à retourner
 ;Sortie :
 ;	W (1 byte) : contient le caractère ou 0x00 si pas de caractère
 ;Traitement :
@@ -88,7 +88,7 @@ ENDIF ;#ifdef TEST
 ;Fonction : Message de boot ligne 2 du LCD
 ;Nom : bootmsgL2
 ;Entrée :
-;	v_charpos (1 byte) :position du caractère à retourner
+;	v_lcd_charpos (1 byte) :position du caractère à retourner
 ;Sortie :
 ;	W (1 byte) : contient le caractère ou 0x00 si pas de caractère
 ;Traitement :
