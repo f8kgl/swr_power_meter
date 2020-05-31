@@ -115,7 +115,7 @@ __f_fsm_lcd_toggle_state2_calc_next_state;si timer<500ms
   clrf v_bp_status
 	call f_bp_test_calp
 	btfss v_bp_status,BIT_CALIBRATION_P
-  goto __f_fsm_lcd_toggle_state1_calc_next_state2
+  goto __f_fsm_lcd_toggle_state2_calc_next_state2
   bsf v_fsm_bp_cal_sens,0
   movlw D'03'
   movwf v_fsm_toggle_state
