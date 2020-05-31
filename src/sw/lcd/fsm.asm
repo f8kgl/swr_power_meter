@@ -7,6 +7,7 @@ v_fsm_tmp res 1
 v_fsm_toggle_state res 1
 v_fsm_timer_count res 1
 v_fsm_bp_cal_sens res 1
+v_fsm_p_param res 2
 
   extern f_lcd_affchar
   extern f_lcd_setposcursor
@@ -135,10 +136,20 @@ _f_fsm_lcd_toggle_state3
 _f_fsm_lcd_toggle_state3_do
   btfss v_fsm_bp_cal_sens,0
   goto __f_fsm_lcd_toggle_state3_do2
-  incf v_calc_port,f ;à généraliser
+  ;incf v_calc_port,f ;à généraliser
+  movf v_fsm_p_param +1,W
+	movwf FSR0H
+	movf v_fsm_p_param ,W
+	movwf FSR0L
+  incf POSTINC0,f
   goto _f_fsm_lcd_toggle_state3_calc_next_state
 __f_fsm_lcd_toggle_state3_do2
-  decf v_calc_port,f
+  ;decf v_calc_port,f
+  movf v_fsm_p_param +1,W
+  movwf FSR0H
+  movf v_fsm_p_param ,W
+  movwf FSR0L
+  decf POSTINC0,f
 _f_fsm_lcd_toggle_state3_calc_next_state
   incf v_fsm_toggle_state
   goto _f_fsm_lcd_toggle_exit
@@ -147,5 +158,6 @@ _f_fsm_lcd_toggle_exit
   goto _f_fsm_toggle_start
 
   global f_fsm_toggle_state
+  global v_fsm_p_param
 
   end

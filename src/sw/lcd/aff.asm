@@ -35,6 +35,7 @@ IFDEF TEST
 	extern f_fsm_toggle_state
 	extern f_lcd_convtoascii
 	extern f_lcd_convtobcd
+	extern v_fsm_p_param
 ENDIF
 
 
@@ -214,7 +215,8 @@ f_lcd_toggle_fwd_port
 	;nb de char de la chaine
 	movlw 0x03
 	movwf v_lcd_string_len
-	;paramètre à modifier
+	movlw v_calc_port
+	movwf v_fsm_p_param
 	call f_fsm_toggle_state
 	return
 
@@ -235,7 +237,8 @@ f_lcd_toggle_ref_port
 	;nb de char de la chaine
 	movlw 0x03
 	movwf v_lcd_string_len
-	;paramètre à modifier
+	movlw v_calc_port
+	movwf v_fsm_p_param
 	call f_fsm_toggle_state
 	return
 
