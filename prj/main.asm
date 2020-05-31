@@ -172,7 +172,16 @@ _menu_cal_toggle_fwd_port
 	goto _menu_cal_toggle_port;0=>valeur modifié. Il faut recommencer le même clignotement !!!
 
 _menu_cal_toggle_n_value ;faire clignoter la valeur de n
-	goto test_loop
+
+
+
+
+_menu_cal_end
+	;on est sorti de la FSM toggle
+	;du coup, on veut revenir au menu mesure
+	incf v_menu
+	call f_lcd_clear
+	goto choix_menu
 ENDIF
 
 
