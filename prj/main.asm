@@ -24,7 +24,12 @@
 	extern f_adc_read_ref
 	extern f_aop_set_rdac_fwd
 	extern f_aop_set_rdac_ref
+	extern f_bp_init
+	extern f_bp_test_bande
+	extern f_bp_test_calm
+	extern f_bp_test_calp
 	extern delay_250ms
+	extern v_bp_status
 IFDEF TEST
 	extern f_lcd_aff_fwd_and_ref
 	extern f_lcd_aff_G_and_rdac
@@ -93,6 +98,7 @@ Init
 	call f_lcd_clear
 
 	call f_calc_init
+	call f_bp_init
 
 IFDEF DEBUG_ISSUE_134
 	;Fiche #121 #157 #134
@@ -110,10 +116,10 @@ IFDEF TEST
 test_loop
 
 	;;Appui sur le bouton bande ?
-	btfsc BP_BANDE
-	call delay_250ms
-	call delay_250ms
-	btfss BP_BANDE
+
+	clrf v_bp_status
+	call f_bp_test_bande
+	btfss v_bp_status,BIT_BANDE
 	goto choix_menu
 
 	incf v_menu

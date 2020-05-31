@@ -1,5 +1,6 @@
 include "p18f1320.inc" ;include the defaults for the chip
 include "lcd.inc"
+include "bp.inc"
 
   udata
 v_lcd_fsm_tmp res 1
@@ -17,6 +18,8 @@ v_lcd_fsm_timer_count res 1
   extern v_lcd_p_string
   extern f_lcd_aff
   extern f_lcd_aff_not
+  extern f_bp_test_bande
+  extern v_bp_status
 
   code
 
@@ -70,7 +73,15 @@ _fsm_lcd_toggle_state1_calc_next_state
   goto _fsm_lcd_toggle_exit
 __fsm_lcd_toggle_state1_calc_next_state;si timer<500ms
   ;si cal+/cal-=>state 3
-  ;si bande => state 4
+__fsm_lcd_toggle_state1_calc_next_state2
+  ;si bouton bande => state 4
+  clrf v_bp_status
+	call f_bp_test_bande
+	btfss v_bp_status,BIT_BANDE
+  goto __fsm_lcd_toggle_state1_calc_next_state3
+  movlw D'04'
+  movwf v_lcd_fsm_toggle_state
+__fsm_lcd_toggle_state1_calc_next_state3
   ;sinon => state 1
   goto _fsm_lcd_toggle_exit
 
@@ -89,7 +100,15 @@ _fsm_lcd_toggle_state2_calc_next_state
   goto _fsm_lcd_toggle_exit
 __fsm_lcd_toggle_state2_calc_next_state;si timer<500ms
   ;si cal+/cal-=>state 3
+__fsm_lcd_toggle_state2_calc_next_state2
   ;si bande => state 4
+  clrf v_bp_status
+	call f_bp_test_bande
+	btfss v_bp_status,BIT_BANDE
+  goto __fsm_lcd_toggle_state2_calc_next_state3
+  movlw D'04'
+  movwf v_lcd_fsm_toggle_state
+__fsm_lcd_toggle_state2_calc_next_state3
   ;sinon => state 2
   goto _fsm_lcd_toggle_exit
 
