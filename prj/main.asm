@@ -164,6 +164,10 @@ _menu_cal_toggle_port
 	btfsc v_calc_port,PORT_BIT
 	goto _menu_cal_toggle_fwd_port
 	call f_lcd_toggle_ref_port
+	btfss v_calc_port,PORT_BIT
+	goto _menu_cal_toggle_n_value;1=>valeur non modifié. On est sortie de la FSM par un appui sur BP_BANDE
+	goto _menu_cal_toggle_port;0=>valeur modifié. Il faut recommencer le même clignotement !!!
+
 
 _menu_cal_toggle_fwd_port
 	call f_lcd_toggle_fwd_port
