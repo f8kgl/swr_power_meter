@@ -150,6 +150,7 @@ menu_calibration
 	clrf v_menu
 	bsf v_menu,0
 
+_menu_cal_toggle_port
 	;Affiche "FWD et REF" sur les 1ères et 2èmes lignes
 	call f_lcd_aff_fwd_and_ref
 
@@ -160,7 +161,7 @@ menu_calibration
 	call f_lcd_setposcursor
 	call f_lcd_aff_G_and_rdac
 
-_menu_cal_toggle_port
+
 	btfsc v_calc_port,PORT_BIT
 	goto _menu_cal_toggle_fwd_port
 	call f_lcd_toggle_ref_port
