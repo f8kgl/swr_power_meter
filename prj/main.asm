@@ -79,26 +79,19 @@ Init
 	movwf TRISB ; Change PortB I/O
 	clrf PORTB
 
-	;Initialisation I2C
+	;Initialisation des composants logiciels
 	call f_i2c_init
-
-; Initialisation ADC
  	call f_adc_init		;
-
-; Initialisation LCD
+	call f_calc_init
+	call f_bp_init
 	call f_lcd_init ; Initialize the LCD Display
 
 ; Afficher le message de boot
 	call f_lcd_affboot
-
 ;; Tempo de 3s
 	call f_tempo_boot
-
 ;; Effacer le LCD (lcd_clear)
 	call f_lcd_clear
-
-	call f_calc_init
-	call f_bp_init
 
 IFDEF DEBUG_ISSUE_134
 	;Fiche #121 #157 #134
@@ -168,13 +161,13 @@ menu_calibration
 	call f_lcd_aff_G_and_rdac
 
 _menu_cal_toggle_port
-	btfsc v_calc_port,0
+	btfsc v_calc_port,PORT_BIT
 	goto _menu_cal_toggle_fwd_port
 	call f_lcd_toggle_ref_port
 
 _menu_cal_toggle_fwd_port
 	call f_lcd_toggle_fwd_port
-	btfsc v_calc_port,0
+	btfsc v_calc_port,PORT_BIT
 	goto _menu_cal_toggle_n_value;1=>valeur non modifié. On est sortie de la FSM par un appui sur BP_BANDE
 	goto _menu_cal_toggle_port;0=>valeur modifié. Il faut recommencer le même clignotement !!!
 
