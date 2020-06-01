@@ -76,7 +76,7 @@ _f_fsm_lcd_toggle_state1_calc_next_state
   incf v_fsm_toggle_state,f;si timer>500ms => state 2
   goto _f_fsm_lcd_toggle_exit
 __f_fsm_lcd_toggle_state1_calc_next_state;si timer<500ms
-  ;si cal+/cal-=>state 3
+  ;si cal+=>state 3
   clrf v_bp_status
 	call f_bp_test_calp
 	btfss v_bp_status,BIT_CALIBRATION_P
@@ -86,14 +86,24 @@ __f_fsm_lcd_toggle_state1_calc_next_state;si timer<500ms
   movwf v_fsm_toggle_state
   goto _f_fsm_lcd_toggle_exit
 __f_fsm_lcd_toggle_state1_calc_next_state2
+;si cal-=>state 3
+  clrf v_bp_status
+  call f_bp_test_calm
+  btfss v_bp_status,BIT_CALIBRATION_M
+  goto __f_fsm_lcd_toggle_state1_calc_next_state3
+  bcf v_fsm_bp_cal_sens,0
+  movlw D'03'
+  movwf v_fsm_toggle_state
+  goto _f_fsm_lcd_toggle_exit
+__f_fsm_lcd_toggle_state1_calc_next_state3
   ;si bouton bande => state 4
   clrf v_bp_status
 	call f_bp_test_bande
 	btfss v_bp_status,BIT_BANDE
-  goto __f_fsm_lcd_toggle_state1_calc_next_state3
+  goto __f_fsm_lcd_toggle_state1_calc_next_state4
   movlw D'04'
   movwf v_fsm_toggle_state
-__f_fsm_lcd_toggle_state1_calc_next_state3
+__f_fsm_lcd_toggle_state1_calc_next_state4
   ;sinon => state 1
   goto _f_fsm_lcd_toggle_exit
 
@@ -111,7 +121,7 @@ _f_fsm_lcd_toggle_state2_calc_next_state
   decf v_fsm_toggle_state,f;si timer>500ms => state 1
   goto _f_fsm_lcd_toggle_exit
 __f_fsm_lcd_toggle_state2_calc_next_state;si timer<500ms
-  ;si cal+/cal-=>state 3
+  ;si cal+=>state 3
   clrf v_bp_status
 	call f_bp_test_calp
 	btfss v_bp_status,BIT_CALIBRATION_P
@@ -121,14 +131,24 @@ __f_fsm_lcd_toggle_state2_calc_next_state;si timer<500ms
   movwf v_fsm_toggle_state
   goto _f_fsm_lcd_toggle_exit
 __f_fsm_lcd_toggle_state2_calc_next_state2
+;si cal-=>state 3
+  clrf v_bp_status
+  call f_bp_test_calm
+  btfss v_bp_status,BIT_CALIBRATION_M
+  goto __f_fsm_lcd_toggle_state2_calc_next_state3
+  bcf v_fsm_bp_cal_sens,0
+  movlw D'03'
+  movwf v_fsm_toggle_state
+  goto _f_fsm_lcd_toggle_exit
+__f_fsm_lcd_toggle_state2_calc_next_state3
   ;si bande => state 4
   clrf v_bp_status
 	call f_bp_test_bande
 	btfss v_bp_status,BIT_BANDE
-  goto __f_fsm_lcd_toggle_state2_calc_next_state3
+  goto __f_fsm_lcd_toggle_state2_calc_next_state4
   movlw D'04'
   movwf v_fsm_toggle_state
-__f_fsm_lcd_toggle_state2_calc_next_state3
+__f_fsm_lcd_toggle_state2_calc_next_state4
   ;sinon => state 2
   goto _f_fsm_lcd_toggle_exit
 
@@ -136,7 +156,6 @@ _f_fsm_lcd_toggle_state3
 _f_fsm_lcd_toggle_state3_do
   btfss v_fsm_bp_cal_sens,0
   goto __f_fsm_lcd_toggle_state3_do2
-  ;incf v_calc_port,f ;à généraliser
   movf v_fsm_p_param +1,W
 	movwf FSR0H
 	movf v_fsm_p_param ,W
@@ -144,7 +163,6 @@ _f_fsm_lcd_toggle_state3_do
   incf POSTINC0,f
   goto _f_fsm_lcd_toggle_state3_calc_next_state
 __f_fsm_lcd_toggle_state3_do2
-  ;decf v_calc_port,f
   movf v_fsm_p_param +1,W
   movwf FSR0H
   movf v_fsm_p_param ,W

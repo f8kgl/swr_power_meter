@@ -62,6 +62,21 @@ _f_bp_test_calp_4
 
 
 f_bp_test_calm
+  movlw D'200'
+  movwf v_bp_timer
+  btfss BP_CALIBRATION_M
+  goto _f_bp_test_calm_4
+_f_bp_test_calm_2
+  call delay_10ms
+  btfss BP_CALIBRATION_M
+  goto _f_bp_test_calm_3
+  decfsz v_bp_timer,f
+  goto _f_bp_test_calm_2
+  call _f_bp_timeout
+  goto _f_bp_test_calm_4
+_f_bp_test_calm_3
+  bsf v_bp_status,BIT_CALIBRATION_M
+_f_bp_test_calm_4
   return
 
 
