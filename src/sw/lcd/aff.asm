@@ -31,6 +31,8 @@ IFDEF TEST
 	extern c_msg_n_and_rdac
 	extern v_menu
 	extern v_calc_port
+	extern v_calc_n_fwd
+	extern v_calc_n_ref
 	extern delay_10ms
 	extern f_fsm_toggle_state
 	extern f_lcd_convtoascii
@@ -215,6 +217,7 @@ f_lcd_toggle_fwd_port
 	;nb de char de la chaine
 	movlw 0x03
 	movwf v_lcd_string_len
+	;paramètre à modifier
 	movlw v_calc_port
 	movwf v_fsm_p_param
 	call f_fsm_toggle_state
@@ -237,9 +240,34 @@ f_lcd_toggle_ref_port
 	;nb de char de la chaine
 	movlw 0x03
 	movwf v_lcd_string_len
+	;paramètre à modifier
 	movlw v_calc_port
 	movwf v_fsm_p_param
 	call f_fsm_toggle_state
+	return
+
+f_lcd_toggle_n_fwd
+	;mettre les paramètres de la fsm :
+	;position de la chaine
+	movlw 0x06
+	movwf v_lcd_string_pos
+;contenu de la chaine
+	movf v_calc_n_fwd,w
+	andlw 0x0F
+	call f_lcd_convtoascii
+	movwf v_lcd_string
+	movlw v_lcd_string
+	movwf v_lcd_p_string
+	;nb de char de la chaine
+	movlw 0x01
+	movwf v_lcd_string_len
+	;paramètre à modifier
+	movlw v_calc_n_fwd
+	movwf v_fsm_p_param
+	call f_fsm_toggle_state
+	return
+
+f_lcd_toggle_n_ref
 	return
 
 f_lcd_aff_G_and_rdac
@@ -298,6 +326,8 @@ IFDEF TEST
 	global v_lcd_string_len
 	global v_lcd_string_pos
 	global v_lcd_p_string
+	global f_lcd_toggle_n_fwd
+	global f_lcd_toggle_n_ref
 ENDIF
 
 	end

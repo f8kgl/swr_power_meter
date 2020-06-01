@@ -40,12 +40,17 @@ IFDEF TEST
 	extern f_lcd_toggle_fwd_port
 	extern f_lcd_toggle_ref_port
 	extern v_calc_port
+	extern v_calc_n_ref
+	extern v_calc_n_fwd
+	extern f_lcd_toggle_n_ref
+	extern f_lcd_toggle_n_fwd
 ENDIF
 
 	udata
 
 IFDEF TEST
 v_menu res 1
+v_tmp res 1
 ENDIF
 
 	code
@@ -168,8 +173,6 @@ _menu_cal_toggle_port
 	btfss v_calc_port,PORT_BIT
 	goto _menu_cal_toggle_n_value;1=>valeur non modifié. On est sortie de la FSM par un appui sur BP_BANDE
 	goto _menu_cal_toggle_port;0=>valeur modifié. Il faut recommencer le même clignotement !!!
-
-
 _menu_cal_toggle_fwd_port
 	call f_lcd_toggle_fwd_port
 	btfsc v_calc_port,PORT_BIT
@@ -177,9 +180,23 @@ _menu_cal_toggle_fwd_port
 	goto _menu_cal_toggle_port;0=>valeur modifié. Il faut recommencer le même clignotement !!!
 
 _menu_cal_toggle_n_value ;faire clignoter la valeur de n
+	movff v_calc_n_fwd,v_tmp
+	btfsc v_calc_port,PORT_BIT
+	goto _menu_cal_toggle_n_fwd
+	call f_lcd_toggle_n_ref
+	movf v_calc_n_ref,w
+  cpfseq v_tmp
+	goto _menu_cal_toggle_n_value;valeur "!=". Il faut recommencer le même clignotement !!!
+	goto _menu_cal_toggle_adc;valeurs "="= =>valeur non modifié. On est sortie de la FSM par un appui sur BP_BANDE
+_menu_cal_toggle_n_fwd
+	call f_lcd_toggle_n_fwd
+	movf v_calc_n_fwd,w
+	cpfseq v_tmp
+	goto _menu_cal_toggle_n_value;valeur "!=". Il faut recommencer le même clignotement !!!
+	goto _menu_cal_toggle_adc;valeurs "="= =>valeur non modifié. On est sortie de la FSM par un appui sur BP_BANDE
 
 
-
+_menu_cal_toggle_adc
 
 _menu_cal_end
 	;on est sorti de la FSM toggle
