@@ -24,7 +24,12 @@
 	extern f_adc_read_ref
 	extern f_aop_set_rdac_fwd
 	extern f_aop_set_rdac_ref
+	extern f_bp_init
+	extern f_bp_test_bande
+	extern f_bp_test_calm
+	extern f_bp_test_calp
 	extern delay_250ms
+	extern v_bp_status
 IFDEF TEST
 	extern f_lcd_aff_fwd_and_ref
 	extern f_lcd_aff_G_and_rdac
@@ -35,12 +40,17 @@ IFDEF TEST
 	extern f_lcd_toggle_fwd_port
 	extern f_lcd_toggle_ref_port
 	extern v_calc_port
+	extern v_calc_n_ref
+	extern v_calc_n_fwd
+	extern f_lcd_toggle_n_ref
+	extern f_lcd_toggle_n_fwd
 ENDIF
 
 	udata
 
 IFDEF TEST
 v_menu res 1
+v_tmp res 1
 ENDIF
 
 	code
@@ -74,25 +84,19 @@ Init
 	movwf TRISB ; Change PortB I/O
 	clrf PORTB
 
-	;Initialisation I2C
+	;Initialisation des composants logiciels
 	call f_i2c_init
-
-; Initialisation ADC
  	call f_adc_init		;
-
-; Initialisation LCD
+	call f_calc_init
+	call f_bp_init
 	call f_lcd_init ; Initialize the LCD Display
 
 ; Afficher le message de boot
 	call f_lcd_affboot
-
 ;; Tempo de 3s
 	call f_tempo_boot
-
 ;; Effacer le LCD (lcd_clear)
 	call f_lcd_clear
-
-	call f_calc_init
 
 IFDEF DEBUG_ISSUE_134
 	;Fiche #121 #157 #134
@@ -110,10 +114,10 @@ IFDEF TEST
 test_loop
 
 	;;Appui sur le bouton bande ?
-	btfsc BP_BANDE
-	call delay_250ms
-	call delay_250ms
-	btfss BP_BANDE
+
+	clrf v_bp_status
+	call f_bp_test_bande
+	btfss v_bp_status,BIT_BANDE
 	goto choix_menu
 
 	incf v_menu
@@ -151,6 +155,7 @@ menu_calibration
 	clrf v_menu
 	bsf v_menu,0
 
+_menu_cal_toggle_port
 	;Affiche "FWD et REF" sur les 1ères et 2èmes lignes
 	call f_lcd_aff_fwd_and_ref
 
@@ -161,19 +166,44 @@ menu_calibration
 	call f_lcd_setposcursor
 	call f_lcd_aff_G_and_rdac
 
-_menu_cal_toggle_port
-	btfsc v_calc_port,0
+
+	btfsc v_calc_port,PORT_BIT
 	goto _menu_cal_toggle_fwd_port
 	call f_lcd_toggle_ref_port
-
+	btfss v_calc_port,PORT_BIT
+	goto _menu_cal_toggle_n_value;1=>valeur non modifié. On est sortie de la FSM par un appui sur BP_BANDE
+	goto _menu_cal_toggle_port;0=>valeur modifié. Il faut recommencer le même clignotement !!!
 _menu_cal_toggle_fwd_port
 	call f_lcd_toggle_fwd_port
-	btfsc v_calc_port,0
+	btfsc v_calc_port,PORT_BIT
 	goto _menu_cal_toggle_n_value;1=>valeur non modifié. On est sortie de la FSM par un appui sur BP_BANDE
 	goto _menu_cal_toggle_port;0=>valeur modifié. Il faut recommencer le même clignotement !!!
 
 _menu_cal_toggle_n_value ;faire clignoter la valeur de n
-	goto test_loop
+	movff v_calc_n_fwd,v_tmp
+	btfsc v_calc_port,PORT_BIT
+	goto _menu_cal_toggle_n_fwd
+	call f_lcd_toggle_n_ref
+	movf v_calc_n_ref,w
+  cpfseq v_tmp
+	goto _menu_cal_toggle_n_value;valeur "!=". Il faut recommencer le même clignotement !!!
+	goto _menu_cal_toggle_adc;valeurs "="= =>valeur non modifié. On est sortie de la FSM par un appui sur BP_BANDE
+_menu_cal_toggle_n_fwd
+	call f_lcd_toggle_n_fwd
+	movf v_calc_n_fwd,w
+	cpfseq v_tmp
+	goto _menu_cal_toggle_n_value;valeur "!=". Il faut recommencer le même clignotement !!!
+	goto _menu_cal_toggle_adc;valeurs "="= =>valeur non modifié. On est sortie de la FSM par un appui sur BP_BANDE
+
+
+_menu_cal_toggle_adc
+
+_menu_cal_end
+	;on est sorti de la FSM toggle
+	;du coup, on veut revenir au menu mesure
+	incf v_menu
+	call f_lcd_clear
+	goto choix_menu
 ENDIF
 
 
