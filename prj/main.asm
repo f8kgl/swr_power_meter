@@ -93,14 +93,10 @@ Init
 
 	
 	movff RCON,v_log_data
-	;on verr aplus tard, içi, à supprimer les 2 lignes ci-dessous
-	; et le faire faire directement dans f_log_write
-	movlw v_log_data
-	movwf v_log_p_data
 
 	movlw 0x01
 	movwf v_log_data_size
-	movlw TAG_INFO_RCON
+	movlw TAG_PIC_REG
 	movwf v_log_tag
 	call f_log_write
 	
