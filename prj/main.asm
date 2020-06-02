@@ -31,10 +31,9 @@
 	extern f_bp_test_calp
 	extern delay_250ms
 	extern v_bp_status
-	extern v_log_p_data
-	extern v_log_data_size
-	extern v_log_p_data
+	extern v_log_data
 	extern v_log_tag
+	extern f_log_write
 IFDEF TEST
 	extern f_lcd_aff_fwd_and_ref
 	extern f_lcd_aff_G_and_rdac
@@ -91,17 +90,14 @@ Init
 	movwf TRISB ; Change PortB I/O
 	clrf PORTB
 
-	
-	movff RCON,v_log_data
 
-	movlw 0x01
-	movwf v_log_data_size
+	movff RCON,v_log_data
 	movlw TAG_PIC_REG
 	movwf v_log_tag
 	call f_log_write
-	
-	
-	
+
+
+
 	;Initialisation des composants logiciels
 	call f_i2c_init
  	call f_adc_init		;

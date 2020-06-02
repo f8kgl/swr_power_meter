@@ -17,7 +17,7 @@ v_eep_byte_to_write res 1
 ;	-EECON(EEPGD) = b(0)
 ;	-EECON(RD) = b(1)
 ;	-W = EEDATA
-;----------------------------------------- 	
+;-----------------------------------------
 f_eep_readbyte
 	movwf EEADR
 	bcf 	EECON1,CFGS
@@ -26,8 +26,8 @@ f_eep_readbyte
 	movf EEDATA,w
 	clrf	EECON1
 	return
-	
-	
+
+
 f_eep_writebyte
 	movwf EEADR            ;address being transferred to EEADR
     movf  v_eep_byte_to_write,W
@@ -35,9 +35,9 @@ f_eep_writebyte
 	bcf EECON1, EEPGD
 	bsf EECON1,WREN
 	bcf INTCON, GIE        ;all interrupts are disabled
-    movlw 55h            
+    movlw 0x55
 	movwf EECON2
-	movlw AAh  
+	movlw 0xAA  
 	movwf EECON2
 	bsf EECON1,WR
 	bsf INTCON, GIE        ;all interrupts are disabled
