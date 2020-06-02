@@ -51,6 +51,7 @@ COMPS +=adc
 COMPS +=calc
 COMPS +=aop
 COMPS +=bp
+COMPS +=log
 
 #Sources
 SRC_COMMUN = main.asm

@@ -1,5 +1,6 @@
 	include "p18f1320.inc" ;include the defaults for the chip
 	include "bp.inc"
+	include "log.inc"
 	include "calc.inc"
 
 	ERRORLEVEL 0, -302 ;suppress bank selection messages
@@ -30,6 +31,10 @@
 	extern f_bp_test_calp
 	extern delay_250ms
 	extern v_bp_status
+	extern v_log_p_data
+	extern v_log_data_size
+	extern v_log_p_data
+	extern v_log_tag
 IFDEF TEST
 	extern f_lcd_aff_fwd_and_ref
 	extern f_lcd_aff_G_and_rdac
@@ -86,6 +91,21 @@ Init
 	movwf TRISB ; Change PortB I/O
 	clrf PORTB
 
+	
+	movff RCON,v_log_data
+	;on verr aplus tard, içi, à supprimer les 2 lignes ci-dessous
+	; et le faire faire directement dans f_log_write
+	movlw v_log_data
+	movwf v_log_p_data
+
+	movlw 0x01
+	movwf v_log_data_size
+	movlw TAG_INFO_RCON
+	movwf v_log_tag
+	call f_log_write
+	
+	
+	
 	;Initialisation des composants logiciels
 	call f_i2c_init
  	call f_adc_init		;

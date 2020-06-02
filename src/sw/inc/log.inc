@@ -1,0 +1,8 @@
+#define BIT_TAG_INFO 4
+#define BIT_TAG_N_VALUE 3
+#define BIT_TAG_DAC_VALUE 2
+#define BIT_TAG_RCON 1
+
+
+
+#define TAG_INFO_RCON 1<<BIT_TAG_INFO | 1<<BIT_TAG_RCON
