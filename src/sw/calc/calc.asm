@@ -25,9 +25,19 @@ f_calc_init
 	movlw 0x01
 	movwf v_calc_n_fwd
 	movwf v_calc_n_ref
-
-
 	return
+
+f_calc_set_n_max_fwd
+	movlw N_MAX
+	movwf v_calc_n_fwd
+	return
+
+f_calc_set_n_min_fwd
+	movlw N_MIN
+	movwf v_calc_n_fwd
+	return
+
+
 ;-----------------------------------------
 ;Fonction Convertir la mesure des ADC en mV
 ;Nom 		;
@@ -56,6 +66,8 @@ IFDEF TEST
 	global f_calc_calibrated_voltage_fwd_and_ref
 	global v_calc_port
 	global f_calc_init
+	global f_calc_set_n_min_fwd
+	global f_calc_set_n_max_fwd
 ENDIF
 	global v_adcfwd_mV
 	global v_adcref_mV

@@ -44,6 +44,8 @@ IFDEF TEST
 	extern v_calc_n_fwd
 	extern f_lcd_toggle_n_ref
 	extern f_lcd_toggle_n_fwd
+	extern f_calc_set_n_min_fwd
+	extern f_calc_set_n_max_fwd
 ENDIF
 
 	udata
@@ -190,6 +192,12 @@ _menu_cal_toggle_n_value ;faire clignoter la valeur de n
 	goto _menu_cal_toggle_adc;valeurs "="= =>valeur non modifié. On est sortie de la FSM par un appui sur BP_BANDE
 _menu_cal_toggle_n_fwd
 	call f_lcd_toggle_n_fwd
+	movlw N_MAX
+	cpfslt v_calc_n_fwd
+	call f_calc_set_n_min_fwd
+	movlw N_MIN
+	cpfsgt v_calc_n_fwd
+	call f_calc_set_n_max_fwd
 	movf v_calc_n_fwd,w
 	cpfseq v_tmp
 	goto _menu_cal_toggle_n_value;valeur "!=". Il faut recommencer le même clignotement !!!
