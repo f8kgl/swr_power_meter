@@ -50,11 +50,12 @@ d1
 	movwf v_timerB ;
 Del_0
 	decfsz v_timerA,f ;
-	goto $+0x0a ;
+	goto _Del_0_2 ;
 	decfsz v_timerB,f ;
 	goto Del_0 ;
 	decfsz v_timer,f ;
 	goto d1 ;
+_Del_0_2
 	retlw 0x00 ;
 
 Del_11us:			;11us soit 11 cycles	(temp1*3)+2
