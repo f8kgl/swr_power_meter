@@ -252,7 +252,13 @@ f_lcd_toggle_n_fwd
 	movlw 0x06
 	movwf v_lcd_string_pos
 ;contenu de la chaine
+	movlw 0x00
+	movwf v_lcd_hexa_to_conv
 	movf v_calc_n_fwd,w
+	movwf v_lcd_hexa_to_conv+1
+	call f_lcd_convtobcd
+	movf v_lcd_bcd+2,W
+	movwf v_lcd_tmp
 	andlw 0x0F
 	call f_lcd_convtoascii
 	movwf v_lcd_string
