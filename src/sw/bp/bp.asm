@@ -9,7 +9,7 @@ v_bp_timer res 1
 
   code
 _f_bp_timeout
-  bsf v_bp_status,BIT_STATUS_TIMEOUT
+  bsf v_bp_status,BIT_BP_STATUS_TIMEOUT
   return
 
 
