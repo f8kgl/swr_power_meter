@@ -94,6 +94,14 @@ Init
 	movwf TRISB ; Change PortB I/O
 	clrf PORTB
 
+; Initialize the LCD Display
+	call f_lcd_init
+; Afficher le message de boot
+	call f_lcd_affboot
+;; Tempo de 3s
+	call f_tempo_boot
+
+
 IFDEF TEST
 	movlw 'T'
 	movwf v_log_data
@@ -131,19 +139,11 @@ ENDIF
 	movwf v_log_data_size
 	call f_log_write
 
-
-
 	;Initialisation des composants logiciels
 	call f_i2c_init
  	call f_adc_init		;
 	call f_calc_init
 	call f_bp_init
-	call f_lcd_init ; Initialize the LCD Display
-
-; Afficher le message de boot
-	call f_lcd_affboot
-;; Tempo de 3s
-	call f_tempo_boot
 ;; Effacer le LCD (lcd_clear)
 	call f_lcd_clear
 
@@ -272,10 +272,6 @@ ENDIF
 ;-----------------------------------------
 
 f_tempo_boot
-	call delay_250ms
-	call delay_250ms
-	call delay_250ms
-	call delay_250ms
 	call delay_250ms
 	call delay_250ms
 	call delay_250ms
