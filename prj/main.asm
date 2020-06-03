@@ -32,8 +32,10 @@
 	extern delay_250ms
 	extern v_bp_status
 	extern v_log_data
+	extern v_log_data_size
 	extern v_log_tag
 	extern f_log_write
+	extern f_eep_readbyte
 IFDEF TEST
 	extern f_lcd_aff_fwd_and_ref
 	extern f_lcd_aff_G_and_rdac
@@ -92,10 +94,43 @@ Init
 	movwf TRISB ; Change PortB I/O
 	clrf PORTB
 
+IFDEF TEST
+	movlw 'T'
+	movwf v_log_data
+	movlw 'E'
+	movwf v_log_data+1
+	movlw 'S'
+	movwf v_log_data+2
+	movlw 'T'
+	movwf v_log_data+3
+ENDIF
 
+	movlw 0x00
+	call f_eep_readbyte
+	movwf v_log_data+4
+	movlw 0x01
+	call f_eep_readbyte
+	movwf v_log_data+5
+	movlw 0x02
+	call f_eep_readbyte
+	movwf v_log_data+6
+	movlw 0x03
+	call f_eep_readbyte
+	movwf v_log_data+7
+
+	movlw TAG_FW_VERSION
+	movwf v_log_tag
+	movlw D'08'
+	movwf v_log_data_size
+	call f_log_write
+
+
+;Trace le contenu de RCON au démarrage
 	movff RCON,v_log_data
 	movlw TAG_PIC_REG
 	movwf v_log_tag
+	movlw D'01'
+	movwf v_log_data_size
 	call f_log_write
 
 
@@ -136,7 +171,7 @@ test_loop
 	btfss v_bp_status,BIT_BANDE
 	goto choix_menu
 
-	incf v_menu
+	incf v_menu,f
 	;; Effacer le LCD (lcd_clear)
 	call f_lcd_clear
 
@@ -223,7 +258,7 @@ _menu_cal_toggle_adc
 _menu_cal_end
 	;on est sorti de la FSM toggle
 	;du coup, on veut revenir au menu mesure
-	incf v_menu
+	incf v_menu,f
 	call f_lcd_clear
 	goto choix_menu
 ENDIF
