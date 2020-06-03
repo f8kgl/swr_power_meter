@@ -54,6 +54,7 @@ IFDEF TEST
 	extern f_calc_set_n_max_fwd
 	extern f_calc_set_n_min_ref
 	extern f_calc_set_n_max_ref
+	extern Del_11us ;pour trace timer 0 uniquement
 ENDIF
 
 	udata
@@ -133,11 +134,32 @@ ENDIF
 
 ;Trace le contenu de RCON au démarrage
 	movff RCON,v_log_data
+	movff STKPTR,v_log_data+1
 	movlw TAG_PIC_REG
+	movwf v_log_tag
+	movlw D'02'
+	movwf v_log_data_size
+	call f_log_write
+
+IFDEF TEST
+;trace timer 0 pour calibration
+	clrf TMR0L
+	movlw TIMER0_START
+	movwf T0CON
+	call Del_11us
+	;call delay_250ms
+	movlw TIMER0_STOP
+	movwf T0CON
+	movlw 0x06 ;calibration
+	subwf TMR0L,f
+	movff TMR0L,v_log_data
+	movlw TAG_TIMER
 	movwf v_log_tag
 	movlw D'01'
 	movwf v_log_data_size
 	call f_log_write
+ENDIF
+
 
 	;Initialisation des composants logiciels
 	call f_i2c_init
