@@ -37,6 +37,15 @@ f_calc_set_n_min_fwd
 	movwf v_calc_n_fwd
 	return
 
+f_calc_set_n_max_ref
+	movlw N_MAX
+	movwf v_calc_n_ref
+	return
+
+f_calc_set_n_min_ref
+	movlw N_MIN
+	movwf v_calc_n_ref
+	return
 
 ;-----------------------------------------
 ;Fonction Convertir la mesure des ADC en mV
@@ -68,6 +77,8 @@ IFDEF TEST
 	global f_calc_init
 	global f_calc_set_n_min_fwd
 	global f_calc_set_n_max_fwd
+	global f_calc_set_n_min_ref
+	global f_calc_set_n_max_ref
 ENDIF
 	global v_adcfwd_mV
 	global v_adcref_mV

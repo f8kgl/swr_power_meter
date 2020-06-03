@@ -50,6 +50,8 @@ IFDEF TEST
 	extern f_lcd_toggle_n_fwd
 	extern f_calc_set_n_min_fwd
 	extern f_calc_set_n_max_fwd
+	extern f_calc_set_n_min_ref
+	extern f_calc_set_n_max_ref
 ENDIF
 
 	udata
@@ -206,10 +208,10 @@ _menu_cal_toggle_n_fwd
 	call f_lcd_toggle_n_fwd
 	movlw N_MAX
 	cpfslt v_calc_n_fwd
-	call f_calc_set_n_min_fwd
+	call _set_n_max_fwd
 	movlw N_MIN
 	cpfsgt v_calc_n_fwd
-	call f_calc_set_n_max_fwd
+	call _set_n_min_fwd
 	movf v_calc_n_fwd,w
 	cpfseq v_tmp
 	goto _menu_cal_toggle_n_value;valeur "!=". Il faut recommencer le même clignotement !!!
@@ -251,6 +253,31 @@ f_tempo_boot
 	call delay_250ms
 	return
 
+IFDEF TEST
+_set_n_max_fwd
+	call f_calc_set_n_max_fwd
+	movlw N_MAX-1
+	movwf v_tmp
+	return
+
+_set_n_min_fwd
+	call f_calc_set_n_min_fwd
+	movlw N_MIN+1
+	movwf v_tmp
+	return
+
+_set_n_max_ref
+	call f_calc_set_n_max_ref
+	movlw N_MAX-1
+	movwf v_tmp
+	return
+
+_set_n_min_ref
+	call f_calc_set_n_min_ref
+	movlw N_MIN+1
+	movwf v_tmp
+	return
+ENDIF
 
 IFDEF TEST
 	global v_menu
