@@ -206,7 +206,7 @@ _f_lcd_convtobcd_1
   daw
   movwf   v_lcd_bcd+1
   rlcf    v_lcd_bcd,F
-  decfsz  v_lcd_count
+  decfsz  v_lcd_count,f
   bra     _f_lcd_convtobcd_1
   return
 

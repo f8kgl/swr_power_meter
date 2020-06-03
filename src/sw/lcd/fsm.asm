@@ -169,7 +169,7 @@ __f_fsm_lcd_toggle_state3_do2
   movwf FSR0L
   decf POSTINC0,f
 _f_fsm_lcd_toggle_state3_calc_next_state
-  incf v_fsm_toggle_state
+  incf v_fsm_toggle_state,f
   goto _f_fsm_lcd_toggle_exit
 
 _f_fsm_lcd_toggle_exit
