@@ -206,11 +206,11 @@ _menu_cal_toggle_n_value ;faire clignoter la valeur de n
 	goto _menu_cal_toggle_adc;valeurs "="= =>valeur non modifié. On est sortie de la FSM par un appui sur BP_BANDE
 _menu_cal_toggle_n_fwd
 	call f_lcd_toggle_n_fwd
-	movlw N_MAX
-	cpfslt v_calc_n_fwd
-	call _set_n_max_fwd
 	movlw N_MIN
 	cpfsgt v_calc_n_fwd
+	call _set_n_max_fwd
+	movlw N_MAX+1
+	cpfslt v_calc_n_fwd
 	call _set_n_min_fwd
 	movf v_calc_n_fwd,w
 	cpfseq v_tmp
