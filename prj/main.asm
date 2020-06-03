@@ -101,22 +101,20 @@ IFDEF TEST
 	movwf v_log_data+1
 	movlw 'S'
 	movwf v_log_data+2
-	movlw 'T'
-	movwf v_log_data+3
 ENDIF
 
 	movlw 0x00
 	call f_eep_readbyte
-	movwf v_log_data+4
+	movwf v_log_data+3
 	movlw 0x01
 	call f_eep_readbyte
-	movwf v_log_data+5
+	movwf v_log_data+4
 	movlw 0x02
 	call f_eep_readbyte
-	movwf v_log_data+6
+	movwf v_log_data+5
 	movlw 0x03
 	call f_eep_readbyte
-	movwf v_log_data+7
+	movwf v_log_data+6
 
 	movlw TAG_FW_VERSION
 	movwf v_log_tag

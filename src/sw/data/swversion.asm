@@ -15,6 +15,7 @@
 ;-----------------------------------------  
 s_eep code __SW_VERSION_EEP_ADDR
 	DE SW_VERSION
+	DE LOG_ADDR_IN_EEP
 	DE 0x00 		;marqueur de fin
 
 	end
