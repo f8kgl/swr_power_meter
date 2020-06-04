@@ -166,91 +166,33 @@ _f_lcd_aff_not_2
 	goto _f_lcd_aff_not_2
 	return
 
-f_lcd_aff_fwd_and_ref
-	movlw 0x00
-	call f_lcd_setposcursor
-	movlw 'F'
-	movwf v_lcd_string
-	movlw 'W'
-	movwf v_lcd_string+1
-	movlw 'D'
-	movwf v_lcd_string+2
-	movlw v_lcd_string
-	movwf v_lcd_p_string
-	;nb de char de la chaine
+_f_lcd_set_fwd_string
+  movlw 'F'
+  movwf v_lcd_string
+  movlw 'W'
+  movwf v_lcd_string+1
+  movlw 'D'
+  movwf v_lcd_string+2
+  movlw v_lcd_string
+  movwf v_lcd_p_string
 	movlw 0x03
 	movwf v_lcd_string_len
-	call f_lcd_aff
-	movlw 0x10
-	call f_lcd_setposcursor
-	movlw 'R'
-	movwf v_lcd_string
-	movlw 'E'
-	movwf v_lcd_string+1
-	movlw 'F'
-	movwf v_lcd_string+2
-	movlw v_lcd_string
-	movwf v_lcd_p_string
-	;nb de char de la chaine
-	movlw 0x03
-	movwf v_lcd_string_len
-	call f_lcd_aff
+  return
+
+_f_lcd_set_ref_string
+  movlw 'R'
+  movwf v_lcd_string
+  movlw 'E'
+  movwf v_lcd_string+1
+  movlw 'F'
+  movwf v_lcd_string+2
+  movlw v_lcd_string
+  movwf v_lcd_p_string
+  movlw 0x03
+  movwf v_lcd_string_len
 	return
 
-f_lcd_aff_n
-	return
-
-f_lcd_toggle_fwd_port
-	;mettre les paramètres de la fsm :
-	;position de la chaine
-	movlw 0x00
-	movwf v_lcd_string_pos
-	;contenu de la chaine
-	movlw 'F'
-	movwf v_lcd_string
-	movlw 'W'
-	movwf v_lcd_string+1
-	movlw 'D'
-	movwf v_lcd_string+2
-	movlw v_lcd_string
-	movwf v_lcd_p_string
-	;nb de char de la chaine
-	movlw 0x03
-	movwf v_lcd_string_len
-	;paramètre à modifier
-	movlw v_calc_port
-	movwf v_fsm_p_param
-	call f_fsm_toggle_state
-	return
-
-f_lcd_toggle_ref_port
-	;mettre les paramètres de la fsm :
-	;position de la chaine
-	movlw 0x10
-	movwf v_lcd_string_pos
-	;contenu de la chaine
-	movlw 'R'
-	movwf v_lcd_string
-	movlw 'E'
-	movwf v_lcd_string+1
-	movlw 'F'
-	movwf v_lcd_string+2
-	movlw v_lcd_string
-	movwf v_lcd_p_string
-	;nb de char de la chaine
-	movlw 0x03
-	movwf v_lcd_string_len
-	;paramètre à modifier
-	movlw v_calc_port
-	movwf v_fsm_p_param
-	call f_fsm_toggle_state
-	return
-
-f_lcd_toggle_n_fwd
-	;mettre les paramètres de la fsm :
-	;position de la chaine
-	movlw 0x06
-	movwf v_lcd_string_pos
+_f_lcd_set_n_fwd_string
 ;contenu de la chaine
 	movlw 0x00
 	movwf v_lcd_hexa_to_conv
@@ -267,6 +209,79 @@ f_lcd_toggle_n_fwd
 	;nb de char de la chaine
 	movlw 0x01
 	movwf v_lcd_string_len
+	return
+
+_f_lcd_set_n_ref_string
+	;contenu de la chaine
+		movlw 0x00
+		movwf v_lcd_hexa_to_conv
+		movf v_calc_n_ref,w
+		movwf v_lcd_hexa_to_conv+1
+		call f_lcd_convtobcd
+		movf v_lcd_bcd+2,W
+		movwf v_lcd_tmp
+		andlw 0x0F
+		call f_lcd_convtoascii
+		movwf v_lcd_string
+		movlw v_lcd_string
+		movwf v_lcd_p_string
+		;nb de char de la chaine
+		movlw 0x01
+		movwf v_lcd_string_len
+		return
+
+f_lcd_aff_fwd_and_ref
+	movlw 0x00
+	call f_lcd_setposcursor
+	call _f_lcd_set_fwd_string
+	call f_lcd_aff
+	movlw 0x10
+	call f_lcd_setposcursor
+	call _f_lcd_set_ref_string
+	call f_lcd_aff
+	return
+
+f_lcd_aff_n
+  movlw 0x06
+  call f_lcd_setposcursor
+  call _f_lcd_set_n_fwd_string
+  call f_lcd_aff
+	movlw 0x16
+	call f_lcd_setposcursor
+	call _f_lcd_set_n_ref_string
+	call f_lcd_aff
+	return
+
+f_lcd_toggle_fwd_port
+	;mettre les paramètres de la fsm :
+	;position de la chaine
+	movlw 0x00
+	movwf v_lcd_string_pos
+	call _f_lcd_set_fwd_string
+	;paramètre à modifier
+	movlw v_calc_port
+	movwf v_fsm_p_param
+	call f_fsm_toggle_state
+	return
+
+f_lcd_toggle_ref_port
+	;mettre les paramètres de la fsm :
+	;position de la chaine
+	movlw 0x10
+	movwf v_lcd_string_pos
+	call _f_lcd_set_ref_string
+	;paramètre à modifier
+	movlw v_calc_port
+	movwf v_fsm_p_param
+	call f_fsm_toggle_state
+	return
+
+f_lcd_toggle_n_fwd
+	;mettre les paramètres de la fsm :
+	;position de la chaine
+	movlw 0x06
+	movwf v_lcd_string_pos
+	call _f_lcd_set_n_fwd_string
 	;paramètre à modifier
 	movlw v_calc_n_fwd
 	movwf v_fsm_p_param
@@ -278,23 +293,8 @@ f_lcd_toggle_n_ref
 ;position de la chaine
 	movlw 0x16
 	movwf v_lcd_string_pos
-;contenu de la chaine
-	movlw 0x00
-	movwf v_lcd_hexa_to_conv
-	movf v_calc_n_ref,w
-	movwf v_lcd_hexa_to_conv+1
-	call f_lcd_convtobcd
-	movf v_lcd_bcd+2,W
-	movwf v_lcd_tmp
-	andlw 0x0F
-	call f_lcd_convtoascii
-	movwf v_lcd_string
-	movlw v_lcd_string
-	movwf v_lcd_p_string
-	;nb de char de la chaine
-	movlw 0x01
-	movwf v_lcd_string_len
-;paramètre à modifier
+	call _f_lcd_set_n_ref_string
+ ;paramètre à modifier
 	movlw v_calc_n_ref
 	movwf v_fsm_p_param
 	call f_fsm_toggle_state
@@ -349,6 +349,7 @@ IFDEF TEST
 	global f_lcd_aff_adc_hexa
 	global f_lcd_aff_fwd_and_ref
 	global f_lcd_aff_G_and_rdac
+	global f_lcd_aff_n
 	global f_lcd_toggle_fwd_port
 	global f_lcd_toggle_ref_port
 	global f_lcd_aff_adc_mV

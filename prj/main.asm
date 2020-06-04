@@ -39,6 +39,7 @@
 IFDEF TEST
 	extern f_lcd_aff_fwd_and_ref
 	extern f_lcd_aff_G_and_rdac
+	extern f_lcd_aff_n
 	extern f_lcd_aff_adc_hexa
 	extern f_calc_calibrated_voltage_fwd_and_ref
 	extern f_lcd_aff_adc_mV
@@ -229,13 +230,13 @@ menu_calibration
 _menu_cal_toggle_port
 	;Affiche "FWD et REF" sur les 1ères et 2èmes lignes
 	call f_lcd_aff_fwd_and_ref
-
 	movlw 0x04
 	call f_lcd_setposcursor
 	call f_lcd_aff_G_and_rdac
 	movlw 0x14
 	call f_lcd_setposcursor
 	call f_lcd_aff_G_and_rdac
+	call f_lcd_aff_n
 
 
 	btfsc v_calc_port,PORT_BIT
