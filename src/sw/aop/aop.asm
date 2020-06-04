@@ -7,7 +7,7 @@
 v_aop_cde res 2
 v_aop_temp res 1
 v_aop_G_fwd res 1
-v_aop_dac res 2
+v_aop_rdac res 2
 
   extern v_i2c_device_addr
   extern v_i2c_data_size
@@ -18,10 +18,41 @@ v_aop_dac res 2
 	extern v_calc_n_fwd
 	extern v_calc_n_ref
 	extern v_calc_port
+	extern v_eep_byte_to_write
 	extern f_eep_readbyte
+	extern f_eep_writebyte
 	code
 
+f_aop_set_rdac_eep_fwd
+		movff v_aop_rdac,v_eep_byte_to_write
+		movf v_calc_n_fwd,W
+		mullw 0x02
+		movf PRODL,W
+		addlw EEP_ADDR_DAC_FWD
+		call f_eep_writebyte
+		movff v_aop_rdac+1,v_eep_byte_to_write
+		movf v_calc_n_fwd,W
+		mullw 0x02
+		movf PRODL,W
+		addlw EEP_ADDR_DAC_FWD+1
+		call f_eep_writebyte
+		return
 
+
+f_aop_set_rdac_eep_ref
+	movff v_aop_rdac,v_eep_byte_to_write
+	movf v_calc_n_ref,W
+	mullw 0x02
+	movf PRODL,W
+	addlw EEP_ADDR_DAC_REF
+	call f_eep_writebyte
+	movff v_aop_rdac+1,v_eep_byte_to_write
+	movf v_calc_n_ref,W
+	mullw 0x02
+	movf PRODL,W
+	addlw EEP_ADDR_DAC_REF+1
+	call f_eep_writebyte
+	return
 
 f_aop_get_rdac_ref
 	movf v_calc_n_ref,W
@@ -29,13 +60,13 @@ f_aop_get_rdac_ref
 	movf PRODL,W
 	addlw EEP_ADDR_DAC_REF
 	call f_eep_readbyte
-	movwf v_aop_dac
+	movwf v_aop_rdac
 	movf v_calc_n_ref,W
 	mullw 0x02
 	movf PRODL,W
 	addlw EEP_ADDR_DAC_REF+1
 	call f_eep_readbyte
-	movwf v_aop_dac+1
+	movwf v_aop_rdac+1
 	return
 
 f_aop_get_rdac_fwd
@@ -44,13 +75,13 @@ f_aop_get_rdac_fwd
 	movf PRODL,W
 	addlw EEP_ADDR_DAC_FWD
 	call f_eep_readbyte
-	movwf v_aop_dac
+	movwf v_aop_rdac
 	movf v_calc_n_fwd,W
 	mullw 0x02
 	movf PRODL,W
 	addlw EEP_ADDR_DAC_FWD+1
 	call f_eep_readbyte
-	movwf v_aop_dac+1
+	movwf v_aop_rdac+1
 	return
 
 
@@ -106,6 +137,8 @@ ENDIF
   global f_aop_set_rdac_ref
 	global f_aop_get_rdac_ref
 	global f_aop_get_rdac_fwd
-	global v_aop_dac
+	global f_aop_set_rdac_eep_fwd
+	global f_aop_set_rdac_eep_ref
+	global v_aop_rdac
 
   end
