@@ -254,22 +254,39 @@ _menu_cal_toggle_fwd_port
 	goto _menu_cal_toggle_port;0=>valeur modifié. Il faut recommencer le même clignotement !!!
 
 _menu_cal_toggle_n_value ;faire clignoter la valeur de n
-	movff v_calc_n_fwd,v_tmp
 	btfsc v_calc_port,PORT_BIT
 	goto _menu_cal_toggle_n_fwd
+	movff v_calc_n_ref,v_tmp
 	call f_lcd_toggle_n_ref
+_check_n_ref_min
+	movlw N_MIN-1
+	cpfseq v_calc_n_ref
+  goto _check_n_ref_max
+	call _set_n_min_ref
+_check_n_ref_max
+	movlw N_MAX+1
+	cpfseq v_calc_n_ref
+	goto _check_n_ref_change
+	call _set_n_max_ref
+_check_n_ref_change
 	movf v_calc_n_ref,w
   cpfseq v_tmp
 	goto _menu_cal_toggle_n_value;valeur "!=". Il faut recommencer le même clignotement !!!
 	goto _menu_cal_toggle_adc;valeurs "="= =>valeur non modifié. On est sortie de la FSM par un appui sur BP_BANDE
 _menu_cal_toggle_n_fwd
+	movff v_calc_n_fwd,v_tmp
 	call f_lcd_toggle_n_fwd
-	movlw N_MIN
-	cpfsgt v_calc_n_fwd
-	call _set_n_max_fwd
-	movlw N_MAX+1
-	cpfslt v_calc_n_fwd
+_check_n_fwd_min
+	movlw N_MIN-1
+	cpfseq v_calc_n_fwd
+  goto _check_n_fwd_max
 	call _set_n_min_fwd
+_check_n_fwd_max
+	movlw N_MAX+1
+	cpfseq v_calc_n_fwd
+	goto _check_n_fwd_change
+	call _set_n_max_fwd
+_check_n_fwd_change
 	movf v_calc_n_fwd,w
 	cpfseq v_tmp
 	goto _menu_cal_toggle_n_value;valeur "!=". Il faut recommencer le même clignotement !!!
@@ -277,7 +294,9 @@ _menu_cal_toggle_n_fwd
 
 
 _menu_cal_toggle_adc
-
+ call f_lcd_aff_dac
+ call f_tempo_boot ;placé içi pour les tests uniquement
+ 
 _menu_cal_end
 	;on est sorti de la FSM toggle
 	;du coup, on veut revenir au menu mesure
