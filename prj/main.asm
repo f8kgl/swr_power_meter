@@ -56,6 +56,7 @@ IFDEF TEST
 	extern f_calc_set_n_min_ref
 	extern f_calc_set_n_max_ref
 	extern Del_11us ;pour trace timer 0 uniquement
+	extern f_lcd_aff_dac
 ENDIF
 
 	udata
@@ -237,6 +238,7 @@ _menu_cal_toggle_port
 	call f_lcd_setposcursor
 	call f_lcd_aff_G_and_rdac
 	call f_lcd_aff_n
+	call f_lcd_aff_dac
 
 
 	btfsc v_calc_port,PORT_BIT

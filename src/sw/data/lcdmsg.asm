@@ -131,6 +131,10 @@ _c_msg_n_and_rdac_2
 	retlw 'A'
 	retlw 'C'
 	retlw '='
+	retlw ' '
+	retlw ' '
+	retlw ' '
+	retlw 'h'
 	retlw 0x00
 ENDIF
 

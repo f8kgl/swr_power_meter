@@ -55,7 +55,7 @@ COMPS +=log
 
 #Sources
 SRC_COMMUN = main.asm
-SRC_COMMUN +=../src/sw/data/swversion.asm
+SRC_COMMUN +=../src/sw/data/eep_pic_content.asm
 SRC_COMMUN +=../src/sw/data/lcdmsg.asm
 
 #Objets

@@ -38,6 +38,9 @@ IFDEF TEST
 	extern f_lcd_convtoascii
 	extern f_lcd_convtobcd
 	extern v_fsm_p_param
+	extern v_aop_dac
+	extern f_aop_get_rdac_fwd
+	extern f_aop_get_rdac_ref
 ENDIF
 
 
@@ -192,6 +195,59 @@ _f_lcd_set_ref_string
   movwf v_lcd_string_len
 	return
 
+_f_lcd_set_dac_fwd_string
+	;contenu de la chaine
+		movf v_calc_n_fwd,W
+		call f_aop_get_rdac_fwd
+		movf v_aop_dac,w
+		movwf v_lcd_tmp
+		andlw 0x0F
+		call f_lcd_convtoascii
+		movwf v_lcd_string
+		movf v_aop_dac+1,w
+		movwf v_lcd_tmp
+		swapf v_lcd_tmp,W
+		andlw 0x0F
+		call f_lcd_convtoascii
+		movwf v_lcd_string+1
+		movf v_aop_dac+1,w
+		andlw 0x0F
+		call f_lcd_convtoascii
+		movwf v_lcd_string+2
+		movlw v_lcd_string
+		movwf v_lcd_p_string
+		;nb de char de la chaine
+		movlw 0x03
+		movwf v_lcd_string_len
+		return
+
+_f_lcd_set_dac_ref_string
+;contenu de la chaine
+	movf v_calc_n_ref,W
+	call f_aop_get_rdac_ref
+	movf v_aop_dac,w
+	movwf v_lcd_tmp
+	andlw 0x0F
+	call f_lcd_convtoascii
+	movwf v_lcd_string
+	movf v_aop_dac+1,w
+	movwf v_lcd_tmp
+	swapf v_lcd_tmp,W
+	andlw 0x0F
+	call f_lcd_convtoascii
+	movwf v_lcd_string+1
+	movf v_aop_dac+1,w
+	andlw 0x0F
+	call f_lcd_convtoascii
+	movwf v_lcd_string+2
+	movlw v_lcd_string
+	movwf v_lcd_p_string
+	;nb de char de la chaine
+	movlw 0x03
+	movwf v_lcd_string_len
+	return
+
+
 _f_lcd_set_n_fwd_string
 ;contenu de la chaine
 	movlw 0x00
@@ -251,6 +307,17 @@ f_lcd_aff_n
 	call _f_lcd_set_n_ref_string
 	call f_lcd_aff
 	return
+
+f_lcd_aff_dac
+	  movlw D'12'
+	  call f_lcd_setposcursor
+	  call _f_lcd_set_dac_fwd_string
+	  call f_lcd_aff
+		movlw D'28'
+		call f_lcd_setposcursor
+		call _f_lcd_set_dac_ref_string
+		call f_lcd_aff
+		return
 
 f_lcd_toggle_fwd_port
 	;mettre les paramètres de la fsm :
@@ -350,6 +417,7 @@ IFDEF TEST
 	global f_lcd_aff_fwd_and_ref
 	global f_lcd_aff_G_and_rdac
 	global f_lcd_aff_n
+	global f_lcd_aff_dac
 	global f_lcd_toggle_fwd_port
 	global f_lcd_toggle_ref_port
 	global f_lcd_aff_adc_mV

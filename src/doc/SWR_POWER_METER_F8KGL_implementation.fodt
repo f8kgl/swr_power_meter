@@ -5064,7 +5064,7 @@
       <text:p text:style-name="P121">__<text:span text:style-name="T64">EEPROM_START</text:span></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau22.A1" office:value-type="string">
-      <text:p text:style-name="P122">__SW_VERSION_EEP_ADDR</text:p>
+      <text:p text:style-name="P122">__SW_START_EEP_ADDR</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau22.C1" office:value-type="string">
       <text:p text:style-name="P123">Version du log<text:span text:style-name="T65">i</text:span>ciel</text:p>

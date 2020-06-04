@@ -1,10 +1,13 @@
 	include "p18f1320.inc" ;include the defaults for the chip
 	include "ad5175.inc"
+	include "calc.inc"
+	include "eep.inc"
 
   udata
 v_aop_cde res 2
 v_aop_temp res 1
 v_aop_G_fwd res 1
+v_aop_dac res 2
 
   extern v_i2c_device_addr
   extern v_i2c_data_size
@@ -12,8 +15,44 @@ v_aop_G_fwd res 1
 	extern v_i2c_p_receive_data
 	extern f_i2c_write_in_device
 	extern f_i2c_read_in_device
-
+	extern v_calc_n_fwd
+	extern v_calc_n_ref
+	extern v_calc_port
+	extern f_eep_readbyte
 	code
+
+
+
+f_aop_get_rdac_ref
+	movf v_calc_n_ref,W
+	mullw 0x02
+	movf PRODL,W
+	addlw EEP_ADDR_DAC_REF
+	call f_eep_readbyte
+	movwf v_aop_dac
+	movf v_calc_n_ref,W
+	mullw 0x02
+	movf PRODL,W
+	addlw EEP_ADDR_DAC_REF+1
+	call f_eep_readbyte
+	movwf v_aop_dac+1
+	return
+
+f_aop_get_rdac_fwd
+	movf v_calc_n_fwd,W
+	mullw 0x02
+	movf PRODL,W
+	addlw EEP_ADDR_DAC_FWD
+	call f_eep_readbyte
+	movwf v_aop_dac
+	movf v_calc_n_fwd,W
+	mullw 0x02
+	movf PRODL,W
+	addlw EEP_ADDR_DAC_FWD+1
+	call f_eep_readbyte
+	movwf v_aop_dac+1
+	return
+
 
 f_aop_set_rdac_fwd
 	movlw I2C_ADDR_DEVICE_AD5175_FWD
@@ -65,5 +104,8 @@ ENDIF
 
   global f_aop_set_rdac_fwd
   global f_aop_set_rdac_ref
+	global f_aop_get_rdac_ref
+	global f_aop_get_rdac_fwd
+	global v_aop_dac
 
   end
