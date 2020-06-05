@@ -213,6 +213,10 @@ choix_menu
 menu_mesure
 	clrf v_menu
 
+	;fixe Rdac
+	call f_aop_set_rdac_fwd
+	call f_aop_set_rdac_ref
+
 		;;lire les registres ADCfwd et ADCref
 	call f_adc_read_fwd
 	call f_adc_read_ref

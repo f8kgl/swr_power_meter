@@ -86,6 +86,7 @@ f_aop_get_rdac_fwd
 
 
 f_aop_set_rdac_fwd
+	call f_aop_get_rdac_fwd
 	movlw I2C_ADDR_DEVICE_AD5175_FWD
 	movwf v_i2c_device_addr
 	movlw 0x02
@@ -95,20 +96,19 @@ f_aop_set_rdac_fwd
   movwf v_aop_cde
   rlncf v_aop_cde,f
   rlncf v_aop_cde,f
-  ;Pour le FW de test, on fixe le gain à G=2 dans le menu ADC #250
-  ;dans le cas présente, ça veut dire Rdac = 0x34. Seul 8 bits suffisent.
-  ;du coup, on ne remplit que v_aop_cde+1
-  ; et on laisse les 2bits de poids faible de v_aop_cde à  0
-IFDEF TEST
-	movlw RDAC_REG_AD5175_GAIN_IS_2
-	movwf v_aop_cde+1
-ENDIF
+
+	movlw 0x3 ;masque sur DAC(9:8)
+	andwf v_aop_rdac,w
+	iorwf v_aop_cde,f
+	movff v_aop_rdac+1,v_aop_cde+1
+
 	movlw v_aop_cde
 	movwf v_i2c_p_send_data
 	call f_i2c_write_in_device
   return
 
 f_aop_set_rdac_ref
+	call f_aop_get_rdac_ref
 	movlw I2C_ADDR_DEVICE_AD5175_REF
 	movwf v_i2c_device_addr
 	movlw 0x02
@@ -118,14 +118,11 @@ f_aop_set_rdac_ref
   movwf v_aop_cde
   rlncf v_aop_cde,f
   rlncf v_aop_cde,f
-  ;Pour le FW de test, on fixe le gain à G=2 dans le menu ADC #250
-  ;dans le cas présente, ça veut dire Rdac = 0x34. Seuls 8 bits suffisent.
-  ;du coup, on ne remplit que v_aop_cde+1
-  ; et on laisse les 2bits de poids faible de v_aop_cde à  0
-IFDEF TEST
-	movlw RDAC_REG_AD5175_GAIN_IS_2
-	movwf v_aop_cde+1
-ENDIF
+
+	movlw 0x3 ;masque sur DAC(9:8)
+	andwf v_aop_rdac,w
+	iorwf v_aop_cde,f
+	movff v_aop_rdac+1,v_aop_cde+1
 
 	movlw v_aop_cde
 	movwf v_i2c_p_send_data
