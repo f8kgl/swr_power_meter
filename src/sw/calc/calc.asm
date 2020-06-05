@@ -34,7 +34,7 @@ f_calc_mul
   MOVWF   v_calc_count
 
 _f_calc_mul_loop
-  RRCF     v_calc_n_fwd, F
+  RRCF     W, F
   BTFSC   STATUS,C
   GOTO    _f_calc_mul2
   DECFSZ  v_calc_count, F
@@ -49,7 +49,7 @@ _f_calc_mul2
   GOTO    _f_calc_mul3
 
 _f_calc_mul_loop2
-  RRCF     v_calc_n_fwd, F
+  RRCF     W, F
   BTFSS  STATUS,C
   GOTO    _f_calc_mul3
   MOVF    v_calctmp+1,W
