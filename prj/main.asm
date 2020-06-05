@@ -41,7 +41,7 @@ IFDEF TEST
 	extern f_lcd_aff_G_and_rdac
 	extern f_lcd_aff_n
 	extern f_lcd_aff_adc_hexa
-	extern f_calc_calibrated_voltage_fwd_and_ref
+	extern f_calc_vadc_fwd_and_ref
 	extern f_lcd_aff_adc_mV
 	extern f_calc_init
 	extern f_lcd_toggle_fwd_port
@@ -64,6 +64,12 @@ IFDEF TEST
 	extern v_aop_rdac
 	extern f_lcd_toggle_rdac_fwd
 	extern f_lcd_toggle_rdac_ref
+	extern f_calc_get_eep_value
+	extern f_calc_partie_entiere
+	;extern f_calc_position_virgule
+	extern f_calc_partie_decimale
+	extern f_lcd_calibrated_voltage
+
 ENDIF
 
 	udata
@@ -206,9 +212,24 @@ test_loop
 
 
 choix_menu
-	btfss v_menu,0
-	goto menu_mesure
-	goto menu_calibration
+
+	movf	v_menu,w
+	xorlw	D'0'
+	btfsc	STATUS,Z
+	goto	menu_mesure
+	movf	v_menu,w
+	xorlw	D'1'
+	btfsc	STATUS,Z
+	goto	menu_calibration
+	movf	v_menu,w
+	xorlw	D'2'
+	btfsc	STATUS,Z
+	goto	menu_calcul
+	movf	v_menu,w
+	xorlw	D'3'
+	btfsc	STATUS,Z
+	clrf v_menu
+	goto test_loop
 
 menu_mesure
 	clrf v_menu
@@ -222,7 +243,7 @@ menu_mesure
 	call f_adc_read_ref
 
 	;; Convertir la mesure des ADC en hexa (rien à faire) et en mV
-	call f_calc_calibrated_voltage_fwd_and_ref
+	call f_calc_vadc_fwd_and_ref
 
 	;Affiche "FWD et REF" sur les 1ères et 2èmes lignes
 	call f_lcd_aff_fwd_and_ref
@@ -344,6 +365,32 @@ _menu_cal_end3
 	incf v_menu,f
 	call f_lcd_clear
 	goto choix_menu
+
+menu_calcul
+
+	;fixe Rdac
+	call f_aop_set_rdac_fwd
+	call f_aop_set_rdac_ref
+
+	;lire les registres ADCfwd et ADCref
+	call f_adc_read_fwd
+	call f_adc_read_ref
+
+	;Affiche "FWD et REF" sur les 1ères et 2èmes lignes
+	call f_lcd_aff_fwd_and_ref
+
+	;calcul des tensions calibrées
+	call f_calc_get_eep_value
+
+	call f_calc_partie_entiere
+	;call f_calc_position_virgule
+	call f_calc_partie_decimale
+
+	call f_lcd_calibrated_voltage
+
+	goto test_loop
+
+
 ENDIF
 
 
