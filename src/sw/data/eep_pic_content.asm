@@ -20,8 +20,8 @@ s_eep code __SW_START_EEP_ADDR
 	;FWD
 	DE 0x00 ;RDAC0 (n=0)
 	DE 0x00
-	DE 0x00 ;RDAC1 (n=1)
-	DE 0x34
+	DE 0x02 ;RDAC1 (n=1)
+	DE 0x00
 	DE 0x00 ;RDAC2 (n=2)
 	DE 0x9D
 	DE 0x01 ;RDAC3 (n=3)

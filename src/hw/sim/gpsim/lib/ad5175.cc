@@ -92,7 +92,7 @@ IOPort_ad5175::IOPort_ad5175(unsigned int _num_iopins)
 {
 }
 
-#define R_inv 510
+#define R_inv 5000
 #define END_TO_END_RESISTANCE 10000 //ne tient pas compte de la valeur calibrée
 #define CDE_WRITE_RDAC 0x01
 double IOPort_ad5175::put(unsigned int value)

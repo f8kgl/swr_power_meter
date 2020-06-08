@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <cstdio>
 
-//#define DEBUG
+#define DEBUG
 #if defined(DEBUG)
 #define Dprintf(arg) {printf("%s:%d ",__FILE__,__LINE__); printf arg; }
 #else
@@ -92,6 +92,7 @@ IOPort_ltc2305::IOPort_ltc2305(unsigned int _num_iopins)
 {
 }
 
+#define VAL_CORR 0.0369435000074
 unsigned int IOPort_ltc2305::get(unsigned int config)
 {
   double voltage = 0.0;
@@ -106,8 +107,8 @@ unsigned int IOPort_ltc2305::get(unsigned int config)
       if ((m_pin0 = getPin(0))&&(m_pin1 = getPin(1))) {
         voltage0 = m_pin0->get_nodeVoltage();
         voltage1 = m_pin1->get_nodeVoltage();
-        voltage0 = (2.5*voltage0)/0.036946;
-        voltage1 = (2.5*voltage1)/0.036946;
+        voltage0 = (2.5*voltage0)/VAL_CORR;
+        voltage1 = (2.5*voltage1)/VAL_CORR;
         if (voltage0 >4.096) {
           voltage = 4.096;
         }
@@ -121,8 +122,8 @@ unsigned int IOPort_ltc2305::get(unsigned int config)
       if ((m_pin0 = getPin(0))&&(m_pin1 = getPin(1))) {
         voltage0 = m_pin0->get_nodeVoltage();
         voltage1 = m_pin1->get_nodeVoltage();
-        voltage0 = (2.5*voltage0)/0.036946;
-        voltage1 = (2.5*voltage1)/0.036946;
+        voltage0 = (2.5*voltage0)/VAL_CORR;
+        voltage1 = (2.5*voltage1)/VAL_CORR;
         if (voltage0 >4.096) {
           voltage = 4.096;
         }
@@ -135,13 +136,13 @@ unsigned int IOPort_ltc2305::get(unsigned int config)
       case  ((1<<S_D)|(0<<O_S)):
       if ((m_pin0 = getPin(0))) {
         voltage = m_pin0->get_nodeVoltage();
-        voltage = (2.5*voltage)/0.036946;
+        voltage = (2.5*voltage)/VAL_CORR;
       }
       break;
       case  ((1<<S_D)|(1<<O_S)):
       if ((m_pin1 = getPin(1))) {
         voltage = m_pin1->get_nodeVoltage();
-        voltage = (2.5*voltage)/0.036946;
+        voltage = (2.5*voltage)/VAL_CORR;
       }
       break;
     }
@@ -153,7 +154,6 @@ unsigned int IOPort_ltc2305::get(unsigned int config)
 
     unsigned int adc_value = (unsigned int)( 4096* voltage )/4.096;
     adc_value = adc_value&0x0FFF; //12 bits
-
 
     Dprintf(("voltage=%lf (0x%04x)\n", voltage, adc_value));
 
