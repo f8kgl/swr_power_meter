@@ -160,14 +160,18 @@ _f_fsm_lcd_toggle_state3_do
 	movwf FSR0H
 	movf v_fsm_p_param ,W
 	movwf FSR0L
-  incf POSTINC0,f
+  incf POSTDEC0,f
+  btfsc STATUS,C
+  incf POSTDEC0,f
   goto _f_fsm_lcd_toggle_state3_calc_next_state
 __f_fsm_lcd_toggle_state3_do2
   movf v_fsm_p_param +1,W
   movwf FSR0H
   movf v_fsm_p_param ,W
   movwf FSR0L
-  decf POSTINC0,f
+  decf POSTDEC0,f
+  btfss STATUS,C
+  decf POSTDEC0,f
 _f_fsm_lcd_toggle_state3_calc_next_state
   incf v_fsm_toggle_state,f
   goto _f_fsm_lcd_toggle_exit
