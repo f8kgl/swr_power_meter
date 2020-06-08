@@ -8,6 +8,7 @@ v_adcfwd_mV res 2
 v_adcref_mV res 2
 v_calc_n_fwd res 1
 v_calc_n_ref res 1
+v_calc_adc_lsb res 1
 IFDEF TEST
 v_calc_port res 1
 ENDIF
@@ -30,18 +31,18 @@ v_calc_count
 IFDEF TEST
 
 f_calc_mul
-  MOVLW   0x08
+	MOVLW   0x08
   MOVWF   v_calc_count
 
 _f_calc_mul_loop
-  RRCF     W, F
+  RRCF     v_calc_adc_lsb, F
   BTFSC   STATUS,C
   GOTO    _f_calc_mul2
   DECFSZ  v_calc_count, F
   GOTO    _f_calc_mul_loop
 
-  CLRF    v_calc_pas
-  CLRF    v_calc_pas+1
+  CLRF    v_calc_d_fwd
+  CLRF    v_calc_d_fwd+1
   RETLW   0x00
 
 _f_calc_mul2
@@ -49,18 +50,18 @@ _f_calc_mul2
   GOTO    _f_calc_mul3
 
 _f_calc_mul_loop2
-  RRCF     W, F
+  RRCF     v_calc_adc_lsb, F
   BTFSS  STATUS,C
   GOTO    _f_calc_mul3
   MOVF    v_calctmp+1,W
-  ADDWF   v_calc_pas+1, F
+  ADDWF   v_calc_d_fwd+1, F
   MOVF    v_calctmp,W
   BTFSC  STATUS,C
   INCFSZ  v_calctmp,W
-  ADDWF   v_calc_pas, F
+  ADDWF   v_calc_d_fwd, F
 _f_calc_mul3
-  rrcf     v_calc_pas, F
-  rrcf     v_calc_pas+1, F
+  rrcf     v_calc_d_fwd, F
+  rrcf     v_calc_d_fwd+1, F
   ;RRF     AARGB2, F
   DECFSZ  v_calc_count, F
   GOTO    _f_calc_mul_loop2
@@ -187,33 +188,44 @@ _f_calc_partie_decimale0
 	movwf v_calc_pas
 	movlw PAS_0_LSB
 	movwf v_calc_pas+1
+	movf v_adcfwd+1,w
+	andlw 0x00
 	goto _f_calc_partie_decimale5
 _f_calc_partie_decimale1
 	movlw PAS_0_5_MSB
 	movwf v_calc_pas
 	movlw PAS_0_5_LSB
 	movwf v_calc_pas+1
+	movf v_adcfwd+1,w
+	andlw 0x01
 	goto _f_calc_partie_decimale5
 _f_calc_partie_decimale2
 	movlw PAS_0_25_MSB
 	movwf v_calc_pas
 	movlw PAS_0_25_LSB
 	movwf v_calc_pas+1
+	movf v_adcfwd+1,w
+	andlw 0x03
 	goto _f_calc_partie_decimale5
 _f_calc_partie_decimale3
 	movlw PAS_0_125_MSB
 	movwf v_calc_pas
 	movlw PAS_0_125_LSB
 	movwf v_calc_pas+1
+	movf v_adcfwd+1,w
+	andlw 0x07
 	goto _f_calc_partie_decimale5
 _f_calc_partie_decimale4
 	movlw PAS_0_0625_MSB
 	movwf v_calc_pas
 	movlw PAS_0_0625_LSB
 	movwf v_calc_pas+1
+	movf v_adcfwd+1,w
+	andlw 0x0F
+
 
 _f_calc_partie_decimale5
-	movf v_calc_n_fwd,w
+	movwf v_calc_adc_lsb
 	call f_calc_mul
 	movff v_calc_pas,v_calc_d_fwd
 	movff v_calc_pas+1,v_calc_d_fwd+1
