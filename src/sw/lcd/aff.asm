@@ -126,10 +126,31 @@ f_lcd_calibrated_voltage
 	movff v_calc_d_fwd,v_lcd_hexa_to_conv
 	movff v_calc_d_fwd+1,v_lcd_hexa_to_conv+1
 	call f_lcd_convtobcd
+
+	movf	v_calc_n_fwd,w
+	xorlw	D'4'
+	btfsc	STATUS,Z
+	goto _f_lcd_calibrated_voltage2
+
+	bcf STATUS,C
+	rlcf v_lcd_bcd+2,f
+	rlcf v_lcd_bcd+1,f
+	bcf STATUS,C
+	rlcf v_lcd_bcd+2,f
+	rlcf v_lcd_bcd+1,f
+	bcf STATUS,C
+	rlcf v_lcd_bcd+2,f
+	rlcf v_lcd_bcd+1,f
+	bcf STATUS,C
+	rlcf v_lcd_bcd+2,f
+	rlcf v_lcd_bcd+1,f
+
+_f_lcd_calibrated_voltage2
 	movf v_lcd_bcd+1,W
 	call _f_lcd_aff_hexa
 	movf v_lcd_bcd+2,W
 	call _f_lcd_aff_hexa
+
 	movlw 'm'
 	call f_lcd_affchar
 	movlw 'V'
@@ -149,10 +170,32 @@ f_lcd_calibrated_voltage
 	movff v_calc_d_ref,v_lcd_hexa_to_conv
 	movff v_calc_d_ref+1,v_lcd_hexa_to_conv+1
 	call f_lcd_convtobcd
+
+	movf	v_calc_n_ref,w
+	xorlw	D'4'
+	btfsc	STATUS,Z
+	goto _f_lcd_calibrated_voltage3
+
+	bcf STATUS,C
+	rlcf v_lcd_bcd+2,f
+	rlcf v_lcd_bcd+1,f
+	bcf STATUS,C
+	rlcf v_lcd_bcd+2,f
+	rlcf v_lcd_bcd+1,f
+	bcf STATUS,C
+	rlcf v_lcd_bcd+2,f
+	rlcf v_lcd_bcd+1,f
+	bcf STATUS,C
+	rlcf v_lcd_bcd+2,f
+	rlcf v_lcd_bcd+1,f
+
+
+_f_lcd_calibrated_voltage3
 	movf v_lcd_bcd+1,W
 	call _f_lcd_aff_hexa
 	movf v_lcd_bcd+2,W
 	call _f_lcd_aff_hexa
+
 	movlw 'm'
 	call f_lcd_affchar
 	movlw 'V'
