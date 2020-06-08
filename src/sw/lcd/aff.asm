@@ -44,7 +44,7 @@ IFDEF TEST
 	extern v_calc_V_fwd
 	extern v_calc_V_ref
 	extern v_calc_d_fwd
-	extern v_calc_d_ref	
+	extern v_calc_d_ref
 ENDIF
 
 
@@ -145,6 +145,17 @@ f_lcd_calibrated_voltage
 	movf v_lcd_bcd+2,W
 	call _f_lcd_aff_hexa
 	movlw '.'
+	call f_lcd_affchar
+	movff v_calc_d_ref,v_lcd_hexa_to_conv
+	movff v_calc_d_ref+1,v_lcd_hexa_to_conv+1
+	call f_lcd_convtobcd
+	movf v_lcd_bcd+1,W
+	call _f_lcd_aff_hexa
+	movf v_lcd_bcd+2,W
+	call _f_lcd_aff_hexa
+	movlw 'm'
+	call f_lcd_affchar
+	movlw 'V'
 	call f_lcd_affchar
 	return
 

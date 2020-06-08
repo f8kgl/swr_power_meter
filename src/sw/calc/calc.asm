@@ -6,6 +6,7 @@
 	udata
 v_adcfwd_mV res 2
 v_adcref_mV res 2
+v_calc_n res 1
 v_calc_n_fwd res 1
 v_calc_n_ref res 1
 v_calc_adc_lsb res 1
@@ -19,8 +20,9 @@ v_calc_V_fwd res 2
 v_calc_V_ref res 2
 v_calc_d_fwd res 2
 v_calc_d_ref res 2
-v_calc_pas res 2
-v_calc_count
+v_calc_d res 3
+v_calc_count res 1
+v_calc_adc res 2
 
 
 
@@ -41,9 +43,10 @@ _f_calc_mul_loop
   DECFSZ  v_calc_count, F
   GOTO    _f_calc_mul_loop
 
-  CLRF    v_calc_d_fwd
-  CLRF    v_calc_d_fwd+1
-  RETLW   0x00
+  CLRF    v_calc_d
+  CLRF    v_calc_d+1
+	CLRF    v_calc_d+2
+	RETLW   0x00
 
 _f_calc_mul2
   BCF    STATUS,C
@@ -54,15 +57,15 @@ _f_calc_mul_loop2
   BTFSS  STATUS,C
   GOTO    _f_calc_mul3
   MOVF    v_calctmp+1,W
-  ADDWF   v_calc_d_fwd+1, F
+  ADDWF   v_calc_d+1, F
   MOVF    v_calctmp,W
   BTFSC  STATUS,C
   INCFSZ  v_calctmp,W
-  ADDWF   v_calc_d_fwd, F
+  ADDWF   v_calc_d, F
 _f_calc_mul3
-  rrcf     v_calc_d_fwd, F
-  rrcf     v_calc_d_fwd+1, F
-  ;RRF     AARGB2, F
+  rrcf     v_calc_d, F
+  rrcf     v_calc_d+1, F
+	rrcf     v_calc_d+2, F
   DECFSZ  v_calc_count, F
   GOTO    _f_calc_mul_loop2
 
@@ -160,24 +163,24 @@ _f_calc_partie_entiere5
 f_calc_position_virgule
 	return
 
-f_calc_partie_decimale
-	movf	v_calc_n_fwd,w
+_f_calc_partie_decimale
+	movf	v_calc_n,w
 	xorlw	D'0'
 	btfsc	STATUS,Z
 	goto _f_calc_partie_decimale0
-	movf	v_calc_n_fwd,w
+	movf	v_calc_n,w
 	xorlw	D'1'
 	btfsc	STATUS,Z
 	goto _f_calc_partie_decimale1
-	movf	v_calc_n_fwd,w
+	movf	v_calc_n,w
 	xorlw	D'2'
 	btfsc	STATUS,Z
 	goto _f_calc_partie_decimale2
-	movf	v_calc_n_fwd,w
+	movf	v_calc_n,w
 	xorlw	D'3'
 	btfsc	STATUS,Z
 	goto _f_calc_partie_decimale3
-	movf	v_calc_n_fwd,w
+	movf	v_calc_n,w
 	xorlw	D'4'
 	btfsc	STATUS,Z
 	goto _f_calc_partie_decimale4
@@ -185,50 +188,68 @@ f_calc_partie_decimale
 
 _f_calc_partie_decimale0
 	movlw PAS_0_MSB
-	movwf v_calc_pas
+	movwf v_calc_d
 	movlw PAS_0_LSB
-	movwf v_calc_pas+1
-	movf v_adcfwd+1,w
+	movwf v_calc_d+1
+	movf v_calc_adc+1,w
 	andlw 0x00
 	goto _f_calc_partie_decimale5
 _f_calc_partie_decimale1
 	movlw PAS_0_5_MSB
-	movwf v_calc_pas
+	movwf v_calc_d
 	movlw PAS_0_5_LSB
-	movwf v_calc_pas+1
-	movf v_adcfwd+1,w
+	movwf v_calc_d+1
+	movf v_calc_adc+1,w
 	andlw 0x01
 	goto _f_calc_partie_decimale5
 _f_calc_partie_decimale2
 	movlw PAS_0_25_MSB
-	movwf v_calc_pas
+	movwf v_calc_d
 	movlw PAS_0_25_LSB
-	movwf v_calc_pas+1
-	movf v_adcfwd+1,w
+	movwf v_calc_d+1
+	movf v_calc_adc+1,w
 	andlw 0x03
 	goto _f_calc_partie_decimale5
 _f_calc_partie_decimale3
 	movlw PAS_0_125_MSB
-	movwf v_calc_pas
+	movwf v_calc_d
 	movlw PAS_0_125_LSB
-	movwf v_calc_pas+1
-	movf v_adcfwd+1,w
+	movwf v_calc_d+1
+	movf v_calc_adc+1,w
 	andlw 0x07
 	goto _f_calc_partie_decimale5
 _f_calc_partie_decimale4
 	movlw PAS_0_0625_MSB
-	movwf v_calc_pas
+	movwf v_calc_d
 	movlw PAS_0_0625_LSB
-	movwf v_calc_pas+1
-	movf v_adcfwd+1,w
+	movwf v_calc_d+1
+	movf v_calc_adc+1,w
 	andlw 0x0F
 
 
 _f_calc_partie_decimale5
 	movwf v_calc_adc_lsb
+	clrf v_calc_d+2
+	movff v_calc_d, v_calctmp
+	movff v_calc_d+1,v_calctmp+1
 	call f_calc_mul
-	movff v_calc_pas,v_calc_d_fwd
-	movff v_calc_pas+1,v_calc_d_fwd+1
+	return
+
+f_calc_partie_decimale
+	movff v_calc_n_fwd,v_calc_n
+	movff v_adcfwd,v_calc_adc
+	movff v_adcfwd+1,v_calc_adc+1
+	call _f_calc_partie_decimale
+	movff v_calc_d+1,v_calc_d_fwd
+	movff v_calc_d+2,v_calc_d_fwd+1
+
+	movff v_calc_n_ref,v_calc_n
+	movff v_adcref,v_calc_adc
+	movff v_adcref+1,v_calc_adc+1
+	call _f_calc_partie_decimale
+	movff v_calc_d+1,v_calc_d_ref
+	movff v_calc_d+2,v_calc_d_ref+1
+
 	return
 
 
