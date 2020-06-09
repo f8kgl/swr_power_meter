@@ -14,6 +14,7 @@ v_lcd_string res 3 ;a priori, la taille max est de 3 : FWD, REF, ADC
 v_lcd_string_len res 1
 v_lcd_string_pos res 1
 v_lcd_p_string res 2
+v_lcd_dec res 2
 ENDIF
 
 	extern f_lcd_affchar
@@ -61,6 +62,134 @@ _f_lcd_aff_hexa
 	call f_lcd_convtoascii
 	call f_lcd_affchar
 	return
+
+_f_lcd_set_fwd_string
+  movlw 'F'
+  movwf v_lcd_string
+  movlw 'W'
+  movwf v_lcd_string+1
+  movlw 'D'
+  movwf v_lcd_string+2
+  movlw v_lcd_string
+  movwf v_lcd_p_string
+	movlw 0x03
+	movwf v_lcd_string_len
+  return
+
+_f_lcd_set_ref_string
+	movlw 'R'
+	movwf v_lcd_string
+	movlw 'E'
+	movwf v_lcd_string+1
+	movlw 'F'
+	movwf v_lcd_string+2
+	movlw v_lcd_string
+	movwf v_lcd_p_string
+	movlw 0x03
+	movwf v_lcd_string_len
+	return
+
+_f_lcd_set_rdac_fwd_string
+	;contenu de la chaine
+	movf v_calc_n_fwd,W
+	;call f_aop_get_rdac_fwd
+	movf v_aop_rdac,w
+	movwf v_lcd_tmp
+	andlw 0x0F
+	call f_lcd_convtoascii
+	movwf v_lcd_string
+	movf v_aop_rdac+1,w
+	movwf v_lcd_tmp
+	swapf v_lcd_tmp,W
+	andlw 0x0F
+	call f_lcd_convtoascii
+	movwf v_lcd_string+1
+	movf v_aop_rdac+1,w
+	andlw 0x0F
+	call f_lcd_convtoascii
+	movwf v_lcd_string+2
+	movlw v_lcd_string
+	movwf v_lcd_p_string
+	;nb de char de la chaine
+	movlw 0x03
+	movwf v_lcd_string_len
+	return
+
+_f_lcd_set_rdac_ref_string
+  ;contenu de la chaine
+	movf v_calc_n_ref,W
+	;call f_aop_get_rdac_ref
+	movf v_aop_rdac,w
+	movwf v_lcd_tmp
+	andlw 0x0F
+	call f_lcd_convtoascii
+	movwf v_lcd_string
+	movf v_aop_rdac+1,w
+	movwf v_lcd_tmp
+	swapf v_lcd_tmp,W
+	andlw 0x0F
+	call f_lcd_convtoascii
+	movwf v_lcd_string+1
+	movf v_aop_rdac+1,w
+	andlw 0x0F
+	call f_lcd_convtoascii
+	movwf v_lcd_string+2
+	movlw v_lcd_string
+	movwf v_lcd_p_string
+	;nb de char de la chaine
+	movlw 0x03
+	movwf v_lcd_string_len
+	return
+
+
+_f_lcd_set_n_fwd_string
+  ;contenu de la chaine
+	movlw 0x00
+	movwf v_lcd_hexa_to_conv
+	movf v_calc_n_fwd,w
+	movwf v_lcd_hexa_to_conv+1
+	call f_lcd_convtobcd
+	movf v_lcd_bcd+2,W
+	movwf v_lcd_tmp
+	andlw 0x0F
+	call f_lcd_convtoascii
+	movwf v_lcd_string
+	movlw v_lcd_string
+	movwf v_lcd_p_string
+	;nb de char de la chaine
+	movlw 0x01
+	movwf v_lcd_string_len
+	return
+
+_f_lcd_set_n_ref_string
+	;contenu de la chaine
+	movlw 0x00
+	movwf v_lcd_hexa_to_conv
+	movf v_calc_n_ref,w
+	movwf v_lcd_hexa_to_conv+1
+	call f_lcd_convtobcd
+	movf v_lcd_bcd+2,W
+	movwf v_lcd_tmp
+	andlw 0x0F
+	call f_lcd_convtoascii
+	movwf v_lcd_string
+	movlw v_lcd_string
+	movwf v_lcd_p_string
+	;nb de char de la chaine
+	movlw 0x01
+	movwf v_lcd_string_len
+	return
+
+_f_lcd_aff_decimal
+	movff v_lcd_dec,v_lcd_hexa_to_conv
+	movff v_lcd_dec+1,v_lcd_hexa_to_conv+1
+	call f_lcd_convtobcd
+	movf v_lcd_bcd+1,W
+	call _f_lcd_aff_hexa
+	movf v_lcd_bcd+2,W
+	call _f_lcd_aff_hexa
+	return
+
 ENDIF
 
 f_lcd_affboot
@@ -114,13 +243,9 @@ IFDEF TEST
 f_lcd_calibrated_voltage
 	movlw D'5'
 	call f_lcd_setposcursor
-	movff v_calc_V_fwd,v_lcd_hexa_to_conv
-	movff v_calc_V_fwd+1,v_lcd_hexa_to_conv+1
-	call f_lcd_convtobcd
-	movf v_lcd_bcd+1,W
-	call _f_lcd_aff_hexa
-	movf v_lcd_bcd+2,W
-	call _f_lcd_aff_hexa
+	movff v_calc_V_fwd,v_lcd_dec
+	movff v_calc_V_fwd+1,v_lcd_dec+1
+	call _f_lcd_aff_decimal
 	movlw '.'
 	call f_lcd_affchar
 	movff v_calc_d_fwd,v_lcd_hexa_to_conv
@@ -130,22 +255,19 @@ f_lcd_calibrated_voltage
 	movf	v_calc_n_fwd,w
 	xorlw	D'4'
 	btfsc	STATUS,Z
-	goto _f_lcd_calibrated_voltage2
+	goto _f_lcd_calibrated_voltage3
 
-	bcf STATUS,C
-	rlcf v_lcd_bcd+2,f
-	rlcf v_lcd_bcd+1,f
-	bcf STATUS,C
-	rlcf v_lcd_bcd+2,f
-	rlcf v_lcd_bcd+1,f
-	bcf STATUS,C
-	rlcf v_lcd_bcd+2,f
-	rlcf v_lcd_bcd+1,f
-	bcf STATUS,C
-	rlcf v_lcd_bcd+2,f
-	rlcf v_lcd_bcd+1,f
+	movlw 0x04
+	movwf v_lcd_tmp
 
 _f_lcd_calibrated_voltage2
+	bcf STATUS,C
+	rlcf v_lcd_bcd+2,f
+	rlcf v_lcd_bcd+1,f
+	decfsz v_lcd_tmp,f
+	goto _f_lcd_calibrated_voltage2
+
+_f_lcd_calibrated_voltage3
 	movf v_lcd_bcd+1,W
 	call _f_lcd_aff_hexa
 	movf v_lcd_bcd+2,W
@@ -158,13 +280,9 @@ _f_lcd_calibrated_voltage2
 
 	movlw D'21'
 	call f_lcd_setposcursor
-	movff v_calc_V_ref,v_lcd_hexa_to_conv
-	movff v_calc_V_ref+1,v_lcd_hexa_to_conv+1
-	call f_lcd_convtobcd
-	movf v_lcd_bcd+1,W
-	call _f_lcd_aff_hexa
-	movf v_lcd_bcd+2,W
-	call _f_lcd_aff_hexa
+	movff v_calc_V_ref,v_lcd_dec
+	movff v_calc_V_ref+1,v_lcd_dec+1
+	call _f_lcd_aff_decimal
 	movlw '.'
 	call f_lcd_affchar
 	movff v_calc_d_ref,v_lcd_hexa_to_conv
@@ -174,23 +292,20 @@ _f_lcd_calibrated_voltage2
 	movf	v_calc_n_ref,w
 	xorlw	D'4'
 	btfsc	STATUS,Z
-	goto _f_lcd_calibrated_voltage3
+	goto _f_lcd_calibrated_voltage5
 
+	movlw 0x04
+	movwf v_lcd_tmp
+
+_f_lcd_calibrated_voltage4
 	bcf STATUS,C
 	rlcf v_lcd_bcd+2,f
 	rlcf v_lcd_bcd+1,f
-	bcf STATUS,C
-	rlcf v_lcd_bcd+2,f
-	rlcf v_lcd_bcd+1,f
-	bcf STATUS,C
-	rlcf v_lcd_bcd+2,f
-	rlcf v_lcd_bcd+1,f
-	bcf STATUS,C
-	rlcf v_lcd_bcd+2,f
-	rlcf v_lcd_bcd+1,f
+	decfsz v_lcd_tmp,f
+	goto _f_lcd_calibrated_voltage4
 
 
-_f_lcd_calibrated_voltage3
+_f_lcd_calibrated_voltage5
 	movf v_lcd_bcd+1,W
 	call _f_lcd_aff_hexa
 	movf v_lcd_bcd+2,W
@@ -206,17 +321,9 @@ _f_lcd_calibrated_voltage3
 f_lcd_aff_adc_mV
 	movlw 0x0B
 	call f_lcd_setposcursor
-	movf v_adcfwd_mV,w
-	movwf v_lcd_hexa_to_conv
-	movf v_adcfwd_mV+1,w
-	movwf v_lcd_hexa_to_conv+1
-_f_lcd_aff_adc_mV_4
-	call f_lcd_convtobcd
-_f_lcd_aff_adc_mV_5
-	movf v_lcd_bcd+1,W
-	call _f_lcd_aff_hexa
-	movf v_lcd_bcd+2,W
-	call _f_lcd_aff_hexa
+	movff v_adcfwd_mV,v_lcd_dec
+	movff v_adcfwd_mV+1,v_lcd_dec+1
+	call _f_lcd_aff_decimal
 	movlw 'm'
 	call f_lcd_affchar
 	movlw 'V'
@@ -224,17 +331,9 @@ _f_lcd_aff_adc_mV_5
 _f_lcd_aff_adc_mV_12
 	movlw 0x1B
 	call f_lcd_setposcursor
-	movf v_adcref_mV,w
-	movwf v_lcd_hexa_to_conv
-	movf v_adcref_mV+1,w
-	movwf v_lcd_hexa_to_conv+1
-_f_lcd_aff_adc_mV_15
-	call f_lcd_convtobcd
-_f_lcd_aff_adc_mV_16
-	movf v_lcd_bcd+1,W
-	call _f_lcd_aff_hexa
-	movf v_lcd_bcd+2,W
-	call _f_lcd_aff_hexa
+	movff v_adcref_mV,v_lcd_dec
+	movff v_adcref_mV+1,v_lcd_dec+1
+	call _f_lcd_aff_decimal
 	movlw 'm'
 	call f_lcd_affchar
 	movlw 'V'
@@ -265,122 +364,6 @@ _f_lcd_aff_not_2
 	goto _f_lcd_aff_not_2
 	return
 
-_f_lcd_set_fwd_string
-  movlw 'F'
-  movwf v_lcd_string
-  movlw 'W'
-  movwf v_lcd_string+1
-  movlw 'D'
-  movwf v_lcd_string+2
-  movlw v_lcd_string
-  movwf v_lcd_p_string
-	movlw 0x03
-	movwf v_lcd_string_len
-  return
-
-_f_lcd_set_ref_string
-  movlw 'R'
-  movwf v_lcd_string
-  movlw 'E'
-  movwf v_lcd_string+1
-  movlw 'F'
-  movwf v_lcd_string+2
-  movlw v_lcd_string
-  movwf v_lcd_p_string
-  movlw 0x03
-  movwf v_lcd_string_len
-	return
-
-_f_lcd_set_rdac_fwd_string
-	;contenu de la chaine
-		movf v_calc_n_fwd,W
-		;call f_aop_get_rdac_fwd
-		movf v_aop_rdac,w
-		movwf v_lcd_tmp
-		andlw 0x0F
-		call f_lcd_convtoascii
-		movwf v_lcd_string
-		movf v_aop_rdac+1,w
-		movwf v_lcd_tmp
-		swapf v_lcd_tmp,W
-		andlw 0x0F
-		call f_lcd_convtoascii
-		movwf v_lcd_string+1
-		movf v_aop_rdac+1,w
-		andlw 0x0F
-		call f_lcd_convtoascii
-		movwf v_lcd_string+2
-		movlw v_lcd_string
-		movwf v_lcd_p_string
-		;nb de char de la chaine
-		movlw 0x03
-		movwf v_lcd_string_len
-		return
-
-_f_lcd_set_rdac_ref_string
-  ;contenu de la chaine
-	movf v_calc_n_ref,W
-	;call f_aop_get_rdac_ref
-	movf v_aop_rdac,w
-	movwf v_lcd_tmp
-	andlw 0x0F
-	call f_lcd_convtoascii
-	movwf v_lcd_string
-	movf v_aop_rdac+1,w
-	movwf v_lcd_tmp
-	swapf v_lcd_tmp,W
-	andlw 0x0F
-	call f_lcd_convtoascii
-	movwf v_lcd_string+1
-	movf v_aop_rdac+1,w
-	andlw 0x0F
-	call f_lcd_convtoascii
-	movwf v_lcd_string+2
-	movlw v_lcd_string
-	movwf v_lcd_p_string
-	;nb de char de la chaine
-	movlw 0x03
-	movwf v_lcd_string_len
-	return
-
-
-_f_lcd_set_n_fwd_string
-  ;contenu de la chaine
-	movlw 0x00
-	movwf v_lcd_hexa_to_conv
-	movf v_calc_n_fwd,w
-	movwf v_lcd_hexa_to_conv+1
-	call f_lcd_convtobcd
-	movf v_lcd_bcd+2,W
-	movwf v_lcd_tmp
-	andlw 0x0F
-	call f_lcd_convtoascii
-	movwf v_lcd_string
-	movlw v_lcd_string
-	movwf v_lcd_p_string
-	;nb de char de la chaine
-	movlw 0x01
-	movwf v_lcd_string_len
-	return
-
-_f_lcd_set_n_ref_string
-	;contenu de la chaine
-		movlw 0x00
-		movwf v_lcd_hexa_to_conv
-		movf v_calc_n_ref,w
-		movwf v_lcd_hexa_to_conv+1
-		call f_lcd_convtobcd
-		movf v_lcd_bcd+2,W
-		movwf v_lcd_tmp
-		andlw 0x0F
-		call f_lcd_convtoascii
-		movwf v_lcd_string
-		movlw v_lcd_string
-		movwf v_lcd_p_string
-		;nb de char de la chaine
-		movlw 0x01
-		movwf v_lcd_string_len
-		return
 
 f_lcd_aff_fwd_and_ref
 	movlw 0x00

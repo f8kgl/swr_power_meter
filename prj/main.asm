@@ -69,7 +69,7 @@ IFDEF TEST
 	;extern f_calc_position_virgule
 	extern f_calc_partie_decimale
 	extern f_lcd_calibrated_voltage
-	extern D160us
+	extern D160us ;pour trace timer 0 uniquement
 ENDIF
 
 	udata
@@ -78,6 +78,7 @@ IFDEF TEST
 v_menu res 1
 v_tmp res 2
 ENDIF
+v_test res 16
 
 	code
 	goto Init ;
@@ -386,9 +387,7 @@ menu_calcul
 
 	;calcul des tensions calibrées
 	call f_calc_get_eep_value
-
 	call f_calc_partie_entiere
-	;call f_calc_position_virgule
 	call f_calc_partie_decimale
 
 	call f_lcd_calibrated_voltage
