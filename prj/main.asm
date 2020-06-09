@@ -69,7 +69,7 @@ IFDEF TEST
 	;extern f_calc_position_virgule
 	extern f_calc_partie_decimale
 	extern f_lcd_calibrated_voltage
-
+	extern D160us
 ENDIF
 
 	udata
@@ -158,21 +158,26 @@ ENDIF
 
 IFDEF TEST
 ;trace timer 0 pour calibration
-	clrf TMR0L
-	movlw TIMER0_START
-	movwf T0CON
+	m_timer0_start
 	call Del_11us
-	;call delay_250ms
-	movlw TIMER0_STOP
-	movwf T0CON
-	movlw 0x06 ;calibration
-	subwf TMR0L,f
-	movff TMR0L,v_log_data
+	m_timer0_stop
+
 	movlw TAG_TIMER
 	movwf v_log_tag
-	movlw D'01'
+	movlw D'02'
 	movwf v_log_data_size
 	call f_log_write
+
+	m_timer0_start
+	call D160us
+	m_timer0_stop
+
+	movlw TAG_TIMER
+	movwf v_log_tag
+	movlw D'02'
+	movwf v_log_data_size
+	call f_log_write
+
 ENDIF
 
 
