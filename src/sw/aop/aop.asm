@@ -17,40 +17,40 @@ v_aop_rdac res 2
 	extern v_calc_n_fwd
 	extern v_calc_n_ref
 	extern v_calc_port
-	extern v_eep_byte_to_write
-	extern f_eep_readbyte
-	extern f_eep_writebyte
+	extern v_eep_int_byte_to_write
+	extern f_eep_int_readbyte
+	extern f_eep_int_writebyte
 	code
 
-f_aop_set_rdac_eep_fwd
-		movff v_aop_rdac,v_eep_byte_to_write
+f_aop_set_rdac_eep_int_fwd
+		movff v_aop_rdac,v_eep_int_byte_to_write
 		movf v_calc_n_fwd,W
 		mullw 0x02
 		movf PRODL,W
 		addlw EEP_ADDR_DAC_FWD
-		call f_eep_writebyte
-		movff v_aop_rdac+1,v_eep_byte_to_write
+		call f_eep_int_writebyte
+		movff v_aop_rdac+1,v_eep_int_byte_to_write
 		movf v_calc_n_fwd,W
 		mullw 0x02
 		movf PRODL,W
 		addlw EEP_ADDR_DAC_FWD+1
-		call f_eep_writebyte
+		call f_eep_int_writebyte
 		return
 
 
-f_aop_set_rdac_eep_ref
-	movff v_aop_rdac,v_eep_byte_to_write
+f_aop_set_rdac_eep_int_ref
+	movff v_aop_rdac,v_eep_int_byte_to_write
 	movf v_calc_n_ref,W
 	mullw 0x02
 	movf PRODL,W
 	addlw EEP_ADDR_DAC_REF
-	call f_eep_writebyte
-	movff v_aop_rdac+1,v_eep_byte_to_write
+	call f_eep_int_writebyte
+	movff v_aop_rdac+1,v_eep_int_byte_to_write
 	movf v_calc_n_ref,W
 	mullw 0x02
 	movf PRODL,W
 	addlw EEP_ADDR_DAC_REF+1
-	call f_eep_writebyte
+	call f_eep_int_writebyte
 	return
 
 f_aop_get_rdac_ref
@@ -58,13 +58,13 @@ f_aop_get_rdac_ref
 	mullw 0x02
 	movf PRODL,W
 	addlw EEP_ADDR_DAC_REF
-	call f_eep_readbyte
+	call f_eep_int_readbyte
 	movwf v_aop_rdac
 	movf v_calc_n_ref,W
 	mullw 0x02
 	movf PRODL,W
 	addlw EEP_ADDR_DAC_REF+1
-	call f_eep_readbyte
+	call f_eep_int_readbyte
 	movwf v_aop_rdac+1
 	return
 
@@ -73,13 +73,13 @@ f_aop_get_rdac_fwd
 	mullw 0x02
 	movf PRODL,W
 	addlw EEP_ADDR_DAC_FWD
-	call f_eep_readbyte
+	call f_eep_int_readbyte
 	movwf v_aop_rdac
 	movf v_calc_n_fwd,W
 	mullw 0x02
 	movf PRODL,W
 	addlw EEP_ADDR_DAC_FWD+1
-	call f_eep_readbyte
+	call f_eep_int_readbyte
 	movwf v_aop_rdac+1
 	return
 
@@ -133,8 +133,8 @@ f_aop_set_rdac_ref
   global f_aop_set_rdac_ref
 	global f_aop_get_rdac_ref
 	global f_aop_get_rdac_fwd
-	global f_aop_set_rdac_eep_fwd
-	global f_aop_set_rdac_eep_ref
+	global f_aop_set_rdac_eep_int_fwd
+	global f_aop_set_rdac_eep_int_ref
 	global v_aop_rdac
 
   end

@@ -2,15 +2,15 @@
 	include "eep.inc"
 
 	udata
-v_eep_byte_to_write res 1
-v_eep_status res 1
-v_eep_timer res 1
+v_eep_int_byte_to_write res 1
+v_eep_int_status res 1
+v_eep_int_timer res 1
 
 	extern delay_10ms
 
 	code
-_f_eep_timeout
-	  bsf v_eep_status,BIT_EEP_STATUS_TIMEOUT
+_f_eep_int_timeout
+	  bsf v_eep_int_status,BIT_EEP_STATUS_TIMEOUT
 	  return
 
 
@@ -27,7 +27,7 @@ _f_eep_timeout
 ;	-EECON(RD) = b(1)
 ;	-W = EEDATA
 ;-----------------------------------------
-f_eep_readbyte
+f_eep_int_readbyte
 	movwf EEADR
 	bcf 	EECON1,CFGS
 	bcf EECON1, EEPGD
@@ -37,11 +37,11 @@ f_eep_readbyte
 	return
 
 
-f_eep_writebyte
+f_eep_int_writebyte
 	movwf EEADR            ;address being transferred to EEADR
 	movlw D'10'
-	movwf v_eep_timer
-  movf  v_eep_byte_to_write,W
+	movwf v_eep_int_timer
+  movf  v_eep_int_byte_to_write,W
 	movwf EEDATA        ;data goes to EEDATA register
 	bcf EECON1, EEPGD
 	bsf EECON1,WREN
@@ -51,23 +51,23 @@ f_eep_writebyte
 	movwf EECON2
 	bsf EECON1,WR
 
-_f_eep_writebyte_loop
+_f_eep_int_writebyte_loop
 	btfsc PIR2,EEIF
-  goto _f_eep_writebyte_is_timeout
-	goto _f_eep_writebyte_end
+  goto _f_eep_int_writebyte_is_timeout
+	goto _f_eep_int_writebyte_end
 
-_f_eep_writebyte_is_timeout
+_f_eep_int_writebyte_is_timeout
 	call delay_10ms
-	decfsz v_eep_timer,f
-	goto _f_eep_writebyte_loop
-  call _f_eep_timeout
+	decfsz v_eep_int_timer,f
+	goto _f_eep_int_writebyte_loop
+  call _f_eep_int_timeout
 
-_f_eep_writebyte_end
+_f_eep_int_writebyte_end
 	bcf EECON1,WREN
 	return
 
-	global f_eep_readbyte
-	global f_eep_writebyte
-	global v_eep_byte_to_write
+	global f_eep_int_readbyte
+	global f_eep_int_writebyte
+	global v_eep_int_byte_to_write
 
 	end

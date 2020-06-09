@@ -10,15 +10,15 @@ v_log_tag res 1
 v_log_nb_byte_to_write res 1
 v_log_addr res 1
 
-	extern v_eep_byte_to_write
-	extern f_eep_writebyte
-	extern f_eep_readbyte
+	extern v_eep_int_byte_to_write
+	extern f_eep_int_writebyte
+	extern f_eep_int_readbyte
 
   code
 
 _f_log_get_next_addr
 	movlw ADDR_EEP_NEXT_ADDR_TO_WRITE
-	call f_eep_readbyte
+	call f_eep_int_readbyte
 	movwf v_log_addr
 	return
 
@@ -34,16 +34,16 @@ f_log_write
   movff v_log_p_data+1,FSR0H
   movff v_log_p_data,FSR0L
 
-  movff v_log_tag,v_eep_byte_to_write
+  movff v_log_tag,v_eep_int_byte_to_write
   movf v_log_addr,W
-  call f_eep_writebyte
+  call f_eep_int_writebyte
   decf v_log_nb_byte_to_write,f
 
 _f_log_write_loop
   incf v_log_addr,f
-  movff POSTINC0,v_eep_byte_to_write
+  movff POSTINC0,v_eep_int_byte_to_write
   movf v_log_addr,W
-  call f_eep_writebyte
+  call f_eep_int_writebyte
   decf v_log_data_size,f
   btfsc STATUS,Z
   goto _f_log_write_loop2;v_log_data_size déjà égal à 0 =>_f_log_write_loop2
@@ -54,19 +54,19 @@ _f_log_write_loop
 _f_log_write_loop2
   decf v_log_nb_byte_to_write,f
   movlw 0xFF
-  movwf v_eep_byte_to_write
+  movwf v_eep_int_byte_to_write
 _f_log_write_loop3
   incf v_log_addr,f
   movf v_log_addr,W
-  call f_eep_writebyte
+  call f_eep_int_writebyte
   decfsz v_log_nb_byte_to_write ,f
   goto _f_log_write_loop3
 
 _f_log_write_loop_end
   incf v_log_addr,f
-  movff v_log_addr,v_eep_byte_to_write
+  movff v_log_addr,v_eep_int_byte_to_write
   movlw ADDR_EEP_NEXT_ADDR_TO_WRITE
-  call f_eep_writebyte
+  call f_eep_int_writebyte
 
 
   return

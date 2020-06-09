@@ -20,8 +20,8 @@ v_calc_count res 1
 v_calc_adc res 2
 ENDIF
 v_calctmp res 2
-v_calc_eep_fwd res 2
-v_calc_eep_ref res 2
+v_calc_eep_ext_fwd res 2
+v_calc_eep_ext_ref res 2
 
 
 
@@ -124,19 +124,19 @@ f_calc_vadc_fwd_and_ref
 	return
 ENDIF
 
-f_calc_get_eep_value
-	movff v_adcfwd,v_calc_eep_fwd
-	movff v_adcfwd+1,v_calc_eep_fwd+1
-	movff v_adcref,v_calc_eep_ref
-	movff v_adcref+1,v_calc_eep_ref+1
+f_calc_get_eep_int_value
+	movff v_adcfwd,v_calc_eep_ext_fwd
+	movff v_adcfwd+1,v_calc_eep_ext_fwd+1
+	movff v_adcref,v_calc_eep_ext_ref
+	movff v_adcref+1,v_calc_eep_ext_ref+1
 	return
 
 IFDEF TEST
 f_calc_partie_entiere
-	movff v_calc_eep_fwd,v_calc_V_fwd
-	movff v_calc_eep_fwd+1,v_calc_V_fwd+1
-	movff v_calc_eep_ref,v_calc_V_ref
-	movff v_calc_eep_ref+1,v_calc_V_ref+1
+	movff v_calc_eep_ext_fwd,v_calc_V_fwd
+	movff v_calc_eep_ext_fwd+1,v_calc_V_fwd+1
+	movff v_calc_eep_ext_ref,v_calc_V_ref
+	movff v_calc_eep_ext_ref+1,v_calc_V_ref+1
 	movff v_calc_n_fwd,v_calctmp
 	movlw 0x00
 	cpfsgt v_calctmp
@@ -259,7 +259,7 @@ IFDEF TEST
 	global f_calc_set_n_max_fwd
 	global f_calc_set_n_min_ref
 	global f_calc_set_n_max_ref
-	global f_calc_get_eep_value
+	global f_calc_get_eep_int_value
 	global f_calc_partie_entiere
 	global f_calc_partie_decimale
 	global v_calc_V_fwd

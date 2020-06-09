@@ -35,7 +35,7 @@
 	extern v_log_data_size
 	extern v_log_tag
 	extern f_log_write
-	extern f_eep_readbyte
+	extern f_eep_int_readbyte
 IFDEF TEST
 	extern f_lcd_aff_fwd_and_ref
 	extern f_lcd_aff_G_and_rdac
@@ -59,12 +59,12 @@ IFDEF TEST
 	extern f_lcd_aff_rdac
 	extern f_aop_get_rdac_fwd
 	extern f_aop_get_rdac_ref
-	extern f_aop_set_rdac_eep_fwd
-	extern f_aop_set_rdac_eep_ref
+	extern f_aop_set_rdac_eep_int_fwd
+	extern f_aop_set_rdac_eep_int_ref
 	extern v_aop_rdac
 	extern f_lcd_toggle_rdac_fwd
 	extern f_lcd_toggle_rdac_ref
-	extern f_calc_get_eep_value
+	extern f_calc_get_eep_int_value
 	extern f_calc_partie_entiere
 	extern f_calc_partie_decimale
 	extern f_lcd_calibrated_voltage
@@ -128,16 +128,16 @@ IFDEF TEST
 ENDIF
 
 	movlw 0x00
-	call f_eep_readbyte
+	call f_eep_int_readbyte
 	movwf v_log_data+3
 	movlw 0x01
-	call f_eep_readbyte
+	call f_eep_int_readbyte
 	movwf v_log_data+4
 	movlw 0x02
-	call f_eep_readbyte
+	call f_eep_int_readbyte
 	movwf v_log_data+5
 	movlw 0x03
-	call f_eep_readbyte
+	call f_eep_int_readbyte
 	movwf v_log_data+6
 
 	movlw TAG_FW_VERSION
@@ -362,10 +362,10 @@ _menu_cal_end
 	;on est sorti de la FSM toggle
 	btfsc v_calc_port,PORT_BIT
   goto _menu_cal_end2
-  call f_aop_set_rdac_eep_ref
+  call f_aop_set_rdac_eep_int_ref
   goto _menu_cal_end3
 _menu_cal_end2
-  call f_aop_set_rdac_eep_fwd
+  call f_aop_set_rdac_eep_int_fwd
 _menu_cal_end3
 	incf v_menu,f
 	call f_lcd_clear
@@ -385,7 +385,7 @@ menu_calcul
 	call f_lcd_aff_fwd_and_ref
 
 	;calcul des tensions calibrées
-	call f_calc_get_eep_value
+	call f_calc_get_eep_int_value
 	call f_calc_partie_entiere
 	call f_calc_partie_decimale
 

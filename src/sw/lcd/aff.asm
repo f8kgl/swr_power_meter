@@ -19,7 +19,7 @@ ENDIF
 
 	extern f_lcd_affchar
 	extern f_lcd_setposcursor
-	extern f_eep_readbyte
+	extern f_eep_int_readbyte
 	extern c_bootmsgL1
 	extern c_bootmsgL2
 IFDEF TEST
@@ -229,7 +229,7 @@ _lcd_affboot_7
 	movwf v_lcd_charpos
 _lcd_affboot_8
 	movf v_lcd_charpos,w
-	call f_eep_readbyte
+	call f_eep_int_readbyte
 	xorlw 0x00 ; is it a zero?
 	btfsc STATUS, Z
 	goto _lcd_affboot_9 ; finished
