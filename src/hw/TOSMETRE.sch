@@ -1429,4 +1429,8 @@ Wire Wire Line
 	10100 1700 10100 6600
 Connection ~ 4950 1700
 Connection ~ 10100 6600
+Wire Wire Line
+	13750 5450 14850 5450
+Wire Wire Line
+	14850 5450 14850 5100
 $EndSCHEMATC
