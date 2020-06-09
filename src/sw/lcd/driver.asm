@@ -5,8 +5,8 @@
 v_temp res 1
 v_poscursor res 1
 v_lcd_count res 1
-v_lcd_change_page res 1
-v_lcd_addr_offset res 1
+;v_lcd_change_page res 1
+;v_lcd_addr_offset res 1
 
 
 	extern D160us

@@ -6,7 +6,6 @@
   udata
 v_aop_cde res 2
 v_aop_temp res 1
-v_aop_G_fwd res 1
 v_aop_rdac res 2
 
   extern v_i2c_device_addr

@@ -9,13 +9,8 @@ v_adcref_mV res 2
 v_calc_n res 1
 v_calc_n_fwd res 1
 v_calc_n_ref res 1
-v_calc_adc_lsb res 1
 IFDEF TEST
 v_calc_port res 1
-ENDIF
-v_calctmp res 2
-v_calc_eep_fwd res 2
-v_calc_eep_ref res 2
 v_calc_V_fwd res 2
 v_calc_V_ref res 2
 v_calc_d_fwd res 2
@@ -23,6 +18,11 @@ v_calc_d_ref res 2
 v_calc_d res 3
 v_calc_count res 1
 v_calc_adc res 2
+ENDIF
+v_calctmp res 2
+v_calc_eep_fwd res 2
+v_calc_eep_ref res 2
+
 
 
 
@@ -37,7 +37,7 @@ f_calc_mul
   MOVWF   v_calc_count
 
 _f_calc_mul_loop
-  RRCF     v_calc_adc_lsb, F
+  RRCF     v_calc_adc, F
   BTFSC   STATUS,C
   GOTO    _f_calc_mul2
   DECFSZ  v_calc_count, F
@@ -53,7 +53,7 @@ _f_calc_mul2
   GOTO    _f_calc_mul3
 
 _f_calc_mul_loop2
-  RRCF     v_calc_adc_lsb, F
+  RRCF     v_calc_adc, F
   BTFSS  STATUS,C
   GOTO    _f_calc_mul3
   MOVF    v_calctmp+1,W
@@ -131,6 +131,7 @@ f_calc_get_eep_value
 	movff v_adcref+1,v_calc_eep_ref+1
 	return
 
+IFDEF TEST
 f_calc_partie_entiere
 	movff v_calc_eep_fwd,v_calc_V_fwd
 	movff v_calc_eep_fwd+1,v_calc_V_fwd+1
@@ -158,9 +159,6 @@ _f_calc_partie_entiere4
 	decfsz v_calctmp,f
 	goto _f_calc_partie_entiere4
 _f_calc_partie_entiere5
-	return
-
-f_calc_position_virgule
 	return
 
 _f_calc_partie_decimale
@@ -228,7 +226,7 @@ _f_calc_partie_decimale4
 
 
 _f_calc_partie_decimale5
-	movwf v_calc_adc_lsb
+	movwf v_calc_adc
 	clrf v_calc_d+2
 	movff v_calc_d, v_calctmp
 	movff v_calc_d+1,v_calctmp+1
@@ -251,7 +249,7 @@ f_calc_partie_decimale
 	movff v_calc_d+2,v_calc_d_ref+1
 
 	return
-
+ENDIF
 
 IFDEF TEST
 	global f_calc_vadc_fwd_and_ref
@@ -263,17 +261,16 @@ IFDEF TEST
 	global f_calc_set_n_max_ref
 	global f_calc_get_eep_value
 	global f_calc_partie_entiere
-	global f_calc_position_virgule
 	global f_calc_partie_decimale
+	global v_calc_V_fwd
+	global v_calc_V_ref
+	global v_calc_d_fwd
+	global v_calc_d_ref
 ENDIF
 	global v_adcfwd_mV
 	global v_adcref_mV
 	global v_calc_n_fwd
 	global v_calc_n_ref
-	global v_calc_V_fwd
-	global v_calc_V_ref
-	global v_calc_d_fwd
-	global v_calc_d_ref
 
 
 	end

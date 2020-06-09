@@ -66,7 +66,6 @@ IFDEF TEST
 	extern f_lcd_toggle_rdac_ref
 	extern f_calc_get_eep_value
 	extern f_calc_partie_entiere
-	;extern f_calc_position_virgule
 	extern f_calc_partie_decimale
 	extern f_lcd_calibrated_voltage
 	extern D160us ;pour trace timer 0 uniquement
@@ -78,7 +77,7 @@ IFDEF TEST
 v_menu res 1
 v_tmp res 2
 ENDIF
-v_test res 16
+
 
 	code
 	goto Init ;
