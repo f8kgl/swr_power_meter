@@ -55,7 +55,7 @@ COMPS +=log
 
 #Sources
 SRC_COMMUN = main.asm
-SRC_COMMUN +=../src/sw/data/eep_pic_content.asm
+SRC_COMMUN +=../src/sw/data/eep_int.asm
 SRC_COMMUN +=../src/sw/data/lcdmsg.asm
 
 #Objets
@@ -73,6 +73,10 @@ LIBS = $(COMPS:%=../bin/%.a)
 all : project $(OUTPUT_TEST)
 
 rule_test : project $(OUTPUT_TEST)
+
+i2c.eep : ../src/sw/data/eep_ext.asm
+	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) $(DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o i2c_eep.o  ../src/sw/data/eep_ext.asm
+	$(LD) $(LDFLAGS) $(DEBUG_LDFLAGS) -s $(SCRIPT) -o ../bin/i2c.eep.hex i2c_eep.o
 
 #Règle du firmware de test
 $(OUTPUT_TEST) : $(OBJS_TEST) $(LIBS_TEST)
