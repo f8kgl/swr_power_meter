@@ -57,6 +57,7 @@ COMPS +=log
 SRC_COMMUN = main.asm
 SRC_COMMUN +=../src/sw/data/eep_int.asm
 SRC_COMMUN +=../src/sw/data/lcdmsg.asm
+CALIBRATION_SRC = ../src/sw/data/eep_ext.asm
 
 #Objets
 OBJS_COMMUN_TEST = $(SRC_COMMUN:%.asm=%.TEST.o)
@@ -74,13 +75,13 @@ all : project $(OUTPUT_TEST)
 
 rule_test : project $(OUTPUT_TEST)
 
-i2c.eep : ../src/sw/data/eep_ext.asm
-	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) $(DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o i2c_eep.o  ../src/sw/data/eep_ext.asm
-	$(LD) $(LDFLAGS) $(DEBUG_LDFLAGS) -s $(SCRIPT) -o ../bin/i2c.eep.hex i2c_eep.o
+cal_data : ../src/sw/data/eep_ext.asm
+	$(AS) -p eeprom8 -o ../bin/$(NAME)cal_data-$(shell date +%F_%H%M%S).o $<
 
 #Règle du firmware de test
 $(OUTPUT_TEST) : $(OBJS_TEST) $(LIBS_TEST)
 	$(LD) $(LDFLAGS) $(DEBUG_LDFLAGS) -s $(SCRIPT) -o ../bin/$(OUTPUT_TEST) $^
+	$(AS) -p eeprom8 -o ../bin/$(NAME)cal_data.TEST.o $(CALIBRATION_SRC)
 	rm $^
 	rm *.lst
 	rm -f ../src/sw/data/*.lst
@@ -109,3 +110,4 @@ project:
 	mkdir -p ../bin
 	cp ../prj/swr_power_meter.stc ../bin
 	cp ../src/hw/sim/gpsim/netlist.stc ../bin
+	cp ../src/tools/gen_th_cal/eep_ext.asm ../src/sw/data/
