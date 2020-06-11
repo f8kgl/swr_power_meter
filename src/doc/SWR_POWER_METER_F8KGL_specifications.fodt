@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <office:document xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:config="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpt="http://openoffice.org/2005/report" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:officeooo="http://openoffice.org/2009/office" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:drawooo="http://openoffice.org/2010/draw" xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:formx="urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0" xmlns:css3t="http://www.w3.org/TR/css3-text/" office:version="1.2" office:mimetype="application/vnd.oasis.opendocument.text">
- <office:meta><meta:initial-creator>f4bjh</meta:initial-creator><meta:editing-cycles>873</meta:editing-cycles><meta:creation-date>2017-12-15T09:57:00</meta:creation-date><dc:date>2020-06-11T15:23:03.169000000</dc:date><dc:language>fr-FR</dc:language><meta:editing-duration>P4DT14H28M4S</meta:editing-duration><meta:generator>LibreOffice/6.2.4.2$Windows_X86_64 LibreOffice_project/2412653d852ce75f65fbfa83fb7e7b669a126d64</meta:generator><meta:document-statistic meta:table-count="55" meta:image-count="20" meta:object-count="8" meta:page-count="65" meta:paragraph-count="1948" meta:word-count="9780" meta:character-count="55815" meta:non-whitespace-character-count="47800"/><meta:user-defined meta:name="AppVersion">14.0000</meta:user-defined><meta:user-defined meta:name="Company">Atos</meta:user-defined><meta:user-defined meta:name="DocSecurity" meta:value-type="float">0</meta:user-defined><meta:user-defined meta:name="HyperlinksChanged" meta:value-type="boolean">false</meta:user-defined><meta:user-defined meta:name="LinksUpToDate" meta:value-type="boolean">false</meta:user-defined><meta:user-defined meta:name="ScaleCrop" meta:value-type="boolean">false</meta:user-defined><meta:user-defined meta:name="ShareDoc" meta:value-type="boolean">false</meta:user-defined><meta:template xlink:type="simple" xlink:actuate="onRequest" xlink:title="Normal.dotm" xlink:href=""/></office:meta>
+ <office:meta><meta:initial-creator>f4bjh</meta:initial-creator><meta:editing-cycles>874</meta:editing-cycles><meta:creation-date>2017-12-15T09:57:00</meta:creation-date><dc:date>2020-06-11T16:02:39.160000000</dc:date><dc:language>fr-FR</dc:language><meta:editing-duration>P4DT15H7M39S</meta:editing-duration><meta:generator>LibreOffice/6.2.4.2$Windows_X86_64 LibreOffice_project/2412653d852ce75f65fbfa83fb7e7b669a126d64</meta:generator><meta:document-statistic meta:table-count="55" meta:image-count="20" meta:object-count="8" meta:page-count="65" meta:paragraph-count="1948" meta:word-count="9780" meta:character-count="55815" meta:non-whitespace-character-count="47800"/><meta:user-defined meta:name="AppVersion">14.0000</meta:user-defined><meta:user-defined meta:name="Company">Atos</meta:user-defined><meta:user-defined meta:name="DocSecurity" meta:value-type="float">0</meta:user-defined><meta:user-defined meta:name="HyperlinksChanged" meta:value-type="boolean">false</meta:user-defined><meta:user-defined meta:name="LinksUpToDate" meta:value-type="boolean">false</meta:user-defined><meta:user-defined meta:name="ScaleCrop" meta:value-type="boolean">false</meta:user-defined><meta:user-defined meta:name="ShareDoc" meta:value-type="boolean">false</meta:user-defined><meta:template xlink:type="simple" xlink:actuate="onRequest" xlink:title="Normal.dotm" xlink:href=""/></office:meta>
  <office:settings>
   <config:config-item-set config:name="ooo:view-settings">
    <config:config-item config:name="ViewAreaTop" config:type="long">1582094</config:config-item>
@@ -13237,7 +13237,7 @@
      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:glue-points="10800 0 3163 3163 0 10800 3163 18437 10800 21600 18437 18437 21600 10800 18437 3163" draw:text-areas="3163 3163 18437 18437" draw:type="ellipse" draw:enhanced-path="U 10800 10800 10800 10800 0 360 Z N"/>
     </draw:custom-shape><draw:line text:anchor-type="paragraph" draw:z-index="134" draw:name="Forme27" draw:style-name="gr2" draw:text-style-name="P862" svg:x1="14.815cm" svg:y1="0.482cm" svg:x2="14.984cm" svg:y2="0cm">
      <text:p/>
-    </draw:line><text:soft-page-break/></text:p>
+    </draw:line></text:p>
    <text:p text:style-name="P133"/>
    <text:p text:style-name="P133"><draw:frame text:anchor-type="paragraph" draw:z-index="97" draw:name="Forme1" draw:style-name="gr33" draw:text-style-name="P875" svg:width="1.74cm" svg:height="1.467cm" svg:x="12.719cm" svg:y="0.467cm">
      <draw:text-box>
@@ -13292,7 +13292,7 @@
    <text:p text:style-name="P127"/>
    <text:p text:style-name="P127"/>
    <text:p text:style-name="P127"/>
-   <text:p text:style-name="P127"/>
+   <text:p text:style-name="P127"><text:soft-page-break/></text:p>
    <text:p text:style-name="P127">Le bloc « ligne de couplage » est composé d’un module : </text:p>
    <text:list xml:id="list1267600395" text:style-name="L10">
     <text:list-item>
@@ -15391,7 +15391,7 @@
    </text:list>
    <text:p text:style-name="P204"/>
    <text:p text:style-name="P204"/>
-   <text:list xml:id="list152305088153155" text:continue-numbering="true" text:style-name="L16">
+   <text:list xml:id="list160242612365498" text:continue-numbering="true" text:style-name="L16">
     <text:list-header>
      <text:p text:style-name="P786"/>
     </text:list-header>
@@ -17568,7 +17568,7 @@
    <text:p text:style-name="P191"/>
    <text:p text:style-name="P186"/>
    <text:p text:style-name="P191">Pour le matériel : </text:p>
-   <text:list xml:id="list152307200737431" text:continue-numbering="true" text:style-name="L20">
+   <text:list xml:id="list160242813893630" text:continue-numbering="true" text:style-name="L20">
     <text:list-item>
      <text:p text:style-name="P799">l’état « implémenté » signifie que le schéma et le PCB est développé</text:p>
     </text:list-item>
@@ -18920,7 +18920,7 @@
        </table:table-row>
       </table:table>
       <text:p text:style-name="P687"/>
-      <text:list xml:id="list152306206532446" text:continue-numbering="true" text:style-name="L25">
+      <text:list xml:id="list160243665037746" text:continue-numbering="true" text:style-name="L25">
        <text:list-item>
         <text:p text:style-name="P825">Pour le xWATT METER, et pour les firmwares de calibration et opérationnel</text:p>
         <text:p text:style-name="P824"/>
@@ -19521,7 +19521,7 @@
         <table:covered-table-cell/>
        </table:table-row>
       </table:table>
-      <text:list xml:id="list152306778757901" text:continue-numbering="true" text:style-name="L27">
+      <text:list xml:id="list160242476048197" text:continue-numbering="true" text:style-name="L27">
        <text:list-item>
         <text:list>
          <text:list-item>
@@ -19599,7 +19599,7 @@
         <table:covered-table-cell/>
        </table:table-row>
       </table:table>
-      <text:list xml:id="list152306070827115" text:continue-numbering="true" text:style-name="L27">
+      <text:list xml:id="list160243410650372" text:continue-numbering="true" text:style-name="L27">
        <text:list-item>
         <text:list>
          <text:list-item>
@@ -19757,7 +19757,7 @@
         </table:table-cell>
        </table:table-row>
       </table:table>
-      <text:list xml:id="list152306919771292" text:continue-numbering="true" text:style-name="L29">
+      <text:list xml:id="list160242798574665" text:continue-numbering="true" text:style-name="L29">
        <text:list-item>
         <text:p text:style-name="P822">Envoyer cette trame <text:span text:style-name="T227">(Adresse, R/W, data)</text:span> sur le bus I2C</text:p>
        </text:list-item>
@@ -20161,7 +20161,7 @@
      </table:table-cell>
      <table:table-cell table:style-name="Tableau37.D2" office:value-type="string">
       <text:p text:style-name="P553">Entrée : </text:p>
-      <text:list xml:id="list152305918500135" text:continue-numbering="true" text:style-name="L35">
+      <text:list xml:id="list160242503941454" text:continue-numbering="true" text:style-name="L35">
        <text:list-item>
         <text:p text:style-name="P846">n : Gain en puissance de 2</text:p>
        </text:list-item>
@@ -20279,7 +20279,7 @@
      </table:table-cell>
      <table:table-cell table:style-name="Tableau37.D2" office:value-type="string">
       <text:p text:style-name="P553">Entrée</text:p>
-      <text:list xml:id="list152307146189461" text:continue-numbering="true" text:style-name="L35">
+      <text:list xml:id="list160242924617844" text:continue-numbering="true" text:style-name="L35">
        <text:list-item>
         <text:p text:style-name="P847">EEP : contenu de l’EEP à afficher (valeur sur 12 bits)</text:p>
        </text:list-item>
@@ -20361,7 +20361,7 @@
        </table:table-row>
       </table:table>
       <text:p text:style-name="P303"/>
-      <text:list xml:id="list152306923134668" text:continue-numbering="true" text:style-name="L36">
+      <text:list xml:id="list160243382784842" text:continue-numbering="true" text:style-name="L36">
        <text:list-item>
         <text:p text:style-name="P848">Calcul de la partie décimale : <draw:frame draw:style-name="fr5" draw:name="Objet1" text:anchor-type="as-char" svg:y="-0.377cm" svg:width="2.009cm" svg:height="0.467cm" draw:z-index="513"><draw:object>
            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -20820,7 +20820,7 @@
       <text:p text:style-name="P504"/>
       <text:p text:style-name="P504"/>
       <text:p text:style-name="P504"/>
-      <text:list xml:id="list152306465130017" text:continue-numbering="true" text:style-name="L37">
+      <text:list xml:id="list160242671834619" text:continue-numbering="true" text:style-name="L37">
        <text:list-item>
         <text:p text:style-name="P838"><text:soft-page-break/>Convertir la valeur d’ADC hexadécimale en mV</text:p>
        </text:list-item>
@@ -21862,7 +21862,7 @@
        </draw:line></text:p>
       <text:p text:style-name="P734"/>
       <text:p text:style-name="P292"/>
-      <text:list xml:id="list152306389264888" text:continue-numbering="true" text:style-name="L41">
+      <text:list xml:id="list160241919479026" text:continue-numbering="true" text:style-name="L41">
        <text:list-item>
         <text:p text:style-name="P849">Affichage des valeurs</text:p>
        </text:list-item>
@@ -24713,7 +24713,7 @@
    <text:p text:style-name="P212">A l’issue de cette trame, la conversion est initialisée. Typiquement, elle met 1,3<text:span text:style-name="T78">µ</text:span><text:span text:style-name="T36">s (max 1,6</text:span><text:span text:style-name="T78">µ</text:span><text:span text:style-name="T36">s)</text:span></text:p>
    <text:p text:style-name="P67">Pendant la conversion, le LTC2305 répond NACK au trames I2C.</text:p>
    <text:p text:style-name="P208"/>
-   <text:list xml:id="list152306929092005" text:continue-numbering="true" text:style-name="L42">
+   <text:list xml:id="list160243117647569" text:continue-numbering="true" text:style-name="L42">
     <text:list-item>
      <text:p text:style-name="P808">Trame Read</text:p>
     </text:list-item>
@@ -25944,7 +25944,7 @@
    <text:p text:style-name="P219"/>
    <text:p text:style-name="P219"/>
    <text:p text:style-name="P219"/>
-   <text:list xml:id="list152306776828237" text:continue-numbering="true" text:style-name="L43">
+   <text:list xml:id="list160243188828335" text:continue-numbering="true" text:style-name="L43">
     <text:list-item>
      <text:p text:style-name="P809">Trame Read</text:p>
     </text:list-item>
