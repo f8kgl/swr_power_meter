@@ -78,10 +78,13 @@ rule_test : project $(OUTPUT_TEST)
 cal_data : ../src/sw/data/eep_ext.asm
 	$(AS) -p eeprom8 -o ../bin/$(NAME)cal_data-$(shell date +%F_%H%M%S).o $<
 
+cal_data_test: ../src/sw/data/eep_ext.asm
+	cp ../src/tools/gen_th_cal/eep_ext.asm ../src/sw/data/
+	$(AS) -p eeprom8 -o ../bin/$(NAME)cal_data.TEST.o $(CALIBRATION_SRC)
+
 #Règle du firmware de test
 $(OUTPUT_TEST) : $(OBJS_TEST) $(LIBS_TEST)
 	$(LD) $(LDFLAGS) $(DEBUG_LDFLAGS) -s $(SCRIPT) -o ../bin/$(OUTPUT_TEST) $^
-	$(AS) -p eeprom8 -o ../bin/$(NAME)cal_data.TEST.o $(CALIBRATION_SRC)
 	rm $^
 	rm *.lst
 	rm -f ../src/sw/data/*.lst
@@ -110,4 +113,3 @@ project:
 	mkdir -p ../bin
 	cp ../prj/swr_power_meter.stc ../bin
 	cp ../src/hw/sim/gpsim/netlist.stc ../bin
-	cp ../src/tools/gen_th_cal/eep_ext.asm ../src/sw/data/

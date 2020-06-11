@@ -64,7 +64,7 @@ IFDEF TEST
 	extern v_aop_rdac
 	extern f_lcd_toggle_rdac_fwd
 	extern f_lcd_toggle_rdac_ref
-	extern f_calc_get_eep_int_value
+	extern f_calc_get_eep_ext_value
 	extern f_calc_partie_entiere
 	extern f_calc_partie_decimale
 	extern f_lcd_calibrated_voltage
@@ -385,7 +385,7 @@ menu_calcul
 	call f_lcd_aff_fwd_and_ref
 
 	;calcul des tensions calibrées
-	call f_calc_get_eep_int_value
+	call f_calc_get_eep_ext_value
 	call f_calc_partie_entiere
 	call f_calc_partie_decimale
 

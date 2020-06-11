@@ -111,23 +111,30 @@ _f_i2c_read_in_device_2
   movwf FSR0H
   movf v_i2c_p_receive_data,W
   movwf FSR0L
-	decf v_i2c_data_size,f ;on décrémente déjà un premier coup,
+  decf v_i2c_data_size,f ;on décrémente déjà un premier coup,
 												 ;afin de pouvoir gérer le cas du last_byte
+  btfsc STATUS,Z
+  goto _f_i2c_read_in_device_5 ;s'il n'y a qu'un seul octet à recevoir, il faut envoyer un NACK et un STROP tout de suite derrière
 _f_i2c_read_in_device_3
   call _f_i2c_receive
 _f_i2c_read_in_device_4
-	movf v_i2c_data_byte_received,W
-	movwf POSTINC0
+  movf v_i2c_data_byte_received,W
+  movwf POSTINC0
   decfsz v_i2c_data_size,f
   goto _f_i2c_read_in_device_3
-  call 	f_i2c_receive_last_byte
+  call _f_i2c_receive_last_byte
   call _f_i2c_send_stop
-	movf v_i2c_data_byte_received,W
-	movwf POSTINC0
+  movf v_i2c_data_byte_received,W
+  movwf POSTINC0
+  goto _f_i2c_read_in_device_6
+_f_i2c_read_in_device_5
+  call _f_i2c_receive_last_byte
+  call _f_i2c_send_stop
+  movf v_i2c_data_byte_received,W
+  movwf POSTINC0 
+_f_i2c_read_in_device_6
   return
 
-
-  return
 
   global v_i2c_device_addr
   global v_i2c_p_send_data
