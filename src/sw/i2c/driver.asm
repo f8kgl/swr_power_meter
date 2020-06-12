@@ -1,5 +1,6 @@
 	include "p18f1320.inc" ;include the defaults for the chip
 	include "i2c.inc"
+	include "log.inc"
 
   	udata
 v_i2c_data_byte_to_send res 1
@@ -9,6 +10,11 @@ v_i2c_status res 1
 
 
 	extern Del_11us
+	extern v_i2c_adress_byte
+	extern v_log_data
+	extern v_log_data_size
+	extern v_log_tag
+	extern f_log_write
 
 	code
 
@@ -158,7 +164,13 @@ _f_i2c_receive_last_byte_next_data_r
 
 _f_i2c_no_ack_received
 	bsf	v_i2c_status,0	;Pas d'ack de l'esclave -> problème de comm
-
+	movff v_i2c_adress_byte,v_log_data
+	movff v_i2c_data_byte_to_send,v_log_data+1
+	movlw TAG_I2C_NACK
+	movwf v_log_tag
+	movlw D'02'
+	movwf v_log_data_size
+	call f_log_write
 	return
 
 	global v_i2c_data_byte_to_send
