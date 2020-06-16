@@ -71,12 +71,12 @@ ltc2305.xpos = 180
 ltc2305.ypos = 204
 
 module load ad5175 ad5175_fwd
-ad5175_fwd.Slave_Address = 47
+ad5175_fwd.Slave_Address = 44
 ad5175_fwd.xpos = 180
 ad5175_fwd.ypos = 144
 
 module load ad5175 ad5175_ref
-ad5175_ref.Slave_Address = 44
+ad5175_ref.Slave_Address = 47
 ad5175_ref.xpos = 180
 ad5175_ref.ypos = 312
 
