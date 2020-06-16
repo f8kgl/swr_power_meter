@@ -103,7 +103,7 @@ Init
 	movwf ADCON1
 	clrf ADCON2
 
-	movlw b'00011100' ; RA2/3/4 input
+	movlw b'00010011' ; RA0/1/4 input
 	movwf TRISA ;
 	clrf PORTA
 	movlw b'00000000' ; PortB Outputs
