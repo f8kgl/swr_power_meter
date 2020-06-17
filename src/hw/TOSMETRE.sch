@@ -1655,4 +1655,8 @@ $EndComp
 Wire Wire Line
 	9500 10000 9500 9800
 Connection ~ 9500 9800
+Wire Wire Line
+	9200 3450 9200 3550
+Wire Wire Line
+	8600 3550 8700 3550
 $EndSCHEMATC
