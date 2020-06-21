@@ -22,6 +22,7 @@ lib_LTLIBRARIES = libgpsim_modules.la \
 libswrpowermeterf8kgl_modules_la_SOURCES = \
 	swrpowermeterf8kgl_modules.cc \
 	module_attribute.h \
+	detector.cc detector.h
 	ltc2305.cc ltc2305.h \
 	ad5175.cc ad5175.h
 
