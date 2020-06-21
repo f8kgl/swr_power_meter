@@ -5,7 +5,7 @@ Afin d'optimiser la qualité de ses communications, l'OM cherche à rendre maxim
 
 Le « SWR Power Meter F8KGL » (ou Wattmètre/ROSmètre F8KGL) est un dispositif permettant de mesurer la puissance transmise à l’antenne, la puissance réfléchie, et le « SWR ». Il donne ainsi la mesure de la qualité de la chaîne de transmission TRX/Antenne.
 
-Le « SWR Power Meter F8KGL » doit répondre aux besoins suivants : 
+Le « SWR Power Meter F8KGL » doit répondre aux besoins suivants :
 
 	-mesurer une puissance de 1W à 500W, avec une précision de 10 %
 	-mesurer une puissance dans les 3 bandes radioamateurs HF, VHF, UHF
@@ -30,13 +30,13 @@ https://sourceforge.net/projects/gputils/files/gputils/1.5.0/gputils-1.5.0-1.tar
 3. Installation
 
 	$ tar –xvzf gputils-1.5.0-1.tar.gz
-	
+
 	$ cd gputils-1.5.0-1.tar.gz
-	
+
 	$ ./configure
-	
+
 	$make
-	
+
 	$sudo make install
 
 
@@ -47,57 +47,61 @@ https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 4. Installation
 
 	$tar -xvzf gpsim-0.31.0.tar.gz
-	
+
 	$cd gpsim-0.31.0/
-	
+
 	$./configure
 
-	
+
 	$make
-	
+
 	$sudo make install
-	
+
 	$sudo /sbin/ldconfig
 
 
 5.Utilisation
 	1.
 	$ gpsim –s nom_du_fichier.cod
-	
+
 	2. Aller dans File->Open et choisir le fichier .stc
 	3.Par défaut, la fréquence est fixée à 20MHz. Il faut fixer la fréquence de travail à 4MHz
 	**gpsim> frequency 4000000
 	**gpsim> frequency
 	Clock frequency: 4 MHz.
-	
+
 6.Librairie et module
 	1. Création de lien symboliques vers les sources de la librairie, des modules, et le Makefile
-	
+
 	$cd .../gpsim0.31/modules
-	
+
 	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/Makefile.am
-	
+
 	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/ltc2305.cc
-	
+
 	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/ltc2305.h
-	
+
 	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/ad5175.cc
-	
+
 	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/ad5175.h
-	
+
+	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/detector.cc
+
+	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/detector.h
+
+
 	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/swrpowermeterf8kgl.cc
 
 	2. compiler les fichiers ajoutés
-	
+
 	$cd .../gpsim0.31/
-	
+
 	$ autoreconf
-	
+
 	$./configure
-	
+
 	$make
-	
+
 	$sudo make install
-	
+
 	$sudo /sbin/ldconfig
-	

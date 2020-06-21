@@ -43,7 +43,7 @@ License along with this library; if not, see
 #include <gtk/gtk.h>
 #endif
 
-#include "resistor.h"
+#include "detector.h"
 #include "../src/stimuli.h"
 #include "../src/value.h"
 #include "../src/ui.h"
@@ -51,7 +51,7 @@ License along with this library; if not, see
 
 //----------------------------------------
 
-class ResistanceAttribute : public Float {
+class DetectorAttribute : public Float {
 public:
   PullupResistor *pur;
 
@@ -276,4 +276,3 @@ void PullupResistor::build_window()
 
 
 #endif
-
