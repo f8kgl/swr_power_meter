@@ -62,7 +62,8 @@ https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 
 5.Utilisation
 	1.
-	$ gpsim –s nom_du_fichier.cod
+	$ cd .../bin
+	$ gpsim -c swr_power_meter.stc
 
 	2. Aller dans File->Open et choisir le fichier .stc
 	3.Par défaut, la fréquence est fixée à 20MHz. Il faut fixer la fréquence de travail à 4MHz
