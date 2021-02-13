@@ -797,8 +797,6 @@ F 3 " ~" H 9400 1050 50  0001 C CNN
 	1    9400 1050
 	0    1    -1   0   
 $EndComp
-Text Notes 15900 1250 1    60   ~ 0
-Signal transmis
 $Comp
 L librairie_projet:AD5175 U4
 U 1 1 5EBDF7FE
