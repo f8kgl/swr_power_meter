@@ -42,7 +42,7 @@ https://sourceforge.net/projects/gputils/files/gputils/1.5.0/gputils-1.5.0-1.tar
 
 ***GPSIM
 1. Désinstaller la version courante de la distribution
-2.Télécharger la version 0.31.0 en suivant ce lien :
+2. Télécharger la version 0.31.0 en suivant ce lien :
 https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 4. Installation
 
@@ -61,7 +61,9 @@ https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 
 
 5.Utilisation
-	1.
+	$ cd .../prj
+	$ make all
+	
 	$ cd .../bin
 	$ gpsim -c swr_power_meter.stc
 

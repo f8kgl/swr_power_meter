@@ -72,7 +72,7 @@ LIBS_CALIBRATION = $(COMPS:%=../bin/libcalib%.a)
 LIBS = $(COMPS:%=../bin/%.a)
 
 #Rules
-all : project $(OUTPUT_TEST)
+all : project cal_data_test $(OUTPUT_TEST)
 
 rule_test : project $(OUTPUT_TEST)
 
