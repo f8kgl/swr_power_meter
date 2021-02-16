@@ -1250,7 +1250,7 @@ F 3 " ~" H 9700 10800 50  0001 C CNN
 	1    9700 10800
 	0    -1   1    0   
 $EndComp
-Text Notes 10700 10350 3    60   ~ 0
+Text Notes 9600 11160 0    60   ~ 0
 REF\n
 Wire Wire Line
 	9700 9200 9700 9000
@@ -1778,6 +1778,6 @@ Wire Wire Line
 	11650 8350 13600 8350
 Wire Wire Line
 	13600 5600 13600 8350
-Text Notes 8500 1300 3    60   ~ 0
+Text Notes 9250 710  0    60   ~ 0
 FWD\n
 $EndSCHEMATC
