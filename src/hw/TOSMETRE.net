@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source "C:\\Users\\PC RADIO\\Documents\\GitHub\\swr_power_meter\\src\\hw\\TOSMETRE.sch")
-    (date "17/02/2021 22:01:21")
+    (date "17/02/2021 22:26:01")
     (tool "Eeschema (5.1.9)-1")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -347,7 +347,7 @@
       (tstamp 602F02F4))
     (comp (ref U8)
       (value 24AA256)
-      (footprint Package_SO:TSSOP-8_3x3mm_P0.65mm)
+      (footprint Package_SO:TSSOP-8_4.4x3mm_P0.65mm)
       (datasheet http://www.nxp.com/documents/data_sheet/P82B96.pdf)
       (libsource (lib librairie_projet) (part 24AA256) (description "Dual I2C Bus Buffer, DIP8/SO8/TSSOP8"))
       (sheetpath (names /) (tstamps /))
