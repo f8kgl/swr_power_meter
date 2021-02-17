@@ -63,7 +63,7 @@ https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 5.Utilisation
 	$ cd .../prj
 	$ make all
-	
+
 	$ cd .../bin
 	$ gpsim -c swr_power_meter.stc
 
@@ -71,7 +71,7 @@ https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 6.Librairie et module
 	1. Création de lien symboliques vers les sources de la librairie, des modules, et le Makefile
 
-	$cd .../gpsim0.31/modules
+	$cd .../gpsim0.31/modules   #répertoire ou gpsim a été dézippé
 
 	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/Makefile.am
 
