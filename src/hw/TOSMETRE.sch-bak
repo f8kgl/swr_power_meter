@@ -967,17 +967,6 @@ F 3 "" H 9300 8900 50  0001 C CNN
 	1    9300 8900
 	0    1    1    0   
 $EndComp
-$Comp
-L Device:R R6
-U 1 1 5ECBB13D
-P 9850 9000
-F 0 "R6" V 9850 9050 50  0000 R CNN
-F 1 "625" V 9734 9000 50  0000 C CNN
-F 2 "Resistor_SMD:R_1206_3216Metric" V 9780 9000 50  0001 C CNN
-F 3 "~" H 9850 9000 50  0001 C CNN
-	1    9850 9000
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
 	9900 8500 9900 8400
 $Comp
@@ -1239,23 +1228,9 @@ $EndComp
 Text Notes 9600 11160 0    60   ~ 0
 REF\n
 Wire Wire Line
-	9700 9200 9700 9000
-Wire Wire Line
-	9700 9000 9700 8900
-Connection ~ 9700 9000
-Wire Wire Line
 	9700 8900 9650 8900
 Wire Wire Line
 	9800 8400 9800 8900
-Wire Wire Line
-	9800 8900 10050 8900
-Wire Wire Line
-	10050 8900 10050 9000
-Wire Wire Line
-	10000 9000 10050 9000
-Connection ~ 10050 9000
-Wire Wire Line
-	10050 9000 10550 9000
 Connection ~ 8700 8500
 Wire Wire Line
 	8750 9150 8700 9150
@@ -1270,7 +1245,7 @@ Wire Wire Line
 Wire Wire Line
 	9500 9500 10550 9500
 Wire Wire Line
-	10550 9000 10550 9500
+	10550 9150 10550 9500
 Wire Wire Line
 	9500 9500 9500 9800
 Wire Wire Line
@@ -1344,12 +1319,8 @@ Wire Wire Line
 Wire Wire Line
 	11350 8350 11300 8350
 Wire Wire Line
-	10550 9000 10950 9000
-Wire Wire Line
-	10950 9000 10950 8350
-Wire Wire Line
 	10950 8350 11300 8350
-Connection ~ 10550 9000
+Connection ~ 10550 9150
 Connection ~ 11300 8350
 Wire Wire Line
 	11100 2050 9600 2050
@@ -1788,4 +1759,36 @@ Wire Wire Line
 	10000 6000 10400 6000
 Wire Wire Line
 	10400 6000 10400 6100
+Wire Wire Line
+	10950 8350 10950 9150
+Wire Wire Line
+	10550 8900 10550 9150
+Wire Wire Line
+	9800 8900 10550 8900
+Wire Wire Line
+	10300 9150 10550 9150
+Wire Wire Line
+	9700 8900 9700 9150
+Wire Wire Line
+	10000 9150 9700 9150
+Wire Wire Line
+	10550 9150 10950 9150
+Connection ~ 9700 9150
+Wire Wire Line
+	9700 9150 9700 9200
+$Comp
+L Device:R R6
+U 1 1 5ECBB13D
+P 10150 9150
+F 0 "R6" V 10150 9200 50  0000 R CNN
+F 1 "625" V 10034 9150 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 10080 9150 50  0001 C CNN
+F 3 "~" H 10150 9150 50  0001 C CNN
+	1    10150 9150
+	0    -1   -1   0   
+$EndComp
+Text Notes 9920 9090 0    60   ~ 0
+résistance\ntest ADC1\n
+Text Notes 8930 2990 0    60   ~ 0
+résistance\ntest ADC1\n
 $EndSCHEMATC
