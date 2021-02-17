@@ -92,7 +92,7 @@ https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 
 	2. compiler les fichiers ajoutés
 
-	$cd .../gpsim0.31/
+	$cd .../gpsim0.31/ #répertoire ou gpsim a été dézippé
 
 	$ autoreconf
 
