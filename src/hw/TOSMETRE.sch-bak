@@ -1610,7 +1610,7 @@ Wire Wire Line
 	7050 5800 7050 8500
 Connection ~ 5950 8500
 Wire Wire Line
-	3700 8500 5950 8500
+	3700 8500 4700 8500
 Wire Wire Line
 	5050 8050 5950 8050
 Connection ~ 5950 8050
@@ -1791,4 +1791,111 @@ Text Notes 9920 9090 0    60   ~ 0
 résistance\ntest ADC1\n
 Text Notes 8930 2990 0    60   ~ 0
 résistance\ntest ADC1\n
+$Comp
+L Regulator_Linear:TPS7A0522PDBV U?
+U 1 1 6031691C
+P 3100 9900
+F 0 "U?" H 3100 10267 50  0000 C CNN
+F 1 "TPS7A0522PDBV" H 3100 10176 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23-5" H 3100 10250 50  0001 C CNN
+F 3 "https://www.ti.com/lit/ds/symlink/tps7a05.pdf" H 3100 10400 50  0001 C CNN
+	1    3100 9900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 60318E9E
+P 3100 10400
+F 0 "#PWR?" H 3100 10150 50  0001 C CNN
+F 1 "GNDREF" H 3105 10227 50  0000 C CNN
+F 2 "" H 3100 10400 50  0001 C CNN
+F 3 "" H 3100 10400 50  0001 C CNN
+	1    3100 10400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3100 10200 3100 10300
+Wire Wire Line
+	2545 9800 2545 10000
+$Comp
+L Device:C C?
+U 1 1 60384A34
+P 2545 10150
+F 0 "C?" H 2570 10250 50  0000 L CNN
+F 1 "1µF" H 2570 10050 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric" H 2583 10000 50  0001 C CNN
+F 3 "" H 2545 10150 50  0001 C CNN
+	1    2545 10150
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2545 10300 3100 10300
+Connection ~ 3100 10300
+Wire Wire Line
+	3100 10300 3100 10400
+$Comp
+L Device:C C?
+U 1 1 604359F6
+P 3930 9950
+F 0 "C?" H 3955 10050 50  0000 L CNN
+F 1 "1µF" H 3955 9850 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric" H 3968 9800 50  0001 C CNN
+F 3 "" H 3930 9950 50  0001 C CNN
+	1    3930 9950
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4700 8500 4700 9800
+Connection ~ 4700 8500
+Wire Wire Line
+	4700 8500 5950 8500
+$Comp
+L power:GNDREF #PWR?
+U 1 1 604C4E25
+P 2252 10001
+F 0 "#PWR?" H 2252 9751 50  0001 C CNN
+F 1 "GNDREF" H 2252 9851 50  0000 C CNN
+F 2 "" H 2252 10001 50  0001 C CNN
+F 3 "" H 2252 10001 50  0001 C CNN
+	1    2252 10001
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2545 9800 2800 9800
+Wire Wire Line
+	2545 9800 2040 9800
+Connection ~ 2545 9800
+$Comp
+L Connector:Conn_01x02_Male J?
+U 1 1 606A489C
+P 1840 9800
+F 0 "J?" H 1757 9758 50  0000 C CNN
+F 1 "Alim" H 1913 9649 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 1840 9800 50  0001 C CNN
+F 3 "~" H 1840 9800 50  0001 C CNN
+	1    1840 9800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2252 9900 2040 9900
+Wire Wire Line
+	2252 9900 2252 10001
+Connection ~ 3930 9800
+Wire Wire Line
+	3930 9800 4700 9800
+Wire Wire Line
+	3400 9800 3930 9800
+$Comp
+L power:GNDREF #PWR?
+U 1 1 608AE8E8
+P 3930 10350
+F 0 "#PWR?" H 3930 10100 50  0001 C CNN
+F 1 "GNDREF" H 3935 10177 50  0000 C CNN
+F 2 "" H 3930 10350 50  0001 C CNN
+F 3 "" H 3930 10350 50  0001 C CNN
+	1    3930 10350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3930 10100 3930 10350
 $EndSCHEMATC

@@ -1788,9 +1788,9 @@ F 3 "~" H 10150 9150 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 Text Notes 9920 9090 0    60   ~ 0
-résistance\ntest ADC1\n
+résistance\ntest AOP1\n
 Text Notes 8930 2990 0    60   ~ 0
-résistance\ntest ADC1\n
+résistance\ntest AOP1\n
 $Comp
 L Regulator_Linear:TPS7A0522PDBV U?
 U 1 1 6031691C
