@@ -80,10 +80,10 @@ ENDIF
 
 
 	code
-	goto Init ;
+	goto Boot ;
 
-Init
-; Initialisation PIC
+Boot
+;; Initialisation PIC
 	movlw   B'01100010'			;4 MHz
 	movwf   OSCCON
 	clrf    INTCON              ;disable all interrupts part one
@@ -103,6 +103,7 @@ Init
 	movwf ADCON1
 	clrf ADCON2
 
+; Initialisation I/O
 	movlw b'00010011' ; RA0/1/4 input
 	movwf TRISA ;
 	clrf PORTA
@@ -112,12 +113,14 @@ Init
 
 ; Initialize the LCD Display
 	call f_lcd_init
-; Afficher le message de boot
+
+;; Afficher le message de boot
 	call f_lcd_affboot
 ;; Tempo de 3s
 	call f_tempo_boot
 
-
+;; LOG au démarrage
+;Trace la version en cours d'éxecution
 IFDEF TEST
 	movlw 'T'
 	movwf v_log_data
@@ -126,7 +129,6 @@ IFDEF TEST
 	movlw 'S'
 	movwf v_log_data+2
 ENDIF
-
 	movlw 0x00
 	call f_eep_int_readbyte
 	movwf v_log_data+3
@@ -139,13 +141,11 @@ ENDIF
 	movlw 0x03
 	call f_eep_int_readbyte
 	movwf v_log_data+6
-
 	movlw TAG_FW_VERSION
 	movwf v_log_tag
 	movlw D'08'
 	movwf v_log_data_size
 	call f_log_write
-
 
 ;Trace le contenu de RCON au démarrage
 	movff RCON,v_log_data
@@ -156,8 +156,8 @@ ENDIF
 	movwf v_log_data_size
 	call f_log_write
 
-IFDEF TEST
 ;trace timer 0 pour calibration
+IFDEF TEST
 	m_timer0_start
 	call Del_11us
 	m_timer0_stop
@@ -177,11 +177,10 @@ IFDEF TEST
 	movlw D'02'
 	movwf v_log_data_size
 	call f_log_write
-
 ENDIF
 
 
-	;Initialisation des composants logiciels
+;;Initialisation des composants logiciels
 	call f_i2c_init
  	call f_adc_init		;
 	call f_calc_init
