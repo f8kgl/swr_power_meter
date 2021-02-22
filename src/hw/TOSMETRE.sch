@@ -13,17 +13,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L power:GNDREF #PWR010
-U 1 1 5B1453B6
-P 0 0
-F 0 "#PWR010" H 50  50  50  0001 C CNN
-F 1 "GNDREF" V 13200 3050 50  0000 R CNN
-F 2 "" H 13200 3200 50  0001 C CNN
-F 3 "" H 13200 3200 50  0001 C CNN
-	1    0    0   
-	0    1    1    0   
-$EndComp
 Connection ~ 3100 6400
 Wire Wire Line
 	3500 6400 3700 6400
