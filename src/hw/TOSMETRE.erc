@@ -1,11 +1,43 @@
-Rapport d'erreur (jeu. 23 avril 2020 21:40:33 CEST, Encodage UTF8 )
+Rapport d'erreur (22/02/2021 15:44:52, Encodage UTF8 )
 
 ***** Feuille /
 ErrType(3): Pin connectée à d'autres pins, mais aucune pin pour la piloter
-    @(72,39 mm, 29,21 mm): Pin 1 (Power input) du composant U2 non pilotée (Net 3).
+    @(248,92 mm, 193,04 mm): Pin 8 (Power input) du composant U7 non pilotée (Net 1).
 ErrType(3): Pin connectée à d'autres pins, mais aucune pin pour la piloter
-    @(196,85 mm, 116,84 mm): Pin 1 (Entrée) du composant U1 non pilotée (Net 5).
+    @(260,35 mm, 59,69 mm): Pin 1 (Power input) du composant #PWR0125 non pilotée (Net 3).
 ErrType(3): Pin connectée à d'autres pins, mais aucune pin pour la piloter
-    @(165,10 mm, 82,55 mm): Pin 1 (Power input) du composant #PWR0106 non pilotée (Net 7).
+    @(227,33 mm, 139,70 mm): Pin 7 (Power input) du composant U5 non pilotée (Net 6).
+ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
+    @(53,34 mm, 257,81 mm): La pin 3 (Passive) du composant J4 est non connectée.
+ErrType(3): Pin connectée à d'autres pins, mais aucune pin pour la piloter
+    @(97,54 mm, 260,35 mm): Pin 1 (Power input) du composant U9 non pilotée (Net 12).
+ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
+    @(97,54 mm, 262,89 mm): La pin 3 (Entrée) du composant U9 est non connectée.
+ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
+    @(84,33 mm, 251,46 mm): La pin 2 (Passive) du composant SW3 est non connectée.
+ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
+    @(137,16 mm, 165,10 mm): La pin 4 (Bidirectionnel) du composant U1 est non connectée.
+ErrType(12): Net différent assigné à une pin partagée d'une autre unité du même composant
+    @(238,76 mm, 110,49 mm): Pin 9 de U4 est  connectée à la fois à GNDREF et Net-(R8-Pad1)
+ErrType(12): Net différent assigné à une pin partagée d'une autre unité du même composant
+    @(246,38 mm, 193,04 mm): Pin 9 de U7 est  connectée à la fois à GNDREF et Net-(R8-Pad1)
+ErrType(3): Pin connectée à d'autres pins, mais aucune pin pour la piloter
+    @(236,22 mm, 110,49 mm): Pin 8 (Power input) du composant U4 non pilotée (Net 27).
+ErrType(3): Pin connectée à d'autres pins, mais aucune pin pour la piloter
+    @(74,93 mm, 215,90 mm): Pin 1 (Power input) du composant U2 non pilotée (Net 29).
+ErrType(3): Pin connectée à d'autres pins, mais aucune pin pour la piloter
+    @(243,84 mm, 52,07 mm): Pin 1 (Power input) du composant U3 non pilotée (Net 39).
+ErrType(5): Problème de conflit entre pins. Sévérité: erreur
+    @(279,40 mm, 191,77 mm): Pin 8 (Sortie) du composant U8  connectée à 
+    @(243,84 mm, 67,31 mm): pin 5 (Power output) du composant U3 (net 40).
+ErrType(5): Problème de conflit entre pins. Sévérité: erreur
+    @(243,84 mm, 67,31 mm): Pin 5 (Power output) du composant U3  connectée à 
+    @(241,30 mm, 233,68 mm): pin 5 (Power output) du composant U6 (net 40).
+ErrType(5): Problème de conflit entre pins. Sévérité: erreur
+    @(241,30 mm, 233,68 mm): Pin 5 (Power output) du composant U6  connectée à 
+    @(112,78 mm, 260,35 mm): pin 5 (Power output) du composant U9 (net 40).
+ErrType(5): Problème de conflit entre pins. Sévérité: erreur
+    @(112,78 mm, 260,35 mm): Pin 5 (Power output) du composant U9  connectée à 
+    @(90,17 mm, 215,90 mm): pin 3 (Power output) du composant U2 (net 40).
 
-** messages ERC: 3  Erreurs 0  Avertissements 3
+** messages ERC: 17  Erreurs 6  Avertissements 11
