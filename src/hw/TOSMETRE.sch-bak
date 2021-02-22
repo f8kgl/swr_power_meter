@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:TOSMETRE-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
@@ -1811,29 +1810,16 @@ F 3 "" H 4970 10400 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L power:GNDREF #PWR?
-U 1 1 604C4E25
-P 4738 9111
-F 0 "#PWR?" H 4738 8861 50  0001 C CNN
-F 1 "GNDREF" H 4738 8961 50  0000 C CNN
-F 2 "" H 4738 9111 50  0001 C CNN
-F 3 "" H 4738 9111 50  0001 C CNN
-	1    4738 9111
-	-1   0    0    -1  
-$EndComp
-$Comp
 L Connector:Conn_01x02_Male J?
 U 1 1 606A489C
-P 3320 10150
-F 0 "J?" H 3237 10108 50  0000 C CNN
-F 1 "Alim Pile" H 3393 9999 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 3320 10150 50  0001 C CNN
-F 3 "~" H 3320 10150 50  0001 C CNN
-	1    3320 10150
-	-1   0    0    1   
+P 2720 9430
+F 0 "J?" H 2637 9388 50  0000 C CNN
+F 1 "Alim Pile" H 2793 9279 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 2720 9430 50  0001 C CNN
+F 3 "~" H 2720 9430 50  0001 C CNN
+	1    2720 9430
+	0    1    1    0   
 $EndComp
-Wire Wire Line
-	4738 9010 4738 9111
 Connection ~ 4970 10250
 Wire Wire Line
 	4970 10250 5740 10250
@@ -1859,8 +1845,6 @@ Wire Wire Line
 Connection ~ 5740 8500
 Wire Wire Line
 	5740 8500 5950 8500
-Wire Wire Line
-	4678 9060 4890 9060
 $Comp
 L power:GNDREF #PWR?
 U 1 1 604607FE
@@ -1876,14 +1860,33 @@ Wire Wire Line
 	2370 9960 2370 10050
 Wire Wire Line
 	2370 10050 2100 10050
-Connection ~ 2370 10050
-Wire Wire Line
-	2100 10150 3120 10150
 Wire Wire Line
 	2100 10250 3585 10250
 Connection ~ 3585 10250
 Wire Wire Line
 	3585 10250 3840 10250
+$Comp
+L Switch:SW_DIP_x01 SW?
+U 1 1 60336004
+P 3020 9900
+F 0 "SW?" H 3020 10167 50  0000 C CNN
+F 1 "SW_DIP_x01" H 3020 10076 50  0000 C CNN
+F 2 "" H 3020 9900 50  0001 C CNN
+F 3 "~" H 3020 9900 50  0001 C CNN
+	1    3020 9900
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	2370 10050 3120 10050
+	2370 10050 2620 10050
+Wire Wire Line
+	2620 10050 2620 9630
+Connection ~ 2370 10050
+Wire Wire Line
+	2720 9900 2720 9630
+Wire Wire Line
+	2110 10150 3510 10150
+Wire Wire Line
+	3510 10150 3510 9900
+Wire Wire Line
+	3510 9900 3320 9900
 $EndSCHEMATC
