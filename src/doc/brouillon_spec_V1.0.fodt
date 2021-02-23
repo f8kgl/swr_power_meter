@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <office:document xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:config="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:rpt="http://openoffice.org/2005/report" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0" xmlns:drawooo="http://openoffice.org/2010/draw" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:formx="urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:css3t="http://www.w3.org/TR/css3-text/" xmlns:officeooo="http://openoffice.org/2009/office" office:version="1.3" office:mimetype="application/vnd.oasis.opendocument.text">
- <office:meta><meta:creation-date>2021-02-23T14:55:24.487000000</meta:creation-date><meta:generator>LibreOffice/7.1.0.3$Windows_X86_64 LibreOffice_project/f6099ecf3d29644b5008cc8f48f42f4a40986e4c</meta:generator><dc:date>2021-02-23T15:12:04.821000000</dc:date><meta:editing-duration>PT16M40S</meta:editing-duration><meta:editing-cycles>2</meta:editing-cycles><meta:document-statistic meta:table-count="3" meta:image-count="0" meta:object-count="0" meta:page-count="4" meta:paragraph-count="166" meta:word-count="797" meta:character-count="4569" meta:non-whitespace-character-count="3929"/></office:meta>
+ <office:meta><meta:creation-date>2021-02-23T14:55:24.487000000</meta:creation-date><meta:generator>LibreOffice/7.1.0.3$Windows_X86_64 LibreOffice_project/f6099ecf3d29644b5008cc8f48f42f4a40986e4c</meta:generator><dc:date>2021-02-23T16:18:20.401000000</dc:date><meta:editing-duration>PT27M13S</meta:editing-duration><meta:editing-cycles>3</meta:editing-cycles><meta:document-statistic meta:table-count="3" meta:image-count="0" meta:object-count="0" meta:page-count="6" meta:paragraph-count="169" meta:word-count="807" meta:character-count="4632" meta:non-whitespace-character-count="3985"/></office:meta>
  <office:settings>
   <config:config-item-set config:name="ooo:view-settings">
-   <config:config-item config:name="ViewAreaTop" config:type="long">86887</config:config-item>
+   <config:config-item config:name="ViewAreaTop" config:type="long">161819</config:config-item>
    <config:config-item config:name="ViewAreaLeft" config:type="long">0</config:config-item>
    <config:config-item config:name="ViewAreaWidth" config:type="long">38266</config:config-item>
    <config:config-item config:name="ViewAreaHeight" config:type="long">19828</config:config-item>
@@ -13,12 +13,12 @@
    <config:config-item-map-indexed config:name="Views">
     <config:config-item-map-entry>
      <config:config-item config:name="ViewId" config:type="string">view2</config:config-item>
-     <config:config-item config:name="ViewLeft" config:type="long">12282</config:config-item>
-     <config:config-item config:name="ViewTop" config:type="long">93952</config:config-item>
+     <config:config-item config:name="ViewLeft" config:type="long">8703</config:config-item>
+     <config:config-item config:name="ViewTop" config:type="long">178119</config:config-item>
      <config:config-item config:name="VisibleLeft" config:type="long">0</config:config-item>
-     <config:config-item config:name="VisibleTop" config:type="long">86887</config:config-item>
+     <config:config-item config:name="VisibleTop" config:type="long">161819</config:config-item>
      <config:config-item config:name="VisibleRight" config:type="long">38264</config:config-item>
-     <config:config-item config:name="VisibleBottom" config:type="long">106714</config:config-item>
+     <config:config-item config:name="VisibleBottom" config:type="long">181645</config:config-item>
      <config:config-item config:name="ZoomType" config:type="short">0</config:config-item>
      <config:config-item config:name="ViewLayoutColumns" config:type="short">1</config:config-item>
      <config:config-item config:name="ViewLayoutBookMode" config:type="boolean">false</config:config-item>
@@ -30,6 +30,15 @@
   </config:config-item-set>
   <config:config-item-set config:name="ooo:configuration-settings">
    <config:config-item config:name="ProtectForm" config:type="boolean">false</config:config-item>
+   <config:config-item-map-indexed config:name="ForbiddenCharacters">
+    <config:config-item-map-entry>
+     <config:config-item config:name="Language" config:type="string">fr</config:config-item>
+     <config:config-item config:name="Country" config:type="string">FR</config:config-item>
+     <config:config-item config:name="Variant" config:type="string"/>
+     <config:config-item config:name="BeginLine" config:type="string"/>
+     <config:config-item config:name="EndLine" config:type="string"/>
+    </config:config-item-map-entry>
+   </config:config-item-map-indexed>
    <config:config-item config:name="PrinterName" config:type="string"/>
    <config:config-item config:name="EmbeddedDatabaseName" config:type="string"/>
    <config:config-item config:name="CurrentDatabaseDataSource" config:type="string"/>
@@ -85,7 +94,7 @@
    <config:config-item config:name="UnxForceZeroExtLeading" config:type="boolean">false</config:config-item>
    <config:config-item config:name="UseOldPrinterMetrics" config:type="boolean">false</config:config-item>
    <config:config-item config:name="TabAtLeftIndentForParagraphsInList" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="Rsid" config:type="int">1828696</config:config-item>
+   <config:config-item config:name="Rsid" config:type="int">1970564</config:config-item>
    <config:config-item config:name="MsWordCompTrailingBlanks" config:type="boolean">false</config:config-item>
    <config:config-item config:name="MathBaselineAlignment" config:type="boolean">true</config:config-item>
    <config:config-item config:name="InvertBorderSpacing" config:type="boolean">false</config:config-item>
@@ -132,7 +141,9 @@
  </office:settings>
  <office:scripts>
   <office:script script:language="ooo:Basic">
-   <ooo:libraries xmlns:ooo="http://openoffice.org/2004/office" xmlns:xlink="http://www.w3.org/1999/xlink"/>
+   <ooo:libraries xmlns:ooo="http://openoffice.org/2004/office" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <ooo:library-embedded ooo:name="Standard"/>
+   </ooo:libraries>
   </office:script>
  </office:scripts>
  <office:font-face-decls>
@@ -143,15 +154,17 @@
   <style:font-face style:name="Liberation Serif" svg:font-family="&apos;Liberation Serif&apos;" style:font-family-generic="roman" style:font-pitch="variable"/>
   <style:font-face style:name="Liberation Sans" svg:font-family="&apos;Liberation Sans&apos;" style:font-family-generic="swiss" style:font-pitch="variable"/>
   <style:font-face style:name="Droid Sans Fallback" svg:font-family="&apos;Droid Sans Fallback&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
+  <style:font-face style:name="FreeSans" svg:font-family="FreeSans" style:font-family-generic="system" style:font-pitch="variable"/>
   <style:font-face style:name="Lucida Sans" svg:font-family="&apos;Lucida Sans&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
   <style:font-face style:name="Mangal" svg:font-family="Mangal" style:font-family-generic="system" style:font-pitch="variable"/>
   <style:font-face style:name="Microsoft YaHei" svg:font-family="&apos;Microsoft YaHei&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
   <style:font-face style:name="NSimSun" svg:font-family="NSimSun" style:font-family-generic="system" style:font-pitch="variable"/>
  </office:font-face-decls>
  <office:styles>
+  <draw:marker draw:name="Arrow" svg:viewBox="0 0 20 30" svg:d="M10 0l-10 30h20z"/>
   <style:default-style style:family="graphic">
    <style:graphic-properties svg:stroke-color="#3465a4" draw:fill-color="#729fcf" fo:wrap-option="no-wrap" draw:shadow-offset-x="0.3cm" draw:shadow-offset-y="0.3cm" draw:start-line-spacing-horizontal="0.283cm" draw:start-line-spacing-vertical="0.283cm" draw:end-line-spacing-horizontal="0.283cm" draw:end-line-spacing-vertical="0.283cm" style:flow-with-text="false"/>
-   <style:paragraph-properties style:text-autospace="ideograph-alpha" style:line-break="strict" style:writing-mode="lr-tb" style:font-independent-line-spacing="false">
+   <style:paragraph-properties style:text-autospace="ideograph-alpha" style:line-break="strict" style:font-independent-line-spacing="false">
     <style:tab-stops/>
    </style:paragraph-properties>
    <style:text-properties style:use-window-font-color="true" loext:opacity="0%" style:font-name="Liberation Serif" fo:font-size="12pt" fo:language="fr" fo:country="FR" style:letter-kerning="true" style:font-name-asian="NSimSun" style:font-size-asian="10.5pt" style:language-asian="zh" style:country-asian="CN" style:font-name-complex="Lucida Sans" style:font-size-complex="12pt" style:language-complex="hi" style:country-complex="IN"/>
@@ -372,110 +385,180 @@
    <style:paragraph-properties fo:orphans="2" fo:widows="2" fo:hyphenation-ladder-count="no-limit"/>
    <style:text-properties fo:font-style="normal" officeooo:rsid="02ab30e5" officeooo:paragraph-rsid="001be758" style:font-style-asian="normal" style:font-style-complex="normal" fo:hyphenate="true" fo:hyphenation-remain-char-count="2" fo:hyphenation-push-char-count="2" loext:hyphenation-no-caps="false"/>
   </style:style>
-  <style:style style:name="P7" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L1">
+  <style:style style:name="P7" style:family="paragraph" style:parent-style-name="Standard">
    <style:text-properties officeooo:rsid="01e56ce7" officeooo:paragraph-rsid="001be758"/>
   </style:style>
   <style:style style:name="P8" style:family="paragraph" style:parent-style-name="Standard">
-   <style:text-properties officeooo:rsid="01e56ce7" officeooo:paragraph-rsid="001be758"/>
-  </style:style>
-  <style:style style:name="P9" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L3">
    <style:text-properties officeooo:rsid="01f5a462" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P10" style:family="paragraph" style:parent-style-name="Standard">
-   <style:text-properties officeooo:rsid="01f5a462" officeooo:paragraph-rsid="001be758"/>
-  </style:style>
-  <style:style style:name="P11" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L3">
+  <style:style style:name="P9" style:family="paragraph" style:parent-style-name="Standard">
    <style:text-properties officeooo:rsid="01f738d8" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P12" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L3">
+  <style:style style:name="P10" style:family="paragraph" style:parent-style-name="Standard">
    <style:text-properties officeooo:rsid="02124fe9" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P13" style:family="paragraph" style:parent-style-name="Standard">
+  <style:style style:name="P11" style:family="paragraph" style:parent-style-name="Standard">
    <style:text-properties officeooo:rsid="02ab30e5" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P14" style:family="paragraph" style:parent-style-name="Standard">
+  <style:style style:name="P12" style:family="paragraph" style:parent-style-name="Standard">
    <style:text-properties officeooo:rsid="02dcd219" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P15" style:family="paragraph" style:parent-style-name="Standard">
+  <style:style style:name="P13" style:family="paragraph" style:parent-style-name="Standard">
    <style:text-properties style:text-position="super 58%" officeooo:rsid="021740e3" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P16" style:family="paragraph" style:parent-style-name="Standard">
+  <style:style style:name="P14" style:family="paragraph" style:parent-style-name="Standard">
    <style:text-properties officeooo:rsid="02dc086c" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P17" style:family="paragraph" style:parent-style-name="Standard">
+  <style:style style:name="P15" style:family="paragraph" style:parent-style-name="Standard">
    <style:text-properties officeooo:rsid="021e316a" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P18" style:family="paragraph" style:parent-style-name="Standard">
+  <style:style style:name="P16" style:family="paragraph" style:parent-style-name="Standard">
    <style:text-properties officeooo:rsid="0208e37f" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P19" style:family="paragraph" style:parent-style-name="Standard">
+  <style:style style:name="P17" style:family="paragraph" style:parent-style-name="Standard">
    <style:text-properties officeooo:rsid="021b554a" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P20" style:family="paragraph" style:parent-style-name="Standard">
+  <style:style style:name="P18" style:family="paragraph" style:parent-style-name="Standard">
    <style:text-properties officeooo:rsid="02aee43e" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P21" style:family="paragraph" style:parent-style-name="Standard">
+  <style:style style:name="P19" style:family="paragraph" style:parent-style-name="Standard">
    <style:text-properties officeooo:rsid="0079060c" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P22" style:family="paragraph" style:parent-style-name="Standard">
+  <style:style style:name="P20" style:family="paragraph" style:parent-style-name="Standard">
    <style:paragraph-properties fo:text-align="justify" style:justify-single-word="false"/>
    <style:text-properties officeooo:rsid="007e590d" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P23" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L4">
+  <style:style style:name="P21" style:family="paragraph" style:parent-style-name="Standard">
    <style:paragraph-properties fo:text-align="justify" style:justify-single-word="false"/>
    <style:text-properties officeooo:rsid="02de3571" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P24" style:family="paragraph" style:parent-style-name="Standard">
-   <style:paragraph-properties fo:text-align="justify" style:justify-single-word="false"/>
-   <style:text-properties officeooo:rsid="02de3571" officeooo:paragraph-rsid="001be758"/>
-  </style:style>
-  <style:style style:name="P25" style:family="paragraph" style:parent-style-name="Standard">
+  <style:style style:name="P22" style:family="paragraph" style:parent-style-name="Standard">
    <style:text-properties officeooo:rsid="02e14a0c" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P26" style:family="paragraph" style:parent-style-name="Standard">
+  <style:style style:name="P23" style:family="paragraph" style:parent-style-name="Standard">
    <style:text-properties officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P27" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+  <style:style style:name="P24" style:family="paragraph" style:parent-style-name="Table_20_Contents">
    <style:text-properties officeooo:rsid="02da75d6" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P28" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+  <style:style style:name="P25" style:family="paragraph" style:parent-style-name="Table_20_Contents">
    <style:text-properties officeooo:rsid="02dcd219" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P29" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+  <style:style style:name="P26" style:family="paragraph" style:parent-style-name="Table_20_Contents">
    <style:text-properties officeooo:rsid="02dc086c" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P30" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+  <style:style style:name="P27" style:family="paragraph" style:parent-style-name="Table_20_Contents">
    <style:text-properties officeooo:rsid="01e461d5" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P31" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+  <style:style style:name="P28" style:family="paragraph" style:parent-style-name="Table_20_Contents">
    <style:text-properties officeooo:rsid="01e56ce7" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P32" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+  <style:style style:name="P29" style:family="paragraph" style:parent-style-name="Table_20_Contents">
    <style:text-properties style:font-name="Liberation Serif1" officeooo:rsid="01e56ce7" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P33" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+  <style:style style:name="P30" style:family="paragraph" style:parent-style-name="Table_20_Contents">
    <style:text-properties style:font-name="Liberation Serif1" officeooo:rsid="01e56ce7" officeooo:paragraph-rsid="001be758" style:font-name-asian="Liberation Serif1" style:font-name-complex="Liberation Serif1"/>
   </style:style>
-  <style:style style:name="P34" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+  <style:style style:name="P31" style:family="paragraph" style:parent-style-name="Table_20_Contents">
    <style:text-properties officeooo:rsid="01e73222" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P35" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+  <style:style style:name="P32" style:family="paragraph" style:parent-style-name="Table_20_Contents">
    <style:text-properties officeooo:rsid="021514c4" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P36" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+  <style:style style:name="P33" style:family="paragraph" style:parent-style-name="Table_20_Contents">
    <style:text-properties officeooo:rsid="01e9aa3f" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P37" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+  <style:style style:name="P34" style:family="paragraph" style:parent-style-name="Table_20_Contents">
    <style:text-properties officeooo:rsid="021487b7" officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P38" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+  <style:style style:name="P35" style:family="paragraph" style:parent-style-name="Table_20_Contents">
    <style:text-properties officeooo:paragraph-rsid="001be758"/>
   </style:style>
-  <style:style style:name="P39" style:family="paragraph">
+  <style:style style:name="P36" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" style:contextual-spacing="false" fo:line-height="100%" fo:text-align="start" style:justify-single-word="false" fo:hyphenation-ladder-count="no-limit" fo:text-indent="0cm" style:auto-text-indent="false" style:text-autospace="ideograph-alpha" style:punctuation-wrap="hanging" style:line-break="strict" style:writing-mode="lr-tb">
+    <style:tab-stops/>
+   </style:paragraph-properties>
+   <style:text-properties fo:hyphenate="false" fo:hyphenation-remain-char-count="2" fo:hyphenation-push-char-count="2" loext:hyphenation-no-caps="false"/>
+  </style:style>
+  <style:style style:name="P37" style:family="paragraph" style:parent-style-name="Heading_20_2">
+   <style:paragraph-properties fo:orphans="2" fo:widows="2" fo:hyphenation-ladder-count="no-limit"/>
+   <style:text-properties fo:font-style="normal" officeooo:rsid="02ab30e5" officeooo:paragraph-rsid="001c2fe7" style:font-style-asian="normal" style:font-style-complex="normal" fo:hyphenate="true" fo:hyphenation-remain-char-count="2" fo:hyphenation-push-char-count="2" loext:hyphenation-no-caps="false"/>
+  </style:style>
+  <style:style style:name="P38" style:family="paragraph" style:parent-style-name="Heading_20_2">
+   <style:text-properties officeooo:paragraph-rsid="001c2fe7"/>
+  </style:style>
+  <style:style style:name="P39" style:family="paragraph" style:parent-style-name="Heading_20_2">
+   <style:paragraph-properties fo:break-before="page"/>
+   <style:text-properties officeooo:paragraph-rsid="001c2fe7"/>
+  </style:style>
+  <style:style style:name="P40" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L1">
+   <style:text-properties officeooo:rsid="01e56ce7" officeooo:paragraph-rsid="001be758"/>
+  </style:style>
+  <style:style style:name="P41" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L2">
+   <style:text-properties officeooo:rsid="01f5a462" officeooo:paragraph-rsid="001be758"/>
+  </style:style>
+  <style:style style:name="P42" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L2">
+   <style:text-properties officeooo:rsid="01f738d8" officeooo:paragraph-rsid="001be758"/>
+  </style:style>
+  <style:style style:name="P43" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L2">
+   <style:text-properties officeooo:rsid="02124fe9" officeooo:paragraph-rsid="001be758"/>
+  </style:style>
+  <style:style style:name="P44" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L3">
+   <style:paragraph-properties fo:text-align="justify" style:justify-single-word="false"/>
+   <style:text-properties officeooo:rsid="02de3571" officeooo:paragraph-rsid="001be758"/>
+  </style:style>
+  <style:style style:name="P45" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:orphans="2" fo:widows="2" fo:hyphenation-ladder-count="no-limit"/>
+   <style:text-properties fo:font-style="normal" officeooo:rsid="02ab30e5" officeooo:paragraph-rsid="001be758" style:font-style-asian="normal" style:font-style-complex="normal" fo:hyphenate="true" fo:hyphenation-remain-char-count="2" fo:hyphenation-push-char-count="2" loext:hyphenation-no-caps="false"/>
+  </style:style>
+  <style:style style:name="P46" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="justify" style:justify-single-word="false"/>
+   <style:text-properties officeooo:rsid="03375356" officeooo:paragraph-rsid="001c2fe7"/>
+  </style:style>
+  <style:style style:name="P47" style:family="paragraph" style:parent-style-name="Standard">
+   <style:text-properties fo:color="#c9211e" loext:opacity="100%" officeooo:rsid="02f7908c" officeooo:paragraph-rsid="001c2fe7"/>
+  </style:style>
+  <style:style style:name="P48" style:family="paragraph" style:parent-style-name="Standard">
+   <style:text-properties officeooo:rsid="0184e486" officeooo:paragraph-rsid="001c2fe7"/>
+  </style:style>
+  <style:style style:name="P49" style:family="paragraph" style:parent-style-name="Standard">
+   <style:text-properties officeooo:rsid="02b2a550" officeooo:paragraph-rsid="001c2fe7"/>
+  </style:style>
+  <style:style style:name="P50" style:family="paragraph" style:parent-style-name="Standard">
+   <style:text-properties officeooo:paragraph-rsid="001c2fe7"/>
+  </style:style>
+  <style:style style:name="P51" style:family="paragraph">
    <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" fo:line-height="100%" fo:text-align="start" fo:text-indent="0cm" style:text-autospace="ideograph-alpha" style:punctuation-wrap="hanging" style:line-break="strict" style:writing-mode="lr-tb">
     <style:tab-stops/>
    </style:paragraph-properties>
    <style:text-properties fo:hyphenate="false"/>
+  </style:style>
+  <style:style style:name="P52" style:family="paragraph">
+   <loext:graphic-properties draw:fill="none" draw:fill-color="#ffffff"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+   <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="P53" style:family="paragraph">
+   <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" fo:line-height="100%" fo:text-align="center" fo:text-indent="0cm" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="P54" style:family="paragraph">
+   <loext:graphic-properties draw:fill="none" draw:fill-color="#729fcf"/>
+   <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" fo:line-height="100%" fo:text-align="center" fo:text-indent="0cm" style:writing-mode="lr-tb"/>
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" style:use-window-font-color="true" loext:opacity="0%" style:text-outline="false" style:text-line-through-style="none" style:text-line-through-type="none" fo:font-family="&apos;Liberation Sans&apos;" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="12pt" fo:font-style="normal" fo:text-shadow="none" style:text-underline-style="none" fo:font-weight="normal" style:letter-kerning="true" style:font-name-asian="Microsoft YaHei" style:font-size-asian="12pt" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-name-complex="Mangal" style:font-size-complex="12pt" style:font-style-complex="normal" style:font-weight-complex="normal" style:text-emphasize="none" style:font-relief="none" style:text-overline-style="none" style:text-overline-color="font-color"/>
+  </style:style>
+  <style:style style:name="P55" style:family="paragraph">
+   <loext:graphic-properties draw:fill="none" draw:fill-color="#729fcf"/>
+   <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" fo:line-height="100%" fo:text-align="center" fo:text-indent="0cm" style:writing-mode="lr-tb"/>
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" style:use-window-font-color="true" loext:opacity="0%" style:text-outline="false" style:text-line-through-style="none" style:text-line-through-type="none" fo:font-family="&apos;Liberation Sans&apos;" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="12pt" fo:font-style="normal" fo:text-shadow="none" style:text-underline-style="none" fo:font-weight="normal" style:letter-kerning="true" style:font-name-asian="Microsoft YaHei" style:font-size-asian="18pt" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-name-complex="Mangal" style:font-size-complex="18pt" style:font-style-complex="normal" style:font-weight-complex="normal" style:text-emphasize="none" style:font-relief="none" style:text-overline-style="none" style:text-overline-color="font-color"/>
+  </style:style>
+  <style:style style:name="P56" style:family="paragraph">
+   <loext:graphic-properties draw:fill="solid" draw:fill-color="#729fcf"/>
+   <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" fo:line-height="100%" fo:text-align="center" fo:text-indent="0cm"/>
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" style:use-window-font-color="true" loext:opacity="0%" style:text-outline="false" style:text-line-through-style="none" style:text-line-through-type="none" fo:font-family="&apos;Liberation Sans&apos;" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="18pt" fo:font-style="normal" fo:text-shadow="none" style:text-underline-style="none" fo:font-weight="normal" style:letter-kerning="true" style:font-name-asian="Microsoft YaHei" style:font-size-asian="18pt" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-name-complex="Mangal" style:font-size-complex="18pt" style:font-style-complex="normal" style:font-weight-complex="normal" style:text-emphasize="none" style:font-relief="none" style:text-overline-style="none" style:text-overline-color="font-color"/>
+  </style:style>
+  <style:style style:name="P57" style:family="paragraph">
+   <style:paragraph-properties fo:text-align="center"/>
+   <style:text-properties fo:font-size="12pt"/>
   </style:style>
   <style:style style:name="T1" style:family="text">
    <style:text-properties officeooo:rsid="02da75d6"/>
@@ -547,7 +630,22 @@
    <style:text-properties officeooo:rsid="001be758"/>
   </style:style>
   <style:style style:name="T24" style:family="text">
-   <style:text-properties fo:font-variant="normal" fo:text-transform="none" style:use-window-font-color="true" loext:opacity="0%" style:text-outline="false" style:text-line-through-style="none" style:text-line-through-type="none" style:text-position="0% 100%" style:font-name="Liberation Serif" fo:font-size="10pt" fo:letter-spacing="normal" fo:language="fr" fo:country="FR" fo:font-style="normal" fo:text-shadow="none" style:text-underline-style="none" fo:font-weight="normal" style:text-underline-mode="continuous" style:text-overline-mode="continuous" style:text-line-through-mode="continuous" style:letter-kerning="true" fo:background-color="transparent" style:font-name-asian="Droid Sans Fallback" style:font-size-asian="12pt" style:language-asian="zh" style:country-asian="CN" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-family-complex="FreeSans" style:font-family-generic-complex="system" style:font-pitch-complex="variable" style:font-size-complex="12pt" style:language-complex="hi" style:country-complex="IN" style:font-style-complex="normal" style:font-weight-complex="normal" style:text-emphasize="none" style:text-scale="100%" style:font-relief="none" style:text-overline-style="none" style:text-overline-color="font-color"/>
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" style:use-window-font-color="true" loext:opacity="0%" style:text-outline="false" style:text-line-through-style="none" style:text-line-through-type="none" style:text-position="0% 100%" style:font-name="Liberation Serif" fo:font-size="10pt" fo:letter-spacing="normal" fo:language="fr" fo:country="FR" fo:font-style="normal" fo:text-shadow="none" style:text-underline-style="none" fo:font-weight="normal" style:text-underline-mode="continuous" style:text-overline-mode="continuous" style:text-line-through-mode="continuous" style:letter-kerning="true" fo:background-color="transparent" loext:char-shading-value="0" style:font-name-asian="Droid Sans Fallback" style:font-size-asian="12pt" style:language-asian="zh" style:country-asian="CN" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-name-complex="FreeSans" style:font-size-complex="12pt" style:language-complex="hi" style:country-complex="IN" style:font-style-complex="normal" style:font-weight-complex="normal" style:text-emphasize="none" style:text-scale="100%" style:font-relief="none" style:text-overline-style="none" style:text-overline-color="font-color"/>
+  </style:style>
+  <style:style style:name="T25" style:family="text">
+   <style:text-properties officeooo:rsid="02f81b2c"/>
+  </style:style>
+  <style:style style:name="T26" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" style:use-window-font-color="true" loext:opacity="0%" style:text-outline="false" style:text-line-through-style="none" style:text-line-through-type="none" style:text-position="0% 100%" style:font-name="Liberation Serif" fo:font-size="10pt" fo:letter-spacing="normal" fo:language="fr" fo:country="FR" fo:font-style="normal" fo:text-shadow="none" style:text-underline-style="none" fo:font-weight="normal" style:text-underline-mode="continuous" style:text-overline-mode="continuous" style:text-line-through-mode="continuous" style:letter-kerning="true" fo:background-color="transparent" style:font-name-asian="Droid Sans Fallback" style:font-size-asian="12pt" style:language-asian="zh" style:country-asian="CN" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-name-complex="FreeSans" style:font-size-complex="12pt" style:language-complex="hi" style:country-complex="IN" style:font-style-complex="normal" style:font-weight-complex="normal" style:text-emphasize="none" style:text-scale="100%" style:font-relief="none" style:text-overline-style="none" style:text-overline-color="font-color"/>
+  </style:style>
+  <style:style style:name="T27" style:family="text">
+   <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="T28" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" style:use-window-font-color="true" loext:opacity="0%" style:text-outline="false" style:text-line-through-style="none" style:text-line-through-type="none" fo:font-family="&apos;Liberation Sans&apos;" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="12pt" fo:font-style="normal" fo:text-shadow="none" style:text-underline-style="none" fo:font-weight="normal" style:letter-kerning="true" style:font-name-asian="Microsoft YaHei" style:font-size-asian="12pt" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-name-complex="Mangal" style:font-size-complex="12pt" style:font-style-complex="normal" style:font-weight-complex="normal" style:text-emphasize="none" style:font-relief="none" style:text-overline-style="none" style:text-overline-color="font-color"/>
+  </style:style>
+  <style:style style:name="T29" style:family="text">
+   <style:text-properties fo:font-variant="normal" fo:text-transform="none" style:use-window-font-color="true" loext:opacity="0%" style:text-outline="false" style:text-line-through-style="none" style:text-line-through-type="none" fo:font-family="&apos;Liberation Sans&apos;" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="12pt" fo:font-style="normal" fo:text-shadow="none" style:text-underline-style="none" fo:font-weight="normal" style:letter-kerning="true" style:font-name-asian="Microsoft YaHei" style:font-size-asian="18pt" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-name-complex="Mangal" style:font-size-complex="18pt" style:font-style-complex="normal" style:font-weight-complex="normal" style:text-emphasize="none" style:font-relief="none" style:text-overline-style="none" style:text-overline-color="font-color"/>
   </style:style>
   <text:list-style style:name="L1">
    <text:list-level-style-bullet text:level="1" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
@@ -705,164 +803,113 @@
     </style:list-level-properties>
    </text:list-level-style-bullet>
   </text:list-style>
-  <text:list-style style:name="L4">
-   <text:list-level-style-bullet text:level="1" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="1.27cm" fo:text-indent="-0.635cm" fo:margin-left="1.27cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="2" text:style-name="Bullet_20_Symbols" text:bullet-char="◦">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="1.905cm" fo:text-indent="-0.635cm" fo:margin-left="1.905cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="3" text:style-name="Bullet_20_Symbols" text:bullet-char="▪">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="2.54cm" fo:text-indent="-0.635cm" fo:margin-left="2.54cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="4" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="3.175cm" fo:text-indent="-0.635cm" fo:margin-left="3.175cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="5" text:style-name="Bullet_20_Symbols" text:bullet-char="◦">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="3.81cm" fo:text-indent="-0.635cm" fo:margin-left="3.81cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="6" text:style-name="Bullet_20_Symbols" text:bullet-char="▪">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="4.445cm" fo:text-indent="-0.635cm" fo:margin-left="4.445cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="7" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="5.08cm" fo:text-indent="-0.635cm" fo:margin-left="5.08cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="8" text:style-name="Bullet_20_Symbols" text:bullet-char="◦">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="5.715cm" fo:text-indent="-0.635cm" fo:margin-left="5.715cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="9" text:style-name="Bullet_20_Symbols" text:bullet-char="▪">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="6.35cm" fo:text-indent="-0.635cm" fo:margin-left="6.35cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="10" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="6.985cm" fo:text-indent="-0.635cm" fo:margin-left="6.985cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-  </text:list-style>
-  <text:list-style style:name="L5">
-   <text:list-level-style-bullet text:level="1" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="1.27cm" fo:text-indent="-0.635cm" fo:margin-left="1.27cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="2" text:style-name="Bullet_20_Symbols" text:bullet-char="◦">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="1.905cm" fo:text-indent="-0.635cm" fo:margin-left="1.905cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="3" text:style-name="Bullet_20_Symbols" text:bullet-char="▪">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="2.54cm" fo:text-indent="-0.635cm" fo:margin-left="2.54cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="4" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="3.175cm" fo:text-indent="-0.635cm" fo:margin-left="3.175cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="5" text:style-name="Bullet_20_Symbols" text:bullet-char="◦">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="3.81cm" fo:text-indent="-0.635cm" fo:margin-left="3.81cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="6" text:style-name="Bullet_20_Symbols" text:bullet-char="▪">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="4.445cm" fo:text-indent="-0.635cm" fo:margin-left="4.445cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="7" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="5.08cm" fo:text-indent="-0.635cm" fo:margin-left="5.08cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="8" text:style-name="Bullet_20_Symbols" text:bullet-char="◦">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="5.715cm" fo:text-indent="-0.635cm" fo:margin-left="5.715cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="9" text:style-name="Bullet_20_Symbols" text:bullet-char="▪">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="6.35cm" fo:text-indent="-0.635cm" fo:margin-left="6.35cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="10" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="6.985cm" fo:text-indent="-0.635cm" fo:margin-left="6.985cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-  </text:list-style>
-  <text:list-style style:name="L6">
-   <text:list-level-style-bullet text:level="1" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="1.27cm" fo:text-indent="-0.635cm" fo:margin-left="1.27cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="2" text:style-name="Bullet_20_Symbols" text:bullet-char="◦">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="1.905cm" fo:text-indent="-0.635cm" fo:margin-left="1.905cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="3" text:style-name="Bullet_20_Symbols" text:bullet-char="▪">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="2.54cm" fo:text-indent="-0.635cm" fo:margin-left="2.54cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="4" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="3.175cm" fo:text-indent="-0.635cm" fo:margin-left="3.175cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="5" text:style-name="Bullet_20_Symbols" text:bullet-char="◦">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="3.81cm" fo:text-indent="-0.635cm" fo:margin-left="3.81cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="6" text:style-name="Bullet_20_Symbols" text:bullet-char="▪">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="4.445cm" fo:text-indent="-0.635cm" fo:margin-left="4.445cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="7" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="5.08cm" fo:text-indent="-0.635cm" fo:margin-left="5.08cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="8" text:style-name="Bullet_20_Symbols" text:bullet-char="◦">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="5.715cm" fo:text-indent="-0.635cm" fo:margin-left="5.715cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="9" text:style-name="Bullet_20_Symbols" text:bullet-char="▪">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="6.35cm" fo:text-indent="-0.635cm" fo:margin-left="6.35cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="10" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="6.985cm" fo:text-indent="-0.635cm" fo:margin-left="6.985cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-  </text:list-style>
+  <style:style style:name="gr1" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0.199cm" svg:stroke-color="#000000" draw:marker-start-width="0.651cm" draw:marker-end-width="0.651cm" draw:fill="none" draw:fill-color="#ffffff" fo:min-height="2.32cm" fo:padding-top="0.099cm" fo:padding-bottom="0.099cm" fo:padding-left="0.099cm" fo:padding-right="0.099cm" style:run-through="foreground" style:wrap="run-through" style:number-wrapped-paragraphs="no-limit" style:vertical-pos="from-top" style:vertical-rel="paragraph" style:horizontal-pos="from-left" style:horizontal-rel="paragraph" draw:wrap-influence-on-position="once-concurrent" loext:allow-overlap="true" style:flow-with-text="false"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr2" style:family="graphic">
+   <style:graphic-properties style:run-through="foreground" style:wrap="run-through" style:number-wrapped-paragraphs="no-limit" style:vertical-pos="from-top" style:vertical-rel="paragraph" style:horizontal-pos="from-left" style:horizontal-rel="paragraph" draw:wrap-influence-on-position="once-concurrent" loext:allow-overlap="true" style:flow-with-text="false"/>
+  </style:style>
+  <style:style style:name="gr3" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="none" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" draw:auto-grow-height="false" fo:min-height="1.376cm" fo:min-width="2.226cm" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr4" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="none" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" draw:auto-grow-height="false" fo:min-height="1.45cm" fo:min-width="2.999cm" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr5" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="none" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" draw:auto-grow-height="false" fo:min-height="1.45cm" fo:min-width="3cm" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr6" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="Arrow" draw:marker-end-width="0.3cm" draw:marker-end-center="false" draw:fill="solid" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+  </style:style>
+  <style:style style:name="gr7" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="none" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" draw:auto-grow-height="false" fo:min-height="1.448cm" fo:min-width="2.999cm" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr8" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="none" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" draw:auto-grow-height="false" fo:min-height="1.448cm" fo:min-width="3cm" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr9" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="Arrow" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.3cm" draw:marker-end-center="false" draw:fill="solid" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+  </style:style>
+  <style:style style:name="gr10" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="none" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" draw:auto-grow-height="false" fo:min-height="1.102cm" fo:min-width="0.801cm" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr11" style:family="graphic">
+   <style:graphic-properties draw:stroke="none" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="none" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" draw:auto-grow-height="false" fo:min-height="0.649cm" fo:min-width="0.598cm" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr12" style:family="graphic">
+   <style:graphic-properties draw:stroke="none" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="none" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" draw:auto-grow-height="false" fo:min-height="0.651cm" fo:min-width="0.598cm" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr13" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="none" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" draw:auto-grow-height="false" fo:min-height="1.519cm" fo:min-width="1.268cm" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr14" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="none" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" draw:auto-grow-height="false" fo:min-height="1.378cm" fo:min-width="2.727cm" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr15" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="none" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" draw:auto-grow-height="false" fo:min-height="2.15cm" fo:min-width="5.699cm" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr16" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="none" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" draw:auto-grow-height="false" fo:min-height="1.15cm" fo:min-width="5.699cm" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr17" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="none" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" draw:auto-grow-height="false" fo:min-height="1.05cm" fo:min-width="5.699cm" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr18" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="none" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" draw:auto-grow-height="false" fo:min-height="1.45cm" fo:min-width="5.699cm" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr19" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="none" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" draw:auto-grow-height="false" fo:min-height="0.75cm" fo:min-width="5.699cm" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr20" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="none" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" draw:auto-grow-height="false" fo:min-height="2.148cm" fo:min-width="6.399cm" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr21" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="solid" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+  </style:style>
+  <style:style style:name="gr22" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="Arrow" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="solid" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+  </style:style>
+  <style:style style:name="gr23" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="none" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" draw:auto-grow-height="false" fo:min-height="1.376cm" fo:min-width="2.727cm" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr24" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="none" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" draw:auto-grow-height="false" fo:min-height="2.148cm" fo:min-width="6.99cm" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr25" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="none" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" draw:auto-grow-height="false" fo:min-height="2.35cm" fo:min-width="6.899cm" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr26" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="none" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" draw:auto-grow-height="false" fo:min-height="2.15cm" fo:min-width="6.99cm" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+   <style:paragraph-properties style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="gr27" style:family="graphic">
+   <style:graphic-properties draw:stroke="solid" svg:stroke-width="0cm" svg:stroke-color="#000000" draw:marker-start="Arrow" draw:marker-start-width="0.199cm" draw:marker-start-center="false" draw:marker-end="" draw:marker-end-width="0.199cm" draw:marker-end-center="false" draw:fill="solid" draw:fill-color="#729fcf" draw:textarea-horizontal-align="justify" draw:textarea-vertical-align="middle" fo:padding-top="0.125cm" fo:padding-bottom="0.125cm" fo:padding-left="0.25cm" fo:padding-right="0.25cm" draw:shadow="hidden" draw:shadow-offset-x="0.199cm" draw:shadow-offset-y="0.199cm" draw:shadow-color="#808080" style:run-through="foreground"/>
+  </style:style>
+  <style:style style:name="gr28" style:family="graphic">
+   <style:graphic-properties svg:stroke-color="#000000" draw:marker-end="" draw:textarea-horizontal-align="center" draw:textarea-vertical-align="middle" style:run-through="foreground" style:vertical-pos="from-top" style:vertical-rel="paragraph" style:horizontal-pos="from-left" style:horizontal-rel="paragraph" draw:wrap-influence-on-position="once-concurrent" loext:allow-overlap="true" style:flow-with-text="false"/>
+  </style:style>
   <style:page-layout style:name="pm1">
-   <style:page-layout-properties fo:page-width="21.001cm" fo:page-height="29.7cm" style:num-format="1" style:print-orientation="portrait" fo:margin-top="2cm" fo:margin-bottom="2cm" fo:margin-left="2cm" fo:margin-right="2cm" style:writing-mode="lr-tb" style:footnote-max-height="0cm">
+   <style:page-layout-properties fo:page-width="21.001cm" fo:page-height="29.7cm" style:num-format="1" style:print-orientation="portrait" fo:margin-top="2cm" fo:margin-bottom="2cm" fo:margin-left="2cm" fo:margin-right="2cm" style:writing-mode="lr-tb" style:layout-grid-color="#c0c0c0" style:layout-grid-lines="20" style:layout-grid-base-height="0.706cm" style:layout-grid-ruby-height="0.353cm" style:layout-grid-mode="none" style:layout-grid-ruby-below="false" style:layout-grid-print="false" style:layout-grid-display="false" style:footnote-max-height="0cm">
     <style:footnote-sep style:width="0.018cm" style:distance-before-sep="0.101cm" style:distance-after-sep="0.101cm" style:line-style="solid" style:adjustment="left" style:rel-width="25%" style:color="#000000"/>
    </style:page-layout-properties>
    <style:header-style/>
@@ -882,154 +929,154 @@
     <text:sequence-decl text:display-outline-level="0" text:name="Figure"/>
    </text:sequence-decls>
    <text:h text:style-name="P2" text:outline-level="2">3.1-Spécifications matérielles générales </text:h>
-   <text:p text:style-name="P8"/>
-   <text:list xml:id="list1657043396" text:style-name="L1">
+   <text:p text:style-name="P7"/>
+   <text:list xml:id="list511829291" text:style-name="L1">
     <text:list-item>
-     <text:p text:style-name="P7">Le SWR POWER METER devra pouvoir être vendu en kit sous <text:span text:style-name="T1">plusieurs </text:span>formats <text:span text:style-name="T1">différents</text:span> : </text:p>
+     <text:p text:style-name="P40">Le SWR POWER METER devra pouvoir être vendu en kit sous <text:span text:style-name="T1">plusieurs </text:span>formats <text:span text:style-name="T1">différents</text:span> : </text:p>
     </text:list-item>
    </text:list>
-   <text:p text:style-name="P8"/>
-   <text:p text:style-name="P8"/>
+   <text:p text:style-name="P7"/>
+   <text:p text:style-name="P7"/>
    <table:table table:name="Tableau24" table:style-name="Tableau24">
     <table:table-column table:style-name="Tableau24.A" table:number-columns-repeated="2"/>
     <table:table-column table:style-name="Tableau24.C"/>
     <table:table-column table:style-name="Tableau24.D"/>
     <table:table-column table:style-name="Tableau24.E"/>
-    <table:table-row table:style-name="TableLine1213222018080">
+    <table:table-row table:style-name="TableLine1212740732240">
      <table:table-cell table:style-name="Tableau24.A1" office:value-type="string">
-      <text:p text:style-name="P27">Nom</text:p>
+      <text:p text:style-name="P24">Nom</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau24.A1" office:value-type="string">
-      <text:p text:style-name="P27">Format</text:p>
+      <text:p text:style-name="P24">Format</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau24.A1" office:value-type="string">
-      <text:p text:style-name="P27">Ligne de mesure</text:p>
+      <text:p text:style-name="P24">Ligne de mesure</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau24.A1" office:value-type="string">
-      <text:p text:style-name="P27">Matériel</text:p>
+      <text:p text:style-name="P24">Matériel</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau24.E1" office:value-type="string">
-      <text:p text:style-name="P27">Etat</text:p>
+      <text:p text:style-name="P24">Etat</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222013728">
+    <table:table-row table:style-name="TableLine1212740738224">
      <table:table-cell table:style-name="Tableau24.A2" office:value-type="string">
-      <text:p text:style-name="P27">« SWR POWER METER F8KGL »</text:p>
+      <text:p text:style-name="P24">« SWR POWER METER F8KGL »</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau24.A2" office:value-type="string">
-      <text:p text:style-name="P27">Entièrement monté</text:p>
+      <text:p text:style-name="P24">Entièrement monté</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau24.A2" office:value-type="string">
-      <text:p text:style-name="P27">Ligne imprimée sur PCB</text:p>
+      <text:p text:style-name="P24">Ligne imprimée sur PCB</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau24.A2" office:value-type="string">
-      <text:p text:style-name="P27">Monté, testé et calibré</text:p>
+      <text:p text:style-name="P24">Monté, testé et calibré</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau24.E2" office:value-type="string">
-      <text:p text:style-name="P27">Prêt à être utilisé</text:p>
+      <text:p text:style-name="P24">Prêt à être utilisé</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222014000">
+    <table:table-row table:style-name="TableLine1212740730064">
      <table:table-cell table:style-name="Tableau24.A2" office:value-type="string">
-      <text:p text:style-name="P27">« SWR POWER METER F8KGL<text:span text:style-name="T2">kit</text:span> »</text:p>
+      <text:p text:style-name="P24">« SWR POWER METER F8KGL<text:span text:style-name="T2">kit</text:span> »</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau24.A2" office:value-type="string">
-      <text:p text:style-name="P27">Entièrement en kit</text:p>
+      <text:p text:style-name="P24">Entièrement en kit</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau24.A2" office:value-type="string">
-      <text:p text:style-name="P27">Ligne imprimée sur PCB</text:p>
+      <text:p text:style-name="P24">Ligne imprimée sur PCB</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau24.A2" office:value-type="string">
-      <text:p text:style-name="P27">PCB et composants actifs livrés</text:p>
-      <text:p text:style-name="P28">sans boitier ni composants passifs</text:p>
+      <text:p text:style-name="P24">PCB et composants actifs livrés</text:p>
+      <text:p text:style-name="P25">sans boitier ni composants passifs</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau24.E2" office:value-type="string">
-      <text:p text:style-name="P27">Matériel à monter par l’OM lui même</text:p>
-      <text:p text:style-name="P27">A tester et calibrer par l’OM lui même</text:p>
+      <text:p text:style-name="P24">Matériel à monter par l’OM lui même</text:p>
+      <text:p text:style-name="P24">A tester et calibrer par l’OM lui même</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222014272">
+    <table:table-row table:style-name="TableLine1212740730608">
      <table:table-cell table:style-name="Tableau24.A2" office:value-type="string">
-      <text:p text:style-name="P29"><text:span text:style-name="T2">x</text:span>WATT METER F8KGL</text:p>
+      <text:p text:style-name="P26"><text:span text:style-name="T2">x</text:span>WATT METER F8KGL</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau24.A2" office:value-type="string">
-      <text:p text:style-name="P27">Calculateur monté</text:p>
+      <text:p text:style-name="P24">Calculateur monté</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau24.A2" office:value-type="string">
-      <text:p text:style-name="P27">sans</text:p>
+      <text:p text:style-name="P24">sans</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau24.A2" office:value-type="string">
-      <text:p text:style-name="P27">Calculateur monté, <text:span text:style-name="T3">calibré</text:span> et testé</text:p>
+      <text:p text:style-name="P24">Calculateur monté, <text:span text:style-name="T3">calibré</text:span> et testé</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau24.E2" office:value-type="string">
-      <text:p text:style-name="P27">Prêt à être utilisé</text:p>
+      <text:p text:style-name="P24">Prêt à être utilisé</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222023248">
+    <table:table-row table:style-name="TableLine1212740723536">
      <table:table-cell table:style-name="Tableau24.A2" office:value-type="string">
-      <text:p text:style-name="P29"><text:span text:style-name="T2">x</text:span>WATT METER F8KGL<text:span text:style-name="T2">kit</text:span></text:p>
+      <text:p text:style-name="P26"><text:span text:style-name="T2">x</text:span>WATT METER F8KGL<text:span text:style-name="T2">kit</text:span></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau24.A2" office:value-type="string">
-      <text:p text:style-name="P27">Calculateur <text:span text:style-name="T3">e</text:span>ntièrement en kit</text:p>
+      <text:p text:style-name="P24">Calculateur <text:span text:style-name="T3">e</text:span>ntièrement en kit</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau24.A2" office:value-type="string">
-      <text:p text:style-name="P27">sans</text:p>
+      <text:p text:style-name="P24">sans</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau24.A2" office:value-type="string">
-      <text:p text:style-name="P27">Monté, testé et calibré</text:p>
+      <text:p text:style-name="P24">Monté, testé et calibré</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau24.E2" office:value-type="string">
-      <text:p text:style-name="P27">Matériel à monter par l’OM lui même</text:p>
-      <text:p text:style-name="P27">A tester et calibrer par l’OM lui mêmee</text:p>
+      <text:p text:style-name="P24">Matériel à monter par l’OM lui même</text:p>
+      <text:p text:style-name="P24">A tester et calibrer par l’OM lui mêmee</text:p>
      </table:table-cell>
     </table:table-row>
    </table:table>
-   <text:p text:style-name="P8"/>
-   <text:p text:style-name="P8"/>
-   <text:list xml:id="list3398684291" text:style-name="L3">
+   <text:p text:style-name="P7"/>
+   <text:p text:style-name="P7"/>
+   <text:list xml:id="list93863783" text:style-name="L2">
     <text:list-item>
-     <text:p text:style-name="P9">Le « SWR POWER METER <text:span text:style-name="T2">F8KGL » et ses versions dérivées devront être robustes</text:span></text:p>
+     <text:p text:style-name="P41">Le « SWR POWER METER <text:span text:style-name="T2">F8KGL » et ses versions dérivées devront être robustes</text:span></text:p>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P9">Le « SWR POWER METER <text:span text:style-name="T2">F8KGL » et ses versions dérivées </text:span>devr<text:span text:style-name="T2">ont</text:span> être convivial</text:p>
+     <text:p text:style-name="P41">Le « SWR POWER METER <text:span text:style-name="T2">F8KGL » et ses versions dérivées </text:span>devr<text:span text:style-name="T2">ont</text:span> être convivial</text:p>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P9">Le « SWR POWER METER <text:span text:style-name="T2">F8KGL » et ses versions dérivées </text:span>devr<text:span text:style-name="T4">ont</text:span> être sans bug</text:p>
+     <text:p text:style-name="P41">Le « SWR POWER METER <text:span text:style-name="T2">F8KGL » et ses versions dérivées </text:span>devr<text:span text:style-name="T4">ont</text:span> être sans bug</text:p>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P11">Le « SWR POWER METER <text:span text:style-name="T4">F8KGL kit »</text:span> <text:span text:style-name="T4">devra</text:span> pouvoir être calibré par l’OM, avec les moyens de mesures suivants : </text:p>
+     <text:p text:style-name="P42">Le « SWR POWER METER <text:span text:style-name="T4">F8KGL kit »</text:span> <text:span text:style-name="T4">devra</text:span> pouvoir être calibré par l’OM, avec les moyens de mesures suivants : </text:p>
      <text:list>
       <text:list-item>
-       <text:p text:style-name="P11">TRX HF, VHF, UHF de 0 à <text:span text:style-name="T4">5</text:span>00W <text:span text:style-name="T5">(10%) </text:span></text:p>
+       <text:p text:style-name="P42">TRX HF, VHF, UHF de 0 à <text:span text:style-name="T4">5</text:span>00W <text:span text:style-name="T5">(10%) </text:span></text:p>
       </text:list-item>
       <text:list-item>
-       <text:p text:style-name="P11">Wattmètre <text:span text:style-name="T4">5</text:span>00W</text:p>
+       <text:p text:style-name="P42">Wattmètre <text:span text:style-name="T4">5</text:span>00W</text:p>
       </text:list-item>
       <text:list-item>
-       <text:p text:style-name="P12">Charge fictive <text:span text:style-name="T4">5</text:span>00W</text:p>
+       <text:p text:style-name="P43">Charge fictive <text:span text:style-name="T4">5</text:span>00W</text:p>
       </text:list-item>
      </text:list>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P11">Le « <text:span text:style-name="T4">xWATT </text:span>METER <text:span text:style-name="T4">F8KGL kit »</text:span> <text:span text:style-name="T4">devra</text:span> pouvoir être calibré par l’OM, avec les moyens de mesures suivants : </text:p>
+     <text:p text:style-name="P42">Le « <text:span text:style-name="T4">xWATT </text:span>METER <text:span text:style-name="T4">F8KGL kit »</text:span> <text:span text:style-name="T4">devra</text:span> pouvoir être calibré par l’OM, avec les moyens de mesures suivants : </text:p>
      <text:list>
       <text:list-item>
-       <text:p text:style-name="P11"><text:span text:style-name="T4">Générateur </text:span>HF, VHF, UHF de -<text:span text:style-name="T4">120 à 30dBm</text:span> <text:span text:style-name="T5">(10%) </text:span></text:p>
+       <text:p text:style-name="P42"><text:span text:style-name="T4">Générateur </text:span>HF, VHF, UHF de -<text:span text:style-name="T4">120 à 30dBm</text:span> <text:span text:style-name="T5">(10%) </text:span></text:p>
       </text:list-item>
       <text:list-item>
-       <text:p text:style-name="P11"><text:span text:style-name="T7">μ</text:span>Wattmètre </text:p>
+       <text:p text:style-name="P42"><text:span text:style-name="T7">μ</text:span>Wattmètre </text:p>
       </text:list-item>
      </text:list>
     </text:list-item>
    </text:list>
-   <text:p text:style-name="P13"/>
-   <text:p text:style-name="P13"/>
-   <text:p text:style-name="P13"/>
-   <text:p text:style-name="P13"/>
+   <text:p text:style-name="P11"/>
+   <text:p text:style-name="P11"/>
+   <text:p text:style-name="P11"/>
+   <text:p text:style-name="P11"/>
    <text:h text:style-name="P2" text:outline-level="2"><text:bookmark-start text:name="__RefHeading___Toc23952_1355943153"/>3.2-<text:span text:style-name="T9">Performances</text:span><text:bookmark-end text:name="__RefHeading___Toc23952_1355943153"/></text:h>
    <text:h text:style-name="P4" text:outline-level="3"><text:bookmark-start text:name="__RefHeading___Toc78690_1266879104"/>3.2.1-SWR POWER METER F8KGL <text:span text:style-name="T2">et </text:span>SWR POWER METER F8KGL <text:span text:style-name="T2">kit</text:span><text:bookmark-end text:name="__RefHeading___Toc78690_1266879104"/></text:h>
-   <text:p text:style-name="P14">Les versions « SWR POWER METER F8KGL » et « SWR POWER METER F8KGL kit » doivent répondre au même besoins de performances : </text:p>
-   <text:p text:style-name="P10"/>
+   <text:p text:style-name="P12">Les versions « SWR POWER METER F8KGL » et « SWR POWER METER F8KGL kit » doivent répondre au même besoins de performances : </text:p>
+   <text:p text:style-name="P8"/>
    <table:table table:name="Tableau5" table:style-name="Tableau5">
     <table:table-column table:style-name="Tableau5.A"/>
     <table:table-column table:style-name="Tableau5.B"/>
@@ -1038,27 +1085,27 @@
     <table:table-column table:style-name="Tableau5.E"/>
     <table:table-column table:style-name="Tableau5.F"/>
     <text:soft-page-break/>
-    <table:table-row table:style-name="TableLine1213222099408">
+    <table:table-row table:style-name="TableLine1212740731152">
      <table:table-cell table:style-name="Tableau5.A1" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A1" office:value-type="string">
-      <text:p text:style-name="P30">min</text:p>
+      <text:p text:style-name="P27">min</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A1" office:value-type="string">
-      <text:p text:style-name="P30">typ</text:p>
+      <text:p text:style-name="P27">typ</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A1" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P30">max</text:p>
+      <text:p text:style-name="P27">max</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau5.F1" office:value-type="string">
-      <text:p text:style-name="P30">Unité</text:p>
+      <text:p text:style-name="P27">Unité</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222096960">
+    <table:table-row table:style-name="TableLine1212740734960">
      <table:table-cell table:style-name="Tableau5.A2" table:number-columns-spanned="6" office:value-type="string">
-      <text:p text:style-name="P31">Paramètres radio</text:p>
+      <text:p text:style-name="P28">Paramètres radio</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:covered-table-cell/>
@@ -1066,81 +1113,81 @@
      <table:covered-table-cell/>
      <table:covered-table-cell/>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222099680">
+    <table:table-row table:style-name="TableLine1212740737680">
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P30">Fréquence de fonctionnement</text:p>
+      <text:p text:style-name="P27">Fréquence de fonctionnement</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P30">0</text:p>
+      <text:p text:style-name="P27">0</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P30">500</text:p>
+      <text:p text:style-name="P27">500</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau5.A2" office:value-type="string">
-      <text:p text:style-name="P30">MHz</text:p>
+      <text:p text:style-name="P27">MHz</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222097232">
+    <table:table-row table:style-name="TableLine1212740722992">
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P30">Puissance admissible</text:p>
+      <text:p text:style-name="P27">Puissance admissible</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P30">1</text:p>
+      <text:p text:style-name="P27">1</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P30">500</text:p>
+      <text:p text:style-name="P27">500</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau5.A2" office:value-type="string">
-      <text:p text:style-name="P30">W</text:p>
+      <text:p text:style-name="P27">W</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222097504">
+    <table:table-row table:style-name="TableLine1212740722176">
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P31">Impédance</text:p>
+      <text:p text:style-name="P28">Impédance</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P30"/>
+      <text:p text:style-name="P27"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P31">50</text:p>
+      <text:p text:style-name="P28">50</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P30"/>
+      <text:p text:style-name="P27"/>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau5.A2" office:value-type="string">
-      <text:p text:style-name="P32">Ω</text:p>
+      <text:p text:style-name="P29">Ω</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222107296">
+    <table:table-row table:style-name="TableLine1212740722720">
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P34">Pertes en ligne insérées <text:span text:style-name="T10">sous 50</text:span><text:span text:style-name="T8">Ω</text:span></text:p>
+      <text:p text:style-name="P31">Pertes en ligne insérées <text:span text:style-name="T10">sous 50</text:span><text:span text:style-name="T8">Ω</text:span></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P30"/>
+      <text:p text:style-name="P27"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P31"/>
+      <text:p text:style-name="P28"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P34">0,1</text:p>
+      <text:p text:style-name="P31">0,1</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau5.A2" office:value-type="string">
-      <text:p text:style-name="P34">dB</text:p>
+      <text:p text:style-name="P31">dB</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222100768">
+    <table:table-row table:style-name="TableLine1212740724080">
      <table:table-cell table:style-name="Tableau5.A2" table:number-columns-spanned="6" office:value-type="string">
-      <text:p text:style-name="P31">Alimentation</text:p>
+      <text:p text:style-name="P28">Alimentation</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:covered-table-cell/>
@@ -1148,81 +1195,81 @@
      <table:covered-table-cell/>
      <table:covered-table-cell/>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222108384">
+    <table:table-row table:style-name="TableLine1212740724352">
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P30">Alimentation externe</text:p>
+      <text:p text:style-name="P27">Alimentation externe</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P30">12</text:p>
+      <text:p text:style-name="P27">12</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P35">13,8</text:p>
+      <text:p text:style-name="P32">13,8</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P35">15</text:p>
+      <text:p text:style-name="P32">15</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau5.A2" office:value-type="string">
-      <text:p text:style-name="P30">V</text:p>
+      <text:p text:style-name="P27">V</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222096416">
+    <table:table-row table:style-name="TableLine1212740746656">
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P30">Alimentation pack pile</text:p>
+      <text:p text:style-name="P27">Alimentation pack pile</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P30">4,5</text:p>
+      <text:p text:style-name="P27">4,5</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P30">5,5</text:p>
+      <text:p text:style-name="P27">5,5</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau5.A2" office:value-type="string">
-      <text:p text:style-name="P30">V</text:p>
+      <text:p text:style-name="P27">V</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222108928">
+    <table:table-row table:style-name="TableLine1212740740944">
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P30">Autonomie sur pack pile<text:span text:style-name="T11">(1)</text:span></text:p>
+      <text:p text:style-name="P27">Autonomie sur pack pile<text:span text:style-name="T11">(1)</text:span></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P30">24</text:p>
+      <text:p text:style-name="P27">24</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau5.A2" office:value-type="string">
-      <text:p text:style-name="P36">h</text:p>
+      <text:p text:style-name="P33">h</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222109200">
+    <table:table-row table:style-name="TableLine1212740742304">
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P37">Consommation (alimentation externe ou pack pile)</text:p>
+      <text:p text:style-name="P34">Consommation (alimentation externe ou pack pile)</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P30"/>
+      <text:p text:style-name="P27"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P37">100</text:p>
+      <text:p text:style-name="P34">100</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau5.A2" office:value-type="string">
-      <text:p text:style-name="P37">mA</text:p>
+      <text:p text:style-name="P34">mA</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222109744">
+    <table:table-row table:style-name="TableLine1212740750736">
      <table:table-cell table:style-name="Tableau5.A2" table:number-columns-spanned="6" office:value-type="string">
-      <text:p text:style-name="P31">Mesures</text:p>
+      <text:p text:style-name="P28">Mesures</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:covered-table-cell/>
@@ -1230,45 +1277,45 @@
      <table:covered-table-cell/>
      <table:covered-table-cell/>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222110016">
+    <table:table-row table:style-name="TableLine1212740741216">
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P30">Précision de la mesure</text:p>
+      <text:p text:style-name="P27">Précision de la mesure</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P30"><text:span text:style-name="T6">±</text:span>10</text:p>
+      <text:p text:style-name="P27"><text:span text:style-name="T6">±</text:span>10</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau5.A2" office:value-type="string">
-      <text:p text:style-name="P38">%</text:p>
+      <text:p text:style-name="P35">%</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222101584">
+    <table:table-row table:style-name="TableLine1212740742576">
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P31">ROS</text:p>
+      <text:p text:style-name="P28">ROS</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P31">1,1</text:p>
+      <text:p text:style-name="P28">1,1</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P33">∞</text:p>
+      <text:p text:style-name="P30">∞</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau5.A2" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222101856">
+    <table:table-row table:style-name="TableLine1212740745568">
      <table:table-cell table:style-name="Tableau5.A2" table:number-columns-spanned="6" office:value-type="string">
-      <text:p text:style-name="P31">Mécanique</text:p>
+      <text:p text:style-name="P28">Mécanique</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:covered-table-cell/>
@@ -1276,61 +1323,61 @@
      <table:covered-table-cell/>
      <table:covered-table-cell/>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222102128">
+    <table:table-row table:style-name="TableLine1212740744480">
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P31">Dimensions</text:p>
+      <text:p text:style-name="P28">Dimensions</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" table:number-columns-spanned="4" office:value-type="string">
-      <text:p text:style-name="P31">155x80x100</text:p>
+      <text:p text:style-name="P28">155x80x100</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:covered-table-cell/>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau5.A2" office:value-type="string">
-      <text:p text:style-name="P31">mm</text:p>
+      <text:p text:style-name="P28">mm</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222112736">
+    <table:table-row table:style-name="TableLine1212740743120">
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P31">Poids</text:p>
+      <text:p text:style-name="P28">Poids</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P31"/>
+      <text:p text:style-name="P28"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P31"/>
+      <text:p text:style-name="P28"/>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P31">1</text:p>
+      <text:p text:style-name="P28">1</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A2" office:value-type="string">
-      <text:p text:style-name="P31">kg</text:p>
+      <text:p text:style-name="P28">kg</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222116816">
+    <table:table-row table:style-name="TableLine1212740744752">
      <table:table-cell table:style-name="Tableau5.A3" office:value-type="string">
-      <text:p text:style-name="P31">Connecteurs</text:p>
+      <text:p text:style-name="P28">Connecteurs</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau5.A3" table:number-columns-spanned="4" office:value-type="string">
-      <text:p text:style-name="P31">N ou PL</text:p>
+      <text:p text:style-name="P28">N ou PL</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:covered-table-cell/>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau5.A2" office:value-type="string">
-      <text:p text:style-name="P31"/>
+      <text:p text:style-name="P28"/>
      </table:table-cell>
     </table:table-row>
    </table:table>
-   <text:p text:style-name="P15">(1)<text:span text:style-name="T12">Avec un pack pile d’une capacité d’au moins 2500mAh</text:span></text:p>
-   <text:p text:style-name="P13"/>
+   <text:p text:style-name="P13">(1)<text:span text:style-name="T12">Avec un pack pile d’une capacité d’au moins 2500mAh</text:span></text:p>
+   <text:p text:style-name="P11"/>
    <text:h text:style-name="P4" text:outline-level="3"><text:bookmark-start text:name="__RefHeading___Toc78694_1266879104"/>3.2.<text:span text:style-name="T13">2</text:span>-xWATT METER F8KGL <text:span text:style-name="T2">et <text:s/></text:span>xWATT METER F8KGL <text:span text:style-name="T2">kit</text:span><text:bookmark-end text:name="__RefHeading___Toc78694_1266879104"/></text:h>
-   <text:p text:style-name="P16">Le<text:span text:style-name="T2">s versions</text:span> « xWATT METER F8KGL » <text:span text:style-name="T2">et « xWATT METER F8KGL kit »</text:span> <text:span text:style-name="T2">sont</text:span> l<text:span text:style-name="T2">es</text:span> version<text:span text:style-name="T2">s</text:span> l<text:span text:style-name="T2">es</text:span> plus configurable<text:span text:style-name="T2">s</text:span> par l’utilisateur.</text:p>
-   <text:p text:style-name="P16"/>
-   <text:p text:style-name="P14">Les versions « xWATT METER F8KGL » et « xWATT METER F8KGL kit » doivent répondre au même besoins de performances : </text:p>
-   <text:p text:style-name="P16"/>
-   <text:p text:style-name="P16"/>
+   <text:p text:style-name="P14">Le<text:span text:style-name="T2">s versions</text:span> « xWATT METER F8KGL » <text:span text:style-name="T2">et « xWATT METER F8KGL kit »</text:span> <text:span text:style-name="T2">sont</text:span> l<text:span text:style-name="T2">es</text:span> version<text:span text:style-name="T2">s</text:span> l<text:span text:style-name="T2">es</text:span> plus configurable<text:span text:style-name="T2">s</text:span> par l’utilisateur.</text:p>
+   <text:p text:style-name="P14"/>
+   <text:p text:style-name="P12">Les versions « xWATT METER F8KGL » et « xWATT METER F8KGL kit » doivent répondre au même besoins de performances : </text:p>
+   <text:p text:style-name="P14"/>
+   <text:p text:style-name="P14"/>
    <table:table table:name="Tableau25" table:style-name="Tableau25">
     <table:table-column table:style-name="Tableau25.A"/>
     <table:table-column table:style-name="Tableau25.B"/>
@@ -1338,27 +1385,27 @@
     <table:table-column table:style-name="Tableau25.D"/>
     <table:table-column table:style-name="Tableau25.E"/>
     <table:table-column table:style-name="Tableau25.F"/>
-    <table:table-row table:style-name="TableLine1213222113008">
+    <table:table-row table:style-name="TableLine1212740747200">
      <table:table-cell table:style-name="Tableau25.A1" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A1" office:value-type="string">
-      <text:p text:style-name="P30">min</text:p>
+      <text:p text:style-name="P27">min</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A1" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P30">typ</text:p>
+      <text:p text:style-name="P27">typ</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau25.A1" office:value-type="string">
-      <text:p text:style-name="P30">max</text:p>
+      <text:p text:style-name="P27">max</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.F1" office:value-type="string">
-      <text:p text:style-name="P30">Unité</text:p>
+      <text:p text:style-name="P27">Unité</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222114640">
+    <table:table-row table:style-name="TableLine1212740763520">
      <table:table-cell table:style-name="Tableau25.A2" table:number-columns-spanned="6" office:value-type="string">
-      <text:p text:style-name="P31">Paramètres radio</text:p>
+      <text:p text:style-name="P28">Paramètres radio</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:covered-table-cell/>
@@ -1366,85 +1413,85 @@
      <table:covered-table-cell/>
      <table:covered-table-cell/>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213222112464">
+    <table:table-row table:style-name="TableLine1212740759168">
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P30">Fréquence de fonctionnement</text:p>
+      <text:p text:style-name="P27">Fréquence de fonctionnement</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P30">0</text:p>
+      <text:p text:style-name="P27">0</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P30">500</text:p>
+      <text:p text:style-name="P27">500</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A2" office:value-type="string">
-      <text:p text:style-name="P30">MHz</text:p>
+      <text:p text:style-name="P27">MHz</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213221860592">
+    <table:table-row table:style-name="TableLine1212740764064">
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P30">Puissance admissible</text:p>
+      <text:p text:style-name="P27">Puissance admissible</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P30"><office:annotation office:name="__Annotation__77212_1266879104" loext:resolved="false">
+      <text:p text:style-name="P27"><office:annotation office:name="__Annotation__77212_1266879104" loext:resolved="false">
         <dc:creator>Auteur inconnu</dc:creator>
         <dc:date>2020-05-15T14:15:18.605000000</dc:date>
-        <text:p text:style-name="P39"><text:span text:style-name="T24">À confirmer</text:span></text:p>
+        <text:p text:style-name="P51"><text:span text:style-name="T26">À confirmer</text:span></text:p>
        </office:annotation>-<text:span text:style-name="T9">120</text:span><office:annotation-end office:name="__Annotation__77212_1266879104"/></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P29">30</text:p>
+      <text:p text:style-name="P26">30</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A2" office:value-type="string">
-      <text:p text:style-name="P29">dBm</text:p>
+      <text:p text:style-name="P26">dBm</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213221851616">
+    <table:table-row table:style-name="TableLine1212740762160">
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P31">Impédance</text:p>
+      <text:p text:style-name="P28">Impédance</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P30"/>
+      <text:p text:style-name="P27"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P31">50</text:p>
+      <text:p text:style-name="P28">50</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P30"/>
+      <text:p text:style-name="P27"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A2" office:value-type="string">
-      <text:p text:style-name="P32">Ω</text:p>
+      <text:p text:style-name="P29">Ω</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213221854880">
+    <table:table-row table:style-name="TableLine1212740773584">
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P34">Pertes en ligne insérées <text:span text:style-name="T10">sous 50</text:span><text:span text:style-name="T8">Ω</text:span></text:p>
+      <text:p text:style-name="P31">Pertes en ligne insérées <text:span text:style-name="T10">sous 50</text:span><text:span text:style-name="T8">Ω</text:span></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P29">N/A</text:p>
+      <text:p text:style-name="P26">N/A</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" table:number-columns-spanned="2" office:value-type="string">
+      <text:p text:style-name="P28"/>
+     </table:table-cell>
+     <table:covered-table-cell/>
+     <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
       <text:p text:style-name="P31"/>
      </table:table-cell>
-     <table:covered-table-cell/>
-     <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P34"/>
-     </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A2" office:value-type="string">
-      <text:p text:style-name="P34"/>
+      <text:p text:style-name="P31"/>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213221867664">
+    <table:table-row table:style-name="TableLine1212740773856">
      <table:table-cell table:style-name="Tableau25.A2" table:number-columns-spanned="6" office:value-type="string">
-      <text:p text:style-name="P31">Alimentation</text:p>
+      <text:p text:style-name="P28">Alimentation</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:covered-table-cell/>
@@ -1452,81 +1499,81 @@
      <table:covered-table-cell/>
      <table:covered-table-cell/>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213221865488">
+    <table:table-row table:style-name="TableLine1212740771680">
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P30">Alimentation externe</text:p>
+      <text:p text:style-name="P27">Alimentation externe</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P30">12</text:p>
+      <text:p text:style-name="P27">12</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P35">13,8</text:p>
+      <text:p text:style-name="P32">13,8</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P35">15</text:p>
+      <text:p text:style-name="P32">15</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A2" office:value-type="string">
-      <text:p text:style-name="P30">V</text:p>
+      <text:p text:style-name="P27">V</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213221860864">
+    <table:table-row table:style-name="TableLine1212740764608">
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P30">Alimentation pack pile</text:p>
+      <text:p text:style-name="P27">Alimentation pack pile</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P29">N/A</text:p>
+      <text:p text:style-name="P26">N/A</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P30"/>
+      <text:p text:style-name="P27"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A2" office:value-type="string">
-      <text:p text:style-name="P30"/>
+      <text:p text:style-name="P27"/>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213221857600">
+    <table:table-row table:style-name="TableLine1212740756992">
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P30">Autonomie sur pack pile<text:span text:style-name="T11">(1)</text:span></text:p>
+      <text:p text:style-name="P27">Autonomie sur pack pile<text:span text:style-name="T11">(1)</text:span></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P29">N/A</text:p>
+      <text:p text:style-name="P26">N/A</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A2" office:value-type="string">
-      <text:p text:style-name="P36"/>
+      <text:p text:style-name="P33"/>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213221862224">
+    <table:table-row table:style-name="TableLine1212740758896">
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P37">Consommation (alimentation <text:soft-page-break/>externe ou pack pile)</text:p>
+      <text:p text:style-name="P34">Consommation (alimentation <text:soft-page-break/>externe ou pack pile)</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P30"/>
+      <text:p text:style-name="P27"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P37">100</text:p>
+      <text:p text:style-name="P34">100</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A2" office:value-type="string">
-      <text:p text:style-name="P37">mA</text:p>
+      <text:p text:style-name="P34">mA</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213221852432">
+    <table:table-row table:style-name="TableLine1212740756720">
      <table:table-cell table:style-name="Tableau25.A2" table:number-columns-spanned="6" office:value-type="string">
-      <text:p text:style-name="P31">Mesures</text:p>
+      <text:p text:style-name="P28">Mesures</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:covered-table-cell/>
@@ -1534,45 +1581,45 @@
      <table:covered-table-cell/>
      <table:covered-table-cell/>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213221865216">
+    <table:table-row table:style-name="TableLine1212740764880">
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P30">Précision de la mesure</text:p>
+      <text:p text:style-name="P27">Précision de la mesure</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P30"><text:span text:style-name="T6">±</text:span>10</text:p>
+      <text:p text:style-name="P27"><text:span text:style-name="T6">±</text:span>10</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A2" office:value-type="string">
-      <text:p text:style-name="P38">%</text:p>
+      <text:p text:style-name="P35">%</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213221866304">
+    <table:table-row table:style-name="TableLine1212740767328">
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P31">ROS</text:p>
+      <text:p text:style-name="P28">ROS</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P31">1,1</text:p>
+      <text:p text:style-name="P28">1,1</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P33">∞</text:p>
+      <text:p text:style-name="P30">∞</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A2" office:value-type="string">
-      <text:p text:style-name="P38"/>
+      <text:p text:style-name="P35"/>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213221854608">
+    <table:table-row table:style-name="TableLine1212740757264">
      <table:table-cell table:style-name="Tableau25.A2" table:number-columns-spanned="6" office:value-type="string">
-      <text:p text:style-name="P31">Mécanique</text:p>
+      <text:p text:style-name="P28">Mécanique</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:covered-table-cell/>
@@ -1580,118 +1627,382 @@
      <table:covered-table-cell/>
      <table:covered-table-cell/>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213221861408">
+    <table:table-row table:style-name="TableLine1212740757536">
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P31">Dimensions</text:p>
+      <text:p text:style-name="P28">Dimensions</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" table:number-columns-spanned="4" office:value-type="string">
-      <text:p text:style-name="P31"/>
+      <text:p text:style-name="P28"/>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:covered-table-cell/>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau25.A2" office:value-type="string">
-      <text:p text:style-name="P31">mm</text:p>
+      <text:p text:style-name="P28">mm</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213221861680">
+    <table:table-row table:style-name="TableLine1212740777392">
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P31">Poids</text:p>
+      <text:p text:style-name="P28">Poids</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P31"/>
+      <text:p text:style-name="P28"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P31"/>
+      <text:p text:style-name="P28"/>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P31"/>
+      <text:p text:style-name="P28"/>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau25.A2" office:value-type="string">
-      <text:p text:style-name="P31">kg</text:p>
+      <text:p text:style-name="P28">kg</text:p>
      </table:table-cell>
     </table:table-row>
-    <table:table-row table:style-name="TableLine1213221852160">
+    <table:table-row table:style-name="TableLine1212740786368">
      <table:table-cell table:style-name="Tableau25.A3" office:value-type="string">
-      <text:p text:style-name="P31">Connecteurs</text:p>
+      <text:p text:style-name="P28">Connecteurs</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau25.A3" table:number-columns-spanned="4" office:value-type="string">
-      <text:p text:style-name="P29">SMA</text:p>
+      <text:p text:style-name="P26">SMA</text:p>
      </table:table-cell>
      <table:covered-table-cell/>
      <table:covered-table-cell/>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Tableau25.A2" office:value-type="string">
-      <text:p text:style-name="P31"/>
+      <text:p text:style-name="P28"/>
      </table:table-cell>
     </table:table-row>
    </table:table>
-   <text:p text:style-name="P16"/>
-   <text:p text:style-name="P13"/>
+   <text:p text:style-name="P14"/>
+   <text:p text:style-name="P11"/>
    <text:h text:style-name="P2" text:outline-level="2"><text:bookmark-start text:name="__RefHeading___Toc23954_1355943153"/>3.3-Spécifications logicielles générales<text:bookmark-end text:name="__RefHeading___Toc23954_1355943153"/></text:h>
-   <text:p text:style-name="P13"/>
-   <text:p text:style-name="P17">Dans la suite de ce document, et dans tous les fichiers associés au projet (code source, documentations, schéma, etc.), le logiciel ou le firmware désignera le programme. </text:p>
-   <text:p text:style-name="P18"/>
-   <text:p text:style-name="P19">Le logiciel devra être développé en assembleur, compte tenu de la simplicité des fonctions à intégrer.</text:p>
-   <text:p text:style-name="P18"/>
-   <text:p text:style-name="P19">Le logiciel ne devra pas comporter de bugs.</text:p>
-   <text:p text:style-name="P18"/>
-   <text:p text:style-name="P19">Un environnement de développement sous Linux sera privilégié, mais une compatibilité avec Windows devra être respecté.</text:p>
-   <text:p text:style-name="P18"/>
-   <text:p text:style-name="P19">Les outils de développement seront choisis parmi les outils sous licence GPL.</text:p>
-   <text:p text:style-name="P19"/>
-   <text:p text:style-name="P19">Le logiciel sera lui-même, placé sous licence GPL.</text:p>
-   <text:p text:style-name="P18"/>
-   <text:p text:style-name="P19">Le logiciel sera placé sous contrôle de version <text:span text:style-name="T4">GIT</text:span>. </text:p>
+   <text:p text:style-name="P11"/>
+   <text:p text:style-name="P15">Dans la suite de ce document, et dans tous les fichiers associés au projet (code source, documentations, schéma, etc.), le logiciel ou le firmware désignera le programme. </text:p>
+   <text:p text:style-name="P16"/>
+   <text:p text:style-name="P17">Le logiciel devra être développé en assembleur, compte tenu de la simplicité des fonctions à intégrer.</text:p>
+   <text:p text:style-name="P16"/>
+   <text:p text:style-name="P17">Le logiciel ne devra pas comporter de bugs.</text:p>
+   <text:p text:style-name="P16"/>
+   <text:p text:style-name="P17">Un environnement de développement sous Linux sera privilégié, mais une compatibilité avec Windows devra être respecté.</text:p>
+   <text:p text:style-name="P16"/>
+   <text:p text:style-name="P17">Les outils de développement seront choisis parmi les outils sous licence GPL.</text:p>
+   <text:p text:style-name="P17"/>
+   <text:p text:style-name="P17">Le logiciel sera lui-même, placé sous licence GPL.</text:p>
+   <text:p text:style-name="P16"/>
+   <text:p text:style-name="P17">Le logiciel sera placé sous contrôle de version <text:span text:style-name="T4">GIT</text:span>. </text:p>
    <text:p text:style-name="P6"/>
    <text:p text:style-name="P6"/>
    <text:p text:style-name="P6"/>
    <text:h text:style-name="P1" text:outline-level="1">5-SPECIFICATIONS LOGICIELLES</text:h>
-   <text:p text:style-name="P20"/>
+   <text:p text:style-name="P18"/>
    <text:h text:style-name="P3" text:outline-level="2"><text:bookmark-start text:name="__RefHeading___Toc19281_3300581735"/>5.1-<text:span text:style-name="T14">Généralités</text:span><text:bookmark-end text:name="__RefHeading___Toc19281_3300581735"/></text:h>
-   <text:p text:style-name="P26">Le logiciel <text:span text:style-name="T15">est</text:span> développé sous Linux (Debian <text:span text:style-name="T16">10</text:span>).</text:p>
-   <text:p text:style-name="P26"/>
+   <text:p text:style-name="P23">Le logiciel <text:span text:style-name="T15">est</text:span> développé sous Linux (Debian <text:span text:style-name="T16">10</text:span>).</text:p>
+   <text:p text:style-name="P23"/>
    <text:h text:style-name="P5" text:outline-level="3"><text:bookmark-start text:name="__RefHeading___Toc165195_1266879104"/>5.1.1-Firmware<text:bookmark-end text:name="__RefHeading___Toc165195_1266879104"/></text:h>
-   <text:p text:style-name="P21"><text:span text:style-name="T23">5</text:span> firmware<text:span text:style-name="T18">s</text:span> seront généres : </text:p>
-   <text:p text:style-name="P21"/>
-   <text:p text:style-name="P21"><text:tab/>-Firmware de test : « swr_power_meter_f8kgl-Vn.m.TEST.hex » <text:span text:style-name="T4">pour les versions matériel « SWR POWER METER » et « xWATT POWER METER ».</text:span></text:p>
-   <text:p text:style-name="P22"/>
-   <text:p text:style-name="P22">Le <text:span text:style-name="T19">firmware de</text:span> « test » est un <text:span text:style-name="T19">firmware</text:span> <text:span text:style-name="T17">pouvant fonctionner à la fois pour le</text:span> « SWR POWER METER F8KGL » <text:span text:style-name="T17">et pour le « xWATT METER F8KGL ». Les versions matériel en kit doivent <text:s/>également être couvertes.</text:span></text:p>
-   <text:p text:style-name="P22"/>
-   <text:p text:style-name="P24">Son utilisation doit permettre : </text:p>
-   <text:list xml:id="list722611484" text:style-name="L4">
+   <text:p text:style-name="P19"><text:span text:style-name="T23">5</text:span> firmware<text:span text:style-name="T18">s</text:span> seront généres : </text:p>
+   <text:p text:style-name="P19"/>
+   <text:p text:style-name="P19"><text:tab/>-Firmware de test : « swr_power_meter_f8kgl-Vn.m.TEST.hex » <text:span text:style-name="T4">pour les versions matériel « SWR POWER METER » et « xWATT POWER METER ».</text:span></text:p>
+   <text:p text:style-name="P20"/>
+   <text:p text:style-name="P20">Le <text:span text:style-name="T19">firmware de</text:span> « test » est un <text:span text:style-name="T19">firmware</text:span> <text:span text:style-name="T17">pouvant fonctionner à la fois pour le</text:span> « SWR POWER METER F8KGL » <text:span text:style-name="T17">et pour le « xWATT METER F8KGL ». Les versions matériel en kit doivent <text:s/>également être couvertes.</text:span></text:p>
+   <text:p text:style-name="P20"/>
+   <text:p text:style-name="P21">Son utilisation doit permettre : </text:p>
+   <text:list xml:id="list2970004932" text:style-name="L3">
     <text:list-item>
-     <text:p text:style-name="P23">Valider l’architecture HW choisie à l’aide d’une campagne de test sur le prototype. Cette campagne de test est appelée « test de validation »</text:p>
-     <text:p text:style-name="P23"/>
+     <text:p text:style-name="P44">Valider l’architecture HW choisie à l’aide d’une campagne de test sur le prototype. Cette campagne de test est appelée « test de validation »</text:p>
+     <text:p text:style-name="P44"/>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P23">Valider la fabrication et le montage d’un <text:span text:style-name="T20">« SWR POWER METER F8KGL » </text:span>et « xWATT METER F8KGL » <text:s/>à l’aide d’une campagne de test <text:span text:style-name="T21">appelée « test de production »</text:span></text:p>
+     <text:p text:style-name="P44">Valider la fabrication et le montage d’un <text:span text:style-name="T20">« SWR POWER METER F8KGL » </text:span>et « xWATT METER F8KGL » <text:s/>à l’aide d’une campagne de test <text:span text:style-name="T21">appelée « test de production »</text:span></text:p>
     </text:list-item>
    </text:list>
-   <text:p text:style-name="P24"/>
-   <text:p text:style-name="P24"/>
-   <text:p text:style-name="P21"><text:tab/></text:p>
-   <text:p text:style-name="P21"><text:tab/>-Firmware de <text:span text:style-name="T18">calibration : </text:span><text:s/>« swr_power_meter_f8kgl-Vn.m.<text:span text:style-name="T18">CALIBRATION</text:span>.hex » <text:span text:style-name="T4">et </text:span>« <text:span text:style-name="T4">xwatt</text:span>_meter_f8kgl-Vn.m.<text:span text:style-name="T4">CALIBRATION</text:span>.hex » <text:span text:style-name="T4">pour les versions matériel « SWR POWER METER » et « xWATT POWER METER » respectivement.</text:span></text:p>
    <text:p text:style-name="P21"/>
    <text:p text:style-name="P21"/>
-   <text:p text:style-name="P21"/>
-   <text:p text:style-name="P21"/>
-   <text:p text:style-name="P21"><text:tab/>-Firmware opérationnel : « swr_power_meter_f8kgl-Vn.m.hex » <text:span text:style-name="T4">et </text:span>« <text:span text:style-name="T4">xwatt</text:span>_meter_f8kgl-Vn.m.hex » <text:span text:style-name="T4">pour les versions matériel « SWR POWER METER » et « xWATT POWER METER » respectivement.</text:span></text:p>
-   <text:p text:style-name="P21"/>
-   <text:p text:style-name="P21"/>
-   <text:p text:style-name="P21"/>
-   <text:p text:style-name="P21"/>
-   <text:p text:style-name="P21"/>
-   <text:p text:style-name="P25">Un <office:annotation>
+   <text:p text:style-name="P19"><text:tab/></text:p>
+   <text:p text:style-name="P19"><text:tab/>-Firmware de <text:span text:style-name="T18">calibration : </text:span><text:s/>« swr_power_meter_f8kgl-Vn.m.<text:span text:style-name="T18">CALIBRATION</text:span>.hex » <text:span text:style-name="T4">et </text:span>« <text:span text:style-name="T4">xwatt</text:span>_meter_f8kgl-Vn.m.<text:span text:style-name="T4">CALIBRATION</text:span>.hex » <text:span text:style-name="T4">pour les versions matériel « SWR POWER METER » et « xWATT POWER METER » respectivement.</text:span></text:p>
+   <text:p text:style-name="P19"/>
+   <text:p text:style-name="P19"/>
+   <text:p text:style-name="P19"/>
+   <text:p text:style-name="P19"/>
+   <text:p text:style-name="P19"><text:tab/>-Firmware opérationnel : « swr_power_meter_f8kgl-Vn.m.hex » <text:span text:style-name="T4">et </text:span>« <text:span text:style-name="T4">xwatt</text:span>_meter_f8kgl-Vn.m.hex » <text:span text:style-name="T4">pour les versions matériel « SWR POWER METER » et « xWATT POWER METER » respectivement.</text:span></text:p>
+   <text:p text:style-name="P19"/>
+   <text:p text:style-name="P19"/>
+   <text:p text:style-name="P19"/>
+   <text:p text:style-name="P19"/>
+   <text:p text:style-name="P19"/>
+   <text:p text:style-name="P22">Un <office:annotation>
      <dc:creator>Auteur inconnu</dc:creator>
      <dc:date>2020-05-15T15:27:36.181000000</dc:date>
-     <text:p text:style-name="P39"><text:span text:style-name="T24">Rajouter un flag (tpiquement, active DEBUG_ISSUE_134)</text:span></text:p>
+     <text:p text:style-name="P51"><text:span text:style-name="T26">Rajouter un flag (tpiquement, active DEBUG_ISSUE_134)</text:span></text:p>
     </office:annotation>6ème firmware est également généré pour des tests fonctionnels sous GPSIM. Il a pour nom « <text:span text:style-name="T22">« swr_power_meter_f8kgl-Vn.m.</text:span>SIMU<text:span text:style-name="T22">.hex »</text:span></text:p>
-   <text:p text:style-name="P21"/>
-   <text:p text:style-name="P26"/>
-   <text:p text:style-name="P26"/>
+   <text:p text:style-name="P19"/>
+   <text:p text:style-name="P23"/>
+   <text:p text:style-name="P23"/>
    <text:p text:style-name="P6"/>
+   <text:p text:style-name="P6"/>
+   <text:p text:style-name="P6"/>
+   <text:p text:style-name="P6"/>
+   <text:p text:style-name="P6"/>
+   <text:p text:style-name="P46"><text:soft-page-break/></text:p>
+   <text:h text:style-name="P38" text:outline-level="2"><text:bookmark-start text:name="__RefHeading___Toc24344_1355943153"/>5.<text:span text:style-name="T25">3</text:span>-Firmware de « CALIBRATION »<text:bookmark-end text:name="__RefHeading___Toc24344_1355943153"/></text:h>
+   <text:p text:style-name="P50"/>
+   <text:p text:style-name="P47"><draw:g text:anchor-type="paragraph" draw:z-index="1" draw:name="Forme43" draw:style-name="gr2"><draw:custom-shape draw:style-name="gr23" draw:text-style-name="P54" svg:width="3.402cm" svg:height="1.8cm" svg:x="2.002cm" svg:y="0.355cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T28">MODE </text:span></text:p>
+      <text:p text:style-name="P53"><text:span text:style-name="T28">CALIBRATION</text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:path-stretchpoint-x="10800" draw:path-stretchpoint-y="10800" draw:text-areas="?f3 ?f4 ?f5 ?f6" draw:type="round-rectangle" draw:modifiers="3600" draw:enhanced-path="M ?f7 0 X 0 ?f8 L 0 ?f9 Y ?f7 21600 L ?f10 21600 X 21600 ?f9 L 21600 ?f8 Y ?f10 0 Z N">
+       <draw:equation draw:name="f0" draw:formula="45"/>
+       <draw:equation draw:name="f1" draw:formula="$0 *sin(?f0 *(pi/180))"/>
+       <draw:equation draw:name="f2" draw:formula="?f1 *3163/7636"/>
+       <draw:equation draw:name="f3" draw:formula="left+?f2 "/>
+       <draw:equation draw:name="f4" draw:formula="top+?f2 "/>
+       <draw:equation draw:name="f5" draw:formula="right-?f2 "/>
+       <draw:equation draw:name="f6" draw:formula="bottom-?f2 "/>
+       <draw:equation draw:name="f7" draw:formula="left+$0 "/>
+       <draw:equation draw:name="f8" draw:formula="top+$0 "/>
+       <draw:equation draw:name="f9" draw:formula="bottom-$0 "/>
+       <draw:equation draw:name="f10" draw:formula="right-$0 "/>
+       <draw:handle draw:handle-position="$0 top" draw:handle-switched="true" draw:handle-range-x-minimum="0" draw:handle-range-x-maximum="10800"/>
+      </draw:enhanced-geometry>
+     </draw:custom-shape><draw:line draw:style-name="gr6" draw:text-style-name="P56" svg:x1="3.704cm" svg:y1="2.154cm" svg:x2="3.704cm" svg:y2="3.054cm">
+      <text:p/>
+     </draw:line><draw:custom-shape draw:style-name="gr24" draw:text-style-name="P55" svg:width="7.492cm" svg:height="2.4cm" svg:x="0.111cm" svg:y="2.955cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T29">Affichage du</text:span></text:p>
+      <text:p text:style-name="P53"><text:span text:style-name="T29">message CALIBRATION_FWD_REF</text:span></text:p>
+      <text:p text:style-name="P53"><text:span text:style-name="T29">sur 2 (ou 4) lignes</text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
+     </draw:custom-shape><draw:custom-shape draw:style-name="gr25" draw:text-style-name="P55" svg:width="7.4cm" svg:height="2.601cm" svg:x="0.103cm" svg:y="6.253cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T29">Lecture des valeurs </text:span></text:p>
+      <text:p text:style-name="P53"><text:span text:style-name="T29">d’ADC FWD et REF</text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
+     </draw:custom-shape><draw:line draw:style-name="gr6" draw:text-style-name="P56" svg:x1="3.704cm" svg:y1="5.357cm" svg:x2="3.704cm" svg:y2="6.257cm">
+      <text:p/>
+     </draw:line><draw:custom-shape draw:style-name="gr26" draw:text-style-name="P55" svg:width="7.492cm" svg:height="2.401cm" svg:x="0.002cm" svg:y="9.654cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T29">Affichage des valeurs </text:span></text:p>
+      <text:p text:style-name="P53"><text:span text:style-name="T29">d’ADC FWD et REF</text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
+     </draw:custom-shape><draw:line draw:style-name="gr6" draw:text-style-name="P56" svg:x1="3.802cm" svg:y1="8.756cm" svg:x2="3.802cm" svg:y2="9.656cm">
+      <text:p/>
+     </draw:line><draw:line draw:style-name="gr21" draw:text-style-name="P56" svg:x1="7.502cm" svg:y1="10.855cm" svg:x2="12.002cm" svg:y2="10.855cm">
+      <text:p/>
+     </draw:line><draw:line draw:style-name="gr21" draw:text-style-name="P56" svg:x1="12.002cm" svg:y1="5.558cm" svg:x2="12.002cm" svg:y2="10.858cm">
+      <text:p/>
+     </draw:line><draw:line draw:style-name="gr27" draw:text-style-name="P56" svg:x1="3.704cm" svg:y1="5.655cm" svg:x2="12.004cm" svg:y2="5.655cm">
+      <text:p/>
+     </draw:line>
+    </draw:g></text:p>
+   <text:p text:style-name="P48"/>
+   <text:p text:style-name="P48"/>
+   <text:p text:style-name="P48"/>
+   <text:p text:style-name="P48"/>
+   <text:p text:style-name="P48"><draw:frame text:anchor-type="paragraph" draw:z-index="3" draw:name="Forme83_0" draw:style-name="gr1" draw:text-style-name="P52" svg:width="1.306cm" svg:height="2.518cm" svg:x="-1.194cm" svg:y="0.402cm">
+     <draw:text-box>
+      <text:p><text:span text:style-name="T27">LCD</text:span></text:p>
+     </draw:text-box>
+    </draw:frame></text:p>
+   <text:p text:style-name="P48"/>
+   <text:p text:style-name="P48"/>
+   <text:p text:style-name="P48"/>
+   <text:p text:style-name="P48"/>
+   <text:p text:style-name="P48"/>
+   <text:p text:style-name="P48"/>
+   <text:p text:style-name="P48"><draw:frame text:anchor-type="paragraph" draw:z-index="4" draw:name="Forme83_1" draw:style-name="gr1" draw:text-style-name="P52" svg:width="1.306cm" svg:height="2.518cm" svg:x="-1.295cm" svg:y="0.434cm">
+     <draw:text-box>
+      <text:p><text:span text:style-name="T27">ADC</text:span></text:p>
+     </draw:text-box>
+    </draw:frame></text:p>
+   <text:p text:style-name="P48"/>
+   <text:p text:style-name="P48"/>
+   <text:p text:style-name="P48"/>
+   <text:p text:style-name="P48"/>
+   <text:p text:style-name="P48"/>
+   <text:p text:style-name="P48"/>
+   <text:p text:style-name="P48"><draw:frame text:anchor-type="paragraph" draw:z-index="5" draw:name="Forme83_2" draw:style-name="gr1" draw:text-style-name="P52" svg:width="1.306cm" svg:height="2.518cm" svg:x="-1.304cm" svg:y="0.404cm">
+     <draw:text-box>
+      <text:p><text:span text:style-name="T27">LCD</text:span></text:p>
+     </draw:text-box>
+    </draw:frame></text:p>
+   <text:p text:style-name="P48"/>
+   <text:p text:style-name="P50"><text:bookmark-start text:name="__RefHeading___Toc17907_3300581735"/><text:bookmark-end text:name="__RefHeading___Toc17907_3300581735"/></text:p>
+   <text:h text:style-name="P39" text:outline-level="2"><text:bookmark-start text:name="__RefHeading___Toc24346_1355943153"/>5.<text:span text:style-name="T25">4</text:span>-Firmware « OPERATIONNEL »<text:bookmark-end text:name="__RefHeading___Toc24346_1355943153"/></text:h>
+   <text:p text:style-name="P47">tbd</text:p>
+   <text:p text:style-name="P49"><draw:line text:anchor-type="paragraph" draw:z-index="0" draw:name="Forme42" draw:style-name="gr28" draw:text-style-name="P57" svg:x1="0cm" svg:y1="0.355cm" svg:x2="0cm" svg:y2="1.337cm">
+     <text:p/>
+    </draw:line></text:p>
+   <text:p text:style-name="P49"><draw:g text:anchor-type="paragraph" draw:z-index="2" draw:name="Forme42_0" draw:style-name="gr2"><draw:custom-shape draw:style-name="gr3" draw:text-style-name="P54" svg:width="2.901cm" svg:height="1.8cm" svg:x="0cm" svg:y="-0.132cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T28">DEBUT</text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:path-stretchpoint-x="10800" draw:path-stretchpoint-y="10800" draw:text-areas="?f3 ?f4 ?f5 ?f6" draw:type="round-rectangle" draw:modifiers="3600" draw:enhanced-path="M ?f7 0 X 0 ?f8 L 0 ?f9 Y ?f7 21600 L ?f10 21600 X 21600 ?f9 L 21600 ?f8 Y ?f10 0 Z N">
+       <draw:equation draw:name="f0" draw:formula="45"/>
+       <draw:equation draw:name="f1" draw:formula="$0 *sin(?f0 *(pi/180))"/>
+       <draw:equation draw:name="f2" draw:formula="?f1 *3163/7636"/>
+       <draw:equation draw:name="f3" draw:formula="left+?f2 "/>
+       <draw:equation draw:name="f4" draw:formula="top+?f2 "/>
+       <draw:equation draw:name="f5" draw:formula="right-?f2 "/>
+       <draw:equation draw:name="f6" draw:formula="bottom-?f2 "/>
+       <draw:equation draw:name="f7" draw:formula="left+$0 "/>
+       <draw:equation draw:name="f8" draw:formula="top+$0 "/>
+       <draw:equation draw:name="f9" draw:formula="bottom-$0 "/>
+       <draw:equation draw:name="f10" draw:formula="right-$0 "/>
+       <draw:handle draw:handle-position="$0 top" draw:handle-switched="true" draw:handle-range-x-minimum="0" draw:handle-range-x-maximum="10800"/>
+      </draw:enhanced-geometry>
+     </draw:custom-shape><draw:custom-shape draw:style-name="gr4" draw:text-style-name="P55" svg:width="3.5cm" svg:height="1.701cm" svg:x="3.799cm" svg:y="-0.033cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T29">Initalisation MCU</text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
+     </draw:custom-shape><draw:custom-shape draw:style-name="gr5" draw:text-style-name="P55" svg:width="3.502cm" svg:height="1.701cm" svg:x="8.199cm" svg:y="-0.033cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T29">Initalisation ADC</text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
+     </draw:custom-shape><draw:custom-shape draw:style-name="gr4" draw:text-style-name="P55" svg:width="3.5cm" svg:height="1.701cm" svg:x="12.599cm" svg:y="-0.033cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T29">Initalisation LCD</text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
+     </draw:custom-shape><draw:line draw:style-name="gr6" draw:text-style-name="P56" svg:x1="2.899cm" svg:y1="0.769cm" svg:x2="3.799cm" svg:y2="0.769cm">
+      <text:p/>
+     </draw:line><draw:line draw:style-name="gr6" draw:text-style-name="P56" svg:x1="7.299cm" svg:y1="0.769cm" svg:x2="8.199cm" svg:y2="0.769cm">
+      <text:p/>
+     </draw:line><draw:line draw:style-name="gr6" draw:text-style-name="P56" svg:x1="11.699cm" svg:y1="0.769cm" svg:x2="12.599cm" svg:y2="0.769cm">
+      <text:p/>
+     </draw:line><draw:line draw:style-name="gr6" draw:text-style-name="P56" svg:x1="14.149cm" svg:y1="1.621cm" svg:x2="14.149cm" svg:y2="2.521cm">
+      <text:p/>
+     </draw:line><draw:custom-shape draw:style-name="gr7" draw:text-style-name="P55" svg:width="3.5cm" svg:height="1.699cm" svg:x="12.599cm" svg:y="2.468cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T29">Affichage du</text:span></text:p>
+      <text:p text:style-name="P53"><text:span text:style-name="T29">message de </text:span></text:p>
+      <text:p text:style-name="P53"><text:span text:style-name="T29">boot</text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
+     </draw:custom-shape><draw:custom-shape draw:style-name="gr8" draw:text-style-name="P55" svg:width="3.502cm" svg:height="1.699cm" svg:x="8.199cm" svg:y="2.468cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T29">Temporisation 3s</text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
+     </draw:custom-shape><draw:line draw:style-name="gr9" draw:text-style-name="P56" svg:x1="11.699cm" svg:y1="3.267cm" svg:x2="12.599cm" svg:y2="3.267cm">
+      <text:p/>
+     </draw:line><draw:line draw:style-name="gr9" draw:text-style-name="P56" svg:x1="7.3cm" svg:y1="3.267cm" svg:x2="8.2cm" svg:y2="3.267cm">
+      <text:p/>
+     </draw:line><draw:custom-shape draw:style-name="gr10" draw:text-style-name="P54" svg:width="2.601cm" svg:height="2.701cm" svg:x="4.699cm" svg:y="1.967cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T28">calibration</text:span></text:p>
+      <text:p text:style-name="P53"><text:span text:style-name="T28">faite ?</text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:glue-points="10800 0 0 10800 10800 21600 21600 10800" draw:text-areas="5400 5400 16200 16200" draw:type="diamond" draw:enhanced-path="M 10800 0 L 21600 10800 10800 21600 0 10800 10800 0 Z N"/>
+     </draw:custom-shape><draw:line draw:style-name="gr6" draw:text-style-name="P56" svg:x1="5.999cm" svg:y1="4.669cm" svg:x2="5.999cm" svg:y2="5.569cm">
+      <text:p/>
+     </draw:line><draw:line draw:style-name="gr9" draw:text-style-name="P56" svg:x1="3.799cm" svg:y1="3.267cm" svg:x2="4.699cm" svg:y2="3.267cm">
+      <text:p/>
+     </draw:line><draw:custom-shape draw:style-name="gr11" draw:text-style-name="P55" svg:width="1.1cm" svg:height="0.9cm" svg:x="3.6cm" svg:y="2.367cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T29">non</text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
+     </draw:custom-shape><draw:custom-shape draw:style-name="gr12" draw:text-style-name="P55" svg:width="1.1cm" svg:height="0.902cm" svg:x="6.1cm" svg:y="4.466cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T29">oui</text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
+     </draw:custom-shape><draw:custom-shape draw:style-name="gr13" draw:text-style-name="P54" svg:width="2.5cm" svg:height="2.5cm" svg:x="1.3cm" svg:y="2.069cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T28">calibration</text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:glue-points="10800 0 3163 3163 0 10800 3163 18437 10800 21600 18437 18437 21600 10800 18437 3163" draw:text-areas="3163 3163 18437 18437" draw:type="ellipse" draw:enhanced-path="U 10800 10800 10800 10800 0 360 Z N"/>
+     </draw:custom-shape><draw:custom-shape draw:style-name="gr14" draw:text-style-name="P54" svg:width="3.402cm" svg:height="1.802cm" svg:x="4.299cm" svg:y="5.467cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T28">MODE </text:span></text:p>
+      <text:p text:style-name="P53"><text:span text:style-name="T28">OPERATIONNEL</text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:path-stretchpoint-x="10800" draw:path-stretchpoint-y="10800" draw:text-areas="?f3 ?f4 ?f5 ?f6" draw:type="round-rectangle" draw:modifiers="3600" draw:enhanced-path="M ?f7 0 X 0 ?f8 L 0 ?f9 Y ?f7 21600 L ?f10 21600 X 21600 ?f9 L 21600 ?f8 Y ?f10 0 Z N">
+       <draw:equation draw:name="f0" draw:formula="45"/>
+       <draw:equation draw:name="f1" draw:formula="$0 *sin(?f0 *(pi/180))"/>
+       <draw:equation draw:name="f2" draw:formula="?f1 *3163/7636"/>
+       <draw:equation draw:name="f3" draw:formula="left+?f2 "/>
+       <draw:equation draw:name="f4" draw:formula="top+?f2 "/>
+       <draw:equation draw:name="f5" draw:formula="right-?f2 "/>
+       <draw:equation draw:name="f6" draw:formula="bottom-?f2 "/>
+       <draw:equation draw:name="f7" draw:formula="left+$0 "/>
+       <draw:equation draw:name="f8" draw:formula="top+$0 "/>
+       <draw:equation draw:name="f9" draw:formula="bottom-$0 "/>
+       <draw:equation draw:name="f10" draw:formula="right-$0 "/>
+       <draw:handle draw:handle-position="$0 top" draw:handle-switched="true" draw:handle-range-x-minimum="0" draw:handle-range-x-maximum="10800"/>
+      </draw:enhanced-geometry>
+     </draw:custom-shape><draw:line draw:style-name="gr6" draw:text-style-name="P56" svg:x1="5.95cm" svg:y1="7.217cm" svg:x2="5.95cm" svg:y2="8.117cm">
+      <text:p/>
+     </draw:line><draw:custom-shape draw:style-name="gr15" draw:text-style-name="P55" svg:width="6.201cm" svg:height="2.401cm" svg:x="2.909cm" svg:y="8.068cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T29">Affichage du</text:span></text:p>
+      <text:p text:style-name="P53"><text:span text:style-name="T29">message FWD_REF_SWR</text:span></text:p>
+      <text:p text:style-name="P53"><text:span text:style-name="T29">sur 2 (ou 4) lignes</text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
+     </draw:custom-shape><draw:custom-shape draw:style-name="gr16" draw:text-style-name="P55" svg:width="6.201cm" svg:height="1.401cm" svg:x="2.9cm" svg:y="11.367cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T29">Lecture des valeurs </text:span></text:p>
+      <text:p text:style-name="P53"><text:span text:style-name="T29">d’ADC FWD et REF</text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
+     </draw:custom-shape><draw:custom-shape draw:style-name="gr17" draw:text-style-name="P55" svg:width="6.201cm" svg:height="1.301cm" svg:x="2.799cm" svg:y="13.667cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T29">Lecture de </text:span></text:p>
+      <text:p text:style-name="P53"><text:span text:style-name="T29">la bande de fréquence</text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
+     </draw:custom-shape><draw:line draw:style-name="gr6" draw:text-style-name="P56" svg:x1="5.951cm" svg:y1="10.518cm" svg:x2="5.951cm" svg:y2="11.418cm">
+      <text:p/>
+     </draw:line><draw:line draw:style-name="gr6" draw:text-style-name="P56" svg:x1="5.951cm" svg:y1="12.818cm" svg:x2="5.951cm" svg:y2="13.718cm">
+      <text:p/>
+     </draw:line><draw:line draw:style-name="gr6" draw:text-style-name="P56" svg:x1="5.951cm" svg:y1="15.017cm" svg:x2="5.951cm" svg:y2="15.917cm">
+      <text:p/>
+     </draw:line><draw:custom-shape draw:style-name="gr18" draw:text-style-name="P55" svg:width="6.201cm" svg:height="1.701cm" svg:x="2.799cm" svg:y="15.866cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T29">Lecture en EEP </text:span></text:p>
+      <text:p text:style-name="P53"><text:span text:style-name="T29">des paramètres</text:span></text:p>
+      <text:p text:style-name="P53"><text:span text:style-name="T29">de calibration</text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
+     </draw:custom-shape><draw:custom-shape draw:style-name="gr16" draw:text-style-name="P55" svg:width="6.201cm" svg:height="1.401cm" svg:x="2.9cm" svg:y="18.466cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T29">Calcul de la puissance</text:span></text:p>
+      <text:p text:style-name="P53"><text:span text:style-name="T29">FWD et REF </text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
+     </draw:custom-shape><draw:line draw:style-name="gr6" draw:text-style-name="P56" svg:x1="5.952cm" svg:y1="17.617cm" svg:x2="5.952cm" svg:y2="18.517cm">
+      <text:p/>
+     </draw:line><draw:custom-shape draw:style-name="gr19" draw:text-style-name="P55" svg:width="6.201cm" svg:height="1.001cm" svg:x="2.799cm" svg:y="20.668cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T29">Calcul du SWR </text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
+     </draw:custom-shape><draw:line draw:style-name="gr6" draw:text-style-name="P56" svg:x1="5.899cm" svg:y1="19.867cm" svg:x2="5.899cm" svg:y2="20.767cm">
+      <text:p/>
+     </draw:line><draw:custom-shape draw:style-name="gr20" draw:text-style-name="P55" svg:width="6.901cm" svg:height="2.4cm" svg:x="9.899cm" svg:y="19.969cm">
+      <text:p text:style-name="P53"><text:span text:style-name="T29">Affichage de la puissance</text:span></text:p>
+      <text:p text:style-name="P53"><text:span text:style-name="T29">FWD et REF</text:span></text:p>
+      <text:p text:style-name="P53"><text:span text:style-name="T29">Affichge du SWR (sur 2 ou 4 lignes)</text:span></text:p>
+      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
+     </draw:custom-shape><draw:line draw:style-name="gr6" draw:text-style-name="P56" svg:x1="8.999cm" svg:y1="21.167cm" svg:x2="9.899cm" svg:y2="21.167cm">
+      <text:p/>
+     </draw:line><draw:line draw:style-name="gr21" draw:text-style-name="P56" svg:x1="13.399cm" svg:y1="19.869cm" svg:x2="13.399cm" svg:y2="10.869cm">
+      <text:p/>
+     </draw:line><draw:line draw:style-name="gr22" draw:text-style-name="P56" svg:x1="13.399cm" svg:y1="10.869cm" svg:x2="5.999cm" svg:y2="10.869cm">
+      <text:p/>
+     </draw:line>
+    </draw:g></text:p>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:p text:style-name="P49"/>
+   <text:h text:style-name="P37" text:outline-level="2"/>
   </office:text>
  </office:body>
 </office:document>
