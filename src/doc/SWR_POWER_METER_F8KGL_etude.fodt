@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <office:document xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:config="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpt="http://openoffice.org/2005/report" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:officeooo="http://openoffice.org/2009/office" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:drawooo="http://openoffice.org/2010/draw" xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:formx="urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0" xmlns:css3t="http://www.w3.org/TR/css3-text/" office:version="1.2" office:mimetype="application/vnd.oasis.opendocument.text">
- <office:meta><meta:initial-creator>f4bjh</meta:initial-creator><meta:editing-cycles>680</meta:editing-cycles><meta:creation-date>2017-12-15T09:57:00</meta:creation-date><dc:date>2021-02-24T00:28:34.878774513</dc:date><dc:language>fr-FR</dc:language><meta:editing-duration>P4DT13H45M35S</meta:editing-duration><meta:generator>LibreOffice/6.1.5.2$Linux_X86_64 LibreOffice_project/10$Build-2</meta:generator><dc:creator>F4BJH Fabrice DECROP LONGET</dc:creator><meta:document-statistic meta:table-count="6" meta:image-count="6" meta:object-count="34" meta:page-count="24" meta:paragraph-count="292" meta:word-count="3693" meta:character-count="23909" meta:non-whitespace-character-count="20403"/><meta:user-defined meta:name="AppVersion">14.0000</meta:user-defined><meta:user-defined meta:name="Company">Atos</meta:user-defined><meta:user-defined meta:name="DocSecurity" meta:value-type="float">0</meta:user-defined><meta:user-defined meta:name="HyperlinksChanged" meta:value-type="boolean">false</meta:user-defined><meta:user-defined meta:name="LinksUpToDate" meta:value-type="boolean">false</meta:user-defined><meta:user-defined meta:name="ScaleCrop" meta:value-type="boolean">false</meta:user-defined><meta:user-defined meta:name="ShareDoc" meta:value-type="boolean">false</meta:user-defined><meta:template xlink:type="simple" xlink:actuate="onRequest" xlink:title="Normal.dotm" xlink:href=""/></office:meta>
+ <office:meta><meta:initial-creator>f4bjh</meta:initial-creator><meta:editing-cycles>681</meta:editing-cycles><meta:creation-date>2017-12-15T09:57:00</meta:creation-date><dc:date>2021-02-24T00:34:34.509156598</dc:date><dc:language>fr-FR</dc:language><meta:editing-duration>P4DT13H51M34S</meta:editing-duration><meta:generator>LibreOffice/6.1.5.2$Linux_X86_64 LibreOffice_project/10$Build-2</meta:generator><dc:creator>F4BJH Fabrice DECROP LONGET</dc:creator><meta:document-statistic meta:table-count="6" meta:image-count="6" meta:object-count="34" meta:page-count="24" meta:paragraph-count="292" meta:word-count="3693" meta:character-count="23909" meta:non-whitespace-character-count="20403"/><meta:user-defined meta:name="AppVersion">14.0000</meta:user-defined><meta:user-defined meta:name="Company">Atos</meta:user-defined><meta:user-defined meta:name="DocSecurity" meta:value-type="float">0</meta:user-defined><meta:user-defined meta:name="HyperlinksChanged" meta:value-type="boolean">false</meta:user-defined><meta:user-defined meta:name="LinksUpToDate" meta:value-type="boolean">false</meta:user-defined><meta:user-defined meta:name="ScaleCrop" meta:value-type="boolean">false</meta:user-defined><meta:user-defined meta:name="ShareDoc" meta:value-type="boolean">false</meta:user-defined><meta:template xlink:type="simple" xlink:actuate="onRequest" xlink:title="Normal.dotm" xlink:href=""/></office:meta>
  <office:settings>
   <config:config-item-set config:name="ooo:view-settings">
-   <config:config-item config:name="ViewAreaTop" config:type="long">628405</config:config-item>
+   <config:config-item config:name="ViewAreaTop" config:type="long">341208</config:config-item>
    <config:config-item config:name="ViewAreaLeft" config:type="long">0</config:config-item>
    <config:config-item config:name="ViewAreaWidth" config:type="long">39425</config:config-item>
    <config:config-item config:name="ViewAreaHeight" config:type="long">13730</config:config-item>
@@ -13,12 +13,12 @@
    <config:config-item-map-indexed config:name="Views">
     <config:config-item-map-entry>
      <config:config-item config:name="ViewId" config:type="string">view2</config:config-item>
-     <config:config-item config:name="ViewLeft" config:type="long">8802</config:config-item>
-     <config:config-item config:name="ViewTop" config:type="long">637575</config:config-item>
+     <config:config-item config:name="ViewLeft" config:type="long">9735</config:config-item>
+     <config:config-item config:name="ViewTop" config:type="long">349643</config:config-item>
      <config:config-item config:name="VisibleLeft" config:type="long">0</config:config-item>
-     <config:config-item config:name="VisibleTop" config:type="long">628405</config:config-item>
+     <config:config-item config:name="VisibleTop" config:type="long">341208</config:config-item>
      <config:config-item config:name="VisibleRight" config:type="long">39423</config:config-item>
-     <config:config-item config:name="VisibleBottom" config:type="long">642133</config:config-item>
+     <config:config-item config:name="VisibleBottom" config:type="long">354937</config:config-item>
      <config:config-item config:name="ZoomType" config:type="short">0</config:config-item>
      <config:config-item config:name="ViewLayoutColumns" config:type="short">1</config:config-item>
      <config:config-item config:name="ViewLayoutBookMode" config:type="boolean">false</config:config-item>
@@ -3009,81 +3009,78 @@
   <style:style style:name="P389" style:family="paragraph" style:parent-style-name="Standard">
    <style:text-properties officeooo:rsid="0272c26b" officeooo:paragraph-rsid="02e88b1d"/>
   </style:style>
-  <style:style style:name="P390" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="L1">
+  <style:style style:name="P390" style:family="paragraph" style:parent-style-name="Standard">
+   <style:text-properties officeooo:rsid="036800fe" officeooo:paragraph-rsid="036800fe"/>
+  </style:style>
+  <style:style style:name="P391" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="L1">
    <style:text-properties officeooo:paragraph-rsid="0367201f"/>
   </style:style>
-  <style:style style:name="P391" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="L2">
+  <style:style style:name="P392" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="L2">
    <style:text-properties officeooo:paragraph-rsid="0367201f"/>
   </style:style>
-  <style:style style:name="P392" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="L4">
+  <style:style style:name="P393" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="L4">
    <style:text-properties officeooo:paragraph-rsid="0367201f"/>
   </style:style>
-  <style:style style:name="P393" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="L1">
+  <style:style style:name="P394" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="L1">
    <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false"/>
    <style:text-properties officeooo:paragraph-rsid="0367201f"/>
   </style:style>
-  <style:style style:name="P394" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="L3">
+  <style:style style:name="P395" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="L3">
    <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false"/>
    <style:text-properties officeooo:paragraph-rsid="0367201f"/>
   </style:style>
-  <style:style style:name="P395" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="L4">
+  <style:style style:name="P396" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="L4">
    <style:paragraph-properties fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false"/>
    <style:text-properties officeooo:paragraph-rsid="0367201f"/>
-  </style:style>
-  <style:style style:name="P396" style:family="paragraph" style:parent-style-name="Heading_20_2">
-   <style:text-properties officeooo:rsid="02e6bb53" officeooo:paragraph-rsid="02e6bb53"/>
   </style:style>
   <style:style style:name="P397" style:family="paragraph" style:parent-style-name="Heading_20_2">
-   <style:text-properties officeooo:rsid="0174050b" officeooo:paragraph-rsid="03675ec3"/>
+   <style:text-properties officeooo:rsid="02e6bb53" officeooo:paragraph-rsid="02e6bb53"/>
   </style:style>
   <style:style style:name="P398" style:family="paragraph" style:parent-style-name="Heading_20_2">
+   <style:text-properties officeooo:rsid="0174050b" officeooo:paragraph-rsid="03675ec3"/>
+  </style:style>
+  <style:style style:name="P399" style:family="paragraph" style:parent-style-name="Heading_20_2">
    <style:text-properties officeooo:rsid="03675ec3" officeooo:paragraph-rsid="03675ec3"/>
   </style:style>
-  <style:style style:name="P399" style:family="paragraph" style:parent-style-name="Heading_20_1">
+  <style:style style:name="P400" style:family="paragraph" style:parent-style-name="Heading_20_1">
    <style:text-properties officeooo:paragraph-rsid="036800fe"/>
   </style:style>
-  <style:style style:name="P400" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+  <style:style style:name="P401" style:family="paragraph" style:parent-style-name="Table_20_Contents">
    <style:text-properties style:font-name="Cambria" officeooo:rsid="01d93a8b" officeooo:paragraph-rsid="036800fe" style:font-name-asian="Droid Sans Fallback" style:font-name-complex="Mangal" style:font-size-complex="10.5pt"/>
   </style:style>
-  <style:style style:name="P401" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+  <style:style style:name="P402" style:family="paragraph" style:parent-style-name="Table_20_Contents">
    <style:text-properties style:font-name="Cambria" officeooo:rsid="01d96305" officeooo:paragraph-rsid="036800fe" style:font-name-asian="Droid Sans Fallback" style:font-name-complex="Mangal" style:font-size-complex="10.5pt"/>
   </style:style>
-  <style:style style:name="P402" style:family="paragraph" style:parent-style-name="Contents_20_1">
+  <style:style style:name="P403" style:family="paragraph" style:parent-style-name="Contents_20_1">
    <style:paragraph-properties>
     <style:tab-stops>
      <style:tab-stop style:position="17cm" style:type="right" style:leader-style="dotted" style:leader-text="."/>
     </style:tab-stops>
    </style:paragraph-properties>
   </style:style>
-  <style:style style:name="P403" style:family="paragraph" style:parent-style-name="Contents_20_2">
+  <style:style style:name="P404" style:family="paragraph" style:parent-style-name="Contents_20_2">
    <style:paragraph-properties>
     <style:tab-stops>
      <style:tab-stop style:position="17cm" style:type="right" style:leader-style="dotted" style:leader-text="."/>
     </style:tab-stops>
    </style:paragraph-properties>
   </style:style>
-  <style:style style:name="P404" style:family="paragraph" style:parent-style-name="Contents_20_3">
+  <style:style style:name="P405" style:family="paragraph" style:parent-style-name="Contents_20_3">
    <style:paragraph-properties>
     <style:tab-stops>
      <style:tab-stop style:position="17cm" style:type="right" style:leader-style="dotted" style:leader-text="."/>
     </style:tab-stops>
    </style:paragraph-properties>
   </style:style>
-  <style:style style:name="P405" style:family="paragraph" style:parent-style-name="Contents_20_4">
+  <style:style style:name="P406" style:family="paragraph" style:parent-style-name="Contents_20_4">
    <style:paragraph-properties>
     <style:tab-stops>
      <style:tab-stop style:position="17cm" style:type="right" style:leader-style="dotted" style:leader-text="."/>
     </style:tab-stops>
    </style:paragraph-properties>
   </style:style>
-  <style:style style:name="P406" style:family="paragraph" style:parent-style-name="Subtitle">
+  <style:style style:name="P407" style:family="paragraph" style:parent-style-name="Subtitle">
    <style:text-properties officeooo:paragraph-rsid="01cedb37"/>
-  </style:style>
-  <style:style style:name="P407" style:family="paragraph">
-   <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" fo:line-height="100%" fo:text-align="start" fo:text-indent="0cm" style:text-autospace="ideograph-alpha" style:punctuation-wrap="hanging" style:line-break="strict" style:writing-mode="lr-tb">
-    <style:tab-stops/>
-   </style:paragraph-properties>
-   <style:text-properties fo:hyphenate="false"/>
   </style:style>
   <style:style style:name="P408" style:family="paragraph">
    <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" fo:line-height="100%" fo:text-align="start" fo:text-indent="0cm" style:text-autospace="ideograph-alpha" style:punctuation-wrap="hanging" style:line-break="strict" style:writing-mode="lr-tb">
@@ -3092,63 +3089,69 @@
    <style:text-properties fo:hyphenate="false"/>
   </style:style>
   <style:style style:name="P409" style:family="paragraph">
-   <style:paragraph-properties fo:text-align="center"/>
+   <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" fo:line-height="100%" fo:text-align="start" fo:text-indent="0cm" style:text-autospace="ideograph-alpha" style:punctuation-wrap="hanging" style:line-break="strict" style:writing-mode="lr-tb">
+    <style:tab-stops/>
+   </style:paragraph-properties>
+   <style:text-properties fo:hyphenate="false"/>
   </style:style>
   <style:style style:name="P410" style:family="paragraph">
+   <style:paragraph-properties fo:text-align="center"/>
+  </style:style>
+  <style:style style:name="P411" style:family="paragraph">
    <loext:graphic-properties draw:fill="none" draw:fill-color="#ffffff"/>
    <style:paragraph-properties fo:text-align="center" style:writing-mode="lr-tb"/>
   </style:style>
-  <style:style style:name="P411" style:family="paragraph">
+  <style:style style:name="P412" style:family="paragraph">
    <loext:graphic-properties draw:fill="none" draw:fill-color="#ffffff"/>
    <style:paragraph-properties style:writing-mode="lr-tb"/>
    <style:text-properties fo:font-size="12pt"/>
   </style:style>
-  <style:style style:name="P412" style:family="paragraph">
+  <style:style style:name="P413" style:family="paragraph">
    <style:paragraph-properties fo:text-align="center"/>
    <style:text-properties fo:font-size="12pt"/>
   </style:style>
-  <style:style style:name="P413" style:family="paragraph">
+  <style:style style:name="P414" style:family="paragraph">
    <loext:graphic-properties draw:fill="none" draw:fill-color="#ffffff"/>
    <style:paragraph-properties fo:text-align="center" style:writing-mode="lr-tb"/>
    <style:text-properties fo:font-size="12pt"/>
   </style:style>
-  <style:style style:name="P414" style:family="paragraph">
+  <style:style style:name="P415" style:family="paragraph">
    <loext:graphic-properties draw:fill="none" draw:fill-color="#000000"/>
    <style:text-properties fo:font-size="12pt"/>
   </style:style>
-  <style:style style:name="P415" style:family="paragraph">
+  <style:style style:name="P416" style:family="paragraph">
    <loext:graphic-properties draw:fill="solid" draw:fill-color="#000000"/>
    <style:paragraph-properties fo:text-align="center"/>
    <style:text-properties fo:font-size="12pt"/>
   </style:style>
-  <style:style style:name="P416" style:family="paragraph">
-   <loext:graphic-properties draw:fill="none"/>
-   <style:text-properties fo:font-size="12pt"/>
-  </style:style>
   <style:style style:name="P417" style:family="paragraph">
-   <loext:graphic-properties draw:fill-color="#000000"/>
-   <style:paragraph-properties fo:text-align="center"/>
+   <loext:graphic-properties draw:fill="none"/>
    <style:text-properties fo:font-size="12pt"/>
   </style:style>
   <style:style style:name="P418" style:family="paragraph">
+   <loext:graphic-properties draw:fill-color="#000000"/>
+   <style:paragraph-properties fo:text-align="center"/>
+   <style:text-properties fo:font-size="12pt"/>
+  </style:style>
+  <style:style style:name="P419" style:family="paragraph">
    <loext:graphic-properties draw:fill="none" draw:fill-color="#ffffff"/>
    <style:paragraph-properties style:writing-mode="lr-tb"/>
   </style:style>
-  <style:style style:name="P419" style:family="paragraph">
+  <style:style style:name="P420" style:family="paragraph">
    <loext:graphic-properties draw:fill="none"/>
    <style:paragraph-properties fo:text-align="center"/>
   </style:style>
-  <style:style style:name="P420" style:family="paragraph">
+  <style:style style:name="P421" style:family="paragraph">
    <style:paragraph-properties fo:text-align="start"/>
   </style:style>
-  <style:style style:name="P421" style:family="paragraph">
+  <style:style style:name="P422" style:family="paragraph">
    <loext:graphic-properties draw:fill-color="#000000"/>
    <style:paragraph-properties fo:text-align="center"/>
   </style:style>
-  <style:style style:name="P422" style:family="paragraph">
+  <style:style style:name="P423" style:family="paragraph">
    <loext:graphic-properties draw:fill="none"/>
   </style:style>
-  <style:style style:name="P423" style:family="paragraph">
+  <style:style style:name="P424" style:family="paragraph">
    <style:paragraph-properties style:writing-mode="lr-tb"/>
   </style:style>
   <style:style style:name="T1" style:family="text">
@@ -4430,7 +4433,7 @@
  <office:master-styles>
   <style:master-page style:name="Standard" style:page-layout-name="pm1">
    <style:footer>
-    <text:p text:style-name="Footer"><text:span text:style-name="T1"><text:file-name text:display="name-and-extension">SWR_POWER_METER_F8KGL_etude.fodt</text:file-name></text:span><text:title/><text:tab/><text:tab/><text:tab/><text:tab/><text:tab/><text:tab/><text:tab/> <text:s/><text:tab/><text:tab/><text:tab/> <text:s/><text:tab/><text:tab/> <text:s text:c="6"/><text:page-number text:select-page="current">22</text:page-number>/<text:page-count>24</text:page-count></text:p>
+    <text:p text:style-name="Footer"><text:span text:style-name="T1"><text:file-name text:display="name-and-extension">SWR_POWER_METER_F8KGL_etude.fodt</text:file-name></text:span><text:title/><text:tab/><text:tab/><text:tab/><text:tab/><text:tab/><text:tab/><text:tab/> <text:s/><text:tab/><text:tab/><text:tab/> <text:s/><text:tab/><text:tab/> <text:s text:c="6"/><text:page-number text:select-page="current">12</text:page-number>/<text:page-count>24</text:page-count></text:p>
    </style:footer>
   </style:master-page>
   <style:master-page style:name="First_20_Page" style:display-name="First Page" style:page-layout-name="pm2" style:next-style-name="Standard"/>
@@ -4466,7 +4469,7 @@
    <text:p text:style-name="Title"/>
    <text:p text:style-name="P259">Etude</text:p>
    <text:p text:style-name="Title">V 0.<text:span text:style-name="T153">8</text:span></text:p>
-   <text:p text:style-name="P258"><text:span text:style-name="T16">F</text:span>0EOS-F4BJH-<text:date style:data-style-name="N37" text:date-value="2021-02-24T00:28:35.102709364">24/02/21</text:date>-Vauréal Amitié Radio</text:p>
+   <text:p text:style-name="P258"><text:span text:style-name="T16">F</text:span>0EOS-F4BJH-<text:date style:data-style-name="N37" text:date-value="2021-02-24T00:34:34.735830235">24/02/21</text:date>-Vauréal Amitié Radio</text:p>
    <text:p text:style-name="P258"/>
    <text:p text:style-name="P258"/>
    <text:p text:style-name="P258"/>
@@ -4625,90 +4628,90 @@
    <text:h text:style-name="P263" text:outline-level="2"><text:bookmark-start text:name="__RefHeading___Toc3001_4259850012"/>1.1-<text:span text:style-name="T157">Schéma général</text:span><text:bookmark-end text:name="__RefHeading___Toc3001_4259850012"/></text:h>
    <text:p text:style-name="P368">Le SWR POWER METER s’inspire de la structure classique du d’un wattmètre et d’un TOSmètre de l’état de l’art.</text:p>
    <text:p text:style-name="P260"/>
-   <text:p text:style-name="P76"><draw:custom-shape text:anchor-type="paragraph" draw:z-index="18" draw:name="Forme7" draw:style-name="gr7" draw:text-style-name="P414" svg:width="11.484cm" svg:height="19.714cm" svg:x="3.249cm" svg:y="0.201cm">
+   <text:p text:style-name="P76"><draw:custom-shape text:anchor-type="paragraph" draw:z-index="18" draw:name="Forme7" draw:style-name="gr7" draw:text-style-name="P415" svg:width="11.484cm" svg:height="19.714cm" svg:x="3.249cm" svg:y="0.201cm">
      <text:p/>
      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
     </draw:custom-shape></text:p>
    <text:p text:style-name="P75"/>
-   <text:p text:style-name="P75"><draw:frame text:anchor-type="paragraph" draw:z-index="2" draw:name="Forme1" draw:style-name="gr1" draw:text-style-name="P410" svg:width="3.121cm" svg:height="1.731cm" svg:x="-0.46cm" svg:y="0.236cm">
+   <text:p text:style-name="P75"><draw:frame text:anchor-type="paragraph" draw:z-index="2" draw:name="Forme1" draw:style-name="gr1" draw:text-style-name="P411" svg:width="3.121cm" svg:height="1.731cm" svg:x="-0.46cm" svg:y="0.236cm">
      <draw:text-box>
-      <text:p text:style-name="P409">TRX</text:p>
+      <text:p text:style-name="P410">TRX</text:p>
      </draw:text-box>
-    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="3" draw:name="Forme1" draw:style-name="gr1" draw:text-style-name="P410" svg:width="3.121cm" svg:height="1.731cm" svg:x="15.184cm" svg:y="0.236cm">
+    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="3" draw:name="Forme1" draw:style-name="gr1" draw:text-style-name="P411" svg:width="3.121cm" svg:height="1.731cm" svg:x="15.184cm" svg:y="0.236cm">
      <draw:text-box>
-      <text:p text:style-name="P409">ANTENNE</text:p>
+      <text:p text:style-name="P410">ANTENNE</text:p>
      </draw:text-box>
     </draw:frame></text:p>
-   <text:p text:style-name="P75"><draw:line text:anchor-type="paragraph" draw:z-index="9" draw:name="Forme2" draw:style-name="gr4" draw:text-style-name="P412" svg:x1="2.626cm" svg:y1="0.295cm" svg:x2="5.349cm" svg:y2="0.295cm">
+   <text:p text:style-name="P75"><draw:line text:anchor-type="paragraph" draw:z-index="9" draw:name="Forme2" draw:style-name="gr4" draw:text-style-name="P413" svg:x1="2.626cm" svg:y1="0.295cm" svg:x2="5.349cm" svg:y2="0.295cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="10" draw:name="Forme2" draw:style-name="gr4" draw:text-style-name="P412" svg:x1="11.047cm" svg:y1="0.212cm" svg:x2="15.183cm" svg:y2="0.219cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="10" draw:name="Forme2" draw:style-name="gr4" draw:text-style-name="P413" svg:x1="11.047cm" svg:y1="0.212cm" svg:x2="15.183cm" svg:y2="0.219cm">
      <text:p/>
-    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="21" draw:name="Forme5" draw:style-name="gr5" draw:text-style-name="P411" svg:width="5.882cm" svg:height="0.489cm" svg:x="3.916cm" svg:y="4.591cm">
+    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="21" draw:name="Forme5" draw:style-name="gr5" draw:text-style-name="P412" svg:width="5.882cm" svg:height="0.489cm" svg:x="3.916cm" svg:y="4.591cm">
      <draw:text-box>
-      <text:p><text:span text:style-name="T83">Ligne de mesure</text:span></text:p>
+      <text:p><text:span text:style-name="T83">Li</text:span><text:span text:style-name="T83">gn</text:span><text:span text:style-name="T83">e </text:span><text:span text:style-name="T83">de </text:span><text:span text:style-name="T83">me</text:span><text:span text:style-name="T83">sur</text:span><text:span text:style-name="T83">e</text:span></text:p>
      </draw:text-box>
-    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="22" draw:name="Forme1" draw:style-name="gr6" draw:text-style-name="P413" svg:width="5.714cm" svg:height="1.174cm" svg:x="5.348cm" svg:y="-0.362cm">
+    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="22" draw:name="Forme1" draw:style-name="gr6" draw:text-style-name="P414" svg:width="5.714cm" svg:height="1.174cm" svg:x="5.348cm" svg:y="-0.362cm">
      <draw:text-box>
-      <text:p text:style-name="P409"><text:span text:style-name="T83">Coupleur directionnel</text:span></text:p>
-      <text:p text:style-name="P409"><text:span text:style-name="T85"/></text:p>
+      <text:p text:style-name="P410"><text:span text:style-name="T83">Co</text:span><text:span text:style-name="T83">upl</text:span><text:span text:style-name="T83">eur </text:span><text:span text:style-name="T83">dir</text:span><text:span text:style-name="T83">ect</text:span><text:span text:style-name="T83">ion</text:span><text:span text:style-name="T83">nel</text:span></text:p>
+      <text:p text:style-name="P410"><text:span text:style-name="T85"/></text:p>
      </draw:text-box>
-    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="23" draw:name="Forme1" draw:style-name="gr6" draw:text-style-name="P413" svg:width="5.714cm" svg:height="1.174cm" svg:x="5.315cm" svg:y="2.708cm">
+    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="23" draw:name="Forme1" draw:style-name="gr6" draw:text-style-name="P414" svg:width="5.714cm" svg:height="1.174cm" svg:x="5.315cm" svg:y="2.708cm">
      <draw:text-box>
-      <text:p text:style-name="P409"><text:span text:style-name="T83">Détecteur HF</text:span></text:p>
-      <text:p text:style-name="P409"><text:span text:style-name="T85"/></text:p>
+      <text:p text:style-name="P410"><text:span text:style-name="T83">Dé</text:span><text:span text:style-name="T83">tec</text:span><text:span text:style-name="T83">teu</text:span><text:span text:style-name="T83">r </text:span><text:span text:style-name="T83">H</text:span><text:span text:style-name="T83">F</text:span></text:p>
+      <text:p text:style-name="P410"><text:span text:style-name="T85"/></text:p>
      </draw:text-box>
-    </draw:frame><draw:custom-shape text:anchor-type="paragraph" draw:z-index="28" draw:name="Forme14" draw:style-name="gr12" draw:text-style-name="P416" svg:width="9cm" svg:height="5.989cm" svg:x="3.916cm" svg:y="-0.93cm">
+    </draw:frame><draw:custom-shape text:anchor-type="paragraph" draw:z-index="28" draw:name="Forme14" draw:style-name="gr12" draw:text-style-name="P417" svg:width="9cm" svg:height="5.989cm" svg:x="3.916cm" svg:y="-0.93cm">
      <text:p/>
      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
-    </draw:custom-shape><draw:frame text:anchor-type="paragraph" draw:z-index="30" draw:name="Forme1" draw:style-name="gr6" draw:text-style-name="P413" svg:width="5.714cm" svg:height="1.174cm" svg:x="5.271cm" svg:y="6.419cm">
+    </draw:custom-shape><draw:frame text:anchor-type="paragraph" draw:z-index="30" draw:name="Forme1" draw:style-name="gr6" draw:text-style-name="P414" svg:width="5.714cm" svg:height="1.174cm" svg:x="5.271cm" svg:y="6.419cm">
      <draw:text-box>
-      <text:p text:style-name="P409"><text:span text:style-name="T83">ADC</text:span></text:p>
-      <text:p text:style-name="P409"><text:span text:style-name="T85"/></text:p>
+      <text:p text:style-name="P410"><text:span text:style-name="T83">A</text:span><text:span text:style-name="T83">D</text:span><text:span text:style-name="T83">C</text:span></text:p>
+      <text:p text:style-name="P410"><text:span text:style-name="T85"/></text:p>
      </draw:text-box>
     </draw:frame></text:p>
-   <text:p text:style-name="P75"><draw:line text:anchor-type="paragraph" draw:z-index="24" draw:name="Forme3" draw:style-name="gr10" draw:text-style-name="P415" svg:x1="6.941cm" svg:y1="0.325cm" svg:x2="6.918cm" svg:y2="2.221cm">
+   <text:p text:style-name="P75"><draw:line text:anchor-type="paragraph" draw:z-index="24" draw:name="Forme3" draw:style-name="gr10" draw:text-style-name="P416" svg:x1="6.941cm" svg:y1="0.325cm" svg:x2="6.918cm" svg:y2="2.221cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="25" draw:name="Forme4" draw:style-name="gr10" draw:text-style-name="P415" svg:x1="8.975cm" svg:y1="0.325cm" svg:x2="8.975cm" svg:y2="2.221cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="25" draw:name="Forme4" draw:style-name="gr10" draw:text-style-name="P416" svg:x1="8.975cm" svg:y1="0.325cm" svg:x2="8.975cm" svg:y2="2.221cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P75"><draw:frame text:anchor-type="paragraph" draw:z-index="26" draw:name="Forme6" draw:style-name="gr11" draw:text-style-name="P411" svg:width="2.008cm" svg:height="0.976cm" svg:x="5.408cm" svg:y="0.037cm">
+   <text:p text:style-name="P75"><draw:frame text:anchor-type="paragraph" draw:z-index="26" draw:name="Forme6" draw:style-name="gr11" draw:text-style-name="P412" svg:width="2.008cm" svg:height="0.976cm" svg:x="5.408cm" svg:y="0.037cm">
      <draw:text-box>
-      <text:p><text:span text:style-name="T83">signal</text:span></text:p>
-      <text:p><text:span text:style-name="T83">transmis</text:span></text:p>
+      <text:p><text:span text:style-name="T83">sig</text:span><text:span text:style-name="T83">nal</text:span></text:p>
+      <text:p><text:span text:style-name="T83">tra</text:span><text:span text:style-name="T83">ns</text:span><text:span text:style-name="T83">mi</text:span><text:span text:style-name="T83">s</text:span></text:p>
      </draw:text-box>
-    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="27" draw:name="Forme8" draw:style-name="gr11" draw:text-style-name="P411" svg:width="2.006cm" svg:height="0.976cm" svg:x="9.192cm" svg:y="0.116cm">
+    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="27" draw:name="Forme8" draw:style-name="gr11" draw:text-style-name="P412" svg:width="2.006cm" svg:height="0.976cm" svg:x="9.192cm" svg:y="0.116cm">
      <draw:text-box>
-      <text:p><text:span text:style-name="T83">signal</text:span></text:p>
-      <text:p><text:span text:style-name="T83">réfléchi</text:span></text:p>
+      <text:p><text:span text:style-name="T83">sig</text:span><text:span text:style-name="T83">nal</text:span></text:p>
+      <text:p><text:span text:style-name="T83">réf</text:span><text:span text:style-name="T83">léc</text:span><text:span text:style-name="T83">hi</text:span></text:p>
      </draw:text-box>
     </draw:frame></text:p>
    <text:p text:style-name="P75"/>
    <text:p text:style-name="P75"/>
    <text:p text:style-name="P75"/>
    <text:p text:style-name="P77"/>
-   <text:p text:style-name="P77"><draw:line text:anchor-type="paragraph" draw:z-index="62" draw:name="Forme38" draw:style-name="gr27" draw:text-style-name="P409" svg:x1="7.534cm" svg:y1="0.473cm" svg:x2="7.56cm" svg:y2="3.011cm">
+   <text:p text:style-name="P77"><draw:line text:anchor-type="paragraph" draw:z-index="62" draw:name="Forme38" draw:style-name="gr27" draw:text-style-name="P410" svg:x1="7.534cm" svg:y1="0.473cm" svg:x2="7.56cm" svg:y2="3.011cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="63" draw:name="Forme31" draw:style-name="gr27" draw:text-style-name="P409" svg:x1="9.226cm" svg:y1="0.473cm" svg:x2="9.2cm" svg:y2="3.011cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="63" draw:name="Forme31" draw:style-name="gr27" draw:text-style-name="P410" svg:x1="9.226cm" svg:y1="0.473cm" svg:x2="9.2cm" svg:y2="3.011cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P77"><draw:frame text:anchor-type="paragraph" draw:z-index="32" draw:name="Forme9" draw:style-name="gr14" draw:text-style-name="P411" svg:width="1.14cm" svg:height="0.611cm" svg:x="6.188cm" svg:y="0.086cm">
+   <text:p text:style-name="P77"><draw:frame text:anchor-type="paragraph" draw:z-index="32" draw:name="Forme9" draw:style-name="gr14" draw:text-style-name="P412" svg:width="1.14cm" svg:height="0.611cm" svg:x="6.188cm" svg:y="0.086cm">
      <draw:text-box>
-      <text:p><text:span text:style-name="T83">Vfwd</text:span></text:p>
+      <text:p><text:span text:style-name="T83">Vf</text:span><text:span text:style-name="T83">wd</text:span></text:p>
      </draw:text-box>
-    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="6" draw:name="Forme10" draw:style-name="gr3" draw:text-style-name="P411" svg:width="1.003cm" svg:height="0.489cm" svg:x="9.384cm" svg:y="0.136cm">
+    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="6" draw:name="Forme10" draw:style-name="gr3" draw:text-style-name="P412" svg:width="1.003cm" svg:height="0.489cm" svg:x="9.384cm" svg:y="0.136cm">
      <draw:text-box>
-      <text:p><text:span text:style-name="T83">Vref</text:span></text:p>
+      <text:p><text:span text:style-name="T83">Vr</text:span><text:span text:style-name="T83">ef</text:span></text:p>
      </draw:text-box>
     </draw:frame></text:p>
-   <text:p text:style-name="P77"><draw:frame text:anchor-type="paragraph" draw:z-index="56" draw:name="Forme1" draw:style-name="gr21" draw:text-style-name="P413" svg:width="4.391cm" svg:height="1.463cm" svg:x="13.732cm" svg:y="0.476cm">
+   <text:p text:style-name="P77"><draw:frame text:anchor-type="paragraph" draw:z-index="56" draw:name="Forme1" draw:style-name="gr21" draw:text-style-name="P414" svg:width="4.391cm" svg:height="1.463cm" svg:x="13.732cm" svg:y="0.476cm">
      <draw:text-box>
-      <text:p text:style-name="P420"><text:span text:style-name="T83">Sélectionneur </text:span></text:p>
-      <text:p text:style-name="P420"><text:span text:style-name="T83">de bande</text:span></text:p>
-      <text:p text:style-name="P409"><text:span text:style-name="T85"/></text:p>
+      <text:p text:style-name="P421"><text:span text:style-name="T83">Sél</text:span><text:span text:style-name="T83">ect</text:span><text:span text:style-name="T83">ion</text:span><text:span text:style-name="T83">ne</text:span><text:span text:style-name="T83">ur </text:span></text:p>
+      <text:p text:style-name="P421"><text:span text:style-name="T83">de </text:span><text:span text:style-name="T83">ba</text:span><text:span text:style-name="T83">nd</text:span><text:span text:style-name="T83">e</text:span></text:p>
+      <text:p text:style-name="P410"><text:span text:style-name="T85"/></text:p>
      </draw:text-box>
     </draw:frame></text:p>
    <text:p text:style-name="P11"/>
-   <text:p text:style-name="P15"><draw:custom-shape text:anchor-type="paragraph" draw:z-index="31" draw:name="Forme14" draw:style-name="gr13" draw:text-style-name="P416" svg:width="7.781cm" svg:height="8.212cm" svg:x="3.704cm" svg:y="0.39cm">
+   <text:p text:style-name="P15"><draw:custom-shape text:anchor-type="paragraph" draw:z-index="31" draw:name="Forme14" draw:style-name="gr13" draw:text-style-name="P417" svg:width="7.781cm" svg:height="8.212cm" svg:x="3.704cm" svg:y="0.39cm">
      <text:p/>
      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:mirror-horizontal="false" draw:mirror-vertical="false" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
     </draw:custom-shape><draw:frame draw:style-name="fr1" draw:name="Image9" text:anchor-type="paragraph" svg:x="14.483cm" svg:y="0.965cm" svg:width="0.522cm" svg:height="0.81cm" draw:z-index="69"><draw:image loext:mime-type="image/png">
@@ -4720,143 +4723,143 @@
        RU5ErkJggg==
       </office:binary-data>
      </draw:image>
-    </draw:frame><draw:custom-shape text:anchor-type="paragraph" draw:z-index="60" draw:name="Forme30" draw:style-name="gr25" draw:text-style-name="P422" svg:width="1.46cm" svg:height="1.278cm" svg:x="14.002cm" svg:y="0.665cm">
+    </draw:frame><draw:custom-shape text:anchor-type="paragraph" draw:z-index="60" draw:name="Forme30" draw:style-name="gr25" draw:text-style-name="P423" svg:width="1.46cm" svg:height="1.278cm" svg:x="14.002cm" svg:y="0.665cm">
      <text:p/>
      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
     </draw:custom-shape><text:line-break/></text:p>
-   <text:p text:style-name="P78"><draw:line text:anchor-type="paragraph" draw:z-index="61" draw:name="Forme32" draw:style-name="gr26" draw:text-style-name="P409" svg:x1="14.002cm" svg:y1="0.33cm" svg:x2="11.312cm" svg:y2="0.33cm">
+   <text:p text:style-name="P78"><draw:line text:anchor-type="paragraph" draw:z-index="61" draw:name="Forme32" draw:style-name="gr26" draw:text-style-name="P410" svg:x1="14.002cm" svg:y1="0.33cm" svg:x2="11.312cm" svg:y2="0.33cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="66" draw:name="Forme41" draw:style-name="gr26" draw:text-style-name="P409" svg:x1="11.312cm" svg:y1="0.33cm" svg:x2="11.312cm" svg:y2="2.247cm">
-     <text:p/>
-    </draw:line></text:p>
-   <text:p text:style-name="P12"><draw:line text:anchor-type="paragraph" draw:z-index="44" draw:name="Forme20" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="12.885cm" svg:y1="1.908cm" svg:x2="12.885cm" svg:y2="0.125cm">
-     <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="45" draw:name="Forme21" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="10.984cm" svg:y1="0.157cm" svg:x2="12.885cm" svg:y2="0.125cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="66" draw:name="Forme41" draw:style-name="gr26" draw:text-style-name="P410" svg:x1="11.312cm" svg:y1="0.33cm" svg:x2="11.312cm" svg:y2="2.247cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P13"><draw:line text:anchor-type="paragraph" draw:z-index="33" draw:name="Forme4" draw:style-name="gr15" draw:text-style-name="P417" svg:x1="7.034cm" svg:y1="0.289cm" svg:x2="7.034cm" svg:y2="1.954cm">
+   <text:p text:style-name="P12"><draw:line text:anchor-type="paragraph" draw:z-index="44" draw:name="Forme20" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="12.885cm" svg:y1="1.908cm" svg:x2="12.885cm" svg:y2="0.125cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="34" draw:name="Forme4" draw:style-name="gr15" draw:text-style-name="P417" svg:x1="9.026cm" svg:y1="0.289cm" svg:x2="9.026cm" svg:y2="1.954cm">
-     <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="67" draw:name="Forme33" draw:style-name="gr28" draw:text-style-name="P409" svg:x1="9.994cm" svg:y1="1.954cm" svg:x2="9.994cm" svg:y2="0.289cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="45" draw:name="Forme21" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="10.984cm" svg:y1="0.157cm" svg:x2="12.885cm" svg:y2="0.125cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P14"><draw:line text:anchor-type="paragraph" draw:z-index="35" draw:name="Forme16" draw:style-name="gr16" draw:text-style-name="P417" svg:x1="6.821cm" svg:y1="0.475cm" svg:x2="7.257cm" svg:y2="0.163cm">
+   <text:p text:style-name="P13"><draw:line text:anchor-type="paragraph" draw:z-index="33" draw:name="Forme4" draw:style-name="gr15" draw:text-style-name="P418" svg:x1="7.034cm" svg:y1="0.289cm" svg:x2="7.034cm" svg:y2="1.954cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="36" draw:name="Forme16" draw:style-name="gr16" draw:text-style-name="P417" svg:x1="8.837cm" svg:y1="0.404cm" svg:x2="9.273cm" svg:y2="0.092cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="34" draw:name="Forme4" draw:style-name="gr15" draw:text-style-name="P418" svg:x1="9.026cm" svg:y1="0.289cm" svg:x2="9.026cm" svg:y2="1.954cm">
      <text:p/>
-    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="37" draw:name="Forme11" draw:style-name="gr17" draw:text-style-name="P411" svg:width="5.435cm" svg:height="0.609cm" svg:x="5.627cm" svg:y="0.035cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="67" draw:name="Forme33" draw:style-name="gr28" draw:text-style-name="P410" svg:x1="9.994cm" svg:y1="1.954cm" svg:x2="9.994cm" svg:y2="0.289cm">
+     <text:p/>
+    </draw:line></text:p>
+   <text:p text:style-name="P14"><draw:line text:anchor-type="paragraph" draw:z-index="35" draw:name="Forme16" draw:style-name="gr16" draw:text-style-name="P418" svg:x1="6.821cm" svg:y1="0.475cm" svg:x2="7.257cm" svg:y2="0.163cm">
+     <text:p/>
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="36" draw:name="Forme16" draw:style-name="gr16" draw:text-style-name="P418" svg:x1="8.837cm" svg:y1="0.404cm" svg:x2="9.273cm" svg:y2="0.092cm">
+     <text:p/>
+    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="37" draw:name="Forme11" draw:style-name="gr17" draw:text-style-name="P412" svg:width="5.435cm" svg:height="0.609cm" svg:x="5.627cm" svg:y="0.035cm">
      <draw:text-box>
-      <text:p><text:span text:style-name="T83">n bits</text:span></text:p>
+      <text:p><text:span text:style-name="T83">n </text:span><text:span text:style-name="T83">bit</text:span><text:span text:style-name="T83">s</text:span></text:p>
      </draw:text-box>
-    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="41" draw:name="Forme12" draw:style-name="gr19" draw:text-style-name="P418" svg:width="1.287cm" svg:height="0.696cm" svg:x="7.74cm" svg:y="0.035cm">
+    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="41" draw:name="Forme12" draw:style-name="gr19" draw:text-style-name="P419" svg:width="1.287cm" svg:height="0.696cm" svg:x="7.74cm" svg:y="0.035cm">
      <draw:text-box>
       <text:p>n bits</text:p>
      </draw:text-box>
-    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="68" draw:name="Forme13" draw:style-name="gr19" draw:text-style-name="P418" svg:width="1.287cm" svg:height="0.696cm" svg:x="9.994cm" svg:y="0.231cm">
+    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="68" draw:name="Forme13" draw:style-name="gr19" draw:text-style-name="P419" svg:width="1.287cm" svg:height="0.696cm" svg:x="9.994cm" svg:y="0.231cm">
      <draw:text-box>
       <text:p>calibre</text:p>
      </draw:text-box>
     </draw:frame></text:p>
-   <text:p text:style-name="P14"><draw:frame text:anchor-type="paragraph" draw:z-index="20" draw:name="Forme1" draw:style-name="gr9" draw:text-style-name="P413" svg:width="2.677cm" svg:height="2.634cm" svg:x="11.735cm" svg:y="0.448cm">
+   <text:p text:style-name="P14"><draw:frame text:anchor-type="paragraph" draw:z-index="20" draw:name="Forme1" draw:style-name="gr9" draw:text-style-name="P414" svg:width="2.677cm" svg:height="2.634cm" svg:x="11.735cm" svg:y="0.448cm">
      <draw:text-box>
-      <text:p text:style-name="P409"><text:span text:style-name="T83">Régulateur d’alimentation</text:span></text:p>
-      <text:p text:style-name="P409"><text:span text:style-name="T85"/></text:p>
+      <text:p text:style-name="P410"><text:span text:style-name="T83">Ré</text:span><text:span text:style-name="T83">gul</text:span><text:span text:style-name="T83">ate</text:span><text:span text:style-name="T83">ur </text:span><text:span text:style-name="T83">d’a</text:span><text:span text:style-name="T83">lim</text:span><text:span text:style-name="T83">ent</text:span><text:span text:style-name="T83">ati</text:span><text:span text:style-name="T83">on</text:span></text:p>
+      <text:p text:style-name="P410"><text:span text:style-name="T85"/></text:p>
      </draw:text-box>
-    </draw:frame><draw:line text:anchor-type="paragraph" draw:z-index="64" draw:name="Forme39" draw:style-name="gr26" draw:text-style-name="P409" svg:x1="10.619cm" svg:y1="0.981cm" svg:x2="10.619cm" svg:y2="0.3cm">
+    </draw:frame><draw:line text:anchor-type="paragraph" draw:z-index="64" draw:name="Forme39" draw:style-name="gr26" draw:text-style-name="P410" svg:x1="10.619cm" svg:y1="0.981cm" svg:x2="10.619cm" svg:y2="0.3cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="65" draw:name="Forme40" draw:style-name="gr26" draw:text-style-name="P409" svg:x1="10.619cm" svg:y1="0.3cm" svg:x2="11.312cm" svg:y2="0.3cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="65" draw:name="Forme40" draw:style-name="gr26" draw:text-style-name="P410" svg:x1="10.619cm" svg:y1="0.3cm" svg:x2="11.312cm" svg:y2="0.3cm">
      <text:p/>
     </draw:line></text:p>
    <text:p text:style-name="P14"/>
-   <text:p text:style-name="P14"><draw:frame text:anchor-type="paragraph" draw:z-index="29" draw:name="Forme1" draw:style-name="gr6" draw:text-style-name="P413" svg:width="5.714cm" svg:height="1.174cm" svg:x="5.129cm" svg:y="0.007cm">
+   <text:p text:style-name="P14"><draw:frame text:anchor-type="paragraph" draw:z-index="29" draw:name="Forme1" draw:style-name="gr6" draw:text-style-name="P414" svg:width="5.714cm" svg:height="1.174cm" svg:x="5.129cm" svg:y="0.007cm">
      <draw:text-box>
-      <text:p text:style-name="P409"><text:span text:style-name="T83">MCU</text:span></text:p>
-      <text:p text:style-name="P409"><text:span text:style-name="T85"/></text:p>
+      <text:p text:style-name="P410"><text:span text:style-name="T83">M</text:span><text:span text:style-name="T83">C</text:span><text:span text:style-name="T83">U</text:span></text:p>
+      <text:p text:style-name="P410"><text:span text:style-name="T85"/></text:p>
      </draw:text-box>
     </draw:frame></text:p>
-   <text:p text:style-name="P18"><draw:line text:anchor-type="paragraph" draw:z-index="5" draw:name="Forme13" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="16.704cm" svg:y1="4.675cm" svg:x2="16.745cm" svg:y2="0.318cm">
+   <text:p text:style-name="P18"><draw:line text:anchor-type="paragraph" draw:z-index="5" draw:name="Forme13" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="16.704cm" svg:y1="4.675cm" svg:x2="16.745cm" svg:y2="0.318cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="43" draw:name="Forme19" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="14.411cm" svg:y1="0.35cm" svg:x2="16.745cm" svg:y2="0.318cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="43" draw:name="Forme19" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="14.411cm" svg:y1="0.35cm" svg:x2="16.745cm" svg:y2="0.318cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P79"><draw:line text:anchor-type="paragraph" draw:z-index="38" draw:name="Forme17" draw:style-name="gr18" draw:text-style-name="P417" svg:x1="8.005cm" svg:y1="0.206cm" svg:x2="8.005cm" svg:y2="5.043cm">
+   <text:p text:style-name="P79"><draw:line text:anchor-type="paragraph" draw:z-index="38" draw:name="Forme17" draw:style-name="gr18" draw:text-style-name="P418" svg:x1="8.005cm" svg:y1="0.206cm" svg:x2="8.005cm" svg:y2="5.043cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="46" draw:name="Forme22" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="10.843cm" svg:y1="0.104cm" svg:x2="11.736cm" svg:y2="0.104cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="46" draw:name="Forme22" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="10.843cm" svg:y1="0.104cm" svg:x2="11.736cm" svg:y2="0.104cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="59" draw:name="Forme29" draw:style-name="gr24" draw:text-style-name="P421" svg:x1="6.241cm" svg:y1="1.125cm" svg:x2="6.241cm" svg:y2="0.206cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="59" draw:name="Forme29" draw:style-name="gr24" draw:text-style-name="P422" svg:x1="6.241cm" svg:y1="1.125cm" svg:x2="6.241cm" svg:y2="0.206cm">
      <text:p/>
     </draw:line></text:p>
    <text:p text:style-name="P79"/>
-   <text:p text:style-name="P79"><draw:frame text:anchor-type="paragraph" draw:z-index="57" draw:name="Forme1" draw:style-name="gr22" draw:text-style-name="P413" svg:width="3.061cm" svg:height="1.661cm" svg:x="4.396cm" svg:y="0.152cm">
+   <text:p text:style-name="P79"><draw:frame text:anchor-type="paragraph" draw:z-index="57" draw:name="Forme1" draw:style-name="gr22" draw:text-style-name="P414" svg:width="3.061cm" svg:height="1.661cm" svg:x="4.396cm" svg:y="0.152cm">
      <draw:text-box>
-      <text:p text:style-name="P409"><text:span text:style-name="T83">Reset/Validation calibration</text:span></text:p>
-      <text:p text:style-name="P409"><text:span text:style-name="T85"/></text:p>
+      <text:p text:style-name="P410"><text:span text:style-name="T83">Re</text:span><text:span text:style-name="T83">set</text:span><text:span text:style-name="T83">/</text:span><text:span text:style-name="T83">Va</text:span><text:span text:style-name="T83">lid</text:span><text:span text:style-name="T83">ati</text:span><text:span text:style-name="T83">on </text:span><text:span text:style-name="T83">cal</text:span><text:span text:style-name="T83">ibr</text:span><text:span text:style-name="T83">ati</text:span><text:span text:style-name="T83">on</text:span></text:p>
+      <text:p text:style-name="P410"><text:span text:style-name="T85"/></text:p>
      </draw:text-box>
-    </draw:frame><draw:line text:anchor-type="paragraph" draw:z-index="48" draw:name="Forme24" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="12.014cm" svg:y1="0.161cm" svg:x2="12.014cm" svg:y2="4.608cm">
+    </draw:frame><draw:line text:anchor-type="paragraph" draw:z-index="48" draw:name="Forme24" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="12.014cm" svg:y1="0.161cm" svg:x2="12.014cm" svg:y2="4.608cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="50" draw:name="Forme18" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="13.104cm" svg:y1="0.979cm" svg:x2="13.104cm" svg:y2="0.161cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="50" draw:name="Forme18" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="13.104cm" svg:y1="0.979cm" svg:x2="13.104cm" svg:y2="0.161cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P79"><draw:custom-shape text:anchor-type="paragraph" draw:z-index="52" draw:name="Forme25" draw:style-name="gr20" draw:text-style-name="P419" svg:width="0.145cm" svg:height="0.168cm" svg:x="14.67cm" svg:y="0.397cm">
+   <text:p text:style-name="P79"><draw:custom-shape text:anchor-type="paragraph" draw:z-index="52" draw:name="Forme25" draw:style-name="gr20" draw:text-style-name="P420" svg:width="0.145cm" svg:height="0.168cm" svg:x="14.67cm" svg:y="0.397cm">
      <text:p/>
      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:glue-points="10800 0 3163 3163 0 10800 3163 18437 10800 21600 18437 18437 21600 10800 18437 3163" draw:text-areas="3163 3163 18437 18437" draw:type="ellipse" draw:enhanced-path="U 10800 10800 10800 10800 0 360 Z N"/>
     </draw:custom-shape></text:p>
-   <text:p text:style-name="P79"><draw:line text:anchor-type="paragraph" draw:z-index="42" draw:name="Forme18" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="13.097cm" svg:y1="1.464cm" svg:x2="13.097cm" svg:y2="0.483cm">
+   <text:p text:style-name="P79"><draw:line text:anchor-type="paragraph" draw:z-index="42" draw:name="Forme18" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="13.097cm" svg:y1="1.464cm" svg:x2="13.097cm" svg:y2="0.483cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="51" draw:name="Forme6" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="13.097cm" svg:y1="0.483cm" svg:x2="14.67cm" svg:y2="0.483cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="51" draw:name="Forme6" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="13.097cm" svg:y1="0.483cm" svg:x2="14.67cm" svg:y2="0.483cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="53" draw:name="Forme26" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="14.67cm" svg:y1="0.005cm" svg:x2="13.104cm" svg:y2="0.005cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="53" draw:name="Forme26" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="14.67cm" svg:y1="0.005cm" svg:x2="13.104cm" svg:y2="0.005cm">
      <text:p/>
-    </draw:line><draw:custom-shape text:anchor-type="paragraph" draw:z-index="54" draw:name="Forme25" draw:style-name="gr20" draw:text-style-name="P419" svg:width="0.145cm" svg:height="0.168cm" svg:x="14.67cm" svg:y="0.397cm">
+    </draw:line><draw:custom-shape text:anchor-type="paragraph" draw:z-index="54" draw:name="Forme25" draw:style-name="gr20" draw:text-style-name="P420" svg:width="0.145cm" svg:height="0.168cm" svg:x="14.67cm" svg:y="0.397cm">
      <text:p/>
      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:glue-points="10800 0 3163 3163 0 10800 3163 18437 10800 21600 18437 18437 21600 10800 18437 3163" draw:text-areas="3163 3163 18437 18437" draw:type="ellipse" draw:enhanced-path="U 10800 10800 10800 10800 0 360 Z N"/>
-    </draw:custom-shape><draw:line text:anchor-type="paragraph" draw:z-index="55" draw:name="Forme27" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="14.815cm" svg:y1="0.482cm" svg:x2="14.984cm" svg:y2="0cm">
+    </draw:custom-shape><draw:line text:anchor-type="paragraph" draw:z-index="55" draw:name="Forme27" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="14.815cm" svg:y1="0.482cm" svg:x2="14.984cm" svg:y2="0cm">
      <text:p/>
     </draw:line></text:p>
    <text:p text:style-name="P79"/>
-   <text:p text:style-name="P79"><draw:frame text:anchor-type="paragraph" draw:z-index="19" draw:name="Forme1" draw:style-name="gr8" draw:text-style-name="P413" svg:width="1.74cm" svg:height="1.467cm" svg:x="12.719cm" svg:y="0.467cm">
+   <text:p text:style-name="P79"><draw:frame text:anchor-type="paragraph" draw:z-index="19" draw:name="Forme1" draw:style-name="gr8" draw:text-style-name="P414" svg:width="1.74cm" svg:height="1.467cm" svg:x="12.719cm" svg:y="0.467cm">
      <draw:text-box>
-      <text:p text:style-name="P409"><text:span text:style-name="T83">Pack Pile</text:span></text:p>
-      <text:p text:style-name="P409"><text:span text:style-name="T83"/></text:p>
+      <text:p text:style-name="P410"><text:span text:style-name="T83">Pa</text:span><text:span text:style-name="T83">ck </text:span><text:span text:style-name="T83">Pil</text:span><text:span text:style-name="T83">e</text:span></text:p>
+      <text:p text:style-name="P410"><text:span text:style-name="T83"/></text:p>
      </draw:text-box>
-    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="40" draw:name="Forme5" draw:style-name="gr5" draw:text-style-name="P411" svg:width="5.882cm" svg:height="0.489cm" svg:x="3.925cm" svg:y="0.146cm">
+    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="40" draw:name="Forme5" draw:style-name="gr5" draw:text-style-name="P412" svg:width="5.882cm" svg:height="0.489cm" svg:x="3.925cm" svg:y="0.146cm">
      <draw:text-box>
-      <text:p><text:span text:style-name="T83">Calculateur</text:span></text:p>
-     </draw:text-box>
-    </draw:frame></text:p>
-   <text:p text:style-name="P79"><draw:frame text:anchor-type="paragraph" draw:z-index="39" draw:name="Forme15" draw:style-name="gr11" draw:text-style-name="P411" svg:width="6.457cm" svg:height="0.976cm" svg:x="8.276cm" svg:y="0.325cm">
-     <draw:text-box>
-      <text:p><text:span text:style-name="T83">Commandes d’affichage </text:span></text:p>
-      <text:p><text:span text:style-name="T83">du LCD</text:span></text:p>
+      <text:p><text:span text:style-name="T83">Ca</text:span><text:span text:style-name="T83">lcu</text:span><text:span text:style-name="T83">lat</text:span><text:span text:style-name="T83">eur</text:span></text:p>
      </draw:text-box>
     </draw:frame></text:p>
-   <text:p text:style-name="P73"><draw:frame text:anchor-type="paragraph" draw:z-index="4" draw:name="Forme1" draw:style-name="gr1" draw:text-style-name="P410" svg:width="3.121cm" svg:height="1.731cm" svg:x="15.215cm" svg:y="0.295cm">
+   <text:p text:style-name="P79"><draw:frame text:anchor-type="paragraph" draw:z-index="39" draw:name="Forme15" draw:style-name="gr11" draw:text-style-name="P412" svg:width="6.457cm" svg:height="0.976cm" svg:x="8.276cm" svg:y="0.325cm">
      <draw:text-box>
-      <text:p text:style-name="P409">Alimentation 13,8V</text:p>
+      <text:p><text:span text:style-name="T83">Co</text:span><text:span text:style-name="T83">m</text:span><text:span text:style-name="T83">ma</text:span><text:span text:style-name="T83">nd</text:span><text:span text:style-name="T83">es </text:span><text:span text:style-name="T83">d’a</text:span><text:span text:style-name="T83">ffi</text:span><text:span text:style-name="T83">ch</text:span><text:span text:style-name="T83">ag</text:span><text:span text:style-name="T83">e </text:span></text:p>
+      <text:p><text:span text:style-name="T83">du </text:span><text:span text:style-name="T83">L</text:span><text:span text:style-name="T83">C</text:span><text:span text:style-name="T83">D</text:span></text:p>
      </draw:text-box>
     </draw:frame></text:p>
-   <text:p text:style-name="P73"><draw:custom-shape text:anchor-type="paragraph" draw:z-index="58" draw:name="Forme14" draw:style-name="gr23" draw:text-style-name="P416" svg:width="6.896cm" svg:height="2.394cm" svg:x="4.84cm" svg:y="0.326cm">
+   <text:p text:style-name="P73"><draw:frame text:anchor-type="paragraph" draw:z-index="4" draw:name="Forme1" draw:style-name="gr1" draw:text-style-name="P411" svg:width="3.121cm" svg:height="1.731cm" svg:x="15.215cm" svg:y="0.295cm">
+     <draw:text-box>
+      <text:p text:style-name="P410">Alimentation 13,8V</text:p>
+     </draw:text-box>
+    </draw:frame></text:p>
+   <text:p text:style-name="P73"><draw:custom-shape text:anchor-type="paragraph" draw:z-index="58" draw:name="Forme14" draw:style-name="gr23" draw:text-style-name="P417" svg:width="6.896cm" svg:height="2.394cm" svg:x="4.84cm" svg:y="0.326cm">
      <text:p/>
      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
     </draw:custom-shape></text:p>
-   <text:p text:style-name="P73"><draw:frame text:anchor-type="paragraph" draw:z-index="12" draw:name="Forme1" draw:style-name="gr6" draw:text-style-name="P413" svg:width="5.716cm" svg:height="1.174cm" svg:x="5.283cm" svg:y="0.175cm">
+   <text:p text:style-name="P73"><draw:frame text:anchor-type="paragraph" draw:z-index="12" draw:name="Forme1" draw:style-name="gr6" draw:text-style-name="P414" svg:width="5.716cm" svg:height="1.174cm" svg:x="5.283cm" svg:y="0.175cm">
      <draw:text-box>
-      <text:p text:style-name="P409"><text:span text:style-name="T83">LCD</text:span></text:p>
-      <text:p text:style-name="P409"><text:span text:style-name="T85"/></text:p>
+      <text:p text:style-name="P410"><text:span text:style-name="T83">L</text:span><text:span text:style-name="T83">C</text:span><text:span text:style-name="T83">D</text:span></text:p>
+      <text:p text:style-name="P410"><text:span text:style-name="T85"/></text:p>
      </draw:text-box>
     </draw:frame></text:p>
-   <text:p text:style-name="P73"><draw:line text:anchor-type="paragraph" draw:z-index="47" draw:name="Forme23" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="10.998cm" svg:y1="0.226cm" svg:x2="12.049cm" svg:y2="0.226cm">
+   <text:p text:style-name="P73"><draw:line text:anchor-type="paragraph" draw:z-index="47" draw:name="Forme23" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="10.998cm" svg:y1="0.226cm" svg:x2="12.049cm" svg:y2="0.226cm">
      <text:p/>
     </draw:line></text:p>
    <text:p text:style-name="P73"/>
-   <text:p text:style-name="P73"><draw:frame text:anchor-type="paragraph" draw:z-index="49" draw:name="Forme5" draw:style-name="gr5" draw:text-style-name="P411" svg:width="5.882cm" svg:height="0.489cm" svg:x="5.031cm" svg:y="0.284cm">
+   <text:p text:style-name="P73"><draw:frame text:anchor-type="paragraph" draw:z-index="49" draw:name="Forme5" draw:style-name="gr5" draw:text-style-name="P412" svg:width="5.882cm" svg:height="0.489cm" svg:x="5.031cm" svg:y="0.284cm">
      <draw:text-box>
-      <text:p><text:span text:style-name="T83">Afficheur</text:span></text:p>
+      <text:p><text:span text:style-name="T83">Af</text:span><text:span text:style-name="T83">fic</text:span><text:span text:style-name="T83">he</text:span><text:span text:style-name="T83">ur</text:span></text:p>
      </draw:text-box>
-    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="11" draw:name="Forme5" draw:style-name="gr5" draw:text-style-name="P411" svg:width="5.883cm" svg:height="0.489cm" svg:x="8.717cm" svg:y="1.258cm">
+    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="11" draw:name="Forme5" draw:style-name="gr5" draw:text-style-name="P412" svg:width="5.883cm" svg:height="0.489cm" svg:x="8.717cm" svg:y="1.258cm">
      <draw:text-box>
-      <text:p><text:span text:style-name="T83">SWR Power meter F8KGL</text:span></text:p>
+      <text:p><text:span text:style-name="T83">S</text:span><text:span text:style-name="T83">W</text:span><text:span text:style-name="T83">R </text:span><text:span text:style-name="T83">Po</text:span><text:span text:style-name="T83">we</text:span><text:span text:style-name="T83">r </text:span><text:span text:style-name="T83">me</text:span><text:span text:style-name="T83">ter </text:span><text:span text:style-name="T83">F8</text:span><text:span text:style-name="T83">K</text:span><text:span text:style-name="T83">G</text:span><text:span text:style-name="T83">L</text:span></text:p>
      </draw:text-box>
     </draw:frame></text:p>
    <text:p text:style-name="P367"><text:soft-page-break/>Le coupleur directionnel a pour fonction de séparer le transmis du signal réfléchi.</text:p>
@@ -4868,7 +4871,7 @@
    <text:p text:style-name="P367"/>
    <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:bookmark-start text:name="__RefHeading___Toc3457_2552838824"/>1.<text:span text:style-name="T157">2-Coupleur directionnel</text:span><text:bookmark-end text:name="__RefHeading___Toc3457_2552838824"/></text:h>
    <text:p text:style-name="P384"/>
-   <text:p text:style-name="P384"><draw:g text:anchor-type="char" draw:z-index="154" draw:name="Forme21" draw:style-name="gr56"><draw:frame draw:name="dircpl3" draw:style-name="gr57" draw:text-style-name="P410" svg:width="7.303cm" svg:height="3.361cm" svg:x="4.828cm" svg:y="0.27cm">
+   <text:p text:style-name="P384"><draw:g text:anchor-type="char" draw:z-index="154" draw:name="Forme21" draw:style-name="gr56"><draw:frame draw:name="dircpl3" draw:style-name="gr57" draw:text-style-name="P411" svg:width="7.303cm" svg:height="3.361cm" svg:x="4.828cm" svg:y="0.27cm">
       <draw:image loext:mime-type="image/x-wmf">
        <office:binary-data>AQAJAAADugEAAAUAGAAAAAAABAAAAAMBCAAFAAAACwIAAAAABQAAAAwC+0u0fgkAAAD6AgAA
         AAAAAP///wAiAAQAAAAtAQAABwAAAPwCAAD///8AAAAEAAAALQEBAAcAAAAbBPxLtX4AAAAA
@@ -5024,21 +5027,21 @@
         AAgRkAAAAIQISAAAAEL+CzkbZuLJvgBtAAAAAElFTkSuQmCC
        </office:binary-data>
       </draw:image>
-     </draw:frame><draw:frame draw:style-name="gr58" draw:text-style-name="P418" svg:width="0.763cm" svg:height="0.763cm" svg:x="4.828cm" svg:y="0.674cm">
+     </draw:frame><draw:frame draw:style-name="gr58" draw:text-style-name="P419" svg:width="0.763cm" svg:height="0.763cm" svg:x="4.828cm" svg:y="0.674cm">
       <draw:text-box>
-       <text:p text:style-name="P423"><text:span text:style-name="T156">1</text:span></text:p>
+       <text:p text:style-name="P424"><text:span text:style-name="T156">1</text:span></text:p>
       </draw:text-box>
-     </draw:frame><draw:frame draw:style-name="gr58" draw:text-style-name="P418" svg:width="0.763cm" svg:height="0.763cm" svg:x="10.924cm" svg:y="0.674cm">
+     </draw:frame><draw:frame draw:style-name="gr58" draw:text-style-name="P419" svg:width="0.763cm" svg:height="0.763cm" svg:x="10.924cm" svg:y="0.674cm">
       <draw:text-box>
-       <text:p text:style-name="P423"><text:span text:style-name="T156">2</text:span></text:p>
+       <text:p text:style-name="P424"><text:span text:style-name="T156">2</text:span></text:p>
       </draw:text-box>
-     </draw:frame><draw:frame draw:style-name="gr58" draw:text-style-name="P418" svg:width="0.763cm" svg:height="0.763cm" svg:x="7.114cm" svg:y="3.064cm">
+     </draw:frame><draw:frame draw:style-name="gr58" draw:text-style-name="P419" svg:width="0.763cm" svg:height="0.763cm" svg:x="7.114cm" svg:y="3.064cm">
       <draw:text-box>
-       <text:p text:style-name="P423"><text:span text:style-name="T156">3</text:span></text:p>
+       <text:p text:style-name="P424"><text:span text:style-name="T156">3</text:span></text:p>
       </draw:text-box>
-     </draw:frame><draw:frame draw:style-name="gr58" draw:text-style-name="P418" svg:width="0.763cm" svg:height="0.763cm" svg:x="8.511cm" svg:y="3.064cm">
+     </draw:frame><draw:frame draw:style-name="gr58" draw:text-style-name="P419" svg:width="0.763cm" svg:height="0.763cm" svg:x="8.511cm" svg:y="3.064cm">
       <draw:text-box>
-       <text:p text:style-name="P423"><text:span text:style-name="T156">4</text:span></text:p>
+       <text:p text:style-name="P424"><text:span text:style-name="T156">4</text:span></text:p>
       </draw:text-box>
      </draw:frame>
     </draw:g></text:p>
@@ -5058,93 +5061,93 @@
    <text:p text:style-name="P373"/>
    <text:p text:style-name="P373"/>
    <text:p text:style-name="P373"/>
-   <text:p text:style-name="P373"><draw:frame text:anchor-type="paragraph" draw:z-index="180" draw:name="Forme70" draw:style-name="gr63" draw:text-style-name="P418" svg:width="3.033cm" svg:height="0.957cm" svg:x="8.999cm" svg:y="0.259cm">
+   <text:p text:style-name="P373"><draw:frame text:anchor-type="paragraph" draw:z-index="180" draw:name="Forme70" draw:style-name="gr63" draw:text-style-name="P419" svg:width="3.033cm" svg:height="0.957cm" svg:x="8.999cm" svg:y="0.259cm">
      <draw:text-box>
       <text:p>Signal réfléchi</text:p>
      </draw:text-box>
     </draw:frame><text:soft-page-break/></text:p>
-   <text:p text:style-name="P373"><draw:line text:anchor-type="paragraph" draw:z-index="177" draw:name="Forme69" draw:style-name="gr62" draw:text-style-name="P409" svg:x1="9.684cm" svg:y1="0.441cm" svg:x2="9.67cm" svg:y2="2.528cm">
+   <text:p text:style-name="P373"><draw:line text:anchor-type="paragraph" draw:z-index="177" draw:name="Forme69" draw:style-name="gr62" draw:text-style-name="P410" svg:x1="9.684cm" svg:y1="0.441cm" svg:x2="9.67cm" svg:y2="2.528cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P373"><draw:g text:anchor-type="paragraph" draw:z-index="172" draw:name="Forme22" draw:style-name="gr41"><draw:custom-shape draw:name="Forme62" draw:style-name="gr60" draw:text-style-name="P422" svg:width="0.609cm" svg:height="0.345cm" draw:transform="rotate (-3.14159265358979) translate (6.61458333333333cm 0.511527777777778cm)">
+   <text:p text:style-name="P373"><draw:g text:anchor-type="paragraph" draw:z-index="172" draw:name="Forme22" draw:style-name="gr41"><draw:custom-shape draw:name="Forme62" draw:style-name="gr60" draw:text-style-name="P423" svg:width="0.609cm" svg:height="0.345cm" draw:transform="rotate (-3.14159265358979) translate (6.61458333333333cm 0.511527777777778cm)">
       <text:p/>
       <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
-     </draw:custom-shape><draw:line draw:name="Forme66" draw:style-name="gr42" draw:text-style-name="P409" svg:x1="6.005cm" svg:y1="0.337cm" svg:x2="5.74cm" svg:y2="0.337cm">
+     </draw:custom-shape><draw:line draw:name="Forme66" draw:style-name="gr42" draw:text-style-name="P410" svg:x1="6.005cm" svg:y1="0.337cm" svg:x2="5.74cm" svg:y2="0.337cm">
       <text:p/>
      </draw:line>
-    </draw:g><draw:line text:anchor-type="paragraph" draw:z-index="159" draw:name="Forme37" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="9.439cm" svg:y1="1.644cm" svg:x2="9.439cm" svg:y2="0.321cm">
+    </draw:g><draw:line text:anchor-type="paragraph" draw:z-index="159" draw:name="Forme37" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="9.439cm" svg:y1="1.644cm" svg:x2="9.439cm" svg:y2="0.321cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="160" draw:name="Forme37" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="9.439cm" svg:y1="1.644cm" svg:x2="9.439cm" svg:y2="0.321cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="160" draw:name="Forme37" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="9.439cm" svg:y1="1.644cm" svg:x2="9.439cm" svg:y2="0.321cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="165" draw:name="Forme37" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="7.031cm" svg:y1="1.644cm" svg:x2="7.031cm" svg:y2="0.321cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="165" draw:name="Forme37" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="7.031cm" svg:y1="1.644cm" svg:x2="7.031cm" svg:y2="0.321cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="166" draw:name="Forme37" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="7.031cm" svg:y1="1.644cm" svg:x2="7.031cm" svg:y2="0.321cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="166" draw:name="Forme37" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="7.031cm" svg:y1="1.644cm" svg:x2="7.031cm" svg:y2="0.321cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="173" draw:name="Forme67" draw:style-name="gr61" draw:text-style-name="P419" svg:x1="7.031cm" svg:y1="0.321cm" svg:x2="6.627cm" svg:y2="0.321cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="173" draw:name="Forme67" draw:style-name="gr61" draw:text-style-name="P420" svg:x1="7.031cm" svg:y1="0.321cm" svg:x2="6.627cm" svg:y2="0.321cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="174" draw:name="Forme63" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="5.72cm" svg:y1="0.141cm" svg:x2="5.72cm" svg:y2="0.511cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="174" draw:name="Forme63" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="5.72cm" svg:y1="0.141cm" svg:x2="5.72cm" svg:y2="0.511cm">
      <text:p/>
     </draw:line></text:p>
    <text:p text:style-name="P373"/>
-   <text:p text:style-name="P373"><draw:custom-shape text:anchor-type="paragraph" draw:z-index="155" draw:name="Forme34" draw:style-name="gr59" draw:text-style-name="P422" svg:width="4.261cm" svg:height="2.356cm" svg:x="6.105cm" svg:y="0.009cm">
+   <text:p text:style-name="P373"><draw:custom-shape text:anchor-type="paragraph" draw:z-index="155" draw:name="Forme34" draw:style-name="gr59" draw:text-style-name="P423" svg:width="4.261cm" svg:height="2.356cm" svg:x="6.105cm" svg:y="0.009cm">
      <text:p/>
      <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
-    </draw:custom-shape><draw:frame text:anchor-type="paragraph" draw:z-index="182" draw:name="Forme70" draw:style-name="gr63" draw:text-style-name="P418" svg:width="3.033cm" svg:height="0.957cm" svg:x="10.892cm" svg:y="0.383cm">
+    </draw:custom-shape><draw:frame text:anchor-type="paragraph" draw:z-index="182" draw:name="Forme70" draw:style-name="gr63" draw:text-style-name="P419" svg:width="3.033cm" svg:height="0.957cm" svg:x="10.892cm" svg:y="0.383cm">
      <draw:text-box>
       <text:p>Signal réfléchi</text:p>
      </draw:text-box>
     </draw:frame></text:p>
-   <text:p text:style-name="P373"><draw:line text:anchor-type="paragraph" draw:z-index="157" draw:name="Forme36" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="7.031cm" svg:y1="0.183cm" svg:x2="9.439cm" svg:y2="0.183cm">
+   <text:p text:style-name="P373"><draw:line text:anchor-type="paragraph" draw:z-index="157" draw:name="Forme36" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="7.031cm" svg:y1="0.183cm" svg:x2="9.439cm" svg:y2="0.183cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P373"><draw:line text:anchor-type="paragraph" draw:z-index="156" draw:name="Forme35" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="4.279cm" svg:y1="0.279cm" svg:x2="12.693cm" svg:y2="0.279cm">
+   <text:p text:style-name="P373"><draw:line text:anchor-type="paragraph" draw:z-index="156" draw:name="Forme35" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="4.279cm" svg:y1="0.279cm" svg:x2="12.693cm" svg:y2="0.279cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="178" draw:name="Forme68" draw:style-name="gr32" draw:text-style-name="P409" svg:x1="9.684cm" svg:y1="0.019cm" svg:x2="11.905cm" svg:y2="0.019cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="178" draw:name="Forme68" draw:style-name="gr32" draw:text-style-name="P410" svg:x1="9.684cm" svg:y1="0.019cm" svg:x2="11.905cm" svg:y2="0.019cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P373"><draw:line text:anchor-type="paragraph" draw:z-index="158" draw:name="Forme36" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="7.004cm" svg:y1="0.411cm" svg:x2="9.412cm" svg:y2="0.411cm">
+   <text:p text:style-name="P373"><draw:line text:anchor-type="paragraph" draw:z-index="158" draw:name="Forme36" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="7.004cm" svg:y1="0.411cm" svg:x2="9.412cm" svg:y2="0.411cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="161" draw:name="Forme37" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="9.412cm" svg:y1="1.734cm" svg:x2="9.412cm" svg:y2="0.411cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="161" draw:name="Forme37" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="9.412cm" svg:y1="1.734cm" svg:x2="9.412cm" svg:y2="0.411cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="162" draw:name="Forme37" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="9.412cm" svg:y1="1.734cm" svg:x2="9.412cm" svg:y2="0.411cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="162" draw:name="Forme37" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="9.412cm" svg:y1="1.734cm" svg:x2="9.412cm" svg:y2="0.411cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="163" draw:name="Forme37" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="7.004cm" svg:y1="1.734cm" svg:x2="7.004cm" svg:y2="0.411cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="163" draw:name="Forme37" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="7.004cm" svg:y1="1.734cm" svg:x2="7.004cm" svg:y2="0.411cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="164" draw:name="Forme37" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="7.004cm" svg:y1="1.734cm" svg:x2="7.004cm" svg:y2="0.411cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="164" draw:name="Forme37" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="7.004cm" svg:y1="1.734cm" svg:x2="7.004cm" svg:y2="0.411cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="175" draw:name="Forme68" draw:style-name="gr32" draw:text-style-name="P409" svg:x1="4.613cm" svg:y1="0.062cm" svg:x2="6.834cm" svg:y2="0.062cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="175" draw:name="Forme68" draw:style-name="gr32" draw:text-style-name="P410" svg:x1="4.613cm" svg:y1="0.062cm" svg:x2="6.834cm" svg:y2="0.062cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="176" draw:name="Forme69" draw:style-name="gr62" draw:text-style-name="P409" svg:x1="6.745cm" svg:y1="2.179cm" svg:x2="6.773cm" svg:y2="0.062cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="176" draw:name="Forme69" draw:style-name="gr62" draw:text-style-name="P410" svg:x1="6.745cm" svg:y1="2.179cm" svg:x2="6.773cm" svg:y2="0.062cm">
      <text:p/>
-    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="181" draw:name="Forme70" draw:style-name="gr63" draw:text-style-name="P418" svg:width="3.033cm" svg:height="0.957cm" svg:x="3.073cm" svg:y="0.062cm">
+    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="181" draw:name="Forme70" draw:style-name="gr63" draw:text-style-name="P419" svg:width="3.033cm" svg:height="0.957cm" svg:x="3.073cm" svg:y="0.062cm">
      <draw:text-box>
       <text:p>Signal transmis</text:p>
      </draw:text-box>
     </draw:frame></text:p>
-   <text:p text:style-name="P373"><draw:line text:anchor-type="paragraph" draw:z-index="168" draw:name="Forme64" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="6.237cm" svg:y1="0.416cm" svg:x2="6.237cm" svg:y2="0.892cm">
+   <text:p text:style-name="P373"><draw:line text:anchor-type="paragraph" draw:z-index="168" draw:name="Forme64" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="6.237cm" svg:y1="0.416cm" svg:x2="6.237cm" svg:y2="0.892cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P373"><draw:line text:anchor-type="paragraph" draw:z-index="169" draw:name="Forme65" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="6.098cm" svg:y1="0.399cm" svg:x2="6.363cm" svg:y2="0.399cm">
+   <text:p text:style-name="P373"><draw:line text:anchor-type="paragraph" draw:z-index="169" draw:name="Forme65" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="6.098cm" svg:y1="0.399cm" svg:x2="6.363cm" svg:y2="0.399cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P373"><draw:g text:anchor-type="paragraph" draw:z-index="171" draw:name="Forme23" draw:style-name="gr41"><draw:custom-shape draw:name="Forme62" draw:style-name="gr60" draw:text-style-name="P422" svg:width="0.609cm" svg:height="0.345cm" svg:x="9.691cm" svg:y="0.109cm">
+   <text:p text:style-name="P373"><draw:g text:anchor-type="paragraph" draw:z-index="171" draw:name="Forme23" draw:style-name="gr41"><draw:custom-shape draw:name="Forme62" draw:style-name="gr60" draw:text-style-name="P423" svg:width="0.609cm" svg:height="0.345cm" svg:x="9.691cm" svg:y="0.109cm">
       <text:p/>
       <draw:enhanced-geometry svg:viewBox="0 0 21600 21600" draw:type="rectangle" draw:enhanced-path="M 0 0 L 21600 0 21600 21600 0 21600 0 0 Z N"/>
-     </draw:custom-shape><draw:line draw:name="Forme66" draw:style-name="gr42" draw:text-style-name="P409" svg:x1="10.301cm" svg:y1="0.284cm" svg:x2="10.566cm" svg:y2="0.284cm">
+     </draw:custom-shape><draw:line draw:name="Forme66" draw:style-name="gr42" draw:text-style-name="P410" svg:x1="10.301cm" svg:y1="0.284cm" svg:x2="10.566cm" svg:y2="0.284cm">
       <text:p/>
      </draw:line>
-    </draw:g><draw:line text:anchor-type="paragraph" draw:z-index="167" draw:name="Forme63" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="10.571cm" svg:y1="0.093cm" svg:x2="10.571cm" svg:y2="0.463cm">
+    </draw:g><draw:line text:anchor-type="paragraph" draw:z-index="167" draw:name="Forme63" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="10.571cm" svg:y1="0.093cm" svg:x2="10.571cm" svg:y2="0.463cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="170" draw:name="Forme66" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="9.412cm" svg:y1="0.273cm" svg:x2="9.677cm" svg:y2="0.273cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="170" draw:name="Forme66" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="9.412cm" svg:y1="0.273cm" svg:x2="9.677cm" svg:y2="0.273cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P382"><draw:frame text:anchor-type="paragraph" draw:z-index="179" draw:name="Forme70" draw:style-name="gr63" draw:text-style-name="P418" svg:width="3.033cm" svg:height="0.957cm" svg:x="5.662cm" svg:y="0.199cm">
+   <text:p text:style-name="P382"><draw:frame text:anchor-type="paragraph" draw:z-index="179" draw:name="Forme70" draw:style-name="gr63" draw:text-style-name="P419" svg:width="3.033cm" svg:height="0.957cm" svg:x="5.662cm" svg:y="0.199cm">
      <draw:text-box>
       <text:p>Signal transmis</text:p>
      </draw:text-box>
     </draw:frame></text:p>
    <text:p text:style-name="P382"/>
-   <text:h text:style-name="P397" text:outline-level="2"/>
+   <text:h text:style-name="P398" text:outline-level="2"/>
    <text:p text:style-name="P81"/>
    <text:p text:style-name="P81"/>
    <text:h text:style-name="P277" text:outline-level="2"><text:bookmark-start text:name="__RefHeading___Toc3459_2552838824"/>1.3-Détecteur HF<text:bookmark-end text:name="__RefHeading___Toc3459_2552838824"/></text:h>
@@ -5297,7 +5300,7 @@
    <text:p text:style-name="P6">Si la résistance présente dans le circuit lors de la charge est faible, <text:span text:style-name="T8">celle-ci est beaucoup plus rapide que la décharge dans la résistance. Alors, si la constante de temps du circuit résistance-condensateur est correctement choisie, sa tension reste </text:span><text:span text:style-name="T4">à peu près</text:span><text:span text:style-name="T10"> constante entre deux crêtes de la porteuse.</text:span></text:p>
    <text:p text:style-name="P6"><text:span text:style-name="T10"/></text:p>
    <text:p text:style-name="P369"><text:span text:style-name="T10">L</text:span><text:span text:style-name="T9">a tension de sortie du détecteur HF est alors proportionnelle à la tension crête de la porteuse présentée en entrée du circuit.</text:span></text:p>
-   <text:h text:style-name="P398" text:outline-level="2"/>
+   <text:h text:style-name="P399" text:outline-level="2"/>
    <text:p text:style-name="P368"/>
    <text:p text:style-name="P368"/>
    <text:h text:style-name="P277" text:outline-level="2"><text:bookmark-start text:name="__RefHeading___Toc3461_2552838824"/><text:soft-page-break/>1.4-ADC<text:bookmark-end text:name="__RefHeading___Toc3461_2552838824"/></text:h>
@@ -5867,42 +5870,42 @@
    <text:p text:style-name="P327"><text:span text:style-name="T148"><text:tab/>On appelle pile alcaline un type de pile électrique primaire dont l&apos;électrolyte est alcalin. Les modèles les plus courants sont la pile alcaline zinc-dioxyde de manganèse (Zn-MnO2), et la pile </text:span><text:span text:style-name="T150">a</text:span><text:span text:style-name="T148">lcaline lithium-dioxyde de manganèse (Li-MnO2). La pile alcaline zinc-dioxyde de manganèse, que l&apos;on appelle souvent pile alcaline par abus de langage, tire son nom du fait que ses deux électrodes, l&apos;électrode négative en zinc et l&apos;électrode positive en dioxyde de manganèse, sont plongées dans un électrolyte alcalin d&apos;hydroxyde de potassium, par opposition à l&apos;électrolyte acide de la pile saline (zinc-carbone) qui offre la même tension nominale et la même taille. </text:span></text:p>
    <text:list xml:id="list335674101" text:style-name="L1">
     <text:list-item>
-     <text:p text:style-name="P393">Les fabricants, qui n&apos;ont pas conçu les piles alcalines pour qu&apos;elles soient réutilisables, recommandent de jeter les piles après un seul cycle de décharge. </text:p>
+     <text:p text:style-name="P394">Les fabricants, qui n&apos;ont pas conçu les piles alcalines pour qu&apos;elles soient réutilisables, recommandent de jeter les piles après un seul cycle de décharge. </text:p>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P390">La construction d&apos;une pile alcaline est très consommatrice d&apos;énergie : il faut environ 50 fois plus d’énergie pour fabriquer une pile alcaline que ce qu’elle fournira pendant toute sa durée de vie.</text:p>
+     <text:p text:style-name="P391">La construction d&apos;une pile alcaline est très consommatrice d&apos;énergie : il faut environ 50 fois plus d’énergie pour fabriquer une pile alcaline que ce qu’elle fournira pendant toute sa durée de vie.</text:p>
     </text:list-item>
    </text:list>
    <text:p text:style-name="P327"><text:span text:style-name="T148"><text:tab/>Les batteries Ni-Cd </text:span><text:span text:style-name="T150">(</text:span><text:bookmark text:name="Ni-Cd_.28nickel-cadmium.29"/><text:span text:style-name="T150">nickel-cadmium) </text:span><text:span text:style-name="T148">sont aujourd&apos;hui relativement dépassées en termes d&apos;autonomie, et sont interdites dans l&apos;Union européenne suite à la directive 2006/66/CE1. Elles sont remplacées par les batteries NiMH, elles-mêmes concurrencées par les batteries Li-ion. </text:span></text:p>
    <text:list xml:id="list3380794628" text:style-name="L2">
     <text:list-item>
-     <text:p text:style-name="P391">Le cadmium est très polluant.</text:p>
+     <text:p text:style-name="P392">Le cadmium est très polluant.</text:p>
     </text:list-item>
    </text:list>
    <text:p text:style-name="P327"><text:soft-page-break/><text:span text:style-name="T150"><text:tab/>Les accumulateurs </text:span><text:bookmark text:name="Ni-MH_.28nickel-hydrure_m.C3.A9tallique.29"/><text:span text:style-name="T150">Ni-MH (nickel-hydrure métallique)</text:span><text:span text:style-name="T148"> n&apos;incorpore</text:span><text:span text:style-name="T150">nt</text:span><text:span text:style-name="T148"> ni cadmium ni plomb et est donc peu polluant. De plus, son énergie massique est supérieure de 40 % à celle des Ni-Cd et son effet mémoire est très faible. La technologie NiMH est extrêmement répandue dans les accumulateurs portables d&apos;usage courant : </text:span></text:p>
    <text:list xml:id="list3730532884" text:style-name="L3">
     <text:list-item>
-     <text:p text:style-name="P394">Les modèles AA/HR6 dont la capacité peut atteindre 2700 mAh pour les plus performants ; </text:p>
+     <text:p text:style-name="P395">Les modèles AA/HR6 dont la capacité peut atteindre 2700 mAh pour les plus performants ; </text:p>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P394">Les modèles AAA/HR3 dont la capacité maximale est de 1000 mAh. </text:p>
-     <text:p text:style-name="P394"/>
+     <text:p text:style-name="P395">Les modèles AAA/HR3 dont la capacité maximale est de 1000 mAh. </text:p>
+     <text:p text:style-name="P395"/>
     </text:list-item>
    </text:list>
    <text:p text:style-name="P327"><text:tab/>Les accumulateurs à base de lithium <text:span text:style-name="T151">(</text:span>Li-Ion, Li-Po, etc.) sont issus d&apos;une technique récemment mise au point et toujours en cours de développement. Ces piles présentent un très important potentiel électrochimique. </text:p>
    <text:p text:style-name="P327"><text:tab/>On distingue la technique lithium métal où l&apos;électrode négative est composée de lithium métallique (matériau qui pose d&apos;importants problèmes de sécurité, ce qui limite l&apos;emploi de ce type de pilette combinaison), et la technique lithium ion, où le lithium reste à l&apos;état ionique grâce à l&apos;utilisation d&apos;un composé d&apos;insertion aussi bien à l&apos;électrode négative (généralement en graphite) qu&apos;à l&apos;électrode positive. Des problèmes de sécurité demeurent (prise de feu) en cas de surcharge, de décharge trop rapide ou de court-circuit. Les accumulateurs lithium-ion sont parfois remplacés par leur variante lithium polymère dite Li-Po. Sa combinaison électrochimique est le même, mais un gel (polymère) fige l&apos;électrolyte, ce qui permet de réduire son contenant à une simple enveloppe plastique souple. Le polymère ralentit le déplacement des ions ce qui a pour effet de limiter sa capacité à fournir d&apos;important courant et sa puissance spécifique (voir définition plus haut) est généralement inférieure à celle des éléments Li-Ion de même capacité. </text:p>
    <text:list xml:id="list3547106610" text:style-name="L4">
     <text:list-item>
-     <text:p text:style-name="P395">Les piles Li-Ion sont les piles rechargeables le plus utilisées dans le monde aujourd&apos;hui. </text:p>
+     <text:p text:style-name="P396">Les piles Li-Ion sont les piles rechargeables le plus utilisées dans le monde aujourd&apos;hui. </text:p>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P395">Ces piles sont fréquemment utilisées pour alimenter les téléphones mobiles, les ordinateurs portables, les voitures téléguidées, les perceuses électriques et même les voitures électriques. </text:p>
+     <text:p text:style-name="P396">Ces piles sont fréquemment utilisées pour alimenter les téléphones mobiles, les ordinateurs portables, les voitures téléguidées, les perceuses électriques et même les voitures électriques. </text:p>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P395">Le potentiel le plus répandu d&apos;une cellule au lithium-ion est de 3,6 V ou 3,7 V. La densité énergétique des accumulateurs Lithium-ion peut atteindre un niveau de 200 Wh/kg. </text:p>
+     <text:p text:style-name="P396">Le potentiel le plus répandu d&apos;une cellule au lithium-ion est de 3,6 V ou 3,7 V. La densité énergétique des accumulateurs Lithium-ion peut atteindre un niveau de 200 Wh/kg. </text:p>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P392">Recyclage : les difficultés rencontrées pour recycler le lithium ne permettent pas de valoriser les matériaux utilisés actuellement pour une seconde utilisation des composés chimiques. Les techniques de traitement permettent seulement de stabiliser les impacts dangereux des matériaux composant cette technologie d&apos;accumulateur. Le coût de traitement est l&apos;un des plus importants en fin de vie de l&apos;ensemble des accumulateurs.</text:p>
+     <text:p text:style-name="P393">Recyclage : les difficultés rencontrées pour recycler le lithium ne permettent pas de valoriser les matériaux utilisés actuellement pour une seconde utilisation des composés chimiques. Les techniques de traitement permettent seulement de stabiliser les impacts dangereux des matériaux composant cette technologie d&apos;accumulateur. Le coût de traitement est l&apos;un des plus importants en fin de vie de l&apos;ensemble des accumulateurs.</text:p>
     </text:list-item>
    </text:list>
    <text:p text:style-name="P325"/>
@@ -5929,7 +5932,7 @@
      <dc:creator>F4BJH Fabrice DECROP LONGET</dc:creator>
      <dc:date>2021-02-24T00:20:52.646874672</dc:date>
      <loext:sender-initials>FFL</loext:sender-initials>
-     <text:p text:style-name="P407"><text:span text:style-name="T160">Mais encore</text:span></text:p>
+     <text:p text:style-name="P408"><text:span text:style-name="T160">Mais encore</text:span></text:p>
     </office:annotation> coupleur directionnel a un fonctionnement linéaire en puissance.</text:p>
    <text:p text:style-name="P45"/>
    <text:p text:style-name="P45"><draw:frame draw:style-name="fr5" draw:name="Objet7" text:anchor-type="as-char" svg:y="-0.386cm" svg:width="7.232cm" svg:height="0.542cm" draw:z-index="0"><draw:object>
@@ -6218,15 +6221,16 @@
    <text:p text:style-name="P100"/>
    <text:p text:style-name="P113"><text:span text:style-name="T74">où V est la tension aux bornes de la diode, I le courant qui la traverse, I</text:span><text:span text:style-name="T75">s</text:span><text:span text:style-name="T76"> le courant de saturation, k la constante de Boltzman (</text:span><text:span text:style-name="T42">1,38064852 × 10</text:span><text:span text:style-name="T79">-23</text:span><text:span text:style-name="T42"> m</text:span><text:span text:style-name="T79">2</text:span><text:span text:style-name="T42"> kg s</text:span><text:span text:style-name="T79">-2</text:span><text:span text:style-name="T42"> K</text:span><text:span text:style-name="T79">-1</text:span><text:span text:style-name="T49">), T la température absolue (en K), e la charge de l’électron (e=−1,602 × 10</text:span><text:span text:style-name="T80">−19</text:span><text:span text:style-name="T49"> C), et n le facteur d’idéalité</text:span></text:p>
    <text:p text:style-name="P100"/>
-   <text:h text:style-name="P234" text:outline-level="3"><text:bookmark-start text:name="__RefHeading___Toc3090_2459689771"/><text:span text:style-name="T159">3.1.2</text:span>-Square Law Region<text:bookmark-end text:name="__RefHeading___Toc3090_2459689771"/></text:h>
+   <text:h text:style-name="P234" text:outline-level="3"><text:bookmark-start text:name="__RefHeading___Toc3090_2459689771"/><text:span text:style-name="T159">3.1.1</text:span>-Square Law Region<text:bookmark-end text:name="__RefHeading___Toc3090_2459689771"/></text:h>
    <text:p text:style-name="P151"><office:annotation>
      <dc:creator>F4BJH Fabrice DECROP LONGET</dc:creator>
      <dc:date>2021-02-24T00:23:04.921726922</dc:date>
      <loext:sender-initials>FFL</loext:sender-initials>
-     <text:p text:style-name="P407"><text:span text:style-name="T160">Insérer la justification HP ancienne</text:span></text:p>
+     <text:p text:style-name="P408"><text:span text:style-name="T160">Insérer la justification HP ancienne</text:span></text:p>
     </office:annotation></text:p>
    <text:p text:style-name="P151"/>
-   <text:h text:style-name="P343" text:outline-level="3">3.1.3-BAT54XV2</text:h>
+   <text:h text:style-name="P343" text:outline-level="3">3.1.2-BAT54XV2</text:h>
+   <text:p text:style-name="P390"/>
    <text:h text:style-name="P223" text:outline-level="1"><text:bookmark-start text:name="__RefHeading___Toc3469_2552838824"/>4-ADC<text:bookmark-end text:name="__RefHeading___Toc3469_2552838824"/></text:h>
    <text:p text:style-name="P378"><text:span text:style-name="T86">Un convertisseur analogique – numérique (CAN, « </text:span><text:span text:style-name="T89">ou ADC » pour Analog to Digital Converter</text:span><text:span text:style-name="T86">) est un dispositif électronique permettant la conversion d’un signal analogique en un signal numérique.</text:span></text:p>
    <text:p text:style-name="P374"/>
@@ -7310,50 +7314,50 @@
     <table:table-column table:style-name="Tableau2.B"/>
     <table:table-row>
      <table:table-cell table:style-name="Tableau2.A1" office:value-type="string">
-      <text:p text:style-name="P400">N (résolution en bits)</text:p>
+      <text:p text:style-name="P401">N (résolution en bits)</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau2.B1" office:value-type="string">
-      <text:p text:style-name="P400">Quantum (q = LSB)</text:p>
+      <text:p text:style-name="P401">Quantum (q = LSB)</text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row>
      <table:table-cell table:style-name="Tableau2.A2" office:value-type="string">
-      <text:p text:style-name="P400">8</text:p>
+      <text:p text:style-name="P401">8</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau2.B2" office:value-type="string">
-      <text:p text:style-name="P400">19,5mV</text:p>
+      <text:p text:style-name="P401">19,5mV</text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row>
      <table:table-cell table:style-name="Tableau2.A2" office:value-type="string">
-      <text:p text:style-name="P400">10</text:p>
+      <text:p text:style-name="P401">10</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau2.B2" office:value-type="string">
-      <text:p text:style-name="P400">4,8mV</text:p>
+      <text:p text:style-name="P401">4,8mV</text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row>
      <table:table-cell table:style-name="Tableau2.A2" office:value-type="string">
-      <text:p text:style-name="P400">12</text:p>
+      <text:p text:style-name="P401">12</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau2.B2" office:value-type="string">
-      <text:p text:style-name="P400">1,22mV</text:p>
+      <text:p text:style-name="P401">1,22mV</text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row>
      <table:table-cell table:style-name="Tableau2.A2" office:value-type="string">
-      <text:p text:style-name="P400">14</text:p>
+      <text:p text:style-name="P401">14</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau2.B2" office:value-type="string">
-      <text:p text:style-name="P400">305<text:span text:style-name="T134">μ</text:span><text:span text:style-name="T135">V</text:span></text:p>
+      <text:p text:style-name="P401">305<text:span text:style-name="T134">μ</text:span><text:span text:style-name="T135">V</text:span></text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row>
      <table:table-cell table:style-name="Tableau2.A2" office:value-type="string">
-      <text:p text:style-name="P400">16</text:p>
+      <text:p text:style-name="P401">16</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau2.B2" office:value-type="string">
-      <text:p text:style-name="P401">76<text:span text:style-name="T133">μV</text:span></text:p>
+      <text:p text:style-name="P402">76<text:span text:style-name="T133">μV</text:span></text:p>
      </table:table-cell>
     </table:table-row>
    </table:table>
@@ -7365,7 +7369,7 @@
    <text:p text:style-name="P40"/>
    <text:p text:style-name="P40"/>
    <text:p text:style-name="P40"/>
-   <text:h text:style-name="P399" text:outline-level="1"><text:bookmark-start text:name="__RefHeading___Toc3005_4259850012"/><text:soft-page-break/>5-<text:span text:style-name="T159">Performances</text:span><text:bookmark-end text:name="__RefHeading___Toc3005_4259850012"/></text:h>
+   <text:h text:style-name="P400" text:outline-level="1"><text:bookmark-start text:name="__RefHeading___Toc3005_4259850012"/><text:soft-page-break/>5-<text:span text:style-name="T159">Performances</text:span><text:bookmark-end text:name="__RefHeading___Toc3005_4259850012"/></text:h>
    <text:h text:style-name="Heading_20_2" text:outline-level="2"><text:span text:style-name="T159">5.1-</text:span>Dynamique d’entrée, précision, sensibilité et temps de réponse</text:h>
    <text:p text:style-name="P84"/>
    <text:p text:style-name="P80">La dynamique d’entrée du <text:span text:style-name="T96">SWR POWER METER F8KGL </text:span>est l’intervalle de puissance d’entrée <text:span text:style-name="T91"><text:s/></text:span><text:span text:style-name="T14">[P</text:span><text:span text:style-name="T21">e_min;</text:span><text:span text:style-name="T46">P</text:span><text:span text:style-name="T21">e_max</text:span><text:span text:style-name="T46">] </text:span><text:s/>permettant : </text:p>
@@ -7434,21 +7438,21 @@
    <text:h text:style-name="P237" text:outline-level="3"><text:bookmark-start text:name="__RefHeading___Toc3504_7613628"/><office:annotation>
      <dc:creator>Auteur inconnu</dc:creator>
      <dc:date>2021-02-23T14:26:59.351000000</dc:date>
-     <text:p text:style-name="P408"><text:span text:style-name="T161">À basculer dans l’étude</text:span></text:p>
+     <text:p text:style-name="P409"><text:span text:style-name="T161">À basculer dans l’étude</text:span></text:p>
     </office:annotation>2.2.1-Détecteur HF<text:bookmark-end text:name="__RefHeading___Toc3504_7613628"/></text:h>
    <text:p text:style-name="P189"/>
    <text:h text:style-name="P257" text:outline-level="4"/>
    <text:h text:style-name="P239" text:outline-level="3"><text:bookmark-start text:name="__RefHeading___Toc6550_1413195848"/>2<office:annotation>
      <dc:creator>Auteur inconnu</dc:creator>
      <dc:date>2021-02-23T14:27:13.470000000</dc:date>
-     <text:p text:style-name="P408"><text:span text:style-name="T161">À basculer dans l’étude</text:span></text:p>
+     <text:p text:style-name="P409"><text:span text:style-name="T161">À basculer dans l’étude</text:span></text:p>
     </office:annotation>.2.<text:span text:style-name="T131">2</text:span>-<text:span text:style-name="T132">ADC (source EMSE)</text:span><text:bookmark-end text:name="__RefHeading___Toc6550_1413195848"/></text:h>
    <text:p text:style-name="P190"/>
    <text:p text:style-name="P387"><text:span text:style-name="T86"/></text:p>
    <text:h text:style-name="P238" text:outline-level="3"><text:bookmark-start text:name="__RefHeading___Toc6556_1413195848"/>2.2<office:annotation>
      <dc:creator>Auteur inconnu</dc:creator>
      <dc:date>2021-02-23T14:27:24.450000000</dc:date>
-     <text:p text:style-name="P408"><text:span text:style-name="T161">À basculer dans l’étude</text:span></text:p>
+     <text:p text:style-name="P409"><text:span text:style-name="T161">À basculer dans l’étude</text:span></text:p>
     </office:annotation>.<text:span text:style-name="T131">3</text:span>-<text:span text:style-name="T136">MCU</text:span><text:bookmark-end text:name="__RefHeading___Toc6556_1413195848"/></text:h>
    <text:h text:style-name="P240" text:outline-level="3"><text:bookmark-start text:name="__RefHeading___Toc3506_7613628"/>2.1.1-Coupleur directionnel (source F5ZV)<text:bookmark-end text:name="__RefHeading___Toc3506_7613628"/></text:h>
    <text:p text:style-name="P216">Le coupleur directionnel doit remplir la fonction de séparer le signal transmis du signal réfléchi.</text:p>
@@ -7461,7 +7465,7 @@
      <dc:creator>F4BJH Fabrice DECROP LONGET</dc:creator>
      <dc:date>2020-04-21T15:35:53.828632487</dc:date>
      <loext:sender-initials>FFL</loext:sender-initials>
-     <text:p text:style-name="P408"><text:span text:style-name="T161">À faire</text:span></text:p>
+     <text:p text:style-name="P409"><text:span text:style-name="T161">À faire</text:span></text:p>
     </office:annotation></text:p>
    <text:h text:style-name="P266" text:outline-level="2"><text:bookmark-start text:name="__RefHeading___Toc3011_4259850012"/>2.2-Détecteur HF<text:bookmark-end text:name="__RefHeading___Toc3011_4259850012"/></text:h>
    <text:h text:style-name="P242" text:outline-level="3"/>
@@ -7697,125 +7701,125 @@
      <svg:desc>formule</svg:desc>
     </draw:frame></text:p>
    <text:p text:style-name="P37"/>
-   <text:p text:style-name="P37"><draw:line text:anchor-type="paragraph" draw:z-index="103" draw:name="Forme32" draw:style-name="gr39" draw:text-style-name="P409" svg:x1="3.463cm" svg:y1="0.002cm" svg:x2="3.458cm" svg:y2="3.135cm">
+   <text:p text:style-name="P37"><draw:line text:anchor-type="paragraph" draw:z-index="103" draw:name="Forme32" draw:style-name="gr39" draw:text-style-name="P410" svg:x1="3.463cm" svg:y1="0.002cm" svg:x2="3.458cm" svg:y2="3.135cm">
      <text:p/>
     </draw:line></text:p>
    <text:p text:style-name="P37"/>
-   <text:p text:style-name="P37"><draw:line text:anchor-type="paragraph" draw:z-index="101" draw:name="Forme36" draw:style-name="gr31" draw:text-style-name="P409" svg:x1="12.896cm" svg:y1="1.349cm" svg:x2="12.903cm" svg:y2="0.224cm">
+   <text:p text:style-name="P37"><draw:line text:anchor-type="paragraph" draw:z-index="101" draw:name="Forme36" draw:style-name="gr31" draw:text-style-name="P410" svg:x1="12.896cm" svg:y1="1.349cm" svg:x2="12.903cm" svg:y2="0.224cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P37"><draw:line text:anchor-type="paragraph" draw:z-index="86" draw:name="Forme38" draw:style-name="gr32" draw:text-style-name="P409" svg:x1="11.882cm" svg:y1="0.198cm" svg:x2="11.882cm" svg:y2="5.574cm">
+   <text:p text:style-name="P37"><draw:line text:anchor-type="paragraph" draw:z-index="86" draw:name="Forme38" draw:style-name="gr32" draw:text-style-name="P410" svg:x1="11.882cm" svg:y1="0.198cm" svg:x2="11.882cm" svg:y2="5.574cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P37"><draw:line text:anchor-type="paragraph" draw:z-index="100" draw:name="Forme36" draw:style-name="gr31" draw:text-style-name="P409" svg:x1="10.896cm" svg:y1="1.499cm" svg:x2="10.903cm" svg:y2="0.374cm">
+   <text:p text:style-name="P37"><draw:line text:anchor-type="paragraph" draw:z-index="100" draw:name="Forme36" draw:style-name="gr31" draw:text-style-name="P410" svg:x1="10.896cm" svg:y1="1.499cm" svg:x2="10.903cm" svg:y2="0.374cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="104" draw:name="Forme42" draw:style-name="gr37" draw:text-style-name="P409" svg:x1="3.219cm" svg:y1="0.415cm" svg:x2="10.903cm" svg:y2="0.376cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="104" draw:name="Forme42" draw:style-name="gr37" draw:text-style-name="P410" svg:x1="3.219cm" svg:y1="0.415cm" svg:x2="10.903cm" svg:y2="0.376cm">
      <text:p/>
-    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="105" draw:name="Forme46" draw:style-name="gr40" draw:text-style-name="P418" svg:width="0.777cm" svg:height="1.022cm" svg:x="2.443cm" svg:y="0.115cm">
+    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="105" draw:name="Forme46" draw:style-name="gr40" draw:text-style-name="P419" svg:width="0.777cm" svg:height="1.022cm" svg:x="2.443cm" svg:y="0.115cm">
      <draw:text-box>
       <text:p>N</text:p>
      </draw:text-box>
     </draw:frame></text:p>
    <text:p text:style-name="P37"/>
-   <text:p text:style-name="P37"><draw:frame text:anchor-type="paragraph" draw:z-index="88" draw:name="Forme40" draw:style-name="gr34" draw:text-style-name="P418" svg:width="0.544cm" svg:height="0.795cm" svg:x="11.702cm" svg:y="-1.849cm">
+   <text:p text:style-name="P37"><draw:frame text:anchor-type="paragraph" draw:z-index="88" draw:name="Forme40" draw:style-name="gr34" draw:text-style-name="P419" svg:width="0.544cm" svg:height="0.795cm" svg:x="11.702cm" svg:y="-1.849cm">
      <draw:text-box>
       <text:p>q</text:p>
      </draw:text-box>
-    </draw:frame><draw:line text:anchor-type="paragraph" draw:z-index="94" draw:name="Forme43" draw:style-name="gr37" draw:text-style-name="P409" svg:x1="3.458cm" svg:y1="0.841cm" svg:x2="3.458cm" svg:y2="0.125cm">
+    </draw:frame><draw:line text:anchor-type="paragraph" draw:z-index="94" draw:name="Forme43" draw:style-name="gr37" draw:text-style-name="P410" svg:x1="3.458cm" svg:y1="0.841cm" svg:x2="3.458cm" svg:y2="0.125cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P37"><draw:path text:anchor-type="paragraph" draw:z-index="97" draw:name="Forme44" draw:style-name="gr2" draw:text-style-name="P409" svg:width="0.72cm" svg:height="0.581cm" draw:transform="rotate (-1.0452776890194) translate (3.46889930813578cm 0.196943276806836cm)" svg:viewBox="0 0 721 582" svg:d="M0 574c140 38 663-52 345-320-305-258 220-317 322-187l54 53">
+   <text:p text:style-name="P37"><draw:path text:anchor-type="paragraph" draw:z-index="97" draw:name="Forme44" draw:style-name="gr2" draw:text-style-name="P410" svg:width="0.72cm" svg:height="0.581cm" draw:transform="rotate (-1.0452776890194) translate (3.46889930813578cm 0.196943276806836cm)" svg:viewBox="0 0 721 582" svg:d="M0 574c140 38 663-52 345-320-305-258 220-317 322-187l54 53">
      <text:p/>
     </draw:path></text:p>
-   <text:p text:style-name="P37"><draw:line text:anchor-type="paragraph" draw:z-index="85" draw:name="Forme37" draw:style-name="gr31" draw:text-style-name="P409" svg:x1="10.896cm" svg:y1="-1.571cm" svg:x2="12.896cm" svg:y2="-1.573cm">
+   <text:p text:style-name="P37"><draw:line text:anchor-type="paragraph" draw:z-index="85" draw:name="Forme37" draw:style-name="gr31" draw:text-style-name="P410" svg:x1="10.896cm" svg:y1="-1.571cm" svg:x2="12.896cm" svg:y2="-1.573cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="87" draw:name="Forme39" draw:style-name="gr33" draw:text-style-name="P409" svg:x1="10.94cm" svg:y1="-1.871cm" svg:x2="12.896cm" svg:y2="-1.871cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="87" draw:name="Forme39" draw:style-name="gr33" draw:text-style-name="P410" svg:x1="10.94cm" svg:y1="-1.871cm" svg:x2="12.896cm" svg:y2="-1.871cm">
      <text:p/>
-    </draw:line><draw:path text:anchor-type="paragraph" draw:z-index="98" draw:name="Forme44" draw:style-name="gr2" draw:text-style-name="P409" svg:width="0.72cm" svg:height="0.581cm" draw:transform="rotate (-1.0452776890194) translate (3.36646341494299cm 0.0953629142868465cm)" svg:viewBox="0 0 721 582" svg:d="M0 574c140 38 663-52 345-320-305-258 220-317 322-187l54 53">
+    </draw:line><draw:path text:anchor-type="paragraph" draw:z-index="98" draw:name="Forme44" draw:style-name="gr2" draw:text-style-name="P410" svg:width="0.72cm" svg:height="0.581cm" draw:transform="rotate (-1.0452776890194) translate (3.36646341494299cm 0.0953629142868465cm)" svg:viewBox="0 0 721 582" svg:d="M0 574c140 38 663-52 345-320-305-258 220-317 322-187l54 53">
      <text:p/>
     </draw:path></text:p>
-   <text:p text:style-name="P37"><draw:line text:anchor-type="paragraph" draw:z-index="93" draw:name="Forme43" draw:style-name="gr37" draw:text-style-name="P409" svg:x1="3.458cm" svg:y1="0.898cm" svg:x2="3.458cm" svg:y2="0.182cm">
+   <text:p text:style-name="P37"><draw:line text:anchor-type="paragraph" draw:z-index="93" draw:name="Forme43" draw:style-name="gr37" draw:text-style-name="P410" svg:x1="3.458cm" svg:y1="0.898cm" svg:x2="3.458cm" svg:y2="0.182cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P88"><draw:line text:anchor-type="paragraph" draw:z-index="71" draw:name="Forme32" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="3.457cm" svg:y1="0.411cm" svg:x2="3.457cm" svg:y2="2.799cm">
+   <text:p text:style-name="P88"><draw:line text:anchor-type="paragraph" draw:z-index="71" draw:name="Forme32" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="3.457cm" svg:y1="0.411cm" svg:x2="3.457cm" svg:y2="2.799cm">
      <text:p/>
-    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="76" draw:name="Forme35" draw:style-name="gr30" draw:text-style-name="P418" svg:width="0.765cm" svg:height="0.516cm" svg:x="2.455cm" svg:y="0.422cm">
+    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="76" draw:name="Forme35" draw:style-name="gr30" draw:text-style-name="P419" svg:width="0.765cm" svg:height="0.516cm" svg:x="2.455cm" svg:y="0.422cm">
      <draw:text-box>
       <text:p>2</text:p>
      </draw:text-box>
     </draw:frame></text:p>
-   <text:p text:style-name="P88"><draw:line text:anchor-type="paragraph" draw:z-index="74" draw:name="Forme34" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="3.294cm" svg:y1="0.18cm" svg:x2="3.647cm" svg:y2="0.18cm">
+   <text:p text:style-name="P88"><draw:line text:anchor-type="paragraph" draw:z-index="74" draw:name="Forme34" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="3.294cm" svg:y1="0.18cm" svg:x2="3.647cm" svg:y2="0.18cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="77" draw:name="Forme36" draw:style-name="gr31" draw:text-style-name="P409" svg:x1="7.318cm" svg:y1="1.259cm" svg:x2="7.325cm" svg:y2="0.134cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="77" draw:name="Forme36" draw:style-name="gr31" draw:text-style-name="P410" svg:x1="7.318cm" svg:y1="1.259cm" svg:x2="7.325cm" svg:y2="0.134cm">
      <text:p/>
-    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="81" draw:name="Forme40" draw:style-name="gr34" draw:text-style-name="P418" svg:width="0.544cm" svg:height="0.795cm" svg:x="6.2cm" svg:y="0.235cm">
+    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="81" draw:name="Forme40" draw:style-name="gr34" draw:text-style-name="P419" svg:width="0.544cm" svg:height="0.795cm" svg:x="6.2cm" svg:y="0.235cm">
      <draw:text-box>
       <text:p>q</text:p>
      </draw:text-box>
-    </draw:frame><draw:line text:anchor-type="paragraph" draw:z-index="90" draw:name="Forme37" draw:style-name="gr31" draw:text-style-name="P409" svg:x1="7.318cm" svg:y1="0.138cm" svg:x2="8.177cm" svg:y2="0.138cm">
+    </draw:frame><draw:line text:anchor-type="paragraph" draw:z-index="90" draw:name="Forme37" draw:style-name="gr31" draw:text-style-name="P410" svg:x1="7.318cm" svg:y1="0.138cm" svg:x2="8.177cm" svg:y2="0.138cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P88"><draw:line text:anchor-type="paragraph" draw:z-index="79" draw:name="Forme38" draw:style-name="gr32" draw:text-style-name="P409" svg:x1="6.303cm" svg:y1="0.235cm" svg:x2="6.299cm" svg:y2="1.934cm">
+   <text:p text:style-name="P88"><draw:line text:anchor-type="paragraph" draw:z-index="79" draw:name="Forme38" draw:style-name="gr32" draw:text-style-name="P410" svg:x1="6.303cm" svg:y1="0.235cm" svg:x2="6.299cm" svg:y2="1.934cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="80" draw:name="Forme39" draw:style-name="gr33" draw:text-style-name="P409" svg:x1="5.362cm" svg:y1="0.409cm" svg:x2="7.318cm" svg:y2="0.409cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="80" draw:name="Forme39" draw:style-name="gr33" draw:text-style-name="P410" svg:x1="5.362cm" svg:y1="0.409cm" svg:x2="7.318cm" svg:y2="0.409cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P88"><draw:line text:anchor-type="paragraph" draw:z-index="73" draw:name="Forme34" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="3.294cm" svg:y1="0.233cm" svg:x2="3.647cm" svg:y2="0.233cm">
+   <text:p text:style-name="P88"><draw:line text:anchor-type="paragraph" draw:z-index="73" draw:name="Forme34" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="3.294cm" svg:y1="0.233cm" svg:x2="3.647cm" svg:y2="0.233cm">
      <text:p/>
-    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="75" draw:name="Forme35" draw:style-name="gr29" draw:text-style-name="P418" svg:width="0.765cm" svg:height="0.516cm" svg:x="2.411cm" svg:y="0.026cm">
+    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="75" draw:name="Forme35" draw:style-name="gr29" draw:text-style-name="P419" svg:width="0.765cm" svg:height="0.516cm" svg:x="2.411cm" svg:y="0.026cm">
      <draw:text-box>
       <text:p>1</text:p>
      </draw:text-box>
-    </draw:frame><draw:line text:anchor-type="paragraph" draw:z-index="78" draw:name="Forme37" draw:style-name="gr31" draw:text-style-name="P409" svg:x1="5.318cm" svg:y1="0.219cm" svg:x2="7.318cm" svg:y2="0.217cm">
+    </draw:frame><draw:line text:anchor-type="paragraph" draw:z-index="78" draw:name="Forme37" draw:style-name="gr31" draw:text-style-name="P410" svg:x1="5.318cm" svg:y1="0.219cm" svg:x2="7.318cm" svg:y2="0.217cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="89" draw:name="Forme37" draw:style-name="gr31" draw:text-style-name="P409" svg:x1="5.318cm" svg:y1="0.219cm" svg:x2="7.318cm" svg:y2="0.217cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="89" draw:name="Forme37" draw:style-name="gr31" draw:text-style-name="P410" svg:x1="5.318cm" svg:y1="0.219cm" svg:x2="7.318cm" svg:y2="0.217cm">
      <text:p/>
-    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="107" draw:name="Forme40" draw:style-name="gr34" draw:text-style-name="P418" svg:width="0.544cm" svg:height="0.795cm" svg:x="4.235cm" svg:y="0.295cm">
+    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="107" draw:name="Forme40" draw:style-name="gr34" draw:text-style-name="P419" svg:width="0.544cm" svg:height="0.795cm" svg:x="4.235cm" svg:y="0.295cm">
      <draw:text-box>
       <text:p>q</text:p>
      </draw:text-box>
-    </draw:frame><draw:line text:anchor-type="paragraph" draw:z-index="109" draw:name="Forme36" draw:style-name="gr31" draw:text-style-name="P409" svg:x1="5.318cm" svg:y1="1.342cm" svg:x2="5.325cm" svg:y2="0.217cm">
+    </draw:frame><draw:line text:anchor-type="paragraph" draw:z-index="109" draw:name="Forme36" draw:style-name="gr31" draw:text-style-name="P410" svg:x1="5.318cm" svg:y1="1.342cm" svg:x2="5.325cm" svg:y2="0.217cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P88"><draw:path text:anchor-type="paragraph" draw:z-index="95" draw:name="Forme44" draw:style-name="gr2" draw:text-style-name="P409" svg:width="0.72cm" svg:height="0.581cm" draw:transform="rotate (-2.35619449019235) translate (9.92922189362718cm 0.804624671406396cm)" svg:viewBox="0 0 721 582" svg:d="M0 574c140 38 663-52 345-320-305-258 220-317 322-187l54 53">
+   <text:p text:style-name="P88"><draw:path text:anchor-type="paragraph" draw:z-index="95" draw:name="Forme44" draw:style-name="gr2" draw:text-style-name="P410" svg:width="0.72cm" svg:height="0.581cm" draw:transform="rotate (-2.35619449019235) translate (9.92922189362718cm 0.804624671406396cm)" svg:viewBox="0 0 721 582" svg:d="M0 574c140 38 663-52 345-320-305-258 220-317 322-187l54 53">
      <text:p/>
-    </draw:path><draw:path text:anchor-type="paragraph" draw:z-index="96" draw:name="Forme44" draw:style-name="gr2" draw:text-style-name="P409" svg:width="0.72cm" svg:height="0.581cm" draw:transform="rotate (-2.35619449019235) translate (9.53058300473829cm 0.804624671406499cm)" svg:viewBox="0 0 721 582" svg:d="M0 574c140 38 663-52 345-320-305-258 220-317 322-187l54 53">
+    </draw:path><draw:path text:anchor-type="paragraph" draw:z-index="96" draw:name="Forme44" draw:style-name="gr2" draw:text-style-name="P410" svg:width="0.72cm" svg:height="0.581cm" draw:transform="rotate (-2.35619449019235) translate (9.53058300473829cm 0.804624671406499cm)" svg:viewBox="0 0 721 582" svg:d="M0 574c140 38 663-52 345-320-305-258 220-317 322-187l54 53">
      <text:p/>
-    </draw:path><draw:frame text:anchor-type="paragraph" draw:z-index="102" draw:name="Forme45" draw:style-name="gr38" draw:text-style-name="P411" svg:width="1.343cm" svg:height="0.946cm" svg:x="11.742cm" svg:y="1.462cm">
+    </draw:path><draw:frame text:anchor-type="paragraph" draw:z-index="102" draw:name="Forme45" draw:style-name="gr38" draw:text-style-name="P412" svg:width="1.343cm" svg:height="0.946cm" svg:x="11.742cm" svg:y="1.462cm">
      <draw:text-box>
       <text:p><text:span text:style-name="T83">V</text:span></text:p>
      </draw:text-box>
     </draw:frame></text:p>
-   <text:p text:style-name="P88"><draw:line text:anchor-type="paragraph" draw:z-index="72" draw:name="Forme33" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="3.458cm" svg:y1="0.335cm" svg:x2="8.131cm" svg:y2="0.365cm">
+   <text:p text:style-name="P88"><draw:line text:anchor-type="paragraph" draw:z-index="72" draw:name="Forme33" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="3.458cm" svg:y1="0.335cm" svg:x2="8.131cm" svg:y2="0.365cm">
      <text:p/>
-    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="83" draw:name="Forme41" draw:style-name="gr36" draw:text-style-name="P418" svg:width="1.146cm" svg:height="1.114cm" svg:x="6.985cm" svg:y="0.365cm">
+    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="83" draw:name="Forme41" draw:style-name="gr36" draw:text-style-name="P419" svg:width="1.146cm" svg:height="1.114cm" svg:x="6.985cm" svg:y="0.365cm">
      <draw:text-box>
       <text:p>s<text:span text:style-name="T18">adc</text:span><text:span text:style-name="T42">+q</text:span></text:p>
      </draw:text-box>
-    </draw:frame><draw:line text:anchor-type="paragraph" draw:z-index="91" draw:name="Forme42" draw:style-name="gr37" draw:text-style-name="P409" svg:x1="8.188cm" svg:y1="0.358cm" svg:x2="8.793cm" svg:y2="0.358cm">
+    </draw:frame><draw:line text:anchor-type="paragraph" draw:z-index="91" draw:name="Forme42" draw:style-name="gr37" draw:text-style-name="P410" svg:x1="8.188cm" svg:y1="0.358cm" svg:x2="8.793cm" svg:y2="0.358cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="92" draw:name="Forme42" draw:style-name="gr37" draw:text-style-name="P409" svg:x1="9.947cm" svg:y1="0.335cm" svg:x2="10.552cm" svg:y2="0.335cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="92" draw:name="Forme42" draw:style-name="gr37" draw:text-style-name="P410" svg:x1="9.947cm" svg:y1="0.335cm" svg:x2="10.552cm" svg:y2="0.335cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="99" draw:name="Forme33" draw:style-name="gr28" draw:text-style-name="P409" svg:x1="10.552cm" svg:y1="0.335cm" svg:x2="14.754cm" svg:y2="0.335cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="99" draw:name="Forme33" draw:style-name="gr28" draw:text-style-name="P410" svg:x1="10.552cm" svg:y1="0.335cm" svg:x2="14.754cm" svg:y2="0.335cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="106" draw:name="Forme39" draw:style-name="gr33" draw:text-style-name="P409" svg:x1="3.41cm" svg:y1="0.115cm" svg:x2="5.366cm" svg:y2="0.115cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="106" draw:name="Forme39" draw:style-name="gr33" draw:text-style-name="P410" svg:x1="3.41cm" svg:y1="0.115cm" svg:x2="5.366cm" svg:y2="0.115cm">
      <text:p/>
-    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="108" draw:name="Forme45" draw:style-name="gr38" draw:text-style-name="P418" svg:width="1.343cm" svg:height="0.946cm" svg:x="5.994cm" svg:y="0.365cm">
+    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="108" draw:name="Forme45" draw:style-name="gr38" draw:text-style-name="P419" svg:width="1.343cm" svg:height="0.946cm" svg:x="5.994cm" svg:y="0.365cm">
      <draw:text-box>
-      <text:p>V<text:span text:style-name="T18">min</text:span></text:p>
+      <text:p>V<text:span text:style-name="T18">m</text:span><text:span text:style-name="T18">in</text:span></text:p>
      </draw:text-box>
-    </draw:frame><draw:line text:anchor-type="paragraph" draw:z-index="110" draw:name="Forme37" draw:style-name="gr31" draw:text-style-name="P409" svg:x1="3.457cm" svg:y1="0.335cm" svg:x2="5.457cm" svg:y2="0.333cm">
+    </draw:frame><draw:line text:anchor-type="paragraph" draw:z-index="110" draw:name="Forme37" draw:style-name="gr31" draw:text-style-name="P410" svg:x1="3.457cm" svg:y1="0.335cm" svg:x2="5.457cm" svg:y2="0.333cm">
      <text:p/>
-    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="111" draw:name="Forme35" draw:style-name="gr29" draw:text-style-name="P418" svg:width="0.765cm" svg:height="0.516cm" svg:x="2.411cm" svg:y="0.026cm">
+    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="111" draw:name="Forme35" draw:style-name="gr29" draw:text-style-name="P419" svg:width="0.765cm" svg:height="0.516cm" svg:x="2.411cm" svg:y="0.026cm">
      <draw:text-box>
       <text:p>0</text:p>
      </draw:text-box>
     </draw:frame></text:p>
-   <text:p text:style-name="P88"><draw:frame text:anchor-type="paragraph" draw:z-index="82" draw:name="Forme41" draw:style-name="gr35" draw:text-style-name="P418" svg:width="0.588cm" svg:height="0.927cm" svg:x="5.161cm" svg:y="0.035cm">
+   <text:p text:style-name="P88"><draw:frame text:anchor-type="paragraph" draw:z-index="82" draw:name="Forme41" draw:style-name="gr35" draw:text-style-name="P419" svg:width="0.588cm" svg:height="0.927cm" svg:x="5.161cm" svg:y="0.035cm">
      <draw:text-box>
       <text:p>s<text:span text:style-name="T18">adc</text:span></text:p>
      </draw:text-box>
-    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="112" draw:name="Forme35" draw:style-name="gr29" draw:text-style-name="P418" svg:width="0.765cm" svg:height="0.516cm" svg:x="3.277cm" svg:y="0.056cm">
+    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="112" draw:name="Forme35" draw:style-name="gr29" draw:text-style-name="P419" svg:width="0.765cm" svg:height="0.516cm" svg:x="3.277cm" svg:y="0.056cm">
      <draw:text-box>
       <text:p>0</text:p>
      </draw:text-box>
@@ -8041,21 +8045,21 @@
    <text:p text:style-name="P61"/>
    <text:p text:style-name="P61"/>
    <text:p text:style-name="P61"/>
-   <text:p text:style-name="P61"><draw:g text:anchor-type="paragraph" draw:z-index="113" draw:name="Forme28" draw:style-name="gr41"><draw:line draw:name="Forme47" draw:style-name="gr42" draw:text-style-name="P409" svg:x1="4.422cm" svg:y1="0.36cm" svg:x2="9.811cm" svg:y2="0.36cm">
+   <text:p text:style-name="P61"><draw:g text:anchor-type="paragraph" draw:z-index="113" draw:name="Forme28" draw:style-name="gr41"><draw:line draw:name="Forme47" draw:style-name="gr42" draw:text-style-name="P410" svg:x1="4.422cm" svg:y1="0.36cm" svg:x2="9.811cm" svg:y2="0.36cm">
       <text:p/>
-     </draw:line><draw:line draw:name="Forme48" draw:style-name="gr43" draw:text-style-name="P409" svg:x1="7.068cm" svg:y1="-1.108cm" svg:x2="7.068cm" svg:y2="0.839cm">
+     </draw:line><draw:line draw:name="Forme48" draw:style-name="gr43" draw:text-style-name="P410" svg:x1="7.068cm" svg:y1="-1.108cm" svg:x2="7.068cm" svg:y2="0.839cm">
       <text:p/>
-     </draw:line><draw:frame draw:name="Forme49" draw:style-name="gr44" draw:text-style-name="P418" svg:width="1.421cm" svg:height="0.987cm" svg:x="6.853cm" svg:y="0.913cm">
+     </draw:line><draw:frame draw:name="Forme49" draw:style-name="gr44" draw:text-style-name="P419" svg:width="1.421cm" svg:height="0.987cm" svg:x="6.853cm" svg:y="0.913cm">
       <draw:text-box>
        <text:p>P</text:p>
       </draw:text-box>
-     </draw:frame><draw:line draw:name="Forme50" draw:style-name="gr42" draw:text-style-name="P409" svg:x1="5.001cm" svg:y1="0.023cm" svg:x2="5.001cm" svg:y2="0.602cm">
+     </draw:frame><draw:line draw:name="Forme50" draw:style-name="gr42" draw:text-style-name="P410" svg:x1="5.001cm" svg:y1="0.023cm" svg:x2="5.001cm" svg:y2="0.602cm">
       <text:p/>
-     </draw:line><draw:line draw:name="Forme50" draw:style-name="gr42" draw:text-style-name="P409" svg:x1="9.093cm" svg:y1="0.118cm" svg:x2="9.093cm" svg:y2="0.697cm">
+     </draw:line><draw:line draw:name="Forme50" draw:style-name="gr42" draw:text-style-name="P410" svg:x1="9.093cm" svg:y1="0.118cm" svg:x2="9.093cm" svg:y2="0.697cm">
       <text:p/>
-     </draw:line><draw:line draw:name="Forme51" draw:style-name="gr45" draw:text-style-name="P409" svg:x1="5.022cm" svg:y1="-0.122cm" svg:x2="9.017cm" svg:y2="-0.122cm">
+     </draw:line><draw:line draw:name="Forme51" draw:style-name="gr45" draw:text-style-name="P410" svg:x1="5.022cm" svg:y1="-0.122cm" svg:x2="9.017cm" svg:y2="-0.122cm">
       <text:p/>
-     </draw:line><draw:frame draw:name="Forme52" draw:style-name="gr46" draw:text-style-name="P418" svg:width="1.491cm" svg:height="1.131cm" svg:x="6.539cm" svg:y="-0.651cm">
+     </draw:line><draw:frame draw:name="Forme52" draw:style-name="gr46" draw:text-style-name="P419" svg:width="1.491cm" svg:height="1.131cm" svg:x="6.539cm" svg:y="-0.651cm">
       <draw:text-box>
        <text:p>ΔP</text:p>
       </draw:text-box>
@@ -8064,46 +8068,46 @@
    <text:p text:style-name="P61"/>
    <text:p text:style-name="P61"/>
    <text:p text:style-name="P61"/>
-   <text:p text:style-name="P61"><draw:frame text:anchor-type="paragraph" draw:z-index="129" draw:name="Forme58" draw:style-name="gr53" draw:text-style-name="P418" svg:width="0.578cm" svg:height="1.461cm" svg:x="6.853cm" svg:y="0.074cm">
+   <text:p text:style-name="P61"><draw:frame text:anchor-type="paragraph" draw:z-index="129" draw:name="Forme58" draw:style-name="gr53" draw:text-style-name="P419" svg:width="0.578cm" svg:height="1.461cm" svg:x="6.853cm" svg:y="0.074cm">
      <draw:text-box>
       <text:p>q</text:p>
      </draw:text-box>
     </draw:frame></text:p>
-   <text:p text:style-name="P61"><draw:line text:anchor-type="paragraph" draw:z-index="128" draw:name="Forme57" draw:style-name="gr52" draw:text-style-name="P409" svg:x1="5.119cm" svg:y1="0.231cm" svg:x2="9.137cm" svg:y2="0.231cm">
+   <text:p text:style-name="P61"><draw:line text:anchor-type="paragraph" draw:z-index="128" draw:name="Forme57" draw:style-name="gr52" draw:text-style-name="P410" svg:x1="5.119cm" svg:y1="0.231cm" svg:x2="9.137cm" svg:y2="0.231cm">
      <text:p/>
-    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="127" draw:name="Forme56" draw:style-name="gr51" draw:text-style-name="P418" svg:width="1.107cm" svg:height="1.227cm" svg:x="3.267cm" svg:y="0.254cm">
+    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="127" draw:name="Forme56" draw:style-name="gr51" draw:text-style-name="P419" svg:width="1.107cm" svg:height="1.227cm" svg:x="3.267cm" svg:y="0.254cm">
      <draw:text-box>
       <text:p>N</text:p>
      </draw:text-box>
     </draw:frame></text:p>
-   <text:p text:style-name="P61"><draw:line text:anchor-type="paragraph" draw:z-index="126" draw:name="Forme55" draw:style-name="gr32" draw:text-style-name="P409" svg:x1="4.11cm" svg:y1="0.007cm" svg:x2="5.745cm" svg:y2="0.007cm">
+   <text:p text:style-name="P61"><draw:line text:anchor-type="paragraph" draw:z-index="126" draw:name="Forme55" draw:style-name="gr32" draw:text-style-name="P410" svg:x1="4.11cm" svg:y1="0.007cm" svg:x2="5.745cm" svg:y2="0.007cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="124" draw:name="Forme54" draw:style-name="gr31" draw:text-style-name="P409" svg:x1="5.048cm" svg:y1="0.753cm" svg:x2="5.048cm" svg:y2="0.007cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="124" draw:name="Forme54" draw:style-name="gr31" draw:text-style-name="P410" svg:x1="5.048cm" svg:y1="0.753cm" svg:x2="5.048cm" svg:y2="0.007cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="123" draw:name="Forme53" draw:style-name="gr31" draw:text-style-name="P409" svg:x1="5.048cm" svg:y1="0.007cm" svg:x2="9.137cm" svg:y2="0.007cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="123" draw:name="Forme53" draw:style-name="gr31" draw:text-style-name="P410" svg:x1="5.048cm" svg:y1="0.007cm" svg:x2="9.137cm" svg:y2="0.007cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P61"><draw:frame text:anchor-type="paragraph" draw:z-index="122" draw:name="Forme52" draw:style-name="gr50" draw:text-style-name="P418" svg:width="1.491cm" svg:height="1.131cm" svg:x="6.805cm" svg:y="0.203cm">
+   <text:p text:style-name="P61"><draw:frame text:anchor-type="paragraph" draw:z-index="122" draw:name="Forme52" draw:style-name="gr50" draw:text-style-name="P419" svg:width="1.491cm" svg:height="1.131cm" svg:x="6.805cm" svg:y="0.203cm">
      <draw:text-box>
       <text:p>ΔV</text:p>
      </draw:text-box>
     </draw:frame></text:p>
-   <text:p text:style-name="P61"><draw:line text:anchor-type="paragraph" draw:z-index="121" draw:name="Forme51" draw:style-name="gr49" draw:text-style-name="P409" svg:x1="5.022cm" svg:y1="0.365cm" svg:x2="9.065cm" svg:y2="0.381cm">
+   <text:p text:style-name="P61"><draw:line text:anchor-type="paragraph" draw:z-index="121" draw:name="Forme51" draw:style-name="gr49" draw:text-style-name="P410" svg:x1="5.022cm" svg:y1="0.365cm" svg:x2="9.065cm" svg:y2="0.381cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="125" draw:name="Forme54" draw:style-name="gr31" draw:text-style-name="P409" svg:x1="9.049cm" svg:y1="-0.247cm" svg:x2="9.049cm" svg:y2="-0.993cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="125" draw:name="Forme54" draw:style-name="gr31" draw:text-style-name="P410" svg:x1="9.049cm" svg:y1="-0.247cm" svg:x2="9.049cm" svg:y2="-0.993cm">
      <text:p/>
     </draw:line></text:p>
-   <text:p text:style-name="P61"><draw:line text:anchor-type="paragraph" draw:z-index="114" draw:name="Forme47" draw:style-name="gr4" draw:text-style-name="P409" svg:x1="4.422cm" svg:y1="0.36cm" svg:x2="9.811cm" svg:y2="0.36cm">
+   <text:p text:style-name="P61"><draw:line text:anchor-type="paragraph" draw:z-index="114" draw:name="Forme47" draw:style-name="gr4" draw:text-style-name="P410" svg:x1="4.422cm" svg:y1="0.36cm" svg:x2="9.811cm" svg:y2="0.36cm">
      <text:p/>
-    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="117" draw:name="Forme49" draw:style-name="gr48" draw:text-style-name="P418" svg:width="1.421cm" svg:height="0.987cm" svg:x="6.853cm" svg:y="0.914cm">
+    </draw:line><draw:frame text:anchor-type="paragraph" draw:z-index="117" draw:name="Forme49" draw:style-name="gr48" draw:text-style-name="P419" svg:width="1.421cm" svg:height="0.987cm" svg:x="6.853cm" svg:y="0.914cm">
      <draw:text-box>
       <text:p>V</text:p>
      </draw:text-box>
-    </draw:frame><draw:line text:anchor-type="paragraph" draw:z-index="120" draw:name="Forme50" draw:style-name="gr4" draw:text-style-name="P409" svg:x1="9.093cm" svg:y1="0.118cm" svg:x2="9.093cm" svg:y2="0.697cm">
+    </draw:frame><draw:line text:anchor-type="paragraph" draw:z-index="120" draw:name="Forme50" draw:style-name="gr4" draw:text-style-name="P410" svg:x1="9.093cm" svg:y1="0.118cm" svg:x2="9.093cm" svg:y2="0.697cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="119" draw:name="Forme50" draw:style-name="gr4" draw:text-style-name="P409" svg:x1="5.001cm" svg:y1="0.023cm" svg:x2="5.001cm" svg:y2="0.602cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="119" draw:name="Forme50" draw:style-name="gr4" draw:text-style-name="P410" svg:x1="5.001cm" svg:y1="0.023cm" svg:x2="5.001cm" svg:y2="0.602cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="115" draw:name="Forme48" draw:style-name="gr47" draw:text-style-name="P409" svg:x1="7.068cm" svg:y1="-1.108cm" svg:x2="7.068cm" svg:y2="0.839cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="115" draw:name="Forme48" draw:style-name="gr47" draw:text-style-name="P410" svg:x1="7.068cm" svg:y1="-1.108cm" svg:x2="7.068cm" svg:y2="0.839cm">
      <text:p/>
     </draw:line></text:p>
    <text:p text:style-name="P61"/>
@@ -8345,8 +8349,8 @@
      <dc:creator>F4BJH Fabrice DECROP LONGET</dc:creator>
      <dc:date>2020-04-23T16:49:00.838863278</dc:date>
      <loext:sender-initials>FFL</loext:sender-initials>
-     <text:p text:style-name="P408"><text:span text:style-name="T161">Commentaire ?</text:span></text:p>
-     <text:p text:style-name="P408"><text:span text:style-name="T161">Revoir le calcul</text:span></text:p>
+     <text:p text:style-name="P409"><text:span text:style-name="T161">Commentaire ?</text:span></text:p>
+     <text:p text:style-name="P409"><text:span text:style-name="T161">Revoir le calcul</text:span></text:p>
     </office:annotation></text:p>
    <text:p text:style-name="P53"/>
    <text:p text:style-name="P155"/>
@@ -8357,12 +8361,12 @@
    <text:p text:style-name="P92">En effet, en conjuguant l’effet de la charge du condensateur à travers la résistance de charge, l’effet de décharge, et l’effet de la tension de seuil de la diode, la tension de sortie devient constante qu’après un t<office:annotation>
      <dc:creator>Fabrice F4BJH</dc:creator>
      <dc:date>2019-07-11T22:09:15</dc:date>
-     <text:p text:style-name="P408"><text:span text:style-name="T161">Comment le calculer a priori ?</text:span></text:p>
+     <text:p text:style-name="P409"><text:span text:style-name="T161">Comment le calculer a priori ?</text:span></text:p>
     </office:annotation>emps de réponse.</text:p>
    <text:h text:style-name="P236" text:outline-level="3"><text:bookmark-start text:name="__RefHeading___Toc3508_7613628"/><office:annotation>
      <dc:creator>Auteur inconnu</dc:creator>
      <dc:date>2021-02-22T16:26:33.326000000</dc:date>
-     <text:p text:style-name="P408"><text:span text:style-name="T161">P41 de http://mach.elec.free.fr/divers/poly_diodes.pdf</text:span></text:p>
+     <text:p text:style-name="P409"><text:span text:style-name="T161">P41 de http://mach.elec.free.fr/divers/poly_diodes.pdf</text:span></text:p>
     </office:annotation><text:bookmark-end text:name="__RefHeading___Toc3508_7613628"/></text:h>
    <text:p text:style-name="P126"/>
    <text:p text:style-name="P126"/>
@@ -8382,17 +8386,17 @@
    <text:h text:style-name="P265" text:outline-level="2"><text:bookmark-start text:name="__RefHeading___Toc3035_4259850012"/>4.2-Détecteur HF<text:bookmark-end text:name="__RefHeading___Toc3035_4259850012"/></text:h>
    <text:h text:style-name="P227" text:outline-level="3"><text:bookmark-start text:name="__RefHeading___Toc3037_4259850012"/>4.2.1-Description du montage<text:bookmark-end text:name="__RefHeading___Toc3037_4259850012"/></text:h>
    <text:p text:style-name="P96"/>
-   <text:p text:style-name="P96"><draw:frame text:anchor-type="paragraph" draw:z-index="130" draw:name="Forme9" draw:style-name="gr54" draw:text-style-name="P418" svg:width="5cm" svg:height="2.47cm" svg:x="0.693cm" svg:y="0.452cm">
+   <text:p text:style-name="P96"><draw:frame text:anchor-type="paragraph" draw:z-index="130" draw:name="Forme9" draw:style-name="gr54" draw:text-style-name="P419" svg:width="5cm" svg:height="2.47cm" svg:x="0.693cm" svg:y="0.452cm">
      <draw:text-box>
       <text:p>Générateur HF 50MHz</text:p>
       <text:p>50Ω</text:p>
-      <text:p><text:span text:style-name="T31">SMS-Rohde&amp; Schwarz</text:span></text:p>
+      <text:p><text:span text:style-name="T31">S</text:span><text:span text:style-name="T31">M</text:span><text:span text:style-name="T31">S-</text:span><text:span text:style-name="T31">Ro</text:span><text:span text:style-name="T31">hd</text:span><text:span text:style-name="T31">e&amp; </text:span><text:span text:style-name="T31">Sc</text:span><text:span text:style-name="T31">hw</text:span><text:span text:style-name="T31">arz</text:span></text:p>
      </draw:text-box>
-    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="132" draw:name="Forme11" draw:style-name="gr55" draw:text-style-name="P418" svg:width="3.821cm" svg:height="2.587cm" svg:x="6.839cm" svg:y="0.482cm">
+    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="132" draw:name="Forme11" draw:style-name="gr55" draw:text-style-name="P419" svg:width="3.821cm" svg:height="2.587cm" svg:x="6.839cm" svg:y="0.482cm">
      <draw:text-box>
       <text:p>Détecteur HF</text:p>
      </draw:text-box>
-    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="133" draw:name="Forme11" draw:style-name="gr55" draw:text-style-name="P418" svg:width="6.351cm" svg:height="2.587cm" svg:x="11.866cm" svg:y="0.392cm">
+    </draw:frame><draw:frame text:anchor-type="paragraph" draw:z-index="133" draw:name="Forme11" draw:style-name="gr55" draw:text-style-name="P419" svg:width="6.351cm" svg:height="2.587cm" svg:x="11.866cm" svg:y="0.392cm">
      <draw:text-box>
       <text:p>Oscilloscope TDS460A</text:p>
       <text:p>Sonde Tektronix 3280 (1MΩ)</text:p>
@@ -8403,9 +8407,9 @@
     </draw:frame></text:p>
    <text:p text:style-name="P96"/>
    <text:p text:style-name="P96"/>
-   <text:p text:style-name="P96"><draw:line text:anchor-type="paragraph" draw:z-index="131" draw:name="Forme10" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="5.692cm" svg:y1="0.168cm" svg:x2="6.897cm" svg:y2="0.168cm">
+   <text:p text:style-name="P96"><draw:line text:anchor-type="paragraph" draw:z-index="131" draw:name="Forme10" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="5.692cm" svg:y1="0.168cm" svg:x2="6.897cm" svg:y2="0.168cm">
      <text:p/>
-    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="134" draw:name="Forme10" draw:style-name="gr2" draw:text-style-name="P409" svg:x1="10.659cm" svg:y1="0.175cm" svg:x2="11.864cm" svg:y2="0.175cm">
+    </draw:line><draw:line text:anchor-type="paragraph" draw:z-index="134" draw:name="Forme10" draw:style-name="gr2" draw:text-style-name="P410" svg:x1="10.659cm" svg:y1="0.175cm" svg:x2="11.864cm" svg:y2="0.175cm">
      <text:p/>
     </draw:line></text:p>
    <text:p text:style-name="P96"/>
