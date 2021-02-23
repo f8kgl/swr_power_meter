@@ -1572,8 +1572,6 @@ Connection ~ 5950 8050
 Wire Wire Line
 	5950 8050 6750 8050
 Wire Wire Line
-	6750 4950 6750 8050
-Wire Wire Line
 	5400 6700 5450 6700
 Wire Wire Line
 	5400 6600 5500 6600
@@ -1905,4 +1903,6 @@ Wire Wire Line
 	2376 10050 2620 10050
 Wire Wire Line
 	2620 9630 2620 10050
+Wire Wire Line
+	6750 4650 6750 8050
 $EndSCHEMATC
