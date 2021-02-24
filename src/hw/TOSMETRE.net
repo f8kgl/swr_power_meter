@@ -1,8 +1,8 @@
 (export (version D)
   (design
-    (source C:\Users\fcazenave\Documents\GitHub\swr_power_meter1\src\hw\TOSMETRE.sch)
-    (date "23/02/2021 19:12:17")
-    (tool "Eeschema (5.1.2)-1")
+    (source "C:\\Users\\PC RADIO\\Documents\\GitHub\\swr power meter\\src\\hw\\TOSMETRE.sch")
+    (date "24/02/2021 18:32:49")
+    (tool "Eeschema (5.1.9)-1")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
         (title)
@@ -330,7 +330,7 @@
       (tstamp 604359F6))
     (comp (ref J6)
       (value "Alim Piles")
-      (footprint Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical)
+      (footprint Connector_JST:JST_EH_B2B-EH-A_1x02_P2.50mm_Vertical)
       (datasheet ~)
       (libsource (lib Connector) (part Conn_01x02_Male) (description "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"))
       (sheetpath (names /) (tstamps /))
@@ -639,9 +639,9 @@
     (library (logical Switch)
       (uri "C:\\Program Files\\KiCad\\share\\kicad\\library/Switch.lib"))
     (library (logical TOSMETRE-rescue)
-      (uri C:\Users\fcazenave\Documents\GitHub\swr_power_meter1\src\hw/TOSMETRE-rescue.lib))
+      (uri "C:\\Users\\PC RADIO\\Documents\\GitHub\\swr power meter\\src\\hw/TOSMETRE-rescue.lib"))
     (library (logical librairie_projet)
-      (uri C:\Users\fcazenave\Documents\GitHub\swr_power_meter1\src\hw/swr_power_meter.lib)))
+      (uri "C:\\Users\\PC RADIO\\Documents\\GitHub\\swr power meter\\src\\hw/swr_power_meter.lib")))
   (nets
     (net (code 1) (name "Net-(C12-Pad1)")
       (node (ref U5) (pin 6))
