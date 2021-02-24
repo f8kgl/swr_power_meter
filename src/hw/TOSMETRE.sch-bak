@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:TOSMETRE-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
@@ -1669,7 +1668,7 @@ U 1 1 606A489C
 P 2720 9430
 F 0 "J6" V 2738 9260 50  0000 C CNN
 F 1 "Alim Piles" V 2634 9394 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 2720 9430 50  0001 C CNN
+F 2 "Connector_JST:JST_EH_B2B-EH-A_1x02_P2.50mm_Vertical" H 2720 9430 50  0001 C CNN
 F 3 "~" H 2720 9430 50  0001 C CNN
 	1    2720 9430
 	0    1    1    0   

@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source "C:\\Users\\PC RADIO\\Documents\\GitHub\\swr power meter\\src\\hw\\TOSMETRE.sch")
-    (date "24/02/2021 18:32:49")
+    (date "24/02/2021 18:40:22")
     (tool "Eeschema (5.1.9)-1")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -349,6 +349,7 @@
       (tstamp 602FEAA9))
     (comp (ref D4)
       (value D)
+      (footprint Diode_SMD:D_1206_3216Metric)
       (datasheet ~)
       (libsource (lib Device) (part D) (description Diode))
       (sheetpath (names /) (tstamps /))
