@@ -20,15 +20,15 @@ v_calc_count res 1
 v_calc_adc res 2
 ENDIF
 v_calctmp res 2
-v_calc_eep_ext_fwd res 2
-v_calc_eep_ext_ref res 2
+v_calc_fwd res 2
+v_calc_ref res 2
 
 	extern v_adcfwd
 	extern v_adcref
 	extern v_eep_ext_addr
 	extern v_eep_ext_byte_read
 	extern f_eep_ext_readbyte
-	
+
 	code
 IFDEF TEST
 
@@ -100,6 +100,7 @@ f_calc_set_n_min_ref
 	movwf v_calc_n_ref
 	return
 
+
 ;-----------------------------------------
 ;Fonction Convertir la mesure des ADC en mV
 ;Nom 		;
@@ -124,65 +125,21 @@ f_calc_vadc_fwd_and_ref
 	return
 ENDIF
 
-f_calc_get_eep_ext_value
-	movff v_adcfwd,v_eep_ext_addr
-	movff v_adcfwd+1,v_eep_ext_addr+1
-	movlw 0x02
-	mulwf v_eep_ext_addr+1 ;LSB
-	movff PRODL,v_eep_ext_addr+1
-	movff PRODH,v_calctmp
-	movlw 0x02
-	mulwf v_eep_ext_addr ;MSB
-	movf PRODL,W
-	addwf v_calctmp,f
-	movff v_calctmp,v_eep_ext_addr
-	
-		
-	call f_eep_ext_readbyte
-	movff v_eep_ext_byte_read,v_calc_eep_ext_fwd
-	incf v_eep_ext_addr+1
-	call f_eep_ext_readbyte
-	movff v_eep_ext_byte_read,v_calc_eep_ext_fwd+1
+f_calc_Vvalue_fwd_and_ref
 
-	
-	movff v_adcref,v_eep_ext_addr
-	movff v_adcref+1,v_eep_ext_addr+1
-	movlw 0x02
-	mulwf v_eep_ext_addr+1 ;LSB
-	movff PRODL,v_eep_ext_addr+1
-	movff PRODH,v_calctmp
-	movlw 0x02
-	mulwf v_eep_ext_addr ;MSB
-	movf PRODL,W
-	addwf v_calctmp,f
-	movff v_calctmp,v_eep_ext_addr
-		
-	call f_eep_ext_readbyte
-	movff v_eep_ext_byte_read,v_calc_eep_ext_ref
-	incf v_eep_ext_addr+1
-	call f_eep_ext_readbyte
-	movff v_eep_ext_byte_read,v_calc_eep_ext_ref+1
+	movff v_adcfwd,v_calc_fwd
+	movff v_adcfwd+1,v_calc_fwd+1
+	movff v_adcref,v_calc_ref
+	movff v_adcref+1,v_calc_ref+1
 
-	
-	;movff v_adcref,v_calc_eep_ext_ref
-	;movff v_adcref+1,v_calc_eep_ext_ref+1
-	
-
-
-IF 0
-	movff v_adcfwd,v_calc_eep_ext_fwd
-	movff v_adcfwd+1,v_calc_eep_ext_fwd+1
-	movff v_adcref,v_calc_eep_ext_ref
-	movff v_adcref+1,v_calc_eep_ext_ref+1
-ENDIF
 	return
 
 IFDEF TEST
 f_calc_partie_entiere
-	movff v_calc_eep_ext_fwd,v_calc_V_fwd
-	movff v_calc_eep_ext_fwd+1,v_calc_V_fwd+1
-	movff v_calc_eep_ext_ref,v_calc_V_ref
-	movff v_calc_eep_ext_ref+1,v_calc_V_ref+1
+	movff v_calc_fwd,v_calc_V_fwd
+	movff v_calc_fwd+1,v_calc_V_fwd+1
+	movff v_calc_ref,v_calc_V_ref
+	movff v_calc_ref+1,v_calc_V_ref+1
 	movff v_calc_n_fwd,v_calctmp
 	movlw 0x00
 	cpfsgt v_calctmp
@@ -305,7 +262,7 @@ IFDEF TEST
 	global f_calc_set_n_max_fwd
 	global f_calc_set_n_min_ref
 	global f_calc_set_n_max_ref
-	global f_calc_get_eep_ext_value
+	global f_calc_Vvalue_fwd_and_ref
 	global f_calc_partie_entiere
 	global f_calc_partie_decimale
 	global v_calc_V_fwd
