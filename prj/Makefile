@@ -114,3 +114,8 @@ project:
 	mkdir -p ../bin
 	cp ../prj/swr_power_meter.stc ../bin
 	cp ../src/hw/sim/gpsim/netlist.stc ../bin
+
+update_gpsim_prj:
+	cp ../prj/swr_power_meter.stc ../bin
+	cp ../src/hw/sim/gpsim/netlist.stc ../bin
+	

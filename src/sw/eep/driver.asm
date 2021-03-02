@@ -5,44 +5,15 @@
 v_eep_int_byte_to_write res 1
 v_eep_int_status res 1
 v_eep_int_timer res 1
-v_eep_ext_cde res 2
-v_eep_ext_addr res 2
-v_eep_ext_byte_read res 1
+
 
 	extern delay_10ms
-	extern v_i2c_data_size
-	extern v_i2c_device_addr
-	extern v_i2c_p_receive_data
-	extern v_i2c_p_send_data
-	extern v_i2c_p_send_data
-	extern f_i2c_read_in_device
-	extern f_i2c_write_in_device
 
 	code
 _f_eep_int_timeout
 	  bsf v_eep_int_status,BIT_EEP_STATUS_TIMEOUT
 	  return
 
-
-f_eep_ext_readbyte
-	movlw I2C_ADDR_DEVICE_24AA256
-	movwf v_i2c_device_addr
-	movlw 0x02
-	movwf v_i2c_data_size
-	movff v_eep_ext_addr, v_eep_ext_cde
-	movff v_eep_ext_addr+1, v_eep_ext_cde+1
-	movlw v_eep_ext_cde
-	movwf v_i2c_p_send_data
-	call f_i2c_write_in_device
-_f_eep_ext_readbyte_2
-	movlw 0x01
-	movwf v_i2c_data_size
-	movlw v_eep_ext_byte_read
-	movwf v_i2c_p_receive_data
-	call f_i2c_read_in_device
-	return
-
-	  
 ;-----------------------------------------
 ;Fonction : Lecture d'un octet en EEPROM
 ;Nom : eep_readbyte
@@ -98,8 +69,5 @@ _f_eep_int_writebyte_end
 	global f_eep_int_readbyte
 	global f_eep_int_writebyte
 	global v_eep_int_byte_to_write
-	global f_eep_ext_readbyte
-	global v_eep_ext_addr
-	global v_eep_ext_byte_read
-	
+
 	end
