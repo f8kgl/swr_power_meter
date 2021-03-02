@@ -48,15 +48,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "src/value.h"
 #include "src/packages.h"
 #include "src/gpsim_interface.h"
-#include "ad5175.h"
+#include "lt1818.h"
 
 
 class AddAttribute : public Integer {
 public:
-  AD5175_Modules::ad5175 *i2cpt;
+  //LT1818_Modules::lt1818 *i2cpt;
 
-  explicit AddAttribute(AD5175_Modules::ad5175 *_i2cpt) :
-    Integer("Slave_Address", 0x00, "I2C Slave Address"), i2cpt(_i2cpt)
+  explicit AddAttribute(LT1818_Modules::lt1818 *_i2cpt) :
+    Integer("Slave_Address", 0x00, "I2C Slave Address")
   {
     gint64 v;
     Integer::get(v);
@@ -65,51 +65,51 @@ public:
   virtual void set(gint64 v)
   {
     Integer::set(v);
-
-    if (i2cpt) {
-      i2cpt->i2c_slave_address = (v << 1);
     }
-  }
 };
 
 
-class IOPort_ad5175 : public PortModule
+class IOPort_lt1818 : public PortModule
 //class IOPort : public PortRegister
 {
 public:
   unsigned int direction;
 
   //    virtual void put(unsigned int new_value);
-  explicit IOPort_ad5175(unsigned int _num_iopins = 4);
+  explicit IOPort_lt1818(unsigned int _num_iopins = 4);
   void update_pin_directions(unsigned int);
   double put(unsigned int);
 };
 
 
 //IOPort::IOPort(unsigned int _num_iopins) : PortRegister(_num_iopins, "P", "")
-IOPort_ad5175::IOPort_ad5175(unsigned int _num_iopins)
+IOPort_lt1818::IOPort_lt1818(unsigned int _num_iopins)
   : PortModule(_num_iopins), direction(0)
 {
 }
 
+#define R2 1000
+#define R1 100
+#if 0
 #define R_inv 625
 #define END_TO_END_RESISTANCE 10000 //ne tient pas compte de la valeur calibrée
 #define CDE_WRITE_RDAC 0x01
-double IOPort_ad5175::put(unsigned int value)
+#endif
+double IOPort_lt1818::put(unsigned int value)
 {
   IOPIN *m_pin_in;
   double voltage_in=0.0;
   double voltage_out=0.0;
-  double rdac=(double) value*END_TO_END_RESISTANCE/1024;
+//  double rdac=(double) value*END_TO_END_RESISTANCE/1024;
 
-  Dprintf(("rdac=%lf\n", rdac));
+//  Dprintf(("rdac=%lf\n", rdac));
 
   if ((m_pin_in = getPin(0))) {
     voltage_in = m_pin_in->get_nodeVoltage();
     voltage_in = (2.5*voltage_in)/0.036946;
   }
 
-  voltage_out = 2.048 + voltage_in*(1+rdac/R_inv);
+  voltage_out = 2.048 - voltage_in*(R2/R1);
 
   Dprintf(("voltage_in=%lf voltage_out=%lf \n", voltage_in, voltage_out));
 
@@ -117,7 +117,7 @@ double IOPort_ad5175::put(unsigned int value)
 }
 
 
-void IOPort_ad5175::update_pin_directions(unsigned int new_direction)
+void IOPort_lt1818::update_pin_directions(unsigned int new_direction)
 {
   if ((new_direction ^ direction) & 1) {
     direction = new_direction & 1;
@@ -137,12 +137,12 @@ void IOPort_ad5175::update_pin_directions(unsigned int new_direction)
 }
 
 
-namespace AD5175_Modules {
+namespace LT1818_Modules {
 
-ad5175::ad5175(const char *_name)
-  : i2c_slave(), Module(_name, "ad5175")
+lt1818::lt1818(const char *_name)
+  : Module(_name, "lt1818")
 {
-  io_port = new IOPort_ad5175(4);
+  io_port = new IOPort_lt1818(2);
   res_out = new IO_bi_directional_pu("out");
   res_out->set_Vpullup(2.0);
   Addattr = new AddAttribute(this);
@@ -152,7 +152,7 @@ ad5175::ad5175(const char *_name)
 }
 
 
-ad5175::~ad5175()
+lt1818::~lt1818()
 {
   delete io_port;
   delete Addattr;
@@ -163,21 +163,16 @@ ad5175::~ad5175()
   }
 
   delete [] pins;
-  removeSymbol((IOPIN *)scl);
-  removeSymbol((IOPIN *)sda);
   // set sda, scl to zero as package deletes them,
   // thus stopping ~i2c_slave from trying to delete them also
-  sda = nullptr;
-  scl = nullptr;
 }
 
 
-void ad5175::put_data(unsigned int data)
+void lt1818::put_data(unsigned int data)
 {
-  double voltage_out=0.0;
 
-  Dprintf(("ad5175::put_data() 0x%x\n", data));
-
+  Dprintf(("lt1818::put_data() 0x%x\n", data));
+#if 0
   if (byte_number==0) {
     current_cde = (data & 0x3C) >>2;
     switch (current_cde) {
@@ -205,32 +200,30 @@ void ad5175::put_data(unsigned int data)
     }
     byte_number =0;
   }
-
+#endif
 }
 
 
-unsigned int ad5175::get_data()
+unsigned int lt1818::get_data()
 {
   return 0;
 }
 
-void ad5175::slave_transmit(bool input)
+void lt1818::slave_transmit(bool input)
 {
   io_port->update_pin_directions(input == false);
 }
 
 
-bool ad5175::match_address()
+bool lt1818::match_address()
 {
-  if((xfr_data & 0xfe) == i2c_slave_address)
-    Dprintf(("ad5175::match_address() 0x%x\n", xfr_data));
-  return ((xfr_data & 0xfe) == i2c_slave_address);
+  return 0;
 }
 
-Module *ad5175::construct(const char *_new_name)
+Module *lt1818::construct(const char *_new_name)
 {
   std::string att_name = _new_name;
-  ad5175 *pEE = new ad5175(_new_name);
+  lt1818 *pEE = new lt1818(_new_name);
   pEE->res_out->set_Vpullup(2.0);
   pEE->res_out->set_Vth(2.0);
   pEE->res_out->set_Zpullup(10e3);
@@ -242,12 +235,10 @@ Module *ad5175::construct(const char *_new_name)
 }
 
 
-void ad5175::create_iopin_map()
+void lt1818::create_iopin_map()
 {
   pins = new IO_bi_directional_pu *[1];
   char pin_name_in[]="in";
-  addSymbol((IOPIN *)sda);
-  addSymbol((IOPIN *)scl);
   package = new Package(4);
 
   pins[0] =  new IO_bi_directional_pu(pin_name_in);
@@ -256,8 +247,6 @@ void ad5175::create_iopin_map()
   package->assign_pin(2, res_out);
   addSymbol(res_out);
 
-  package->assign_pin(3, (IOPIN *)(sda));
-  package->assign_pin(4, (IOPIN *)(scl));
 }
 
 
