@@ -723,17 +723,6 @@ F 3 "" H 10800 7800 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	7100 3250 2250 3250
-$Comp
-L power:GNDREF #PWR0102
-U 1 1 5EC35FE3
-P 9300 8900
-F 0 "#PWR0102" H 9300 8650 50  0001 C CNN
-F 1 "GNDREF" V 9300 8450 50  0000 L CNN
-F 2 "" H 9300 8900 50  0001 C CNN
-F 3 "" H 9300 8900 50  0001 C CNN
-	1    9300 8900
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	9900 8500 9900 8400
 $Comp
@@ -842,8 +831,6 @@ Wire Wire Line
 	9500 9150 9150 9150
 Wire Wire Line
 	9500 9200 9500 9150
-Wire Wire Line
-	7192 10212 7492 10212
 $Comp
 L power:GNDREF #PWR0123
 U 1 1 5ECF7657
@@ -862,7 +849,7 @@ Wire Wire Line
 Wire Wire Line
 	6692 10212 6792 10212
 Wire Wire Line
-	9600 10000 9600 9800
+	9600 10000 9600 9890
 $Comp
 L power:GNDREF #PWR0113
 U 1 1 5ECBD33E
@@ -1193,19 +1180,6 @@ Wire Wire Line
 	10750 7350 11000 7350
 Wire Wire Line
 	9600 7500 9600 7600
-Wire Wire Line
-	9350 8900 9300 8900
-$Comp
-L Device:R R4
-U 1 1 5EC4DB73
-P 9500 8900
-F 0 "R4" V 9500 8900 50  0000 C CNN
-F 1 "625" V 9384 8900 50  0000 C CNN
-F 2 "Resistor_SMD:R_1206_3216Metric" V 9430 8900 50  0001 C CNN
-F 3 "~" H 9500 8900 50  0001 C CNN
-	1    9500 8900
-	0    -1   -1   0   
-$EndComp
 Connection ~ 9700 8900
 Wire Wire Line
 	9700 8400 9700 8900
@@ -1699,8 +1673,6 @@ F 3 "~" H 7192 10508 50  0001 C CNN
 	1    7192 10508
 	1    0    0    -1  
 $EndComp
-Text Notes 9790 9944 0    60   ~ 0
-pont\n\n
 $Comp
 L Device:R R?
 U 1 1 6041C216
@@ -1728,10 +1700,6 @@ Wire Wire Line
 Connection ~ 7190 8500
 Wire Wire Line
 	7190 8500 8700 8500
-Wire Wire Line
-	7494 10212 9700 10212
-Wire Wire Line
-	9700 10212 9700 9800
 Wire Notes Line
 	6790 9746 7706 9746
 Wire Notes Line
@@ -1744,4 +1712,47 @@ Wire Notes Line
 	6788 9742 6796 9742
 Wire Notes Line
 	6796 9742 6796 9748
+Text Notes 9790 9944 0    60   ~ 0
+pont\n\n
+$Comp
+L Device:R R4
+U 1 1 5EC4DB73
+P 9426 8902
+F 0 "R4" V 9426 8902 50  0000 C CNN
+F 1 "625" V 9310 8902 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 9356 8902 50  0001 C CNN
+F 3 "~" H 9426 8902 50  0001 C CNN
+	1    9426 8902
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8036 8902 8036 10212
+Wire Wire Line
+	7500 10212 7500 10216
+Wire Wire Line
+	9578 8906 9660 8906
+Wire Wire Line
+	9660 8906 9660 8896
+Wire Wire Line
+	7192 10212 7500 10212
+Connection ~ 7500 10212
+Wire Wire Line
+	7500 10212 8036 10212
+Wire Wire Line
+	8036 8902 9276 8902
+Wire Wire Line
+	9600 9890 9700 9890
+Wire Wire Line
+	9700 9890 9700 9800
+Connection ~ 9600 9890
+Wire Wire Line
+	9600 9890 9600 9800
+Wire Notes Line
+	9268 8730 10656 8730
+Wire Notes Line
+	10656 8730 10656 9950
+Wire Notes Line
+	10656 9950 9272 9950
+Wire Notes Line
+	9272 9950 9272 8730
 $EndSCHEMATC
