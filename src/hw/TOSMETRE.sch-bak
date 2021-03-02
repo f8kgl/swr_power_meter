@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:TOSMETRE-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
@@ -844,8 +843,6 @@ $EndComp
 Text Notes 9600 11160 0    60   ~ 0
 REF\n
 Wire Wire Line
-	9700 8900 9650 8900
-Wire Wire Line
 	9800 8400 9800 8900
 Connection ~ 8700 8500
 Wire Wire Line
@@ -970,9 +967,6 @@ Wire Wire Line
 	7750 5600 8950 5600
 Wire Wire Line
 	8100 5500 8950 5500
-Connection ~ 9700 8900
-Wire Wire Line
-	9700 8400 9700 8900
 Wire Wire Line
 	9100 8150 9100 8200
 Wire Wire Line
@@ -1144,8 +1138,6 @@ Wire Wire Line
 	9800 8900 10550 8900
 Wire Wire Line
 	10300 9150 10550 9150
-Wire Wire Line
-	9700 8900 9700 9150
 Wire Wire Line
 	10000 9150 9700 9150
 Wire Wire Line
@@ -1407,21 +1399,10 @@ Wire Wire Line
 Wire Wire Line
 	3950 6400 3950 6398
 $Comp
-L Device:R R?
-U 1 1 6040A127
-P 7780 10046
-F 0 "R?" V 7780 10096 50  0000 R CNN
-F 1 "625" V 7664 10046 50  0000 C CNN
-F 2 "Resistor_SMD:R_1206_3216Metric" V 7710 10046 50  0001 C CNN
-F 3 "~" H 7780 10046 50  0001 C CNN
-	1    7780 10046
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R R?
+L Device:R R9
 U 1 1 6041C216
 P 7592 9592
-F 0 "R?" V 7592 9642 50  0000 R CNN
+F 0 "R9" V 7592 9642 50  0000 R CNN
 F 1 "625" V 7476 9592 50  0000 C CNN
 F 2 "Resistor_SMD:R_1206_3216Metric" V 7522 9592 50  0001 C CNN
 F 3 "~" H 7592 9592 50  0001 C CNN
@@ -1430,8 +1411,6 @@ F 3 "~" H 7592 9592 50  0001 C CNN
 $EndComp
 Text Notes 8836 10226 0    60   ~ 0
 résistance\ntest AOP1\n
-Wire Wire Line
-	7780 9896 7780 9900
 Wire Notes Line
 	6788 9742 6796 9742
 Wire Notes Line
@@ -1449,10 +1428,6 @@ F 3 "~" H 9426 8902 50  0001 C CNN
 	1    9426 8902
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	9578 8906 9660 8906
-Wire Wire Line
-	9660 8906 9660 8896
 Wire Wire Line
 	10714 11202 11022 11202
 Wire Wire Line
@@ -1490,10 +1465,10 @@ Wire Wire Line
 	7782 10722 7782 10620
 Connection ~ 7782 10620
 $Comp
-L librairie_projet:BAT54XV2 D?
+L librairie_projet:BAT54XV2 D1
 U 1 1 604B8ED6
 P 7782 10470
-F 0 "D?" H 7782 10687 50  0000 C CNN
+F 0 "D1" H 7782 10687 50  0000 C CNN
 F 1 "BAT54XV2" H 7782 10596 50  0000 C CNN
 F 2 "Diode_SMD:D_SOD-523" H 7782 10295 50  0001 C CNN
 F 3 "https://www.diodes.com/assets/Datasheets/ds30396.pdf" H 7782 10470 50  0001 C CNN
@@ -1505,10 +1480,7 @@ Wire Wire Line
 Wire Wire Line
 	7784 10196 7780 10196
 Wire Wire Line
-	7780 9896 7780 9732
-Wire Wire Line
 	7780 9592 7742 9592
-Connection ~ 7780 9896
 Wire Wire Line
 	7442 9592 6870 9592
 Wire Wire Line
@@ -1517,9 +1489,6 @@ Wire Wire Line
 	8036 8904 8036 9732
 Wire Wire Line
 	8036 9732 7780 9732
-Connection ~ 7780 9732
-Wire Wire Line
-	7780 9732 7780 9592
 Wire Notes Line
 	5978 9068 8256 9068
 Wire Notes Line
@@ -1558,4 +1527,27 @@ Wire Notes Line
 	8288 4448 8288 3316
 Wire Notes Line
 	8288 3316 9640 3316
+Wire Wire Line
+	9576 8902 9700 8902
+Wire Wire Line
+	9700 8400 9700 8902
+Connection ~ 9700 8902
+Wire Wire Line
+	9700 8902 9700 9150
+$Comp
+L Device:R R10
+U 1 1 6040A127
+P 7780 10046
+F 0 "R10" V 7780 10096 50  0000 R CNN
+F 1 "625" V 7664 10046 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 7710 10046 50  0001 C CNN
+F 3 "~" H 7780 10046 50  0001 C CNN
+	1    7780 10046
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7780 9592 7780 9732
+Connection ~ 7780 9732
+Wire Wire Line
+	7780 9732 7780 9896
 $EndSCHEMATC
