@@ -92,10 +92,6 @@ module load push_button cal_m
 cal_m.xpos = 372
 cal_m.ypos = 444
 
-module load I2C-EEPROM256k eep_24aa256
-eep_24aa256.xpos = 192
-eep_24aa256.ypos = 384
-
 module load pulldown gnd
 gnd.capacitance = 0
 gnd.resistance = 10000
@@ -134,10 +130,10 @@ node nREF
 attach nREF Vref.pin ad5175_ref.in
 
 node nSDA
-attach nSDA p18f1320.porta3 pullup_1.pin ltc2305.SDA ad5175_fwd.SDA ad5175_ref.SDA eep_24aa256.SDA
+attach nSDA p18f1320.porta3 pullup_1.pin ltc2305.SDA ad5175_fwd.SDA ad5175_ref.SDA
 
 node nSCL
-attach nSCL p18f1320.porta2 pullup_2.pin ltc2305.SCL ad5175_fwd.SCL ad5175_ref.SCL eep_24aa256.SCL
+attach nSCL p18f1320.porta2 pullup_2.pin ltc2305.SCL ad5175_fwd.SCL ad5175_ref.SCL
 
 node nFWD_adc
 attach nFWD_adc ltc2305.CH0 ad5175_fwd.out
@@ -155,7 +151,7 @@ node bp_bande
 attach bp_bande p18f1320.porta4 bande.out
 
 node nGND
-attach nGND gnd.pin eep_24aa256.A0 eep_24aa256.A1 eep_24aa256.A2 eep_24aa256.WP
+attach nGND gnd.pin 
 
 
 

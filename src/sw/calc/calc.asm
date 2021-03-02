@@ -25,9 +25,6 @@ v_calc_ref res 2
 
 	extern v_adcfwd
 	extern v_adcref
-	extern v_eep_ext_addr
-	extern v_eep_ext_byte_read
-	extern f_eep_ext_readbyte
 
 	code
 IFDEF TEST
