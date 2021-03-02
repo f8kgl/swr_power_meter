@@ -50,7 +50,7 @@ COMPS +=eep
 #COMPS +=flh
 COMPS +=adc
 COMPS +=calc
-COMPS +=aop
+#COMPS +=aop
 COMPS +=bp
 COMPS +=log
 
@@ -118,4 +118,3 @@ project:
 update_gpsim_prj:
 	cp ../prj/swr_power_meter.stc ../bin
 	cp ../src/hw/sim/gpsim/netlist.stc ../bin
-	

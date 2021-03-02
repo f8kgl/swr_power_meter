@@ -79,9 +79,9 @@ https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 
 	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/ltc2305.h
 
-	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/ad5175.cc
+	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/lt1818.cc
 
-	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/ad5175.h
+	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/lt1818.h
 
 	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/detector.cc
 

@@ -23,8 +23,6 @@
 	extern f_adc_init
 	extern f_adc_read_fwd
 	extern f_adc_read_ref
-	extern f_aop_set_rdac_fwd
-	extern f_aop_set_rdac_ref
 	extern f_bp_init
 	extern f_bp_test_bande
 	extern f_bp_test_calm
@@ -38,36 +36,10 @@
 	extern f_eep_int_readbyte
 IFDEF TEST
 	extern f_lcd_aff_fwd_and_ref
-	extern f_lcd_aff_G_and_rdac
-	extern f_lcd_aff_n
 	extern f_lcd_aff_adc_hexa
-	extern f_calc_vadc_fwd_and_ref
+	extern f_calc_adc_hex_fwd_and_ref
 	extern f_lcd_aff_adc_mV
-	extern f_calc_init
-	extern f_lcd_toggle_fwd_port
-	extern f_lcd_toggle_ref_port
-	extern v_calc_port
-	extern v_calc_n_ref
-	extern v_calc_n_fwd
-	extern f_lcd_toggle_n_ref
-	extern f_lcd_toggle_n_fwd
-	extern f_calc_set_n_min_fwd
-	extern f_calc_set_n_max_fwd
-	extern f_calc_set_n_min_ref
-	extern f_calc_set_n_max_ref
 	extern Del_11us ;pour trace timer 0 uniquement
-	extern f_lcd_aff_rdac
-	extern f_aop_get_rdac_fwd
-	extern f_aop_get_rdac_ref
-	extern f_aop_set_rdac_eep_int_fwd
-	extern f_aop_set_rdac_eep_int_ref
-	extern v_aop_rdac
-	extern f_lcd_toggle_rdac_fwd
-	extern f_lcd_toggle_rdac_ref
-	extern f_calc_Vvalue_fwd_and_ref
-	extern f_calc_partie_entiere
-	extern f_calc_partie_decimale
-	extern f_lcd_calibrated_voltage
 	extern D160us ;pour trace timer 0 uniquement
 ENDIF
 
@@ -183,7 +155,7 @@ ENDIF
 ;;Initialisation des composants logiciels
 	call f_i2c_init
  	call f_adc_init		;
-	call f_calc_init
+;	call f_calc_init
 	call f_bp_init
 ;; Effacer le LCD (lcd_clear)
 	call f_lcd_clear
@@ -192,7 +164,7 @@ IFDEF DEBUG_ISSUE_134
 	;Fiche #121 #157 #134
 	;appelle l'init des composants branchés sur le bus i2c
 	;pour contourner le NACK reçu uniquement lors de la 1ère trame sous GPSIM
-	call f_aop_set_rdac_fwd
+;	call f_aop_set_rdac_fwd
 	call f_aop_set_rdac_ref
 	call f_adc_read_fwd
 ENDIF
@@ -220,34 +192,26 @@ choix_menu
 	movf	v_menu,w
 	xorlw	D'0'
 	btfsc	STATUS,Z
-	goto	menu_mesure
+	goto	menu_tension
 	movf	v_menu,w
 	xorlw	D'1'
 	btfsc	STATUS,Z
-	goto	menu_calibration
+	goto	menu_puissance
 	movf	v_menu,w
 	xorlw	D'2'
-	btfsc	STATUS,Z
-	goto	menu_calcul
-	movf	v_menu,w
-	xorlw	D'3'
 	btfsc	STATUS,Z
 	clrf v_menu
 	goto test_loop
 
-menu_mesure
+menu_tension
 	clrf v_menu
-
-	;fixe Rdac
-	call f_aop_set_rdac_fwd
-	call f_aop_set_rdac_ref
 
 		;;lire les registres ADCfwd et ADCref
 	call f_adc_read_fwd
 	call f_adc_read_ref
 
 	;; Convertir la mesure des ADC en hexa (rien à faire) et en mV
-	call f_calc_vadc_fwd_and_ref
+	call f_calc_adc_hex_fwd_and_ref
 
 	;Affiche "FWD et REF" sur les 1ères et 2èmes lignes
 	call f_lcd_aff_fwd_and_ref
@@ -260,136 +224,7 @@ menu_mesure
 	goto test_loop
 
 
-menu_calibration
-	clrf v_menu
-	bsf v_menu,0
-
-_menu_cal_toggle_port
-	;Affiche "FWD et REF" sur les 1ères et 2èmes lignes
-	call f_lcd_aff_fwd_and_ref
-	movlw 0x04
-	call f_lcd_setposcursor
-	call f_lcd_aff_G_and_rdac
-	movlw 0x14
-	call f_lcd_setposcursor
-	call f_lcd_aff_G_and_rdac
-	call f_lcd_aff_n
-	call f_lcd_aff_rdac
-
-
-	btfsc v_calc_port,PORT_BIT
-	goto _menu_cal_toggle_fwd_port
-	call f_lcd_toggle_ref_port
-	btfss v_calc_port,PORT_BIT
-	goto _menu_cal_toggle_n_value;1=>valeur non modifié. On est sortie de la FSM par un appui sur BP_BANDE
-	goto _menu_cal_toggle_port;0=>valeur modifié. Il faut recommencer le même clignotement !!!
-_menu_cal_toggle_fwd_port
-	call f_lcd_toggle_fwd_port
-	btfsc v_calc_port,PORT_BIT
-	goto _menu_cal_toggle_n_value;1=>valeur non modifié. On est sortie de la FSM par un appui sur BP_BANDE
-	goto _menu_cal_toggle_port;0=>valeur modifié. Il faut recommencer le même clignotement !!!
-
-_menu_cal_toggle_n_value ;faire clignoter la valeur de n
-	btfsc v_calc_port,PORT_BIT
-	goto _menu_cal_toggle_n_fwd
-	movff v_calc_n_ref,v_tmp
-	call f_lcd_toggle_n_ref
-_check_n_ref_min
-	movlw N_MIN-1
-	cpfseq v_calc_n_ref
-  goto _check_n_ref_max
-	call _set_n_min_ref
-_check_n_ref_max
-	movlw N_MAX+1
-	cpfseq v_calc_n_ref
-	goto _check_n_ref_change
-	call _set_n_max_ref
-_check_n_ref_change
-	movf v_calc_n_ref,w
-  cpfseq v_tmp
-	goto _menu_cal_toggle_n_value;valeur "!=". Il faut recommencer le même clignotement !!!
-	goto _menu_cal_toggle_rdac;valeurs "="= =>valeur non modifié. On est sortie de la FSM par un appui sur BP_BANDE
-_menu_cal_toggle_n_fwd
-	movff v_calc_n_fwd,v_tmp
-	call f_lcd_toggle_n_fwd
-_check_n_fwd_min
-	movlw N_MIN-1
-	cpfseq v_calc_n_fwd
-  goto _check_n_fwd_max
-	call _set_n_min_fwd
-_check_n_fwd_max
-	movlw N_MAX+1
-	cpfseq v_calc_n_fwd
-	goto _check_n_fwd_change
-	call _set_n_max_fwd
-_check_n_fwd_change
-	movf v_calc_n_fwd,w
-	cpfseq v_tmp
-	goto _menu_cal_toggle_n_value;valeur "!=". Il faut recommencer le même clignotement !!!
-	goto _menu_cal_toggle_rdac;valeurs "="= =>valeur non modifié. On est sortie de la FSM par un appui sur BP_BANDE
-
-
-_menu_cal_toggle_rdac
- call f_lcd_aff_rdac
- btfsc v_calc_port,PORT_BIT
- goto _menu_cal_toggle_rdac2
- call f_aop_get_rdac_ref
- goto _menu_cal_toggle_rdac3
-_menu_cal_toggle_rdac2
- call f_aop_get_rdac_fwd
-_menu_cal_toggle_rdac3
- btfsc v_calc_port,PORT_BIT
- goto _menu_cal_toggle_rdac_fwd
- movff v_aop_rdac+1,v_tmp
- call f_lcd_toggle_rdac_ref
-_check_rdac_ref_change
- movf v_aop_rdac+1,w
- cpfseq v_tmp
- goto _menu_cal_toggle_rdac3;valeur "!=". Il faut recommencer le même clignotement !!!
- goto _menu_cal_end
-
-_menu_cal_toggle_rdac_fwd
- movff v_aop_rdac+1,v_tmp
- call f_lcd_toggle_rdac_fwd
-_check_rdac_fwd_change
- movf v_aop_rdac+1,w
- cpfseq v_tmp
- goto _menu_cal_toggle_rdac3;valeur "!=". Il faut recommencer le même clignotement !!!
- ;	goto _menu_cal_end
-
-_menu_cal_end
-	;on est sorti de la FSM toggle
-	btfsc v_calc_port,PORT_BIT
-  goto _menu_cal_end2
-  call f_aop_set_rdac_eep_int_ref
-  goto _menu_cal_end3
-_menu_cal_end2
-  call f_aop_set_rdac_eep_int_fwd
-_menu_cal_end3
-	incf v_menu,f
-	call f_lcd_clear
-	goto choix_menu
-
-menu_calcul
-
-	;fixe Rdac
-	call f_aop_set_rdac_fwd
-	call f_aop_set_rdac_ref
-
-	;lire les registres ADCfwd et ADCref
-	call f_adc_read_fwd
-	call f_adc_read_ref
-
-	;Affiche "FWD et REF" sur les 1ères et 2èmes lignes
-	call f_lcd_aff_fwd_and_ref
-
-	;calcul des tensions calibrées
-	call f_calc_Vvalue_fwd_and_ref
-	call f_calc_partie_entiere
-	call f_calc_partie_decimale
-
-	call f_lcd_calibrated_voltage
-
+menu_puissance
 	goto test_loop
 
 
@@ -415,32 +250,6 @@ f_tempo_boot
 	call delay_250ms
 	call delay_250ms
 	return
-
-IFDEF TEST
-_set_n_max_fwd
-	call f_calc_set_n_max_fwd
-	movlw N_MAX-1
-	movwf v_tmp
-	return
-
-_set_n_min_fwd
-	call f_calc_set_n_min_fwd
-	movlw N_MIN+1
-	movwf v_tmp
-	return
-
-_set_n_max_ref
-	call f_calc_set_n_max_ref
-	movlw N_MAX-1
-	movwf v_tmp
-	return
-
-_set_n_min_ref
-	call f_calc_set_n_min_ref
-	movlw N_MIN+1
-	movwf v_tmp
-	return
-ENDIF
 
 IFDEF TEST
 	global v_menu

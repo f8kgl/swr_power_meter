@@ -19,8 +19,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef MODULES_AD5175_H_
-#define MODULES_AD5175_H_
+#ifndef MODULES_LT1818_H_
+#define MODULES_LT1818_H_
 
 /* IN_MODULE should be defined for modules */
 #define IN_MODULE
@@ -32,14 +32,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "src/i2c-ee.h"
 
 
-class IOPort_ad5175;
+class IOPort_lt1818;
 class AddAttribute;
-namespace AD5175_Modules {
+namespace LT1818_Modules {
 
-class ad5175 : public i2c_slave, public Module { //, public TriggerObject
+class lt1818 : public Module { //, public TriggerObject
 public:
-  explicit ad5175(const char *_name);
-  ~ad5175();
+  explicit lt1818(const char *_name);
+  ~lt1818();
 
   static Module *construct(const char *new_name);
   virtual void create_iopin_map();
@@ -49,7 +49,7 @@ public:
   virtual unsigned int get_data();
   virtual void slave_transmit(bool yes);
 
-  IOPort_ad5175 *io_port;
+  IOPort_lt1818 *io_port;
   IO_bi_directional_pu *res_out;
   unsigned int current_cde;
   unsigned int rdac_value;
