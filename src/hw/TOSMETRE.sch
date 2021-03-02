@@ -301,17 +301,6 @@ F 3 "" H 7350 5350 50  0001 C CNN
 	1    7350 5350
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:GNDREF #PWR0135
-U 1 1 5EE52F5B
-P 9200 3450
-F 0 "#PWR0135" H 9200 3200 50  0001 C CNN
-F 1 "GNDREF" H 9205 3277 50  0000 C CNN
-F 2 "" H 9200 3450 50  0001 C CNN
-F 3 "" H 9200 3450 50  0001 C CNN
-	1    9200 3450
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
 	10250 2800 9950 2800
 Connection ~ 9950 2800
@@ -325,19 +314,6 @@ F 2 "Capacitor_SMD:C_1206_3216Metric" H 9188 1600 50  0001 C CNN
 F 3 "" H 9150 1750 50  0001 C CNN
 	1    9150 1750
 	0    1    1    0   
-$EndComp
-Wire Wire Line
-	9100 4350 9100 4500
-$Comp
-L power:GNDREF #PWR0136
-U 1 1 5EE8A394
-P 9100 4500
-F 0 "#PWR0136" H 9100 4250 50  0001 C CNN
-F 1 "GNDREF" V 9105 4372 50  0000 R CNN
-F 2 "" H 9100 4500 50  0001 C CNN
-F 3 "" H 9100 4500 50  0001 C CNN
-	1    9100 4500
-	1    0    0    -1  
 $EndComp
 $Comp
 L Device:R R1
@@ -499,30 +475,6 @@ F 3 "" H 10000 3700 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L power:GNDREF #PWR0106
-U 1 1 5EC5A302
-P 8600 3550
-F 0 "#PWR0106" H 8600 3300 50  0001 C CNN
-F 1 "GNDREF" H 8605 3377 50  0000 C CNN
-F 2 "" H 8600 3550 50  0001 C CNN
-F 3 "" H 8600 3550 50  0001 C CNN
-	1    8600 3550
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	9000 3550 9100 3550
-$Comp
-L Device:C C3
-U 1 1 5EC4D6FA
-P 8850 3550
-F 0 "C3" H 8875 3650 50  0000 L CNN
-F 1 "1µF" H 8875 3450 50  0000 L CNN
-F 2 "Capacitor_SMD:C_1206_3216Metric" H 8888 3400 50  0001 C CNN
-F 3 "" H 8850 3550 50  0001 C CNN
-	1    8850 3550
-	0    -1   -1   0   
-$EndComp
-$Comp
 L librairie_projet:BAT54XV2 D3
 U 1 1 5EAD20A2
 P 9400 1450
@@ -556,17 +508,6 @@ F 3 " ~" H 9400 1050 50  0001 C CNN
 	0    1    -1   0   
 $EndComp
 $Comp
-L librairie_projet:AD5175 U4
-U 1 1 5EBDF7FE
-P 9300 3950
-F 0 "U4" H 9300 4417 50  0000 C CNN
-F 1 "AD5175" H 9300 4326 50  0000 C CNN
-F 2 "Package_SO:MSOP-10_3x3mm_P0.5mm" H 9400 4450 50  0001 C CNN
-F 3 "" H 9300 3950 50  0001 C CNN
-	1    9300 3950
-	0    1    1    0   
-$EndComp
-$Comp
 L librairie_projet:LT1818 U3
 U 1 1 5EBDDABC
 P 9500 2050
@@ -578,21 +519,10 @@ F 3 "http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DAT
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	8600 3050 8900 3050
-Wire Wire Line
 	9350 3050 9400 3050
 Connection ~ 9400 3050
 Wire Wire Line
 	9400 3050 9400 3200
-Wire Wire Line
-	9300 3550 9300 3200
-Wire Wire Line
-	9300 3200 8900 3200
-Wire Wire Line
-	8900 3200 8900 3050
-Connection ~ 8900 3050
-Wire Wire Line
-	8900 3050 9050 3050
 Wire Wire Line
 	9400 2650 9400 3050
 Wire Wire Line
@@ -610,9 +540,6 @@ F 3 "" H 9950 3200 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	9450 3200 9400 3200
-Connection ~ 9400 3200
-Wire Wire Line
-	9400 3200 9400 3550
 $Comp
 L Connector:Conn_01x08_Male J3
 U 1 1 5F1F0796
@@ -684,7 +611,6 @@ Wire Wire Line
 	9500 3550 10000 3550
 Wire Wire Line
 	9500 3900 9500 3550
-Connection ~ 9500 3550
 Wire Wire Line
 	8600 2300 9600 2300
 Wire Wire Line
@@ -699,28 +625,6 @@ Wire Wire Line
 Wire Wire Line
 	2250 3250 2250 6400
 Connection ~ 2250 6400
-$Comp
-L Device:C C27
-U 1 1 5FBA6F52
-P 10800 7550
-F 0 "C27" H 10825 7650 50  0000 L CNN
-F 1 "100nF" H 10825 7450 50  0000 L CNN
-F 2 "Capacitor_SMD:C_1206_3216Metric" H 10838 7400 50  0001 C CNN
-F 3 "" H 10800 7550 50  0001 C CNN
-	1    10800 7550
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:C C28
-U 1 1 5FBA5295
-P 10800 7800
-F 0 "C28" H 10825 7900 50  0000 L CNN
-F 1 "10µF" H 10825 7700 50  0000 L CNN
-F 2 "Capacitor_SMD:C_1206_3216Metric" H 10838 7650 50  0001 C CNN
-F 3 "" H 10800 7800 50  0001 C CNN
-	1    10800 7800
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
 	7100 3250 2250 3250
 Wire Wire Line
@@ -735,30 +639,6 @@ F 2 "" H 9900 8500 50  0001 C CNN
 F 3 "" H 9900 8500 50  0001 C CNN
 	1    9900 8500
 	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	10000 7600 10000 7450
-$Comp
-L power:GNDREF #PWR0140
-U 1 1 5EE91ECF
-P 10000 7450
-F 0 "#PWR0140" H 10000 7200 50  0001 C CNN
-F 1 "GNDREF" V 10005 7322 50  0000 R CNN
-F 2 "" H 10000 7450 50  0001 C CNN
-F 3 "" H 10000 7450 50  0001 C CNN
-	1    10000 7450
-	-1   0    0    1   
-$EndComp
-$Comp
-L librairie_projet:AD5175 U7
-U 1 1 5EB81854
-P 9800 8000
-F 0 "U7" H 9800 8467 50  0000 C CNN
-F 1 "AD5175" H 9800 8376 50  0000 C CNN
-F 2 "Package_SO:MSOP-10_3x3mm_P0.5mm" H 9900 8500 50  0001 C CNN
-F 3 "" H 9800 8000 50  0001 C CNN
-	1    9800 8000
-	0    -1   -1   0   
 $EndComp
 Wire Wire Line
 	8700 8500 9100 8500
@@ -971,52 +851,12 @@ Connection ~ 8700 8500
 Wire Wire Line
 	8750 9150 8700 9150
 Connection ~ 8750 9150
-Connection ~ 9100 8500
-Wire Wire Line
-	9600 8500 9100 8500
-Wire Wire Line
-	9900 7600 9900 7950
-Wire Wire Line
-	9600 7950 9600 8400
 Wire Wire Line
 	9500 9500 10550 9500
 Wire Wire Line
 	10550 9150 10550 9500
 Wire Wire Line
 	9500 9500 9500 9800
-Wire Wire Line
-	9500 6950 9500 5900
-Wire Wire Line
-	9500 5900 9750 5900
-Wire Wire Line
-	10650 6700 9700 6700
-Wire Wire Line
-	9700 6700 9700 7600
-Wire Wire Line
-	9750 5800 10650 5800
-Connection ~ 9750 5800
-Wire Wire Line
-	9600 7950 9900 7950
-Wire Wire Line
-	9500 4350 9500 3900
-Connection ~ 9500 3900
-$Comp
-L power:GNDREF #PWR0115
-U 1 1 5ECEA303
-P 9600 7500
-F 0 "#PWR0115" H 9600 7250 50  0001 C CNN
-F 1 "GNDREF" H 9605 7327 50  0000 C CNN
-F 2 "" H 9600 7500 50  0001 C CNN
-F 3 "" H 9600 7500 50  0001 C CNN
-	1    9600 7500
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	9800 7600 9800 7900
-Wire Wire Line
-	9800 7900 9300 7900
-Wire Wire Line
-	9300 6950 9500 6950
 $Comp
 L Device:R R2
 U 1 1 5EC4CAE6
@@ -1064,13 +904,9 @@ Connection ~ 9600 2050
 Wire Wire Line
 	7100 3900 7100 3250
 Wire Wire Line
-	9400 4350 9400 5200
-Wire Wire Line
 	9400 5800 9750 5800
 Wire Wire Line
 	6100 4100 6100 6100
-Wire Wire Line
-	7100 3900 9200 3900
 $Comp
 L Device:R_Small R8
 U 1 1 5F3A76F9
@@ -1094,19 +930,6 @@ F 3 "~" H 5950 8250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	9200 4350 9200 3900
-Connection ~ 9200 3900
-Wire Wire Line
-	9200 3900 9500 3900
-Wire Wire Line
-	8850 4100 8850 4950
-Wire Wire Line
-	8850 4950 9300 4950
-Wire Wire Line
-	9300 4950 9300 4350
-Wire Wire Line
-	6100 4100 8850 4100
-Wire Wire Line
 	6500 6200 6500 4350
 Wire Wire Line
 	6500 4350 8700 4350
@@ -1114,11 +937,8 @@ Wire Wire Line
 	8700 4350 8700 5200
 Wire Wire Line
 	8700 5200 9400 5200
-Connection ~ 9400 5200
 Wire Wire Line
 	9400 5200 9400 5800
-Wire Wire Line
-	9300 6950 9300 7900
 Wire Wire Line
 	6750 4650 8600 4650
 Wire Wire Line
@@ -1127,10 +947,6 @@ Wire Wire Line
 	8600 5350 9300 5350
 Wire Wire Line
 	9300 5350 9300 5900
-Wire Wire Line
-	9300 5900 9500 5900
-Connection ~ 9500 5900
-Connection ~ 9800 7600
 Wire Wire Line
 	6500 8150 6500 8500
 Wire Wire Line
@@ -1154,27 +970,6 @@ Wire Wire Line
 	7750 5600 8950 5600
 Wire Wire Line
 	8100 5500 8950 5500
-Wire Wire Line
-	9800 6950 9800 7600
-Wire Wire Line
-	9800 6950 11000 6950
-Wire Wire Line
-	10650 5800 10650 6700
-$Comp
-L power:GNDREF #PWR0145
-U 1 1 5EFE9F3A
-P 10750 7350
-F 0 "#PWR0145" H 10750 7100 50  0001 C CNN
-F 1 "GNDREF" V 10755 7222 50  0000 R CNN
-F 2 "" H 10750 7350 50  0001 C CNN
-F 3 "" H 10750 7350 50  0001 C CNN
-	1    10750 7350
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	10750 7350 11000 7350
-Wire Wire Line
-	9600 7500 9600 7600
 Connection ~ 9700 8900
 Wire Wire Line
 	9700 8400 9700 8900
@@ -1182,9 +977,6 @@ Wire Wire Line
 	9100 8150 9100 8200
 Wire Wire Line
 	8700 8500 8700 9150
-Wire Wire Line
-	9600 8500 9600 8400
-Connection ~ 9600 8400
 $Comp
 L power:GNDREF #PWR0146
 U 1 1 5EF10044
@@ -1199,47 +991,6 @@ $EndComp
 Wire Wire Line
 	9500 10000 9500 9800
 Connection ~ 9500 9800
-Wire Wire Line
-	9200 3450 9200 3550
-Wire Wire Line
-	8600 3550 8700 3550
-Wire Wire Line
-	10950 7550 11000 7550
-$Comp
-L power:GNDREF #PWR0147
-U 1 1 5EF22E74
-P 10550 7550
-F 0 "#PWR0147" H 10550 7300 50  0001 C CNN
-F 1 "GNDREF" V 10555 7422 50  0000 R CNN
-F 2 "" H 10550 7550 50  0001 C CNN
-F 3 "" H 10550 7550 50  0001 C CNN
-	1    10550 7550
-	0    1    1    0   
-$EndComp
-$Comp
-L power:GNDREF #PWR0148
-U 1 1 5EF2327A
-P 10550 7800
-F 0 "#PWR0148" H 10550 7550 50  0001 C CNN
-F 1 "GNDREF" V 10555 7672 50  0000 R CNN
-F 2 "" H 10550 7800 50  0001 C CNN
-F 3 "" H 10550 7800 50  0001 C CNN
-	1    10550 7800
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	10550 7800 10650 7800
-Wire Wire Line
-	10650 7550 10550 7550
-Connection ~ 10950 7800
-Wire Wire Line
-	10950 7800 10950 7950
-Connection ~ 10950 7550
-Wire Wire Line
-	9900 7950 10950 7950
-Wire Wire Line
-	10950 7550 10950 7800
-Connection ~ 9900 7950
 Wire Wire Line
 	5400 6100 6100 6100
 Wire Wire Line
@@ -1777,4 +1528,34 @@ Wire Notes Line
 	8256 11020 5974 11020
 Wire Notes Line
 	5974 11020 5974 9066
+Wire Wire Line
+	9300 5900 9750 5900
+Wire Notes Line
+	9428 6344 12240 6344
+Wire Notes Line
+	12240 6344 12240 8010
+Wire Notes Line
+	9460 8010 9460 6336
+Wire Notes Line
+	9460 6336 9476 6336
+Wire Notes Line
+	9476 6336 9476 6344
+Wire Notes Line
+	9460 8010 12240 8010
+Wire Wire Line
+	7100 3900 9500 3900
+Wire Wire Line
+	8600 3050 9050 3050
+Wire Notes Line
+	9640 3316 9640 4440
+Wire Notes Line
+	9640 4440 8460 4440
+Wire Notes Line
+	8460 4440 8460 4448
+Wire Notes Line
+	8460 4448 8288 4448
+Wire Notes Line
+	8288 4448 8288 3316
+Wire Notes Line
+	8288 3316 9640 3316
 $EndSCHEMATC
