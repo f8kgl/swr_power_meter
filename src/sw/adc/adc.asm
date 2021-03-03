@@ -17,18 +17,6 @@ v_adc_count res 1
 
 
 	code
-;-----------------------------------------
-;Fonction : Initialisation adc
-;Nom : adc_init
-;Entrée :
-;Sortie :
-;Traitement :
-;-----------------------------------------
-f_adc_init
-	call f_i2c_init
-	return
-
-
 
 ;-----------------------------------------
 ;Fonction : Lire le résultat de la conversion A/N AN0
@@ -106,8 +94,6 @@ _f_adc_read_ref_5
 	andwf v_adcref,f
 	return
 
-
-	global f_adc_init
 	global f_adc_read_fwd
 	global f_adc_read_ref
 	global v_adcfwd

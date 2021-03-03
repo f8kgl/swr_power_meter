@@ -20,7 +20,6 @@
 	extern f_lcd_affboot
 	extern f_lcd_clear
 	extern f_lcd_setposcursor
-	extern f_adc_init
 	extern f_adc_read_fwd
 	extern f_adc_read_ref
 	extern f_bp_init
@@ -154,8 +153,6 @@ ENDIF
 
 ;;Initialisation des composants logiciels
 	call f_i2c_init
- 	call f_adc_init		;
-;	call f_calc_init
 	call f_bp_init
 ;; Effacer le LCD (lcd_clear)
 	call f_lcd_clear
