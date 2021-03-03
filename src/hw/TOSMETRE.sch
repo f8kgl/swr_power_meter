@@ -1,5 +1,6 @@
 EESchema Schematic File Version 4
-EELAYER 30 0
+LIBS:TOSMETRE-cache
+EELAYER 29 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
@@ -565,9 +566,6 @@ Wire Wire Line
 	8600 2300 8600 3050
 Connection ~ 2250 6400
 Wire Wire Line
-	8750 9150 9150 9150
-Connection ~ 9150 9150
-Wire Wire Line
 	9150 9450 9150 9600
 Wire Wire Line
 	8750 9600 8750 9450
@@ -604,21 +602,6 @@ F 3 "" H 8750 9300 50  0001 C CNN
 	1    8750 9300
 	-1   0    0    1   
 $EndComp
-$Comp
-L Device:C C22
-U 1 1 5ED3F822
-P 9150 9300
-F 0 "C22" H 9175 9400 50  0000 L CNN
-F 1 "100nF" H 9175 9200 50  0000 L CNN
-F 2 "Capacitor_SMD:C_1206_3216Metric" H 9188 9150 50  0001 C CNN
-F 3 "" H 9150 9300 50  0001 C CNN
-	1    9150 9300
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	9500 9150 9150 9150
-Wire Wire Line
-	9500 9200 9500 9150
 Wire Wire Line
 	9600 10000 9600 9890
 $Comp
@@ -631,17 +614,6 @@ F 2 "" H 9600 10000 50  0001 C CNN
 F 3 "" H 9600 10000 50  0001 C CNN
 	1    9600 10000
 	1    0    0    -1  
-$EndComp
-$Comp
-L librairie_projet:LT1818 U6
-U 1 1 5EBDCDD4
-P 9600 9800
-F 0 "U6" H 9900 10142 50  0000 C CNN
-F 1 "LT1818" H 9900 10051 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:TSOT-23-5" H 9900 10125 50  0001 C CIN
-F 3 "http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00003395.pdf" H 9900 9850 50  0001 C CNN
-	1    9600 9800
-	0    -1   -1   0   
 $EndComp
 $Comp
 L Connector:Conn_Coaxial J5
@@ -658,13 +630,6 @@ Text Notes 9600 11160 0    60   ~ 0
 REF\n
 Wire Wire Line
 	8750 9150 8700 9150
-Connection ~ 8750 9150
-Wire Wire Line
-	9500 9500 10550 9500
-Wire Wire Line
-	10550 9150 10550 9500
-Wire Wire Line
-	9500 9500 9500 9800
 $Comp
 L Device:R R2
 U 1 1 5EC4CAE6
@@ -704,7 +669,6 @@ Wire Wire Line
 	11350 8350 11300 8350
 Wire Wire Line
 	10950 8350 11300 8350
-Connection ~ 10550 9150
 Connection ~ 11300 8350
 Wire Wire Line
 	11100 2050 9600 2050
@@ -760,20 +724,6 @@ Wire Wire Line
 	8100 5500 8950 5500
 Wire Wire Line
 	8700 8500 8700 9150
-$Comp
-L power:GNDREF #PWR0146
-U 1 1 5EF10044
-P 9500 10000
-F 0 "#PWR0146" H 9500 9750 50  0001 C CNN
-F 1 "GNDREF" V 9500 9700 50  0000 C CNN
-F 2 "" H 9500 10000 50  0001 C CNN
-F 3 "" H 9500 10000 50  0001 C CNN
-	1    9500 10000
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9500 10000 9500 9800
-Connection ~ 9500 9800
 Wire Wire Line
 	5050 6100 5400 6100
 $Comp
@@ -916,30 +866,6 @@ Wire Wire Line
 	8344 6350 8344 5800
 Wire Wire Line
 	8744 6350 8744 5800
-Wire Wire Line
-	10950 8350 10950 9150
-Wire Wire Line
-	10300 9150 10550 9150
-Wire Wire Line
-	10000 9150 9700 9150
-Wire Wire Line
-	10550 9150 10950 9150
-Connection ~ 9700 9150
-Wire Wire Line
-	9700 9150 9700 9200
-$Comp
-L Device:R R6
-U 1 1 5ECBB13D
-P 10150 9150
-F 0 "R6" V 10150 9200 50  0000 R CNN
-F 1 "625" V 10034 9150 50  0000 C CNN
-F 2 "Resistor_SMD:R_1206_3216Metric" V 10080 9150 50  0001 C CNN
-F 3 "~" H 10150 9150 50  0001 C CNN
-	1    10150 9150
-	0    -1   -1   0   
-$EndComp
-Text Notes 9920 9090 0    60   ~ 0
-résistance\ntest AOP1\n
 Text Notes 8930 2990 0    60   ~ 0
 résistance\ntest AOP1\n
 Wire Wire Line
@@ -1182,23 +1108,8 @@ Wire Wire Line
 	3950 6400 3950 6398
 Text Notes 8836 10226 0    60   ~ 0
 résistance\ntest AOP1\n
-Text Notes 9790 9944 0    60   ~ 0
-pont\n\n
-$Comp
-L Device:R R4
-U 1 1 5EC4DB73
-P 9426 8902
-F 0 "R4" V 9426 8902 50  0000 C CNN
-F 1 "625" V 9310 8902 50  0000 C CNN
-F 2 "Resistor_SMD:R_1206_3216Metric" V 9356 8902 50  0001 C CNN
-F 3 "~" H 9426 8902 50  0001 C CNN
-	1    9426 8902
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	10714 11202 11022 11202
-Wire Wire Line
-	8036 8902 9276 8902
 Wire Wire Line
 	9600 9890 9700 9890
 Wire Wire Line
@@ -1206,14 +1117,6 @@ Wire Wire Line
 Connection ~ 9600 9890
 Wire Wire Line
 	9600 9890 9600 9800
-Wire Notes Line
-	9268 8730 10656 8730
-Wire Notes Line
-	10656 8730 10656 9950
-Wire Notes Line
-	10656 9950 9272 9950
-Wire Notes Line
-	9272 9950 9272 8730
 Wire Wire Line
 	7050 8500 8700 8500
 $Comp
@@ -1240,35 +1143,11 @@ Wire Notes Line
 Wire Wire Line
 	9300 5900 9750 5900
 Wire Notes Line
-	9428 6344 12240 6344
-Wire Notes Line
-	12240 6344 12240 8010
-Wire Notes Line
-	9460 8010 9460 6336
-Wire Notes Line
 	9460 6336 9476 6336
 Wire Notes Line
 	9476 6336 9476 6344
-Wire Notes Line
-	9460 8010 12240 8010
 Wire Wire Line
 	8600 3050 9050 3050
-Wire Notes Line
-	9640 3316 9640 4440
-Wire Notes Line
-	9640 4440 8460 4440
-Wire Notes Line
-	8460 4440 8460 4448
-Wire Notes Line
-	8460 4448 8288 4448
-Wire Notes Line
-	8288 4448 8288 3316
-Wire Notes Line
-	8288 3316 9640 3316
-Wire Wire Line
-	9576 8902 9700 8902
-Wire Wire Line
-	9700 8902 9700 9150
 $Comp
 L librairie_projet:BAT54XV2 D2
 U 1 1 5EAF4ABA
@@ -1352,7 +1231,95 @@ Wire Wire Line
 Wire Wire Line
 	2250 3579 2250 6400
 Wire Wire Line
-	2250 3579 10400 3579
-Wire Wire Line
 	10400 2800 10400 3579
+Connection ~ 8750 9150
+Wire Wire Line
+	9576 8902 9700 8902
+Wire Wire Line
+	8036 8902 9276 8902
+$Comp
+L Device:R R4
+U 1 1 5EC4DB73
+P 9426 8902
+F 0 "R4" V 9426 8902 50  0000 C CNN
+F 1 "625" V 9310 8902 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 9356 8902 50  0001 C CNN
+F 3 "~" H 9426 8902 50  0001 C CNN
+	1    9426 8902
+	0    1    1    0   
+$EndComp
+Text Notes 9790 9944 0    60   ~ 0
+pont\n\n
+Text Notes 9920 9090 0    60   ~ 0
+résistance\ntest AOP1\n
+$Comp
+L Device:R R6
+U 1 1 5ECBB13D
+P 10150 9150
+F 0 "R6" V 10150 9200 50  0000 R CNN
+F 1 "625" V 10034 9150 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" V 10080 9150 50  0001 C CNN
+F 3 "~" H 10150 9150 50  0001 C CNN
+	1    10150 9150
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	9700 8902 9700 9150
+Wire Wire Line
+	9700 9150 9700 9200
+Connection ~ 9700 9150
+Wire Wire Line
+	10000 9150 9700 9150
+Wire Wire Line
+	10950 8350 10950 9150
+Wire Wire Line
+	9500 9500 9500 9800
+Wire Wire Line
+	10550 9150 10950 9150
+Wire Wire Line
+	10300 9150 10550 9150
+Connection ~ 10550 9150
+Wire Wire Line
+	10550 9150 10550 9500
+Wire Wire Line
+	9500 9500 10550 9500
+$Comp
+L librairie_projet:LT1818 U6
+U 1 1 5EBDCDD4
+P 9600 9800
+F 0 "U6" H 9900 10142 50  0000 C CNN
+F 1 "LT1818" H 9900 10051 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:TSOT-23-5" H 9900 10125 50  0001 C CIN
+F 3 "http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/DATASHEET/CD00003395.pdf" H 9900 9850 50  0001 C CNN
+	1    9600 9800
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	9500 9200 9500 9150
+Wire Wire Line
+	9500 9150 9150 9150
+Wire Wire Line
+	8750 9150 9150 9150
+Connection ~ 9150 9150
+$Comp
+L Device:C C22
+U 1 1 5ED3F822
+P 9150 9300
+F 0 "C22" H 9175 9400 50  0000 L CNN
+F 1 "100nF" H 9175 9200 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric" H 9188 9150 50  0001 C CNN
+F 3 "" H 9150 9300 50  0001 C CNN
+	1    9150 9300
+	-1   0    0    1   
+$EndComp
+Wire Notes Line
+	9396 9650 10040 9650
+Wire Notes Line
+	10040 9650 10040 10716
+Wire Notes Line
+	10040 10716 9366 10716
+Wire Notes Line
+	9366 10716 9366 9666
+Wire Notes Line
+	9366 9666 9346 9666
 $EndSCHEMATC
