@@ -1468,4 +1468,22 @@ Wire Wire Line
 Connection ~ 8544 7678
 Wire Wire Line
 	8544 7678 8876 7678
+Wire Notes Line
+	7512 7450 7512 8454
+Wire Notes Line
+	7512 8454 8650 8454
+Wire Notes Line
+	8650 8454 8650 7456
+Wire Notes Line
+	8650 7456 7512 7456
+Wire Notes Line
+	6408 2034 7080 2034
+Wire Notes Line
+	7080 2034 7080 3198
+Wire Notes Line
+	7080 3198 6340 3198
+Wire Notes Line
+	6340 3198 6340 2040
+Wire Notes Line
+	6340 2040 6402 2040
 $EndSCHEMATC
