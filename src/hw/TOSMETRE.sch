@@ -1128,8 +1128,6 @@ F 3 "https://www.diodes.com/assets/Datasheets/ds30396.pdf" H 7780 10404 50  0001
 	1    7780 10404
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	8036 8904 8036 9732
 Wire Notes Line
 	5978 9068 8256 9068
 Wire Notes Line
@@ -1157,8 +1155,6 @@ F 3 "https://www.diodes.com/assets/Datasheets/ds30396.pdf" H 6746 9732 50  0001 
 	1    6746 9732
 	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	8036 9732 7780 9732
 Connection ~ 7780 9732
 Wire Wire Line
 	7732 9732 7780 9732
@@ -1326,4 +1322,8 @@ Connection ~ 2250 6400
 Connection ~ 2250 3581
 Wire Wire Line
 	2250 3581 2250 6400
+Wire Wire Line
+	8036 9732 8036 8902
+Wire Wire Line
+	7780 9732 8036 9732
 $EndSCHEMATC

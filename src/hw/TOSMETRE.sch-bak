@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:TOSMETRE-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
@@ -564,7 +563,6 @@ Wire Wire Line
 Connection ~ 3700 6400
 Wire Wire Line
 	8600 2300 8600 3050
-Connection ~ 2250 6400
 Wire Wire Line
 	9150 9450 9150 9600
 Wire Wire Line
@@ -1228,10 +1226,6 @@ Wire Wire Line
 	6750 4650 9300 4650
 Wire Wire Line
 	9300 4650 9300 5900
-Wire Wire Line
-	2250 3579 2250 6400
-Wire Wire Line
-	10400 2800 10400 3579
 Connection ~ 8750 9150
 Wire Wire Line
 	9576 8902 9700 8902
@@ -1322,4 +1316,14 @@ Wire Notes Line
 	9366 10716 9366 9666
 Wire Notes Line
 	9366 9666 9346 9666
+Wire Wire Line
+	2250 3581 10400 3581
+Wire Wire Line
+	10400 2800 10400 3581
+Wire Wire Line
+	2250 3580 2250 3581
+Connection ~ 2250 6400
+Connection ~ 2250 3581
+Wire Wire Line
+	2250 3581 2250 6400
 $EndSCHEMATC
