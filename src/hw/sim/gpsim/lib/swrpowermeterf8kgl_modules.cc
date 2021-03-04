@@ -84,7 +84,8 @@ Module_Types available_modules[] = {
   */
 #endif
   { {"ltc2305", "LTC2305"},   LTC2305_Modules::ltc2305::construct },
-  { {"lt1818", "lt1818"},   LT1818_Modules::lt1818::construct },
+
+  //{ {"lt1818", "lt1818"},   LT1818_Modules::lt1818::construct },
 
   // No more modules
   { {0, 0}, 0}

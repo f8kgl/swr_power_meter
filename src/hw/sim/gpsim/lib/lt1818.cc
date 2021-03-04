@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <cstdio>
 
-//#define DEBUG
+#define DEBUG
 #if defined(DEBUG)
 #define Dprintf(arg) {printf("%s:%d ",__FILE__,__LINE__); printf arg; }
 #else
@@ -88,8 +88,8 @@ IOPort_lt1818::IOPort_lt1818(unsigned int _num_iopins)
 {
 }
 
-#define R2 1000
-#define R1 100
+#define R2 1
+#define R1 1
 #if 0
 #define R_inv 625
 #define END_TO_END_RESISTANCE 10000 //ne tient pas compte de la valeur calibrée

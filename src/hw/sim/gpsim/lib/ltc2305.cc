@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <cstdio>
 
-//#define DEBUG
+#define DEBUG
 #if defined(DEBUG)
 #define Dprintf(arg) {printf("%s:%d ",__FILE__,__LINE__); printf arg; }
 #else
@@ -91,13 +91,16 @@ IOPort_ltc2305::IOPort_ltc2305(unsigned int _num_iopins)
   : PortModule(_num_iopins), direction(0)
 {
 }
-
+#define R2 1
+#define R1 1
 #define VAL_CORR 0.0369435000074
 unsigned int IOPort_ltc2305::get(unsigned int config)
 {
   double voltage = 0.0;
-  double voltage0 = 0.0;
-  double voltage1 = 0.0;
+  double voltage_in0 = 0.0;
+  double voltage_in1 = 0.0;
+  double voltage_out_aop0 = 0.0;
+  double voltage_out_aop1 = 0.0;
 
     IOPIN *m_pin0;
     IOPIN *m_pin1;
@@ -105,44 +108,62 @@ unsigned int IOPort_ltc2305::get(unsigned int config)
     switch (config&0xC0) {
       case  ((0<<S_D)|(0<<O_S)):
       if ((m_pin0 = getPin(0))&&(m_pin1 = getPin(1))) {
-        voltage0 = m_pin0->get_nodeVoltage();
-        voltage1 = m_pin1->get_nodeVoltage();
-        voltage0 = (2.5*voltage0)/VAL_CORR;
-        voltage1 = (2.5*voltage1)/VAL_CORR;
-        if (voltage0 >4.096) {
+        voltage_in0 = m_pin0->get_nodeVoltage();
+        voltage_in1 = m_pin1->get_nodeVoltage();
+        voltage_in0 = (2.5*voltage_in0)/VAL_CORR;
+        voltage_in1 = (2.5*voltage_in1)/VAL_CORR;
+        voltage_out_aop0 = 2.5 - voltage_in0*(R2/R1);
+        voltage_out_aop1 = 2.5 - voltage_in1*(R2/R1);
+
+        Dprintf(("CH0 voltage_in=%lf voltage_AOP_out=%lf \n", voltage_in0, voltage_out_aop0));
+        Dprintf(("CH1 voltage_in=%lf voltage_AOP_out=%lf \n", voltage_in1, voltage_out_aop1));
+
+        if (voltage_out_aop0 >4.096) {
           voltage = 4.096;
         }
-        if (voltage1 >4.096) {
+        if (voltage_out_aop1 >4.096) {
           voltage = 4.096;
         }
-        voltage = voltage0 - voltage1;
+        voltage = voltage_out_aop0 - voltage_out_aop1;
       }
       break;
       case  ((0<<S_D)|(1<<O_S)):
       if ((m_pin0 = getPin(0))&&(m_pin1 = getPin(1))) {
-        voltage0 = m_pin0->get_nodeVoltage();
-        voltage1 = m_pin1->get_nodeVoltage();
-        voltage0 = (2.5*voltage0)/VAL_CORR;
-        voltage1 = (2.5*voltage1)/VAL_CORR;
-        if (voltage0 >4.096) {
+        voltage_in0 = m_pin0->get_nodeVoltage();
+        voltage_in1 = m_pin1->get_nodeVoltage();
+        voltage_in0 = (2.5*voltage_in0)/VAL_CORR;
+        voltage_in1 = (2.5*voltage_in1)/VAL_CORR;
+        voltage_out_aop0 = 2.5 - voltage_in0*(R2/R1);
+        voltage_out_aop1 = 2.5 - voltage_in1*(R2/R1);
+
+        Dprintf(("CH0 voltage_in=%lf voltage_AOP_out=%lf \n", voltage_in0, voltage_out_aop0));
+        Dprintf(("CH1 voltage_in=%lf voltage_AOP_out=%lf \n", voltage_in1, voltage_out_aop1));
+
+        if (voltage_out_aop0 >4.096) {
           voltage = 4.096;
         }
-        if (voltage1 >4.096) {
+        if (voltage_out_aop1 >4.096) {
           voltage = 4.096;
         }
-        voltage = - voltage0 + voltage1;
+        voltage = - voltage_out_aop0 + voltage_out_aop1;
       }
       break;
       case  ((1<<S_D)|(0<<O_S)):
       if ((m_pin0 = getPin(0))) {
-        voltage = m_pin0->get_nodeVoltage();
-        voltage = (2.5*voltage)/VAL_CORR;
+        voltage_in0 = m_pin0->get_nodeVoltage();
+        voltage_in0 = (2.5*voltage_in0)/VAL_CORR;
+        voltage_out_aop0 = 2.5 - voltage_in0*(R2/R1);
+        Dprintf(("CH0 voltage_in=%lf voltage_AOP_out=%lf \n", voltage_in0, voltage_out_aop0));
+        voltage = voltage_out_aop0;
       }
       break;
       case  ((1<<S_D)|(1<<O_S)):
       if ((m_pin1 = getPin(1))) {
-        voltage = m_pin1->get_nodeVoltage();
-        voltage = (2.5*voltage)/VAL_CORR;
+        voltage_in1 = m_pin1->get_nodeVoltage();
+        voltage_in1 = (2.5*voltage_in1)/VAL_CORR;
+        voltage_out_aop1 = 2.5 - voltage_in1*(R2/R1);
+        Dprintf(("CH1 voltage_in=%lf voltage_AOP_out=%lf \n", voltage_in1, voltage_out_aop1));
+        voltage = voltage_out_aop1;
       }
       break;
     }
@@ -152,7 +173,7 @@ unsigned int IOPort_ltc2305::get(unsigned int config)
     }
 
 
-    unsigned int adc_value = (unsigned int)( 4096* voltage )/4.096;
+    unsigned int adc_value = (unsigned int)( 4096* voltage )/5;
     adc_value = adc_value&0x0FFF; //12 bits
 
     Dprintf(("voltage=%lf (0x%04x)\n", voltage, adc_value));

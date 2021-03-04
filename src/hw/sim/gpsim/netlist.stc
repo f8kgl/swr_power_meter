@@ -70,14 +70,6 @@ ltc2305.Slave_Address = 8
 ltc2305.xpos = 180
 ltc2305.ypos = 204
 
-module load lt1818 lt1818_fwd
-lt1818_fwd.xpos = 180
-lt1818_fwd.ypos = 144
-
-module load lt1818 lt1818_ref
-lt1818_ref.xpos = 180
-lt1818_ref.ypos = 312
-
 module load push_button bande
 bande.xpos = 372
 bande.ypos = 348
@@ -86,8 +78,8 @@ module load pulldown gnd
 gnd.capacitance = 0
 gnd.resistance = 10000
 gnd.voltage = 0
-gnd.xpos = 144
-gnd.ypos = 456
+gnd.xpos = 180
+gnd.ypos = 365
 
 
 
@@ -114,22 +106,16 @@ node nD7
 attach nD7 lcd_display.d7 p18f1320.portb7
 
 node nFWD
-attach nFWD Vfwd.pin lt1818_fwd.in
+attach nFWD Vfwd.pin ltc2305.CH0
 
 node nREF
-attach nREF Vref.pin lt1818_ref.in
+attach nREF Vref.pin ltc2305.CH1
 
 node nSDA
 attach nSDA p18f1320.porta3 pullup_1.pin ltc2305.SDA
 
 node nSCL
 attach nSCL p18f1320.porta2 pullup_2.pin ltc2305.SCL
-
-node nFWD_adc
-attach nFWD_adc ltc2305.CH0 lt1818_fwd.out
-
-node nREF_adc
-attach nREF_adc lt1818_ref.out ltc2305.CH1
 
 node bp_bande
 attach bp_bande p18f1320.porta4 bande.out

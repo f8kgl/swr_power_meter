@@ -52,8 +52,13 @@ _f_adc_read_fwd_4
 	decfsz v_adc_count,f
 	goto _f_adc_read_fwd_4
 _f_adc_read_fwd_5
-	movlw 0x07
-	andwf v_adcfwd,f
+	movlw 0x08
+	iorwf v_adcfwd,f
+	comf  v_adcfwd,f
+	movlw 0x0F   ;le résultat est sur 12 bits
+	andwf v_adcfwd,f ;alors on masque les 4 bits de poids fort
+	comf  v_adcfwd+1,f
+	incf  v_adcfwd+1,f
 	return
 
 ;-----------------------------------------
@@ -90,8 +95,13 @@ _f_adc_read_ref_4
 	decfsz v_adc_count,f
 	goto _f_adc_read_ref_4
 _f_adc_read_ref_5
-	movlw 0x07
-	andwf v_adcref,f
+	movlw 0x08
+	iorwf v_adcref,f
+	comf  v_adcref,f
+	movlw 0x0F          ;le résultat est sur 12 bits
+	andwf v_adcref,f    ;alors on masque les 4 bits de poids de fort
+	comf  v_adcref+1,f
+	incf  v_adcref+1,f
 	return
 
 	global f_adc_read_fwd
