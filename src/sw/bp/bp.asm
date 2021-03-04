@@ -42,49 +42,8 @@ f_bp_test_calibration
   return
 
 
-f_bp_test_calp
-  movlw D'200'
-  movwf v_bp_timer
-  btfss BP_CALIBRATION_P
-  goto _f_bp_test_calp_4
-_f_bp_test_calp_2
-  call delay_10ms
-  btfss BP_CALIBRATION_P
-  goto _f_bp_test_calp_3
-  decfsz v_bp_timer,f
-  goto _f_bp_test_calp_2
-  call _f_bp_timeout
-  goto _f_bp_test_calp_4
-_f_bp_test_calp_3
-  bsf v_bp_status,BIT_CALIBRATION_P
-_f_bp_test_calp_4
-  return
-
-
-f_bp_test_calm
-  movlw D'200'
-  movwf v_bp_timer
-  btfss BP_CALIBRATION_M
-  goto _f_bp_test_calm_4
-_f_bp_test_calm_2
-  call delay_10ms
-  btfss BP_CALIBRATION_M
-  goto _f_bp_test_calm_3
-  decfsz v_bp_timer,f
-  goto _f_bp_test_calm_2
-  call _f_bp_timeout
-  goto _f_bp_test_calm_4
-_f_bp_test_calm_3
-  bsf v_bp_status,BIT_CALIBRATION_M
-_f_bp_test_calm_4
-  return
-
-
   global f_bp_init
-  global f_bp_test_calm
-  global f_bp_test_calp
   global f_bp_test_bande
-  global f_bp_test_calibration
   global v_bp_status
 
   end

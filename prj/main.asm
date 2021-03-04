@@ -24,8 +24,6 @@
 	extern f_adc_read_ref
 	extern f_bp_init
 	extern f_bp_test_bande
-	extern f_bp_test_calm
-	extern f_bp_test_calp
 	extern delay_250ms
 	extern v_bp_status
 	extern v_log_data

@@ -82,14 +82,6 @@ module load push_button bande
 bande.xpos = 372
 bande.ypos = 348
 
-module load push_button cal_p
-cal_p.xpos = 372
-cal_p.ypos = 396
-
-module load push_button cal_m
-cal_m.xpos = 372
-cal_m.ypos = 444
-
 module load pulldown gnd
 gnd.capacitance = 0
 gnd.resistance = 10000
@@ -138,12 +130,6 @@ attach nFWD_adc ltc2305.CH0 lt1818_fwd.out
 
 node nREF_adc
 attach nREF_adc lt1818_ref.out ltc2305.CH1
-
-node bp_cal_p
-attach bp_cal_p p18f1320.porta0 cal_p.out
-
-node bp_cal_m
-attach bp_cal_m p18f1320.porta1 cal_m.out
 
 node bp_bande
 attach bp_bande p18f1320.porta4 bande.out
