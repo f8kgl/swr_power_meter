@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:TOSMETRE-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
@@ -48,36 +47,10 @@ F 3 "" H 3550 4200 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	2250 6700 2250 6800
-Wire Wire Line
 	4400 6300 3950 6300
 Connection ~ 3950 6400
 Wire Wire Line
 	3950 6300 3950 6400
-$Comp
-L power:GNDREF #PWR01
-U 1 1 5A343ADA
-P 2250 6800
-F 0 "#PWR01" H 2250 6550 50  0001 C CNN
-F 1 "GNDREF" V 2250 6650 50  0000 R CNN
-F 2 "" H 2250 6800 50  0001 C CNN
-F 3 "" H 2250 6800 50  0001 C CNN
-	1    2250 6800
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:CP_Small C5
-U 1 1 5AA53058
-P 2250 6600
-F 0 "C5" H 2260 6670 50  0000 L CNN
-F 1 "CP_Small" H 2260 6520 50  0000 L CNN
-F 2 "Capacitor_SMD:C_1206_3216Metric" H 2250 6600 50  0001 C CNN
-F 3 "" H 2250 6600 50  0001 C CNN
-	1    2250 6600
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2250 6500 2250 6400
 $Comp
 L Device:R R3
 U 1 1 5EC330C0
@@ -1086,7 +1059,6 @@ Wire Wire Line
 	2250 3581 10400 3581
 Wire Wire Line
 	2250 3580 2250 3581
-Connection ~ 2250 6400
 Connection ~ 2250 3581
 Wire Wire Line
 	2250 3581 2250 6400
