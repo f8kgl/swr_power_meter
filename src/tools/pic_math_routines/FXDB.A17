@@ -1,0 +1,2685 @@
+;	RCS Header $Id: fxdb.a17 2.4 1997/03/22 03:11:13 F.J.Testa Exp $
+
+;	$Revision: 2.4 $
+
+;       PIC17 FIXED POINT DIVIDE ROUTINES B
+;
+;       Input:  fixed point arguments in AARG and BARG
+;
+;       Output: quotient AARG/BARG followed by remainder in REM
+;
+;       All timings are worst case cycle counts
+;
+;       It is useful to note that the additional unsigned routines requiring a non-power of two
+;       argument can be called in a signed divide application where it is known that the
+;       respective argument is nonnegative, thereby offering some improvement in
+;       performance.
+;
+;         Routine            Clocks     Function
+;
+;       FXD2416S    328 24 bit/16 bit -> 24.16 signed fixed point divide
+;
+;       FXD2416U    365 24 bit/16 bit -> 24.16 unsigned fixed point divide
+;
+;       FXD2415U    294 24 bit/15 bit -> 24.15 unsigned fixed point divide
+;
+;       FXD2315U    287 23 bit/15 bit -> 23.15 unsigned fixed point divide
+;
+;
+;       FXD1616S    227 16 bit/16 bit -> 16.16 signed fixed point divide
+;
+;       FXD1616U    244 16 bit/16 bit -> 16.16 unsigned fixed point divide
+;
+;       FXD1615U    197 16 bit/15 bit -> 16.15 unsigned fixed point divide
+;
+;       FXD1515U    191 15 bit/15 bit -> 15.15 unsigned fixed point divide
+;
+;
+;       FXD1608S    159 16 bit/08 bit -> 16.08 signed fixed point divide
+;
+;       FXD1608U    196 16 bit/08 bit -> 16.08 unsigned fixed point divide
+;
+;       FXD1607U    130 16 bit/07 bit -> 16.07 unsigned fixed point divide
+;
+;       FXD1507U    125 15 bit/07 bit -> 15.07 unsigned fixed point divide
+;
+;
+;       FXD0808S     88 08 bit/08 bit -> 08.08 signed fixed point divide
+;
+;       FXD0808U     75 08 bit/08 bit -> 08.08 unsigned fixed point divide
+;
+;       FXD0807U     66 08 bit/07 bit -> 08.07 unsigned fixed point divide
+;
+;       FXD0707U     61 07 bit/07 bit -> 07.07 unsigned fixed point divide
+;
+;**********************************************************************************************
+;**********************************************************************************************
+;
+;       24/16 Bit Division Macros
+;
+SDIV2416        macro
+;
+;       Max Timing:     5+8+22*12+6 = 283 clks
+;
+;       Min Timing:     5+8+22*11+3 = 258 clks
+;
+;       PM: 5+8+22*14+6 = 327           DM: 8
+;
+                variable i
+
+                MOVFP           BARGB1,WREG
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                RLCF            AARGB0, F
+
+                RLCF            AARGB0,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+                RLCF            AARGB0, F
+
+                variable i = D'2'
+
+                while i < D'8'
+
+                RLCF            AARGB0,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB0,LSB
+                GOTO            SADD46#v(i)
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                GOTO            SOK46#v(i)
+
+SADD46#v(i)     ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+
+SOK46#v(i)      RLCF            AARGB0, F
+
+                variable i=i+1
+
+                endw
+
+                RLCF            AARGB1,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB0,LSB
+                GOTO            SADD468
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                GOTO            SOK468
+
+SADD468         ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+
+SOK468          RLCF            AARGB1, F
+
+                variable i = D'9'
+
+                while i < D'16'
+
+                RLCF            AARGB1,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB1,LSB
+                GOTO            SADD46#v(i)
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                GOTO            SOK46#v(i)
+
+SADD46#v(i)     ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+
+SOK46#v(i)      RLCF            AARGB1, F
+
+                variable i=i+1
+
+                endw
+
+                RLCF            AARGB2,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB1,LSB
+                GOTO            SADD4616
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                GOTO            SOK4616
+
+SADD4616        ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+
+SOK4616         RLCF            AARGB2, F
+
+
+                variable i = D'17'
+
+                while i < D'24'
+
+                RLCF            AARGB2,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB2,LSB
+                GOTO            SADD46#v(i)
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                GOTO            SOK46#v(i)
+
+SADD46#v(i)     ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+
+SOK46#v(i)      RLCF            AARGB2, F
+
+                variable i=i+1
+
+                endw
+
+                BTFSC           AARGB2,LSB
+                GOTO            SOK46
+                MOVFP           BARGB1,WREG
+                ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+SOK46
+
+                endm
+
+
+UDIV2416  macro
+;
+;       restore = 15/20 clks,  nonrestore = 11/14 clks
+;
+;       Max Timing: 16*15+1+8*20 = 401 clks
+;
+;       Min Timing: 16*11+1+8*14 = 289 clks
+;
+;       PM:  16*15+1+8*20 = 401         DM: 8
+;
+                variable         i
+
+                variable i = D'0'
+
+                while i < D'8'
+
+                RLCF            AARGB0,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                BTFSC           _C
+                GOTO            UOK46#v(i)              
+                MOVFP           BARGB1,WREG
+                ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+                BCF             _C
+
+UOK46#v(i)      RLCF            AARGB0, F
+
+                variable i=i+1
+
+                endw
+
+                variable i = D'8'
+
+                while i < D'16'
+
+                RLCF            AARGB1,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                BTFSC           _C
+                GOTO            UOK46#v(i)              
+                MOVFP           BARGB1,WREG
+                ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+                BCF             _C
+
+UOK46#v(i)      RLCF            AARGB1, F
+
+                variable i=i+1
+
+                endw
+
+                CLRF            TEMP, F
+
+                variable i = D'16'
+
+                while i < D'24'
+
+                RLCF            AARGB2,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                RLCF            TEMP, F
+                MOVFP           BARGB1,WREG
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                CLRF            WREG, F
+                SUBWFB          TEMP, F
+                BTFSC           _C
+                GOTO            UOK46#v(i)              
+                MOVFP           BARGB1,WREG
+                ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+                CLRF            WREG, F
+                ADDWFC          TEMP, F
+                BCF             _C
+
+UOK46#v(i)      RLCF            AARGB2, F
+
+                variable i=i+1
+
+                endw
+
+
+                endm
+
+NDIV2416        macro
+;
+;       Max Timing:     10+23*15+6 = 361 clks
+;
+;       Min Timing: 10+23*14+3 = 335 clks
+;
+;       PM: 10+23*19+6 = 450            DM: 8
+;
+                variable i
+
+                RLCF            AARGB0,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                CLRF            TEMP,W
+                SUBWFB          TEMP, F
+                RLCF            AARGB0, F
+
+                variable i = D'1'
+
+                while i < D'8'
+
+                RLCF            AARGB0,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                RLCF            TEMP, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB0,LSB
+                GOTO            NADD46#v(i)
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                CLRF            WREG, F
+                SUBWFB          TEMP, F
+                GOTO            NOK46#v(i)
+
+NADD46#v(i)     ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+                CLRF            WREG, F
+                ADDWFC          TEMP, F
+        
+NOK46#v(i)      RLCF            AARGB0, F
+
+                variable i=i+1
+
+                endw
+
+                RLCF            AARGB1,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                RLCF            TEMP, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB0,LSB
+                GOTO            NADD468
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                CLRF            WREG, F
+                SUBWFB          TEMP, F
+                GOTO            NOK468
+
+NADD468         ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+                CLRF            WREG, F
+                ADDWFC          TEMP, F
+        
+NOK468          RLCF            AARGB1, F
+
+                variable i = D'9'
+
+                while i < D'16'
+
+                RLCF            AARGB1,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                RLCF            TEMP, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB1,LSB
+                GOTO            NADD46#v(i)
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                CLRF            WREG, F
+                SUBWFB          TEMP, F
+                GOTO            NOK46#v(i)
+
+NADD46#v(i)     ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+                CLRF            WREG, F
+                ADDWFC          TEMP, F
+        
+NOK46#v(i)      RLCF            AARGB1, F
+
+                variable i=i+1
+
+                endw
+
+                RLCF            AARGB2,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                RLCF            TEMP, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB1,LSB
+                GOTO            NADD4616
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                CLRF            WREG, F
+                SUBWFB          TEMP, F
+                GOTO            NOK4616
+
+NADD4616        ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+                CLRF            WREG, F
+                ADDWFC          TEMP, F
+        
+NOK4616         RLCF            AARGB2, F
+
+                variable i = D'17'
+
+                while i < D'24'
+
+                RLCF            AARGB2,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                RLCF            TEMP, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB2,LSB
+                GOTO            NADD46#v(i)
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                CLRF            WREG, F
+                SUBWFB          TEMP, F
+                GOTO            NOK46#v(i)
+
+NADD46#v(i)     ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+                CLRF            WREG, F
+                ADDWFC          TEMP, F
+        
+NOK46#v(i)      RLCF            AARGB2, F
+
+                variable i=i+1
+
+                endw
+
+                BTFSC           AARGB2,LSB
+                GOTO            NOK46
+                MOVFP           BARGB1,WREG
+                ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+
+NOK46
+                endm
+
+
+UDIV2415        macro
+;
+;       Max Timing:     8+23*12+6 = 290 clks
+;
+;       Min Timing:     8+23*11+3 = 264 clks
+;
+;       PM: 8+23*14+6 = 336                     DM: 8
+;
+                variable i
+
+                RLCF            AARGB0,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                RLCF            AARGB0, F
+
+                variable i = D'1'
+
+                while i < D'8'
+
+                RLCF            AARGB0,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB0,LSB
+                GOTO            UADD45#v(i)
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                GOTO            UOK45#v(i)
+
+UADD45#v(i)     ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+
+UOK45#v(i)      RLCF            AARGB0, F
+
+                variable i=i+1
+
+                endw
+
+                RLCF            AARGB1,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB0,LSB
+                GOTO            UADD458
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                GOTO            UOK458
+
+UADD458         ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+
+UOK458          RLCF            AARGB1, F
+
+                variable i = D'9'
+
+                while i < D'16'
+
+                RLCF            AARGB1,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB1,LSB
+                GOTO            UADD45#v(i)
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                GOTO            UOK45#v(i)
+
+UADD45#v(i)     ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+
+UOK45#v(i)      RLCF            AARGB1, F
+
+                variable i=i+1
+
+                endw
+
+                RLCF            AARGB2,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB1,LSB
+                GOTO            UADD4516
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                GOTO            UOK4516
+
+UADD4516        ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+
+UOK4516         RLCF            AARGB2, F
+
+
+                variable i = D'17'
+
+                while i < D'24'
+
+                RLCF            AARGB2,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB2,LSB
+                GOTO            UADD45#v(i)
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                GOTO            UOK45#v(i)
+
+UADD45#v(i)     ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+
+UOK45#v(i)      RLCF            AARGB2, F
+
+                variable i=i+1
+
+                endw
+
+                BTFSC           AARGB2,LSB
+                GOTO            UOK45
+                MOVFP           BARGB1,WREG
+                ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+UOK45
+
+                endm
+
+
+UDIV2315        macro
+;
+;       Max Timing:     5+8+22*12+6 = 283 clks
+;
+;       Min Timing:     5+8+22*11+3 = 258 clks
+;
+;       PM: 5+8+22*14+6 = 327           DM: 8
+;
+                variable i
+
+                MOVFP           BARGB1,WREG
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                RLCF            AARGB0, F
+
+                RLCF            AARGB0,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+                RLCF            AARGB0, F
+
+                variable i = D'2'
+
+                while i < D'8'
+
+                RLCF            AARGB0,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB0,LSB
+                GOTO            UADD35#v(i)
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                GOTO            UOK35#v(i)
+
+UADD35#v(i)     ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+
+UOK35#v(i)      RLCF            AARGB0, F
+
+                variable i=i+1
+
+                endw
+
+                RLCF            AARGB1,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB0,LSB
+                GOTO            UADD358
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                GOTO            UOK358
+
+UADD358         ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+
+UOK358          RLCF            AARGB1, F
+
+                variable i = D'9'
+
+                while i < D'16'
+
+                RLCF            AARGB1,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB1,LSB
+                GOTO            UADD35#v(i)
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                GOTO            UOK35#v(i)
+
+UADD35#v(i)     ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+
+UOK35#v(i)      RLCF            AARGB1, F
+
+                variable i=i+1
+
+                endw
+
+                RLCF            AARGB2,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB1,LSB
+                GOTO            UADD3516
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                GOTO            UOK3516
+
+UADD3516        ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+
+UOK3516         RLCF            AARGB2, F
+
+
+                variable i = D'17'
+
+                while i < D'24'
+
+                RLCF            AARGB2,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB2,LSB
+                GOTO            UADD35#v(i)
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB          REMB0, F
+                GOTO            UOK35#v(i)
+
+UADD35#v(i)     ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+
+UOK35#v(i)      RLCF            AARGB2, F
+
+                variable i=i+1
+
+                endw
+
+
+                BTFSC           AARGB2,LSB
+                GOTO            UOK35
+                MOVFP           BARGB1,WREG
+                ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC          REMB0, F
+UOK35
+
+                endm
+
+;**********************************************************************************************
+;**********************************************************************************************
+;
+;       16/16 Bit Division Macros
+;
+SDIV1616        macro
+;
+;       Max Timing:     5+8+14*12+6 = 187 clks
+;
+;       Min Timing:     5+8+14*11+6 = 173 clks
+;
+;       PM: 5+8+14*14+6 = 215           DM: 6
+;
+                variable i
+
+                MOVFP           BARGB1,WREG
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB  	REMB0, F
+                RLCF            AARGB0, F
+
+                RLCF            AARGB0,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+                RLCF            AARGB0, F
+
+                variable i = D'2'
+
+                while i < D'8'
+
+                RLCF            AARGB0,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+
+                BTFSS           AARGB0,LSB
+                GOTO            SADD66#v(i)
+
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB  	REMB0, F
+                GOTO            SOK66#v(i)
+
+SADD66#v(i)     ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+        
+SOK66#v(i)      RLCF            AARGB0, F
+
+                variable i=i+1
+
+                endw
+
+                RLCF            AARGB1,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+
+                BTFSS           AARGB0,LSB
+                GOTO            SADD668
+
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB  	REMB0, F
+                GOTO            SOK668
+
+SADD668         ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+        
+SOK668          RLCF            AARGB1, F
+
+                variable i = D'9'
+
+                while i < D'16'
+
+                RLCF            AARGB1,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+
+                BTFSS           AARGB1,LSB
+                GOTO            SADD66#v(i)
+
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB  	REMB0, F
+                GOTO            SOK66#v(i)
+
+SADD66#v(i)     ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+        
+SOK66#v(i)      RLCF            AARGB1, F
+
+                variable i=i+1
+
+                endw
+
+                BTFSC           AARGB1,LSB
+                GOTO            SOK66
+                MOVFP           BARGB1,WREG
+                ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+SOK66
+
+                endm
+
+UDIV1616  macro
+;
+;       restore = 15 clks,  nonrestore = 11 clks
+;
+;       Max Timing: 8*15+8*15 = 240 clks
+;
+;       Min Timing: 8*11+8*11 = 176 clks
+;
+;       PM: 8*15+8*15 = 240             DM: 6
+;
+                variable         i
+
+                variable i = D'0'
+
+                while i < D'8'
+
+                RLCF            AARGB0,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB  	REMB0, F
+
+                BTFSC           _C
+                GOTO            UOK66#v(i)              
+                MOVFP           BARGB1,WREG
+                ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+                BCF             _C
+UOK66#v(i)      RLCF            AARGB0, F
+
+                variable i=i+1
+
+                endw
+
+                variable i = D'8'
+
+                while i < D'16'
+
+                RLCF            AARGB1,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB  	REMB0, F
+
+                BTFSC           _C
+                GOTO            UOK66#v(i)              
+                MOVFP           BARGB1,WREG
+                ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+                BCF             _C
+UOK66#v(i)      RLCF            AARGB1, F
+
+                variable i=i+1
+
+                endw
+
+                endm
+
+NDIV1616        macro
+;
+;       Max Timing:     9+15*15+6 = 240 clks
+;
+;       Min Timing:     9+15*14+6 = 225 clks
+;
+;       PM: 9+15*19+6 = 300             DM: 7
+;
+                variable i
+
+                RLCF            AARGB0,W
+                RLCF            REMB1, F
+                MOVFP           BARGB1,WREG
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB  	REMB0, F
+                CLRF            TEMP,W
+                SUBWFB  	TEMP, F
+                RLCF            AARGB0, F
+
+                variable i = D'1'
+
+                while i < D'8'
+
+                RLCF            AARGB0,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                RLCF            TEMP, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB0,LSB
+                GOTO            NADD66#v(i)
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB  	REMB0, F
+                CLRF            WREG, F
+                SUBWFB  	TEMP, F
+                GOTO            NOK66#v(i)
+
+NADD66#v(i)     ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+                CLRF            WREG, F
+                ADDWFC  	TEMP, F
+                
+NOK66#v(i)      RLCF            AARGB0, F
+
+                variable i=i+1
+
+                endw
+
+                RLCF            AARGB1,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                RLCF            TEMP, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB0,LSB
+                GOTO            NADD668
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB  	REMB0, F
+                CLRF            WREG, F
+                SUBWFB  	TEMP, F
+                GOTO            NOK668
+
+NADD668         ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+                CLRF            WREG, F
+                ADDWFC  	TEMP, F
+                
+NOK668          RLCF            AARGB1, F
+
+                variable i = D'9'
+
+                while i < D'16'
+
+                RLCF            AARGB1,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                RLCF            TEMP, F
+                MOVFP           BARGB1,WREG
+                BTFSS           AARGB1,LSB
+                GOTO            NADD66#v(i)
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB  	REMB0, F
+                CLRF            WREG, F
+                SUBWFB  	TEMP, F
+                GOTO            NOK66#v(i)
+
+NADD66#v(i)     ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+                CLRF            WREG, F
+                ADDWFC  	TEMP, F
+                
+NOK66#v(i)      RLCF            AARGB1, F
+
+                variable i=i+1
+
+                endw
+
+                BTFSC           AARGB1,LSB
+                GOTO            NOK66
+                MOVFP           BARGB1,WREG
+                ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+
+NOK66
+                endm
+
+UDIV1615        macro
+;
+;       Max Timing:     7+15*12+6 = 193 clks
+;
+;       Min Timing:     7+15*11+6 = 178 clks
+;
+;       PM: 7+15*14+6 = 213             DM: 6
+;
+                variable i
+
+                RLCF            AARGB0,W
+                RLCF            REMB1, F
+                MOVFP           BARGB1,WREG
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB  	REMB0, F
+                RLCF            AARGB0, F
+
+                variable i = D'1'
+
+                while i < D'8'
+
+                RLCF            AARGB0,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+
+                BTFSS           AARGB0,LSB
+                GOTO            UADD65#v(i)
+
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB  	REMB0, F
+                GOTO            UOK65#v(i)
+
+UADD65#v(i)     ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+        
+UOK65#v(i)      RLCF            AARGB0, F
+
+                variable i=i+1
+
+                endw
+
+                RLCF            AARGB1,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+
+                BTFSS           AARGB0,LSB
+                GOTO            UADD658
+
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB  	REMB0, F
+                GOTO            UOK658
+
+UADD658         ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+        
+UOK658          RLCF            AARGB1, F
+
+                variable i = D'9'
+
+                while i < D'16'
+
+                RLCF            AARGB1,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+
+                BTFSS           AARGB1,LSB
+                GOTO            UADD65#v(i)
+
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB  	REMB0, F
+                GOTO            UOK65#v(i)
+
+UADD65#v(i)     ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+        
+UOK65#v(i)      RLCF            AARGB1, F
+
+                variable i=i+1
+
+                endw
+
+                BTFSC           AARGB1,LSB
+                GOTO            UOK65
+                MOVFP           BARGB1,WREG
+                ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+UOK65
+
+                endm
+
+
+UDIV1515        macro
+;
+;       Max Timing:     5+8+14*12+6 = 187 clks
+;
+;       Min Timing:     5+8+14*11+6 = 173 clks
+;
+;       PM: 5+8+14*14+6 = 215           DM: 6
+;
+                variable i
+
+                MOVFP           BARGB1,WREG
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB  	REMB0, F
+                RLCF            AARGB0, F
+
+                RLCF            AARGB0,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+                ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+                RLCF            AARGB0, F
+
+                variable i = D'2'
+
+                while i < D'8'
+
+                RLCF            AARGB0,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+
+                BTFSS           AARGB0,LSB
+                GOTO            UADD55#v(i)
+
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB  	REMB0, F
+                GOTO            UOK55#v(i)
+
+UADD55#v(i)     ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+        
+UOK55#v(i)      RLCF            AARGB0, F
+
+                variable i=i+1
+
+                endw
+
+                RLCF            AARGB1,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+
+                BTFSS           AARGB0,LSB
+                GOTO            UADD558
+
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB  	REMB0, F
+                GOTO            UOK558
+
+UADD558         ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+        
+UOK558          RLCF            AARGB1, F
+
+                variable i = D'9'
+
+                while i < D'16'
+
+                RLCF            AARGB1,W
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB1,WREG
+
+                BTFSS           AARGB1,LSB
+                GOTO            UADD55#v(i)
+
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB  	REMB0, F
+                GOTO            UOK55#v(i)
+
+UADD55#v(i)     ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+        
+UOK55#v(i)      RLCF            AARGB1, F
+
+
+                variable i=i+1
+
+                endw
+
+                BTFSC           AARGB1,LSB
+                GOTO            UOK55
+                MOVFP           BARGB1,WREG
+                ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+UOK55
+
+                endm
+
+;_______________________________________________________________________
+;
+;       Extra 16 Bit Divide Macros
+;       
+DIV1616         macro
+;
+;       Timing: restore = 16 clks,  nonrestore = 13 clks        16*16 = 256 clks
+;
+                variable i
+
+                variable i = D'0'
+
+                while i < D'16'
+
+                RLCF            AARGB1, F
+                RLCF            AARGB0, F
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+
+                MOVFP           BARGB1,WREG
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB  	REMB0, F
+
+                BTFSS           _C
+                GOTO            RS1616_#v( i )
+
+                BSF             AARGB1,LSB
+                GOTO            OK1616_#v( i )
+
+RS1616_#v( i )  MOVFP           BARGB1,WREG
+                ADDWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                ADDWFC  	REMB0, F
+                BCF             AARGB1,LSB
+
+OK1616_#v(i)
+
+                variable i=i+1
+
+                endw
+
+                endm
+
+DIVMAC          macro
+;
+;       Timing: restore = 19 clks,  nonrestore = 14 clks        16*19 = 304 clks
+;
+                variable i
+
+                variable i = D'0'
+
+                while i < D'16'
+
+                RLCF            AARGB1, F
+                RLCF            AARGB0, F
+                RLCF            REMB1, F
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+                SUBWF           REMB0,W
+                BTFSS           _Z
+                GOTO            notz#v( i )
+                MOVFP           BARGB1,WREG
+                SUBWF           REMB1,W
+
+notz#v( i )     BTFSS           _C
+                GOTO            nosub#v( i )
+
+                MOVFP           BARGB1,WREG
+                SUBWF           REMB1, F
+                MOVFP           BARGB0,WREG
+                SUBWFB  	REMB0, F
+                BSF             AARGB1,LSB
+                GOTO            ok#v(i)
+
+nosub#v(i)      BCF             AARGB1,LSB
+
+ok#v(i)
+
+                variable i=i+1
+
+                endw
+
+                endm
+
+        
+;**********************************************************************************************
+;**********************************************************************************************
+;
+;       16/08 BIT Division Macros
+;
+SDIV1608        macro
+;
+;       Max Timing:     3+5+14*8+2 = 122 clks
+;
+;       Min Timing:     3+5+14*8+2 = 122 clks
+;
+;       PM: 3+5+14*8+2 = 122            DM: 4
+;
+                variable i
+
+                MOVFP           BARGB0,WREG
+                SUBWF           REMB0, F
+                RLCF            AARGB0, F
+
+                RLCF            AARGB0,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+                ADDWF           REMB0, F
+                RLCF            AARGB0, F
+
+                variable i = D'2'
+
+                while i < D'8'
+
+                RLCF            AARGB0,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLCF            AARGB0, F
+
+                variable i=i+1
+
+                endw
+
+                RLCF            AARGB1,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLCF            AARGB1, F
+
+                variable i = D'9'
+
+                while i < D'16'
+
+                RLCF            AARGB1,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+
+                BTFSC           AARGB1,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB1,LSB
+                ADDWF           REMB0, F
+                RLCF            AARGB1, F
+
+                variable i=i+1
+
+                endw
+
+                BTFSS           AARGB1,LSB
+                ADDWF           REMB0, F
+
+                endm
+
+UDIV1608  macro
+;
+;       restore = 9/15 clks,  nonrestore = 8/11 clks
+;
+;       Max Timing: 8*9+1+8*15 = 193 clks       max
+;
+;       Min Timing: 8*8+1+8*11 = 153 clks       min
+;
+;       PM: 8*9+1+8*15 = 193            DM: 4
+;
+                variable         i
+
+                variable i = D'0'
+
+                while i < D'8'
+
+                RLCF            AARGB0,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+                SUBWF           REMB0, F
+
+                BTFSC           _C
+                GOTO            UOK68#v(i)              
+                ADDWF           REMB0, F
+                BCF             _C
+UOK68#v(i)      RLCF            AARGB0, F
+
+                variable i=i+1
+
+                endw
+
+                CLRF            TEMP, F
+
+                variable i = D'8'
+
+                while i < D'16'
+
+                RLCF            AARGB1,W
+                RLCF            REMB0, F
+                RLCF            TEMP, F
+                MOVFP           BARGB0,WREG
+                SUBWF           REMB0, F
+                CLRF            WREG, F
+                SUBWFB  	TEMP, F
+
+                BTFSC           _C
+                GOTO            UOK68#v(i)              
+                MOVFP           BARGB0,WREG
+                ADDWF           REMB0, F
+                CLRF            WREG, F
+                ADDWFC  	TEMP, F
+                BCF             _C
+UOK68#v(i)      RLCF            AARGB1, F
+
+                variable i=i+1
+
+                endw
+
+                endm
+
+NDIV1608        macro
+;
+;       Max Timing:     7+15*12+3 = 190 clks
+;
+;       Min Timing: 7+15*11+3 = 175 clks
+;
+;       PM: 7+15*14+3 = 220             DM: 5
+;
+                variable i
+
+                RLCF            AARGB0,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+                SUBWF           REMB0, F
+                CLRF            TEMP,W
+                SUBWFB  	TEMP, F
+                RLCF            AARGB0, F
+
+                variable i = D'1'
+
+                while i < D'8'
+
+                RLCF            AARGB0,W
+                RLCF            REMB0, F
+                RLCF            TEMP, F
+                MOVFP           BARGB0,WREG
+
+                BTFSS           AARGB0,LSB
+                GOTO            NADD68#v(i)
+                SUBWF           REMB0, F
+                CLRF            WREG, F
+                SUBWFB  	TEMP, F
+                GOTO            NOK68#v(i)
+
+NADD68#v(i)     ADDWF           REMB0, F
+                CLRF            WREG, F
+                ADDWFC  	TEMP, F
+
+NOK68#v(i)      RLCF            AARGB0, F
+
+                variable i=i+1
+
+                endw
+
+                RLCF            AARGB1,W
+                RLCF            REMB0, F
+                RLCF            TEMP, F
+                MOVFP           BARGB0,WREG
+
+                BTFSS           AARGB0,LSB
+                GOTO            NADD688
+                SUBWF           REMB0, F
+                CLRF            WREG, F
+                SUBWFB  	TEMP, F
+                GOTO            NOK688
+
+NADD688         ADDWF           REMB0, F
+                CLRF            WREG, F
+                ADDWFC  	TEMP, F
+
+NOK688          RLCF            AARGB1, F
+
+                variable i = D'9'
+
+                while i < D'16'
+
+                RLCF            AARGB1,W
+                RLCF            REMB0, F
+                RLCF            TEMP, F
+                MOVFP           BARGB0,WREG
+
+                BTFSS           AARGB1,LSB
+                GOTO            NADD68#v(i)
+                SUBWF           REMB0, F
+                CLRF            WREG, F
+                SUBWFB  	TEMP, F
+                GOTO            NOK68#v(i)
+
+NADD68#v(i)     ADDWF           REMB0, F
+                CLRF            WREG, F
+                ADDWFC  	TEMP, F
+
+NOK68#v(i)      RLCF            AARGB1, F
+
+
+                variable i=i+1
+
+                endw
+
+                BTFSS           AARGB1,LSB
+                MOVFP           BARGB0,WREG
+                ADDWF           REMB0, F
+
+                endm
+
+
+UDIV1607        macro
+;
+;       Max Timing:     5+15*8+2 = 127 clks
+;
+;       Min Timing:     5+15*8+2 = 127 clks
+;
+;       PM: 5+15*8+2 = 127              DM: 4
+;
+                variable i
+
+                RLCF            AARGB0,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+                SUBWF           REMB0, F
+                RLCF            AARGB0, F
+
+                variable i = D'1'
+
+                while i < D'8'
+
+                RLCF            AARGB0,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLCF            AARGB0, F
+
+                variable i=i+1
+
+                endw
+
+                RLCF            AARGB1,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLCF            AARGB1, F
+
+                variable i = D'9'
+
+                while i < D'16'
+
+                RLCF            AARGB1,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+
+                BTFSC           AARGB1,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB1,LSB
+                ADDWF           REMB0, F
+                RLCF            AARGB1, F
+
+                variable i=i+1
+
+                endw
+
+                BTFSS           AARGB1,LSB
+                ADDWF           REMB0, F
+
+                endm
+
+UDIV1507        macro
+;
+;       Max Timing:     3+5+14*8+2 = 122 clks
+;
+;       Min Timing:     3+5+14*8+2 = 122 clks
+;
+;       PM: 3+5+14*8+2 = 122            DM: 4
+;
+                variable i
+
+                MOVFP           BARGB0,WREG
+                SUBWF           REMB0, F
+                RLCF            AARGB0, F
+
+                RLCF            AARGB0,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+                ADDWF           REMB0, F
+                RLCF            AARGB0, F
+
+                variable i = D'2'
+
+                while i < D'8'
+
+                RLCF            AARGB0,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLCF            AARGB0, F
+
+                variable i=i+1
+
+                endw
+
+                RLCF            AARGB1,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLCF            AARGB1, F
+
+                variable i = D'9'
+
+                while i < D'16'
+
+                RLCF            AARGB1,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+
+                BTFSC           AARGB1,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB1,LSB
+                ADDWF           REMB0, F
+                RLCF            AARGB1, F
+
+                variable i=i+1
+
+                endw
+
+                BTFSS           AARGB1,LSB
+                ADDWF           REMB0, F
+
+                endm
+
+        
+;**********************************************************************************************
+;**********************************************************************************************
+;
+;       08/08 BIT Division Macros
+;
+SDIV0808        macro
+;
+;       Max Timing:     3+5+6*8+2 = 58 clks
+;
+;       Min Timing:     3+5+6*8+2 = 58 clks
+;
+;       PM: 3+5+6*8+2 = 58              DM: 3
+;
+                variable i
+
+                MOVFP           BARGB0,WREG
+                SUBWF           REMB0, F
+                RLCF            AARGB0, F
+
+                RLCF            AARGB0,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+                ADDWF           REMB0, F
+                RLCF            AARGB0, F
+
+                variable i = D'2'
+
+                while i < D'8'
+
+                RLCF            AARGB0,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLCF            AARGB0, F
+
+                variable i=i+1
+
+                endw
+
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+
+                endm
+
+
+UDIV0808  macro
+;
+;       restore = 9 clks,  nonrestore = 8 clks
+;
+;       Max Timing: 8*9 = 72 clks       max
+;
+;       Min Timing: 8*8 = 64 clks       min
+;
+;       PM: 8*9 = 72            DM: 3
+;
+                variable         i
+
+                variable i = D'0'
+
+                while i < D'8'
+
+                RLCF            AARGB0,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+                SUBWF           REMB0, F
+
+                BTFSC           _C
+                GOTO            UOK88#v(i)              
+                ADDWF           REMB0, F
+                BCF             _C
+UOK88#v(i)      RLCF            AARGB0, F
+
+                variable i=i+1
+
+                endw
+
+                endm
+
+
+UDIV0807        macro
+;
+;       Max Timing:     5+7*8+2 = 63 clks
+;
+;       Min Timing:     5+7*8+2 = 63 clks
+;
+;       PM: 5+7*8+2 = 63                DM: 3
+;
+                variable i
+
+                RLCF            AARGB0,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+                SUBWF           REMB0, F
+                RLCF            AARGB0, F
+
+                variable i = D'1'
+
+                while i < D'8'
+
+                RLCF            AARGB0,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLCF            AARGB0, F
+
+                variable i=i+1
+
+                endw
+
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+
+                endm
+
+
+UDIV0707        macro
+;
+;       Max Timing:     3+5+6*8+2 = 58 clks
+;
+;       Min Timing:     3+5+6*8+2 = 58 clks
+;
+;       PM: 3+5+6*8+2 = 58              DM: 3
+;
+                variable i
+
+                MOVFP           BARGB0,WREG
+                SUBWF           REMB0, F
+                RLCF            AARGB0, F
+
+                RLCF            AARGB0,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+                ADDWF           REMB0, F
+                RLCF            AARGB0, F
+
+                variable i = D'2'
+
+                while i < D'8'
+
+                RLCF            AARGB0,W
+                RLCF            REMB0, F
+                MOVFP           BARGB0,WREG
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLCF            AARGB0, F
+
+                variable i=i+1
+
+                endw
+
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+
+                endm
+
+;**********************************************************************************************
+;**********************************************************************************************
+;
+;       24/16 Bit Signed Fixed Point Divide 24/16 -> 24.16
+;
+;       Input:  24 bit fixed point dividend in AARGB0, AARGB1, AARGB2
+;               16 bit fixed point divisor in BARGB0, BARGB1
+;
+;       Use:    CALL    FXD2416S
+;
+;       Output: 24 bit fixed point quotient in AARGB0, AARGB1, AARGB2
+;               16 bit fixed point remainder in REMB0, REMB1
+;
+;       Result: AARG, REM  <--  AARG / BARG
+;
+;       Max Timing:     23+283+5 = 311 clks             A > 0, B > 0
+;                       26+283+17 = 326 clks            A > 0, B < 0
+;                       28+283+17 = 328 clks            A < 0, B > 0
+;                       31+283+5 = 319 clks             A < 0, B < 0
+;			9 clks				A = 0
+;
+;       Min Timing:     23+258+5 = 286 clks             A > 0, B > 0
+;                       26+258+17 = 301 clks            A > 0, B < 0
+;                       28+258+17 = 303 clks            A < 0, B > 0
+;                       31+258+5 = 294 clks             A < 0, B < 0
+;
+;       PM: 30+327+16+41 = 414             DM: 9
+;
+FXD2416S	CLRF		SIGN,F
+                CLRF            REMB0,F			; clear partial remainder
+		CLRF		REMB1,F
+		MOVPF		AARGB0,WREG
+		IORWF		AARGB1,W
+		IORWF		AARGB2,W
+		BTFSC		_Z
+		RETLW		0x00
+
+		MOVPF		AARGB0,WREG
+		XORWF		BARGB0,W
+		BTFSC		WREG,MSB
+		COMF		SIGN,F
+
+		CLRF		TEMPB3,W		; clear exception flag
+
+                BTFSS           BARGB0,MSB        	; if MSB set go & negate BARG
+                GOTO            CA2416S
+
+                COMF            BARGB1, F
+                COMF            BARGB0, F
+                INCF            BARGB1, F
+                ADDWFC          BARGB0, F
+
+CA2416S         BTFSS           AARGB0,MSB        	; if MSB set go & negate AARGa
+                GOTO            C2416SX
+
+                COMF            AARGB2, F
+                COMF            AARGB1, F
+                COMF            AARGB0, F
+                INCF            AARGB2, F
+                ADDWFC          AARGB1, F
+                ADDWFC          AARGB0, F
+
+C2416SX		MOVPF		AARGB0,WREG
+		IORWF		BARGB0,W
+		BTFSC		WREG,MSB
+		GOTO		C2416SX1
+
+C2416S          SDIV2416
+
+		BTFSC		TEMPB3,LSB		; test exception flag
+		GOTO		C2416SX4
+
+C2416SOK        BTFSS           SIGN,MSB        	; negate
+                RETLW           0x00
+
+                COMF            AARGB2, F
+                COMF            AARGB1, F
+                COMF            AARGB0, F
+                CLRF            WREG, F
+                INCF            AARGB2, F
+                ADDWFC          AARGB1, F
+                ADDWFC          AARGB0, F
+
+                COMF            REMB1, F
+                COMF            REMB0, F
+                INCF            REMB1, F
+                ADDWFC          REMB0, F
+
+                RETLW           0x00
+
+C2416SX1	BTFSS		BARGB0,MSB		; test BARG exception
+		GOTO		C2416SX3
+		BTFSC		AARGB0,MSB		; test AARG exception
+		GOTO		C2416SX2
+		MOVPF		AARGB1,REMB0
+		MOVPF		AARGB2,REMB1
+		BCF		REMB0,MSB
+		RLCF		AARGB1,F
+		RLCF		AARGB0,F
+		MOVFP		AARGB0,AARGB2
+		CLRF		AARGB0,F
+		CLRF		AARGB1,F
+		GOTO		C2416SOK
+C2416SX2	CLRF		AARGB2,F		; quotient = 1, remainder = 0
+		INCF		AARGB2,F
+		CLRF		AARGB1,F
+		CLRF		AARGB0,F
+		RETLW		0x00
+
+C2416SX3	COMF		AARGB0,F		; numerator = 0x7FFFFF + 1
+		COMF		AARGB1,F
+		COMF		AARGB2,F
+		INCF		TEMPB3,F
+		GOTO		C2416S
+
+C2416SX4	INCF		REMB1,F			; increment remainder and test for
+		CLRF		WREG,F
+		ADDWFC		REMB0,F
+		MOVFP		BARGB1,WREG		; overflow
+		CPFSEQ		REMB1
+		GOTO		C2416SOK
+		MOVFP		BARGB0,WREG		; overflow
+		CPFSEQ		REMB0
+		GOTO		C2416SOK
+		CLRF		REMB0,W			; if remainder overflow, clear
+		CLRF		REMB1,W
+		INCF		AARGB2,F		; remainder, increment quotient and
+		ADDWFC		AARGB1,F		; test for overflow exception
+		ADDWFC		AARGB0,F
+		BTFSS		AARGB0,MSB
+		GOTO		C2416SOK
+		BSF		FPFLAGS,NAN
+		RETLW		0xFF
+		
+
+;**********************************************************************************************
+;**********************************************************************************************
+;
+;       24/16 Bit Unsigned Fixed Point Divide 24/16 -> 24.16
+;
+;       Input:  24 bit unsigned fixed point dividend in AARGB0, AARGB1, AARGB2
+;               16 bit unsigned fixed point divisor in BARGB0, BARGB1
+;
+;       Use:    CALL    FXD2416U
+;
+;       Output: 24 bit unsigned fixed point quotient in AARGB0, AARGB1, AARGB2
+;               16 bit unsigned fixed point remainder in REMB0, REMB1
+;
+;       Result: AARG, REM  <--  AARG / BARG
+;
+;       Max Timing:     2+361+2 = 365 clks
+;
+;       Min Timing:     2+335+2 = 339 clks
+;
+;       PM: 2+450+1 = 453               DM: 8
+;
+FXD2416U        CLRF            REMB0, F
+                CLRF            REMB1, F
+
+                NDIV2416
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;
+;       24/15 Bit Unsigned Fixed Point Divide 24/15 -> 24.15
+;
+;       Input:  24 bit unsigned fixed point dividend in AARGB0, AARGB1, AARGB2
+;               15 bit unsigned fixed point divisor in BARGB0, BARGB1
+;
+;       Use:    CALL    FXD2415U
+;
+;       Output: 24 bit unsigned fixed point quotient in AARGB0, AARGB1, AARGB2
+;               15 bit unsigned fixed point remainder in REMB0, REMB1
+;
+;       Result: AARG, REM  <--  AARG / BARG
+;
+;       Max Timing:     2+290+2 = 294 clks
+;
+;       Min Timing:     2+264+2 = 268 clks
+;
+;       PM: 2+336+1 = 339               DM: 8
+;
+FXD2415U        CLRF            REMB0, F
+                CLRF            REMB1, F
+
+                UDIV2415
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       23/15 Bit Unsigned Fixed Point Divide 23/15 -> 23.15
+;
+;       Input:  23 bit unsigned fixed point dividend in AARGB0, AARGB1, AARGB2
+;               15 bit unsigned fixed point divisor in BARGB0, BARGB1
+;
+;       Use:    CALL    FXD2315U
+;
+;       Output: 23 bit unsigned fixed point quotient in AARGB0, AARGB1, AARGB2
+;               15 bit unsigned fixed point remainder in REMB0, REMB1
+;
+;       Result: AARG, REM  <--  AARG / BARG
+;
+;       Max Timing:     2+283+2 = 287 clks
+;
+;       Min Timing:     2+258+2 = 262 clks
+;
+;       PM: 2+327+1 = 330               DM: 8
+;
+FXD2315U        CLRF            REMB0, F
+                CLRF            REMB1, F
+
+                UDIV2315
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;
+;       16/16 Bit Signed Fixed Point Divide 16/16 -> 16.16
+;
+;       Input:  16 bit fixed point dividend in AARGB0, AARGB1
+;               16 bit fixed point divisor in BARGB0, BARGB1
+;
+;       Use:    CALL    FXD1616S
+;
+;       Output: 16 bit fixed point quotient in AARGB0, AARGB1
+;               16 bit fixed point remainder in REMB0, REMB1
+;
+;       Result: AARG, REM  <--  AARG / BARG
+;
+;       Max Timing:     22+187+5 = 214 clks             A > 0, B > 0
+;                       25+187+15 = 227 clks            A > 0, B < 0
+;                       25+187+15 = 227 clks            A < 0, B > 0
+;                       28+187+5 = 220 clks             A < 0, B < 0
+;			8 clks				A = 0
+;
+;       Min Timing:     22+173+5 = 200 clks             A > 0, B > 0
+;                       25+173+15 = 213 clks            A > 0, B < 0
+;                       25+173+15 = 213 clks            A < 0, B > 0
+;                       28+173+5 = 206 clks             A < 0, B < 0
+;
+;       PM: 27+215+14+34 = 290             DM: 8
+;
+FXD1616S	CLRF		SIGN,F
+                CLRF            REMB0,F			; clear partial remainder
+		CLRF		REMB1,F
+		MOVPF		AARGB0,WREG
+		IORWF		AARGB1,W
+		BTFSC		_Z
+		RETLW		0x00
+
+		MOVPF		AARGB0,WREG
+		XORWF		BARGB0,W
+		BTFSC		WREG,MSB
+		COMF		SIGN,F
+
+		CLRF		TEMPB3,W		; clear exception flag
+
+                BTFSS           BARGB0,MSB        	; if MSB set go & negate BARG
+                GOTO            CA1616S
+
+                COMF            BARGB1, F
+                COMF            BARGB0, F
+                INCF            BARGB1, F
+                ADDWFC  	BARGB0, F
+
+CA1616S         BTFSS           AARGB0,MSB        	; if MSB set go & negate AARGa
+                GOTO            C1616SX
+
+                COMF            AARGB1, F
+                COMF            AARGB0, F
+                INCF            AARGB1, F
+                ADDWFC  	AARGB0, F
+
+C1616SX		MOVPF		AARGB0,WREG
+		IORWF		BARGB0,W
+		BTFSC		WREG,MSB
+		GOTO		C1616SX1
+
+C1616S          SDIV1616
+
+		BTFSC		TEMPB3,LSB		; test exception flag
+		GOTO		C1616SX4
+
+C1616SOK	BTFSS           SIGN,MSB	        ; negate
+                RETLW           0x00
+
+                COMF            AARGB1, F
+                COMF            AARGB0, F
+                CLRF            WREG, F
+                INCF            AARGB1, F
+                ADDWFC  	AARGB0, F
+
+                COMF            REMB1, F
+                COMF            REMB0, F
+                INCF            REMB1, F
+                ADDWFC  	REMB0, F
+
+                RETLW           0x00
+
+C1616SX1	BTFSS		BARGB0,MSB		; test BARG exception
+		GOTO		C1616SX3
+		BTFSC		AARGB0,MSB		; test AARG exception
+		GOTO		C1616SX2
+		MOVPF		AARGB0,REMB0		; quotient = 0, remainder = AARG
+		MOVPF		AARGB1,REMB1
+		CLRF		AARGB0,F
+		CLRF		AARGB1,F
+		GOTO		C1616SOK
+C1616SX2	CLRF		AARGB0,F		; quotient = 1, remainder = 0
+		CLRF		AARGB1,F
+		INCF		AARGB1,F
+		RETLW		0x00
+
+C1616SX3	COMF		AARGB0,F		; numerator = 0x7FFF + 1
+		COMF		AARGB1,F
+		INCF		TEMPB3,F
+		GOTO		C1616S
+
+C1616SX4	INCF		REMB1,F			; increment remainder and test for
+		CLRF		WREG,F			; overflow
+		ADDWFC		REMB0,F
+		MOVFP		BARGB1,WREG
+		CPFSEQ		REMB1
+		GOTO		C1616SOK
+		MOVFP		BARGB0,WREG
+		CPFSEQ		REMB0
+		GOTO		C1616SOK
+		CLRF		REMB0,F			; if remainder overflow, clear
+		CLRF		REMB1,W			; remainder, increment quotient and
+		INCF		AARGB1,F		; test for overflow exception
+		ADDWFC		AARGB0,F
+		BTFSS		AARGB0,MSB
+		GOTO		C1616SOK
+		BSF		FPFLAGS,NAN
+		RETLW		0xFF
+		
+		
+
+
+;**********************************************************************************************
+;**********************************************************************************************
+;
+;       16/16 Bit Unsigned Fixed Point Divide 16/16 -> 16.16
+;
+;       Input:  16 bit unsigned fixed point dividend in AARGB0, AARGB1
+;               16 bit unsigned fixed point divisor in BARGB0, BARGB1
+;
+;       Use:    CALL    FXD1616U
+;
+;       Output: 16 bit unsigned fixed point quotient in AARGB0, AARGB1
+;               16 bit unsigned fixed point remainder in REMB0, REMB1
+;
+;       Result: AARG, REM  <--  AARG / BARG
+;
+;       Max Timing:     2+240+2 = 244 clks
+;
+;       Min Timing:     2+176+2 = 180 clks
+;
+;       PM: 2+240+1 = 243               DM: 6
+;
+FXD1616U        CLRF            REMB0, F
+                CLRF            REMB1, F
+
+                UDIV1616
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       16/15 Bit Unsigned Fixed Point Divide 16/15 -> 16.15
+;
+;       Input:  16 bit unsigned fixed point dividend in AARGB0, AARGB1
+;               15 bit unsigned fixed point divisor in BARGB0, BARGB1
+;
+;       Use:    CALL    FXD1615U
+;
+;       Output: 16 bit unsigned fixed point quotient in AARGB0, AARGB1
+;               15 bit unsigned fixed point remainder in REMB0, REMB1
+;
+;       Result: AARG, REM  <--  AARG / BARG
+;
+;       Max Timing:     2+193+2 = 197 clks
+;
+;       Min Timing:     2+178+2 = 182 clks
+;
+;       PM: 2+213+1 = 216               DM: 6
+;
+FXD1615U        CLRF            REMB0, F
+                CLRF            REMB1, F
+
+                UDIV1615
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;
+;       15/15 Bit Unsigned Fixed Point Divide 15/15 -> 15.15
+;
+;       Input:  15 bit unsigned fixed point dividend in AARGB0, AARGB1
+;               15 bit unsigned fixed point divisor in BARGB0, BARGB1
+;
+;       Use:    CALL    FXD1515U
+;
+;       Output: 15 bit unsigned fixed point quotient in AARGB0, AARGB1
+;               15 bit unsigned fixed point remainder in REMB0, REMB1
+;
+;       Result: AARG, REM  <--  AARG / BARG
+;
+;       Max Timing:     2+187+2 = 191 clks
+;
+;       Min Timing:     2+173+2 = 177 clks
+;
+;       PM: 2+215+1 = 218               DM: 6
+;
+FXD1515U        CLRF            REMB0, F
+                CLRF            REMB1, F
+
+                UDIV1515
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;
+;       16/8 Bit Signed Fixed Point Divide 16/08 -> 16.08
+;
+;       Input:  16 bit fixed point dividend in AARGB0, AARGB1
+;               8 bit fixed point divisor in BARGB0
+;
+;       Use:    CALL    FXD1608S
+;
+;       Output: 16 bit fixed point quotient in AARGB0, AARGB1
+;               8 bit fixed point remainder in REMB0
+;
+;       Result: AARG, REM  <--  AARG / BARG
+;
+;       Max Timing:     21+122+5 = 148 clks             A > 0, B > 0
+;                       22+122+13 = 157 clks            A > 0, B < 0
+;                       24+122+13 = 159 clks            A < 0, B > 0
+;                       25+122+5 = 152 clks             A < 0, B < 0
+;			7 clks				A = 0
+;
+;       Min Timing:     21+122+5 = 148 clks             A > 0, B > 0
+;                       22+122+13 = 157 clks            A > 0, B < 0
+;                       24+122+13 = 159 clks            A < 0, B > 0
+;                       25+122+5 = 152 clks             A < 0, B < 0
+;
+;       PM: 25+122+12+30 = 189             DM: 6
+;
+FXD1608S	CLRF		SIGN,F
+                CLRF            REMB0,F			; clear partial remainder
+		MOVPF		AARGB0,WREG
+		IORWF		AARGB1,W
+		BTFSC		_Z
+		RETLW		0x00
+
+		MOVPF		AARGB0,WREG
+		XORWF		BARGB0,W
+		BTFSC		WREG,MSB
+		COMF		SIGN,F
+
+		CLRF		TEMPB3,W		; clear exception flag
+
+                BTFSS           BARGB0,MSB             ; if MSB set go & negate BARG
+                GOTO            CA1608S
+
+                COMF            BARGB0, F
+                INCF            BARGB0, F
+
+CA1608S         BTFSS           AARGB0,MSB             ; if MSB set go & negate AARGa
+                GOTO            C1608SX
+
+                COMF            AARGB1, F
+                COMF            AARGB0, F
+                INCF            AARGB1, F
+                ADDWFC  	AARGB0, F
+
+C1608SX		MOVPF		AARGB0,WREG
+		IORWF		BARGB0,W
+		BTFSC		WREG,MSB
+		GOTO		C1608SX1
+
+C1608S          SDIV1608
+
+		BTFSC		TEMPB3,LSB		; test exception flag
+		GOTO		C1608SX4
+
+C1608SOK	BTFSS           SIGN,MSB                ; negate 
+                RETLW           0x00
+
+                COMF            AARGB1, F
+                COMF            AARGB0, F
+                CLRF            WREG, F
+                INCF            AARGB1, F
+                ADDWFC  	AARGB0, F
+
+                COMF            REMB0, F
+                INCF            REMB0, F
+
+                RETLW           0x00
+
+C1608SX1	BTFSS		BARGB0,MSB		; test BARG exception
+		GOTO		C1608SX3
+		BTFSC		AARGB0,MSB		; test AARG exception
+		GOTO		C1608SX2
+		MOVPF		AARGB1,REMB0
+		BCF		REMB0,MSB
+		RLCF		AARGB1,F
+		RLCF		AARGB0,F
+		MOVFP		AARGB0,AARGB1
+		CLRF		AARGB0,F
+		GOTO		C1608SOK
+C1608SX2	CLRF		AARGB1,F		; quotient = 1, remainder = 0
+		INCF		AARGB1,F
+		CLRF		AARGB0,F
+		RETLW		0x00
+
+C1608SX3	COMF		AARGB0,F		; numerator = 0x7FFF + 1
+		COMF		AARGB1,F
+		INCF		TEMPB3,F
+		GOTO		C1608S
+
+C1608SX4	INCF		REMB0,F			; increment remainder and test for
+		MOVFP		BARGB0,WREG		; overflow
+		CPFSEQ		REMB0
+		GOTO		C1608SOK
+		CLRF		REMB0,W			; if remainder overflow, clear
+		INCF		AARGB1,F		; remainder, increment quotient and
+		ADDWFC		AARGB0,F		; test for overflow exception
+		BTFSS		AARGB0,MSB
+		GOTO		C1608SOK
+		BSF		FPFLAGS,NAN
+		RETLW		0xFF
+		
+
+;**********************************************************************************************
+;**********************************************************************************************
+;
+;       16/8 Bit Unsigned Fixed Point Divide 16/08 -> 16.08
+;
+;       Input:  16 bit unsigned fixed point dividend in AARGB0, AARGB1
+;                8 bit unsigned fixed point divisor in BARGB0
+;
+;       Use:    CALL    FXD1608U
+;
+;       Output: 16 bit unsigned fixed point quotient in AARGB0, AARGB1
+;               8 bit unsigned fixed point remainder in REMB0
+;
+;       Result: AARG, REM  <--  AARG / BARG
+;
+;       Max Timing:     1+193+2 = 196 clks
+;
+;       Min Timing:     1+153+2 = 156 clks
+;
+;       PM: 1+193+1 = 195               DM: 4
+;
+FXD1608U        CLRF            REMB0, F
+
+                UDIV1608
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       16/7 Bit Unsigned Fixed Point Divide 16/07 -> 16.07
+;
+;       Input:  16 bit unsigned fixed point dividend in AARGB0, AARGB1
+;                7 bit unsigned fixed point divisor in BARGB0
+;
+;       Use:    CALL    FXD1607U
+;
+;       Output: 16 bit unsigned fixed point quotient in AARGB0, AARGB1
+;               7 bit unsigned fixed point remainder in REMB0
+;
+;       Result: AARG, REM  <--  AARG / BARG
+;
+;       Max Timing:     1+127+2 = 130 clks
+;
+;       Min Timing:     1+127+2 = 130 clks
+;
+;       PM: 1+127+1 = 129               DM: 4
+;
+FXD1607U        CLRF            REMB0, F
+
+                UDIV1607
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;********************************************************************************************** 
+;       15/7 Bit Unsigned Fixed Point Divide 15/07 -> 15.07
+;
+;       Input:  15 bit unsigned fixed point dividend in AARGB0, AARGB1
+;                7 bit unsigned fixed point divisor in BARGB0
+;
+;       Use:    CALL    FXD1507U
+;
+;       Output: 15 bit unsigned fixed point quotient in AARGB0, AARGB1
+;               7 bit unsigned fixed point remainder in REMB0
+;
+;       Result: AARG, REM  <--  AARG / BARG
+;
+;       Max Timing:     1+122+2 = 125 clks
+;
+;       Min Timing:     1+122+2 = 125 clks
+;
+;       PM: 1+122+1 = 124               DM: 4
+;
+FXD1507U        CLRF            REMB0, F
+
+                UDIV1507
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       8/8 Bit Signed Fixed Point Divide 08/08 -> 08.08
+;
+;       Input:  8 bit fixed point dividend in AARGB0
+;               8 bit fixed point divisor in BARGB0
+;
+;       Use:    CALL    FXD0808S
+;
+;       Output: 8 bit fixed point quotient in AARGB0
+;               8 bit fixed point remainder in REMB0
+;
+;       Result: AARG, REM  <--  AARG / BARG
+;
+;       Max Timing:     19+58+5 = 82 clks               A > 0, B > 0
+;                       20+58+10 = 88 clks               A > 0, B < 0
+;                       20+58+10 = 88 clks               A < 0, B > 0
+;                       21+58+5 = 84 clks               A < 0, B < 0
+;			6 clks				A = 0
+;
+;       Min Timing:     19+58+5 = 82 clks               A > 0, B > 0
+;                       20+58+10 = 88 clks               A > 0, B < 0
+;                       20+58+10 = 88 clks               A < 0, B > 0
+;                       21+58+5 = 84 clks               A < 0, B < 0
+;
+;       PM: 20+58+9+23 = 110                DM: 5
+;
+FXD0808S	CLRF		SIGN,F
+                CLRF            REMB0,F			; clear partial remainder
+		MOVPF		AARGB0,WREG
+		BTFSC		_Z
+		RETLW		0x00
+
+		XORWF		BARGB0,W
+		BTFSC		WREG,MSB
+		COMF		SIGN,F
+
+		CLRF		TEMPB3,W		; clear exception flag
+
+                BTFSS           BARGB0,MSB
+                GOTO            CA0808S
+
+                COMF            BARGB0, F
+                INCF            BARGB0, F
+
+CA0808S 	BTFSS           AARGB0,MSB
+                GOTO            C0808SX
+
+                COMF            AARGB0, F
+                INCF            AARGB0, F
+
+C0808SX		MOVPF		AARGB0,WREG
+		IORWF		BARGB0,W
+		BTFSC		WREG,MSB
+		GOTO		C0808SX1
+
+C0808S          SDIV0808
+
+		BTFSC		TEMPB3,LSB		; test exception flag
+		GOTO		C0808SX4
+
+C0808SOK        BTFSS           SIGN,MSB
+                RETLW           0x00
+
+                COMF            AARGB0, F
+                INCF            AARGB0, F
+
+                COMF            REMB0, F
+                INCF            REMB0, F
+
+                RETLW           0x00
+
+C0808SX1	BTFSS		BARGB0,MSB		; test BARG exception
+		GOTO		C0808SX3
+		BTFSC		AARGB0,MSB		; test AARG exception
+		GOTO		C0808SX2
+		MOVPF		AARGB0,REMB0		; quotient = 0, remainder = AARG
+		CLRF		AARGB0,F
+		GOTO		C0808SOK
+C0808SX2	CLRF		AARGB0,F		; quotient = 1, remainder = 0
+		INCF		AARGB0,F
+		RETLW		0x00
+
+C0808SX3	COMF		AARGB0,F		; numerator = 0x7F + 1
+		INCF		TEMPB3,F
+		GOTO		C0808S
+
+C0808SX4	INCF		REMB0,F			; increment remainder and test for
+		MOVFP		BARGB0,WREG		; overflow
+		CPFSEQ		REMB0
+		GOTO		C0808SOK
+		CLRF		REMB0,F			; if remainder overflow, clear
+		INCF		AARGB0,F		; remainder, increment quotient and
+		BTFSS		AARGB0,MSB		; test for overflow exception
+		GOTO		C0808SOK
+		BSF		FPFLAGS,NAN
+		RETLW		0xFF
+		
+		
+		
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       8/8 Bit Unsigned Fixed Point Divide 08/08 -> 08.08
+;
+;       Input:  8 bit unsigned fixed point dividend in AARGB0
+;               8 bit unsigned fixed point divisor in BARGB0
+;
+;       Use:    CALL    FXD0808U
+;
+;       Output: 8 bit unsigned fixed point quotient in AARGB0
+;               8 bit unsigned fixed point remainder in REMB0
+;
+;       Result: AARG, REM  <--  AARG / BARG
+;
+;       Max Timing:     1+72+2 = 75 clks
+;
+;       Min Timing:     1+64+2 = 67 clks
+;
+;       PM: 1+72+1 = 74         DM: 3
+;
+FXD0808U        CLRF            REMB0, F
+
+                UDIV0808
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       8/7 Bit Unsigned Fixed Point Divide 08/07 -> 08.07
+;
+;       Input:  8 bit unsigned fixed point dividend in AARGB0
+;               7 bit unsigned fixed point divisor in BARGB0
+;
+;       Use:    CALL    FXD0807U
+;
+;       Output: 8 bit unsigned fixed point quotient in AARGB0
+;               7 bit unsigned fixed point remainder in REMB0
+;
+;       Result: AARG, REM  <--  AARG / BARG
+;
+;       Max Timing:     1+63+2 = 66 clks
+;
+;       Min Timing:     1+63+2 = 66 clks
+;
+;       PM: 1+63+1 = 65         DM: 3
+;
+FXD0807U        CLRF            REMB0, F
+
+                UDIV0807
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;********************************************************************************************** 
+;       7/7 Bit Unsigned Fixed Point Divide 07/07 -> 07.07
+;
+;       Input:  7 bit unsigned fixed point dividend in AARGB0
+;               7 bit unsigned fixed point divisor in BARGB0
+;
+;       Use:    CALL    FXD0707U
+;
+;       Output: 7 bit unsigned fixed point quotient in AARGB0
+;               7 bit unsigned fixed point remainder in REMB0
+;
+;       Result: AARG, REM  <--  AARG / BARG
+;
+;       Max Timing:     1+58+2 = 61 clks
+;
+;       Min Timing:     1+58+2 = 61 clks
+;
+;       PM: 1+58+1 = 60         DM: 3
+;
+FXD0707U        CLRF            REMB0, F
+
+                UDIV0707
+
+                RETLW           0x00
+
+
+;**********************************************************************************************
+;**********************************************************************************************
+

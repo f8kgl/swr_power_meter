@@ -1,0 +1,1482 @@
+;	RCS Header $Id: fxm.a17 2.2 1996/06/11 21:42:11 F.J.Testa Exp $
+
+;	$Revision: 2.2 $
+
+;       PIC17 FIXED POINT MULTIPLY ROUTINES
+;
+;       Input:  fixed point arguments in AARG and BARG
+;
+;       Output: product AARG*BARG in AARG
+;
+;       All timings are worst case cycle counts
+;
+;       Routine     Clocks     Function
+;
+;
+;       FXM0808S      11       08x08 -> 16 bit signed fixed point multiply
+;
+;       FXM0808U       6       08x08 -> 16 bit unsigned fixed point multiply
+;
+;       FXM1608S      21       16x08 -> 24 bit signed fixed point multiply
+;
+;       FXM1608U      12       16x08 -> 24 bit unsigned fixed point multiply
+;
+;       FXM1616S      39       16x16 -> 32 bit signed fixed point multiply
+;
+;       FXM1616U      26       16x16 -> 32 bit unsigned fixed point multiply
+;
+;       FXM2416S      56       24x16 -> 40 bit signed fixed point multiply
+;
+;       FXM2416U      40       24x16 -> 40 bit unsigned fixed point multiply
+;
+;       FXM2424S      81       24x24 -> 48 bit signed fixed point multiply
+;
+;       FXM2424U      65       24x24 -> 48 bit unsigned fixed point multiply
+;
+;       FXM3216S      73       32x16 -> 48 bit signed fixed point multiply
+;
+;       FXM3216U      54       32x16 -> 48 bit unsigned fixed point multiply
+;
+;       FXM3224S     108       32x24 -> 56 bit signed fixed point multiply
+;
+;       FXM3224U      90       32x24 -> 56 bit unsigned fixed point multiply
+;
+;       FXM3232S     145       32x32 -> 64 bit signed fixed point multiply
+;
+;       FXM3232U     125       32x32 -> 64 bit unsigned fixed point multiply
+;
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       8x8 Bit Signed Fixed Point Multiply 08 x 08 -> 16
+;
+;       Input:  8 bit signed fixed point multiplicand in AARGB0
+;               8 bit signed fixed point multiplier in BARGB0
+;
+;       Use:    CALL    FXM0808S
+;
+;       Output: 16 bit signed fixed point product in AARGB0, AARGB1
+;
+;       Result: AARG  <--  AARG * BARG
+;
+;       Max Timing:     11 clks
+;
+;       Min Timing:     11 clks
+;
+;       PM: 10              DM: 3
+;
+FXM0808S	MOVFP	AARGB0,WREG
+		MULWF	BARGB0
+		BTFSC	BARGB0,MSB
+		SUBWF	PRODH,F
+		MOVFP	BARGB0,WREG
+		BTFSC	AARGB0,MSB
+		SUBWF	PRODH,F
+		MOVPF	PRODH,AARGB0
+		MOVPF	PRODL,AARGB1
+		RETLW	0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       8x8 Bit Unsigned Fixed Point Multiply 08 x 08 -> 16
+;
+;       Input:  8 bit unsigned fixed point multiplicand in AARGB0
+;               8 bit unsigned fixed point multiplier in BARGB0
+;
+;       Use:    CALL    FXM0808U
+;
+;       Output: 16 bit unsigned fixed point product in AARGB0, AARGB1
+;
+;       Result: AARG  <--  AARG * BARG
+;
+;       Max Timing:     6 clks
+;
+;       Min Timing:     6 clks
+;
+;       PM: 5              DM: 3
+;
+FXM0808U	MOVFP	BARGB0,WREG
+		MULWF	AARGB0
+		MOVPF	PRODH,AARGB0
+		MOVPF	PRODL,AARGB1
+		RETLW	0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       16x8 Bit Signed Fixed Point Multiply 16 x 08 -> 24
+;
+;       Input:  16 bit signed fixed point multiplicand in AARGB0
+;               8 bit signed fixed point multiplier in BARGB0
+;
+;       Use:    CALL    FXM1608S
+;
+;       Output: 24 bit signed fixed point product in AARGB0, AARGB1
+;
+;       Result: AARG  <--  AARG * BARG
+;
+;       Max Timing:     21 clks
+;
+;       Min Timing:     18 clks
+;
+;       PM: 20              DM: 4
+;
+FXM1608S	MOVFP	BARGB0,WREG
+		MULWF	AARGB1
+		MOVPF	AARGB1,TEMP
+		MOVPF	PRODH,AARGB1
+		MOVPF	PRODL,AARGB2
+		MULWF	AARGB0
+		BTFSC	AARGB0,MSB
+		SUBWF	PRODH,F
+		BTFSS	BARGB0,MSB
+		GOTO	SIGN1608OK
+		MOVFP	TEMP,WREG
+		SUBWF	AARGB1,F
+		MOVFP	AARGB0,WREG
+		SUBWFB	PRODH,F
+
+SIGN1608OK	CLRF	AARGB0,F
+		MOVFP	PRODL,WREG
+		ADDWF	AARGB1,F
+		MOVFP	PRODH,WREG
+		ADDWFC	AARGB0,F
+
+		RETLW	0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       16x8 Bit Unsigned Fixed Point Multiply 16 x 08 -> 24
+;
+;       Input:  16 bit unsigned fixed point multiplicand in AARGB0
+;               8 bit unsigned fixed point multiplier in BARGB0
+;
+;       Use:    CALL    FXM1608U
+;
+;       Output: 24 bit unsigned fixed point product in AARGB0, AARGB1, AARGB2
+;
+;       Result: AARG  <--  AARG * BARG
+;
+;       Max Timing:     12 clks
+;
+;       Min Timing:     12 clks
+;
+;       PM: 11              DM: 4
+;
+FXM1608U	MOVFP	BARGB0,WREG
+		MULWF	AARGB1
+		MOVPF	PRODH,AARGB1
+		MOVPF	PRODL,AARGB2
+		MULWF	AARGB0
+		MOVPF	PRODH,AARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB1,F
+		CLRF	WREG,F
+		ADDWFC	AARGB0,F
+
+		RETLW	0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       16x16 Bit Signed Fixed Point Multiply 16 x 16 -> 32
+;
+;       Input:  16 bit signed fixed point multiplicand in AARGB0, AARGB1
+;               16 bit signed fixed point multiplier in BARGB0, BARGB1
+;
+;       Use:    CALL    FXM1616S
+;
+;       Output: 32 bit signed fixed point product in AARGB0, AARGB1,
+;               AARGB2, AARGB3
+;
+;       Result: AARG  <--  AARG * BARG
+;
+;       Max Timing:     39 clks
+;
+;       Min Timing:     31 clks
+;
+;       PM: 38              DM: 8
+;
+FXM1616S	MOVPF	AARGB0,TEMPB0
+		MOVPF	AARGB1,TEMPB1	
+
+		MOVFP	AARGB1,WREG
+		MULWF	BARGB1
+		MOVPF	PRODH,AARGB2
+		MOVPF	PRODL,AARGB3
+		
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB0
+		MOVPF	PRODH,AARGB0
+		MOVPF	PRODL,AARGB1
+
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+		CLRF	WREG,F
+		ADDWFC	AARGB0,F
+
+		MOVFP	TEMPB1,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+		CLRF	WREG,F
+		ADDWFC	AARGB0,F
+
+		BTFSS	BARGB0,MSB
+		GOTO	TSIGN1616A
+		MOVFP	TEMPB1,WREG
+		SUBWF	AARGB1,F
+		MOVFP	TEMPB0,WREG
+		SUBWFB	AARGB0,F
+
+TSIGN1616A	BTFSS	TEMPB0,MSB
+		RETLW	0x00
+		MOVFP	BARGB1,WREG
+		SUBWF	AARGB1,F
+		MOVFP	BARGB0,WREG
+		SUBWFB	AARGB0,F
+		
+		RETLW	0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       16x16 Bit Unsigned Fixed Point Multiply 16 x 16 -> 32
+;
+;       Input:  16 bit unsigned fixed point multiplicand in AARGB0, AARGB1
+;               16 bit unsigned fixed point multiplier in BARGB0, BARGB1
+;
+;       Use:    CALL    FXM1616U
+;
+;       Output: 32 bit unsigned fixed point product in AARGB0, AARGB1, 
+;               AARGB2, AARGB3
+;
+;       Result: AARG  <--  AARG * BARG
+;
+;       Max Timing:     26 clks
+;
+;       Min Timing:     26 clks
+;
+;       PM: 25              DM: 7
+;
+;
+FXM1616U	MOVPF	AARGB1,TEMPB1	
+
+		MOVFP	AARGB1,WREG
+		MULWF	BARGB1
+		MOVPF	PRODH,AARGB2
+		MOVPF	PRODL,AARGB3
+		
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB0
+		MOVPF	PRODH,AARGB0
+		MOVPF	PRODL,AARGB1
+
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+		CLRF	WREG,F
+		ADDWFC	AARGB0,F
+
+		MOVFP	TEMPB1,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+		CLRF	WREG,F
+		ADDWFC	AARGB0,F
+		
+		RETLW	0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       24x16 Bit Signed Fixed Point Multiply 24 x 16 -> 40
+;
+;       Input:  24 bit signed fixed point multiplicand in AARGB0, AARGB1,
+;               AARGB2
+;               16 bit signed fixed point multiplier in BARGB0, BARGB1
+;
+;       Use:    CALL    FXM2416S
+;
+;       Output: 40 bit signed fixed point product in AARGB0, AARGB1,
+;               AARGB2, AARGB3, AARGB4
+;
+;       Result: AARG  <--  AARG * BARG
+;
+;       Max Timing:     56 clks
+;
+;       Min Timing:     46 clks
+;
+;       PM: 55              DM: 10
+;
+FXM2416S	MOVPF	AARGB0,TEMPB0	
+		MOVPF	AARGB1,TEMPB1	
+		MOVPF	AARGB2,TEMPB2	
+
+		MOVFP	AARGB2,WREG
+		MULWF	BARGB1
+		MOVPF	PRODH,AARGB3
+		MOVPF	PRODL,AARGB4
+		
+		MOVFP	AARGB1,WREG
+		MULWF	BARGB0
+		MOVPF	PRODH,AARGB1
+		MOVPF	PRODL,AARGB2
+
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+		CLRF	WREG,F
+		ADDWFC	AARGB1,F
+
+		MOVFP	TEMPB2,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+		CLRF	WREG,F
+		ADDWFC	AARGB1,F
+	
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB0
+		CLRF	AARGB0,W
+		ADDWFC	AARGB0,F
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB1,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB0,F
+
+		BTFSS	BARGB0,MSB
+		GOTO	TSIGN2416A
+		MOVFP	TEMPB2,WREG
+		SUBWF	AARGB2,F
+		MOVFP	TEMPB1,WREG
+		SUBWFB	AARGB1,F
+		MOVFP	TEMPB0,WREG
+		SUBWFB	AARGB0,F
+
+TSIGN2416A	BTFSS	TEMPB0,MSB
+		RETLW	0x00
+		MOVFP	BARGB1,WREG
+		SUBWF	AARGB1,F
+		MOVFP	BARGB0,WREG
+		SUBWFB	AARGB0,F
+
+		RETLW	0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       24x16 Bit Unsigned Fixed Point Multiply 24 x 16 -> 40
+;
+;       Input:  24 bit unsigned fixed point multiplicand in AARGB0, AARGB1,
+;               AARGB2
+;               16 bit unsigned fixed point multiplier in BARGB0, BARGB1
+;
+;       Use:    CALL    FXM2416U
+;
+;       Output: 40 bit unsigned fixed point product in AARGB0, AARGB1, 
+;               AARGB2, AARGB3, AARGB4
+;
+;       Result: AARG  <--  AARG * BARG
+;
+;       Max Timing:     40 clks
+;
+;       Min Timing:     40 clks
+;
+;       PM: 39              DM: 8
+;
+;
+FXM2416U	MOVPF	AARGB2,TEMPB2	
+
+		MOVFP	AARGB2,WREG
+		MULWF	BARGB1
+		MOVPF	PRODH,AARGB3
+		MOVPF	PRODL,AARGB4
+		
+		MOVFP	AARGB1,WREG
+		MULWF	BARGB0
+		MOVPF	PRODH,AARGB1
+		MOVPF	PRODL,AARGB2
+
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+		CLRF	WREG,F
+		ADDWFC	AARGB1,F
+
+		MOVFP	TEMPB2,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+		CLRF	WREG,F
+		ADDWFC	AARGB1,F
+	
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB0
+		CLRF	AARGB0,W
+		ADDWFC	AARGB0,F
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB1,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB0,F
+	
+		RETLW	0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       24x24 Bit Signed Fixed Point Multiply 24 x 24 -> 48
+;
+;       Input:  24 bit signed fixed point multiplicand in AARGB0, AARGB1,
+;               AARGB2
+;               24 bit signed fixed point multiplier in BARGB0, BARGB1,
+;               BARGB2
+;
+;       Use:    CALL    FXM2424S
+;
+;       Output: 48 bit signed fixed point product in AARGB0, AARGB1,
+;               AARGB2, AARGB3, AARGB4, AARGB5
+;
+;       Result: AARG  <--  AARG * BARG
+;
+;       Max Timing:     81 clks
+;
+;       Min Timing:     69 clks
+;
+;       PM: 80              DM: 12
+;
+FXM2424S	MOVPF	AARGB0,TEMPB0	
+		MOVPF	AARGB1,TEMPB1	
+		MOVPF	AARGB2,TEMPB2	
+
+		MOVFP	AARGB2,WREG
+		MULWF	BARGB2
+		MOVPF	PRODH,AARGB4
+		MOVPF	PRODL,AARGB5
+		
+		MOVFP	AARGB1,WREG
+		MULWF	BARGB1
+		MOVPF	PRODH,AARGB2
+		MOVPF	PRODL,AARGB3
+
+		MULWF	BARGB2
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB4,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB3,F
+		CLRF	WREG,F
+		ADDWFC	AARGB2,F
+
+		MOVFP	TEMPB2,WREG
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB4,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB3,F
+		CLRF	WREG,F
+		ADDWFC	AARGB2,F
+	
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB2
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB1
+		CLRF	AARGB1,W
+		ADDWFC	AARGB1,F
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+
+		MOVFP	TEMPB2,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+		CLRF	AARGB0,W
+		ADDWFC	AARGB1,F
+		ADDWFC	AARGB0,F
+
+		MOVFP	TEMPB1,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+		CLRF	WREG,F
+		ADDWFC	AARGB0,F
+
+		MOVFP	TEMPB0,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB1,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB0,F
+
+		BTFSS	BARGB0,MSB
+		GOTO	TSIGN2424A
+		MOVFP	TEMPB2,WREG
+		SUBWF	AARGB2,F
+		MOVFP	TEMPB1,WREG
+		SUBWFB	AARGB1,F
+		MOVFP	TEMPB0,WREG
+		SUBWFB	AARGB0,F
+
+TSIGN2424A	BTFSS	TEMPB0,MSB
+		RETLW	0x00
+		MOVFP	BARGB2,WREG
+		SUBWF	AARGB2,F
+		MOVFP	BARGB1,WREG
+		SUBWFB	AARGB1,F
+		MOVFP	BARGB0,WREG
+		SUBWFB	AARGB0,F
+
+		RETLW	0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       24x24 Bit Unsigned Fixed Point Multiply 24 x 24 -> 48
+;
+;       Input:  24 bit unsigned fixed point multiplicand in AARGB0, AARGB1,
+;               AARGB2
+;               24 bit unsigned fixed point multiplier in BARGB0, BARGB1,
+;               BARGB2
+;
+;       Use:    CALL    FXM2424U
+;
+;       Output: 48 bit unsigned fixed point product in AARGB0, AARGB1, 
+;               AARGB2, AARGB3, AARGB4, AARGB5
+;
+;       Result: AARG  <--  AARG * BARG
+;
+;       Max Timing:     65 clks
+;
+;       Min Timing:     65 clks
+;
+;       PM: 64              DM: 12
+;
+;
+FXM2424U	MOVPF	AARGB0,TEMPB0	
+		MOVPF	AARGB1,TEMPB1	
+		MOVPF	AARGB2,TEMPB2	
+
+		MOVFP	AARGB2,WREG
+		MULWF	BARGB2
+		MOVPF	PRODH,AARGB4
+		MOVPF	PRODL,AARGB5
+		
+		MOVFP	AARGB1,WREG
+		MULWF	BARGB1
+		MOVPF	PRODH,AARGB2
+		MOVPF	PRODL,AARGB3
+
+		MULWF	BARGB2
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB4,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB3,F
+		CLRF	WREG,F
+		ADDWFC	AARGB2,F
+
+		MOVFP	TEMPB2,WREG
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB4,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB3,F
+		CLRF	WREG,F
+		ADDWFC	AARGB2,F
+	
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB2
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB1
+		CLRF	AARGB1,W
+		ADDWFC	AARGB1,F
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+
+		MOVFP	TEMPB2,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+		CLRF	AARGB0,W
+		ADDWFC	AARGB1,F
+		ADDWFC	AARGB0,F
+
+		MOVFP	TEMPB1,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+		CLRF	WREG,F
+		ADDWFC	AARGB0,F
+
+		MOVFP	TEMPB0,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB1,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB0,F
+
+		RETLW	0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       32x16 Bit Signed Fixed Point Multiply 32 x 16 -> 48
+;
+;       Input:  32 bit signed fixed point multiplicand in AARGB0, AARGB1,
+;               AARGB2, AARGB3
+;               16 bit signed fixed point multiplier in BARGB0, BARGB1
+;
+;       Use:    CALL    FXM3216S
+;
+;       Output: 48 bit signed fixed point product in AARGB0, AARGB1,
+;               AARGB2, AARGB3, AARGB4, AARGB5
+;
+;       Result: AARG  <--  AARG * BARG
+;
+;       Max Timing:     73 clks
+;
+;       Min Timing:     61 clks
+;
+;       PM: 72              DM: 12
+;
+FXM3216S	MOVPF	AARGB0,TEMPB0	
+		MOVPF	AARGB1,TEMPB1	
+		MOVPF	AARGB2,TEMPB2	
+		MOVPF	AARGB3,TEMPB3	
+
+		MOVFP	AARGB3,WREG
+		MULWF	BARGB1
+		MOVPF	PRODH,AARGB4
+		MOVPF	PRODL,AARGB5
+		
+		MOVFP	AARGB2,WREG
+		MULWF	BARGB0
+		MOVPF	PRODH,AARGB2
+		MOVPF	PRODL,AARGB3
+
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB4,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB3,F
+		CLRF	WREG,F
+		ADDWFC	AARGB2,F
+
+		MOVFP	TEMPB3,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB4,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB3,F
+		CLRF	WREG,F
+		ADDWFC	AARGB2,F
+	
+		MOVFP	AARGB1,WREG
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+		MOVFP	AARGB1,WREG
+		MULWF	BARGB0
+		CLRF	AARGB1,W
+		ADDWFC	AARGB1,F
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB0
+		CLRF	AARGB0,W
+		ADDWFC	AARGB0,F
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB1,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB0,F
+
+		BTFSS	BARGB0,MSB
+		GOTO	TSIGN3216A
+		MOVFP	TEMPB3,WREG
+		SUBWF	AARGB3,F
+		MOVFP	TEMPB2,WREG
+		SUBWFB	AARGB2,F
+		MOVFP	TEMPB1,WREG
+		SUBWFB	AARGB1,F
+		MOVFP	TEMPB0,WREG
+		SUBWFB	AARGB0,F
+
+TSIGN3216A	BTFSS	TEMPB0,MSB
+		RETLW	0x00
+		MOVFP	BARGB1,WREG
+		SUBWF	AARGB1,F
+		MOVFP	BARGB0,WREG
+		SUBWFB	AARGB0,F
+
+		RETLW	0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       32x16 Bit Unsigned Fixed Point Multiply 32 x 16 -> 48
+;
+;       Input:  32 bit unsigned fixed point multiplicand in AARGB0, AARGB1,
+;               AARGB2, AARGB3
+;               16 bit unsigned fixed point multiplier in BARGB0, BARGB1
+;
+;       Use:    CALL    FXM3216U
+;
+;       Output: 48 bit unsigned fixed point product in AARGB0, AARGB1, 
+;               AARGB2, AARGB3, AARGB4, AARGB5
+;
+;       Result: AARG  <--  AARG * BARG
+;
+;       Max Timing:     54 clks
+;
+;       Min Timing:     54 clks
+;
+;       PM: 53              DM: 9
+;
+;
+FXM3216U	MOVPF	AARGB3,TEMPB3	
+
+		MOVFP	AARGB3,WREG
+		MULWF	BARGB1
+		MOVPF	PRODH,AARGB4
+		MOVPF	PRODL,AARGB5
+		
+		MOVFP	AARGB2,WREG
+		MULWF	BARGB0
+		MOVPF	PRODH,AARGB2
+		MOVPF	PRODL,AARGB3
+
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB4,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB3,F
+		CLRF	WREG,F
+		ADDWFC	AARGB2,F
+
+		MOVFP	TEMPB3,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB4,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB3,F
+		CLRF	WREG,F
+		ADDWFC	AARGB2,F
+	
+		MOVFP	AARGB1,WREG
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+		MOVFP	AARGB1,WREG
+		MULWF	BARGB0
+		CLRF	AARGB1,W
+		ADDWFC	AARGB1,F
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB0
+		CLRF	AARGB0,W
+		ADDWFC	AARGB0,F
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB1,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB0,F
+
+		RETLW	0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       32x24 Bit Signed Fixed Point Multiply 32 x 24 -> 56
+;
+;       Input:  32 bit signed fixed point multiplicand in AARGB0, AARGB1,
+;               AARGB2, AARGB3
+;               24 bit signed fixed point multiplier in BARGB0, BARGB1,
+;               BARGB2
+;
+;       Use:    CALL    FXM3224S
+;
+;       Output: 56 bit signed fixed point product in AARGB0, AARGB1,
+;               AARGB2, AARGB3, AARGB4, AARGB5, AARGB6
+;
+;       Result: AARG  <--  AARG * BARG
+;
+;       Max Timing:     108 clks
+;
+;       Min Timing:     94 clks
+;
+;       PM: 107              DM: 15
+;
+FXM3224S	MOVPF	AARGB0,TEMPB0
+		MOVPF	AARGB1,TEMPB1	
+		MOVPF	AARGB2,TEMPB2	
+		MOVPF	AARGB3,TEMPB3	
+
+		MOVFP	AARGB3,WREG
+		MULWF	BARGB2
+		MOVPF	PRODH,AARGB5
+		MOVPF	PRODL,SIGN
+		
+		MOVFP	AARGB2,WREG
+		MULWF	BARGB1
+		MOVPF	PRODH,AARGB3
+		MOVPF	PRODL,AARGB4
+
+		MULWF	BARGB2
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB5,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB4,F
+		CLRF	WREG,F
+		ADDWFC	AARGB3,F
+
+		MOVFP	TEMPB3,WREG
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB5,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB4,F
+		CLRF	WREG,F
+		ADDWFC	AARGB3,F
+	
+		MOVFP	AARGB1,WREG
+		MULWF	BARGB2
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB4,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB3,F
+		MOVFP	AARGB1,WREG
+		MULWF	BARGB1
+		CLRF	AARGB2,W
+		ADDWFC	AARGB2,F
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+
+		MOVFP	TEMPB3,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB4,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB3,F
+		CLRF	AARGB1,W
+		ADDWFC	AARGB2,F
+		ADDWFC	AARGB1,F
+
+		MOVFP	TEMPB2,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+		CLRF	WREG,F
+		ADDWFC	AARGB1,F
+
+		MOVFP	TEMPB1,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB0
+		CLRF	AARGB0,W
+		ADDWFC	AARGB0,F
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB1,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB0,F
+
+		MOVFP	TEMPB0,WREG
+		MULWF	BARGB2
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+		CLRF	WREG,F
+		ADDWFC	AARGB1,F
+		ADDWFC	AARGB0,F
+
+		MOVFP	SIGN,AARGB6
+
+		BTFSS	BARGB0,MSB
+		GOTO	TSIGN3224A
+		MOVFP	TEMPB3,WREG
+		SUBWF	AARGB3,F
+		MOVFP	TEMPB2,WREG
+		SUBWFB	AARGB2,F
+		MOVFP	TEMPB1,WREG
+		SUBWFB	AARGB1,F
+		MOVFP	TEMPB0,WREG
+		SUBWFB	AARGB0,F
+
+TSIGN3224A	BTFSS	TEMPB0,MSB
+		RETLW	0x00
+		MOVFP	BARGB2,WREG
+		SUBWF	AARGB2,F
+		MOVFP	BARGB1,WREG
+		SUBWFB	AARGB1,F
+		MOVFP	BARGB0,WREG
+		SUBWFB	AARGB0,F
+
+		RETLW	0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       32x24 Bit Unsigned Fixed Point Multiply 32 x 24 -> 56
+;
+;       Input:  32 bit unsigned fixed point multiplicand in AARGB0, AARGB1,
+;               AARGB2, AARGB3
+;               24 bit unsigned fixed point multiplier in BARGB0, BARGB1,
+;               BARGB2
+;
+;       Use:    CALL    FXM3224U
+;
+;       Output: 56 bit unsigned fixed point product in AARGB0, AARGB1, 
+;               AARGB2, AARGB3, AARGB4, AARGB5, AARGB6
+;
+;       Result: AARG  <--  AARG * BARG
+;
+;       Max Timing:     90 clks
+;
+;       Min Timing:     90 clks
+;
+;       PM: 89              DM: 15
+;
+;
+FXM3224U	MOVPF	AARGB0,TEMPB0
+		MOVPF	AARGB1,TEMPB1	
+		MOVPF	AARGB2,TEMPB2	
+		MOVPF	AARGB3,TEMPB3	
+
+		MOVFP	AARGB3,WREG
+		MULWF	BARGB2
+		MOVPF	PRODH,AARGB5
+		MOVPF	PRODL,SIGN
+		
+		MOVFP	AARGB2,WREG
+		MULWF	BARGB1
+		MOVPF	PRODH,AARGB3
+		MOVPF	PRODL,AARGB4
+
+		MULWF	BARGB2
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB5,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB4,F
+		CLRF	WREG,F
+		ADDWFC	AARGB3,F
+
+		MOVFP	TEMPB3,WREG
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB5,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB4,F
+		CLRF	WREG,F
+		ADDWFC	AARGB3,F
+	
+		MOVFP	AARGB1,WREG
+		MULWF	BARGB2
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB4,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB3,F
+		MOVFP	AARGB1,WREG
+		MULWF	BARGB1
+		CLRF	AARGB2,W
+		ADDWFC	AARGB2,F
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+
+		MOVFP	TEMPB3,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB4,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB3,F
+		CLRF	AARGB1,W
+		ADDWFC	AARGB2,F
+		ADDWFC	AARGB1,F
+
+		MOVFP	TEMPB2,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+		CLRF	WREG,F
+		ADDWFC	AARGB1,F
+
+		MOVFP	TEMPB1,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB0
+		CLRF	AARGB0,W
+		ADDWFC	AARGB0,F
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB1,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB0,F
+
+		MOVFP	TEMPB0,WREG
+		MULWF	BARGB2
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+		CLRF	WREG,F
+		ADDWFC	AARGB1,F
+		ADDWFC	AARGB0,F
+
+		MOVFP	SIGN,AARGB6
+
+                RETLW   0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       32x32 Bit Signed Fixed Point Multiply 32 x 32 -> 64
+;
+;       Input:  32 bit signed fixed point multiplicand in AARGB0, AARGB1,
+;               AARGB2, AARGB3
+;               32 bit signed fixed point multiplier in BARGB0, BARGB1,
+;               BARGB2, BARGB3
+;
+;       Use:    CALL    FXM3232S
+;
+;       Output: 64 bit signed fixed point product in AARGB0, AARGB1,
+;               AARGB2, AARGB3, AARGB4, AARGB5, AARGB6, AARGB7
+;
+;       Result: AARG  <--  AARG * BARG
+;
+;       Max Timing:     145 clks
+;
+;       Min Timing:     129 clks
+;
+;       PM: 144              DM: 18
+;
+FXM3232S	MOVPF	AARGB0,TEMPB0
+		MOVPF	AARGB1,TEMPB1	
+		MOVPF	AARGB2,TEMPB2	
+		MOVPF	AARGB3,TEMPB3	
+
+		MOVFP	AARGB3,WREG
+		MULWF	BARGB3
+		MOVPF	PRODL,TBLPTRL
+		MOVPF	PRODH,TBLPTRH
+		
+		MOVFP	AARGB2,WREG
+		MULWF	BARGB2
+		MOVPF	PRODL,AARGB5
+		MOVPF	PRODH,AARGB4
+
+		MULWF	BARGB3
+		MOVPF	PRODL,WREG
+		ADDWF	TBLPTRH,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB5,F
+		CLRF	WREG,F
+		ADDWFC	AARGB4,F
+
+		MOVFP	TEMPB3,WREG
+		MULWF	BARGB2
+		MOVPF	PRODL,WREG
+		ADDWF	TBLPTRH,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB5,F
+		CLRF	WREG,F
+		ADDWFC	AARGB4,F
+	
+		MOVFP	AARGB1,WREG
+		MULWF	BARGB3
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB5,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB4,F
+		MOVFP	AARGB1,WREG
+		MULWF	BARGB2
+		CLRF	AARGB3,W
+		ADDWFC	AARGB3,F
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB4,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB3,F
+
+		MOVFP	TEMPB3,WREG
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB5,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB4,F
+		CLRF	AARGB2,W
+		ADDWFC	AARGB3,F
+		ADDWFC	AARGB2,F
+
+		MOVFP	TEMPB2,WREG
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB4,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB3,F
+		CLRF	WREG,F
+		ADDWFC	AARGB2,F
+
+		MOVFP	TEMPB1,WREG
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB2
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB1
+		CLRF	AARGB1,W
+		ADDWFC	AARGB1,F
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+
+		MOVFP	TEMPB0,WREG
+		MULWF	BARGB3
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB4,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB3,F
+		CLRF	WREG,F
+		ADDWFC	AARGB2,F
+		ADDWFC	AARGB1,F
+
+		MOVFP	TEMPB0,WREG
+		MULWF	BARGB0
+		MOVPF	PRODH,AARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB1,F
+		CLRF	WREG,F
+		ADDWFC	AARGB0,F
+
+		MOVFP	TEMPB3,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB4,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB3,F
+		CLRF	WREG,F
+		ADDWFC	AARGB2,F
+		ADDWFC	AARGB1,F
+		ADDWFC	AARGB0,F
+
+		MOVFP	TEMPB2,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+		CLRF	WREG,F
+		ADDWFC	AARGB1,F
+		ADDWFC	AARGB0,F
+
+		MOVFP	TEMPB1,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+		CLRF	WREG,F
+		ADDWFC	AARGB0,F
+
+		MOVFP	TBLPTRL,AARGB7
+		MOVFP	TBLPTRH,AARGB6
+
+		BTFSS	BARGB0,MSB
+		GOTO	TSIGN3232A
+		MOVFP	TEMPB3,WREG
+		SUBWF	AARGB3,F
+		MOVFP	TEMPB2,WREG
+		SUBWFB	AARGB2,F
+		MOVFP	TEMPB1,WREG
+		SUBWFB	AARGB1,F
+		MOVFP	TEMPB0,WREG
+		SUBWFB	AARGB0,F
+
+TSIGN3232A	BTFSS	TEMPB0,MSB
+		RETLW	0x00
+		MOVFP	BARGB3,WREG
+		SUBWF	AARGB3,F
+		MOVFP	BARGB2,WREG
+		SUBWFB	AARGB2,F
+		MOVFP	BARGB1,WREG
+		SUBWFB	AARGB1,F
+		MOVFP	BARGB0,WREG
+		SUBWFB	AARGB0,F
+
+		RETLW	0x00
+
+
+;**********************************************************************************************
+;**********************************************************************************************
+;       
+;       32x32 Bit Unsigned Fixed Point Multiply 32 x 32 -> 64
+;
+;       Input:  32 bit unsigned fixed point multiplicand in AARGB0, AARGB1,
+;               AARGB2, AARGB3
+;               32 bit unsigned fixed point multiplier in BARGB0, BARGB1,
+;               BARGB2, BARGB3
+;
+;       Use:    CALL    FXM3232U
+;
+;       Output: 64 bit unsigned fixed point product in AARGB0, AARGB1, 
+;               AARGB2, AARGB3, AARGB4, AARGB5, AARGB6, AARGB7
+;
+;       Result: AARG  <--  AARG * BARG
+;
+;       Max Timing:     125 clks
+;
+;       Min Timing:     125 clks
+;
+;       PM: 124              DM: 18
+;
+;
+FXM3232U	MOVPF	AARGB0,TEMPB0
+		MOVPF	AARGB1,TEMPB1	
+		MOVPF	AARGB2,TEMPB2	
+		MOVPF	AARGB3,TEMPB3	
+
+		MOVFP	AARGB3,WREG
+		MULWF	BARGB3
+		MOVPF	PRODL,TBLPTRL
+		MOVPF	PRODH,TBLPTRH
+		
+		MOVFP	AARGB2,WREG
+		MULWF	BARGB2
+		MOVPF	PRODL,AARGB5
+		MOVPF	PRODH,AARGB4
+
+		MULWF	BARGB3
+		MOVPF	PRODL,WREG
+		ADDWF	TBLPTRH,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB5,F
+		CLRF	WREG,F
+		ADDWFC	AARGB4,F
+
+		MOVFP	TEMPB3,WREG
+		MULWF	BARGB2
+		MOVPF	PRODL,WREG
+		ADDWF	TBLPTRH,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB5,F
+		CLRF	WREG,F
+		ADDWFC	AARGB4,F
+	
+		MOVFP	AARGB1,WREG
+		MULWF	BARGB3
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB5,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB4,F
+		MOVFP	AARGB1,WREG
+		MULWF	BARGB2
+		CLRF	AARGB3,W
+		ADDWFC	AARGB3,F
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB4,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB3,F
+
+		MOVFP	TEMPB3,WREG
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB5,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB4,F
+		CLRF	AARGB2,W
+		ADDWFC	AARGB3,F
+		ADDWFC	AARGB2,F
+
+		MOVFP	TEMPB2,WREG
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB4,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB3,F
+		CLRF	WREG,F
+		ADDWFC	AARGB2,F
+
+		MOVFP	TEMPB1,WREG
+		MULWF	BARGB1
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB2
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+		MOVFP	AARGB0,WREG
+		MULWF	BARGB1
+		CLRF	AARGB1,W
+		ADDWFC	AARGB1,F
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+
+		MOVFP	TEMPB0,WREG
+		MULWF	BARGB3
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB4,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB3,F
+		CLRF	WREG,F
+		ADDWFC	AARGB2,F
+		ADDWFC	AARGB1,F
+
+		MOVFP	TEMPB0,WREG
+		MULWF	BARGB0
+		MOVPF	PRODH,AARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB1,F
+		CLRF	WREG,F
+		ADDWFC	AARGB0,F
+
+		MOVFP	TEMPB3,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB4,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB3,F
+		CLRF	WREG,F
+		ADDWFC	AARGB2,F
+		ADDWFC	AARGB1,F
+		ADDWFC	AARGB0,F
+
+		MOVFP	TEMPB2,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB3,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB2,F
+		CLRF	WREG,F
+		ADDWFC	AARGB1,F
+		ADDWFC	AARGB0,F
+
+		MOVFP	TEMPB1,WREG
+		MULWF	BARGB0
+		MOVPF	PRODL,WREG
+		ADDWF	AARGB2,F
+		MOVPF	PRODH,WREG
+		ADDWFC	AARGB1,F
+		CLRF	WREG,F
+		ADDWFC	AARGB0,F
+
+		MOVFP	TBLPTRL,AARGB7
+		MOVFP	TBLPTRH,AARGB6
+
+                RETLW   0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+

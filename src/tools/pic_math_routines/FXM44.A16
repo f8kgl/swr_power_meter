@@ -1,0 +1,1024 @@
+;	RCS Header $Id: fxm44.a16 2.3 1996/10/16 14:23:23 F.J.Testa Exp $
+
+;	$Revision: 2.3 $
+
+;       24x24 PIC16 FIXED POINT MULTIPLY ROUTINES
+;
+;       Input:  fixed point arguments in AARG and BARG
+;
+;       Output: product AARGxBARG in AARG
+;
+;       All timings are worst case cycle counts
+;
+;       It is useful to note that the additional unsigned routines requiring a non-power of two
+;       argument can be called in a signed multiply application where it is known that the
+;       respective argument is nonnegative, thereby offering some improvement in
+;       performance.
+;
+;         Routine            Clocks     Function
+;
+;       FXM2424S     535        24x24 -> 48 bit signed fixed point multiply
+;
+;       FXM2424U     512        24x24 -> 48 bit unsigned fixed point multiply
+;
+;       FXM2323U     497        23x23 -> 46 bit unsigned fixed point multiply
+;
+;       The above timings are based on the looped macros. If space permits,
+;       approximately 61-95 clocks can be saved by using the unrolled macros.
+;
+
+;**********************************************************************************************
+;**********************************************************************************************
+
+;       24x24 Bit Multiplication Macros
+
+SMUL2424L        macro
+
+;       Max Timing:     2+12+6*21+20+2+7*22+21+2+6*23+22+7 = 506 clks
+
+;       Min Timing:     2+7*6+5+1+7*6+5+2+6*6+5+5 = 145 clks
+
+;       PM: 24+20+2+21+2+22+7 = 98           DM: 13
+
+
+                MOVLW   0x8
+                MOVWF   LOOPCOUNT
+
+LOOPSM2424A
+                RRF     BARGB2, F
+                BTFSC   _C
+                GOTO    ALSM2424NA
+                DECFSZ  LOOPCOUNT, F
+                GOTO    LOOPSM2424A
+
+                MOVWF   LOOPCOUNT
+
+LOOPSM2424B
+                RRF     BARGB1, F
+                BTFSC   _C
+                GOTO    BLSM2424NA
+                DECFSZ  LOOPCOUNT, F
+                GOTO    LOOPSM2424B
+
+                MOVLW   0x7
+                MOVWF   LOOPCOUNT
+
+LOOPSM2424C
+                RRF     BARGB0, F
+                BTFSC   _C
+                GOTO    CLSM2424NA
+                DECFSZ  LOOPCOUNT, F
+                GOTO    LOOPSM2424C
+
+                CLRF    AARGB0
+                CLRF    AARGB1
+                CLRF    AARGB2
+                RETLW   0x00
+
+ALOOPSM2424
+                RRF     BARGB2, F
+                BTFSS   _C
+                GOTO    ALSM2424NA
+                MOVF    TEMPB2,W
+                ADDWF   AARGB2, F
+                MOVF            TEMPB1,W
+                BTFSC           _C
+                INCFSZ          TEMPB1,W
+                ADDWF           AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+
+ALSM2424NA      RLF    SIGN,W
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF    AARGB2, F
+                RRF    AARGB3, F
+                DECFSZ  LOOPCOUNT, F
+                GOTO    ALOOPSM2424
+
+                MOVLW   0x8
+                MOVWF   LOOPCOUNT
+
+BLOOPSM2424
+                RRF     BARGB1, F
+                BTFSS   _C
+                GOTO    BLSM2424NA
+                MOVF   TEMPB2,W
+                ADDWF   AARGB2, F
+                MOVF            TEMPB1,W
+                BTFSC           _C
+                INCFSZ          TEMPB1,W
+                ADDWF           AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+
+BLSM2424NA      RLF    SIGN,W
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF    AARGB2, F
+                RRF             AARGB3, F
+                RRF             AARGB4, F
+                DECFSZ  LOOPCOUNT, F
+                GOTO    BLOOPSM2424
+
+                MOVLW   0x7
+                MOVWF   LOOPCOUNT
+
+CLOOPSM2424
+                RRF             BARGB0, F
+                BTFSS   _C
+                GOTO    CLSM2424NA
+                MOVF   TEMPB2,W
+                ADDWF   AARGB2, F
+                MOVF            TEMPB1,W
+                BTFSC           _C
+                INCFSZ          TEMPB1,W
+                ADDWF           AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+
+CLSM2424NA      RLF    SIGN,W
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF    AARGB2, F
+                RRF             AARGB3, F
+                RRF             AARGB4, F
+                RRF             AARGB5, F
+                DECFSZ  LOOPCOUNT, F
+                GOTO    CLOOPSM2424
+
+                RLF    SIGN,W
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF    AARGB2, F
+                RRF             AARGB3, F
+                RRF             AARGB4, F
+                RRF             AARGB5, F
+
+                endm
+
+UMUL2424L        macro
+
+;       Max Timing:     2+14+6*20+19+2+7*21+20+2+7*22+21 = 501 clks
+
+;       Min Timing:     2+7*6+5+1+7*6+5+1+7*6+5+5 = 150 clks
+
+;       PM: 23+20+2+21+2+22 = 88            DM: 13
+
+
+                MOVLW   0x08
+                MOVWF   LOOPCOUNT
+
+LOOPUM2424A
+                RRF     BARGB2, F
+                BTFSC   _C
+                GOTO    ALUM2424NAP
+                DECFSZ  LOOPCOUNT, F
+                GOTO    LOOPUM2424A
+
+                MOVWF   LOOPCOUNT
+
+LOOPUM2424B
+                RRF     BARGB1, F
+                BTFSC   _C
+                GOTO    BLUM2424NAP
+                DECFSZ  LOOPCOUNT, F
+                GOTO    LOOPUM2424B
+
+                MOVWF   LOOPCOUNT
+
+LOOPUM2424C
+                RRF     BARGB0, F
+                BTFSC   _C
+                GOTO    CLUM2424NAP
+                DECFSZ  LOOPCOUNT, F
+                GOTO    LOOPUM2424C
+
+                CLRF    AARGB0
+                CLRF    AARGB1
+                CLRF    AARGB2
+                RETLW   0x00
+
+CLUM2424NAP
+                BCF     _C
+                GOTO    CLUM2424NA
+
+BLUM2424NAP
+                BCF     _C
+                GOTO    BLUM2424NA
+
+ALUM2424NAP
+                BCF     _C
+                GOTO    ALUM2424NA
+
+ALOOPUM2424
+                RRF     BARGB2, F
+                BTFSS   _C
+                GOTO    ALUM2424NA
+                MOVF   TEMPB2,W
+                ADDWF   AARGB2, F
+                MOVF            TEMPB1,W
+                BTFSC           _C
+                INCFSZ          TEMPB1,W
+                ADDWF           AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+
+ALUM2424NA
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF    AARGB2, F
+                RRF     AARGB3, F
+                DECFSZ  LOOPCOUNT, F
+                GOTO    ALOOPUM2424
+
+                MOVLW   0x08
+                MOVWF   LOOPCOUNT
+
+BLOOPUM2424
+                RRF     BARGB1, F
+                BTFSS   _C
+                GOTO    BLUM2424NA
+                MOVF    TEMPB2,W
+                ADDWF   AARGB2, F
+                MOVF            TEMPB1,W
+                BTFSC           _C
+                INCFSZ          TEMPB1,W
+                ADDWF           AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+
+BLUM2424NA
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF    AARGB2, F
+                RRF             AARGB3, F
+                RRF             AARGB4, F
+                DECFSZ  LOOPCOUNT, F
+                GOTO    BLOOPUM2424
+
+                MOVLW   0x08
+                MOVWF   LOOPCOUNT
+
+CLOOPUM2424
+                RRF     BARGB0, F
+                BTFSS   _C
+                GOTO    CLUM2424NA
+                MOVF   TEMPB2,W
+                ADDWF   AARGB2, F
+                MOVF            TEMPB1,W
+                BTFSC           _C
+                INCFSZ          TEMPB1,W
+                ADDWF           AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+
+CLUM2424NA
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF    AARGB2, F
+                RRF             AARGB3, F
+                RRF             AARGB4, F
+                RRF             AARGB5, F
+                DECFSZ  LOOPCOUNT, F
+                GOTO    CLOOPUM2424
+
+                endm
+
+
+
+UMUL2323L        macro
+
+;       Max Timing:     2+15+6*20+19+2+7*21+20+2+6*22+21+6 = 486 clks
+
+;       Min Timing:     2+7*6+5+1+7*6+5+2+6*6+5+5 = 145 clks
+
+;       PM: 24+20+2+21+2+22+6 = 97           DM: 13
+
+
+                MOVLW   0x8
+                MOVWF   LOOPCOUNT
+
+LOOPUM2323A
+                RRF     BARGB2, F
+                BTFSC   _C
+                GOTO    ALUM2323NAP
+                DECFSZ  LOOPCOUNT, F
+                GOTO    LOOPUM2323A
+
+                MOVWF   LOOPCOUNT
+
+LOOPUM2323B
+                RRF     BARGB1, F
+                BTFSC   _C
+                GOTO    BLUM2323NAP
+                DECFSZ  LOOPCOUNT, F
+                GOTO    LOOPUM2323B
+
+                MOVLW   0x7
+                MOVWF   LOOPCOUNT
+
+LOOPUM2323C
+                RRF     BARGB0, F
+                BTFSC   _C
+                GOTO    CLUM2323NAP
+                DECFSZ  LOOPCOUNT, F
+                GOTO    LOOPUM2323C
+
+                CLRF    AARGB0
+                CLRF    AARGB1
+                CLRF    AARGB2
+                RETLW   0x00
+
+CLUM2323NAP
+                BCF     _C
+                GOTO    CLUM2323NA
+
+BLUM2323NAP
+                BCF    _C
+                GOTO    BLUM2323NA
+
+ALUM2323NAP
+                BCF    _C
+                GOTO    ALUM2323NA
+
+ALOOPUM2323
+                RRF     BARGB2, F
+                BTFSS   _C
+                GOTO    ALUM2323NA
+                MOVF   TEMPB2,W
+                ADDWF   AARGB2, F
+                MOVF            TEMPB1,W
+                BTFSC           _C
+                INCFSZ          TEMPB1,W
+                ADDWF           AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+
+ALUM2323NA
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF    AARGB2, F
+                RRF    AARGB3, F
+                DECFSZ  LOOPCOUNT, F
+                GOTO    ALOOPUM2323
+
+                MOVLW   0x08
+                MOVWF   LOOPCOUNT
+
+BLOOPUM2323
+                RRF     BARGB1, F
+                BTFSS   _C
+                GOTO    BLUM2323NA
+                MOVF   TEMPB2,W
+                ADDWF   AARGB2, F
+                MOVF            TEMPB1,W
+                BTFSC           _C
+                INCFSZ          TEMPB1,W
+                ADDWF           AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+
+BLUM2323NA
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF    AARGB2, F
+                RRF             AARGB3, F
+                RRF    AARGB4, F
+                DECFSZ  LOOPCOUNT, F
+                GOTO    BLOOPUM2323
+
+                MOVLW   0x07
+                MOVWF   LOOPCOUNT
+
+CLOOPUM2323
+                RRF     BARGB0, F
+                BTFSS   _C
+                GOTO    CLUM2323NA
+                MOVF   TEMPB2,W
+                ADDWF   AARGB2, F
+                MOVF            TEMPB1,W
+                BTFSC           _C
+                INCFSZ          TEMPB1,W
+                ADDWF           AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+
+CLUM2323NA
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF    AARGB2, F
+                RRF             AARGB3, F
+                RRF    AARGB4, F
+                RRF    AARGB5, F
+                DECFSZ  LOOPCOUNT, F
+                GOTO    CLOOPUM2323
+
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+                RRF    AARGB4, F
+                RRF    AARGB5, F
+
+                endm
+                
+
+
+SMUL2424        macro
+
+;       Max Timing:     8+7*17+8*18+7*19+7 = 411 clks
+
+;       Min Timing:     46+5 = 51 clks
+
+;       PM: 51+4+7*17+8*18+7*19+7 = 466            DM: 12
+
+
+                variable i = 0
+                
+                while i < 8
+                
+                BTFSC   BARGB2,i
+                GOTO    SM2424NA#v(i)
+
+                variable i = i + 1
+
+                endw
+
+                variable i = 8
+                
+                while i < 16
+                
+                BTFSC   BARGB1,i-8
+                GOTO    SM2424NA#v(i)
+
+                variable i = i + 1
+
+                endw
+
+                variable i = 16
+                
+                while i < 23
+                
+                BTFSC   BARGB0,i-16
+                GOTO    SM2424NA#v(i)
+
+                variable i = i + 1
+
+                endw
+
+                CLRF    AARGB0          ; if we get here, BARG = 0
+                CLRF    AARGB1
+                CLRF    AARGB2
+                RETURN
+
+SM2424NA0       RLF    SIGN,W
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+
+                variable i = 1
+
+                while   i < 8
+
+                BTFSS   BARGB2,i
+                GOTO    SM2424NA#v(i)
+SM2424A#v(i)    MOVF   TEMPB2,W
+                ADDWF   AARGB2, F
+                MOVF            TEMPB1,W
+                BTFSC           _C
+                INCFSZ          TEMPB1,W
+                ADDWF           AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+SM2424NA#v(i)   RLF    SIGN,W, F
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+
+                variable i = i + 1
+
+                endw
+
+                variable i = 8
+
+                while   i < 16
+
+                BTFSS   BARGB1,i-8
+                GOTO    SM2424NA#v(i)
+SM2424A#v(i)    MOVF   TEMPB2,W
+                ADDWF   AARGB2, F
+                MOVF            TEMPB1,W
+                BTFSC           _C
+                INCFSZ          TEMPB1,W
+                ADDWF           AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+SM2424NA#v(i)   RLF    SIGN,W
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+                RRF             AARGB4, F
+
+                variable i = i + 1
+
+                endw
+
+                variable i = 16
+
+                while   i < 23
+
+                BTFSS   BARGB0,i-16
+                GOTO    SM2424NA#v(i)
+SM2424A#v(i)    MOVF   TEMPB2,W
+                ADDWF   AARGB2, F
+                MOVF            TEMPB1,W
+                BTFSC           _C
+                INCFSZ          TEMPB1,W
+                ADDWF           AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+SM2424NA#v(i)   RLF    TEMPB0,W
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+                RRF             AARGB4, F
+                RRF             AARGB5, F
+
+                variable i = i + 1
+
+                endw
+
+                RLF    TEMPB0,W
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+                RRF             AARGB4, F
+                RRF             AARGB5, F
+
+                endm
+
+
+UMUL2424        macro
+
+;       Max Timing:     8+8*17+8*18+8*19 = 440 clks
+
+;       Min Timing:     49+5 = 54 clks
+
+;       PM: 54+4+8*17+8*18+8*19 = 490            DM: 12
+
+
+                variable i = 0
+
+                BCF     _C              ; clear carry for first right shift
+                
+                while i < 8
+                
+                BTFSC   BARGB2,i
+                GOTO    UM2424NA#v(i)
+
+                variable i = i + 1
+
+                endw
+
+                variable i = 8
+                
+                while i < 16
+                
+                BTFSC   BARGB1,i-8
+                GOTO    UM2424NA#v(i)
+
+                variable i = i + 1
+
+                endw
+
+                variable i = 16
+                
+                while i < 24
+                
+                BTFSC   BARGB0,i-16
+                GOTO    UM2424NA#v(i)
+
+                variable i = i + 1
+
+                endw
+
+                CLRF    AARGB0          ; if we get here, BARG = 0
+                CLRF    AARGB1
+                CLRF    AARGB2
+                RETURN
+
+UM2424NA0       RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+
+                variable i = 1
+
+                while   i < 8
+
+                BTFSS   BARGB2,i
+                GOTO    UM2424NA#v(i)
+UM2424A#v(i)    MOVF   TEMPB2,W
+                ADDWF   AARGB2, F
+                MOVF            TEMPB1,W
+                BTFSC           _C
+                INCFSZ          TEMPB1,W
+                ADDWF           AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+UM2424NA#v(i)   RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+
+                variable i = i + 1
+
+                endw
+
+                variable i = 8
+
+                while   i < 16
+
+                BTFSS   BARGB1,i-8
+                GOTO    UM2424NA#v(i)
+UM2424A#v(i)    MOVF   TEMPB2,W
+                ADDWF   AARGB2, F
+                MOVF            TEMPB1,W
+                BTFSC           _C
+                INCFSZ          TEMPB1,W
+                ADDWF           AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+UM2424NA#v(i)   RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+                RRF             AARGB4, F
+
+                variable i = i + 1
+
+                endw
+
+                variable i = 16
+
+                while   i < 24
+
+                BTFSS   BARGB0,i-16
+                GOTO    UM2424NA#v(i)
+UM2424A#v(i)    MOVF   TEMPB2,W
+                ADDWF   AARGB2, F
+                MOVF            TEMPB1,W
+                BTFSC           _C
+                INCFSZ          TEMPB1,W
+                ADDWF           AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+UM2424NA#v(i)   RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+                RRF             AARGB4, F
+                RRF             AARGB5, F
+
+                variable i = i + 1
+
+                endw
+
+                endm
+
+
+UMUL2323        macro
+
+;       Max Timing:     8+7*17+8*18+7*19+7 = 411 clks
+
+;       Min Timing:     46+5 = 51 clks
+
+;       PM: 51+4+7*17+8*18+7*19+7 = 466            DM: 12
+
+
+                variable i = 0
+
+                BCF     _C              ; clear carry for first right shift
+
+                while i < 8
+                
+                BTFSC   BARGB2,i
+                GOTO    UM2323NA#v(i)
+
+                variable i = i + 1
+
+                endw
+
+                variable i = 8
+
+                while i < 16
+                
+                BTFSC   BARGB1,i-8
+                GOTO    UM2323NA#v(i)
+
+                variable i = i + 1
+
+                endw
+
+                variable i = 16
+
+                while i < 23
+                
+                BTFSC   BARGB0,i-16
+                GOTO    UM2323NA#v(i)
+
+                variable i = i + 1
+
+                endw
+
+                CLRF    AARGB0         ; if we get here, BARG = 0
+                CLRF    AARGB1
+                CLRF    AARGB2
+                CLRF    AARGB3
+                RETURN
+
+UM2323NA0       RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+
+                variable i = 1
+
+                while   i < 8
+
+                BTFSS   BARGB2,i
+                GOTO    UM2323NA#v(i)
+UM2323A#v(i)    MOVF   TEMPB2,W
+                ADDWF   AARGB2, F
+                MOVF            TEMPB1,W
+                BTFSC           _C
+                INCFSZ          TEMPB1,W
+                ADDWF           AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+UM2323NA#v(i)   RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+
+                variable i = i + 1
+
+                endw
+
+                variable i = 8
+
+                while   i < 16
+
+                BTFSS   BARGB1,i-8
+                GOTO    UM2323NA#v(i)
+UM2323A#v(i)    MOVF   TEMPB2,W
+                ADDWF   AARGB2, F
+                MOVF            TEMPB1,W
+                BTFSC           _C
+                INCFSZ          TEMPB1,W
+                ADDWF           AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+UM2323NA#v(i)   RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+                RRF             AARGB4, F
+
+                variable i = i + 1
+
+                endw
+
+                variable i = 16
+
+                while   i < 23
+
+                BTFSS   BARGB0,i-16
+                GOTO    UM2323NA#v(i)
+UM2323A#v(i)    MOVF   TEMPB2,W
+                ADDWF   AARGB2, F
+                MOVF            TEMPB1,W
+                BTFSC           _C
+                INCFSZ          TEMPB1,W
+                ADDWF           AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+UM2323NA#v(i)   RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+                RRF             AARGB4, F
+                RRF             AARGB5, F
+
+                variable i = i + 1
+
+                endw
+
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+                RRF             AARGB4, F
+                RRF             AARGB5, F
+
+                endm
+                
+;**********************************************************************************************
+;**********************************************************************************************
+        
+;       24x24 Bit Signed Fixed Point Multiply 24x24 -> 48
+
+;       Input:  24 bit signed fixed point multiplicand in AARGB0
+;                       24 bit signed fixed point multiplier in BARGB0
+
+;       Use:    CALL    FXM2424S
+
+;       Output: 48 bit signed fixed point product in AARGB0
+
+;       Result: AARG  <--  AARG x BARG
+
+;       Max Timing:     12+506+2 = 520 clks                B > 0
+;                       27+506+2 = 535 clks                B < 0
+
+;       Min Timing:     12+145 = 157 clks
+
+;       PM: 27+98+1 = 126              DM: 13
+
+FXM2424S	CLRF	AARGB3          ; clear partial product
+		CLRF	AARGB4
+                CLRF    AARGB5
+		CLRF	SIGN
+		MOVF	AARGB0,W
+		IORWF	AARGB1,W
+		IORWF	AARGB2,W
+		BTFSC	_Z
+		RETLW	0x00
+		
+		MOVF	AARGB0,W
+		XORWF	BARGB0,W
+		MOVWF	TEMPB0
+		BTFSC	TEMPB0,MSB
+		COMF	SIGN,F
+
+	        BTFSS   BARGB0,MSB
+                GOTO    M2424SOK
+
+                COMF            BARGB2, F
+                COMF            BARGB1, F
+                COMF            BARGB0, F
+                INCF            BARGB2, F
+                BTFSC           _Z
+                INCF            BARGB1, F
+		BTFSC		_Z
+		INCF		BARGB0, F
+
+                COMF            AARGB2, F
+                COMF            AARGB1, F
+                COMF            AARGB0, F
+                INCF            AARGB2, F
+                BTFSC           _Z
+                INCF            AARGB1, F
+		BTFSC		_Z
+		INCF		AARGB0, F
+
+		BTFSC	BARGB0,MSB
+		GOTO	M2424SX
+
+M2424SOK        MOVF   AARGB0,W
+                MOVWF   TEMPB0
+                MOVF   AARGB1,W
+                MOVWF   TEMPB1
+                MOVF   AARGB2,W
+                MOVWF   TEMPB2
+
+                SMUL2424L
+
+                RETLW           0x00
+
+M2424SX		CLRF	AARGB3
+		CLRF	AARGB4
+		CLRF	AARGB5
+		RLF	SIGN,W
+		RRF	AARGB0,F
+		RRF	AARGB1,F
+		RRF	AARGB2,F
+		RRF	AARGB3,F
+
+		RETLW	0x00
+
+
+;**********************************************************************************************
+;**********************************************************************************************
+        
+;       24x24 Bit Unsigned Fixed Point Multiply 24x24 -> 48
+
+;       Input:  24 bit unsigned fixed point multiplicand in AARGB0
+;                       24 bit unsigned fixed point multiplier in BARGB0
+
+;       Use:    CALL    FXM2424U
+
+;       Output: 48 bit unsigned fixed point product in AARGB0
+
+;       Result: AARG  <--  AARG x BARG
+
+;       Max Timing:     9+501+2 = 512 clks
+
+;       Min Timing:     9+150 = 159 clks
+
+;       PM: 9+88+1 = 98              DM: 13
+
+FXM2424U
+        CLRF    AARGB3          ; clear partial product
+                CLRF    AARGB4
+                CLRF    AARGB5
+                MOVF   AARGB0,W
+                MOVWF   TEMPB0
+                MOVF   AARGB1,W
+                MOVWF   TEMPB1
+                MOVF   AARGB2,W
+                MOVWF   TEMPB2
+
+                UMUL2424L
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+        
+;       23x23 Bit Unsigned Fixed Point Divide 23x23 -> 46
+
+;       Input:  23 bit unsigned fixed point multiplicand in AARGB0
+;                       23 bit unsigned fixed point multiplier in BARGB0
+
+;       Use:    CALL    FXM2323U
+
+;       Output: 46 bit unsigned fixed point product in AARGB0
+
+;       Result: AARG  <--  AARG x BARG
+
+;       Max Timing:     9+486+2 = 497 clks
+
+;       Min Timing:     9+145 = 154 clks
+
+;       PM: 9+97+1 = 107              DM: 13
+
+FXM2323U
+        CLRF    AARGB3          ; clear partial product
+                CLRF    AARGB4
+                CLRF    AARGB5
+                MOVF   AARGB0,W
+                MOVWF   TEMPB0
+                MOVF   AARGB1,W
+                MOVWF   TEMPB1
+                MOVF   AARGB2,W
+                MOVWF   TEMPB2
+
+                UMUL2323L
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+

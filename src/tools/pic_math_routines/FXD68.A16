@@ -1,0 +1,760 @@
+;	RCS Header $Id: fxd68.a16 2.3 1996/10/16 14:23:57 F.J.Testa Exp $
+
+;	$Revision: 2.3 $
+
+;       16/8 PIC16 FIXED POINT DIVIDE ROUTINES
+;
+;       Input:  fixed point arguments in AARG and BARG
+;
+;       Output: quotient AARG/BARG followed by remainder in REM
+;
+;       All timings are worst case cycle counts
+;
+;       It is useful to note that the additional unsigned routines requiring a non-power of two
+;       argument can be called in a signed divide application where it is known that the
+;       respective argument is nonnegative, thereby offering some improvement in
+;       performance.
+;
+;         Routine            Clocks     Function
+;
+;       FXD1608S    203 16 bit/8 bit -> 16.08 signed fixed point divide
+;
+;       FXD1608U    294 16 bit/8 bit -> 16.08 unsigned fixed point divide
+;
+;       FXD1607U    174 16 bit/7 bit -> 16.07 unsigned fixed point divide
+;
+;       FXD1507U    166 15 bit/7 bit -> 15.07 unsigned fixed point divide
+;
+;       The above timings are based on the looped macros. If space permits,
+;       approximately 41-50 clocks can be saved by using the unrolled macros.
+;
+
+;**********************************************************************************************
+;**********************************************************************************************
+
+;       16/08 BIT Division Macros
+
+
+SDIV1608L       macro
+
+;       Max Timing:     3+5+2+5*11+10+10+6*11+10+2 = 163 clks
+
+;       Min Timing:     3+5+2+5*11+10+10+6*11+10+2 = 163 clks
+
+;       PM: 42                                  DM: 5
+
+                MOVF            BARGB0,W
+                SUBWF           REMB0, F
+                RLF             AARGB0, F
+
+                RLF             AARGB0,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+                ADDWF           REMB0, F
+                RLF             AARGB0, F
+
+                MOVLW           6
+                MOVWF           LOOPCOUNT
+
+LOOPS1608A      RLF             AARGB0,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLF             AARGB0, F
+
+                DECFSZ          LOOPCOUNT, F
+                GOTO            LOOPS1608A
+
+                RLF             AARGB1,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLF             AARGB1, F
+
+                MOVLW           7
+                MOVWF           LOOPCOUNT
+
+LOOPS1608B      RLF             AARGB1,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+
+                BTFSC           AARGB1,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB1,LSB
+                ADDWF           REMB0, F
+                RLF             AARGB1, F
+
+                DECFSZ          LOOPCOUNT, F
+                GOTO            LOOPS1608B
+
+                BTFSS           AARGB1,LSB
+                ADDWF           REMB0, F
+
+                endm
+
+UDIV1608L  macro
+
+;       Max Timing: 2+7*12+11+3+7*24+23 = 291 clks
+
+;       Min Timing: 2+7*11+10+3+7*17+16 = 227 clks
+
+;       PM: 39                                  DM: 7
+
+                MOVLW           8
+                MOVWF           LOOPCOUNT
+
+LOOPU1608A      RLF             AARGB0,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+                SUBWF           REMB0, F
+
+                BTFSC           _C
+                GOTO            UOK68A          
+                ADDWF           REMB0, F
+                BCF             _C
+UOK68A          RLF             AARGB0, F
+
+                DECFSZ          LOOPCOUNT, F
+                GOTO            LOOPU1608A
+
+                CLRF            TEMP
+
+                MOVLW           8
+                MOVWF           LOOPCOUNT
+
+LOOPU1608B      RLF             AARGB1,W
+                RLF             REMB0, F
+                RLF             TEMP, F
+                MOVF            BARGB0,W
+                SUBWF           REMB0, F
+                CLRF            AARGB5
+                CLRW
+                BTFSS           _C
+                INCFSZ          AARGB5,W
+                SUBWF           TEMP, F
+
+                BTFSC           _C
+                GOTO            UOK68B          
+                MOVF            BARGB0,W
+                ADDWF           REMB0, F
+                CLRF            AARGB5
+                CLRW
+                BTFSC           _C
+                INCFSZ          AARGB5,W
+                ADDWF           TEMP, F
+
+                BCF             _C
+UOK68B          RLF             AARGB1, F
+
+                DECFSZ          LOOPCOUNT, F
+                GOTO            LOOPU1608B
+
+                endm
+
+UDIV1607L       macro
+
+;       Max Timing:     7+6*11+10+10+6*11+10+2 = 171 clks
+
+;       Min Timing:     7+6*11+10+10+6*11+10+2 = 171 clks
+
+;       PM: 39                                  DM: 5
+
+                RLF             AARGB0,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+                SUBWF           REMB0, F
+                RLF             AARGB0, F
+
+                MOVLW           7
+                MOVWF           LOOPCOUNT
+
+LOOPU1607A      RLF             AARGB0,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLF             AARGB0, F
+
+                DECFSZ          LOOPCOUNT, F
+                GOTO            LOOPU1607A
+
+                RLF             AARGB1,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLF             AARGB1, F
+
+                MOVLW           7
+                MOVWF           LOOPCOUNT
+
+LOOPU1607B RLF          AARGB1,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+
+                BTFSC           AARGB1,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB1,LSB
+                ADDWF           REMB0, F
+                RLF             AARGB1, F
+
+                DECFSZ          LOOPCOUNT, F
+                GOTO            LOOPU1607B
+
+                BTFSS           AARGB1,LSB
+                ADDWF           REMB0, F
+
+                endm
+
+UDIV1507L       macro
+
+;       Max Timing:     3+5+2+5*11+10+10+6*11+10+2 = 163 clks
+
+;       Min Timing:     3+5+2+5*11+10+10+6*11+10+2 = 163 clks
+
+;       PM: 42                                  DM: 5
+
+                MOVF            BARGB0,W
+                SUBWF           REMB0, F
+                RLF             AARGB0, F
+
+                RLF             AARGB0,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+                ADDWF           REMB0, F
+                RLF             AARGB0, F
+
+                MOVLW           6
+                MOVWF           LOOPCOUNT
+
+LOOPU1507A      RLF             AARGB0,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLF             AARGB0, F
+
+                DECFSZ          LOOPCOUNT, F
+                GOTO            LOOPU1507A
+
+                RLF             AARGB1,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLF             AARGB1, F
+
+                MOVLW           7
+                MOVWF           LOOPCOUNT
+
+LOOPU1507B      RLF             AARGB1,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+
+                BTFSC           AARGB1,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB1,LSB
+                ADDWF           REMB0, F
+                RLF             AARGB1, F
+
+                DECFSZ          LOOPCOUNT, F
+                GOTO            LOOPU1507B
+
+                BTFSS           AARGB1,LSB
+                ADDWF           REMB0, F
+
+                endm
+
+SDIV1608        macro
+
+;       Max Timing:     3+5+14*8+2 = 122 clks
+
+;       Min Timing:     3+5+14*8+2 = 122 clks
+
+;       PM: 122                                 DM: 4
+
+                MOVF            BARGB0,W
+                SUBWF           REMB0, F
+                RLF             AARGB0, F
+
+                RLF             AARGB0,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+                ADDWF           REMB0, F
+                RLF             AARGB0, F
+
+                variable i = 2
+
+                while i < 8
+
+                RLF             AARGB0,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLF             AARGB0, F
+
+                variable i =i+1
+
+                endw
+
+                RLF             AARGB1,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLF             AARGB1, F
+
+                variable i = 9
+
+                while i < 16
+
+                RLF             AARGB1,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+
+                BTFSC           AARGB1,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB1,LSB
+                ADDWF           REMB0, F
+                RLF             AARGB1, F
+
+                variable i =i+1
+
+                endw
+
+                BTFSS           AARGB1,LSB
+                ADDWF           REMB0, F
+
+                endm
+
+UDIV1608  macro
+
+;       restore = 9/21 clks,  nonrestore = 8/14 clks
+
+;       Max Timing: 8*9+1+8*21 = 241 clks
+
+;       Min Timing: 8*8+1+8*14 = 177 clks
+
+;       PM: 241                                 DM: 6
+
+                variable i = 0
+
+                while i < 8
+
+                RLF             AARGB0,W
+                RLF              REMB0, F
+                MOVF            BARGB0,W
+                SUBWF           REMB0, F
+
+                BTFSC           _C
+                GOTO            UOK68#v(i)              
+                ADDWF           REMB0, F
+                BCF             _C
+UOK68#v(i)      RLF     AARGB0, F
+
+                variable i =i+1
+
+                endw
+
+                CLRF            TEMP
+
+                variable i = 8
+
+                while i < 16
+
+                RLF             AARGB1,W
+                RLF             REMB0, F
+                RLF             TEMP, F
+                MOVF            BARGB0,W
+                SUBWF           REMB0, F
+                CLRF            AARGB5
+                CLRW
+                BTFSS           _C
+                INCFSZ          AARGB5,W
+                SUBWF           TEMP, F
+
+                BTFSC           _C
+                GOTO            UOK68#v(i)              
+                MOVF            BARGB0,W
+                ADDWF           REMB0, F
+                CLRF            AARGB5
+                CLRW
+                BTFSC           _C
+                INCFSZ          AARGB5,W
+                ADDWF           TEMP, F
+
+                BCF             _C
+UOK68#v(i)      RLF             AARGB1, F
+
+                variable i =i+1
+
+                endw
+
+                endm
+
+UDIV1607        macro
+
+;       Max Timing:     5+15*8+2 = 127 clks
+
+;       Min Timing:     5+15*8+2 = 127 clks
+
+;       PM: 127                                 DM: 4
+
+                RLF             AARGB0,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+                SUBWF           REMB0, F
+                RLF             AARGB0, F
+
+                variable i = 1
+
+                while i < 8
+
+                RLF             AARGB0,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLF             AARGB0, F
+
+                variable i =i+1
+
+                endw
+
+                RLF             AARGB1,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLF             AARGB1, F
+
+                variable i = 9
+
+                while i < 16
+
+                RLF             AARGB1,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+
+                BTFSC           AARGB1,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB1,LSB
+                ADDWF           REMB0, F
+                RLF             AARGB1, F
+
+                variable i =i+1
+
+                endw
+
+                BTFSS           AARGB1,LSB
+                ADDWF           REMB0, F
+
+                endm
+
+UDIV1507        macro
+
+;       Max Timing:     3+5+14*8+2 = 122 clks
+
+;       Min Timing:     3+5+14*8+2 = 122 clks
+
+;       PM: 122                                 DM: 4
+
+                MOVF            BARGB0,W
+                SUBWF           REMB0, F
+                RLF             AARGB0, F
+
+                RLF             AARGB0,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+                ADDWF           REMB0, F
+                RLF             AARGB0, F
+
+                variable i = 2
+
+                while i < 8
+
+                RLF             AARGB0,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLF             AARGB0, F
+
+                variable i =i+1
+
+                endw
+
+                RLF             AARGB1,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+
+                BTFSC           AARGB0,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB0,LSB
+                ADDWF           REMB0, F
+                RLF             AARGB1, F
+
+                variable i = 9
+
+                while i < 16
+
+                RLF             AARGB1,W
+                RLF             REMB0, F
+                MOVF            BARGB0,W
+
+                BTFSC           AARGB1,LSB
+                SUBWF           REMB0, F
+                BTFSS           AARGB1,LSB
+                ADDWF           REMB0, F
+                RLF             AARGB1, F
+
+                variable i =i+1
+
+                endw
+
+                BTFSS           AARGB1,LSB
+                ADDWF           REMB0, F
+
+                endm
+                
+;**********************************************************************************************
+;**********************************************************************************************
+        
+;       16/8 Bit Signed Fixed Point Divide 16/8 -> 16.08
+
+;       Input:  16 bit signed fixed point dividend in AARGB0, AARGB1
+;               8 bit signed fixed point divisor in BARGB0
+
+;       Use:    CALL    FXD1608S
+
+;       Output: 16 bit signed fixed point quotient in AARGB0, AARGB1
+;               8 bit signed fixed point remainder in REMB0
+
+;       Result: AARG, REM  <--  AARG / BARG
+
+;       Max Timing:     23+163+5 = 191 clks             A > 0, B > 0
+;                       24+163+13 = 200 clks            A > 0, B < 0
+;                       27+163+13 = 203 clks            A < 0, B > 0
+;                       28+163+5 = 196 clks             A < 0, B < 0
+;			7 clks				A = 0
+
+;       Min Timing:     23+163+5 = 191 clks             A > 0, B > 0
+;                       24+163+13 = 200 clks            A > 0, B < 0
+;                       27+163+13 = 203 clks            A < 0, B > 0
+;                       28+163+5 = 196 clks             A < 0, B < 0
+
+;       PM: 28+42+12+34 = 116               DM: 8
+
+FXD1608S	CLRF		SIGN
+                CLRF            REMB0			; clear partial remainder
+		MOVF		AARGB0,W
+		IORWF		AARGB1,W
+		BTFSC		_Z
+		RETLW		0x00
+
+		MOVF		AARGB0,W
+		XORWF		BARGB0,W
+		MOVWF		TEMP
+		BTFSC		TEMP,MSB
+		COMF		SIGN,F
+
+		CLRF		TEMPB3			; clear exception flag
+
+                BTFSS           BARGB0,MSB        ; if MSB set, negate BARG
+                GOTO            CA1608S
+
+                COMF            BARGB0, F
+                INCF            BARGB0, F
+
+CA1608S         BTFSS           AARGB0,MSB        ; if MSB set, negate AARG
+                GOTO            C1608SX
+
+                COMF            AARGB1, F
+                COMF            AARGB0, F
+                INCF            AARGB1, F
+                BTFSC           _Z
+                INCF            AARGB0, F
+
+C1608SX		MOVF		AARGB0,W
+		IORWF		BARGB0,W
+		MOVWF		TEMP
+		BTFSC		TEMP,MSB
+		GOTO		C1608SX1
+
+C1608S          SDIV1608
+
+		BTFSC		TEMPB3,LSB		; test exception flag
+		GOTO		C1608SX4
+
+C1608SOK        BTFSS           SIGN,MSB
+                RETLW           0x00
+
+                COMF            AARGB1, F
+                COMF            AARGB0, F
+                INCF            AARGB1, F
+                BTFSC           _Z
+                INCF            AARGB0, F
+
+                COMF            REMB0, F
+                INCF            REMB0, F
+
+                RETLW           0x00
+
+C1608SX1	BTFSS		BARGB0,MSB		; test BARG exception
+		GOTO		C1608SX3
+		BTFSC		AARGB0,MSB		; test AARG exception
+		GOTO		C1608SX2
+		MOVF		AARGB1,W
+		MOVWF		REMB0
+		BCF		REMB0,MSB
+		RLF		AARGB1,F
+		RLF		AARGB0,F
+		MOVF		AARGB0,W
+		MOVWF		AARGB1
+		CLRF		AARGB0
+		GOTO		C1608SOK
+C1608SX2	CLRF		AARGB1			; quotient = 1, remainder = 0
+		INCF		AARGB1,F
+		CLRF		AARGB0
+		RETLW		0x00
+
+C1608SX3	COMF		AARGB0,F		; numerator = 0x7FFF + 1
+		COMF		AARGB1,F
+		INCF		TEMPB3,F
+		GOTO		C1608S
+
+C1608SX4	INCF		REMB0,F			; increment remainder and test for
+		MOVF		BARGB0,W		; overflow
+		SUBWF		REMB0,W
+		BTFSS		_Z
+		GOTO		C1608SOK
+		CLRF		REMB0			; if remainder overflow, clear
+		INCF		AARGB1,F		; remainder, increment quotient and
+		BTFSC		_Z
+		INCF		AARGB0,F		; test for overflow exception
+		BTFSS		AARGB0,MSB
+		GOTO		C1608SOK
+		BSF		FPFLAGS,NAN
+		RETLW		0xFF
+
+;**********************************************************************************************
+;**********************************************************************************************
+        
+;       16/8 Bit Unsigned Fixed Point Divide 16/8 -> 16.08
+
+;       Input:  16 bit unsigned fixed point dividend in AARGB0, AARGB1
+;               8 bit unsigned fixed point divisor in BARGB0
+
+;       Use:    CALL    FXD1608U
+
+;       Output: 16 bit unsigned fixed point quotient in AARGB0, AARGB1
+;               8 bit unsigned fixed point remainder in REMB0
+
+;       Result: AARG, REM  <--  AARG / BARG
+
+;       Max Timing:     1+291+2 = 294 clks
+
+;       Min Timing:     1+227+2 = 230 clks
+
+;       PM: 1+39+1 = 41         DM: 7
+
+FXD1608U        CLRF            REMB0
+
+                UDIV1608L
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+        
+;       16/7 Bit Unsigned Fixed Point Divide 16/7 -> 16.07
+
+;       Input:  16 bit unsigned fixed point dividend in AARGB0, AARGB1
+;               7 bit unsigned fixed point divisor in BARGB0
+
+;       Use:    CALL    FXD1607U
+
+;       Output: 16 bit unsigned fixed point quotient in AARGB0, AARGB1
+;               7 bit unsigned fixed point remainder in REMB0
+
+;       Result: AARG, REM  <--  AARG / BARG
+
+;       Max Timing:     1+171+2 = 174 clks
+
+;       Min Timing:     1+171+2 = 174 clks
+
+;       PM: 1+39+1 = 41         DM: 5
+
+FXD1607U        CLRF            REMB0
+
+                UDIV1607L
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+        
+;       15/7 Bit Unsigned Fixed Point Divide 15/7 -> 15.07
+
+;       Input:  15 bit unsigned fixed point dividend in AARGB0, AARGB1
+;               7 bit unsigned fixed point divisor in BARGB0
+
+;       Use:    CALL    FXD1507U
+
+;       Output: 15 bit unsigned fixed point quotient in AARGB0, AARGB1
+;               7 bit unsigned fixed point remainder in REMB0
+
+;       Result: AARG, REM  <--  AARG / BARG
+
+;       Max Timing:     1+163+2 = 166 clks
+
+;       Min Timing:     1+163+2 = 166 clks
+
+;       PM: 1+42+1 = 44         DM: 5
+
+FXD1507U        CLRF            REMB0
+
+                UDIV1507L
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+
+                END

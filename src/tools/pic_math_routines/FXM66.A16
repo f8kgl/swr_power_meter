@@ -1,0 +1,699 @@
+;	RCS Header $Id: fxm66.a16 2.3 1996/10/16 14:23:23 F.J.Testa Exp $
+
+;	$Revision: 2.3 $
+
+;       16x16 PIC16 FIXED POINT MULTIPLY ROUTINES
+;
+;       Input:  fixed point arguments in AARG and BARG
+;
+;       Output: product AARGxBARG in AARG
+;
+;       All timings are worst case cycle counts
+;
+;       It is useful to note that the additional unsigned routines requiring a non-power of two
+;       argument can be called in a signed multiply application where it is known that the
+;       respective argument is nonnegative, thereby offering some improvement in
+;       performance.
+;
+;         Routine            Clocks     Function
+;
+;       FXM1616S     269        16x16 -> 32 bit signed fixed point multiply
+;
+;       FXM1616U     256        16x16 -> 32 bit unsigned fixed point multiply
+;
+;       FXM1515U     244        15x15 -> 30 bit unsigned fixed point multiply
+;
+;       The above timings are based on the looped macros. If space permits,
+;       approximately 64-73 clocks can be saved by using the unrolled macros.
+;
+
+;**********************************************************************************************
+;**********************************************************************************************
+
+;       16x16 Bit Multiplication Macros
+
+SMUL1616L        macro
+
+;       Max Timing:     2+11+6*16+15+2+6*17+16+5 = 249 clks
+
+;       Min Timing:     2+7*6+5+2+6*6+5+4 = 96 clks
+
+;       PM: 55            DM: 9
+
+
+                MOVLW   0x8
+                MOVWF   LOOPCOUNT
+
+LOOPSM1616A
+                RRF     BARGB1, F
+                BTFSC   _C
+                GOTO    ALSM1616NA
+                DECFSZ  LOOPCOUNT, F
+                GOTO    LOOPSM1616A
+
+                MOVLW   0x7
+                MOVWF   LOOPCOUNT
+
+LOOPSM1616B
+                RRF     BARGB0, F
+                BTFSC   _C
+                GOTO    BLSM1616NA
+                DECFSZ  LOOPCOUNT, F
+                GOTO    LOOPSM1616B
+
+                CLRF    AARGB0
+                CLRF    AARGB1
+                RETLW   0x00
+
+ALOOPSM1616
+                RRF     BARGB1, F
+                BTFSS   _C
+                GOTO    ALSM1616NA
+                MOVF   TEMPB1,W
+                ADDWF   AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+
+ALSM1616NA      RLF    SIGN,W
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF    AARGB2, F
+                DECFSZ  LOOPCOUNT, F
+                GOTO    ALOOPSM1616
+
+                MOVLW   0x7
+                MOVWF   LOOPCOUNT
+
+BLOOPSM1616
+                RRF     BARGB0, F
+                BTFSS   _C
+                GOTO    BLSM1616NA
+                MOVF   TEMPB1,W
+                ADDWF   AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+
+BLSM1616NA      RLF    SIGN,W
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF    AARGB2, F
+                RRF             AARGB3, F
+                DECFSZ  LOOPCOUNT, F
+                GOTO    BLOOPSM1616
+
+                RLF    SIGN,W
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF    AARGB2, F
+                RRF    AARGB3, F
+
+                endm
+
+UMUL1616L        macro
+
+;       Max Timing:     2+13+6*15+14+2+7*16+15 = 248 clks
+
+;       Min Timing:     2+7*6+5+1+7*6+5+4 = 101 clks
+
+;       PM: 51            DM: 9
+
+                MOVLW   0x08
+                MOVWF   LOOPCOUNT
+
+LOOPUM1616A
+                RRF     BARGB1, F
+                BTFSC   _C
+                GOTO    ALUM1616NAP
+                DECFSZ  LOOPCOUNT, F
+                GOTO    LOOPUM1616A
+
+                MOVWF   LOOPCOUNT
+
+LOOPUM1616B
+                RRF     BARGB0, F
+                BTFSC   _C
+                GOTO    BLUM1616NAP
+                DECFSZ  LOOPCOUNT, F
+                GOTO    LOOPUM1616B
+
+                CLRF    AARGB0
+                CLRF    AARGB1
+                RETLW   0x00
+
+BLUM1616NAP
+                BCF     _C
+                GOTO    BLUM1616NA
+
+ALUM1616NAP
+                BCF     _C
+                GOTO    ALUM1616NA
+
+ALOOPUM1616
+                RRF     BARGB1, F
+                BTFSS   _C
+                GOTO    ALUM1616NA
+                MOVF   TEMPB1,W
+                ADDWF   AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+
+ALUM1616NA
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF    AARGB2, F
+                DECFSZ  LOOPCOUNT, F
+                GOTO    ALOOPUM1616
+
+                MOVLW   0x08
+                MOVWF   LOOPCOUNT
+
+BLOOPUM1616
+                RRF             BARGB0, F
+                BTFSS   _C
+                GOTO    BLUM1616NA
+                MOVF   TEMPB1,W
+                ADDWF   AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+
+BLUM1616NA
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF    AARGB2, F
+                RRF             AARGB3, F
+                DECFSZ  LOOPCOUNT, F
+                GOTO    BLOOPUM1616
+
+                endm
+
+
+
+UMUL1515L        macro
+
+;       Max Timing:     2+13+6*15+14+2+6*16+15+4 = 236 clks
+
+;       Min Timing:     2+7*6+5+2+6*6+5+4 = 97 clks
+
+;       PM: 56            DM: 9
+
+                MOVLW   0x8
+                MOVWF   LOOPCOUNT
+
+LOOPUM1515A
+                RRF     BARGB1, F
+                BTFSC   _C
+                GOTO    ALUM1515NAP
+                DECFSZ  LOOPCOUNT, F
+                GOTO    LOOPUM1515A
+
+                MOVLW   0x7
+                MOVWF   LOOPCOUNT
+
+LOOPUM1515B
+                RRF     BARGB0, F
+                BTFSC   _C
+                GOTO    BLUM1515NAP
+                DECFSZ  LOOPCOUNT, F
+                GOTO    LOOPUM1515B
+
+                CLRF    AARGB0
+                CLRF    AARGB1
+                RETLW   0x00
+
+BLUM1515NAP
+                BCF     _C
+                GOTO    BLUM1515NA
+
+ALUM1515NAP
+                BCF     _C
+                GOTO    ALUM1515NA
+
+ALOOPUM1515
+                RRF     BARGB1, F
+                BTFSS   _C
+                GOTO    ALUM1515NA
+                MOVF   TEMPB1,W
+                ADDWF   AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+
+ALUM1515NA
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF    AARGB2, F
+                DECFSZ  LOOPCOUNT, F
+                GOTO    ALOOPUM1515
+
+                MOVLW   0x07
+                MOVWF   LOOPCOUNT
+
+BLOOPUM1515
+                RRF             BARGB0, F
+                BTFSS   _C
+                GOTO    BLUM1515NA
+                MOVF   TEMPB1,W
+                ADDWF   AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+
+BLUM1515NA
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF    AARGB2, F
+                RRF     AARGB3, F
+                DECFSZ  LOOPCOUNT, F
+                GOTO    BLOOPUM1515
+
+                
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+
+                endm
+                
+
+
+SMUL1616        macro
+
+;       Max Timing:     5+6+7*11+7*12+4 = 176 clks
+
+;       Min Timing:     5+24+21+5 = 55 clks
+
+;       PM: 5+3*8+3*7+6+7*11+7*12+4 = 221            DM: 8
+
+                variable i = 0
+
+                BTFSC   SIGN,MSB
+                COMF    AARGB2, F
+                MOVF    AARGB2,W
+                MOVWF   AARGB3
+                RLF             SIGN,W
+                
+                while i < 8
+                
+                BTFSC   BARGB1,i
+                GOTO    SM1616NA#v(i)
+                BCF             AARGB2,7-i
+
+                variable i =i + 1
+
+                endw
+
+                variable i =8
+                
+                while i < 15
+                
+                BTFSC   BARGB0,i-8
+                GOTO    SM1616NA#v(i)
+                BCF             AARGB3,15-i
+
+                variable i =i + 1
+
+                endw
+
+                CLRF    AARGB0          ; if we get here, BARG = 0
+                CLRF    AARGB1
+                RETURN
+
+SM1616NA0
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF	AARGB2, F
+
+                variable i =1
+
+                while   i < 8
+
+                BTFSS   BARGB1,i
+                GOTO    SM1616NA#v(i)
+SM1616A#v(i)    MOVF   TEMPB1,W
+                ADDWF   AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+SM1616NA#v(i)
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+
+                variable i =i + 1
+
+                endw
+
+                variable i =8
+
+                while   i < 15
+
+                BTFSS   BARGB0,i-8
+                GOTO    SM1616NA#v(i)
+SM1616A#v(i)    MOVF   TEMPB1,W
+                ADDWF   AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+SM1616NA#v(i)
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+
+                variable i =i + 1
+
+                endw
+
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+
+                endm
+
+
+UMUL1616        macro
+
+;       Max Timing:     1+6+7*11+8*12 = 180 clks
+
+;       Min Timing:     1+2*8+2*8+4 = 37 clks
+
+;       PM: 1+2*8+2*8+4+7*11+8*12 = 210            DM: 8
+
+
+                variable i =0
+
+                BCF     _C              ; clear carry for first right shift
+                
+                while i < 8
+                
+                BTFSC   BARGB1,i
+                GOTO    UM1616NA#v(i)
+
+                variable i =i + 1
+
+                endw
+
+                variable i =8
+                
+                while i < 16
+                
+                BTFSC   BARGB0,i-8
+                GOTO    UM1616NA#v(i)
+
+                variable i =i + 1
+
+                endw
+
+                CLRF    AARGB0          ; if we get here, BARG = 0
+                CLRF    AARGB1
+                RETURN
+
+UM1616NA0       RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+
+                variable i =1
+
+                while   i < 8
+
+                BTFSS   BARGB1,i
+                GOTO    UM1616NA#v(i)
+UM1616A#v(i)    MOVF   TEMPB1,W
+                ADDWF   AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+UM1616NA#v(i)   RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+
+                variable i =i + 1
+
+                endw
+
+                variable i =8
+
+                while   i < 16
+
+                BTFSS   BARGB0,i-8
+                GOTO    UM1616NA#v(i)
+UM1616A#v(i)    MOVF   TEMPB1,W
+                ADDWF   AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+UM1616NA#v(i)   RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+
+                variable i =i + 1
+
+                endw
+
+                endm
+
+
+UMUL1515        macro
+
+;       Max Timing:     7+7*11+7*12+4 = 172 clks
+
+;       Min Timing:     1+16+14+4 = 35 clks
+
+;       PM: 1+2*8+2*7+6+7*11+7*12+4 = 202            DM: 8
+
+
+                variable i =0
+
+                BCF     _C              ; clear carry for first right shift
+
+                while i < 8
+                
+                BTFSC   BARGB1,i
+                GOTO    UM1515NA#v(i)
+
+                variable i =i + 1
+
+                endw
+
+                variable i =8
+
+                while i < 15
+                
+                BTFSC   BARGB0,i-8
+                GOTO    UM1515NA#v(i)
+
+                variable i =i + 1
+
+                endw
+
+                CLRF    AARGB0         ; if we get here, BARG = 0
+                CLRF    AARGB1
+                RETURN
+
+UM1515NA0       RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+
+                variable i =1
+
+                while   i < 8
+
+                BTFSS   BARGB1,i
+                GOTO    UM1515NA#v(i)
+UM1515A#v(i)    MOVF   TEMPB1,W
+                ADDWF   AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+UM1515NA#v(i)   RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+
+                variable i =i + 1
+
+                endw
+
+                variable i =8
+
+                while   i < 15
+
+                BTFSS   BARGB0,i-8
+                GOTO    UM1515NA#v(i)
+UM1515A#v(i)    MOVF   TEMPB1,W
+                ADDWF   AARGB1, F
+                MOVF            TEMPB0,W
+                BTFSC           _C
+                INCFSZ          TEMPB0,W
+                ADDWF           AARGB0, F
+UM1515NA#v(i)   RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+
+                variable i =i + 1
+
+                endw
+
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+                RRF             AARGB2, F
+                RRF             AARGB3, F
+
+                endm
+                
+;**********************************************************************************************
+;**********************************************************************************************
+        
+;       16x16 Bit Signed Fixed Point Multiply 16x16 -> 32
+
+;       Input:  16 bit signed fixed point multiplicand in AARGB0
+;                       16 bit signed fixed point multiplier in BARGB0
+
+;       Use:    CALL    FXM1616S
+
+;       Output: 32 bit signed fixed point product in AARGB0
+
+;       Result: AARG  <--  AARG x BARG
+
+;       Max Timing:     9+249+2 = 260 clks                B > 0
+;                       18+249+2 = 269 clks               B < 0
+
+;       Min Timing:     9+96 = 105 clks
+
+;       PM: 18+55+1 = 74              DM: 9
+
+FXM1616S	CLRF	AARGB2          ; clear partial product
+		CLRF	AARGB3
+		CLRF	SIGN
+		MOVF	AARGB0,W
+		IORWF	AARGB1,W
+		BTFSC	_Z
+		RETLW	0x00
+		
+		MOVF	AARGB0,W
+		XORWF	BARGB0,W
+		MOVWF	TEMPB0
+		BTFSC	TEMPB0,MSB
+		COMF	SIGN,F
+
+		BTFSS   BARGB0,MSB
+                GOTO    M1616SOK
+
+                COMF            BARGB1, F
+                COMF            BARGB0, F
+                INCF            BARGB1, F
+		BTFSC		_Z
+		INCF		BARGB0, F
+
+                COMF            AARGB1, F
+                COMF            AARGB0, F
+                INCF            AARGB1, F
+		BTFSC		_Z
+		INCF		AARGB0, F
+
+		BTFSC	BARGB0,MSB
+		GOTO	M1616SX
+
+M1616SOK	MOVF   AARGB0,W
+                MOVWF   TEMPB0
+                MOVF   AARGB1,W
+                MOVWF   TEMPB1
+
+                SMUL1616L
+
+                RETLW           0x00
+
+
+M1616SX		CLRF	AARGB2
+		CLRF	AARGB3
+		RLF	SIGN,W
+		RRF	AARGB0,F
+		RRF	AARGB1,F
+		RRF	AARGB2,F
+
+		RETLW	0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+        
+;       16x16 Bit Unsigned Fixed Point Multiply 16x16 -> 32
+
+;       Input:  16 bit unsigned fixed point multiplicand in AARGB0
+;                       16 bit unsigned fixed point multiplier in BARGB0
+
+;       Use:    CALL    FXM1616U
+
+;       Output: 32 bit unsigned fixed point product in AARGB0
+
+;       Result: AARG  <--  AARG x BARG
+
+;       Max Timing:     6+248+2 = 256 clks
+
+;       Min Timing:     6+101 = 107 clks
+
+;       PM: 6+51+1 = 58              DM: 9
+
+FXM1616U
+                CLRF    AARGB2          ; clear partial product
+                CLRF    AARGB3
+                MOVF   AARGB0,W
+                MOVWF   TEMPB0
+                MOVF   AARGB1,W
+                MOVWF   TEMPB1
+
+                UMUL1616L
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+        
+;       15x15 Bit Unsigned Fixed Point Divide 15x15 -> 30
+
+;       Input:  15 bit unsigned fixed point multiplicand in AARGB0
+;                       15 bit unsigned fixed point multiplier in BARGB0
+
+;       Use:    CALL    FXM1515U
+
+;       Output: 30 bit unsigned fixed point product in AARGB0
+
+;       Result: AARG  <--  AARG x BARG
+
+;       Max Timing:     6+236+2 = 244 clks
+
+;       Min Timing:     6+97 = 103 clks
+
+;       PM: 6+56+1 = 63              DM: 9
+
+FXM1515U
+                CLRF    AARGB2          ; clear partial product
+                CLRF    AARGB3
+                MOVF   AARGB0,W
+                MOVWF   TEMPB0
+                MOVF   AARGB1,W
+                MOVWF   TEMPB1
+
+                UMUL1515L
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+

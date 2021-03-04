@@ -1,0 +1,406 @@
+;	RCS Header $Id: fxm88.a16 2.3 1996/10/16 14:23:23 F.J.Testa Exp $
+
+;	$Revision: 2.3 $
+
+;       8x8 PIC16 FIXED POINT MULTIPLY ROUTINES
+;
+;       Input:  fixed point arguments in AARG and BARG
+;
+;       Output: product AARGxBARG in AARG
+;
+;       All timings are worst case cycle counts
+;
+;       It is useful to note that the additional unsigned routines requiring a non-power of two
+;       argument can be called in a signed multiply application where it is known that the
+;       respective argument is nonnegative, thereby offering some improvement in
+;       performance.
+;
+;         Routine            Clocks     Function
+;
+;       FXM0808S     82 08x08 -> 16 bit signed fixed point multiply
+;
+;       FXM0808U     73 08x08 -> 16 bit unsigned fixed point multiply
+;
+;       FXM0707U     67 07x07 -> 14 bit unsigned fixed point multiply
+;
+;       The above timings are based on the looped macros. If space permits,
+;       approximately 29-35 clocks can be saved by using the unrolled macros.
+;
+
+;**********************************************************************************************
+;**********************************************************************************************
+
+;       08x08 Bit Multiplication Macros
+
+SMUL0808L        macro
+
+;       Max Timing:     3+10+5*9+8+3 = 69 clks
+
+;       Min Timing:     3+6*6+5+3 = 47 clks
+
+;       PM: 21            DM: 5
+
+                MOVLW   0x07
+                MOVWF   LOOPCOUNT
+
+                MOVF    AARGB0,W
+
+LOOPSM0808A
+		RRF	BARGB0, F
+                BTFSC   _C
+                GOTO    LSM0808NA
+		DECFSZ	LOOPCOUNT, F
+                GOTO    LOOPSM0808A
+
+                CLRF    AARGB0
+                RETLW   0x00
+
+LOOPSM0808
+		RRF	BARGB0, F
+                BTFSC   _C
+		ADDWF	AARGB0, F
+LSM0808NA	RLF    SIGN, F
+		RRF    AARGB0, F
+		RRF    AARGB1, F
+		DECFSZ	LOOPCOUNT, F
+                GOTO    LOOPSM0808
+
+		RLF    SIGN, F
+		RRF    AARGB0, F
+		RRF    AARGB1, F
+
+
+                endm
+
+UMUL0808L        macro
+
+;       Max Timing:     3+12+6*8+7 = 70 clks
+
+;       Min Timing:     3+7*6+5+3 = 53 clks
+
+;       PM: 19            DM: 4
+
+                MOVLW   0x08
+                MOVWF   LOOPCOUNT
+                MOVF    AARGB0,W
+
+LOOPUM0808A
+                RRF     BARGB0, F
+                BTFSC   _C
+                GOTO    LUM0808NAP
+                DECFSZ  LOOPCOUNT, F
+                GOTO    LOOPUM0808A
+
+                CLRF    AARGB0
+                RETLW   0x00
+
+LUM0808NAP
+                BCF     _C
+                GOTO    LUM0808NA
+
+LOOPUM0808
+                RRF             BARGB0, F
+                BTFSC   _C
+                ADDWF   AARGB0, F
+LUM0808NA       RRF    AARGB0, F
+                RRF    AARGB1, F
+                DECFSZ          LOOPCOUNT, F
+                GOTO            LOOPUM0808
+
+                endm
+
+
+
+UMUL0707L        macro
+
+;       Max Timing:     3+12+5*8+7+2 = 64 clks
+
+;       Min Timing:     3+6*6+5+3 = 47 clks
+
+;       PM: 21            DM: 4
+
+                MOVLW   0x07
+                MOVWF   LOOPCOUNT
+                MOVF    AARGB0,W
+
+LOOPUM0707A
+                RRF     BARGB0, F
+                BTFSC   _C
+                GOTO    LUM0707NAP
+                DECFSZ  LOOPCOUNT, F
+                GOTO    LOOPUM0707A
+
+                CLRF    AARGB0
+                RETLW   0x00
+
+LUM0707NAP
+                BCF             _C
+                GOTO    LUM0707NA
+
+LOOPUM0707
+                RRF             BARGB0, F
+                BTFSC   _C
+                ADDWF   AARGB0, F
+LUM0707NA       RRF     AARGB0, F
+                RRF     AARGB1, F
+                DECFSZ  LOOPCOUNT, F
+                GOTO    LOOPUM0707
+
+                RRF     AARGB0, F
+                RRF     AARGB1, F
+
+                endm
+                
+
+
+SMUL0808        macro
+
+;       Max Timing:     1+6+6*5+3 = 40 clks
+
+;       Min Timing:     1+14+3 = 18 clks
+
+;       PM: 1+2*7+5+6*5+3 = 53            DM: 5
+
+		variable i = 0
+
+	        MOVF   AARGB0,W
+                
+                while i < 7
+                
+                BTFSC   BARGB0,i
+                GOTO    SM0808NA#v(i)
+
+                variable i =i + 1
+
+                endw
+
+                CLRF    AARGB0          ; if we get here, BARG = 0
+                RETURN
+
+SM0808NA0       RLF    SIGN
+                RRF    AARGB0
+                RRF    AARGB1
+
+                variable i =1
+
+                while   i < 7
+
+                BTFSC   BARGB0,i
+                ADDWF   AARGB0
+SM0808NA#v(i)   RLF    SIGN
+                RRF    AARGB0
+                RRF    AARGB1
+
+                variable i =i + 1
+
+                endw
+
+                RLF    SIGN
+                RRF    AARGB0
+                RRF    AARGB1
+
+                endm
+
+
+UMUL0808        macro
+
+;       Max Timing:     2+5+7*4 = 35 clks
+
+;       Min Timing:     2+16+3 = 21 clks
+
+;       PM: 2+2*8+4+7*4 = 50            DM: 3
+
+		variable i = 0
+
+                BCF     _C              ; clear carry for first right shift
+        	MOVF   AARGB0,W
+        
+                while i < 8
+                
+                BTFSC   BARGB0,i
+                GOTO    UM0808NA#v(i)
+
+                variable i =i + 1
+
+                endw
+
+                CLRF    AARGB0         ; if we get here, BARG = 0
+                RETURN
+
+UM0808NA0       RRF    AARGB0, F
+                RRF    AARGB1, F
+
+                variable i =1
+
+                while   i < 8
+
+                BTFSC   BARGB0,i
+                ADDWF   AARGB0, F
+UM0808NA#v(i)   RRF    AARGB0, F
+                RRF    AARGB1, F
+
+                variable i =i + 1
+
+                endw
+
+                endm
+
+
+UMUL0707        macro
+
+;       Max Timing:     2+5+6*4+2 = 33 clks
+
+;       Min Timing:     2+14+3 = 19 clks
+
+;       PM: 2+2*7+4+6*4+2 = 46            DM: 3
+
+		variable i = 0
+
+                BCF     _C              ; clear carry for first right shift
+        	MOVF   AARGB0,W
+
+                while i < 7
+                
+                BTFSC   BARGB0,i
+                GOTO    UM0707NA#v(i)
+
+                variable i = i + 1
+
+                endw
+
+                CLRF    AARGB0         ; if we get here, BARG = 0
+                RETURN
+
+UM0707NA0       RRF    AARGB0, F
+                RRF    AARGB1, F
+
+                variable i =1
+
+                while   i < 7
+
+                BTFSC   BARGB0,i
+                ADDWF   AARGB0, F
+UM0707NA#v(i)   RRF    AARGB0, F
+                RRF    AARGB1, F
+
+                variable i =i + 1
+
+                endw
+
+                RRF    AARGB0, F
+                RRF    AARGB1, F
+
+                endm
+                
+;**********************************************************************************************
+;**********************************************************************************************
+        
+;       8x8 Bit Signed Fixed Point Multiply 8x8 -> 16
+
+;       Input:  8 bit signed fixed point multiplicand in AARGB0
+;                       8 bit signed fixed point multiplier in BARGB0
+
+;       Use:    CALL    FXM0808S
+
+;       Output: 16 bit signed fixed point product in AARGB0
+
+;       Result: AARG  <--  AARG x BARG
+
+;       Max Timing:     12+69+2 = 83 clks                B > 0
+;                       17+69+2 = 88 clks                B < 0
+
+;       Min Timing:     12+47 = 59 clks
+;			6 clks				 A = 0
+
+;       PM: 17+21+1 = 39              DM: 5
+
+FXM0808S	CLRF	AARGB1          ; clear partial product
+		CLRF	SIGN
+		MOVF	AARGB0,W
+		BTFSC	_Z
+		RETLW	0x00
+		
+		XORWF	BARGB0,W
+		MOVWF	TEMPB3
+		BTFSC	TEMPB3,MSB
+		COMF	SIGN, F
+
+
+	        BTFSS   BARGB0,MSB
+                GOTO    M0808SOK
+		COMF	BARGB0, F      ; make multiplier BARG > 0
+		INCF	BARGB0, F
+		COMF	AARGB0, F
+		INCF	AARGB0, F
+
+		BTFSC	BARGB0,MSB
+		GOTO	M0808SX
+
+M0808SOK
+
+                SMUL0808L
+
+                RETLW	0x00
+
+M0808SX		CLRF	AARGB1
+		RLF	SIGN, W
+		RRF	AARGB0, F
+		RRF	AARGB1, F
+
+		RETLW	0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+        
+;       8x8 Bit Unsigned Fixed Point Multiply 8x8 -> 16
+
+;       Input:  8 bit unsigned fixed point multiplicand in AARGB0
+;               8 bit unsigned fixed point multiplier in BARGB0
+
+;       Use:    CALL    FXM0808U
+
+;       Output: 8 bit unsigned fixed point product in AARGB0
+
+;       Result: AARG  <--  AARG x BARG
+
+;       Max Timing:     1+70+2 = 73 clks
+
+;       Min Timing:     1+53 = 54 clks
+
+;       PM: 1+19+1 = 21              DM: 4
+
+FXM0808U        CLRF    AARGB1          ; clear partial product
+
+                UMUL0808L
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+        
+;       7x7 Bit Unsigned Fixed Point Divide 7x7 -> 14
+
+;       Input:  7 bit unsigned fixed point multiplicand in AARGB0
+;                       7 bit unsigned fixed point multiplier in BARGB0
+
+;       Use:    CALL    FXM0707U
+
+;       Output: 14 bit unsigned fixed point product in AARGB0
+
+;       Result: AARG  <--  AARG x BARG
+
+;       Max Timing:     1+64+2 = 67 clks
+
+;       Min Timing:     1+47 = 48 clks
+
+;       PM: 1+21+1 = 23              DM: 4
+
+FXM0707U        CLRF    AARGB1          ; clear partial product
+
+                UMUL0707L
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+

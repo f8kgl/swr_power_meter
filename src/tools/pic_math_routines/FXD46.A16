@@ -1,0 +1,764 @@
+;	RCS Header $Id: fxd46.a16 2.3 1996/10/16 14:23:57 F.J.Testa Exp $
+
+;	$Revision: 2.3 $
+
+;       24/16 PIC16 FIXED POINT DIVIDE ROUTINES
+;
+;       Input:  fixed point arguments in AARG and BARG
+;
+;       Output: quotient AARG/BARG followed by remainder in REM
+;
+;       All timings are worst case cycle counts
+;
+;       It is useful to note that the additional unsigned routines requiring a non-power of two
+;       argument can be called in a signed divide application where it is known that the
+;       respective argument is nonnegative, thereby offering some improvement in
+;       performance.
+;
+;       Routine        Clocks     Function
+;
+;       FXD2416S        454     24 bit/16 bit -> 24.16 signed fixed point divide
+;
+;       FXD2416U        529     24 bit/16 bit -> 24.16 unsigned fixed point divide
+;
+;       FXD2315U        407     23 bit/15 bit -> 23.15 unsigned fixed point divide
+
+;**********************************************************************************************
+;**********************************************************************************************
+
+;       24/16 Bit Division Macros
+
+SDIV2416L       macro
+
+;       Max Timing:     9+6*17+16+16+6*17+16+16+6*17+16+8 = 403 clks
+
+;       Min Timing:     9+6*16+15+15+6*16+15+15+6*16+15+3 = 375 clks
+
+;       PM: 7+2*40+22+8 = 117                                    DM: 7
+
+                MOVF            BARGB1,W
+                SUBWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSS           _C
+                INCFSZ          BARGB0,W
+                SUBWF           REMB0, F
+                RLF             AARGB0, F
+
+                MOVLW           7
+                MOVWF           LOOPCOUNT
+
+LOOPS2416A      RLF             AARGB0,W
+                RLF             REMB1, F
+                RLF             REMB0, F
+                MOVF            BARGB1,W
+                BTFSS           AARGB0,LSB
+                GOTO            SADD46LA
+
+                SUBWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSS           _C
+                INCFSZ          BARGB0,W
+                SUBWF           REMB0, F
+                GOTO            SOK46LA
+
+SADD46LA        ADDWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSC           _C
+                INCFSZ          BARGB0,W
+                ADDWF           REMB0, F
+        
+SOK46LA         RLF             AARGB0, F
+
+                DECFSZ          LOOPCOUNT, F
+                GOTO            LOOPS2416A
+
+                RLF             AARGB1,W
+                RLF             REMB1, F
+                RLF             REMB0, F
+                MOVF            BARGB1,W
+                BTFSS           AARGB0,LSB
+                GOTO            SADD46L8
+
+                SUBWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSS           _C
+                INCFSZ          BARGB0,W
+                SUBWF           REMB0, F
+                GOTO            SOK46L8
+
+SADD46L8        ADDWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSC           _C
+                INCFSZ          BARGB0,W
+                ADDWF           REMB0, F
+       
+SOK46L8         RLF             AARGB1, F
+
+                MOVLW           7
+                MOVWF           LOOPCOUNT
+
+LOOPS2416B      RLF             AARGB1,W
+                RLF             REMB1, F
+                RLF             REMB0, F
+                MOVF            BARGB1,W
+                BTFSS           AARGB1,LSB
+                GOTO            SADD46LB
+
+                SUBWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSS           _C
+                INCFSZ          BARGB0,W
+                SUBWF           REMB0, F
+                GOTO            SOK46LB
+
+SADD46LB        ADDWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSC           _C
+                INCFSZ          BARGB0,W
+                ADDWF           REMB0, F
+        
+SOK46LB         RLF             AARGB1, F
+
+                DECFSZ          LOOPCOUNT, F
+                GOTO            LOOPS2416B
+
+                RLF             AARGB2,W
+                RLF             REMB1, F
+                RLF             REMB0, F
+                MOVF            BARGB1,W
+                BTFSS           AARGB1,LSB
+                GOTO            SADD46L16
+
+                SUBWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSS           _C
+                INCFSZ          BARGB0,W
+                SUBWF           REMB0, F
+                GOTO            SOK46L16
+
+SADD46L16       ADDWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSC           _C
+                INCFSZ          BARGB0,W
+                ADDWF           REMB0, F
+        
+SOK46L16        RLF             AARGB2, F
+
+                MOVLW           7
+                MOVWF           LOOPCOUNT
+
+LOOPS2416C      RLF             AARGB2,W
+                RLF             REMB1, F
+                RLF             REMB0, F
+                MOVF            BARGB1,W
+                BTFSS           AARGB2,LSB
+                GOTO            SADD46LC
+
+                SUBWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSS           _C
+                INCFSZ          BARGB0,W
+                SUBWF           REMB0, F
+                GOTO            SOK46LC
+
+SADD46LC        ADDWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSC           _C
+                INCFSZ          BARGB0,W
+                ADDWF           REMB0, F
+        
+SOK46LC         RLF             AARGB2, F
+
+                DECFSZ          LOOPCOUNT, F
+                GOTO            LOOPS2416C
+
+                BTFSC           AARGB2,LSB
+                GOTO            SOK46L
+                MOVF            BARGB1,W
+	        ADDWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSC           _C
+                INCFSZ          BARGB0,W
+                ADDWF           REMB0, F
+SOK46L
+
+                endm
+
+UDIV2416L       macro
+
+;       Max Timing:     16+6*22+21+21+6*22+21+21+6*22+21+8 = 525 clks
+
+;       Min Timing:     16+6*21+20+20+6*21+20+20+6*21+20+3 = 497 clks
+
+;       PM: 14+31+27+31+27+31+8 = 169                  DM: 8
+
+                CLRF            TEMP
+
+                RLF             AARGB0,W
+                RLF             REMB1, F
+                MOVF            BARGB1,W
+                SUBWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSS           _C
+                INCFSZ          BARGB0,W
+                SUBWF           REMB0, F
+
+                CLRW
+                BTFSS           _C
+                MOVLW           1
+                SUBWF           TEMP, F
+                RLF             AARGB0, F
+
+                MOVLW           7
+                MOVWF           LOOPCOUNT
+
+LOOPU2416A      RLF             AARGB0,W
+                RLF             REMB1, F
+                RLF             REMB0, F
+                RLF             TEMP, F
+                MOVF            BARGB1,W
+                BTFSS           AARGB0,LSB
+                GOTO            UADD46LA
+
+                SUBWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSS           _C
+                INCFSZ          BARGB0,W
+                SUBWF           REMB0, F
+                CLRW
+                BTFSS           _C
+                MOVLW           1
+                SUBWF           TEMP, F
+                GOTO            UOK46LA
+
+UADD46LA        ADDWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSC           _C
+                INCFSZ          BARGB0,W
+                ADDWF           REMB0, F
+                CLRW
+                BTFSC           _C
+                MOVLW           1
+                ADDWF           TEMP, F
+        
+UOK46LA RLF             AARGB0, F
+
+                DECFSZ          LOOPCOUNT, F
+                GOTO            LOOPU2416A
+
+                RLF             AARGB1,W
+                RLF             REMB1, F
+                RLF             REMB0, F
+                RLF             TEMP, F
+                MOVF            BARGB1,W
+                BTFSS           AARGB0,LSB
+                GOTO            UADD46L8
+
+                SUBWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSS           _C
+                INCFSZ          BARGB0,W
+                SUBWF           REMB0, F
+                CLRW
+                BTFSS           _C
+                MOVLW           1
+                SUBWF           TEMP, F
+                GOTO            UOK46L8
+
+UADD46L8        ADDWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSC           _C
+                INCFSZ          BARGB0,W
+                ADDWF           REMB0, F
+                CLRW
+                BTFSC           _C
+                MOVLW           1
+                ADDWF           TEMP, F
+        
+UOK46L8         RLF             AARGB1, F
+
+                MOVLW           7
+                MOVWF           LOOPCOUNT
+
+LOOPU2416B      RLF             AARGB1,W
+                RLF             REMB1, F
+                RLF             REMB0, F
+                RLF             TEMP, F
+                MOVF            BARGB1,W
+                BTFSS           AARGB1,LSB
+                GOTO            UADD46LB
+
+                SUBWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSS           _C
+                INCFSZ          BARGB0,W
+                SUBWF           REMB0, F
+                CLRW
+                BTFSS           _C
+                MOVLW           1
+                SUBWF           TEMP, F
+                GOTO            UOK46LB
+
+UADD46LB        ADDWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSC           _C
+                INCFSZ          BARGB0,W
+                ADDWF           REMB0, F
+                CLRW
+                BTFSC           _C
+                MOVLW           1
+                ADDWF           TEMP, F
+        
+UOK46LB         RLF             AARGB1, F
+
+                DECFSZ          LOOPCOUNT, F
+                GOTO            LOOPU2416B
+
+                RLF             AARGB2,W
+                RLF             REMB1, F
+                RLF             REMB0, F
+                RLF             TEMP, F
+                MOVF            BARGB1,W
+                BTFSS           AARGB1,LSB
+                GOTO            UADD46L16
+
+                SUBWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSS           _C
+                INCFSZ          BARGB0,W
+                SUBWF           REMB0, F
+                CLRW
+                BTFSS           _C
+                MOVLW           1
+                SUBWF           TEMP, F
+                GOTO            UOK46L16
+
+UADD46L16       ADDWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSC           _C
+                INCFSZ          BARGB0,W
+                ADDWF           REMB0, F
+                CLRW
+                BTFSC           _C
+                MOVLW           1
+                ADDWF           TEMP, F
+        
+UOK46L16        RLF             AARGB2, F
+
+                MOVLW           7
+                MOVWF           LOOPCOUNT
+
+LOOPU2416C      RLF             AARGB2,W
+                RLF             REMB1, F
+                RLF             REMB0, F
+                RLF             TEMP, F
+                MOVF            BARGB1,W
+                BTFSS           AARGB2,LSB
+                GOTO            UADD46LC
+
+                SUBWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSS           _C
+                INCFSZ          BARGB0,W
+                SUBWF           REMB0, F
+                CLRW
+                BTFSS           _C
+                MOVLW           1
+                SUBWF           TEMP, F
+                GOTO            UOK46LC
+
+UADD46LC        ADDWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSC           _C
+                INCFSZ          BARGB0,W
+                ADDWF           REMB0, F
+                CLRW
+                BTFSC           _C
+                MOVLW           1
+                ADDWF           TEMP, F
+        
+UOK46LC RLF             AARGB2, F
+
+                DECFSZ          LOOPCOUNT, F
+                GOTO            LOOPU2416C
+
+                BTFSC           AARGB2,LSB
+                GOTO            UOK46L
+                MOVF            BARGB1,W
+	        ADDWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSC           _C
+                INCFSZ          BARGB0,W
+                ADDWF           REMB0, F
+
+UOK46L
+
+                endm
+
+UDIV2315L       macro
+
+;       Max Timing:     9+6*17+16+16+6*17+16+16+6*17+16+8 = 403 clks
+
+;       Min Timing:     9+6*16+15+15+6*16+15+15+6*16+15+3 = 375 clks
+
+;       PM: 7+2*40+22+8 = 117                                    DM: 7
+
+                MOVF            BARGB1,W
+                SUBWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSS           _C
+                INCFSZ          BARGB0,W
+                SUBWF           REMB0, F
+                RLF             AARGB0, F
+
+                MOVLW           7
+                MOVWF           LOOPCOUNT
+
+LOOPU2315A      RLF             AARGB0,W
+                RLF             REMB1, F
+                RLF             REMB0, F
+                MOVF            BARGB1,W
+                BTFSS           AARGB0,LSB
+                GOTO            UADD35LA
+
+                SUBWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSS           _C
+                INCFSZ          BARGB0,W
+                SUBWF           REMB0, F
+                GOTO            UOK35LA
+
+UADD35LA        ADDWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSC           _C
+                INCFSZ          BARGB0,W
+                ADDWF           REMB0, F
+        
+UOK35LA RLF             AARGB0, F
+
+                DECFSZ          LOOPCOUNT, F
+                GOTO            LOOPU2315A
+
+                RLF             AARGB1,W
+                RLF             REMB1, F
+                RLF             REMB0, F
+                MOVF            BARGB1,W
+                BTFSS           AARGB0,LSB
+                GOTO            UADD35L8
+
+                SUBWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSS           _C
+                INCFSZ          BARGB0,W
+                SUBWF           REMB0, F
+                GOTO            UOK35L8
+
+UADD35L8        ADDWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSC           _C
+                INCFSZ          BARGB0,W
+                ADDWF           REMB0, F
+        
+UOK35L8 RLF             AARGB1, F
+
+                MOVLW           7
+                MOVWF           LOOPCOUNT
+
+LOOPU2315B      RLF             AARGB1,W
+                RLF             REMB1, F
+                RLF             REMB0, F
+                MOVF            BARGB1,W
+                BTFSS           AARGB1,LSB
+                GOTO            UADD35LB
+
+                SUBWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSS           _C
+                INCFSZ          BARGB0,W
+                SUBWF           REMB0, F
+                GOTO            UOK35LB
+
+UADD35LB        ADDWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSC           _C
+                INCFSZ          BARGB0,W
+                ADDWF           REMB0, F
+        
+UOK35LB RLF             AARGB1, F
+
+                DECFSZ          LOOPCOUNT, F
+                GOTO            LOOPU2315B
+
+                RLF             AARGB2,W
+                RLF             REMB1, F
+                RLF             REMB0, F
+                MOVF            BARGB1,W
+                BTFSS           AARGB1,LSB
+                GOTO            UADD35L16
+
+                SUBWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSS           _C
+                INCFSZ          BARGB0,W
+                SUBWF           REMB0, F
+                GOTO            UOK35L16
+
+UADD35L16       ADDWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSC           _C
+                INCFSZ          BARGB0,W
+                ADDWF           REMB0, F
+        
+UOK35L16        RLF             AARGB2, F
+
+                MOVLW           7
+                MOVWF           LOOPCOUNT
+
+LOOPU2315C      RLF             AARGB2,W
+                RLF             REMB1, F
+                RLF             REMB0, F
+                MOVF            BARGB1,W
+                BTFSS           AARGB2,LSB
+                GOTO            UADD35LC
+
+                SUBWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSS           _C
+                INCFSZ          BARGB0,W
+                SUBWF           REMB0, F
+                GOTO            UOK35LC
+
+UADD35LC        ADDWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSC           _C
+                INCFSZ          BARGB0,W
+                ADDWF           REMB0, F
+        
+UOK35LC RLF             AARGB2, F
+
+                DECFSZ          LOOPCOUNT, F
+                GOTO            LOOPU2315C
+
+                BTFSC           AARGB2,LSB
+                GOTO            UOK35L
+                MOVF            BARGB1,W
+	        ADDWF           REMB1, F
+                MOVF            BARGB0,W
+                BTFSC           _C
+                INCFSZ          BARGB0,W
+                ADDWF           REMB0, F
+UOK35L
+
+                endm
+
+;**********************************************************************************************
+;**********************************************************************************************
+        
+;       24/16 Bit Signed Fixed Point Divide 24/16 -> 24.16
+
+;       Input:  24 bit fixed point dividend in AARGB0, AARGB1,AARGB2
+;               16 bit fixed point divisor in BARGB0, BARGB1
+
+;       Use:    CALL    FXD2416S
+
+;       Output: 24 bit fixed point quotient in AARGB0, AARGB1,AARGB2
+;               16 bit fixed point remainder in REMB0, REMB1
+
+;       Result: AARG, REM  <--  AARG / BARG
+
+;       Max Timing:     25+403+5 = 433 clks             A > 0, B > 0
+;                       29+403+19 = 451 clks            A > 0, B < 0
+;                       32+403+19 = 454 clks            A < 0, B > 0
+;                       36+403+5 = 444 clks             A < 0, B < 0
+;			9 clks				A = 0
+
+;       Min Timing:     25+375+5 = 405 clks             A > 0, B > 0
+;                       29+375+19 = 423 clks            A > 0, B < 0
+;                       32+375+19 = 426 clks            A < 0, B > 0
+;                       36+375+5 = 416 clks             A < 0, B < 0
+
+;       PM: 36+117+18+48 = 219                             DM: 10
+
+FXD2416S	CLRF		SIGN
+                CLRF            REMB0			; clear partial remainder
+		CLRF		REMB1
+		MOVF		AARGB0,W
+		IORWF		AARGB1,W
+		IORWF		AARGB2,W
+		BTFSC		_Z
+		RETLW		0x00
+
+		MOVF		AARGB0,W
+		XORWF		BARGB0,W
+		MOVWF		TEMP
+		BTFSC		TEMP,MSB
+		COMF		SIGN,F
+
+		CLRF		TEMPB3			; clear exception flag
+
+                BTFSS           BARGB0,MSB              ; if MSB set, negate BARG
+                GOTO            CA2416S
+
+                COMF            BARGB1, F
+                COMF            BARGB0, F
+                INCF            BARGB1, F
+                BTFSC           _Z
+                INCF            BARGB0, F
+
+CA2416S         BTFSS           AARGB0,MSB               ; if MSB set, negate AARG
+                GOTO            C2416SX
+
+                COMF            AARGB2, F
+                COMF            AARGB1, F
+                COMF            AARGB0, F
+                INCF            AARGB2, F
+                BTFSC           _Z
+                INCF            AARGB1, F
+		BTFSC		_Z
+		INCF		AARGB0, F
+
+C2416SX		MOVF		AARGB0,W
+		IORWF		BARGB0,W
+		MOVWF		TEMP
+		BTFSC		TEMP,MSB
+		GOTO		C2416SX1
+
+C2416S          SDIV2416L
+
+		BTFSC		TEMPB3,LSB		; test exception flag
+		GOTO		C2416SX4
+
+C2416SOK        BTFSS           SIGN,MSB
+                RETLW           0x00
+
+                COMF            AARGB2, F
+                COMF            AARGB1, F
+                COMF            AARGB0, F
+                INCF            AARGB2, F
+                BTFSC           _Z
+                INCF            AARGB1, F
+		BTFSC		_Z
+		INCF		AARGB0, F
+
+                COMF            REMB1, F
+                COMF            REMB0, F
+                INCF            REMB1, F
+                BTFSC           _Z
+                INCF            REMB0, F
+
+                RETLW           0x00
+
+
+C2416SX1	BTFSS		BARGB0,MSB		; test BARG exception
+		GOTO		C2416SX3
+		BTFSC		AARGB0,MSB		; test AARG exception
+		GOTO		C2416SX2
+		MOVF		AARGB1,W
+		MOVWF		REMB0
+		MOVF		AARGB2,W
+		MOVWF		REMB1
+		BCF		REMB0,MSB
+		RLF		AARGB1,F
+		RLF		AARGB0,F
+		MOVF		AARGB0,W
+		MOVWF		AARGB2
+		CLRF		AARGB0
+		CLRF		AARGB1
+		GOTO		C2416SOK
+C2416SX2	CLRF		AARGB2			; quotient = 1, remainder = 0
+		INCF		AARGB2,F
+		CLRF		AARGB1
+		CLRF		AARGB0
+		RETLW		0x00
+
+C2416SX3	COMF		AARGB0,F		; numerator = 0x7FFFFF + 1
+		COMF		AARGB1,F
+		COMF		AARGB2,F
+		INCF		TEMPB3,F
+		GOTO		C2416S
+
+C2416SX4	INCF		REMB1,F			; increment remainder and test for
+		BTFSC		_Z
+		INCF		REMB0,F
+		MOVF		BARGB1,W		; overflow
+		SUBWF		REMB1,W
+		BTFSS		_Z
+		GOTO		C2416SOK
+		MOVF		BARGB0,W		; overflow
+		SUBWF		REMB0,W
+		BTFSS		_Z
+		GOTO		C2416SOK
+		CLRF		REMB0			; if remainder overflow, clear
+		CLRF		REMB1
+		INCF		AARGB2,F		; remainder, increment quotient and
+		BTFSC		_Z
+		INCF		AARGB1,F		; test for overflow exception
+		BTFSC		_Z
+		INCF		AARGB0,F
+		BTFSS		AARGB0,MSB
+		GOTO		C2416SOK
+		BSF		FPFLAGS,NAN
+		RETLW		0xFF
+		
+
+;**********************************************************************************************
+;**********************************************************************************************
+        
+;       24/16 Bit Unsigned Fixed Point Divide 24/16 -> 24.16
+
+;       Input:  24 bit unsigned fixed point dividend in AARGB0, AARGB1,AARGB2
+;               16 bit unsigned fixed point divisor in BARGB0, BARGB1
+
+;       Use:    CALL    FXD2416U
+
+;       Output: 24 bit unsigned fixed point quotient in AARGB0, AARGB1,AARGB2
+;               16 bit unsigned fixed point remainder in REMB0, REMB1
+
+;       Result: AARG, REM  <--  AARG / BARG
+
+;       Max Timing:     2+525+2 = 529 clks
+
+;       Max Timing:     2+497+2 = 501 clks
+
+;       PM: 2+169+1 = 172               DM: 8
+
+FXD2416U        CLRF            REMB0
+                CLRF            REMB1
+
+                UDIV2416L
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+        
+;       23/15 Bit Unsigned Fixed Point Divide 23/15 -> 23.15
+
+;       Input:  23 bit unsigned fixed point dividend in AARGB0, AARGB1,AARGB2
+;               15 bit unsigned fixed point divisor in BARGB0, BARGB1
+
+;       Use:    CALL    FXD2315U
+
+;       Output: 23 bit unsigned fixed point quotient in AARGB0, AARGB1,AARGB2
+;               15 bit unsigned fixed point remainder in REMB0, REMB1
+
+;       Result: AARG, REM  <--  AARG / BARG
+
+;       Max Timing:     2+403+2 = 407 clks
+
+;       Min Timing:     2+375+2 = 379 clks
+
+;       PM: 2+117+1 = 120               DM: 7
+
+FXD2315U        CLRF            REMB0
+                CLRF            REMB1
+
+                UDIV2315L
+
+                RETLW           0x00
+
+;**********************************************************************************************
+;**********************************************************************************************
+
+                END
+
