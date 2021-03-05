@@ -1132,14 +1132,6 @@ Connection ~ 8544 7678
 Wire Wire Line
 	8544 7678 8876 7678
 Wire Notes Line
-	7512 7450 7512 8454
-Wire Notes Line
-	7512 8454 8650 8454
-Wire Notes Line
-	8650 8454 8650 7456
-Wire Notes Line
-	8650 7456 7512 7456
-Wire Notes Line
 	6408 2034 7080 2034
 Wire Notes Line
 	7080 2034 7080 3198
@@ -1250,17 +1242,6 @@ F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/21919e.pdf" H 3914 5800 50 
 $EndComp
 Wire Wire Line
 	4264 6100 4614 6100
-$Comp
-L Device:R_Small R7
-U 1 1 5F3A7C96
-P 5164 8250
-F 0 "R7" H 5223 8296 50  0000 L CNN
-F 1 "R_Small" H 5223 8205 50  0000 L CNN
-F 2 "Resistor_SMD:R_1206_3216Metric" H 5164 8250 50  0001 C CNN
-F 3 "~" H 5164 8250 50  0001 C CNN
-	1    5164 8250
-	1    0    0    -1  
-$EndComp
 Connection ~ 2914 6400
 Wire Wire Line
 	2914 6400 3164 6400
@@ -1353,11 +1334,7 @@ Wire Wire Line
 Wire Wire Line
 	3364 6000 3364 4850
 Wire Wire Line
-	3614 6100 3264 6100
-Wire Wire Line
 	3264 6100 3264 4950
-Wire Wire Line
-	3164 6200 3614 6200
 Wire Wire Line
 	4614 6000 4914 6000
 Wire Wire Line
@@ -1423,13 +1400,13 @@ $EndComp
 $Comp
 L Connector:Conn_01x05_Male J?
 U 1 1 605F711F
-P 3508 8114
-F 0 "J?" H 3616 8495 50  0000 C CNN
-F 1 "Prog" H 3616 8404 50  0000 C CNN
-F 2 "" H 3508 8114 50  0001 C CNN
-F 3 "~" H 3508 8114 50  0001 C CNN
-	1    3508 8114
-	1    0    0    -1  
+P 4058 4980
+F 0 "J?" H 4166 5361 50  0000 C CNN
+F 1 "Prog" H 4166 5270 50  0000 C CNN
+F 2 "" H 4058 4980 50  0001 C CNN
+F 3 "~" H 4058 4980 50  0001 C CNN
+	1    4058 4980
+	0    -1   1    0   
 $EndComp
 Wire Wire Line
 	5740 7038 5740 7080
@@ -1466,4 +1443,81 @@ Wire Wire Line
 Connection ~ 5402 6712
 Wire Wire Line
 	5402 6712 5402 7000
+$Comp
+L power:GNDREF #PWR?
+U 1 1 60764C79
+P 4368 5290
+F 0 "#PWR?" H 4368 5040 50  0001 C CNN
+F 1 "GNDREF" V 4468 5340 50  0000 R CNN
+F 2 "" H 4368 5290 50  0001 C CNN
+F 3 "" H 4368 5290 50  0001 C CNN
+	1    4368 5290
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4136 6400 4136 5758
+Wire Wire Line
+	4136 5758 4604 5758
+Wire Wire Line
+	4604 5758 4604 4898
+Wire Wire Line
+	4604 4898 3600 4898
+Wire Wire Line
+	3600 4898 3600 5286
+Wire Wire Line
+	3600 5286 3858 5286
+Wire Wire Line
+	3858 5286 3858 5180
+Connection ~ 4136 6400
+Wire Wire Line
+	4258 5180 4258 5250
+Wire Wire Line
+	4258 5250 4368 5250
+Wire Wire Line
+	4368 5250 4368 5290
+$Comp
+L Device:R_Small R7
+U 1 1 5F3A7C96
+P 5164 8250
+F 0 "R7" H 5223 8296 50  0000 L CNN
+F 1 "R_Small" H 5223 8205 50  0000 L CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" H 5164 8250 50  0001 C CNN
+F 3 "~" H 5164 8250 50  0001 C CNN
+	1    5164 8250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4614 6500 4460 6500
+Wire Wire Line
+	4460 6500 4460 5786
+Wire Wire Line
+	4460 5786 4760 5786
+Wire Wire Line
+	4760 5786 4760 4684
+Wire Wire Line
+	4760 4684 3488 4684
+Wire Wire Line
+	3488 4684 3488 5360
+Wire Wire Line
+	3488 5360 3958 5360
+Wire Wire Line
+	3958 5360 3958 5180
+Wire Wire Line
+	4058 6100 4058 5180
+Wire Wire Line
+	3264 6100 3614 6100
+Connection ~ 3614 6100
+Wire Wire Line
+	3614 6100 4058 6100
+Wire Wire Line
+	4098 6200 4098 5356
+Wire Wire Line
+	4098 5356 4158 5356
+Wire Wire Line
+	4158 5356 4158 5180
+Wire Wire Line
+	3164 6200 3614 6200
+Connection ~ 3614 6200
+Wire Wire Line
+	3614 6200 4098 6200
 $EndSCHEMATC
