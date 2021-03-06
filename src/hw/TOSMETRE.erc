@@ -1,43 +1,27 @@
-Rapport d'erreur (22/02/2021 15:44:52, Encodage UTF8 )
+Rapport d'erreur (sam. 06 mars 2021 09:31:53 CET, Encodage UTF8 )
 
 ***** Feuille /
 ErrType(3): Pin connectée à d'autres pins, mais aucune pin pour la piloter
-    @(248,92 mm, 193,04 mm): Pin 8 (Power input) du composant U7 non pilotée (Net 1).
+    @(243,08 mm, 184,91 mm): Pin 1 (Power input) du composant #PWR025 non pilotée (Net 3).
 ErrType(3): Pin connectée à d'autres pins, mais aucune pin pour la piloter
-    @(260,35 mm, 59,69 mm): Pin 1 (Power input) du composant #PWR0125 non pilotée (Net 3).
-ErrType(3): Pin connectée à d'autres pins, mais aucune pin pour la piloter
-    @(227,33 mm, 139,70 mm): Pin 7 (Power input) du composant U5 non pilotée (Net 6).
+    @(98,04 mm, 251,21 mm): Pin 1 (Power input) du composant U1 non pilotée (Net 12).
 ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
-    @(53,34 mm, 257,81 mm): La pin 3 (Passive) du composant J4 est non connectée.
+    @(98,04 mm, 253,75 mm): La pin 3 (Entrée) du composant U1 est non connectée.
 ErrType(3): Pin connectée à d'autres pins, mais aucune pin pour la piloter
-    @(97,54 mm, 260,35 mm): Pin 1 (Power input) du composant U9 non pilotée (Net 12).
+    @(290,58 mm, 153,42 mm): Pin 1 (Power input) du composant U5 non pilotée (Net 15).
+ErrType(3): Pin connectée à d'autres pins, mais aucune pin pour la piloter
+    @(235,20 mm, 26,67 mm): Pin 1 (Power input) du composant U3 non pilotée (Net 24).
 ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
-    @(97,54 mm, 262,89 mm): La pin 3 (Entrée) du composant U9 est non connectée.
+    @(151,13 mm, 158,24 mm): La pin 2 (Entrée) du composant U2 est non connectée.
+ErrType(3): Pin connectée à d'autres pins, mais aucune pin pour la piloter
+    @(232,16 mm, 106,68 mm): Pin 7 (Power input) du composant U4 non pilotée (Net 34).
+ErrType(5): Problème de conflit entre pins. Sévérité: erreur
+    @(290,58 mm, 168,66 mm): Pin 5 (Power output) du composant U5  connectée à 
+    @(235,20 mm, 41,91 mm): pin 5 (Power output) du composant U3 (net 37).
+ErrType(5): Problème de conflit entre pins. Sévérité: erreur
+    @(235,20 mm, 41,91 mm): Pin 5 (Power output) du composant U3  connectée à 
+    @(113,28 mm, 251,21 mm): pin 5 (Power output) du composant U1 (net 37).
 ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
-    @(84,33 mm, 251,46 mm): La pin 2 (Passive) du composant SW3 est non connectée.
-ErrType(2): Pin non connectée (utiliser un marqueur de "non connexion" pour supprimer cette erreur)
-    @(137,16 mm, 165,10 mm): La pin 4 (Bidirectionnel) du composant U1 est non connectée.
-ErrType(12): Net différent assigné à une pin partagée d'une autre unité du même composant
-    @(238,76 mm, 110,49 mm): Pin 9 de U4 est  connectée à la fois à GNDREF et Net-(R8-Pad1)
-ErrType(12): Net différent assigné à une pin partagée d'une autre unité du même composant
-    @(246,38 mm, 193,04 mm): Pin 9 de U7 est  connectée à la fois à GNDREF et Net-(R8-Pad1)
-ErrType(3): Pin connectée à d'autres pins, mais aucune pin pour la piloter
-    @(236,22 mm, 110,49 mm): Pin 8 (Power input) du composant U4 non pilotée (Net 27).
-ErrType(3): Pin connectée à d'autres pins, mais aucune pin pour la piloter
-    @(74,93 mm, 215,90 mm): Pin 1 (Power input) du composant U2 non pilotée (Net 29).
-ErrType(3): Pin connectée à d'autres pins, mais aucune pin pour la piloter
-    @(243,84 mm, 52,07 mm): Pin 1 (Power input) du composant U3 non pilotée (Net 39).
-ErrType(5): Problème de conflit entre pins. Sévérité: erreur
-    @(279,40 mm, 191,77 mm): Pin 8 (Sortie) du composant U8  connectée à 
-    @(243,84 mm, 67,31 mm): pin 5 (Power output) du composant U3 (net 40).
-ErrType(5): Problème de conflit entre pins. Sévérité: erreur
-    @(243,84 mm, 67,31 mm): Pin 5 (Power output) du composant U3  connectée à 
-    @(241,30 mm, 233,68 mm): pin 5 (Power output) du composant U6 (net 40).
-ErrType(5): Problème de conflit entre pins. Sévérité: erreur
-    @(241,30 mm, 233,68 mm): Pin 5 (Power output) du composant U6  connectée à 
-    @(112,78 mm, 260,35 mm): pin 5 (Power output) du composant U9 (net 40).
-ErrType(5): Problème de conflit entre pins. Sévérité: erreur
-    @(112,78 mm, 260,35 mm): Pin 5 (Power output) du composant U9  connectée à 
-    @(90,17 mm, 215,90 mm): pin 3 (Power output) du composant U2 (net 40).
+    @(151,13 mm, 160,78 mm): La pin 1 (Entrée) du composant U2 est non connectée.
 
-** messages ERC: 17  Erreurs 6  Avertissements 11
+** messages ERC: 10  Erreurs 2  Avertissements 8
