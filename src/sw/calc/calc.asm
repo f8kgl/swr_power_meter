@@ -36,6 +36,7 @@ IFDEF TEST
 ;
 ;
 f_calc_mul1616U
+IF 0
 		MOVPF	v_calc_mul+1,TEMPB1
 
 		MOVFP	v_calc_mul+1,WREG
@@ -66,7 +67,8 @@ f_calc_mul1616U
 		ADDWFC	v_calc_mul+0,F
 
 		RETLW	0x00
-
+ENDIF
+	return
 
 
 ;-----------------------------------------

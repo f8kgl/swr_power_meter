@@ -8,6 +8,7 @@ INC_DIR = -I../inc/
 COMP = calc
 
 SRC = calc.asm
+SRC += conv.asm
 
 OBJ_TEST = $(SRC:.asm=.TEST.o)
 

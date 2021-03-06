@@ -7,8 +7,6 @@
   	udata
 v_lcd_charpos res 1
 IFDEF TEST
-v_lcd_hexa_to_conv res 2
-v_lcd_bcd res 3
 v_lcd_tmp res 1
 v_lcd_string res 3 ;a priori, la taille max est de 3 : FWD, REF, ADC
 v_lcd_string_len res 1
@@ -38,7 +36,7 @@ ENDIF
 
 
 	code
-IFDEF TEST
+IF 0
 _f_lcd_aff_hexa
 	movwf v_lcd_tmp
 	swapf v_lcd_tmp,W
@@ -135,7 +133,7 @@ _lcd_affboot_8
 _lcd_affboot_9
 	return
 
-IFDEF TEST
+IF 0
 f_lcd_aff_adc_mV
 	movlw 0x0B
 	call f_lcd_setposcursor
@@ -219,9 +217,7 @@ f_lcd_aff_adc_hexa
 ENDIF
 
 	global f_lcd_affboot
-IFDEF TEST
-	global v_lcd_hexa_to_conv
-	global v_lcd_bcd
+IF 0
 	global f_lcd_aff
 	global f_lcd_aff_not
 	global f_lcd_aff_adc_hexa
