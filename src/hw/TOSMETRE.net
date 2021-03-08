@@ -1,7 +1,7 @@
 (export (version D)
   (design
-    (source C:\Users\RADIO\Documents\GitHub\swr_power_meter\src\hw\TOSMETRE.sch)
-    (date "07/03/2021 18:07:27")
+    (source "C:\\Users\\PC RADIO\\Documents\\GitHub\\swr_power_meter\\src\\hw\\TOSMETRE.sch")
+    (date "08/03/2021 11:34:21")
     (tool "Eeschema (5.1.9)-1")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -247,7 +247,7 @@
       (tstamp 607506F7))
     (comp (ref J1)
       (value Barrel_Jack_Switch)
-      (footprint Connector_BarrelJack:BarrelJack_CUI_PJ-063AH_Horizontal)
+      (footprint Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical)
       (datasheet ~)
       (libsource (lib Connector) (part Barrel_Jack_Switch) (description "DC Barrel Jack with an internal switch"))
       (sheetpath (names /) (tstamps /))
@@ -691,7 +691,7 @@
     (library (logical Switch)
       (uri "C:\\Program Files\\KiCad\\share\\kicad\\library/Switch.lib"))
     (library (logical librairie_projet)
-      (uri C:\Users\RADIO\Documents\GitHub\swr_power_meter\src\hw/swr_power_meter.lib)))
+      (uri "C:\\Users\\PC RADIO\\Documents\\GitHub\\swr_power_meter\\src\\hw/swr_power_meter.lib")))
   (nets
     (net (code 1) (name "Net-(J1-Pad3)")
       (node (ref SW1) (pin 2))
