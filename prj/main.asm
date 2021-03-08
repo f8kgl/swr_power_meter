@@ -153,6 +153,14 @@ menu_tension
 	clrf v_menu
 
 	;;Lecture des valeurs ADC FWD et REF
+	m_timer0_stop
+	movlw TAG_TIMER_SAMPLE_FW_TEST_TENSION
+	movwf v_log_tag
+	movlw D'02'
+	movwf v_log_data_size
+	call f_log_write
+	m_timer0_start
+	
 	lfsr FSR0, v_fwd_and_ref_bin
 	call f_adc_read
 
