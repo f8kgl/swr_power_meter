@@ -268,10 +268,5 @@ ENDIF
 
 	return
 
-IFDEF TEST
-	global v_menu
-	global v_fwd_and_ref_bin
-ENDIF
-
 
 	end
