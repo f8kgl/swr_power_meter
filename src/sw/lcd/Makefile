@@ -9,7 +9,6 @@ COMP = lcd
 
 SRC = driver.asm
 SRC +=aff.asm
-#SRC+=fsm.asm
 
 OBJ_TEST = $(SRC:.asm=.TEST.o)
 
