@@ -17,8 +17,6 @@ v_lcd_count res 1
 	extern Del20
 	extern Del05
 	extern Del01
-	extern v_lcd_hexa_to_conv
-	extern v_lcd_bcd
 
 	code
 ;-----------------------------------------
@@ -181,7 +179,7 @@ f_lcd_init
 ;Sortie :
 ;Traitement :
 ;-----------------------------------------
-f_lcd_affchar	; Send the Character to the LCD
+f_lcd_aff_char	; Send the Character to the LCD
 	movwf v_temp ; Save the Value
 	andlw 0xF0 ; Most Significant Nibble first
 	movwf LCD_PORT ;
@@ -196,7 +194,7 @@ f_lcd_affchar	; Send the Character to the LCD
 	return ;
 
 	global f_lcd_init
-	global f_lcd_affchar
+	global f_lcd_aff_char
 	global f_lcd_setposcursor
 	global f_lcd_clear
 

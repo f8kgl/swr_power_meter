@@ -47,10 +47,8 @@ COMPS =misc
 COMPS +=lcd
 COMPS +=i2c
 COMPS +=eep
-#COMPS +=flh
 COMPS +=adc
-#COMPS +=calc
-#COMPS +=aop
+COMPS +=calc
 COMPS +=bp
 COMPS +=log
 

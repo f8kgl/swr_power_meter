@@ -60,12 +60,12 @@ _f_adc_read
 	call f_i2c_read_in_device
 _f_adc_read_fwd_2
 	movlw 0x04
-	movwf v_adc_count
+	movwf _v_adc_count
 _f_adc_read_fwd_3
 	bcf STATUS,0 ;carry=0 pour shifter dans v_adcfwd
 	rrcf _v_adc,f
 	rrcf _v_adc+1,f
-	decfsz v_adc_count,f
+	decfsz _v_adc_count,f
 	goto _f_adc_read_fwd_3
 _f_adc_read_fwd_4
 	movlw 0x08
@@ -95,12 +95,12 @@ _f_adc_read_ref_2
 	call f_i2c_read_in_device
 _f_adc_read_ref_3
 	movlw 0x04
-	movwf v_adc_count
+	movwf _v_adc_count
 _f_adc_read_ref_4
 	bcf STATUS,0 ;carry=0 pour shifter dans v_adcfwd
 	rrcf v_adcref,f
 	rrcf v_adcref+1,f
-	decfsz v_adc_count,f
+	decfsz _v_adc_count,f
 	goto _f_adc_read_ref_4
 _f_adc_read_ref_5
 	movlw 0x08
@@ -118,18 +118,21 @@ f_adc_read
 
 	call _f_adc_send_read_fwd_cde
 	call _f_adc_read
-	movff _v_adc,POSTINC0
-	movff _v_adc+1,INDF0
-	movlw 0xF0
-	andwf INDF0
+	swapf _v_adc
+	movff _v_adc,INDF0
+	swapf _v_adc+1,W
+	andlw 0x0F
+	iorwf POSTINC0
+	swapf _v_adc+1,W
+	andlw 0x0F
+	iorwf INDF0
 	
 	call _f_adc_send_read_ref_cde
 	call _f_adc_read
-	movff _v_adc,POSTINC0
-	movff _v_adc,INDF0
-	movlw 0xF0
-	andwf INDF0
-	
+	movlw 0x0F
+	andwf _v_adc,W
+	iorwf POSTINC0
+	movff _v_adc+1,INDF0
 
 	return
 	

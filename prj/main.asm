@@ -30,9 +30,10 @@
 	extern f_eep_int_readbyte
 IFDEF TEST
 	extern f_lcd_aff_fwd_and_ref
-	extern f_lcd_aff_adc_hexa
-	extern f_calc_adc_hex_fwd_and_ref
-	extern f_lcd_aff_adc_mV
+
+	extern f_calc_conv_to_ascii
+	extern f_lcd_aff_adc_ascii
+	
 	extern Del_11us ;pour trace timer 0 uniquement
 	extern D160us ;pour trace timer 0 uniquement
 ENDIF
@@ -53,8 +54,6 @@ v_menu res 1
 v_tmp res 2
 v_fwd_and_ref_bin res 3 ;FWD=12bits - REF=12bits => 24bits = 8*3
 v_fwd_and_ref_ascii res 4
-v_p_data_in res 2
-v_p_data_out res 2
 ENDIF
 
 
@@ -153,17 +152,20 @@ choix_menu
 menu_tension
 	clrf v_menu
 
-		;;Lecture des valeurs ADC FWD et REF
-	movlw v_fwd_and_ref_bin
-	movwf v_p_data_out
-	lfsr FSR0, v_p_data_out
+	;;Lecture des valeurs ADC FWD et REF
+	lfsr FSR0, v_fwd_and_ref_bin
 	call f_adc_read
 
+	;; Conversion des ADC FWD et REF brutes en ASCII
+	lfsr FSR0, v_fwd_and_ref_bin
+	lfsr FSR1, v_fwd_and_ref_ascii
+	call f_calc_conv_to_ascii
+	
 	;Affiche "FWD et REF" sur les 1ères et 2èmes lignes
 	call f_lcd_aff_fwd_and_ref
-
 	;; afficher la mesure des ADC en hexadécimal
-	call f_lcd_aff_adc_hexa
+	lfsr FSR0,v_fwd_and_ref_ascii
+	call f_lcd_aff_adc_ascii
 
 	goto test_loop
 

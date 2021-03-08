@@ -3,9 +3,10 @@ include "calc.inc"
 
 
     udata
-  v_calc_p_bin_in res 2
-  v_calc_p_bcd_out res 2
+v_calc_p_bin_in res 2
+v_calc_p_bcd_out res 2
 
+	code
 ;-----------------------------------------
 ;Fonction : Conversion hexa-ASCII
 ;Nom : lcd_convtoascii
@@ -20,7 +21,7 @@ include "calc.inc"
 ;Traitement :
 ;
 ;-----------------------------------------
-f_calc_conv_to_ascii
+_f_calc_conv_to_ascii
 	mullw 0x02
 	movlw HIGH _f_calc_conv_to_ascii_2
 	movwf PCLATH
@@ -49,7 +50,27 @@ _f_calc_conv_to_ascii_2
 	retlw 0x46		;'F'
 	return
 
-
+f_calc_conv_to_ascii
+	swapf INDF0,W
+	call _f_calc_conv_to_ascii
+	movwf POSTINC1
+	movf  POSTINC0,W
+	call _f_calc_conv_to_ascii
+	movwf POSTINC1
+	swapf INDF0,W
+	call _f_calc_conv_to_ascii
+	movwf POSTINC1
+	
+	movf POSTINC0,W
+	call _f_calc_conv_to_ascii
+	movwf POSTINC1
+	movf POSTINC0,W
+	call _f_calc_conv_to_ascii
+	movwf POSTINC1
+	
+	return
+	
+IF 0
   ;-----------------------------------------
   ;Fonction : Conversion hexa-bcd
   ;Nom : f_calc_conv_to_bcd
@@ -62,7 +83,7 @@ _f_calc_conv_to_ascii_2
   ;Traitement :
   ;http://www.microchip.com/forums/m322713.aspx
   ;-----------------------------------------
-  _f_calc_dble_dabble_bcd
+_f_calc_dble_dabble_bcd
 
     lfsr FSR0, v_calc_p_bcd_out
     clrf POSTINC0
@@ -102,7 +123,7 @@ _f_calc_conv_to_ascii_2
     call  _f_calc_dble_dabble_bcd
 
     return
-
+ENDIF
 
 IF 0
     rlncf           ;12->13
@@ -135,6 +156,5 @@ ENDIF
 
 
     global f_calc_conv_to_ascii
-    global f_calc_conv_to_bcd
 
     end

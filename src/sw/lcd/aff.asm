@@ -15,39 +15,18 @@ v_lcd_p_string res 2
 v_lcd_dec res 2
 ENDIF
 
-	extern f_lcd_affchar
+	extern f_lcd_aff_char
 	extern f_lcd_setposcursor
 	extern f_eep_int_readbyte
 	extern c_bootmsgL1
 	extern c_bootmsgL2
 IFDEF TEST
-	extern v_adcfwd		;
-	extern v_adcref
-	extern v_adcfwd_mV		;
-	extern v_adcref_mV
-	extern v_calc_n_fwd
-	extern v_calc_n_ref
-	extern c_msg_n_and_rdac
-	extern v_menu
-	extern delay_10ms
-	extern f_lcd_convtoascii
-	extern f_lcd_convtobcd
+
+
 ENDIF
 
 
 	code
-IF 0
-_f_lcd_aff_hexa
-	movwf v_lcd_tmp
-	swapf v_lcd_tmp,W
-	andlw 0x0F
-	call f_lcd_convtoascii
-	call f_lcd_affchar
-	movf v_lcd_tmp,w
-	andlw 0x0F
-	call f_lcd_convtoascii
-	call f_lcd_affchar
-	return
 
 _f_lcd_set_fwd_string
   movlw 'F'
@@ -74,7 +53,7 @@ _f_lcd_set_ref_string
 	movlw 0x03
 	movwf v_lcd_string_len
 	return
-
+IF 0
 _f_lcd_aff_decimal
 	movff v_lcd_dec,v_lcd_hexa_to_conv
 	movff v_lcd_dec+1,v_lcd_hexa_to_conv+1
@@ -95,7 +74,7 @@ _lcd_affboot_2
 	xorlw 0x00 ; is it a zero?
 	btfsc STATUS, Z
 	goto _lcd_affboot_3 ; display next message if finished
-	call f_lcd_affchar
+	call f_lcd_aff_char
 	incf v_lcd_charpos, f
 	incf v_lcd_charpos, f
 	goto _lcd_affboot_2
@@ -111,7 +90,7 @@ _lcd_affboot_5
 	xorlw 0x00 ; is it a zero?
 	btfsc STATUS, Z
 	goto _lcd_affboot_6 ; display next message if finished
-	call f_lcd_affchar
+	call f_lcd_aff_char
 	incf v_lcd_charpos, f
 	incf v_lcd_charpos, f
 	goto _lcd_affboot_5
@@ -127,7 +106,7 @@ _lcd_affboot_8
 	xorlw 0x00 ; is it a zero?
 	btfsc STATUS, Z
 	goto _lcd_affboot_9 ; finished
-	call f_lcd_affchar
+	call f_lcd_aff_char
 	incf v_lcd_charpos, f
 	goto _lcd_affboot_8
 _lcd_affboot_9
@@ -141,9 +120,9 @@ f_lcd_aff_adc_mV
 	movff v_adcfwd_mV+1,v_lcd_dec+1
 	call _f_lcd_aff_decimal
 	movlw 'm'
-	call f_lcd_affchar
+	call f_lcd_aff_char
 	movlw 'V'
-	call f_lcd_affchar
+	call f_lcd_aff_char
 _f_lcd_aff_adc_mV_12
 	movlw 0x1B
 	call f_lcd_setposcursor
@@ -151,11 +130,12 @@ _f_lcd_aff_adc_mV_12
 	movff v_adcref_mV+1,v_lcd_dec+1
 	call _f_lcd_aff_decimal
 	movlw 'm'
-	call f_lcd_affchar
+	call f_lcd_aff_char
 	movlw 'V'
-	call f_lcd_affchar
+	call f_lcd_aff_char
 	return
-
+ENDIF
+	
 f_lcd_aff
 	movf v_lcd_p_string +1,W
 	movwf FSR0H
@@ -165,20 +145,21 @@ f_lcd_aff
 _f_lcd_aff_2
 	movf v_lcd_charpos, w ; put counter value in W
 	movf POSTINC0,W
-	call f_lcd_affchar
+	call f_lcd_aff_char
 	decfsz v_lcd_charpos, f
 	goto _f_lcd_aff_2
 	return
 
-
+IF 0
 f_lcd_aff_not
 	movff v_lcd_string_len, v_lcd_tmp
 	movlw ' '
 _f_lcd_aff_not_2
-	call f_lcd_affchar
+	call f_lcd_aff_char
 	decfsz v_lcd_tmp,f
 	goto _f_lcd_aff_not_2
 	return
+ENDIF
 
 
 f_lcd_aff_fwd_and_ref
@@ -192,41 +173,48 @@ f_lcd_aff_fwd_and_ref
 	call f_lcd_aff
 	return
 
-f_lcd_aff_adc_hexa
+f_lcd_aff_adc_ascii
 	movlw 0x05
 	call f_lcd_setposcursor
-	movf v_adcfwd,w
-	call _f_lcd_aff_hexa
-	movf v_adcfwd+1,w
-	call _f_lcd_aff_hexa
+	movf POSTINC0,w
+	call f_lcd_aff_char
+	movf POSTINC0,w
+	call f_lcd_aff_char
+	movf POSTINC0,w
+	call f_lcd_aff_char
 	movlw 'h'
-	call f_lcd_affchar
+	call f_lcd_aff_char
 	movlw '-'
-	call f_lcd_affchar
+	call f_lcd_aff_char
+	
 	movlw 0x15
 	call f_lcd_setposcursor
-	movf v_adcref,w
-	call _f_lcd_aff_hexa
-	movf v_adcref+1,w
-	call _f_lcd_aff_hexa
+	movf POSTINC0,w
+	call f_lcd_aff_char
+	movf POSTINC0,w
+	call f_lcd_aff_char
+	movf POSTINC0,w
+	call f_lcd_aff_char
 	movlw 'h'
-	call f_lcd_affchar
+	call f_lcd_aff_char
 	movlw '-'
-	call f_lcd_affchar
+	call f_lcd_aff_char
 	return
-ENDIF
+	
 
 	global f_lcd_affboot
-IF 0
 	global f_lcd_aff
+IF 0
 	global f_lcd_aff_not
-	global f_lcd_aff_adc_hexa
+ENDIF
+	global f_lcd_aff_adc_ascii
 	global f_lcd_aff_fwd_and_ref
+IF 0
 	global f_lcd_aff_adc_mV
+ENDIF
 	global v_lcd_string
 	global v_lcd_string_len
 	global v_lcd_string_pos
 	global v_lcd_p_string
-ENDIF
 
 	end
