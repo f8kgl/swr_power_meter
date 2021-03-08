@@ -29,10 +29,10 @@ f_log_write
 
 
   movlw v_log_data
-  movwf v_log_p_data
+  movwf v_log_p_data+1
 
-  movff v_log_p_data+1,FSR0H
-  movff v_log_p_data,FSR0L
+  movff v_log_p_data,FSR0H
+  movff v_log_p_data+1,FSR0L
 
   movff v_log_tag,v_eep_int_byte_to_write
   movf v_log_addr,W
@@ -49,7 +49,7 @@ _f_log_write_loop
   goto _f_log_write_loop2;v_log_data_size déjà égal à 0 =>_f_log_write_loop2
   decfsz v_log_nb_byte_to_write,f
   goto _f_log_write_loop
-  goto _f_log_write_loop_end
+  goto _f_log_write_loop4
 
 _f_log_write_loop2
   decf v_log_nb_byte_to_write,f
@@ -62,8 +62,13 @@ _f_log_write_loop3
   decfsz v_log_nb_byte_to_write ,f
   goto _f_log_write_loop3
 
-_f_log_write_loop_end
+_f_log_write_loop4
   incf v_log_addr,f
+  btfss STATUS,C
+  goto _f_log_write_loop_end
+  movlw LOG_ADDR_IN_EEP
+  movwf v_log_addr
+_f_log_write_loop_end
   movff v_log_addr,v_eep_int_byte_to_write
   movlw ADDR_EEP_NEXT_ADDR_TO_WRITE
   call f_eep_int_writebyte
