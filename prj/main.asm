@@ -19,12 +19,9 @@
 	extern f_lcd_affboot
 	extern f_lcd_clear
 	extern f_lcd_setposcursor
-	
+
 	extern f_adc_read
 
-	extern f_bp_init
-	extern f_bp_test_bande
-	
 	extern f_log_write
 	extern f_eep_int_readbyte
 IFDEF TEST
@@ -32,14 +29,13 @@ IFDEF TEST
 
 	extern f_calc_conv_to_ascii
 	extern f_lcd_aff_adc_ascii
-	
+
 	extern Del_11us ;pour trace timer 0 uniquement
 	extern D160us ;pour trace timer 0 uniquement
 ENDIF
 	extern delay_250ms
 
 
-	extern v_bp_status
 	extern v_log_data
 	extern v_log_data_size
 	extern v_log_tag
@@ -52,7 +48,7 @@ IFDEF TEST
 v_menu res 1
 v_tmp res 2
 v_fwd_and_ref_bin res 3 ;FWD=12bits - REF=12bits => 24bits = 8*3
-v_fwd_and_ref_ascii res 4
+v_fwd_and_ref_ascii res 6
 ENDIF
 
 
@@ -102,7 +98,7 @@ Boot
 
 ;;Initialisation des composants logiciels
 	call f_i2c_init
-	call f_bp_init
+
 ;; Effacer le LCD (lcd_clear)
 	call f_lcd_clear
 
@@ -110,8 +106,6 @@ IFDEF DEBUG_ISSUE_134
 	;Fiche #121 #157 #134
 	;appelle l'init des composants branchés sur le bus i2c
 	;pour contourner le NACK reçu uniquement lors de la 1ère trame sous GPSIM
-;	call f_aop_set_rdac_fwd
-;	call f_aop_set_rdac_ref
 	call f_adc_read
 ENDIF
 
@@ -122,11 +116,6 @@ test_loop
 
 	;;Appui sur le bouton bande ?
 	btfss BP_BANDE
-IF 0
-	clrf v_bp_status
-	call f_bp_test_bande
-	btfss v_bp_status,BIT_BANDE
-ENDIF
 	goto choix_menu
 
 	incf v_menu,f
@@ -161,7 +150,7 @@ menu_tension
 	movwf v_log_data_size
 	call f_log_write
 	m_timer0_start
-	
+
 	lfsr FSR0, v_fwd_and_ref_bin
 	call f_adc_read
 
@@ -169,7 +158,7 @@ menu_tension
 	lfsr FSR0, v_fwd_and_ref_bin
 	lfsr FSR1, v_fwd_and_ref_ascii
 	call f_calc_conv_to_ascii
-	
+
 	;Affiche "FWD et REF" sur les 1ères et 2èmes lignes
 	call f_lcd_aff_fwd_and_ref
 	;; afficher la mesure des ADC en hexadécimal
@@ -205,8 +194,8 @@ f_tempo_boot
 	call delay_250ms
 	call delay_250ms
 	return
-	
-	
+
+
 f_boot_log
 ;Trace la version en cours d'éxecution
 IFDEF TEST

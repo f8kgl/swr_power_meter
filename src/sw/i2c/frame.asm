@@ -75,13 +75,10 @@ f_i2c_write_in_device
   clrf _v_i2c_data_type
   call _f_i2c_send
 _f_i2c_write_in_device_2
-	lfsr FSR1, v_i2c_p_send_data
-IF 0
-  movf v_i2c_p_send_data+1,W
-  movwf FSR1H
   movf v_i2c_p_send_data,W
+  movwf FSR1H
+  movf v_i2c_p_send_data+1,W
   movwf FSR1L
-ENDIF
 _f_i2c_write_in_device_2_2
   bsf _v_i2c_data_type,0
   movf POSTINC1,W
@@ -110,13 +107,10 @@ f_i2c_read_in_device
   clrf _v_i2c_data_type
   call _f_i2c_send
 _f_i2c_read_in_device_2
-	lfsr FSR1, v_i2c_p_receive_data
-IF 0
-	movf v_i2c_p_receive_data+1,W
+	movf v_i2c_p_receive_data,W
   movwf FSR1H
-  movf v_i2c_p_receive_data,W
+  movf v_i2c_p_receive_data+1,W
   movwf FSR1L
-ENDIF
   decf v_i2c_data_size,f ;on décrémente déjà un premier coup,
 												 ;afin de pouvoir gérer le cas du last_byte
   btfsc STATUS,Z

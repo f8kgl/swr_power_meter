@@ -40,14 +40,14 @@ lcd_display.ypos = 180
 module load pullup Vfwd
 Vfwd.capacitance = 0
 Vfwd.resistance = 10000
-Vfwd.voltage = 0.01
+Vfwd.voltage = 0.1
 Vfwd.xpos = 180
 Vfwd.ypos = 96
 
 module load pullup Vref
 Vref.capacitance = 0
 Vref.resistance = 10000
-Vref.voltage = 0.001
+Vref.voltage = 0.2
 Vref.xpos = 180
 Vref.ypos = 264
 

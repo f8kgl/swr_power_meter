@@ -52,24 +52,33 @@ _f_calc_conv_to_ascii_2
 
 f_calc_conv_to_ascii
 	swapf INDF0,W
+  andlw 0x0F
 	call _f_calc_conv_to_ascii
 	movwf POSTINC1
 	movf  POSTINC0,W
+  andlw 0x0F
 	call _f_calc_conv_to_ascii
 	movwf POSTINC1
 	swapf INDF0,W
+  andlw 0x0F
 	call _f_calc_conv_to_ascii
 	movwf POSTINC1
-	
+
 	movf POSTINC0,W
+  andlw 0x0F
 	call _f_calc_conv_to_ascii
 	movwf POSTINC1
-	movf POSTINC0,W
+	swapf  INDF0,W
+  andlw 0x0F
 	call _f_calc_conv_to_ascii
 	movwf POSTINC1
-	
+	movf INDF0,W
+  andlw 0x0F
+	call _f_calc_conv_to_ascii
+	movwf POSTINC1
+
 	return
-	
+
 IF 0
   ;-----------------------------------------
   ;Fonction : Conversion hexa-bcd
