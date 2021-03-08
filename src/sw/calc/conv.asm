@@ -2,6 +2,10 @@ include "p18f1320.inc" ;include the defaults for the chip
 include "calc.inc"
 
 
+    udata
+  v_calc_p_bin_in res 2
+  v_calc_p_bcd_out res 2
+
 ;-----------------------------------------
 ;Fonction : Conversion hexa-ASCII
 ;Nom : lcd_convtoascii
@@ -50,20 +54,68 @@ _f_calc_conv_to_ascii_2
   ;Fonction : Conversion hexa-bcd
   ;Nom : f_calc_conv_to_bcd
   ;Entrée :
-  ;	v_lcd_hexa_to_conv (2 bytes) : 2 octets à convertir en BCD
+  ;	v_calc_p_bin_in (2 bytes) : pointeur vers 2 octets à convertir en BCD (données
+  ; utiles sur les 12 bits de poids faible)
   ;Sortie :
-  ;	v_lcd_bcd (3 bytes) : 2 octets convertis en BCD
+  ;	v_calc_p_bcd_out (2 bytes) : 2 octets convertis en BCD
 
   ;Traitement :
   ;http://www.microchip.com/forums/m322713.aspx
   ;-----------------------------------------
-  f_calc_conv_to_bcd
-  	clrf    v_lcd_bcd
-    clrf    v_lcd_bcd+1
-    clrf    v_lcd_bcd+2
+  _f_calc_dble_dabble_bcd
 
-    movlw   D'16'
-    movwf   v_lcd_count
+    lfsr FSR0, v_calc_p_bcd_out
+    clrf POSTINC0
+    clrf POSTINC0
+
+
+    movlw   D'11'
+    movwf   v_calc_count
+  _f_calc_conv_to_1
+    lfsr FSR0, v_calc_p_bin_in+1
+    rlcf POSTDEC0
+    rlcf POSTDEC0
+
+    lfsr FSR0, v_calc_p_bcd_out+1
+    movf INDF0,W
+    ;movf    v_lcd_bcd+2,W
+    addwfc  INDF0,W
+    daw
+      movwf   INDF0
+    lfsr FSR0, v_calc_p_bcd_out
+    rlcf    INDF0
+    decfsz  v_lcd_count,f
+    bra     _f_calc_conv_to_1
+    return
+
+
+
+  f_calc_conv_to_bcd
+    rlncf   v_adcfwd        ;12->13
+    rlncf   v_adcfwd        ;13->14
+    rlncf   v_adcfwd        ;14->15
+    rlncf   v_adcfwd        ;15->16
+    movlw   v_adcfwd
+    movwf   v_calc_p_bin_in
+    movlw   v_calc_adc_fwd_mV
+    movwf   v_calc_p_bcd_out
+    call  _f_calc_dble_dabble_bcd
+
+    return
+
+
+IF 0
+    rlncf           ;12->13
+    rlncf           ;13->14
+    rlncf           ;14->15
+    rlncf           ;15->16
+
+  	clrf    v_calc_adc_mV_bcd
+    clrf    v_calc_adc_mV_bcd+1
+    ;clrf    v_lcd_bcd+2
+
+    movlw   D'11'
+    movwf   v_calc_count
   _f_calc_conv_to__1
     rlcf    v_lcd_hexa_to_conv+1,F
     rlcf    v_lcd_hexa_to_conv,F
@@ -79,7 +131,7 @@ _f_calc_conv_to_ascii_2
     decfsz  v_lcd_count,f
     bra     _f_calc_conv_to_1
     return
-
+ENDIF
 
 
     global f_calc_conv_to_ascii
