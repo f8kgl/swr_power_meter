@@ -20,15 +20,12 @@
 	extern f_lcd_affboot
 	extern f_lcd_clear
 	extern f_lcd_setposcursor
-	extern f_adc_read_fwd
-	extern f_adc_read_ref
+	
+	extern f_adc_read
+
 	extern f_bp_init
 	extern f_bp_test_bande
-	extern delay_250ms
-	extern v_bp_status
-	extern v_log_data
-	extern v_log_data_size
-	extern v_log_tag
+	
 	extern f_log_write
 	extern f_eep_int_readbyte
 IFDEF TEST
@@ -39,12 +36,25 @@ IFDEF TEST
 	extern Del_11us ;pour trace timer 0 uniquement
 	extern D160us ;pour trace timer 0 uniquement
 ENDIF
+	extern delay_250ms
+
+
+	extern v_bp_status
+	extern v_log_data
+	extern v_log_data_size
+	extern v_log_tag
+
+
 
 	udata
 
 IFDEF TEST
 v_menu res 1
 v_tmp res 2
+v_fwd_and_ref_bin res 3 ;FWD=12bits - REF=12bits => 24bits = 8*3
+v_fwd_and_ref_ascii res 4
+v_p_data_in res 2
+v_p_data_out res 2
 ENDIF
 
 
@@ -89,6 +99,104 @@ Boot
 	call f_tempo_boot
 
 ;; LOG au démarrage
+	call f_boot_log
+
+
+;;Initialisation des composants logiciels
+	call f_i2c_init
+	call f_bp_init
+;; Effacer le LCD (lcd_clear)
+	call f_lcd_clear
+
+IFDEF DEBUG_ISSUE_134
+	;Fiche #121 #157 #134
+	;appelle l'init des composants branchés sur le bus i2c
+	;pour contourner le NACK reçu uniquement lors de la 1ère trame sous GPSIM
+;	call f_aop_set_rdac_fwd
+;	call f_aop_set_rdac_ref
+	call f_adc_read
+ENDIF
+
+IFDEF TEST
+	clrf v_menu ; menu mesure par défaut au démarrage
+
+test_loop
+
+	;;Appui sur le bouton bande ?
+
+	clrf v_bp_status
+	call f_bp_test_bande
+	btfss v_bp_status,BIT_BANDE
+	goto choix_menu
+
+	incf v_menu,f
+	;; Effacer le LCD (lcd_clear)
+	call f_lcd_clear
+
+
+choix_menu
+
+	movf	v_menu,w
+	xorlw	D'0'
+	btfsc	STATUS,Z
+	goto	menu_tension
+	movf	v_menu,w
+	xorlw	D'1'
+	btfsc	STATUS,Z
+	goto	menu_puissance
+	movf	v_menu,w
+	xorlw	D'2'
+	btfsc	STATUS,Z
+	clrf v_menu
+	goto test_loop
+
+menu_tension
+	clrf v_menu
+
+		;;Lecture des valeurs ADC FWD et REF
+	movlw v_fwd_and_ref_bin
+	movwf v_p_data_out
+	lfsr FSR0, v_p_data_out
+	call f_adc_read
+
+	;Affiche "FWD et REF" sur les 1ères et 2èmes lignes
+	call f_lcd_aff_fwd_and_ref
+
+	;; afficher la mesure des ADC en hexadécimal
+	call f_lcd_aff_adc_hexa
+
+	goto test_loop
+
+
+menu_puissance
+	goto test_loop
+
+
+ENDIF
+
+
+;-----------------------------------------
+;Fonction : temporisation de 3s
+;Nom : tempo_boot
+;Entrée :
+;Sortie :
+;Traitement :
+;		1.	appeler 12x une temporisation de 250ms
+;-----------------------------------------
+
+f_tempo_boot
+	call delay_250ms
+	call delay_250ms
+	call delay_250ms
+	call delay_250ms
+	call delay_250ms
+	call delay_250ms
+	call delay_250ms
+	call delay_250ms
+	return
+	
+	
+f_boot_log
 ;Trace la version en cours d'éxecution
 IFDEF TEST
 	movlw 'T'
@@ -148,106 +256,11 @@ IFDEF TEST
 	call f_log_write
 ENDIF
 
-
-;;Initialisation des composants logiciels
-	call f_i2c_init
-	call f_bp_init
-;; Effacer le LCD (lcd_clear)
-	call f_lcd_clear
-
-IFDEF DEBUG_ISSUE_134
-	;Fiche #121 #157 #134
-	;appelle l'init des composants branchés sur le bus i2c
-	;pour contourner le NACK reçu uniquement lors de la 1ère trame sous GPSIM
-;	call f_aop_set_rdac_fwd
-	call f_aop_set_rdac_ref
-	call f_adc_read_fwd
-ENDIF
-
-
-IFDEF TEST
-	clrf v_menu ; menu mesure par défaut au démarrage
-
-test_loop
-
-	;;Appui sur le bouton bande ?
-
-	clrf v_bp_status
-	call f_bp_test_bande
-	btfss v_bp_status,BIT_BANDE
-	goto choix_menu
-
-	incf v_menu,f
-	;; Effacer le LCD (lcd_clear)
-	call f_lcd_clear
-
-
-choix_menu
-
-	movf	v_menu,w
-	xorlw	D'0'
-	btfsc	STATUS,Z
-	goto	menu_tension
-	movf	v_menu,w
-	xorlw	D'1'
-	btfsc	STATUS,Z
-	goto	menu_puissance
-	movf	v_menu,w
-	xorlw	D'2'
-	btfsc	STATUS,Z
-	clrf v_menu
-	goto test_loop
-
-menu_tension
-	clrf v_menu
-
-		;;lire les registres ADCfwd et ADCref
-	call f_adc_read_fwd
-	call f_adc_read_ref
-
-	;; Convertir la mesure des ADC en hexa (rien à faire) et en mV
-	call f_calc_adc_hex_fwd_and_ref
-
-	;Affiche "FWD et REF" sur les 1ères et 2èmes lignes
-	call f_lcd_aff_fwd_and_ref
-
-	;; afficher la mesure des ADC en hexadécimal
-	call f_lcd_aff_adc_hexa
-	;; afficher la mesure des ADC en mV
-	call f_lcd_aff_adc_mV
-
-	goto test_loop
-
-
-menu_puissance
-	goto test_loop
-
-
-ENDIF
-
-
-;-----------------------------------------
-;Fonction : temporisation de 3s
-;Nom : tempo_boot
-;Entrée :
-;Sortie :
-;Traitement :
-;		1.	appeler 12x une temporisation de 250ms
-;-----------------------------------------
-
-f_tempo_boot
-	call delay_250ms
-	call delay_250ms
-	call delay_250ms
-	call delay_250ms
-	call delay_250ms
-	call delay_250ms
-	call delay_250ms
-	call delay_250ms
 	return
 
 IFDEF TEST
 	global v_menu
+	global v_fwd_and_ref_bin
 ENDIF
 
 
