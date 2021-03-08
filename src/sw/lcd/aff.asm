@@ -36,7 +36,7 @@ _f_lcd_set_fwd_string
   movlw 'D'
   movwf v_lcd_string+2
   movlw v_lcd_string
-  movwf v_lcd_p_string
+  movwf v_lcd_p_string+1
 	movlw 0x03
 	movwf v_lcd_string_len
   return
@@ -49,7 +49,7 @@ _f_lcd_set_ref_string
 	movlw 'F'
 	movwf v_lcd_string+2
 	movlw v_lcd_string
-	movwf v_lcd_p_string
+	movwf v_lcd_p_string+1
 	movlw 0x03
 	movwf v_lcd_string_len
 	return
@@ -103,9 +103,9 @@ _lcd_affboot_9
 
 
 f_lcd_aff
-	movf v_lcd_p_string +1,W
+	movf v_lcd_p_string,W
 	movwf FSR0H
-	movf v_lcd_p_string ,W
+	movf v_lcd_p_string+1 ,W
 	movwf FSR0L
 	movff v_lcd_string_len,v_lcd_charpos
 _f_lcd_aff_2
