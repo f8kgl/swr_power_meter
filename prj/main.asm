@@ -144,6 +144,7 @@ menu_tension
 
 	;;Lecture des valeurs ADC FWD et REF
 	m_timer0_stop
+	m_timer0_reset
 	movlw TAG_TIMER_SAMPLE_FW_TEST_TENSION
 	movwf v_log_tag
 	movlw D'02'
@@ -153,6 +154,18 @@ menu_tension
 
 	lfsr FSR0, v_fwd_and_ref_bin
 	call f_adc_read
+	m_timer0_stop
+	;trace les valeurs d'ADC
+	movff v_fwd_and_ref_bin,v_log_data
+	movff v_fwd_and_ref_bin+1,v_log_data+1
+	movff v_fwd_and_ref_bin+2,v_log_data+2
+	movlw TAG_ADC
+	movwf v_log_tag
+	movlw D'03'
+	movwf v_log_data_size
+	call f_log_write
+	m_timer0_restart
+
 
 	;; Conversion des ADC FWD et REF brutes en ASCII
 	lfsr FSR0, v_fwd_and_ref_bin

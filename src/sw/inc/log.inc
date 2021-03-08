@@ -2,10 +2,16 @@
 #define TIMER0_START (1<<TMR0ON) | (1<<T08BIT) | (1<<PSA)
 
 #define TAG_I2C_NACK 0x80
+#define TAG_ADC 0x50
 #define TAG_TIMER 0x40
 #define TAG_TIMER_SAMPLE_FW_TEST_TENSION 0x41
 #define TAG_PIC_REG 0x20
 #define TAG_FW_VERSION 0x10
+
+m_timer0_reset	macro
+  CLRF	T0CON
+  CLRF	TMR0L
+  endm
 
 m_timer0_start	macro
   CLRF	T0CON
@@ -14,15 +20,16 @@ m_timer0_start	macro
   MOVWF	T0CON
 	endm
 
+m_timer0_restart	macro
+  MOVLW	TIMER0_START
+  MOVWF	T0CON
+	endm
 
 
 m_timer0_stop	macro
   MOVFF	TMR0L,v_log_data+1
   MOVFF	TMR0H,v_log_data
   clrf T0CON
-  CLRF	TMR0L
-  CLRF	TMR0H
-  CLRF	TMR0H
   movlw 0x05
   subwf v_log_data+1,f
   endm
