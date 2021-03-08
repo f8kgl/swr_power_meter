@@ -2,7 +2,9 @@ include "p18f1320.inc" ;include the defaults for the chip
 include "bp.inc"
 
   udata
+IF 0
 v_bp_status res 1
+ENDIF
 v_bp_timer res 1
 
   extern delay_10ms

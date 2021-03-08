@@ -1,7 +1,6 @@
 	include "p18f1320.inc" ;include the defaults for the chip
 	include "bp.inc"
 	include "log.inc"
-	include "calc.inc"
 
 	ERRORLEVEL 0, -302 ;suppress bank selection messages
 
@@ -122,10 +121,12 @@ IFDEF TEST
 test_loop
 
 	;;Appui sur le bouton bande ?
-
+	btfss BP_BANDE
+IF 0
 	clrf v_bp_status
 	call f_bp_test_bande
 	btfss v_bp_status,BIT_BANDE
+ENDIF
 	goto choix_menu
 
 	incf v_menu,f
