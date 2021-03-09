@@ -74,7 +74,9 @@ _f_adc_read_fwd_4
 	movlw 0x0F   ;le résultat est sur 12 bits alors on masque les 4 bits
 	andwf _v_adc,f ;de poids faible sur le nibble de poids fort
 	comf  _v_adc+1,f
-	incf  _v_adc+1,f ;propagation de la retenue ?
+	incf  _v_adc+1,f ;propagation de la retenue
+	btfsc STATUS,C
+	incf _v_adc,f
 	return
 
 f_adc_read
