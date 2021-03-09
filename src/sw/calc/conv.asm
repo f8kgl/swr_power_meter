@@ -147,7 +147,7 @@ _f_calc_dble_dabble_bcd1
     daw
     movwf   v_calc_bcd_out
     rlcf    v_calc_bcd_out,F
-    decfsz  v_lcd_count,f
+    decfsz  v_calc_bcd_count,f
     bra     _f_calc_dble_dabble_bcd1
 
 	return
@@ -159,12 +159,12 @@ _f_calc_conv_mv_to_bcd
 	movff v_calc_bcd_out,POSTINC1
 	movff v_calc_bcd_out+1,POSTINC1
 	return
-	
+
 f_calc_conv_bin_to_mV
-	;;FXM1616U (ADC,(5000)10) : 
+	;;FXM1616U (ADC,(5000)10) :
     ;; décalage à droite de 12 bits
 
-	
+
     ;; Conversion 12 bits en BCD
 	call _f_calc_conv_mv_to_bcd ;FWD
 	call _f_calc_conv_mv_to_bcd ;REF

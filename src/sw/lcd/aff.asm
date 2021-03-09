@@ -104,13 +104,13 @@ _lcd_affboot_9
 
 f_lcd_aff
 	movf v_lcd_p_string,W
-	movwf FSR0H
+	movwf FSR2H
 	movf v_lcd_p_string+1 ,W
-	movwf FSR0L
+	movwf FSR2L
 	movff v_lcd_string_len,v_lcd_charpos
 _f_lcd_aff_2
 	movf v_lcd_charpos, w ; put counter value in W
-	movf POSTINC0,W
+	movf POSTINC2,W
 	call f_lcd_aff_char
 	decfsz v_lcd_charpos, f
 	goto _f_lcd_aff_2
@@ -128,7 +128,7 @@ f_lcd_aff_fwd_and_ref
 	return
 
 f_lcd_aff_adc_ascii
-	;;Affichage des valeurs d’ADC brute 
+	;;Affichage des valeurs d’ADC brute
 	call f_lcd_aff_fwd_and_ref
 	movlw 0x05
 	call f_lcd_setposcursor
@@ -155,12 +155,12 @@ f_lcd_aff_adc_ascii
 	call f_lcd_aff_char
 	movlw '-'
 	call f_lcd_aff_char
-	
-	
+
+
 	;;Affichage des valeurs d’ADC en mV
-	
-	
-	
+
+
+
 	return
 
 

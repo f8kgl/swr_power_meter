@@ -26,7 +26,8 @@
 IFDEF TEST
 	extern f_calc_conv_bin_to_ascii
 	extern f_lcd_aff_adc_ascii
-
+	extern f_calc_conv_bin_to_mV
+	extern f_calc_conv_mV_to_ascii
 	extern Del_11us ;pour trace timer 0 uniquement
 	extern D160us ;pour trace timer 0 uniquement
 ENDIF
@@ -155,7 +156,7 @@ menu_tension
 
 	lfsr FSR0, v_fwd_and_ref_bin
 	call f_adc_read
-	
+
 	m_timer0_stop
 	;trace les valeurs d'ADC
 	movff v_fwd_and_ref_bin,v_log_data
@@ -178,17 +179,17 @@ menu_tension
 	;;
 	;;Conversion des valeurs d’ADC FWD et REF brutes en mV
 	;;
-	
-	lfsr FSR0, v_fwd_and_ref_bin
-	lfsr FSR1, v_fwd_and_ref_mV
-	call f_calc_conv_bin_to_mV
+
+	;lfsr FSR0, v_fwd_and_ref_bin
+	;lfsr FSR1, v_fwd_and_ref_mV
+	;call f_calc_conv_bin_to_mV
 
 	;;
 	;;Conversion des valeurs d’ADC FWD et REF en mV en ASCII
 	;;
-	lfsr FSR0, v_fwd_and_ref_mV
-	lfsr FSR1, v_fwd_and_ref_mV_ascii
-	call f_calc_conv_mV_to_ascii
+	;lfsr FSR0, v_fwd_and_ref_mV
+	;lfsr FSR1, v_fwd_and_ref_mV_ascii
+	;call f_calc_conv_mV_to_ascii
 
 	;;
 	;; affichage des valeurs d'ADC
