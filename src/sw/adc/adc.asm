@@ -11,7 +11,6 @@
 
 
 	udata
-;v_adcfwd res 2
 _v_adc res 2
 _v_adc_cde res 1
 _v_adc_count res 1

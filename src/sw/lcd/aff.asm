@@ -128,6 +128,8 @@ f_lcd_aff_fwd_and_ref
 	return
 
 f_lcd_aff_adc_ascii
+	;;Affichage des valeurs d’ADC brute 
+	call f_lcd_aff_fwd_and_ref
 	movlw 0x05
 	call f_lcd_setposcursor
 	movf POSTINC0,w
@@ -153,13 +155,18 @@ f_lcd_aff_adc_ascii
 	call f_lcd_aff_char
 	movlw '-'
 	call f_lcd_aff_char
+	
+	
+	;;Affichage des valeurs d’ADC en mV
+	
+	
+	
 	return
 
 
 	global f_lcd_affboot
 	global f_lcd_aff
 	global f_lcd_aff_adc_ascii
-	global f_lcd_aff_fwd_and_ref
 	global v_lcd_string
 	global v_lcd_string_len
 	global v_lcd_string_pos

@@ -3,8 +3,10 @@ include "calc.inc"
 
 
     udata
-v_calc_p_bin_in res 2
-v_calc_p_bcd_out res 2
+v_calc_bin_mv_in res 2
+v_calc_bcd_out res 2
+v_calc_bcd_count res 1
+v_calc_mul_out res 6
 
 	code
 ;-----------------------------------------
@@ -21,17 +23,17 @@ v_calc_p_bcd_out res 2
 ;Traitement :
 ;
 ;-----------------------------------------
-_f_calc_conv_to_ascii
+_f_calc_conv_bin_to_ascii
 	mullw 0x02
-	movlw HIGH _f_calc_conv_to_ascii_2
+	movlw HIGH _f_calc_conv_bin_to_ascii_2
 	movwf PCLATH
-	movlw _f_calc_conv_to_ascii_2
+	movlw _f_calc_conv_bin_to_ascii_2
 	addwf PRODL,W
 	btfsc STATUS,C
 	incf PCLATH ;retenu à 1 => pas de changement de page
 	movf PRODL,w
 	addwf PCL, f
-_f_calc_conv_to_ascii_2
+_f_calc_conv_bin_to_ascii_2
 	retlw 0x30		;'0'
 	retlw 0x31		;'1'
 	retlw 0x32		;'2'
@@ -50,36 +52,71 @@ _f_calc_conv_to_ascii_2
 	retlw 0x46		;'F'
 	return
 
-f_calc_conv_to_ascii
+f_calc_conv_bin_to_ascii
 	swapf INDF0,W
   andlw 0x0F
-	call _f_calc_conv_to_ascii
+	call _f_calc_conv_bin_to_ascii
 	movwf POSTINC1
 	movf  POSTINC0,W
   andlw 0x0F
-	call _f_calc_conv_to_ascii
+	call _f_calc_conv_bin_to_ascii
 	movwf POSTINC1
 	swapf INDF0,W
   andlw 0x0F
-	call _f_calc_conv_to_ascii
+	call _f_calc_conv_bin_to_ascii
 	movwf POSTINC1
 
 	movf POSTINC0,W
   andlw 0x0F
-	call _f_calc_conv_to_ascii
+	call _f_calc_conv_bin_to_ascii
 	movwf POSTINC1
 	swapf  INDF0,W
   andlw 0x0F
-	call _f_calc_conv_to_ascii
+	call _f_calc_conv_bin_to_ascii
 	movwf POSTINC1
 	movf INDF0,W
   andlw 0x0F
-	call _f_calc_conv_to_ascii
+	call _f_calc_conv_bin_to_ascii
 	movwf POSTINC1
 
 	return
 
-IF 0
+
+f_calc_conv_mV_to_ascii
+	swapf INDF0,W
+	andlw 0x0F
+	call _f_calc_conv_bin_to_ascii
+	movwf POSTINC1
+	movf POSTINC0,W
+	andlw 0x0F
+	call _f_calc_conv_bin_to_ascii
+	movwf POSTINC1
+	swapf INDF0,W
+	andlw 0x0F
+	call _f_calc_conv_bin_to_ascii
+	movwf POSTINC1
+	movf POSTINC0,W
+	andlw 0x0F
+	call _f_calc_conv_bin_to_ascii
+	movwf POSTINC1
+	swapf INDF0,W
+	andlw 0x0F
+	call _f_calc_conv_bin_to_ascii
+	movwf POSTINC1
+	movf POSTINC0,W
+	andlw 0x0F
+	call _f_calc_conv_bin_to_ascii
+	movwf POSTINC1
+	swapf INDF0,W
+	andlw 0x0F
+	call _f_calc_conv_bin_to_ascii
+	movwf POSTINC1
+	movf POSTINC0,W
+	andlw 0x0F
+	call _f_calc_conv_bin_to_ascii
+	movwf POSTINC1
+	return
+
   ;-----------------------------------------
   ;Fonction : Conversion hexa-bcd
   ;Nom : f_calc_conv_to_bcd
@@ -93,77 +130,51 @@ IF 0
   ;http://www.microchip.com/forums/m322713.aspx
   ;-----------------------------------------
 _f_calc_dble_dabble_bcd
+  	clrf    v_calc_bcd_out
+    clrf    v_calc_bcd_out+1
 
-    lfsr FSR0, v_calc_p_bcd_out
-    clrf POSTINC0
-    clrf POSTINC0
-
-
-    movlw   D'11'
-    movwf   v_calc_count
-  _f_calc_conv_to_1
-    lfsr FSR0, v_calc_p_bin_in+1
-    rlcf POSTDEC0
-    rlcf POSTDEC0
-
-    lfsr FSR0, v_calc_p_bcd_out+1
-    movf INDF0,W
-    ;movf    v_lcd_bcd+2,W
-    addwfc  INDF0,W
+    movlw   D'12'  ;ou 11 ?
+    movwf   v_calc_bcd_count
+_f_calc_dble_dabble_bcd1
+    rlcf    v_calc_bin_mv_in+1,F
+    rlcf    v_calc_bin_mv_in,F
+    movf    v_calc_bcd_out+1,W
+    addwfc  v_calc_bcd_out+1,W
     daw
-      movwf   INDF0
-    lfsr FSR0, v_calc_p_bcd_out
-    rlcf    INDF0
+    movwf   v_calc_bcd_out+1
+    movf    v_calc_bcd_out,W
+    addwfc  v_calc_bcd_out,W
+    daw
+    movwf   v_calc_bcd_out
+    rlcf    v_calc_bcd_out,F
     decfsz  v_lcd_count,f
-    bra     _f_calc_conv_to_1
-    return
+    bra     _f_calc_dble_dabble_bcd1
+
+	return
+
+_f_calc_conv_mv_to_bcd
+	movff POSTINC2,v_calc_bin_mv_in
+	movff POSTINC2,v_calc_bin_mv_in+1
+	call _f_calc_dble_dabble_bcd
+	movff v_calc_bcd_out,POSTINC1
+	movff v_calc_bcd_out+1,POSTINC1
+	return
+	
+f_calc_conv_bin_to_mV
+	;;FXM1616U (ADC,(5000)10) : 
+    ;; décalage à droite de 12 bits
+
+	
+    ;; Conversion 12 bits en BCD
+	call _f_calc_conv_mv_to_bcd ;FWD
+	call _f_calc_conv_mv_to_bcd ;REF
+
+	return
 
 
 
-  f_calc_conv_to_bcd
-    rlncf   v_adcfwd        ;12->13
-    rlncf   v_adcfwd        ;13->14
-    rlncf   v_adcfwd        ;14->15
-    rlncf   v_adcfwd        ;15->16
-    movlw   v_adcfwd
-    movwf   v_calc_p_bin_in
-    movlw   v_calc_adc_fwd_mV
-    movwf   v_calc_p_bcd_out
-    call  _f_calc_dble_dabble_bcd
-
-    return
-ENDIF
-
-IF 0
-    rlncf           ;12->13
-    rlncf           ;13->14
-    rlncf           ;14->15
-    rlncf           ;15->16
-
-  	clrf    v_calc_adc_mV_bcd
-    clrf    v_calc_adc_mV_bcd+1
-    ;clrf    v_lcd_bcd+2
-
-    movlw   D'11'
-    movwf   v_calc_count
-  _f_calc_conv_to__1
-    rlcf    v_lcd_hexa_to_conv+1,F
-    rlcf    v_lcd_hexa_to_conv,F
-    movf    v_lcd_bcd+2,W
-    addwfc  v_lcd_bcd+2,W
-    daw
-    movwf   v_lcd_bcd+2
-    movf    v_lcd_bcd+1,W
-    addwfc  v_lcd_bcd+1,W
-    daw
-    movwf   v_lcd_bcd+1
-    rlcf    v_lcd_bcd,F
-    decfsz  v_lcd_count,f
-    bra     _f_calc_conv_to_1
-    return
-ENDIF
-
-
-    global f_calc_conv_to_ascii
+    global f_calc_conv_bin_to_ascii
+	global f_calc_conv_bin_to_mV
+	global f_calc_conv_mV_to_ascii
 
     end
