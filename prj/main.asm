@@ -187,9 +187,9 @@ menu_tension
 	;;
 	;;Conversion des valeurs d’ADC FWD et REF en mV en ASCII
 	;;
-	;lfsr FSR0, v_fwd_and_ref_mV
-	;lfsr FSR1, v_fwd_and_ref_mV_ascii
-	;call f_calc_conv_mV_to_ascii
+	lfsr FSR0, v_fwd_and_ref_mV
+	lfsr FSR1, v_fwd_and_ref_mV_ascii
+	call f_calc_conv_mV_to_ascii
 
 	;;
 	;; affichage des valeurs d'ADC

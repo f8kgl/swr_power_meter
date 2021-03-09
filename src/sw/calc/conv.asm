@@ -224,9 +224,9 @@ f_calc_conv_bin_to_mV_2
 
 
   ;; Conversion 12 bits en BCD
-  ;lfsr FSR2,v_calc_mul_out+1
+  lfsr FSR2,v_calc_mul_out+1
 	call _f_calc_conv_mv_to_bcd ;FWD
-  ;lfsr FSR2,v_calc_mul_out+4
+  lfsr FSR2,v_calc_mul_out+4
 	call _f_calc_conv_mv_to_bcd ;REF
 
 	return
