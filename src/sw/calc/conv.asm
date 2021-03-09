@@ -1,12 +1,15 @@
 include "p18f1320.inc" ;include the defaults for the chip
 include "calc.inc"
-
+include "ltc2305.inc"
 
     udata
 v_calc_bin_mv_in res 2
 v_calc_bcd_out res 2
 v_calc_bcd_count res 1
 v_calc_mul_out res 6
+v_calc_aarg res 4
+v_calc_barg res 2
+v_calc_tmp res 1
 
 	code
 ;-----------------------------------------
@@ -160,12 +163,89 @@ _f_calc_conv_mv_to_bcd
 	movff v_calc_bcd_out+1,POSTINC1
 	return
 
+  ;**********************************************************************************************
+  ;**********************************************************************************************
+  ;
+  ;       16x16 Bit Unsigned Fixed Point Multiply 16 x 16 -> 32
+  ;
+  ;       Input:  16 bit unsigned fixed point multiplicand in v_calc_aarg+0, v_calc_aarg+1
+  ;               16 bit unsigned fixed point multiplier in v_calc_barg+0, v_calc_barg+1
+  ;
+  ;       Result: AARG  <--  AARG * BARG
+  ;**********************************************************************************************
+  ;**********************************************************************************************
+f_calc_fxm1616u
+	    movff	v_calc_aarg+1,v_calc_tmp
+
+  		movf	v_calc_aarg+1,W
+  		MULWF	v_calc_barg+1
+  		movff	PRODH,v_calc_aarg+2
+  		movff	PRODL,v_calc_aarg+3
+
+  		movf	v_calc_aarg,W
+  		MULWF	v_calc_barg
+  		movff	PRODH,v_calc_aarg
+  		movff	PRODL,v_calc_aarg+1
+
+  		MULWF	v_calc_barg+1
+  		movf	PRODL,W
+  		ADDWF	v_calc_aarg+2,F
+  		movf	PRODH,W
+  		ADDWFC	v_calc_aarg+1,F
+      movlw 0x00
+  		ADDWFC	v_calc_aarg,F
+
+  		movf	v_calc_tmp,W
+  		MULWF	v_calc_barg
+  		movf	PRODL,W
+  		ADDWF	v_calc_aarg+2,F
+  		movf	PRODH,W
+  		ADDWFC	v_calc_aarg+1,F
+      movlw 0x00
+  		ADDWFC	v_calc_aarg,F
+
+  		return
+
+
 f_calc_conv_bin_to_mV
 	;;FXM1616U (ADC,(5000)10) :
-    ;; décalage à droite de 12 bits
+
+  movlw V_ADC_FULL_SCALE_MSB
+  movwf v_calc_barg
+  movlw V_ADC_FULL_SCALE_LSB
+  movwf v_calc_barg+1
+
+  swapf INDF0,W
+  andlw 0x0F
+  movwf v_calc_aarg
+  movff POSTINC0,v_calc_aarg+1
+  swapf v_calc_aarg+1,W
+  andlw 0xF0
+  movwf v_calc_aarg+1
+  swapf INDF0,W
+  andlw 0x0F
+  iorwf v_calc_aarg+1,f
+  call f_calc_fxm1616u
+  movff v_calc_aarg+1,v_calc_mul_out
+  movff v_calc_aarg+2,v_calc_mul_out+1
+  movff v_calc_aarg+3,v_calc_mul_out+2
+
+  clrf v_calc_aarg
+  movf POSTINC0,W
+  andlw 0x0F
+  movwf v_calc_aarg
+  clrf v_calc_aarg+1
+  movff POSTINC0,v_calc_aarg+1
+  call f_calc_fxm1616u
+  movff v_calc_aarg+1,v_calc_mul_out+3
+  movff v_calc_aarg+2,v_calc_mul_out+4
+  movff v_calc_aarg+3,v_calc_mul_out+5
 
 
-    ;; Conversion 12 bits en BCD
+  ;; décalage à droite de 12 bits
+
+
+  ;; Conversion 12 bits en BCD
 	call _f_calc_conv_mv_to_bcd ;FWD
 	call _f_calc_conv_mv_to_bcd ;REF
 

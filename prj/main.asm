@@ -180,9 +180,9 @@ menu_tension
 	;;Conversion des valeurs d’ADC FWD et REF brutes en mV
 	;;
 
-	;lfsr FSR0, v_fwd_and_ref_bin
-	;lfsr FSR1, v_fwd_and_ref_mV
-	;call f_calc_conv_bin_to_mV
+	lfsr FSR0, v_fwd_and_ref_bin
+	lfsr FSR1, v_fwd_and_ref_mV
+	call f_calc_conv_bin_to_mV
 
 	;;
 	;;Conversion des valeurs d’ADC FWD et REF en mV en ASCII
@@ -195,7 +195,7 @@ menu_tension
 	;; affichage des valeurs d'ADC
 	;;
 	lfsr FSR0,v_fwd_and_ref_ascii
-	lfsr FSR1, v_fwd_and_ref_mV_ascii
+	;lfsr FSR1, v_fwd_and_ref_mV_ascii
 	call f_lcd_aff_adc_ascii
 
 	goto test_loop
