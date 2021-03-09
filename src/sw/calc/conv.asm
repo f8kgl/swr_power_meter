@@ -7,6 +7,7 @@ v_calc_bin_mv_in res 2
 v_calc_bcd_out res 2
 v_calc_bcd_count res 1
 v_calc_mul_out res 6
+v_calc_count res 1
 
 	extern v_calc_aarg
 	extern v_calc_barg
@@ -201,17 +202,38 @@ f_calc_conv_bin_to_mV
 
 
   ;; décalage à droite de 12 bits
+  movlw D'12'
+  movwf v_calc_count
+f_calc_conv_bin_to_mV_1
+  bcf STATUS,0
+  rrcf v_calc_mul_out,f
+  rrcf v_calc_mul_out+1,f
+  rrcf v_calc_mul_out+2,f
+  decfsz v_calc_count
+  goto f_calc_conv_bin_to_mV_1
+
+  movlw D'12'
+  movwf v_calc_count
+f_calc_conv_bin_to_mV_2
+  bcf STATUS,0
+  rrcf v_calc_mul_out+3,f
+  rrcf v_calc_mul_out+4,f
+  rrcf v_calc_mul_out+5,f
+  decfsz v_calc_count
+  goto f_calc_conv_bin_to_mV_2
 
 
   ;; Conversion 12 bits en BCD
+  ;lfsr FSR2,v_calc_mul_out+1
 	call _f_calc_conv_mv_to_bcd ;FWD
+  ;lfsr FSR2,v_calc_mul_out+4
 	call _f_calc_conv_mv_to_bcd ;REF
 
 	return
 
 
 
-    global f_calc_conv_bin_to_ascii
+  global f_calc_conv_bin_to_ascii
 	global f_calc_conv_bin_to_mV
 	global f_calc_conv_mV_to_ascii
 

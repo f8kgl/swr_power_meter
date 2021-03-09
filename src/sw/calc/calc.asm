@@ -53,9 +53,6 @@ f_calc_fxm1616u
 
   		return
 
-
-
-
 ENDIF
 
 
