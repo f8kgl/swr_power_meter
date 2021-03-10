@@ -202,7 +202,7 @@ f_calc_conv_bin_to_mV
 
 
   ;; décalage à droite de 12 bits
-  movlw D'12'
+  movlw D'8' ;en fait non, que de 8. Car il faut que les datas soient alignées à gauche, pour la conversion BCD
   movwf v_calc_count
 f_calc_conv_bin_to_mV_1
   bcf STATUS,0
@@ -212,7 +212,7 @@ f_calc_conv_bin_to_mV_1
   decfsz v_calc_count
   goto f_calc_conv_bin_to_mV_1
 
-  movlw D'12'
+  movlw D'8' ;en fait non, que de 8. Car il faut que les datas soient alignées à gauche, pour la conversion BCD
   movwf v_calc_count
 f_calc_conv_bin_to_mV_2
   bcf STATUS,0
