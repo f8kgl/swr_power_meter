@@ -53,6 +53,23 @@ f_calc_fxm1616u
 
   		return
 
+f_calc_shift_12bits
+  ;; décalage à droite de 12 bits
+  movlw D'8' ;en fait non, que de 8. Car il faut que les datas soient alignées à gauche, pour la conversion BCD
+  movwf v_calc_tmp
+_f_calc_shift_12bits_1
+  bcf STATUS,0
+  rrcf POSTINC2,f
+  rrcf POSTINC2,f
+  rrcf POSTINC2,f
+  decf FSR2L
+  decf FSR2L
+  decf FSR2L
+  decfsz v_calc_tmp
+  goto f_calc_shift_12bits_1
+  return
+
+
 ENDIF
 
 
@@ -60,6 +77,7 @@ IFDEF TEST
 	global v_calc_aarg
 	global v_calc_barg
 	global f_calc_fxm1616u
+	global f_calc_shift_12bits
 ENDIF
 
 	end

@@ -7,11 +7,14 @@ v_calc_bin_mv_in res 2
 v_calc_bcd_out res 2
 v_calc_bcd_count res 1
 v_calc_mul_out res 6
+IF 0
 v_calc_count res 1
+ENDIF
 
 	extern v_calc_aarg
 	extern v_calc_barg
   extern f_calc_fxm1616u
+  extern f_calc_shift_12bits
 
 	code
 ;-----------------------------------------
@@ -200,7 +203,7 @@ f_calc_conv_bin_to_mV
   movff v_calc_aarg+2,v_calc_mul_out+4
   movff v_calc_aarg+3,v_calc_mul_out+5
 
-
+IF 0
   ;; décalage à droite de 12 bits
   movlw D'8' ;en fait non, que de 8. Car il faut que les datas soient alignées à gauche, pour la conversion BCD
   movwf v_calc_count
@@ -221,7 +224,12 @@ f_calc_conv_bin_to_mV_2
   rrcf v_calc_mul_out+5,f
   decfsz v_calc_count
   goto f_calc_conv_bin_to_mV_2
+ENDIF
 
+	lfsr FSR2, v_calc_mul_out
+	call f_calc_shift_12bits
+	lfsr FSR2, v_calc_mul_out+3
+	call f_calc_shift_12bits
 
   ;; Conversion 12 bits en BCD
   lfsr FSR2,v_calc_mul_out+1
