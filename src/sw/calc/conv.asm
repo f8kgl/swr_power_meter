@@ -5,7 +5,7 @@ include "ltc2305.inc"
     udata
 
 v_calc_mul_out res 6
-IF 0
+IF 1
 v_calc_count res 1
 ENDIF
 
@@ -173,12 +173,12 @@ f_calc_conv_bin_to_mV
   movff v_calc_aarg+2,v_calc_mul_out+4
   movff v_calc_aarg+3,v_calc_mul_out+5
 
-IF 0
+IF 1
   ;; décalage à droite de 12 bits
   movlw D'8' ;en fait non, que de 8. Car il faut que les datas soient alignées à gauche, pour la conversion BCD
   movwf v_calc_count
 f_calc_conv_bin_to_mV_1
-  bcf STATUS,0
+  bcf STATUS,C
   rrcf v_calc_mul_out,f
   rrcf v_calc_mul_out+1,f
   rrcf v_calc_mul_out+2,f
@@ -188,7 +188,7 @@ f_calc_conv_bin_to_mV_1
   movlw D'8' ;en fait non, que de 8. Car il faut que les datas soient alignées à gauche, pour la conversion BCD
   movwf v_calc_count
 f_calc_conv_bin_to_mV_2
-  bcf STATUS,0
+  bcf STATUS,C
   rrcf v_calc_mul_out+3,f
   rrcf v_calc_mul_out+4,f
   rrcf v_calc_mul_out+5,f
@@ -196,10 +196,12 @@ f_calc_conv_bin_to_mV_2
   goto f_calc_conv_bin_to_mV_2
 ENDIF
 
+IF 0
 	lfsr FSR2, v_calc_mul_out
 	call f_calc_shift_12bits
 	lfsr FSR2, v_calc_mul_out+3
 	call f_calc_shift_12bits
+ENDIF
 
   ;; Conversion 12 bits en BCD
   lfsr FSR2,v_calc_mul_out+1

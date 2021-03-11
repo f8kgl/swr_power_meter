@@ -42,7 +42,7 @@ _f_calc_dble_dabble_bcd1
     addwfc  v_calc_bcd_out,W
     daw
     movwf   v_calc_bcd_out
-    rlcf    v_calc_bcd_out,F
+    ;rlcf    v_calc_bcd_out,F
     decfsz  v_calc_bcd_count,f
     bra     _f_calc_dble_dabble_bcd1
 
