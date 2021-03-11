@@ -28,6 +28,8 @@ IFDEF TEST
 	extern f_lcd_aff_adc_ascii
 	extern f_calc_conv_bin_to_mV
 	extern f_calc_conv_mV_to_ascii
+	extern f_calc_P_dBm
+	extern f_calc_conv_dBm_to_ascii
 	extern Del_11us ;pour trace timer 0 uniquement
 	extern D160us ;pour trace timer 0 uniquement
 ENDIF
@@ -49,6 +51,8 @@ v_fwd_and_ref_bin res 3 ;FWD=12bits - REF=12bits => 24bits = 8*3
 v_fwd_and_ref_ascii res 6
 v_fwd_and_ref_mV res 4 ;2 octets par port (4 bits BCD par digit)
 v_fwd_and_ref_mV_ascii res 8 ;4 digits par port
+v_Pfwd_and_ref_dBm res 3;3 octets (12 bits par port)
+v_Pfwd_and_ref_dBm_ascii res 6;3 digits par port
 ENDIF
 
 
@@ -132,9 +136,13 @@ choix_menu
 	movf	v_menu,w
 	xorlw	D'1'
 	btfsc	STATUS,Z
-	goto	menu_puissance
+	goto	menu_puissance_dBm
 	movf	v_menu,w
 	xorlw	D'2'
+	btfsc	STATUS,Z
+	goto	menu_puissance_W
+	movf	v_menu,w
+	xorlw	D'3'
 	btfsc	STATUS,Z
 	clrf v_menu
 	goto test_loop
@@ -201,9 +209,37 @@ menu_tension
 	goto test_loop
 
 
-menu_puissance
+menu_puissance_dBm
+	;;
+	;;Lecture des valeurs ADC FWD et REF
+	;;
+	m_timer0_stop
+	m_timer0_reset
+	movlw TAG_TIMER_SAMPLE_FW_TEST_TENSION
+	movwf v_log_tag
+	movlw D'02'
+	movwf v_log_data_size
+	call f_log_write
+	m_timer0_start
+
+	lfsr FSR0, v_fwd_and_ref_bin
+	call f_adc_read
+
+	;;
+	;; Calcul de Pfwd et Pref en dBm
+	;;
+	lfsr FSR0, v_fwd_and_ref_bin
+	lfsr FSR1, v_Pfwd_and_ref_dBm
+	call f_calc_P_dBm
+
+	lfsr FSR0, v_Pfwd_and_ref_dBm
+	lfsr FSR1, v_Pfwd_and_ref_dBm_ascii
+	call f_calc_conv_dBm_to_ascii
+
 	goto test_loop
 
+menu_puissance_dBm
+	goto test_loop
 
 ENDIF
 

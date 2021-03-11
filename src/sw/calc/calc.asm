@@ -7,9 +7,52 @@
 v_calc_aarg res 4
 v_calc_barg res 2
 v_calc_tmp res 1
+v_calc_bin_in res 2
+v_calc_bcd_out res 2
+v_calc_bcd_count res 1
 
 	code
 IFDEF TEST
+  ;-----------------------------------------
+  ;Fonction : Conversion hexa-bcd
+  ;Nom : f_calc_conv_to_bcd
+  ;Entrée :
+  ;	v_calc_p_bin_in (2 bytes) : pointeur vers 2 octets à convertir en BCD (données
+  ; utiles sur les 12 bits de poids faible)
+  ;Sortie :
+  ;	v_calc_p_bcd_out (2 bytes) : 2 octets convertis en BCD
+
+  ;Traitement :
+  ;http://www.microchip.com/forums/m322713.aspx
+  ;-----------------------------------------
+_f_calc_dble_dabble_bcd
+  	clrf    v_calc_bcd_out
+    clrf    v_calc_bcd_out+1
+
+    movlw   D'12'  ;ou 11 ?
+    movwf   v_calc_bcd_count
+_f_calc_dble_dabble_bcd1
+    rlcf    v_calc_bin_in+1,F
+    rlcf    v_calc_bin_in,F
+    movf    v_calc_bcd_out+1,W
+    addwfc  v_calc_bcd_out+1,W
+    daw
+    movwf   v_calc_bcd_out+1
+    movf    v_calc_bcd_out,W
+    addwfc  v_calc_bcd_out,W
+    daw
+    movwf   v_calc_bcd_out
+    rlcf    v_calc_bcd_out,F
+    decfsz  v_calc_bcd_count,f
+    bra     _f_calc_dble_dabble_bcd1
+
+	return
+
+
+f_calc_dble_dabble_bcd
+	call _f_calc_dble_dabble_bcd
+	return
+	
   ;**********************************************************************************************
   ;**********************************************************************************************
   ;
@@ -69,15 +112,44 @@ _f_calc_shift_12bits_1
   goto f_calc_shift_12bits_1
   return
 
+_f_calc_Kconv_sub_10logADC	
+	;;Kconv - 10*log(ADC) sur 12 bits
+
+	return
+
+f_calc_P_dBm
+	;Port = FWD
+	;Recherche de la valeur de Kconv(dBm) pour chaque port (FWD)
+	
+    ;Recherche de 10*log(ADC) dans la LUT
+	
+    ;Addition 12 bits de valeurs codées dans un format spécifique 
+	call _f_calc_Kconv_sub_10logADC	
+	;Conversion 12 bits en BCD
+	movff POSTINC2,v_calc_bin_in
+	movff POSTINC2,v_calc_bin_in+1
+	call _f_calc_dble_dabble_bcd
+	movff v_calc_bcd_out,POSTINC1
+	movff v_calc_bcd_out+1,POSTINC1
+	return
+
+
+	return
+
 
 ENDIF
 
 
 IFDEF TEST
+	global v_calc_bin_in
+	global v_calc_bcd_out
+	global v_calc_bcd_count
+	global f_calc_dble_dabble_bcd
 	global v_calc_aarg
 	global v_calc_barg
 	global f_calc_fxm1616u
 	global f_calc_shift_12bits
+	global f_calc_P_dBm
 ENDIF
 
 	end
