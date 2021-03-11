@@ -203,7 +203,7 @@ menu_tension
 	;; affichage des valeurs d'ADC
 	;;
 	lfsr FSR0,v_fwd_and_ref_ascii
-	;lfsr FSR1, v_fwd_and_ref_mV_ascii
+	lfsr FSR1, v_fwd_and_ref_mV_ascii
 	call f_lcd_aff_adc_ascii
 
 	goto test_loop
@@ -238,7 +238,7 @@ menu_puissance_dBm
 
 	goto test_loop
 
-menu_puissance_dBm
+menu_puissance_W
 	goto test_loop
 
 ENDIF

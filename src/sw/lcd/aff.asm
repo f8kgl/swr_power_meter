@@ -158,9 +158,35 @@ f_lcd_aff_adc_ascii
 
 
 	;;Affichage des valeurs d’ADC en mV
+	movlw 0x0A
+	call f_lcd_setposcursor
+	movf POSTINC1,w
+	call f_lcd_aff_char
+	movf POSTINC1,w
+	call f_lcd_aff_char
+	movf POSTINC1,w
+	call f_lcd_aff_char
+	movf POSTINC1,w
+	call f_lcd_aff_char
+	movlw 'm'
+	call f_lcd_aff_char
+	movlw 'V'
+	call f_lcd_aff_char
 
-
-
+	movlw 0x1A
+	call f_lcd_setposcursor
+	movf POSTINC1,w
+	call f_lcd_aff_char
+	movf POSTINC1,w
+	call f_lcd_aff_char
+	movf POSTINC1,w
+	call f_lcd_aff_char
+	movf POSTINC1,w
+	call f_lcd_aff_char
+	movlw 'm'
+	call f_lcd_aff_char
+	movlw 'V'
+	call f_lcd_aff_char
 	return
 
 

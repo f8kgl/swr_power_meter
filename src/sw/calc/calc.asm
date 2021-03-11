@@ -52,7 +52,7 @@ _f_calc_dble_dabble_bcd1
 f_calc_dble_dabble_bcd
 	call _f_calc_dble_dabble_bcd
 	return
-	
+
   ;**********************************************************************************************
   ;**********************************************************************************************
   ;
@@ -109,10 +109,10 @@ _f_calc_shift_12bits_1
   decf FSR2L
   decf FSR2L
   decfsz v_calc_tmp
-  goto f_calc_shift_12bits_1
+  goto _f_calc_shift_12bits_1
   return
 
-_f_calc_Kconv_sub_10logADC	
+_f_calc_Kconv_sub_10logADC
 	;;Kconv - 10*log(ADC) sur 12 bits
 
 	return
@@ -120,11 +120,11 @@ _f_calc_Kconv_sub_10logADC
 f_calc_P_dBm
 	;Port = FWD
 	;Recherche de la valeur de Kconv(dBm) pour chaque port (FWD)
-	
+
     ;Recherche de 10*log(ADC) dans la LUT
-	
+
     ;Addition 12 bits de valeurs codées dans un format spécifique 
-	call _f_calc_Kconv_sub_10logADC	
+	call _f_calc_Kconv_sub_10logADC
 	;Conversion 12 bits en BCD
 	movff POSTINC2,v_calc_bin_in
 	movff POSTINC2,v_calc_bin_in+1
