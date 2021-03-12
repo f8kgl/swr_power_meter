@@ -10,6 +10,7 @@ v_calc_tmp res 1
 v_calc_bin_in res 2
 v_calc_bcd_out res 2
 v_calc_bcd_count res 1
+v_calc_count res 1
 
 	code
 IFDEF TEST
@@ -96,7 +97,8 @@ f_calc_fxm1616u
 
   		return
 
-f_calc_shift_12bits
+IFNDEF DEBUG_ISSUE_379
+_f_calc_shift_12bits
   ;; décalage à droite de 12 bits
   movlw D'8' ;en fait non, que de 8. Car il faut que les datas soient alignées à gauche, pour la conversion BCD
   movwf v_calc_tmp
@@ -111,6 +113,49 @@ _f_calc_shift_12bits_1
   decfsz v_calc_tmp
   goto _f_calc_shift_12bits_1
   return
+ENDIF
+
+f_calc_div_by_4096
+IFDEF DEBUG_ISSUE_379
+  ;; décalage à droite de 12 bits
+  movlw D'8' ;en fait non, que de 8. Car il faut que les datas soient alignées à gauche, pour la conversion BCD
+  movwf v_calc_count
+_f_calc_div_by_4096_1
+  bcf STATUS,C
+IF 0
+  rrcf v_calc_mul_out,f
+  rrcf v_calc_mul_out+1,f
+  rrcf v_calc_mul_out+2,f
+ELSE
+ rrcf v_calc_aarg+1,f
+ rrcf v_calc_aarg+2,f
+ rrcf v_calc_aarg+3,f
+ENDIF ;IF0
+  decfsz v_calc_count
+  goto _f_calc_div_by_4096_1
+
+IF 0 ;voie REF sous IF 0 pour le moment
+  movlw D'8' ;en fait non, que de 8. Car il faut que les datas soient alignées à gauche, pour la conversion BCD
+  movwf v_calc_count
+_f_calc_conv_bin_to_mV_2
+  bcf STATUS,C
+  rrcf v_calc_mul_out+3,f
+  rrcf v_calc_mul_out+4,f
+  rrcf v_calc_mul_out+5,f
+  decfsz v_calc_count
+  goto _f_calc_div_by_4096_2
+ENDIF
+  return
+ELSE
+	lfsr FSR2, v_calc_mul_out
+	call _f_calc_shift_12bits
+	lfsr FSR2, v_calc_mul_out+3
+	call _f_calc_shift_12bits
+	return
+ENDIF ;ISSUE_379
+
+
+
 
 _f_calc_Kconv_sub_10logADC
 	;;Kconv - 10*log(ADC) sur 12 bits
@@ -148,7 +193,7 @@ IFDEF TEST
 	global v_calc_aarg
 	global v_calc_barg
 	global f_calc_fxm1616u
-	global f_calc_shift_12bits
+	global f_calc_div_by_4096
 	global f_calc_P_dBm
 ENDIF
 
