@@ -51,7 +51,7 @@ _f_log_tag_is_enabled_end
 
 f_log_write
   call _f_log_tag_is_enabled
-  tstfsz w
+  tstfsz W
   goto _f_log_write_loop_end2
   call _f_log_get_next_addr
   movlw NB_BYTE
