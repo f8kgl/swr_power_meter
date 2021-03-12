@@ -3,9 +3,6 @@ include "calc.inc"
 include "ltc2305.inc"
 
     udata
-IF 0
-v_calc_mul_out res 6
-ENDIF
 
 	extern v_calc_bin_in
 	extern v_calc_bcd_out
@@ -137,55 +134,10 @@ f_calc_conv_bin_to_ascii
 
 	return
 
-IF 0
-f_calc_conv_bin_to_mV
-	;;FXM1616U (ADC,(5000)10) :
-
-  movlw V_ADC_FULL_SCALE_MSB
-  movwf v_calc_barg
-  movlw V_ADC_FULL_SCALE_LSB
-  movwf v_calc_barg+1
-
-  swapf INDF0,W
-  andlw 0x0F
-  movwf v_calc_aarg
-  movff POSTINC0,v_calc_aarg+1
-  swapf v_calc_aarg+1,W
-  andlw 0xF0
-  movwf v_calc_aarg+1
-  swapf INDF0,W
-  andlw 0x0F
-  iorwf v_calc_aarg+1,f
-  call f_calc_fxm1616u
-  movff v_calc_aarg+1,v_calc_mul_out
-  movff v_calc_aarg+2,v_calc_mul_out+1
-  movff v_calc_aarg+3,v_calc_mul_out+2
-
-  clrf v_calc_aarg
-  movf POSTINC0,W
-  andlw 0x0F
-  movwf v_calc_aarg
-  clrf v_calc_aarg+1
-  movff POSTINC0,v_calc_aarg+1
-  call f_calc_fxm1616u
-  movff v_calc_aarg+1,v_calc_mul_out+3
-  movff v_calc_aarg+2,v_calc_mul_out+4
-  movff v_calc_aarg+3,v_calc_mul_out+5
-
-	;; division par 4096
-	call _f_calc_conv_bin_to_mV
-
-  ;; Conversion 12 bits en BCD
-  lfsr FSR2,v_calc_mul_out+1
-	call _f_calc_conv_mv_to_bcd ;FWD
-  lfsr FSR2,v_calc_mul_out+4
-	call _f_calc_conv_mv_to_bcd ;REF
-	return
-ELSE
 f_calc_conv_bin_to_mV
 	;;FWD
-		;;FXM1616U (ADC,(5000)10) :
 
+  ;;FXM1616U (ADC,(5000)10) 
   movlw V_ADC_FULL_SCALE_MSB
   movwf v_calc_barg
   movlw V_ADC_FULL_SCALE_LSB
@@ -202,7 +154,7 @@ f_calc_conv_bin_to_mV
   andlw 0x0F
   iorwf v_calc_aarg+1,f
   call f_calc_fxm1616u
-  
+
 	;; division par 4096
 	call f_calc_div_by_4096
 
@@ -211,7 +163,9 @@ f_calc_conv_bin_to_mV
 	call _f_calc_conv_mv_to_bcd ;FWD
 
 	;;REF
-	  clrf v_calc_aarg
+
+  ;;FXM1616U (ADC,(5000)10) 
+  clrf v_calc_aarg
   movf POSTINC0,W
   andlw 0x0F
   movwf v_calc_aarg
@@ -227,7 +181,6 @@ f_calc_conv_bin_to_mV
   lfsr FSR2,v_calc_aarg+2
 	call _f_calc_conv_mv_to_bcd ;FWD
 	return
-ENDIF ;IF 0
 
 
 f_calc_conv_dBm_to_ascii

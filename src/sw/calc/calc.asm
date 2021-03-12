@@ -122,29 +122,11 @@ IFDEF DEBUG_ISSUE_379
   movwf v_calc_count
 _f_calc_div_by_4096_1
   bcf STATUS,C
-IF 0
-  rrcf v_calc_mul_out,f
-  rrcf v_calc_mul_out+1,f
-  rrcf v_calc_mul_out+2,f
-ELSE
- rrcf v_calc_aarg+1,f
- rrcf v_calc_aarg+2,f
- rrcf v_calc_aarg+3,f
-ENDIF ;IF0
+ 	rrcf v_calc_aarg+1,f
+ 	rrcf v_calc_aarg+2,f
+ 	rrcf v_calc_aarg+3,f
   decfsz v_calc_count
   goto _f_calc_div_by_4096_1
-
-IF 0 ;voie REF sous IF 0 pour le moment
-  movlw D'8' ;en fait non, que de 8. Car il faut que les datas soient alignées à gauche, pour la conversion BCD
-  movwf v_calc_count
-_f_calc_conv_bin_to_mV_2
-  bcf STATUS,C
-  rrcf v_calc_mul_out+3,f
-  rrcf v_calc_mul_out+4,f
-  rrcf v_calc_mul_out+5,f
-  decfsz v_calc_count
-  goto _f_calc_div_by_4096_2
-ENDIF
   return
 ELSE
 	lfsr FSR2, v_calc_mul_out
