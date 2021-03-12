@@ -1,0 +1,5 @@
+$ cd prj
+$ make clean
+$ make project
+$ make update_gpsim_prj:
+$ make all

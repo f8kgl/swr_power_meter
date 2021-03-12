@@ -1,0 +1,2 @@
+$ cd .../bin
+$ gpsim -c swr_power_meter.stc

@@ -1,0 +1,2 @@
+gpsim.txt : copie sortie console gpsim
+gpsim_debug.xls : tableau excel relevé ADC, Vout_AOP + colonnes résultats théoriques
