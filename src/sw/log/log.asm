@@ -22,36 +22,36 @@ _f_log_get_next_addr
 	call f_eep_int_readbyte
 	movwf v_log_addr
 	return
-	
+
 _f_log_tag_is_enabled
 ;W=0 si le tag est activé dans l'octet de config des trace en EEP
 	movff v_log_tag,v_log_tmp
 	movlw EEP_LOG_CONFIG
 	call f_eep_int_readbyte
-	
+
 	;w contient la config
 	;v_log_tmp contient le tag
 	xorwf v_log_tmp,f
-	btfsc STATUS,Z
-	goto _f_log_tag_is_enabled2	;Z=1 => STOP
+	btfss STATUS,Z
+	goto _f_log_tag_is_enabled2	;Z=0, pas de match => STOP
 
 	movff v_log_tag,v_log_tmp
 	iorwf v_log_tmp,f
 	subwf v_log_tmp,f
 	btfsc STATUS,Z
-	goto _f_log_tag_is_enabled3	;Z=1; il faut activer la trace
+	goto _f_log_tag_is_enabled3	;Z=0; il faut activer la trace
 
 _f_log_tag_is_enabled2
-	movlw D'01'
+	setf v_log_tmp
 	goto _f_log_tag_is_enabled_end
 _f_log_tag_is_enabled3
-	clrf W
+	clrf v_log_tmp
 _f_log_tag_is_enabled_end
 	return
 
 f_log_write
   call _f_log_tag_is_enabled
-  tstfsz W
+  tstfsz v_log_tmp
   goto _f_log_write_loop_end2
   call _f_log_get_next_addr
   movlw NB_BYTE
