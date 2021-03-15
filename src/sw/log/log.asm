@@ -26,7 +26,7 @@ _f_log_get_next_addr
 _f_log_tag_is_enabled
 ;W=0 si le tag est activé dans l'octet de config des trace en EEP
 	movff v_log_tag,v_log_tmp
-	movlw ADDR_EEP_NEXT_ADDR_TO_WRITE
+	movlw EEP_LOG_CONFIG
 	call f_eep_int_readbyte
 	
 	;w contient la config
