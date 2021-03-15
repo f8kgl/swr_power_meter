@@ -215,7 +215,7 @@ menu_puissance_dBm
 	;;
 	m_timer0_stop
 	m_timer0_reset
-	movlw TAG_TIMER_SAMPLE_FW_TEST_TENSION
+	movlw TAG_TIMER_SAMPLE_FW_TEST
 	movwf v_log_tag
 	movlw D'02'
 	movwf v_log_data_size
