@@ -999,7 +999,7 @@ U 1 1 60752619
 P 1930 9790
 F 0 "J1" H 1987 10107 50  0000 C CNN
 F 1 "Barrel_Jack_Switch" H 1987 10016 50  0000 C CNN
-F 2 "Connector_BarrelJack:BarrelJack_CUI_PJ-063AH_Horizontal" H 1980 9750 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 1980 9750 50  0001 C CNN
 F 3 "~" H 1980 9750 50  0001 C CNN
 	1    1930 9790
 	1    0    0    -1  
