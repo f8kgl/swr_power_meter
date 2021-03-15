@@ -1,0 +1,3 @@
+lcd.jpg : init du LCD, et état de sortie
+i2c.jpg : init de l'i2c, et état de sortie
+

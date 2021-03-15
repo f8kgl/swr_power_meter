@@ -1,0 +1,1 @@
+gpsim.jpg : copie d'écran du LCD au démarrage

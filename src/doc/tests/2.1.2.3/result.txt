@@ -1,0 +1,1 @@
+log_boot.txt : contenu des logs au démarrage

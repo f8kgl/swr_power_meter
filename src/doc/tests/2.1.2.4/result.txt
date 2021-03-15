@@ -1,0 +1,1 @@
+lcd.jpg : copie d'écran du LCD après le message de boot
