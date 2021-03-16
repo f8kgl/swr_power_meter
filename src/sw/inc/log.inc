@@ -1,13 +1,35 @@
 #define NB_BYTE D'08'
 #define TIMER0_START (1<<TMR0ON) | (1<<T08BIT) | (1<<PSA)
 
-#define TAG_I2C_NACK 0x80
-#define TAG_TIMER 0x41
-#define TAG_TIMER_SAMPLE_FW_TEST 0x42
-#define TAG_TIMER_FXM1616U 0x43
-#define TAG_ADC 0x44
-#define TAG_PIC_REG 0x20
-#define TAG_FW_VERSION 0x10
+#define TAG_ADC 0x80
+#define ID_LOG_I2C_NACK 0x00
+#define ID_LOG_ADC_VAL 0x01
+;0x02
+;0x03
+;0x04
+
+#define TAG_TIMER 0x40
+#define ID_LOG_CALIBRATION_TIMER 0x00
+IFDEF TEST
+#define ID_LOG_SAMPLE_TIMER 0x01
+ENDIF
+#define ID_LOG_FXM1616U_TIMER 0x02
+;0x03
+;0x04
+
+#define TAG_PIC 0x20
+#define ID_LOG_FW_VERSION 0x00
+#define ID_LOG_PIC_REGISTER 0x01
+;0x02
+;0x03
+;0x04
+
+#define TAG_MISC 0x10
+;0x00
+;0x01
+;0x02
+;0x03
+;0x04
 
 m_timer0_reset	macro
   CLRF	T0CON

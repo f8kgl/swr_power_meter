@@ -155,7 +155,7 @@ menu_tension
 	;;
 	m_timer0_stop
 	m_timer0_reset
-	movlw TAG_TIMER_SAMPLE_FW_TEST
+	movlw (TAG_TIMER | ID_LOG_SAMPLE_TIMER)
 	movwf v_log_tag
 	movlw D'02'
 	movwf v_log_data_size
@@ -215,7 +215,7 @@ menu_puissance_dBm
 	;;
 	m_timer0_stop
 	m_timer0_reset
-	movlw TAG_TIMER_SAMPLE_FW_TEST
+	movlw (TAG_TIMER | ID_LOG_SAMPLE_TIMER)
 	movwf v_log_tag
 	movlw D'02'
 	movwf v_log_data_size
@@ -287,7 +287,7 @@ ENDIF
 	movlw 0x03
 	call f_eep_int_readbyte
 	movwf v_log_data+6
-	movlw TAG_FW_VERSION
+	movlw (TAG_PIC | ID_LOG_FW_VERSION)
 	movwf v_log_tag
 	movlw D'08'
 	movwf v_log_data_size
@@ -308,7 +308,7 @@ IFDEF TEST
 	call Del_11us
 	m_timer0_stop
 
-	movlw TAG_TIMER
+	movlw (TAG_TIMER | ID_LOG_CALIBRATION_TIMER)
 	movwf v_log_tag
 	movlw D'02'
 	movwf v_log_data_size
@@ -318,7 +318,7 @@ IFDEF TEST
 	call D160us
 	m_timer0_stop
 
-	movlw TAG_TIMER
+	movlw  (TAG_TIMER | ID_LOG_CALIBRATION_TIMER)
 	movwf v_log_tag
 	movlw D'02'
 	movwf v_log_data_size
