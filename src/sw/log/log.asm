@@ -93,6 +93,8 @@ _f_log_write_loop
 
 _f_log_write_loop2
   decf v_log_nb_byte_to_write,f
+  btfsc STATUS,Z
+  goto _f_log_write_loop4
   movlw 0xFF
   movwf v_eep_int_byte_to_write
 _f_log_write_loop3

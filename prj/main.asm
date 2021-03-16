@@ -273,9 +273,9 @@ ENDIF
 	movlw 0x03
 	call f_eep_int_readbyte
 	movwf v_log_data+2
-	
+
 	movff RCON,v_log_data+3
-	movff STKPTR,v_log_data+4	
+	movff STKPTR,v_log_data+4
 
 	movlw HIGH TAG_LOG_BOOT
 	movwf v_log_tag
@@ -291,20 +291,15 @@ IFDEF TEST
 	call Del_11us
 	m_timer0_stop
 
-	MOVFF	TMR0H,v_log_data
-	MOVFF	TMR0L,v_log_data+1
-	movlw TMR0_CALIBRATION
-	subwf v_log_data+1,f
- 
+	MOVFF	v_tmp,v_log_data
+	MOVFF	v_tmp+1,v_log_data+1
+
 	m_timer0_start
 	call D160us
 	m_timer0_stop
 
-	MOVFF	TMR0H,v_log_data+2
-	MOVFF	TMR0L,v_log_data+3
-	movlw TMR0_CALIBRATION
-	subwf v_log_data+3,f
- 
+	MOVFF	v_tmp,v_log_data+2
+	MOVFF	v_tmp+1,v_log_data+3
 
 	movlw HIGH TAG_CALIBRATION_TIMER
 	movwf v_log_tag
