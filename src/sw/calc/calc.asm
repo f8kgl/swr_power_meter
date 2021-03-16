@@ -11,6 +11,10 @@ v_calc_bin_in res 2
 v_calc_bcd_out res 2
 v_calc_bcd_count res 1
 v_calc_count res 1
+v_calc_10logADC res 2
+
+	extern 	v_flh_offset_addr
+	extern f_flh_get_word_10logADC
 
 	code
 IFDEF TEST
@@ -145,11 +149,17 @@ _f_calc_Kconv_sub_10logADC
 	return
 
 f_calc_P_dBm
+
+	movlw 0x00
+	movwf v_flh_offset_addr
+	movwf v_flh_offset_addr+1
+	call f_flh_get_word_10logADC
+
 	;Port = FWD
 	;Recherche de la valeur de Kconv(dBm) pour chaque port (FWD)
 
     ;Recherche de 10*log(ADC) dans la LUT
-
+IF 0
     ;Addition 12 bits de valeurs codées dans un format spécifique 
 	call _f_calc_Kconv_sub_10logADC
 	;Conversion 12 bits en BCD
@@ -158,6 +168,7 @@ f_calc_P_dBm
 	call _f_calc_dble_dabble_bcd
 	movff v_calc_bcd_out,POSTINC1
 	movff v_calc_bcd_out+1,POSTINC1
+ENDIF
 	return
 
 
@@ -177,6 +188,7 @@ IFDEF TEST
 	global f_calc_fxm1616u
 	global f_calc_div_by_4096
 	global f_calc_P_dBm
+	global v_calc_10logADC
 ENDIF
 
 	end

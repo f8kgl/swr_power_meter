@@ -51,18 +51,18 @@ COMPS +=adc
 COMPS +=calc
 COMPS +=bp
 COMPS +=log
+COMPS +=flh
 
 #Sources
 SRC_COMMUN = main.asm
 SRC_COMMUN +=../src/sw/data/eep_int.asm
 SRC_COMMUN +=../src/sw/data/lcdmsg.asm
-CALIBRATION_SRC = ../src/sw/data/eep_ext.asm
+SRC_COMMUN +=../src/sw/data/10logADC.asm
+#CALIBRATION_SRC = ../src/sw/data/eep_ext.asm
 
 #Objets
 OBJS_COMMUN_TEST = $(SRC_COMMUN:%.asm=%.TEST.o)
-OBJS_TEST_FW = $(SRC_TEST:%.asm=%.o)
 OBJS_TEST = $(OBJS_COMMUN_TEST)
-OBJS_TEST += $(OBJS_TEST_FW)
 
 #Librairies
 LIBS_TEST = $(COMPS:%=../bin/libtest%.a)
@@ -73,13 +73,6 @@ LIBS = $(COMPS:%=../bin/%.a)
 all : project $(OUTPUT_TEST)
 
 rule_test : project $(OUTPUT_TEST)
-
-cal_data : ../src/sw/data/eep_ext.asm
-	$(AS) -p eeprom8 -o ../bin/$(NAME)cal_data-$(shell date +%F_%H%M%S).o $<
-
-cal_data_test: ../src/sw/data/eep_ext.asm
-	cp ../src/tools/gen_th_cal/eep_ext.asm ../src/sw/data/
-	$(AS) -p eeprom8 -o ../bin/$(NAME)cal_data.TEST.o $(CALIBRATION_SRC)
 
 #Règle du firmware de test
 $(OUTPUT_TEST) : $(OBJS_TEST) $(LIBS_TEST)
@@ -94,10 +87,6 @@ $(OUTPUT_TEST) : $(OBJS_TEST) $(LIBS_TEST)
 
 #Règle d’un objet de test issus des sources commun à tous les firmware
 %.TEST.o : %.asm
-	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) $(DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
-
-#Règle d’un objet du firmware test
-%.o : %.asm
 	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) $(DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
 
 clean:
