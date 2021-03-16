@@ -1,6 +1,7 @@
 	include "p18f1320.inc" ;include the defaults for the chip
 	include "bp.inc"
 	include "log.inc"
+	include "timer.inc"
 
 	ERRORLEVEL 0, -302 ;suppress bank selection messages
 
@@ -39,6 +40,7 @@ ENDIF
 	extern v_log_data
 	extern v_log_data_size
 	extern v_log_tag
+	extern v_i2c_nb_nack
 
 
 
@@ -154,25 +156,28 @@ menu_tension
 	;;Lecture des valeurs ADC FWD et REF
 	;;
 	m_timer0_stop
-	m_timer0_reset
-	movlw (TAG_TIMER | ID_LOG_SAMPLE_TIMER)
-	movwf v_log_tag
-	movlw D'02'
-	movwf v_log_data_size
-	call f_log_write
-	m_timer0_start
+	MOVFF	TMR0H,v_log_data+4
+	MOVFF	TMR0L,v_log_data+5
+	movlw TMR0_CALIBRATION
+	subwf v_log_data+5,f
 
 	lfsr FSR0, v_fwd_and_ref_bin
 	call f_adc_read
+	m_timer0_reset
+	m_timer0_start
 
 	m_timer0_stop
 	;trace les valeurs d'ADC
-	movff v_fwd_and_ref_bin,v_log_data
-	movff v_fwd_and_ref_bin+1,v_log_data+1
-	movff v_fwd_and_ref_bin+2,v_log_data+2
-	movlw TAG_ADC
+	movff v_i2c_nb_nack,v_log_data
+	movff v_fwd_and_ref_bin,v_log_data+1
+	movff v_fwd_and_ref_bin+1,v_log_data+2
+	movff v_fwd_and_ref_bin+2,v_log_data+3
+	movlw HIGH TAG_ADC
 	movwf v_log_tag
-	movlw D'03'
+	movlw LOW TAG_ADC
+	movwf v_log_tag+1
+
+	movlw D'06'
 	movwf v_log_data_size
 	call f_log_write
 	m_timer0_restart
@@ -213,15 +218,6 @@ menu_puissance_dBm
 	;;
 	;;Lecture des valeurs ADC FWD et REF
 	;;
-	m_timer0_stop
-	m_timer0_reset
-	movlw (TAG_TIMER | ID_LOG_SAMPLE_TIMER)
-	movwf v_log_tag
-	movlw D'02'
-	movwf v_log_data_size
-	call f_log_write
-	m_timer0_start
-
 	lfsr FSR0, v_fwd_and_ref_bin
 	call f_adc_read
 
@@ -270,35 +266,22 @@ f_boot_log
 IFDEF TEST
 	movlw 'T'
 	movwf v_log_data
-	movlw 'E'
-	movwf v_log_data+1
-	movlw 'S'
-	movwf v_log_data+2
 ENDIF
-	movlw 0x00
-	call f_eep_int_readbyte
-	movwf v_log_data+3
 	movlw 0x01
 	call f_eep_int_readbyte
-	movwf v_log_data+4
-	movlw 0x02
-	call f_eep_int_readbyte
-	movwf v_log_data+5
+	movwf v_log_data+1
 	movlw 0x03
 	call f_eep_int_readbyte
-	movwf v_log_data+6
-	movlw (TAG_PIC | ID_LOG_FW_VERSION)
-	movwf v_log_tag
-	movlw D'08'
-	movwf v_log_data_size
-	call f_log_write
+	movwf v_log_data+2
+	
+	movff RCON,v_log_data+3
+	movff STKPTR,v_log_data+4	
 
-;Trace le contenu de RCON au démarrage
-	movff RCON,v_log_data
-	movff STKPTR,v_log_data+1
-	movlw TAG_PIC_REG
+	movlw HIGH TAG_LOG_BOOT
 	movwf v_log_tag
-	movlw D'02'
+	movlw LOW TAG_LOG_BOOT
+	movwf v_log_tag+1
+	movlw D'05'
 	movwf v_log_data_size
 	call f_log_write
 
@@ -308,19 +291,26 @@ IFDEF TEST
 	call Del_11us
 	m_timer0_stop
 
-	movlw (TAG_TIMER | ID_LOG_CALIBRATION_TIMER)
-	movwf v_log_tag
-	movlw D'02'
-	movwf v_log_data_size
-	call f_log_write
-
+	MOVFF	TMR0H,v_log_data
+	MOVFF	TMR0L,v_log_data+1
+	movlw TMR0_CALIBRATION
+	subwf v_log_data+1,f
+ 
 	m_timer0_start
 	call D160us
 	m_timer0_stop
 
-	movlw  (TAG_TIMER | ID_LOG_CALIBRATION_TIMER)
+	MOVFF	TMR0H,v_log_data+2
+	MOVFF	TMR0L,v_log_data+3
+	movlw TMR0_CALIBRATION
+	subwf v_log_data+3,f
+ 
+
+	movlw HIGH TAG_CALIBRATION_TIMER
 	movwf v_log_tag
-	movlw D'02'
+	movlw LOW TAG_CALIBRATION_TIMER
+	movwf v_log_tag+1
+	movlw D'04'
 	movwf v_log_data_size
 	call f_log_write
 ENDIF

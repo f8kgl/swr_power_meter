@@ -3,10 +3,10 @@ include "log.inc"
 include "eep.inc"
 
   udata
-v_log_data res 8
+v_log_data res 6
 v_log_p_data res 2
 v_log_data_size res 1
-v_log_tag res 1
+v_log_tag res 2
 v_log_nb_byte_to_write res 1
 v_log_addr res 1
 v_log_tmp res 1
@@ -24,27 +24,31 @@ _f_log_get_next_addr
 	return
 
 _f_log_tag_is_enabled
-;W=0 si le tag est activé dans l'octet de config des trace en EEP
+;v_log_tmp=0 si le tag est activé dans l'octet de config des trace en EEP
 	movff v_log_tag,v_log_tmp
-	movlw EEP_LOG_CONFIG
+	movlw EEP_LOG_CONFIG_MSB
 	call f_eep_int_readbyte
 
 	;w contient la config
 	;v_log_tmp contient le tag
-	xorwf v_log_tmp,f
+	andwf v_log_tmp,f
 	btfss STATUS,Z
-	goto _f_log_tag_is_enabled2	;Z=0, pas de match => STOP
+	goto _f_log_tag_is_enabled2	;Z=0 =>, match => activer la trace
 
-	movff v_log_tag,v_log_tmp
-	iorwf v_log_tmp,f
-	subwf v_log_tmp,f
-	btfsc STATUS,Z
-	goto _f_log_tag_is_enabled3	;Z=0; il faut activer la trace
+	movff v_log_tag+1,v_log_tmp
+	movlw EEP_LOG_CONFIG_LSB
+	call f_eep_int_readbyte
 
-_f_log_tag_is_enabled2
+	;w contient la config
+	;v_log_tmp contient le tag
+	andwf v_log_tmp,f
+	btfss STATUS,Z
+	goto _f_log_tag_is_enabled2	;Z=0 =>, match => activer la trace
+
 	setf v_log_tmp
 	goto _f_log_tag_is_enabled_end
-_f_log_tag_is_enabled3
+
+_f_log_tag_is_enabled2
 	clrf v_log_tmp
 _f_log_tag_is_enabled_end
 	return
@@ -57,7 +61,6 @@ f_log_write
   movlw NB_BYTE
   movwf v_log_nb_byte_to_write
 
-
   movlw v_log_data
   movwf v_log_p_data+1
 
@@ -68,6 +71,13 @@ f_log_write
   movf v_log_addr,W
   call f_eep_int_writebyte
   decf v_log_nb_byte_to_write,f
+
+  incf v_log_addr,f
+  movff v_log_tag+1,v_eep_int_byte_to_write
+  movf v_log_addr,W
+  call f_eep_int_writebyte
+  decf v_log_nb_byte_to_write,f
+
 
 _f_log_write_loop
   incf v_log_addr,f

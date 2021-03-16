@@ -6,7 +6,7 @@
 v_i2c_data_byte_to_send res 1
 v_i2c_data_byte_received res 1
 v_i2c_count res 1
-v_i2c_status res 1
+v_i2c_nb_nack res 1
 
 
 	extern Del_11us
@@ -14,7 +14,6 @@ v_i2c_status res 1
 	extern v_log_data
 	extern v_log_data_size
 	extern v_log_tag
-	extern f_log_write
 
 	code
 
@@ -22,6 +21,7 @@ f_i2c_init
 	m_sda_output
 	bsf	I2C_PORT,SDA		;SDA a 1
 	bsf	I2C_PORT,SCL		;SCL a 1
+	clrf v_i2c_nb_nack
 	return
 
 f_i2c_start
@@ -150,7 +150,7 @@ _f_i2c_receive_last_byte_next_data_r
 
 
 ;-----------------------------------------------------------------------------------------
-;	v_i2c_status
+;	v_i2c_nb_nack
 ;		0: NO_ACK
 ;		1:
 ;		2:
@@ -163,20 +163,13 @@ _f_i2c_receive_last_byte_next_data_r
 
 
 _f_i2c_no_ack_received
-	bsf	v_i2c_status,0	;Pas d'ack de l'esclave -> problème de comm
-	movff v_i2c_adress_byte,v_log_data
-	movff v_i2c_data_byte_to_send,v_log_data+1
-	movlw TAG_I2C_NACK
-	movwf v_log_tag
-	movlw D'02'
-	movwf v_log_data_size
-	call f_log_write
+	incf	v_i2c_nb_nack,0	;Pas d'ack de l'esclave -> problème de comm
 	return
 
 	global v_i2c_data_byte_to_send
 	global v_i2c_data_byte_received
 	global v_i2c_count
-	global v_i2c_status
+	global v_i2c_nb_nack
 
 	global f_i2c_init
 	global f_i2c_start

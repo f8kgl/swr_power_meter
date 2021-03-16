@@ -12,7 +12,6 @@ _v_i2c_data_type res 1
 
   extern v_i2c_data_byte_to_send
   extern v_i2c_data_byte_received
-  extern v_i2c_status
 	extern f_i2c_init
 	extern f_i2c_start
 	extern f_i2c_stop
