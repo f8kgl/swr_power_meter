@@ -20,6 +20,9 @@
 	extern f_lcd_affboot
 	extern f_lcd_clear
 
+	extern v_bp_status
+	extern f_bp_test_bande
+
 	extern f_adc_read
 
 	extern f_log_write
@@ -121,7 +124,9 @@ IFDEF TEST
 test_loop
 
 	;;Appui sur le bouton bande ?
-	btfss BP_BANDE
+	clrf v_bp_status
+	call f_bp_test_bande
+	btfss v_bp_status,BIT_BANDE
 	goto choix_menu
 
 	incf v_menu,f
@@ -215,11 +220,13 @@ menu_tension
 
 
 menu_puissance_dBm
+
 	;;
 	;;Lecture des valeurs ADC FWD et REF
 	;;
 	lfsr FSR0, v_fwd_and_ref_bin
 	call f_adc_read
+IF 0
 
 	;;
 	;; Calcul de Pfwd et Pref en dBm
@@ -231,7 +238,7 @@ menu_puissance_dBm
 	lfsr FSR0, v_Pfwd_and_ref_dBm
 	lfsr FSR1, v_Pfwd_and_ref_dBm_ascii
 	call f_calc_conv_dBm_to_ascii
-
+ENDIF
 	goto test_loop
 
 menu_puissance_W

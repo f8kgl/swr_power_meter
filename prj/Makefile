@@ -49,7 +49,7 @@ COMPS +=i2c
 COMPS +=eep
 COMPS +=adc
 COMPS +=calc
-#COMPS +=bp
+COMPS +=bp
 COMPS +=log
 
 #Sources
