@@ -2,7 +2,6 @@
 
 	extern v_flh_offset_addr
 	extern v_flh_read
-	extern c_data_adc_theoric_caltable
 
 	code
 ;-----------------------------------------
