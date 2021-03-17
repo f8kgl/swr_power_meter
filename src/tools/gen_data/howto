@@ -1,0 +1,6 @@
+gcc -Wall gen_10logADC_table.c -o gen_10logADC_table -lm
+
+cp ../../tools/gen_th_cal/kconv.asm .
+gpasm -c -I../inc/ -DTEST -DDEBUG_ISSUE_379 -DDEBUG_ISSUE_380 -p 18f1320 kconv.asm -o kconv.o
+gplink --map -c -S2 -s /usr/local/share/gputils/lkr/18f1320_g.lkr -o kconv.hex kconv.o
+emacs kconv.hex &
