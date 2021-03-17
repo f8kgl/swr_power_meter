@@ -240,7 +240,7 @@ f_calc_P_dBm
 	;Si ADC=0, P = 0xFFF
 	;Recherche de la valeur de Kconv(dBm) pour chaque port (FWD)
 
-    ;Recherche de 10*log(ADC) dans la LUT
+  ;Recherche de 10*log(ADC) dans la LUT
 	movlw 0x00
 	movwf v_flh_offset_addr
 	movwf v_flh_offset_addr+1
@@ -252,8 +252,11 @@ IF 0
 	call _f_calc_Kconv_sub_10logADC
 
   ;; Conversion 12 bits en BCD
-  lfsr FSR2,_v_calc_bin_P_dBm
-	call f_calc_conv_bin_to_bcd ;FWD
+	movff _v_calc_aarg+2,_v_calc_bin_in
+	movff _v_calc_aarg+3,_v_calc_bin_in+1
+	call _f_calc_dble_dabble_bcd
+	movff _v_calc_bcd_out,v_fwd_and_ref_mV+2
+	movff _v_calc_bcd_out+1,v_fwd_and_ref_mV+3
 ENDIF
 	return
 ENDIF

@@ -224,9 +224,8 @@ menu_puissance_dBm
 	;;
 	;; Calcul de Pfwd et Pref en dBm
 	;;
-	lfsr FSR0, v_fwd_and_ref_bin
-	lfsr FSR1, v_Pfwd_and_ref_dBm
 	call f_calc_P_dBm
+
 IF 0
 	lfsr FSR0, v_Pfwd_and_ref_dBm
 	lfsr FSR1, v_Pfwd_and_ref_dBm_ascii
