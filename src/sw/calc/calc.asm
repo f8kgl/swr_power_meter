@@ -8,8 +8,8 @@ IFDEF TEST
 _v_calc_aarg res 4
 _v_calc_barg res 2
 _v_calc_tmp res 1
-v_calc_bin_in res 2
-v_calc_bcd_out res 2
+_v_calc_bin_in res 2
+_v_calc_bcd_out res 2
 _v_calc_bcd_count res 1
 _v_calc_count res 1
 v_calc_10logADC res 2
@@ -17,11 +17,11 @@ v_calc_Kconv_dBm res 2
 _v_calc_bin_P_dBm res 2
 ENDIF
 
-	extern f_calc_conv_bin_to_bcd
 	extern v_flh_offset_addr
 	extern f_flh_get_word_10logADC
 IFDEF TEST
 	extern v_fwd_and_ref_bin
+	extern v_fwd_and_ref_mV
 ENDIF
 
 	code
@@ -38,27 +38,52 @@ IFDEF TEST
   ;Traitement :
   ;http://www.microchip.com/forums/m322713.aspx
   ;-----------------------------------------
-f_calc_dble_dabble_bcd
-  	clrf    v_calc_bcd_out
-    clrf    v_calc_bcd_out+1
+_f_calc_dble_dabble_bcd
+  	clrf    _v_calc_bcd_out
+    clrf    _v_calc_bcd_out+1
 
     movlw   D'12'  ;ou 11 ?
     movwf   _v_calc_bcd_count
 _f_calc_dble_dabble_bcd1
-    rlcf    v_calc_bin_in+1,F
-    rlcf    v_calc_bin_in,F
-    movf    v_calc_bcd_out+1,W
-    addwfc  v_calc_bcd_out+1,W
+    rlcf    _v_calc_bin_in+1,F
+    rlcf    _v_calc_bin_in,F
+    movf    _v_calc_bcd_out+1,W
+    addwfc  _v_calc_bcd_out+1,W
     daw
-    movwf   v_calc_bcd_out+1
-    movf    v_calc_bcd_out,W
-    addwfc  v_calc_bcd_out,W
+    movwf   _v_calc_bcd_out+1
+    movf    _v_calc_bcd_out,W
+    addwfc  _v_calc_bcd_out,W
     daw
-    movwf   v_calc_bcd_out
-    ;rlcf    v_calc_bcd_out,F
+    movwf   _v_calc_bcd_out
+    ;rlcf    _v_calc_bcd_out,F
     decfsz  _v_calc_bcd_count,f
     bra     _f_calc_dble_dabble_bcd1
 
+	return
+ENDIF
+
+
+IFDEF TEST
+_f_calc_parse_fwd_bin
+  swapf INDF0,W
+  andlw 0x0F
+  movwf POSTINC1
+  movff POSTINC0,INDF1
+  swapf INDF1,W
+  andlw 0xF0
+  movwf INDF1
+  swapf INDF0,W
+  andlw 0x0F
+  iorwf INDF1,f
+	return
+
+
+_f_calc_parse_ref_bin
+  movf POSTINC0,W
+  andlw 0x0F
+  movwf POSTINC1
+  clrf INDF1
+  movff POSTINC0,INDF1
 	return
 ENDIF
 
@@ -142,9 +167,9 @@ _f_calc_div_by_4096_1
   goto _f_calc_div_by_4096_1
   return
 ELSE
-	lfsr FSR2, v_calc_mul_out
+	lfsr FSR2, _v_calc_aarg
 	call _f_calc_shift_12bits
-	lfsr FSR2, v_calc_mul_out+3
+	lfsr FSR2, _v_calc_aarg+2
 	call _f_calc_shift_12bits
 	return
 ENDIF ;ISSUE_379
@@ -153,35 +178,15 @@ ENDIF
 IFDEF TEST
 f_calc_V_mV
 	;;FWD
-
   ;;FXM1616U (ADC,(5000)10) 
   movlw V_ADC_FULL_SCALE_MSB
   movwf _v_calc_barg
   movlw V_ADC_FULL_SCALE_LSB
   movwf _v_calc_barg+1
 
-IF 0
-  swapf INDF0,W
-  andlw 0x0F
-  movwf _v_calc_aarg
-  movff POSTINC0,_v_calc_aarg+1
-  swapf _v_calc_aarg+1,W
-  andlw 0xF0
-  movwf _v_calc_aarg+1
-  swapf INDF0,W
-  andlw 0x0F
-  iorwf _v_calc_aarg+1,f
-ENDIF
-	movf v_fwd_and_ref_bin,W
-	andlw 0x0F
-	movwf _v_calc_aarg
-	movff v_fwd_and_ref_bin,_v_calc_aarg+1
-	swapf _v_calc_aarg+1,W
-	andlw 0xF0
-	movwf _v_calc_aarg+1
-	swapf v_fwd_and_ref_bin+1,W
-	andlw 0x0F
-	iorwf _v_calc_aarg+1,f
+	lfsr FSR0, v_fwd_and_ref_bin
+	lfsr FSR1, _v_calc_aarg
+	call _f_calc_parse_fwd_bin
 
   call _f_calc_fxm1616u
 
@@ -189,27 +194,30 @@ ENDIF
 	call _f_calc_div_by_4096
 
   ;; Conversion 12 bits en BCD
-  lfsr FSR2,_v_calc_aarg+2
-	call f_calc_conv_bin_to_bcd ;FWD
+	movff _v_calc_aarg+2,_v_calc_bin_in
+	movff _v_calc_aarg+3,_v_calc_bin_in+1
+	call _f_calc_dble_dabble_bcd
+	movff _v_calc_bcd_out,v_fwd_and_ref_mV
+	movff _v_calc_bcd_out+1,v_fwd_and_ref_mV+1
 
 	;;REF
+	;;FXM1616U (ADC,(5000)10) 
+	lfsr FSR0, v_fwd_and_ref_bin+1
+	lfsr FSR1, _v_calc_aarg
+	call _f_calc_parse_ref_bin
 
-  ;;FXM1616U (ADC,(5000)10) 
-  clrf _v_calc_aarg
-  movf POSTINC0,W
-  andlw 0x0F
-  movwf _v_calc_aarg
-  clrf _v_calc_aarg+1
-  movff POSTINC0,_v_calc_aarg+1
   call _f_calc_fxm1616u
 
 	;; division par 4096
 	call _f_calc_div_by_4096
 
+	;; Conversion 12 bits en BCD
+	movff _v_calc_aarg+2,_v_calc_bin_in
+	movff _v_calc_aarg+3,_v_calc_bin_in+1
+	call _f_calc_dble_dabble_bcd
+	movff _v_calc_bcd_out,v_fwd_and_ref_mV+2
+	movff _v_calc_bcd_out+1,v_fwd_and_ref_mV+3
 
-  ;; Conversion 12 bits en BCD
-  lfsr FSR2,_v_calc_aarg+2
-	call f_calc_conv_bin_to_bcd ;FWD
 	return
 ENDIF
 
@@ -228,7 +236,7 @@ IFDEF TEST
 f_calc_P_dBm
 
 	;Port = FWD
-	
+
 	;Si ADC=0, P = 0xFFF
 	;Recherche de la valeur de Kconv(dBm) pour chaque port (FWD)
 
@@ -252,12 +260,9 @@ ENDIF
 
 
 IFDEF TEST
-	global v_calc_bin_in
-	global v_calc_bcd_out
-	global f_calc_dble_dabble_bcd
 	global f_calc_V_mV
 	global f_calc_P_dBm
-	global v_calc_10logADC	
+	global v_calc_10logADC
 ENDIF
 
 	end

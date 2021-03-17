@@ -194,9 +194,6 @@ menu_tension
 	;;
 	;;Calcul des tensions en entrée des ADC FWD et REF en mV
 	;;
-
-	lfsr FSR0, v_fwd_and_ref_bin
-	lfsr FSR1, v_fwd_and_ref_mV
 	call f_calc_V_mV
 
 	;;
@@ -316,5 +313,5 @@ ENDIF
 	return
 
 	global v_fwd_and_ref_bin
-	
+	global v_fwd_and_ref_mV
 	end

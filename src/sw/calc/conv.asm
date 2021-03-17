@@ -4,11 +4,6 @@ include "ltc2305.inc"
 
     udata
 
-	extern v_calc_bin_in
-	extern v_calc_bcd_out
-	extern f_calc_dble_dabble_bcd
-
- 
 	code
 IFDEF TEST
 ;-----------------------------------------
@@ -91,7 +86,7 @@ f_calc_conv_mV_to_ascii
 	movwf POSTINC1
 	return
 ENDIF
-	
+
 IFDEF TEST
 f_calc_conv_bin_to_ascii
 	swapf INDF0,W
@@ -122,7 +117,8 @@ f_calc_conv_bin_to_ascii
 
 	return
 ENDIF
-	
+
+IF 0
 IFDEF TEST
 f_calc_conv_bin_to_bcd
 	movff POSTINC2,v_calc_bin_in
@@ -131,6 +127,7 @@ f_calc_conv_bin_to_bcd
 	movff v_calc_bcd_out,POSTINC1
 	movff v_calc_bcd_out+1,POSTINC1
 	return
+ENDIF
 ENDIF
 
 IFDEF TEST
@@ -141,6 +138,5 @@ ENDIF
 	global f_calc_conv_bin_to_ascii
 	global f_calc_conv_mV_to_ascii
 	global f_calc_conv_dBm_to_ascii
-	global f_calc_conv_bin_to_bcd
 
     end
