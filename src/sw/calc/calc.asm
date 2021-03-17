@@ -227,9 +227,9 @@ ENDIF
 IFDEF TEST
 f_calc_P_dBm
 
-	tstfsz POSTINC0
-	
 	;Port = FWD
+	
+	;Si ADC=0, P = 0xFFF
 	;Recherche de la valeur de Kconv(dBm) pour chaque port (FWD)
 
     ;Recherche de 10*log(ADC) dans la LUT
