@@ -1,1 +1,2 @@
 gcc -Wall gen_cal_data.TEST.c -o gen_cal_data.TEST
+gcc -Wall gen_10logADC_table.c -o gen_10logADC_table -lm
