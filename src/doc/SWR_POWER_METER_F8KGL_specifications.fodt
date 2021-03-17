@@ -4,7 +4,7 @@
  <office:meta><meta:initial-creator>f4bjh</meta:initial-creator><meta:editing-cycles>1032</meta:editing-cycles><meta:creation-date>2017-12-15T09:57:00</meta:creation-date><dc:date>2021-03-17T09:33:22.920000000</dc:date><dc:language>fr-FR</dc:language><meta:editing-duration>P5DT21H22M7S</meta:editing-duration><meta:generator>LibreOffice/7.1.0.3$Windows_X86_64 LibreOffice_project/f6099ecf3d29644b5008cc8f48f42f4a40986e4c</meta:generator><meta:document-statistic meta:table-count="38" meta:image-count="14" meta:object-count="11" meta:page-count="44" meta:paragraph-count="1309" meta:word-count="5993" meta:character-count="33908" meta:non-whitespace-character-count="29035"/><meta:user-defined meta:name="AppVersion">14.0000</meta:user-defined><meta:user-defined meta:name="Company">Atos</meta:user-defined><meta:user-defined meta:name="DocSecurity" meta:value-type="float">0</meta:user-defined><meta:user-defined meta:name="HyperlinksChanged" meta:value-type="boolean">false</meta:user-defined><meta:user-defined meta:name="LinksUpToDate" meta:value-type="boolean">false</meta:user-defined><meta:user-defined meta:name="ScaleCrop" meta:value-type="boolean">false</meta:user-defined><meta:user-defined meta:name="ShareDoc" meta:value-type="boolean">false</meta:user-defined><meta:template xlink:type="simple" xlink:actuate="onRequest" xlink:title="Normal.dotm" xlink:href=""/></office:meta>
  <office:settings>
   <config:config-item-set config:name="ooo:view-settings">
-   <config:config-item config:name="ViewAreaTop" config:type="long">962706</config:config-item>
+   <config:config-item config:name="ViewAreaTop" config:type="long">826190</config:config-item>
    <config:config-item config:name="ViewAreaLeft" config:type="long">0</config:config-item>
    <config:config-item config:name="ViewAreaWidth" config:type="long">34002</config:config-item>
    <config:config-item config:name="ViewAreaHeight" config:type="long">16579</config:config-item>
@@ -16,9 +16,9 @@
      <config:config-item config:name="ViewLeft" config:type="long">17067</config:config-item>
      <config:config-item config:name="ViewTop" config:type="long">995583</config:config-item>
      <config:config-item config:name="VisibleLeft" config:type="long">0</config:config-item>
-     <config:config-item config:name="VisibleTop" config:type="long">962706</config:config-item>
+     <config:config-item config:name="VisibleTop" config:type="long">826190</config:config-item>
      <config:config-item config:name="VisibleRight" config:type="long">34001</config:config-item>
-     <config:config-item config:name="VisibleBottom" config:type="long">979283</config:config-item>
+     <config:config-item config:name="VisibleBottom" config:type="long">842767</config:config-item>
      <config:config-item config:name="ZoomType" config:type="short">0</config:config-item>
      <config:config-item config:name="ViewLayoutColumns" config:type="short">1</config:config-item>
      <config:config-item config:name="ViewLayoutBookMode" config:type="boolean">false</config:config-item>
@@ -10290,7 +10290,7 @@
  <office:master-styles>
   <style:master-page style:name="Standard" style:page-layout-name="pm1">
    <style:footer>
-    <text:p text:style-name="Footer"><text:span text:style-name="T1"><text:file-name text:display="name-and-extension">SWR_POWER_METER_F8KGL_specifications.fodt</text:file-name></text:span><text:title/><text:tab/><text:tab/><text:tab/><text:tab/><text:tab/><text:tab/><text:tab/> <text:s/><text:page-number text:select-page="current">44</text:page-number>/<text:page-count>44</text:page-count></text:p>
+    <text:p text:style-name="Footer"><text:span text:style-name="T1"><text:file-name text:display="name-and-extension">SWR_POWER_METER_F8KGL_specifications.fodt</text:file-name></text:span><text:title/><text:tab/><text:tab/><text:tab/><text:tab/><text:tab/><text:tab/><text:tab/> <text:s/><text:page-number text:select-page="current">28</text:page-number>/<text:page-count>44</text:page-count></text:p>
    </style:footer>
   </style:master-page>
   <style:master-page style:name="First_20_Page" style:display-name="First Page" style:page-layout-name="pm2" style:next-style-name="Standard"/>
@@ -10340,7 +10340,7 @@
    <text:p text:style-name="Title"/>
    <text:p text:style-name="Title"><text:span text:style-name="T76">S</text:span>pécifications</text:p>
    <text:p text:style-name="Title">V 0.<text:span text:style-name="T231">8</text:span></text:p>
-   <text:p text:style-name="P917"><text:span text:style-name="T94">F</text:span>0EOS-F4BJH-<text:date style:data-style-name="N37" text:date-value="2021-03-17T09:33:23.400000231">17/03/21</text:date>-Vauréal Amitié Radio</text:p>
+   <text:p text:style-name="P917"><text:span text:style-name="T94">F</text:span>0EOS-F4BJH-<text:date style:data-style-name="N37" text:date-value="2021-03-17T12:03:55.162000218">17/03/21</text:date>-Vauréal Amitié Radio</text:p>
    <text:p text:style-name="P917"/>
    <text:p text:style-name="P917"/>
    <text:p text:style-name="P917"/>
@@ -14829,7 +14829,7 @@
    </text:list>
    <text:p text:style-name="P237"/>
    <text:p text:style-name="P237"><text:soft-page-break/></text:p>
-   <text:list xml:id="list93324101687992" text:continue-numbering="true" text:style-name="L12">
+   <text:list xml:id="list120355720262895" text:continue-numbering="true" text:style-name="L12">
     <text:list-header>
      <text:p text:style-name="P1054"/>
     </text:list-header>
@@ -17785,7 +17785,7 @@
    <text:p text:style-name="P218"/>
    <text:p text:style-name="P376"/>
    <text:p text:style-name="P218">Pour le matériel : </text:p>
-   <text:list xml:id="list93325635190935" text:continue-numbering="true" text:style-name="L15">
+   <text:list xml:id="list120356243858914" text:continue-numbering="true" text:style-name="L15">
     <text:list-item>
      <text:p text:style-name="P1060">l’état « implémenté » signifie que le schéma et le PCB est développé</text:p>
     </text:list-item>
@@ -18838,7 +18838,7 @@
        </table:table-row>
       </table:table>
       <text:p text:style-name="P931"/>
-      <text:list xml:id="list93324396241325" text:continue-numbering="true" text:style-name="L18">
+      <text:list xml:id="list120356525991884" text:continue-numbering="true" text:style-name="L18">
        <text:list-item>
         <text:p text:style-name="P1075">Pour le xWATT METER, et pour les firmwares de calibration et opérationnel</text:p>
         <text:p text:style-name="P1074"/>
@@ -19374,7 +19374,7 @@
         </table:table-cell>
        </table:table-row>
       </table:table>
-      <text:list xml:id="list93325042634564" text:continue-numbering="true" text:style-name="L20">
+      <text:list xml:id="list120357362425592" text:continue-numbering="true" text:style-name="L20">
        <text:list-item>
         <text:p text:style-name="P1072">Envoyer cette trame <text:span text:style-name="T256">(Adresse, R/W, data)</text:span> sur le bus I2C</text:p>
        </text:list-item>
@@ -22179,7 +22179,7 @@
    <text:p text:style-name="P245">A l’issue de cette trame, la conversion est initialisée. Typiquement, elle met 1,3<text:span text:style-name="T86">µ</text:span><text:span text:style-name="T44">s (max 1,6</text:span><text:span text:style-name="T86">µ</text:span><text:span text:style-name="T44">s)</text:span></text:p>
    <text:p text:style-name="P69">Pendant la conversion, le LTC2305 répond NACK au trames I2C.</text:p>
    <text:p text:style-name="P241"/>
-   <text:list xml:id="list93325091099305" text:continue-numbering="true" text:style-name="L24">
+   <text:list xml:id="list120357990431059" text:continue-numbering="true" text:style-name="L24">
     <text:list-item>
      <text:p text:style-name="P1066">Trame Read</text:p>
     </text:list-item>
@@ -23408,7 +23408,7 @@
    <text:p text:style-name="P252"/>
    <text:p text:style-name="P252"/>
    <text:p text:style-name="P252"/>
-   <text:list xml:id="list93325204854801" text:continue-numbering="true" text:style-name="L25">
+   <text:list xml:id="list120356572886689" text:continue-numbering="true" text:style-name="L25">
     <text:list-item>
      <text:p text:style-name="P1067">Trame Read</text:p>
     </text:list-item>
