@@ -4,17 +4,25 @@
 
 
 	udata
-v_calc_aarg res 4
-v_calc_barg res 2
-v_calc_tmp res 1
+IFDEF TEST
+_v_calc_aarg res 4
+_v_calc_barg res 2
+_v_calc_tmp res 1
 v_calc_bin_in res 2
 v_calc_bcd_out res 2
-v_calc_bcd_count res 1
-v_calc_count res 1
+_v_calc_bcd_count res 1
+_v_calc_count res 1
 v_calc_10logADC res 2
+v_calc_Kconv_dBm res 2
+_v_calc_bin_P_dBm res 2
+ENDIF
 
-	extern 	v_flh_offset_addr
+	extern f_calc_conv_bin_to_bcd
+	extern v_flh_offset_addr
 	extern f_flh_get_word_10logADC
+IFDEF TEST
+	extern v_fwd_and_ref_bin
+ENDIF
 
 	code
 IFDEF TEST
@@ -30,12 +38,12 @@ IFDEF TEST
   ;Traitement :
   ;http://www.microchip.com/forums/m322713.aspx
   ;-----------------------------------------
-_f_calc_dble_dabble_bcd
+f_calc_dble_dabble_bcd
   	clrf    v_calc_bcd_out
     clrf    v_calc_bcd_out+1
 
     movlw   D'12'  ;ou 11 ?
-    movwf   v_calc_bcd_count
+    movwf   _v_calc_bcd_count
 _f_calc_dble_dabble_bcd1
     rlcf    v_calc_bin_in+1,F
     rlcf    v_calc_bin_in,F
@@ -48,64 +56,63 @@ _f_calc_dble_dabble_bcd1
     daw
     movwf   v_calc_bcd_out
     ;rlcf    v_calc_bcd_out,F
-    decfsz  v_calc_bcd_count,f
+    decfsz  _v_calc_bcd_count,f
     bra     _f_calc_dble_dabble_bcd1
 
 	return
-
-
-f_calc_dble_dabble_bcd
-	call _f_calc_dble_dabble_bcd
-	return
+ENDIF
 
   ;**********************************************************************************************
   ;**********************************************************************************************
   ;
   ;       16x16 Bit Unsigned Fixed Point Multiply 16 x 16 -> 32
   ;
-  ;       Input:  16 bit unsigned fixed point multiplicand in v_calc_aarg+0, v_calc_aarg+1
-  ;               16 bit unsigned fixed point multiplier in v_calc_barg+0, v_calc_barg+1
+  ;       Input:  16 bit unsigned fixed point multiplicand in _v_calc_aarg+0, _v_calc_aarg+1
+  ;               16 bit unsigned fixed point multiplier in _v_calc_barg+0, _v_calc_barg+1
   ;
   ;       Result: AARG  <--  AARG * BARG
   ;**********************************************************************************************
   ;**********************************************************************************************
-f_calc_fxm1616u
-	    movff	v_calc_aarg+1,v_calc_tmp
+IFDEF TEST
+_f_calc_fxm1616u
+	    movff	_v_calc_aarg+1,_v_calc_tmp
 
-  		movf	v_calc_aarg+1,W
-  		MULWF	v_calc_barg+1
-  		movff	PRODH,v_calc_aarg+2
-  		movff	PRODL,v_calc_aarg+3
+  		movf	_v_calc_aarg+1,W
+  		MULWF	_v_calc_barg+1
+  		movff	PRODH,_v_calc_aarg+2
+  		movff	PRODL,_v_calc_aarg+3
 
-  		movf	v_calc_aarg,W
-  		MULWF	v_calc_barg
-  		movff	PRODH,v_calc_aarg
-  		movff	PRODL,v_calc_aarg+1
+  		movf	_v_calc_aarg,W
+  		MULWF	_v_calc_barg
+  		movff	PRODH,_v_calc_aarg
+  		movff	PRODL,_v_calc_aarg+1
 
-  		MULWF	v_calc_barg+1
+  		MULWF	_v_calc_barg+1
   		movf	PRODL,W
-  		ADDWF	v_calc_aarg+2,F
+  		ADDWF	_v_calc_aarg+2,F
   		movf	PRODH,W
-  		ADDWFC	v_calc_aarg+1,F
+  		ADDWFC	_v_calc_aarg+1,F
       movlw 0x00
-  		ADDWFC	v_calc_aarg,F
+  		ADDWFC	_v_calc_aarg,F
 
-  		movf	v_calc_tmp,W
-  		MULWF	v_calc_barg
+  		movf	_v_calc_tmp,W
+  		MULWF	_v_calc_barg
   		movf	PRODL,W
-  		ADDWF	v_calc_aarg+2,F
+  		ADDWF	_v_calc_aarg+2,F
   		movf	PRODH,W
-  		ADDWFC	v_calc_aarg+1,F
+  		ADDWFC	_v_calc_aarg+1,F
       movlw 0x00
-  		ADDWFC	v_calc_aarg,F
+  		ADDWFC	_v_calc_aarg,F
 
   		return
+ENDIF
 
+IFDEF TEST
 IFNDEF DEBUG_ISSUE_379
 _f_calc_shift_12bits
   ;; décalage à droite de 12 bits
   movlw D'8' ;en fait non, que de 8. Car il faut que les datas soient alignées à gauche, pour la conversion BCD
-  movwf v_calc_tmp
+  movwf _v_calc_tmp
 _f_calc_shift_12bits_1
   bcf STATUS,0
   rrcf POSTINC2,f
@@ -114,22 +121,24 @@ _f_calc_shift_12bits_1
   decf FSR2L
   decf FSR2L
   decf FSR2L
-  decfsz v_calc_tmp
+  decfsz _v_calc_tmp
   goto _f_calc_shift_12bits_1
   return
 ENDIF
+ENDIF
 
-f_calc_div_by_4096
+IFDEF TEST
+_f_calc_div_by_4096
 IFDEF DEBUG_ISSUE_379
   ;; décalage à droite de 12 bits
   movlw D'8' ;en fait non, que de 8. Car il faut que les datas soient alignées à gauche, pour la conversion BCD
-  movwf v_calc_count
+  movwf _v_calc_count
 _f_calc_div_by_4096_1
   bcf STATUS,C
- 	rrcf v_calc_aarg+1,f
- 	rrcf v_calc_aarg+2,f
- 	rrcf v_calc_aarg+3,f
-  decfsz v_calc_count
+ 	rrcf _v_calc_aarg+1,f
+ 	rrcf _v_calc_aarg+2,f
+ 	rrcf _v_calc_aarg+3,f
+  decfsz _v_calc_count
   goto _f_calc_div_by_4096_1
   return
 ELSE
@@ -139,56 +148,116 @@ ELSE
 	call _f_calc_shift_12bits
 	return
 ENDIF ;ISSUE_379
+ENDIF
+
+IFDEF TEST
+f_calc_V_mV
+	;;FWD
+
+  ;;FXM1616U (ADC,(5000)10) 
+  movlw V_ADC_FULL_SCALE_MSB
+  movwf _v_calc_barg
+  movlw V_ADC_FULL_SCALE_LSB
+  movwf _v_calc_barg+1
+
+IF 0
+  swapf INDF0,W
+  andlw 0x0F
+  movwf _v_calc_aarg
+  movff POSTINC0,_v_calc_aarg+1
+  swapf _v_calc_aarg+1,W
+  andlw 0xF0
+  movwf _v_calc_aarg+1
+  swapf INDF0,W
+  andlw 0x0F
+  iorwf _v_calc_aarg+1,f
+ENDIF
+	movf v_fwd_and_ref_bin,W
+	andlw 0x0F
+	movwf _v_calc_aarg
+	movff v_fwd_and_ref_bin,_v_calc_aarg+1
+	swapf _v_calc_aarg+1,W
+	andlw 0xF0
+	movwf _v_calc_aarg+1
+	swapf v_fwd_and_ref_bin+1,W
+	andlw 0x0F
+	iorwf _v_calc_aarg+1,f
+
+  call _f_calc_fxm1616u
+
+	;; division par 4096
+	call _f_calc_div_by_4096
+
+  ;; Conversion 12 bits en BCD
+  lfsr FSR2,_v_calc_aarg+2
+	call f_calc_conv_bin_to_bcd ;FWD
+
+	;;REF
+
+  ;;FXM1616U (ADC,(5000)10) 
+  clrf _v_calc_aarg
+  movf POSTINC0,W
+  andlw 0x0F
+  movwf _v_calc_aarg
+  clrf _v_calc_aarg+1
+  movff POSTINC0,_v_calc_aarg+1
+  call _f_calc_fxm1616u
+
+	;; division par 4096
+	call _f_calc_div_by_4096
 
 
-
-
-_f_calc_Kconv_sub_10logADC
-	;;Kconv - 10*log(ADC) sur 12 bits
-
+  ;; Conversion 12 bits en BCD
+  lfsr FSR2,_v_calc_aarg+2
+	call f_calc_conv_bin_to_bcd ;FWD
 	return
+ENDIF
 
+IFDEF TEST
+_f_calc_Kconv_sub_10logADC
+;;Kconv - 10*log(ADC) sur 12 bits
+;;; résultat dans _v_calc_bin_P_dBm aligné à gauche
+
+
+	;; rlcf _v_calc_bin_P_dBm à faire 4 fois avec propagation de la retenue
+	;; pour aligner à gauche
+	return
+ENDIF
+
+IFDEF TEST
 f_calc_P_dBm
 
+	tstfsz POSTINC0
+	
+	;Port = FWD
+	;Recherche de la valeur de Kconv(dBm) pour chaque port (FWD)
+
+    ;Recherche de 10*log(ADC) dans la LUT
 	movlw 0x00
 	movwf v_flh_offset_addr
 	movwf v_flh_offset_addr+1
 	call f_flh_get_word_10logADC
 
-	;Port = FWD
-	;Recherche de la valeur de Kconv(dBm) pour chaque port (FWD)
-
-    ;Recherche de 10*log(ADC) dans la LUT
 IF 0
-    ;Addition 12 bits de valeurs codées dans un format spécifique 
+
+	;Addition 12 bits de valeurs codées dans un format spécifique 
 	call _f_calc_Kconv_sub_10logADC
-	;Conversion 12 bits en BCD
-	movff POSTINC2,v_calc_bin_in
-	movff POSTINC2,v_calc_bin_in+1
-	call _f_calc_dble_dabble_bcd
-	movff v_calc_bcd_out,POSTINC1
-	movff v_calc_bcd_out+1,POSTINC1
+
+  ;; Conversion 12 bits en BCD
+  lfsr FSR2,_v_calc_bin_P_dBm
+	call f_calc_conv_bin_to_bcd ;FWD
 ENDIF
 	return
-
-
-	return
-
-
 ENDIF
 
 
 IFDEF TEST
 	global v_calc_bin_in
 	global v_calc_bcd_out
-	global v_calc_bcd_count
 	global f_calc_dble_dabble_bcd
-	global v_calc_aarg
-	global v_calc_barg
-	global f_calc_fxm1616u
-	global f_calc_div_by_4096
+	global f_calc_V_mV
 	global f_calc_P_dBm
-	global v_calc_10logADC
+	global v_calc_10logADC	
 ENDIF
 
 	end

@@ -27,16 +27,6 @@
 
 	extern f_log_write
 	extern f_eep_int_readbyte
-IFDEF TEST
-	extern f_calc_conv_bin_to_ascii
-	extern f_lcd_aff_adc_ascii
-	extern f_calc_conv_bin_to_mV
-	extern f_calc_conv_mV_to_ascii
-	extern f_calc_P_dBm
-	extern f_calc_conv_dBm_to_ascii
-	extern Del_11us ;pour trace timer 0 uniquement
-	extern D160us ;pour trace timer 0 uniquement
-ENDIF
 	extern delay_250ms
 
 
@@ -44,7 +34,16 @@ ENDIF
 	extern v_log_data_size
 	extern v_log_tag
 	extern v_i2c_nb_nack
-
+IFDEF TEST
+	extern f_calc_conv_bin_to_ascii
+	extern f_lcd_aff_adc_ascii
+	extern f_calc_V_mV
+	extern f_calc_conv_mV_to_ascii
+	extern f_calc_P_dBm
+	extern f_calc_conv_dBm_to_ascii
+	extern Del_11us ;pour trace timer 0 uniquement
+	extern D160us ;pour trace timer 0 uniquement
+ENDIF
 
 
 	udata
@@ -161,13 +160,12 @@ menu_tension
 	;;Lecture des valeurs ADC FWD et REF
 	;;
 	m_timer0_stop
-	MOVFF	TMR0H,v_log_data+4
-	MOVFF	TMR0L,v_log_data+5
-	movlw TMR0_CALIBRATION
-	subwf v_log_data+5,f
+	MOVFF	v_tmp,v_log_data+4
+	MOVFF	v_tmp+1,v_log_data+5
 
 	lfsr FSR0, v_fwd_and_ref_bin
 	call f_adc_read
+
 	m_timer0_reset
 	m_timer0_start
 
@@ -181,7 +179,6 @@ menu_tension
 	movwf v_log_tag
 	movlw LOW TAG_ADC
 	movwf v_log_tag+1
-
 	movlw D'06'
 	movwf v_log_data_size
 	call f_log_write
@@ -195,12 +192,12 @@ menu_tension
 	call f_calc_conv_bin_to_ascii
 
 	;;
-	;;Conversion des valeurs d’ADC FWD et REF brutes en mV
+	;;Calcul des tensions en entrée des ADC FWD et REF en mV
 	;;
 
 	lfsr FSR0, v_fwd_and_ref_bin
 	lfsr FSR1, v_fwd_and_ref_mV
-	call f_calc_conv_bin_to_mV
+	call f_calc_V_mV
 
 	;;
 	;;Conversion des valeurs d’ADC FWD et REF en mV en ASCII
@@ -318,5 +315,6 @@ ENDIF
 
 	return
 
-
+	global v_fwd_and_ref_bin
+	
 	end

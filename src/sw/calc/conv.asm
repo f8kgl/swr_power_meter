@@ -6,14 +6,9 @@ include "ltc2305.inc"
 
 	extern v_calc_bin_in
 	extern v_calc_bcd_out
-	extern v_calc_bcd_count
 	extern f_calc_dble_dabble_bcd
 
-	extern v_calc_aarg
-	extern v_calc_barg
-  extern f_calc_fxm1616u
-  extern f_calc_div_by_4096
-
+ 
 	code
 IFDEF TEST
 ;-----------------------------------------
@@ -58,17 +53,9 @@ _f_calc_conv_bin_to_ascii_2
 	retlw 0x45		;'E'
 	retlw 0x46		;'F'
 	return
+ENDIF
 
-
-
-_f_calc_conv_mv_to_bcd
-	movff POSTINC2,v_calc_bin_in
-	movff POSTINC2,v_calc_bin_in+1
-	call f_calc_dble_dabble_bcd
-	movff v_calc_bcd_out,POSTINC1
-	movff v_calc_bcd_out+1,POSTINC1
-	return
-
+IFDEF TEST
 f_calc_conv_mV_to_ascii
 	swapf INDF0,W
 	andlw 0x0F
@@ -103,8 +90,9 @@ f_calc_conv_mV_to_ascii
 	call _f_calc_conv_bin_to_ascii
 	movwf POSTINC1
 	return
-
-
+ENDIF
+	
+IFDEF TEST
 f_calc_conv_bin_to_ascii
 	swapf INDF0,W
   andlw 0x0F
@@ -133,64 +121,26 @@ f_calc_conv_bin_to_ascii
 	movwf POSTINC1
 
 	return
-
-f_calc_conv_bin_to_mV
-	;;FWD
-
-  ;;FXM1616U (ADC,(5000)10) 
-  movlw V_ADC_FULL_SCALE_MSB
-  movwf v_calc_barg
-  movlw V_ADC_FULL_SCALE_LSB
-  movwf v_calc_barg+1
-
-  swapf INDF0,W
-  andlw 0x0F
-  movwf v_calc_aarg
-  movff POSTINC0,v_calc_aarg+1
-  swapf v_calc_aarg+1,W
-  andlw 0xF0
-  movwf v_calc_aarg+1
-  swapf INDF0,W
-  andlw 0x0F
-  iorwf v_calc_aarg+1,f
-  call f_calc_fxm1616u
-
-	;; division par 4096
-	call f_calc_div_by_4096
-
-  ;; Conversion 12 bits en BCD
-  lfsr FSR2,v_calc_aarg+2
-	call _f_calc_conv_mv_to_bcd ;FWD
-
-	;;REF
-
-  ;;FXM1616U (ADC,(5000)10) 
-  clrf v_calc_aarg
-  movf POSTINC0,W
-  andlw 0x0F
-  movwf v_calc_aarg
-  clrf v_calc_aarg+1
-  movff POSTINC0,v_calc_aarg+1
-  call f_calc_fxm1616u
-
-	;; division par 4096
-	call f_calc_div_by_4096
-
-
-  ;; Conversion 12 bits en BCD
-  lfsr FSR2,v_calc_aarg+2
-	call _f_calc_conv_mv_to_bcd ;FWD
+ENDIF
+	
+IFDEF TEST
+f_calc_conv_bin_to_bcd
+	movff POSTINC2,v_calc_bin_in
+	movff POSTINC2,v_calc_bin_in+1
+	call f_calc_dble_dabble_bcd
+	movff v_calc_bcd_out,POSTINC1
+	movff v_calc_bcd_out+1,POSTINC1
 	return
+ENDIF
 
-
+IFDEF TEST
 f_calc_conv_dBm_to_ascii
 	return
-
-ENDIF ;TEST
+ENDIF
 
 	global f_calc_conv_bin_to_ascii
-	global f_calc_conv_bin_to_mV
 	global f_calc_conv_mV_to_ascii
 	global f_calc_conv_dBm_to_ascii
+	global f_calc_conv_bin_to_bcd
 
     end
