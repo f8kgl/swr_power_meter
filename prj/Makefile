@@ -101,7 +101,7 @@ project:
 	mkdir -p ../bin
 	cp ../prj/swr_power_meter.stc ../bin
 	cp ../src/hw/sim/gpsim/netlist.stc ../bin
-	cp ../src/tools/gen_th_cal/10logADC.inc ../src/sw/inc
+	cp ../src/tools/gen_data/10logADC.inc ../src/sw/inc
 
 update_gpsim_prj:
 	cp ../prj/swr_power_meter.stc ../bin
