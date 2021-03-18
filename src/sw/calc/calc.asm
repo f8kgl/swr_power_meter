@@ -1,6 +1,7 @@
 	include "p18f1320.inc" ;include the defaults for the chip
   include "calc.inc"
 	include "ltc2305.inc"
+	include "eep.inc"
 
 
 	udata
@@ -22,6 +23,8 @@ ENDIF
 IFDEF TEST
 	extern v_fwd_and_ref_bin
 	extern v_fwd_and_ref_mV
+	extern v_Pfwd_and_ref_dBm
+	extern f_eep_int_readbyte
 ENDIF
 
 	code
@@ -236,13 +239,13 @@ _f_calc_Kconv_sub_10logADC
     incfsz  v_calc_10logADC,W
     subwf   _v_calc_bin_P_dBm           ;dest = dest - source, WITH VALID CARRY
                                 ;(although the Z flag is not valid).
-	
+
 	;; rlcf _v_calc_bin_P_dBm à faire 4 fois avec propagation de la retenue
 	;; pour aligner à gauche
 	bcf 	STATUS,C
 	movlw D'04'
 	movwf _v_calc_count
-_f_calc_Kconv_sub_10logADC_1	
+_f_calc_Kconv_sub_10logADC_1
 	rlcf _v_calc_bin_P_dBm+1
 	rlcf _v_calc_bin_P_dBm
 	decfsz _v_calc_count
@@ -275,21 +278,21 @@ ENDIF
 	lfsr FSR0, v_fwd_and_ref_bin
 	lfsr FSR1, v_flh_offset_addr
 	call _f_calc_parse_fwd_bin
-	
-	
+
+
 	;SI ADC = 000, PdBm = 0xFF
 	tstfsz v_flh_offset_addr
 	goto _f_calc_P_dBm_1
 	tstfsz v_flh_offset_addr+1
 	goto _f_calc_P_dBm_1
-	
+
 	movlw 0xFF
 	movwf v_Pfwd_and_ref_dBm
 	movlw 0xF0
 	movwf v_Pfwd_and_ref_dBm+1
 	goto _f_calc_P_dBm_2
-	
-_f_calc_P_dBm_1	
+
+_f_calc_P_dBm_1
 	call f_flh_get_word_10logADC
 
 

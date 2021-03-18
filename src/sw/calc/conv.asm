@@ -5,6 +5,13 @@ include "ltc2305.inc"
     udata
 _v_calc_conv_count res 1
 
+  extern v_fwd_and_ref_bin
+  extern v_fwd_and_ref_ascii
+  extern v_fwd_and_ref_mV
+  extern v_fwd_and_ref_mV_ascii
+
+
+
 	code
 IFDEF TEST
 ;-----------------------------------------
@@ -55,11 +62,11 @@ IFDEF TEST
 _f_calc_conv_bin_to_ascii
 	swapf INDF0,W
 	andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
+	call _f_calc_conv_ascii_table
 	movwf POSTINC1
 	movf POSTINC0,W
 	andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
+	call _f_calc_conv_ascii_table
 	movwf POSTINC1
 	decfsz _v_calc_conv_count
 	goto _f_calc_conv_bin_to_ascii
@@ -114,7 +121,7 @@ IF 1
 	lfsr FSR0, v_fwd_and_ref_mV
 	lfsr FSR1, v_fwd_and_ref_mV_ascii
 	movlw D'04'
-	movwf v_calc_conv_count
+	movwf _v_calc_conv_count
 	call _f_calc_conv_bin_to_ascii
 	return
 ELSE

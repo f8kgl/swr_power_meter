@@ -315,4 +315,7 @@ ENDIF
 
 	global v_fwd_and_ref_bin
 	global v_fwd_and_ref_mV
+	global v_fwd_and_ref_ascii
+	global v_fwd_and_ref_mV_ascii
+	global v_Pfwd_and_ref_dBm
 	end
