@@ -1,0 +1,9 @@
+gcc -Wall calibrator.c -o calibrator -lm
+
+
+ln -s ../../sw/inc/eep.inc
+
+
+gpasm -c  -p 18f1320 kconv.asm -o kconv.o
+gplink --map -c -S2 -s /usr/local/share/gputils/lkr/18f1320_g.lkr -o kconv.hex kconv.o
+emacs kconv.hex &
