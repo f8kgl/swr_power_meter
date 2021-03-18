@@ -3,6 +3,7 @@ include "calc.inc"
 include "ltc2305.inc"
 
     udata
+_v_calc_conv_count res 1
 
 	code
 IFDEF TEST
@@ -20,17 +21,17 @@ IFDEF TEST
 ;Traitement :
 ;
 ;-----------------------------------------
-_f_calc_conv_bin_to_ascii
+_f_calc_conv_ascii_table
 	mullw 0x02
-	movlw HIGH _f_calc_conv_bin_to_ascii_2
+	movlw HIGH _f_calc_conv_ascii_table_2
 	movwf PCLATH
-	movlw _f_calc_conv_bin_to_ascii_2
+	movlw _f_calc_conv_ascii_table_2
 	addwf PRODL,W
 	btfsc STATUS,C
 	incf PCLATH ;retenu à 1 => pas de changement de page
 	movf PRODL,w
 	addwf PCL, f
-_f_calc_conv_bin_to_ascii_2
+_f_calc_conv_ascii_table_2
 	retlw 0x30		;'0'
 	retlw 0x31		;'1'
 	retlw 0x32		;'2'
@@ -51,7 +52,7 @@ _f_calc_conv_bin_to_ascii_2
 ENDIF
 
 IFDEF TEST
-f_calc_conv_mV_to_ascii
+_f_calc_conv_bin_to_ascii
 	swapf INDF0,W
 	andlw 0x0F
 	call _f_calc_conv_bin_to_ascii
@@ -60,35 +61,23 @@ f_calc_conv_mV_to_ascii
 	andlw 0x0F
 	call _f_calc_conv_bin_to_ascii
 	movwf POSTINC1
-	swapf INDF0,W
-	andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
-	movwf POSTINC1
-	movf POSTINC0,W
-	andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
-	movwf POSTINC1
-	swapf INDF0,W
-	andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
-	movwf POSTINC1
-	movf POSTINC0,W
-	andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
-	movwf POSTINC1
-	swapf INDF0,W
-	andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
-	movwf POSTINC1
-	movf POSTINC0,W
-	andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
-	movwf POSTINC1
+	decfsz _v_calc_conv_count
+	goto _f_calc_conv_bin_to_ascii
 	return
 ENDIF
 
+
+
 IFDEF TEST
 f_calc_conv_bin_to_ascii
+IF 1
+	lfsr FSR0, v_fwd_and_ref_bin
+	lfsr FSR1, v_fwd_and_ref_ascii
+	movlw D'03'
+	movwf _v_calc_conv_count
+	call _f_calc_conv_bin_to_ascii
+	return
+ELSE
 	swapf INDF0,W
   andlw 0x0F
 	call _f_calc_conv_bin_to_ascii
@@ -117,17 +106,51 @@ f_calc_conv_bin_to_ascii
 
 	return
 ENDIF
-
-IF 0
-IFDEF TEST
-f_calc_conv_bin_to_bcd
-	movff POSTINC2,v_calc_bin_in
-	movff POSTINC2,v_calc_bin_in+1
-	call f_calc_dble_dabble_bcd
-	movff v_calc_bcd_out,POSTINC1
-	movff v_calc_bcd_out+1,POSTINC1
-	return
 ENDIF
+
+IFDEF TEST
+f_calc_conv_mV_to_ascii
+IF 1
+	lfsr FSR0, v_fwd_and_ref_mV
+	lfsr FSR1, v_fwd_and_ref_mV_ascii
+	movlw D'04'
+	movwf v_calc_conv_count
+	call _f_calc_conv_bin_to_ascii
+	return
+ELSE
+	swapf INDF0,W
+	andlw 0x0F
+	call _f_calc_conv_bin_to_ascii
+	movwf POSTINC1
+	movf POSTINC0,W
+	andlw 0x0F
+	call _f_calc_conv_bin_to_ascii
+	movwf POSTINC1
+	swapf INDF0,W
+	andlw 0x0F
+	call _f_calc_conv_bin_to_ascii
+	movwf POSTINC1
+	movf POSTINC0,W
+	andlw 0x0F
+	call _f_calc_conv_bin_to_ascii
+	movwf POSTINC1
+	swapf INDF0,W
+	andlw 0x0F
+	call _f_calc_conv_bin_to_ascii
+	movwf POSTINC1
+	movf POSTINC0,W
+	andlw 0x0F
+	call _f_calc_conv_bin_to_ascii
+	movwf POSTINC1
+	swapf INDF0,W
+	andlw 0x0F
+	call _f_calc_conv_bin_to_ascii
+	movwf POSTINC1
+	movf POSTINC0,W
+	andlw 0x0F
+	call _f_calc_conv_bin_to_ascii
+	movwf POSTINC1
+	return
 ENDIF
 
 IFDEF TEST

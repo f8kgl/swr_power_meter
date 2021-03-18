@@ -187,8 +187,10 @@ menu_tension
 	;;
 	;; Conversion des ADC FWD et REF brutes en ASCII
 	;;
+IF 0
 	lfsr FSR0, v_fwd_and_ref_bin
 	lfsr FSR1, v_fwd_and_ref_ascii
+ENDIF
 	call f_calc_conv_bin_to_ascii
 
 	;;

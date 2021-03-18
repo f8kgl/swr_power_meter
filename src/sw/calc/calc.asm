@@ -13,7 +13,7 @@ _v_calc_bcd_out res 2
 _v_calc_bcd_count res 1
 _v_calc_count res 1
 v_calc_10logADC res 2
-v_calc_Kconv_dBm res 2
+_v_calc_Kconv_dBm res 2
 _v_calc_bin_P_dBm res 2
 ENDIF
 
@@ -226,9 +226,27 @@ _f_calc_Kconv_sub_10logADC
 ;;Kconv - 10*log(ADC) sur 12 bits
 ;;; résultat dans _v_calc_bin_P_dBm aligné à gauche
 
+	movff _v_calc_Kconv_dBm,_v_calc_bin_P_dBm
+	movff _v_calc_Kconv_dBm+1,_v_calc_bin_P_dBm+1
 
+    movf    v_calc_10logADC+1,W
+    subwf   _v_calc_bin_P_dBm+1
+    movf    v_calc_10logADC,W
+    btfss   STATUS,C
+    incfsz  v_calc_10logADC,W
+    subwf   _v_calc_bin_P_dBm           ;dest = dest - source, WITH VALID CARRY
+                                ;(although the Z flag is not valid).
+	
 	;; rlcf _v_calc_bin_P_dBm à faire 4 fois avec propagation de la retenue
 	;; pour aligner à gauche
+	bcf 	STATUS,C
+	movlw D'04'
+	movwf _v_calc_count
+_f_calc_Kconv_sub_10logADC_1	
+	rlcf _v_calc_bin_P_dBm+1
+	rlcf _v_calc_bin_P_dBm
+	decfsz _v_calc_count
+	goto _f_calc_Kconv_sub_10logADC_1
 	return
 ENDIF
 
@@ -239,18 +257,46 @@ f_calc_P_dBm
 
 	;Si ADC=0, P = 0xFFF
 	;Recherche de la valeur de Kconv(dBm) pour chaque port (FWD)
+	movlw EEP_KCONV_FWD_BANDE1
+	call f_eep_int_readbyte
+	movwf _v_calc_Kconv_dBm
+	movlw EEP_KCONV_FWD_BANDE1+1
+	call f_eep_int_readbyte
+	movwf _v_calc_Kconv_dBm+1
 
   ;Recherche de 10*log(ADC) dans la LUT
+IF 0
 	movlw 0x00
 	movwf v_flh_offset_addr
 	movwf v_flh_offset_addr+1
 	call f_flh_get_word_10logADC
+ENDIF
 
-IF 0
+	lfsr FSR0, v_fwd_and_ref_bin
+	lfsr FSR1, v_flh_offset_addr
+	call _f_calc_parse_fwd_bin
+	
+	
+	;SI ADC = 000, PdBm = 0xFF
+	tstfsz v_flh_offset_addr
+	goto _f_calc_P_dBm_1
+	tstfsz v_flh_offset_addr+1
+	goto _f_calc_P_dBm_1
+	
+	movlw 0xFF
+	movwf v_Pfwd_and_ref_dBm
+	movlw 0xF0
+	movwf v_Pfwd_and_ref_dBm+1
+	goto _f_calc_P_dBm_2
+	
+_f_calc_P_dBm_1	
+	call f_flh_get_word_10logADC
+
+
 
 	;Addition 12 bits de valeurs codées dans un format spécifique 
 	call _f_calc_Kconv_sub_10logADC
-
+IF 0
   ;; Conversion 12 bits en BCD
 	movff _v_calc_aarg+2,_v_calc_bin_in
 	movff _v_calc_aarg+3,_v_calc_bin_in+1
@@ -258,6 +304,7 @@ IF 0
 	movff _v_calc_bcd_out,v_fwd_and_ref_mV+2
 	movff _v_calc_bcd_out+1,v_fwd_and_ref_mV+3
 ENDIF
+_f_calc_P_dBm_2
 	return
 ENDIF
 

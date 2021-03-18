@@ -1,7 +1,0 @@
-#define I2C_ADDR_DEVICE_AD5175_FWD 0x2C
-#define I2C_ADDR_DEVICE_AD5175_REF 0x2F
-
-
-#define CDE_AD5175_SET_RDAC 0x01
-
-#define RDAC_REG_AD5175_GAIN_IS_2 0x34 ;valeur du registre Rdac pour G=2
