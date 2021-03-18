@@ -131,13 +131,13 @@ f_lcd_aff_PdBm_ascii
 	call f_lcd_setposcursor
 	movlw '-'
 	call f_lcd_aff_char
-	movf v_Pfwd_and_ref_dBm_ascii,W
+	movf v_Pfwd_and_ref_dBm_ascii+1,W
 	call f_lcd_aff_char
-	movf v_Pfwd_and_ref_dBm_ascii,W
+	movf v_Pfwd_and_ref_dBm_ascii+2,W
 	call f_lcd_aff_char
 	movlw '.'
 	call f_lcd_aff_char
-	movf v_Pfwd_and_ref_dBm_ascii,W
+	movf v_Pfwd_and_ref_dBm_ascii+3,W
 	call f_lcd_aff_char
 	movlw 'd'
 	call f_lcd_aff_char
