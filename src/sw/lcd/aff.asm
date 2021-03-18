@@ -20,10 +20,7 @@ ENDIF
 	extern f_eep_int_readbyte
 	extern c_bootmsgL1
 	extern c_bootmsgL2
-IFDEF TEST
-
-
-ENDIF
+	extern v_Pfwd_and_ref_dBm_ascii
 
 
 	code
@@ -127,6 +124,30 @@ f_lcd_aff_fwd_and_ref
 	call f_lcd_aff
 	return
 
+f_lcd_aff_PdBm_ascii
+
+	call f_lcd_aff_fwd_and_ref
+	movlw 0x05
+	call f_lcd_setposcursor
+	movlw '-'
+	call f_lcd_aff_char
+	movf v_Pfwd_and_ref_dBm_ascii,W
+	call f_lcd_aff_char
+	movf v_Pfwd_and_ref_dBm_ascii,W
+	call f_lcd_aff_char
+	movlw '.'
+	call f_lcd_aff_char
+	movf v_Pfwd_and_ref_dBm_ascii,W
+	call f_lcd_aff_char
+	movlw 'd'
+	call f_lcd_aff_char
+	movlw 'B'
+	call f_lcd_aff_char
+	movlw 'm'
+	call f_lcd_aff_char
+
+	return
+
 f_lcd_aff_adc_ascii
 	;;Affichage des valeurs d’ADC brute
 	call f_lcd_aff_fwd_and_ref
@@ -197,5 +218,6 @@ f_lcd_aff_adc_ascii
 	global v_lcd_string_len
 	global v_lcd_string_pos
 	global v_lcd_p_string
+	global f_lcd_aff_PdBm_ascii
 
 	end

@@ -9,6 +9,8 @@ _v_calc_conv_count res 1
   extern v_fwd_and_ref_ascii
   extern v_fwd_and_ref_mV
   extern v_fwd_and_ref_mV_ascii
+  extern v_Pfwd_and_ref_dBm
+  extern v_Pfwd_and_ref_dBm_ascii
 
 
 
@@ -77,91 +79,31 @@ ENDIF
 
 IFDEF TEST
 f_calc_conv_bin_to_ascii
-IF 1
 	lfsr FSR0, v_fwd_and_ref_bin
 	lfsr FSR1, v_fwd_and_ref_ascii
 	movlw D'03'
 	movwf _v_calc_conv_count
 	call _f_calc_conv_bin_to_ascii
 	return
-ELSE
-	swapf INDF0,W
-  andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
-	movwf POSTINC1
-	movf  POSTINC0,W
-  andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
-	movwf POSTINC1
-	swapf INDF0,W
-  andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
-	movwf POSTINC1
-
-	movf POSTINC0,W
-  andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
-	movwf POSTINC1
-	swapf  INDF0,W
-  andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
-	movwf POSTINC1
-	movf INDF0,W
-  andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
-	movwf POSTINC1
-
-	return
-ENDIF
 ENDIF
 
 IFDEF TEST
 f_calc_conv_mV_to_ascii
-IF 1
 	lfsr FSR0, v_fwd_and_ref_mV
 	lfsr FSR1, v_fwd_and_ref_mV_ascii
 	movlw D'04'
 	movwf _v_calc_conv_count
 	call _f_calc_conv_bin_to_ascii
 	return
-ELSE
-	swapf INDF0,W
-	andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
-	movwf POSTINC1
-	movf POSTINC0,W
-	andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
-	movwf POSTINC1
-	swapf INDF0,W
-	andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
-	movwf POSTINC1
-	movf POSTINC0,W
-	andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
-	movwf POSTINC1
-	swapf INDF0,W
-	andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
-	movwf POSTINC1
-	movf POSTINC0,W
-	andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
-	movwf POSTINC1
-	swapf INDF0,W
-	andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
-	movwf POSTINC1
-	movf POSTINC0,W
-	andlw 0x0F
-	call _f_calc_conv_bin_to_ascii
-	movwf POSTINC1
-	return
 ENDIF
 
 IFDEF TEST
 f_calc_conv_dBm_to_ascii
+	lfsr FSR0, v_Pfwd_and_ref_dBm
+	lfsr FSR1, v_Pfwd_and_ref_dBm_ascii
+	movlw D'04'
+	movwf _v_calc_conv_count
+	call _f_calc_conv_bin_to_ascii
 	return
 ENDIF
 

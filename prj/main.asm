@@ -43,6 +43,7 @@ IFDEF TEST
 	extern f_calc_conv_dBm_to_ascii
 	extern Del_11us ;pour trace timer 0 uniquement
 	extern D160us ;pour trace timer 0 uniquement
+	extern f_lcd_aff_PdBm_ascii
 ENDIF
 
 
@@ -187,10 +188,6 @@ menu_tension
 	;;
 	;; Conversion des ADC FWD et REF brutes en ASCII
 	;;
-IF 0
-	lfsr FSR0, v_fwd_and_ref_bin
-	lfsr FSR1, v_fwd_and_ref_ascii
-ENDIF
 	call f_calc_conv_bin_to_ascii
 
 	;;
@@ -201,8 +198,6 @@ ENDIF
 	;;
 	;;Conversion des valeurs d’ADC FWD et REF en mV en ASCII
 	;;
-	lfsr FSR0, v_fwd_and_ref_mV
-	lfsr FSR1, v_fwd_and_ref_mV_ascii
 	call f_calc_conv_mV_to_ascii
 
 	;;
@@ -228,11 +223,10 @@ menu_puissance_dBm
 	;;
 	call f_calc_P_dBm
 
-IF 0
-	lfsr FSR0, v_Pfwd_and_ref_dBm
-	lfsr FSR1, v_Pfwd_and_ref_dBm_ascii
 	call f_calc_conv_dBm_to_ascii
-ENDIF
+
+	call f_lcd_aff_PdBm_ascii
+
 	goto test_loop
 
 menu_puissance_W
@@ -318,4 +312,5 @@ ENDIF
 	global v_fwd_and_ref_ascii
 	global v_fwd_and_ref_mV_ascii
 	global v_Pfwd_and_ref_dBm
+	global v_Pfwd_and_ref_dBm_ascii
 	end

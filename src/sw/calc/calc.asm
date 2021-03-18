@@ -268,13 +268,6 @@ f_calc_P_dBm
 	movwf _v_calc_Kconv_dBm+1
 
   ;Recherche de 10*log(ADC) dans la LUT
-IF 0
-	movlw 0x00
-	movwf v_flh_offset_addr
-	movwf v_flh_offset_addr+1
-	call f_flh_get_word_10logADC
-ENDIF
-
 	lfsr FSR0, v_fwd_and_ref_bin
 	lfsr FSR1, v_flh_offset_addr
 	call _f_calc_parse_fwd_bin
@@ -299,14 +292,14 @@ _f_calc_P_dBm_1
 
 	;Addition 12 bits de valeurs codées dans un format spécifique 
 	call _f_calc_Kconv_sub_10logADC
-IF 0
+
   ;; Conversion 12 bits en BCD
-	movff _v_calc_aarg+2,_v_calc_bin_in
-	movff _v_calc_aarg+3,_v_calc_bin_in+1
+	movff _v_calc_bin_P_dBm,_v_calc_bin_in
+	movff _v_calc_bin_P_dBm+1,_v_calc_bin_in+1
 	call _f_calc_dble_dabble_bcd
-	movff _v_calc_bcd_out,v_fwd_and_ref_mV+2
-	movff _v_calc_bcd_out+1,v_fwd_and_ref_mV+3
-ENDIF
+	movff _v_calc_bcd_out,v_Pfwd_and_ref_dBm
+	movff _v_calc_bcd_out+1,v_Pfwd_and_ref_dBm+1
+
 _f_calc_P_dBm_2
 	return
 ENDIF
