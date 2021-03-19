@@ -179,6 +179,36 @@ ENDIF ;ISSUE_379
 ENDIF
 
 IFDEF TEST
+_f_calc_Kconv_sub_10logADC
+;;Kconv - 10*log(ADC) sur 12 bits
+;;; résultat dans _v_calc_bin_P_dBm aligné à gauche
+
+	movff _v_calc_Kconv_dBm,_v_calc_bin_P_dBm
+	movff _v_calc_Kconv_dBm+1,_v_calc_bin_P_dBm+1
+
+    movf    v_calc_10logADC+1,W
+    subwf   _v_calc_bin_P_dBm+1
+    movf    v_calc_10logADC,W
+    btfss   STATUS,C
+    incfsz  v_calc_10logADC,W
+    subwf   _v_calc_bin_P_dBm           ;dest = dest - source, WITH VALID CARRY
+                                ;(although the Z flag is not valid).
+
+	;; rlcf _v_calc_bin_P_dBm à faire 4 fois avec propagation de la retenue
+	;; pour aligner à gauche
+	bcf 	STATUS,C
+	movlw D'04'
+	movwf _v_calc_count
+_f_calc_Kconv_sub_10logADC_1
+	rlcf _v_calc_bin_P_dBm+1
+	rlcf _v_calc_bin_P_dBm
+	decfsz _v_calc_count
+	goto _f_calc_Kconv_sub_10logADC_1
+	return
+ENDIF
+
+
+IFDEF TEST
 f_calc_V_mV
 	;;FWD
   ;;FXM1616U (ADC,(5000)10) 
@@ -225,35 +255,6 @@ f_calc_V_mV
 ENDIF
 
 IFDEF TEST
-_f_calc_Kconv_sub_10logADC
-;;Kconv - 10*log(ADC) sur 12 bits
-;;; résultat dans _v_calc_bin_P_dBm aligné à gauche
-
-	movff _v_calc_Kconv_dBm,_v_calc_bin_P_dBm
-	movff _v_calc_Kconv_dBm+1,_v_calc_bin_P_dBm+1
-
-    movf    v_calc_10logADC+1,W
-    subwf   _v_calc_bin_P_dBm+1
-    movf    v_calc_10logADC,W
-    btfss   STATUS,C
-    incfsz  v_calc_10logADC,W
-    subwf   _v_calc_bin_P_dBm           ;dest = dest - source, WITH VALID CARRY
-                                ;(although the Z flag is not valid).
-
-	;; rlcf _v_calc_bin_P_dBm à faire 4 fois avec propagation de la retenue
-	;; pour aligner à gauche
-	bcf 	STATUS,C
-	movlw D'04'
-	movwf _v_calc_count
-_f_calc_Kconv_sub_10logADC_1
-	rlcf _v_calc_bin_P_dBm+1
-	rlcf _v_calc_bin_P_dBm
-	decfsz _v_calc_count
-	goto _f_calc_Kconv_sub_10logADC_1
-	return
-ENDIF
-
-IFDEF TEST
 f_calc_P_dBm
 
 	;Port = FWD
@@ -286,11 +287,19 @@ f_calc_P_dBm
 	goto _f_calc_P_dBm_2
 
 _f_calc_P_dBm_1
+	decf v_flh_offset_addr+1
+	movlw 0x02
+	mulwf v_flh_offset_addr+1 ;LSB
+	movff PRODL,v_flh_offset_addr+1
+	movff PRODH,_v_calc_tmp
+	movlw 0x02
+	mulwf v_flh_offset_addr ;MSB
+	movf PRODL,W
+	addwf _v_calc_tmp,f
+	movff _v_calc_tmp,v_flh_offset_addr
 	call f_flh_get_word_10logADC
 
-
-
-	;Addition 12 bits de valeurs codées dans un format spécifique 
+	;PdBm = Kconv - 10*log(ADC)
 	call _f_calc_Kconv_sub_10logADC
 
   ;; Conversion 12 bits en BCD

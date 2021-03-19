@@ -103,3 +103,10 @@ https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 	$sudo make install
 
 	$sudo /sbin/ldconfig
+	
+7.Calibrator
+    $ cd .../src/tools/calibrator
+    $ gcc -Wall calibrator.c -o calibrator -lm
+    $ ./calibrator
+    $ cd ../prj
+	$ make project
