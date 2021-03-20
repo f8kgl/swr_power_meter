@@ -102,8 +102,14 @@ project:
 	cp ../prj/swr_power_meter.stc ../bin
 	cp ../src/hw/sim/gpsim/netlist.stc ../bin
 	cp ../src/tools/gen_table/10logADC.inc ../src/sw/inc
-	cp ../src/tools/calibrator/kconv.TEST.hex ../bin
 
 update_gpsim_prj:
 	cp ../prj/swr_power_meter.stc ../bin
 	cp ../src/hw/sim/gpsim/netlist.stc ../bin
+
+
+calibration_gpsim:
+	gcc -Wall ../src/tools/calibrator/calibrator.c -o ../src/tools/calibrator/calibrator -lm
+	../src/tools/calibrator/calibrator
+	mv kconv.GPSIM.hex ../bin
+	mv kconv.TEST.hex ../bin

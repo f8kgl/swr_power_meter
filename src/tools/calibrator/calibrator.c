@@ -9,12 +9,15 @@ int main (void)
   uint16_t adc_m[6];
   double Pcalib_W[6];
   int adjust;
-  char *filename="kconv.TEST.hex";
-  FILE *fp;
+  char *filename_eeprom="kconv.TEST.hex";
+  char *filename_gpsim="kconv.GPSIM.hex";
+  FILE *fp_eeprom;
+  FILE *fp_gpsim;
   uint8_t checksum;
   uint8_t kconv_dBm_byte[2];
 
-  fp = fopen(filename,"w");
+  fp_eeprom = fopen(filename_eeprom,"w");
+  fp_gpsim = fopen(filename_gpsim,"w");
 
 
   adc_m[0] = 2;
@@ -45,11 +48,15 @@ int main (void)
  printf(":00000001FF\n");
 
 
- fprintf(fp,":020000040000FA\n");
- fprintf(fp,":0200000400F00A\n");
- fprintf(fp,":02000600%02X%02X%02X\n",kconv_dBm_byte[0],kconv_dBm_byte[1],checksum);
- fprintf(fp,":00000001FF\n");
+ fprintf(fp_eeprom,":020000040000FA\n");
+ fprintf(fp_eeprom,":0200000400F00A\n");
+ fprintf(fp_eeprom,":02000600%02X%02X%02X\n",kconv_dBm_byte[1],kconv_dBm_byte[0],checksum);
+ fprintf(fp_eeprom,":00000001FF\n");
+ fprintf(fp_gpsim,":02000600%02X%02X%02X\n",kconv_dBm_byte[1],kconv_dBm_byte[0],checksum);
+ fprintf(fp_gpsim,":00000001FF\n");
 
+  fclose(fp_eeprom);
+  fclose(fp_gpsim);
 
 
 
