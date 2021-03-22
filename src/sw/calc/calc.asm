@@ -313,11 +313,16 @@ _f_calc_P_dBm_2
 	return
 ENDIF
 
+IFDEF TEST
+f_calc_P_W
+	return
+ENDIF
 
 IFDEF TEST
 	global f_calc_V_mV
 	global f_calc_P_dBm
 	global v_calc_10logADC
+	global f_calc_P_W
 ENDIF
 
 	end

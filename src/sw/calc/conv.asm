@@ -107,8 +107,17 @@ f_calc_conv_dBm_to_ascii
 	return
 ENDIF
 
+IFDEF TEST
+f_calc_conv_W_to_ascii
+	return
+ENDIF
+
+
+IFDEF TEST
 	global f_calc_conv_bin_to_ascii
 	global f_calc_conv_mV_to_ascii
 	global f_calc_conv_dBm_to_ascii
+	global f_calc_conv_W_to_ascii
+ENDIF
 
     end

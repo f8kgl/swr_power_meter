@@ -230,6 +230,29 @@ menu_puissance_dBm
 	goto test_loop
 
 menu_puissance_W
+
+;;
+	;;Lecture des valeurs ADC FWD et REF
+	;;
+	lfsr FSR0, v_fwd_and_ref_bin
+	call f_adc_read
+
+	;;
+	;; Calcul de Pfwd et Pref en W
+	;;
+	call f_calc_P_W
+
+	;;
+	;; Calcul de ADCfwd/ADCref
+	;;
+	;call f_calc_ADCfwd_over_ADCref_W
+
+	call f_calc_conv_W_to_ascii
+	;call f_calc_conv_ADCfwd_over_ADCref_to_ascii
+
+	call f_lcd_aff_P_W_ascii
+	;call f_lcd_aff_ADCfwd_over_ADCref_ascii
+
 	goto test_loop
 
 ENDIF

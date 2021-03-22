@@ -210,6 +210,20 @@ f_lcd_aff_adc_ascii
 	call f_lcd_aff_char
 	return
 
+f_lcd_aff_P_W_ascii
+	movlw 0x00
+	call f_lcd_setposcursor
+	call _f_lcd_set_fwd_string
+	call f_lcd_aff
+	movlw 0x10
+	call f_lcd_setposcursor
+	call _f_lcd_set_fwd_string
+	call f_lcd_aff
+	movlw '/'
+	call f_lcd_aff_char
+	call _f_lcd_set_ref_string
+	call f_lcd_aff
+	return
 
 	global f_lcd_affboot
 	global f_lcd_aff
@@ -219,5 +233,6 @@ f_lcd_aff_adc_ascii
 	global v_lcd_string_pos
 	global v_lcd_p_string
 	global f_lcd_aff_PdBm_ascii
+	global f_lcd_aff_P_W_ascii
 
 	end
