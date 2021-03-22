@@ -44,6 +44,9 @@ IFDEF TEST
 	extern Del_11us ;pour trace timer 0 uniquement
 	extern D160us ;pour trace timer 0 uniquement
 	extern f_lcd_aff_PdBm_ascii
+	extern f_calc_P_W
+	extern f_calc_conv_W_to_ascii
+	extern f_lcd_aff_P_W_ascii
 ENDIF
 
 

@@ -45,8 +45,6 @@ _f_calc_dble_dabble_bcd
   	clrf    _v_calc_bcd_out
     clrf    _v_calc_bcd_out+1
 
-    movlw   D'12'  ;ou 11 ?
-    movwf   _v_calc_bcd_count
 _f_calc_dble_dabble_bcd1
     rlcf    _v_calc_bin_in+1,F
     rlcf    _v_calc_bin_in,F
@@ -227,6 +225,8 @@ f_calc_V_mV
 	call _f_calc_div_by_4096
 
   ;; Conversion 12 bits en BCD
+	movlw   D'12'  ;ou 11 ?
+	movwf   _v_calc_bcd_count
 	movff _v_calc_aarg+2,_v_calc_bin_in
 	movff _v_calc_aarg+3,_v_calc_bin_in+1
 	call _f_calc_dble_dabble_bcd
@@ -245,6 +245,8 @@ f_calc_V_mV
 	call _f_calc_div_by_4096
 
 	;; Conversion 12 bits en BCD
+	movlw   D'12'  ;ou 11 ?
+	movwf   _v_calc_bcd_count
 	movff _v_calc_aarg+2,_v_calc_bin_in
 	movff _v_calc_aarg+3,_v_calc_bin_in+1
 	call _f_calc_dble_dabble_bcd
@@ -303,6 +305,8 @@ _f_calc_P_dBm_1
 	call _f_calc_Kconv_sub_10logADC
 
   ;; Conversion 12 bits en BCD
+	movlw   D'12'  ;ou 11 ?
+	movwf   _v_calc_bcd_count
 	movff _v_calc_bin_P_dBm,_v_calc_bin_in
 	movff _v_calc_bin_P_dBm+1,_v_calc_bin_in+1
 	call _f_calc_dble_dabble_bcd
