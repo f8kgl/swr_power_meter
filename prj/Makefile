@@ -92,7 +92,8 @@ $(OUTPUT_TEST) : $(OBJS_TEST) $(LIBS_TEST)
 clean:
 	rm -f *.o
 	rm -f *.lst
-	rm -f ../bin/*
+	rm -f ../bin/*.stc
+	rm -f ../bin/swr_power_meter_f8kgl*
 	find ../ -name '*.o' -exec rm -r {} \;
 	find ../ -name '*.lst' -exec rm -r {} \;
 

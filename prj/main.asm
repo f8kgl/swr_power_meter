@@ -61,6 +61,8 @@ v_fwd_and_ref_mV res 4 ;2 octets par port (4 bits BCD par digit)
 v_fwd_and_ref_mV_ascii res 8 ;4 digits par port
 v_Pfwd_and_ref_dBm res 3;3 octets (12 bits par port)
 v_Pfwd_and_ref_dBm_ascii res 6;3 digits par port
+v_Pfwd_W res 5
+v_Pfwd_W_ascii res 10
 ENDIF
 
 
@@ -339,4 +341,6 @@ ENDIF
 	global v_fwd_and_ref_mV_ascii
 	global v_Pfwd_and_ref_dBm
 	global v_Pfwd_and_ref_dBm_ascii
+	global v_Pfwd_W
+	global v_Pfwd_W_ascii
 	end

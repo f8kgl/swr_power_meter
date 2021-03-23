@@ -21,6 +21,7 @@ ENDIF
 	extern c_bootmsgL1
 	extern c_bootmsgL2
 	extern v_Pfwd_and_ref_dBm_ascii
+	extern v_Pfwd_W_ascii
 
 
 	code
@@ -215,6 +216,27 @@ f_lcd_aff_P_W_ascii
 	call f_lcd_setposcursor
 	call _f_lcd_set_fwd_string
 	call f_lcd_aff
+	movf v_Pfwd_W_ascii,W
+	call f_lcd_aff_char
+	movf v_Pfwd_W_ascii+1,W
+	call f_lcd_aff_char
+	movf v_Pfwd_W_ascii+2,W
+	call f_lcd_aff_char
+	movf v_Pfwd_W_ascii+3,W
+	call f_lcd_aff_char
+	movf v_Pfwd_W_ascii+4,W
+	call f_lcd_aff_char
+	movf v_Pfwd_W_ascii+5,W
+	call f_lcd_aff_char
+	movf v_Pfwd_W_ascii+6,W
+	call f_lcd_aff_char
+	movf v_Pfwd_W_ascii+7,W
+	call f_lcd_aff_char
+	movf v_Pfwd_W_ascii+8,W
+	call f_lcd_aff_char
+	movf v_Pfwd_W_ascii+9,W
+	call f_lcd_aff_char
+
 	movlw 0x10
 	call f_lcd_setposcursor
 	call _f_lcd_set_fwd_string
