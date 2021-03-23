@@ -105,8 +105,16 @@ https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 	$sudo /sbin/ldconfig
 	
 7.Calibrator
-    $ cd .../src/tools/calibrator
-    $ gcc -Wall calibrator.c -o calibrator -lm
-    $ ./calibrator
-    $ cd ../prj
-	$ make project
+    $ cd .../prj
+    $ make calibration_gpsim
+	
+	le make génère le fichier .hex de calibration, à flasher dans l'EEPROM du PIC
+	
+	Usage : 
+	calibrator [-o][-t][-f][-r][-a adc_value][-p P_in]
+	-o : calibration pour le fw opérationnel
+	-t : calibration pour le fw de test
+	-f : Port FWD
+	-r : Port REF
+	-a : valeur d'ADC (ADC_m)
+	-p : Valeur de puissance en W (Pfwd)
