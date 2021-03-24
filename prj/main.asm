@@ -19,21 +19,17 @@
 	extern f_i2c_init
 	extern f_lcd_affboot
 	extern f_lcd_clear
-
 	extern v_bp_status
 	extern f_bp_test_bande
-
 	extern f_adc_read
-
 	extern f_log_write
 	extern f_eep_int_readbyte
 	extern delay_250ms
-
-
 	extern v_log_data
 	extern v_log_data_size
 	extern v_log_tag
 	extern v_i2c_nb_nack
+
 IFDEF TEST
 	extern f_calc_conv_bin_to_ascii
 	extern f_lcd_aff_adc_ascii
@@ -44,9 +40,17 @@ IFDEF TEST
 	extern Del_11us ;pour trace timer 0 uniquement
 	extern D160us ;pour trace timer 0 uniquement
 	extern f_lcd_aff_PdBm_ascii
+ELSE
+IFDEF CALIBRATION
+ENDIF
+IFDEF SWR_POWER_METER
 	extern f_calc_P_W
 	extern f_calc_conv_W_to_ascii
 	extern f_lcd_aff_P_W_ascii
+ELSE ;;xWATT
+	extern f_calc_P_dBm
+	extern f_calc_conv_dBm_to_ascii
+	extern f_lcd_aff_PdBm_ascii
 ENDIF
 
 
@@ -61,8 +65,19 @@ v_fwd_and_ref_mV res 4 ;2 octets par port (4 bits BCD par digit)
 v_fwd_and_ref_mV_ascii res 8 ;4 digits par port
 v_Pfwd_and_ref_dBm res 3;3 octets (12 bits par port)
 v_Pfwd_and_ref_dBm_ascii res 6;3 digits par port
+
+ELSE
+IFDEF CALIBRATION
+ENDIF
+v_bande res 1
+v_fwd_and_ref_bin res 3 ;FWD=12bits - REF=12bits => 24bits = 8*3
+IFDEF SWR_POWER_METER
 v_Pfwd_W res 5
 v_Pfwd_W_ascii res 10
+ELSE
+v_Pfwd_and_ref_dBm res 3;3 octets (12 bits par port)
+v_Pfwd_and_ref_dBm_ascii res 6;3 digits par port
+ENDIF
 ENDIF
 
 
@@ -125,20 +140,43 @@ ENDIF
 
 IFDEF TEST
 	clrf v_menu ; menu mesure par défaut au démarrage
+ELSE
+IFDEF CALIBRATION
+ENDIF
+	clrf v_bande
+ENDIF
 
-test_loop
+loop
+
+	;;
+	;;Lecture des valeurs ADC FWD et REF
+	;;
+	m_timer0_stop
+	MOVFF	v_tmp,v_log_data+4
+	MOVFF	v_tmp+1,v_log_data+5
+
+	lfsr FSR0, v_fwd_and_ref_bin
+	call f_adc_read
+
 
 	;;Appui sur le bouton bande ?
 	clrf v_bp_status
 	call f_bp_test_bande
 	btfss v_bp_status,BIT_BANDE
+IFDEF TEST
 	goto choix_menu
 
 	incf v_menu,f
 	;; Effacer le LCD (lcd_clear)
 	call f_lcd_clear
+ELSE
+IFDEF CALIBRATION
+ENDIF
+	incf v_bande
+ENDIF
 
 
+IFDEF TEST
 choix_menu
 
 	movf	v_menu,w
@@ -152,25 +190,12 @@ choix_menu
 	movf	v_menu,w
 	xorlw	D'2'
 	btfsc	STATUS,Z
-	goto	menu_puissance_W
-	movf	v_menu,w
-	xorlw	D'3'
-	btfsc	STATUS,Z
 	clrf v_menu
-	goto test_loop
+	goto loop
 
 menu_tension
 	clrf v_menu
 
-	;;
-	;;Lecture des valeurs ADC FWD et REF
-	;;
-	m_timer0_stop
-	MOVFF	v_tmp,v_log_data+4
-	MOVFF	v_tmp+1,v_log_data+5
-
-	lfsr FSR0, v_fwd_and_ref_bin
-	call f_adc_read
 
 	m_timer0_reset
 	m_timer0_start
@@ -212,7 +237,7 @@ menu_tension
 	lfsr FSR1, v_fwd_and_ref_mV_ascii
 	call f_lcd_aff_adc_ascii
 
-	goto test_loop
+	goto loop
 
 
 menu_puissance_dBm
@@ -232,16 +257,13 @@ menu_puissance_dBm
 
 	call f_lcd_aff_PdBm_ascii
 
-	goto test_loop
+	goto loop
+ELSE
+IFDEF CALIBRATION
+ENDIF
 
-menu_puissance_W
 
-;;
-	;;Lecture des valeurs ADC FWD et REF
-	;;
-	lfsr FSR0, v_fwd_and_ref_bin
-	call f_adc_read
-
+IFDEF SWR_POWER_METER
 	;;
 	;; Calcul de Pfwd et Pref en W
 	;;
@@ -258,8 +280,21 @@ menu_puissance_W
 	call f_lcd_aff_P_W_ascii
 	;call f_lcd_aff_ADCfwd_over_ADCref_ascii
 
-	goto test_loop
+	goto loop
+ELSE;;xWATT METER
+	
+	;;
+	;; Calcul de Pfwd et Pref en dBm
+	;;
+	call f_calc_P_dBm
 
+	call f_calc_conv_dBm_to_ascii
+
+	call f_lcd_aff_PdBm_ascii
+
+	goto loop
+
+ENDIF
 ENDIF
 
 
@@ -335,12 +370,23 @@ ENDIF
 
 	return
 
+IFDEF TEST
 	global v_fwd_and_ref_bin
 	global v_fwd_and_ref_mV
 	global v_fwd_and_ref_ascii
 	global v_fwd_and_ref_mV_ascii
 	global v_Pfwd_and_ref_dBm
 	global v_Pfwd_and_ref_dBm_ascii
+ELSE
+IFDEF CALIBRATION
+ENDIF
+	global v_bande
+	global v_fwd_and_ref_bin
+IFDEF SWR_POWER_METER
 	global v_Pfwd_W
 	global v_Pfwd_W_ascii
+ELSE ;;xWATT
+	global v_Pfwd_and_ref_dBm
+	global v_Pfwd_and_ref_dBm_ascii
+ENDIF
 	end

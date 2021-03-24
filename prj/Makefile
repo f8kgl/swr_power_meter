@@ -63,16 +63,23 @@ SRC_COMMUN +=../src/sw/data/10logADC.asm
 #Objets
 OBJS_COMMUN_TEST = $(SRC_COMMUN:%.asm=%.TEST.o)
 OBJS_TEST = $(OBJS_COMMUN_TEST)
+OBJS_COMMUN_xWATT = $(SRC_COMMUN:%.asm=%.xWATT.o)
+OBJS_xWATT = $(OBJS_COMMUN_xWATT)
+
 
 #Librairies
 LIBS_TEST = $(COMPS:%=../bin/libtest%.a)
 LIBS_CALIBRATION = $(COMPS:%=../bin/libcalib%.a)
-LIBS = $(COMPS:%=../bin/%.a)
+LIBS_xWATT = $(COMPS:%=../bin/%.xWATT.a)
 
 #Rules
-all : project $(OUTPUT_TEST)
+all : project calibration_gpsim update_gpsim_prj $(OUTPUT_TEST) $(OUTPUT_CALIBRATION) $(OUTPUT_xWATT)
 
 rule_test : project $(OUTPUT_TEST)
+
+rule_calibration : project $(OUTPUT_CALIBRATION)
+
+xWATT : project $(OUTPUT_xWATT)
 
 #Règle du firmware de test
 $(OUTPUT_TEST) : $(OBJS_TEST) $(LIBS_TEST)
@@ -80,14 +87,39 @@ $(OUTPUT_TEST) : $(OBJS_TEST) $(LIBS_TEST)
 	rm $^
 	rm *.lst
 	rm -f ../src/sw/data/*.lst
+	
+#Règle du firmware de calibration
+$(OUTPUT_CALIBRATION) : 
+	rm $^
+	rm *.lst
+	rm -f ../src/sw/data/*.lst
 
-#Règle d'une librairie de test
+#Règle des firmware operationnel
+$(OUTPUT_xWATT) : $(OBJS_xWATT) $(LIBS_xWATT)
+	$(LD) $(LDFLAGS) -DxWATT $(DEBUG_LDFLAGS) -s $(SCRIPT) -o ../bin/$(OUTPUT) $^
+	rm $^
+	rm *.lst
+	rm -f ../src/sw/data/*.lst
+
+#Règle d'une librairie de test (ie compilation des composants sw)
 ../bin/libtest%.a:
 	make -C $(@:../bin/libtest%.a=../src/sw/%)
+	
+#Règle d'une librairie du fw opérationnel (ie compilation des composants sw)
+../bin/lib%.xWATT.a:
+	make -C $(@:../bin/lib%.xWATT.a=../src/sw/%)
+		
 
-#Règle d’un objet de test issus des sources commun à tous les firmware
+#Règle d’un objet de test (ie compilation des sources commun avec le flag TEST)
 %.TEST.o : %.asm
-	$(AS) $(ASFLAGS) -D$(TEST_FLAGS) $(DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
+	$(AS) $(ASFLAGS)  -D$(TEST_FLAGS) $(DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
+
+#Règle d’un objet opérationnel (ie compilation des sources commun)
+%.SWR_POWER_METER.o : %.asm
+	$(AS) $(ASFLAGS) -DSWR_POWER_METER $(DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
+%.xWATT.o : %.asm
+	$(AS) $(ASFLAGS) -DxWATT $(DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
+
 
 clean:
 	rm -f *.o
