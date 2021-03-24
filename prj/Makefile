@@ -36,7 +36,7 @@ OUTPUT_CALIBRATION = $(NAME)$(VERSION).CALIBRATION.hex
 OUTPUT = $(NAME)$(VERSION).hex
 else
 export DEBUG_ISSUE_n =
-export DEBUG_ISSUE_n = -DDEBUG_ISSUE_379 -DDEBUG_ISSUE_380
+export DEBUG_ISSUE_n = -DDEBUG_ISSUE_379 -DDEBUG_ISSUE_380 -DDEBUG_ISSUE_389
 OUTPUT_TEST = $(NAME)$(VERSION).TEST.GPSIM.hex
 OUTPUT_CALIBRATION = $(NAME)$(VERSION).CALIBRATION.GPSIM.hex
 OUTPUT = $(NAME)$(VERSION).GPISM.hex
@@ -92,7 +92,8 @@ $(OUTPUT_TEST) : $(OBJS_TEST) $(LIBS_TEST)
 clean:
 	rm -f *.o
 	rm -f *.lst
-	rm -f ../bin/*
+	rm -f ../bin/*.stc
+	rm -f ../bin/swr_power_meter_f8kgl*
 	find ../ -name '*.o' -exec rm -r {} \;
 	find ../ -name '*.lst' -exec rm -r {} \;
 
@@ -109,7 +110,6 @@ update_gpsim_prj:
 
 
 calibration_gpsim:
-	gcc -Wall ../src/tools/calibrator/calibrator.c -o ../src/tools/calibrator/calibrator -lm
+	gcc $(DEBUG_ISSUE_n) -Wall ../src/tools/calibrator/calibrator.c -o ../src/tools/calibrator/calibrator -lm
 	../src/tools/calibrator/calibrator -t -a 2 -p 0.000001 -f
-	mv kconv.GPSIM.hex ../bin
-	mv kconv.TEST.hex ../bin
+	mv kconv*.hex ../bin

@@ -6,16 +6,16 @@
 
 	udata
 IFDEF TEST
-_v_calc_aarg res 4
+v_calc_aarg res 4
 _v_calc_barg res 2
 _v_calc_tmp res 1
 _v_calc_bin_in res 2
 _v_calc_bcd_out res 2
-_v_calc_bcd_count res 1
 _v_calc_count res 1
 v_calc_10logADC res 2
 _v_calc_Kconv_dBm res 2
 _v_calc_bin_P_dBm res 2
+_v_calc_Kconv_inv res 2
 ENDIF
 
 	extern v_flh_offset_addr
@@ -25,6 +25,7 @@ IFDEF TEST
 	extern v_fwd_and_ref_mV
 	extern v_Pfwd_and_ref_dBm
 	extern f_eep_int_readbyte
+	extern f_calc_conv_bin_to_bcd_32b
 ENDIF
 
 	code
@@ -57,7 +58,7 @@ _f_calc_dble_dabble_bcd1
     daw
     movwf   _v_calc_bcd_out
     ;rlcf    _v_calc_bcd_out,F
-    decfsz  _v_calc_bcd_count,f
+    decfsz  _v_calc_count,f
     bra     _f_calc_dble_dabble_bcd1
 
 	return
@@ -93,7 +94,7 @@ ENDIF
   ;
   ;       16x16 Bit Unsigned Fixed Point Multiply 16 x 16 -> 32
   ;
-  ;       Input:  16 bit unsigned fixed point multiplicand in _v_calc_aarg+0, _v_calc_aarg+1
+  ;       Input:  16 bit unsigned fixed point multiplicand in v_calc_aarg+0, v_calc_aarg+1
   ;               16 bit unsigned fixed point multiplier in _v_calc_barg+0, _v_calc_barg+1
   ;
   ;       Result: AARG  <--  AARG * BARG
@@ -101,34 +102,34 @@ ENDIF
   ;**********************************************************************************************
 IFDEF TEST
 _f_calc_fxm1616u
-	    movff	_v_calc_aarg+1,_v_calc_tmp
+	    movff	v_calc_aarg+1,_v_calc_tmp
 
-  		movf	_v_calc_aarg+1,W
+  		movf	v_calc_aarg+1,W
   		MULWF	_v_calc_barg+1
-  		movff	PRODH,_v_calc_aarg+2
-  		movff	PRODL,_v_calc_aarg+3
+  		movff	PRODH,v_calc_aarg+2
+  		movff	PRODL,v_calc_aarg+3
 
-  		movf	_v_calc_aarg,W
+  		movf	v_calc_aarg,W
   		MULWF	_v_calc_barg
-  		movff	PRODH,_v_calc_aarg
-  		movff	PRODL,_v_calc_aarg+1
+  		movff	PRODH,v_calc_aarg
+  		movff	PRODL,v_calc_aarg+1
 
   		MULWF	_v_calc_barg+1
   		movf	PRODL,W
-  		ADDWF	_v_calc_aarg+2,F
+  		ADDWF	v_calc_aarg+2,F
   		movf	PRODH,W
-  		ADDWFC	_v_calc_aarg+1,F
+  		ADDWFC	v_calc_aarg+1,F
       movlw 0x00
-  		ADDWFC	_v_calc_aarg,F
+  		ADDWFC	v_calc_aarg,F
 
   		movf	_v_calc_tmp,W
   		MULWF	_v_calc_barg
   		movf	PRODL,W
-  		ADDWF	_v_calc_aarg+2,F
+  		ADDWF	v_calc_aarg+2,F
   		movf	PRODH,W
-  		ADDWFC	_v_calc_aarg+1,F
+  		ADDWFC	v_calc_aarg+1,F
       movlw 0x00
-  		ADDWFC	_v_calc_aarg,F
+  		ADDWFC	v_calc_aarg,F
 
   		return
 ENDIF
@@ -161,16 +162,16 @@ IFDEF DEBUG_ISSUE_379
   movwf _v_calc_count
 _f_calc_div_by_4096_1
   bcf STATUS,C
- 	rrcf _v_calc_aarg+1,f
- 	rrcf _v_calc_aarg+2,f
- 	rrcf _v_calc_aarg+3,f
+ 	rrcf v_calc_aarg+1,f
+ 	rrcf v_calc_aarg+2,f
+ 	rrcf v_calc_aarg+3,f
   decfsz _v_calc_count
   goto _f_calc_div_by_4096_1
   return
 ELSE
-	lfsr FSR2, _v_calc_aarg
+	lfsr FSR2, v_calc_aarg
 	call _f_calc_shift_12bits
-	lfsr FSR2, _v_calc_aarg+2
+	lfsr FSR2, v_calc_aarg+2
 	call _f_calc_shift_12bits
 	return
 ENDIF ;ISSUE_379
@@ -216,7 +217,7 @@ f_calc_V_mV
   movwf _v_calc_barg+1
 
 	lfsr FSR0, v_fwd_and_ref_bin
-	lfsr FSR1, _v_calc_aarg
+	lfsr FSR1, v_calc_aarg
 	call _f_calc_parse_fwd_bin
 
   call _f_calc_fxm1616u
@@ -226,17 +227,21 @@ f_calc_V_mV
 
   ;; Conversion 12 bits en BCD
 	movlw   D'12'  ;ou 11 ?
-	movwf   _v_calc_bcd_count
-	movff _v_calc_aarg+2,_v_calc_bin_in
-	movff _v_calc_aarg+3,_v_calc_bin_in+1
+	movwf   _v_calc_count
+IF 0
+	movff v_calc_aarg+2,_v_calc_bin_in
+	movff v_calc_aarg+3,_v_calc_bin_in+1
+ENDIF
 	call _f_calc_dble_dabble_bcd
+IF 0
 	movff _v_calc_bcd_out,v_fwd_and_ref_mV
 	movff _v_calc_bcd_out+1,v_fwd_and_ref_mV+1
+ENDIF
 
 	;;REF
 	;;FXM1616U (ADC,(5000)10) 
 	lfsr FSR0, v_fwd_and_ref_bin+1
-	lfsr FSR1, _v_calc_aarg
+	lfsr FSR1, v_calc_aarg
 	call _f_calc_parse_ref_bin
 
   call _f_calc_fxm1616u
@@ -246,9 +251,9 @@ f_calc_V_mV
 
 	;; Conversion 12 bits en BCD
 	movlw   D'12'  ;ou 11 ?
-	movwf   _v_calc_bcd_count
-	movff _v_calc_aarg+2,_v_calc_bin_in
-	movff _v_calc_aarg+3,_v_calc_bin_in+1
+	movwf   _v_calc_count
+	movff v_calc_aarg+2,_v_calc_bin_in
+	movff v_calc_aarg+3,_v_calc_bin_in+1
 	call _f_calc_dble_dabble_bcd
 	movff _v_calc_bcd_out,v_fwd_and_ref_mV+2
 	movff _v_calc_bcd_out+1,v_fwd_and_ref_mV+3
@@ -306,7 +311,7 @@ _f_calc_P_dBm_1
 
   ;; Conversion 12 bits en BCD
 	movlw   D'12'  ;ou 11 ?
-	movwf   _v_calc_bcd_count
+	movwf   _v_calc_count
 	movff _v_calc_bin_P_dBm,_v_calc_bin_in
 	movff _v_calc_bin_P_dBm+1,_v_calc_bin_in+1
 	call _f_calc_dble_dabble_bcd
@@ -319,6 +324,29 @@ ENDIF
 
 IFDEF TEST
 f_calc_P_W
+
+	;Recherche de la valeur de Kconv(dBm) pour chaque port (FWD)
+	movlw EEP_KCONV_FWD_BANDE2
+	call f_eep_int_readbyte
+	movwf _v_calc_Kconv_inv
+	movlw EEP_KCONV_FWD_BANDE2+1
+	call f_eep_int_readbyte
+	movwf _v_calc_Kconv_inv+1
+
+
+  ;;FXM1616U (ADC,1/Kconv) 
+  movff _v_calc_Kconv_inv,_v_calc_barg
+  movff _v_calc_Kconv_inv+1,_v_calc_barg+1
+
+	lfsr FSR0, v_fwd_and_ref_bin
+	lfsr FSR1, v_calc_aarg
+	call _f_calc_parse_fwd_bin
+
+  call _f_calc_fxm1616u
+
+	;;Conversion BCD 32 bits
+	call f_calc_conv_bin_to_bcd_32b
+
 	return
 ENDIF
 
@@ -327,6 +355,7 @@ IFDEF TEST
 	global f_calc_P_dBm
 	global v_calc_10logADC
 	global f_calc_P_W
+	global v_calc_aarg
 ENDIF
 
 	end
