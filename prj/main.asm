@@ -172,6 +172,7 @@ IFDEF TEST
 ELSE
 IFDEF CALIBRATION
 ENDIF
+IFDEF xWATT || SWR_POWER_METER
 	incf v_bande
 ENDIF
 
@@ -258,11 +259,9 @@ menu_puissance_dBm
 	call f_lcd_aff_PdBm_ascii
 
 	goto loop
-ELSE
+ELSE ;;TEST
 IFDEF CALIBRATION
 ENDIF
-
-
 IFDEF SWR_POWER_METER
 	;;
 	;; Calcul de Pfwd et Pref en W
@@ -281,7 +280,7 @@ IFDEF SWR_POWER_METER
 	;call f_lcd_aff_ADCfwd_over_ADCref_ascii
 
 	goto loop
-ELSE;;xWATT METER
+ELIF xWATT
 	
 	;;
 	;; Calcul de Pfwd et Pref en dBm
@@ -294,8 +293,8 @@ ELSE;;xWATT METER
 
 	goto loop
 
-ENDIF
-ENDIF
+ENDIF ;;OPERATIONNEL
+ENDIF ;;TEST
 
 
 ;-----------------------------------------
@@ -324,6 +323,14 @@ f_boot_log
 IFDEF TEST
 	movlw 'T'
 	movwf v_log_data
+ELSE
+IFDEF CALIBRATION
+	movlw 'T'
+	movwf v_log_data
+ELSE
+	movlw 'O'
+	movwf v_log_data
+ENDIF
 ENDIF
 	movlw 0x01
 	call f_eep_int_readbyte
@@ -379,14 +386,19 @@ IFDEF TEST
 	global v_Pfwd_and_ref_dBm_ascii
 ELSE
 IFDEF CALIBRATION
+	global v_fwd_and_ref_bin
+	global v_fwd_and_ref_ascii
 ENDIF
+IFDEF SWR_POWER_METER
 	global v_bande
 	global v_fwd_and_ref_bin
-IFDEF SWR_POWER_METER
 	global v_Pfwd_W
 	global v_Pfwd_W_ascii
-ELSE ;;xWATT
+ELIF xWATT
+	global v_bande
+	global v_fwd_and_ref_bin
 	global v_Pfwd_and_ref_dBm
 	global v_Pfwd_and_ref_dBm_ascii
 ENDIF
+
 	end

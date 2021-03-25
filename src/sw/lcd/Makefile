@@ -12,6 +12,7 @@ SRC +=aff.asm
 
 OBJ_TEST = $(SRC:.asm=.TEST.o)
 OBJ_xWATT = $(SRC:.asm=.xWATT.o)
+OBJ_SWR_POWER_METER = $(SRC:.asm=.SWR_POWER_METER.o)
 
 
 ../../../bin/libtest$(COMP).a : $(OBJ_TEST)
@@ -24,8 +25,16 @@ OBJ_xWATT = $(SRC:.asm=.xWATT.o)
 	rm *.o
 	rm *.lst
 
+../../../bin/libtest$(COMP).SWR_POWER_METER.a : $(OBJ_SWR_POWER_METER)
+	$(LD) $(LDFLAGS) $@ $^
+	rm *.o
+	rm *.lst
+
 %.TEST.o : %.asm
 	$(AS) $(ASFLAGS) $(INC_DIR) -DTEST $(DEBUG_ISSUE_n) -p $(PROCESSOR) $< -o $@
 
 %.xWATT.o : %.asm
 	$(AS) $(ASFLAGS) $(INC_DIR) -DxWATT $(DEBUG_ISSUE_n) -p $(PROCESSOR) $< -o $@
+
+%.SWR_POWER_METER.o : %.asm
+	$(AS) $(ASFLAGS) $(INC_DIR) -DSWR_POWER_METER $(DEBUG_ISSUE_n) -p $(PROCESSOR) $< -o $@
