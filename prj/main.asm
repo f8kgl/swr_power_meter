@@ -40,14 +40,15 @@ IFDEF TEST
 	extern Del_11us ;pour trace timer 0 uniquement
 	extern D160us ;pour trace timer 0 uniquement
 	extern f_lcd_aff_PdBm_ascii
-ELSE
+ENDIF
 IFDEF CALIBRATION
 ENDIF
 IFDEF SWR_POWER_METER
 	extern f_calc_P_W
 	extern f_calc_conv_W_to_ascii
 	extern f_lcd_aff_P_W_ascii
-ELSE ;;xWATT
+ENDIF
+IFDEF xWATT
 	extern f_calc_P_dBm
 	extern f_calc_conv_dBm_to_ascii
 	extern f_lcd_aff_PdBm_ascii
@@ -55,31 +56,30 @@ ENDIF
 
 
 	udata
+v_fwd_and_ref_bin res 3 ;FWD=12bits - REF=12bits => 24bits = 8*3
 
 IFDEF TEST
 v_menu res 1
 v_tmp res 2
-v_fwd_and_ref_bin res 3 ;FWD=12bits - REF=12bits => 24bits = 8*3
 v_fwd_and_ref_ascii res 6
 v_fwd_and_ref_mV res 4 ;2 octets par port (4 bits BCD par digit)
 v_fwd_and_ref_mV_ascii res 8 ;4 digits par port
 v_Pfwd_and_ref_dBm res 3;3 octets (12 bits par port)
 v_Pfwd_and_ref_dBm_ascii res 6;3 digits par port
-
-ELSE
+ENDIF
 IFDEF CALIBRATION
 ENDIF
+IFDEF OPERATIONNEL
 v_bande res 1
-v_fwd_and_ref_bin res 3 ;FWD=12bits - REF=12bits => 24bits = 8*3
+ENDIF
 IFDEF SWR_POWER_METER
 v_Pfwd_W res 5
 v_Pfwd_W_ascii res 10
-ELSE
+ENDIF
+IFDEF xWATT
 v_Pfwd_and_ref_dBm res 3;3 octets (12 bits par port)
 v_Pfwd_and_ref_dBm_ascii res 6;3 digits par port
 ENDIF
-ENDIF
-
 
 	code
 	goto Boot ;
@@ -140,11 +140,13 @@ ENDIF
 
 IFDEF TEST
 	clrf v_menu ; menu mesure par défaut au démarrage
-ELSE
+ENDIF
 IFDEF CALIBRATION
 ENDIF
+IFDEF OPERATIONNEL
 	clrf v_bande
 ENDIF
+
 
 loop
 
@@ -169,10 +171,10 @@ IFDEF TEST
 	incf v_menu,f
 	;; Effacer le LCD (lcd_clear)
 	call f_lcd_clear
-ELSE
+ENDIF
 IFDEF CALIBRATION
 ENDIF
-IFDEF xWATT || SWR_POWER_METER
+IFDEF OPERATIONNEL
 	incf v_bande
 ENDIF
 
@@ -259,7 +261,7 @@ menu_puissance_dBm
 	call f_lcd_aff_PdBm_ascii
 
 	goto loop
-ELSE ;;TEST
+ENDIF
 IFDEF CALIBRATION
 ENDIF
 IFDEF SWR_POWER_METER
@@ -280,8 +282,9 @@ IFDEF SWR_POWER_METER
 	;call f_lcd_aff_ADCfwd_over_ADCref_ascii
 
 	goto loop
-ELIF xWATT
-	
+ENDIF
+IFDEF xWATT
+
 	;;
 	;; Calcul de Pfwd et Pref en dBm
 	;;
@@ -293,8 +296,7 @@ ELIF xWATT
 
 	goto loop
 
-ENDIF ;;OPERATIONNEL
-ENDIF ;;TEST
+ENDIF
 
 
 ;-----------------------------------------
@@ -323,14 +325,14 @@ f_boot_log
 IFDEF TEST
 	movlw 'T'
 	movwf v_log_data
-ELSE
+ENDIF
 IFDEF CALIBRATION
 	movlw 'T'
 	movwf v_log_data
-ELSE
+ENDIF
+IFDEF OPERATIONNEL
 	movlw 'O'
 	movwf v_log_data
-ENDIF
 ENDIF
 	movlw 0x01
 	call f_eep_int_readbyte
@@ -377,26 +379,25 @@ ENDIF
 
 	return
 
-IFDEF TEST
 	global v_fwd_and_ref_bin
+IFDEF TEST
 	global v_fwd_and_ref_mV
 	global v_fwd_and_ref_ascii
 	global v_fwd_and_ref_mV_ascii
 	global v_Pfwd_and_ref_dBm
 	global v_Pfwd_and_ref_dBm_ascii
-ELSE
+ENDIF
 IFDEF CALIBRATION
-	global v_fwd_and_ref_bin
 	global v_fwd_and_ref_ascii
 ENDIF
-IFDEF SWR_POWER_METER
+IFDEF OPERATIONNEL
 	global v_bande
-	global v_fwd_and_ref_bin
+ENDIF
+IFDEF SWR_POWER_METER
 	global v_Pfwd_W
 	global v_Pfwd_W_ascii
-ELIF xWATT
-	global v_bande
-	global v_fwd_and_ref_bin
+ENDIF
+IFDEF xWATT
 	global v_Pfwd_and_ref_dBm
 	global v_Pfwd_and_ref_dBm_ascii
 ENDIF

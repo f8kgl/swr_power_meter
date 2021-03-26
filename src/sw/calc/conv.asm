@@ -6,18 +6,25 @@ include "ltc2305.inc"
 _v_calc_conv_count res 1
 _v_calc_conv_tmp res 1
 
+  extern v_calc_aarg
   extern v_fwd_and_ref_bin
+IFDEF TEST
   extern v_fwd_and_ref_ascii
   extern v_fwd_and_ref_mV
   extern v_fwd_and_ref_mV_ascii
   extern v_Pfwd_and_ref_dBm
   extern v_Pfwd_and_ref_dBm_ascii
-  extern v_Pfwd_W
-  extern v_calc_aarg
+ENDIF
+IFDEF CALIBRATION
+ENDIF
+IFDEF SWR_POWER_METER
   extern v_Pfwd_W
   extern v_Pfwd_W_ascii
-
-
+ENDIF
+IFDEF xWATT
+  extern v_Pfwd_and_ref_dBm
+  extern v_Pfwd_and_ref_dBm_ascii
+ENDIF
 
 	code
 IFDEF TEST
@@ -65,7 +72,7 @@ _f_calc_conv_ascii_table_2
 	return
 ENDIF
 
-IFDEF TEST
+IFDEF SWR_POWER_METER
 ;******************************************************************
 ; Convert 32-bit binary number at <bin> into a bcd number
 ; at <bcd>. Uses Mike Keitz's procedure for handling bcd
@@ -160,7 +167,7 @@ f_calc_conv_dBm_to_ascii
 	return
 ENDIF
 
-IFDEF TEST
+IFDEF SWR_POWER_METER
 f_calc_conv_W_to_ascii
 	lfsr FSR0, v_Pfwd_W
 	lfsr FSR1, v_Pfwd_W_ascii
@@ -174,7 +181,11 @@ ENDIF
 IFDEF TEST
 	global f_calc_conv_bin_to_ascii
 	global f_calc_conv_mV_to_ascii
+ENDIF
+IFDEF xWATT
 	global f_calc_conv_dBm_to_ascii
+ENDIF
+IFDEF SWR_POWER_METER
 	global f_calc_conv_W_to_ascii
   global f_calc_conv_bin_to_bcd_32b
 ENDIF

@@ -93,6 +93,7 @@ clean:
 	rm -f *.lst
 	rm -f ../bin/*.stc
 	rm -f ../bin/swr_power_meter_f8kgl*
+	rm -f ../bin/lib*
 	find ../ -name '*.o' -exec rm -r {} \;
 	find ../ -name '*.lst' -exec rm -r {} \;
 
@@ -119,16 +120,16 @@ $(OUTPUT_TEST) : $(OBJS_TEST) $(LIBS_TEST)
 	rm $^
 	rm *.lst
 	rm -f ../src/sw/data/*.lst
-	
+
 #Règle du firmware de calibration
-$(OUTPUT_CALIBRATION) : 
+$(OUTPUT_CALIBRATION) :
 	rm $^
 	rm *.lst
 	rm -f ../src/sw/data/*.lst
 
 #Règle des firmware operationnel
 $(OUTPUT_xWATT) : $(OBJS_xWATT) $(LIBS_xWATT)
-	$(LD) $(LDFLAGS) -DxWATT $(DEBUG_LDFLAGS) -s $(SCRIPT) -o ../bin/$(OUTPUT) $^
+	$(LD) $(LDFLAGS) -DxWATT -DOPERATIONNEL $(DEBUG_LDFLAGS) -s $(SCRIPT) -o ../bin/$(OUTPUT) $^
 	rm $^
 	rm *.lst
 	rm -f ../src/sw/data/*.lst
@@ -142,22 +143,20 @@ $(OUTPUT_SWR_POWER_METER) : $(OBJS_SWR_POWER_METER) $(LIBS_SWR_POWER_METER)
 #Règle d'une librairie de test (ie compilation des composants sw)
 ../bin/libtest%.a:
 	make -C $(@:../bin/libtest%.a=../src/sw/%)
-	
+
 #Règle d'une librairie du fw opérationnel (ie compilation des composants sw)
 ../bin/lib%.xWATT.a:
 	make -C $(@:../bin/lib%.xWATT.a=../src/sw/%)
 ../bin/lib%.SWR_POWER_METER.a:
 	make -C $(@:../bin/lib%.SWR_POWER_METER.a=../src/sw/%)
-	
+
 
 #Règle d’un objet de test (ie compilation des sources commun avec le flag TEST)
 %.TEST.o : %.asm
-	$(AS) $(ASFLAGS)  -D$(TEST_FLAGS) $(DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
+	$(AS) $(ASFLAGS) -DTEST $(DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
 
 #Règle d’un objet opérationnel (ie compilation des sources commun)
 %.SWR_POWER_METER.o : %.asm
 	$(AS) $(ASFLAGS) -DSWR_POWER_METER $(DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
 %.xWATT.o : %.asm
-	$(AS) $(ASFLAGS) -DxWATT $(DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
-
-
+	$(AS) $(ASFLAGS) -DxWATT -DOPERATIONNEL $(DEBUG_ISSUE_n) -p $(PROCESSOR) $(INC_DIR) -o $@ $<
