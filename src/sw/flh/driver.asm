@@ -1,10 +1,13 @@
 	include "p18f1320.inc" ;include the defaults for the chip
 
+
 	udata
 v_flh_offset_addr res 2
 
+
 	extern v_calc_10logADC
 	extern c_10logADC_table
+
 
 	code
 ;-----------------------------------------
@@ -39,7 +42,8 @@ _f_flh_get_word_10logADC_4
 	movwf v_calc_10logADC
 
 	return
-
+	
 	global v_flh_offset_addr
 	global f_flh_get_word_10logADC
+
 	end

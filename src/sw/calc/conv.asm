@@ -27,7 +27,7 @@ IFDEF xWATT
 ENDIF
 
 	code
-IFDEF TEST
+
 ;-----------------------------------------
 ;Fonction : Conversion hexa-ASCII
 ;Nom : lcd_convtoascii
@@ -70,7 +70,7 @@ _f_calc_conv_ascii_table_2
 	retlw 0x45		;'E'
 	retlw 0x46		;'F'
 	return
-ENDIF
+
 
 IFDEF SWR_POWER_METER
 ;******************************************************************
@@ -120,7 +120,6 @@ _f_calc_conv_bin_to_bcd_32b_3
 ENDIF
 
 
-IFDEF TEST
 _f_calc_conv_bin_to_ascii
 	swapf INDF0,W
 	andlw 0x0F
@@ -133,8 +132,6 @@ _f_calc_conv_bin_to_ascii
 	decfsz _v_calc_conv_count
 	goto _f_calc_conv_bin_to_ascii
 	return
-ENDIF
-
 
 
 IFDEF TEST
@@ -157,7 +154,8 @@ f_calc_conv_mV_to_ascii
 	return
 ENDIF
 
-IFDEF TEST
+IFNDEF SWR_POWER_METER
+IFNDEF CALIBRATION
 f_calc_conv_dBm_to_ascii
 	lfsr FSR0, v_Pfwd_and_ref_dBm
 	lfsr FSR1, v_Pfwd_and_ref_dBm_ascii
@@ -165,6 +163,7 @@ f_calc_conv_dBm_to_ascii
 	movwf _v_calc_conv_count
 	call _f_calc_conv_bin_to_ascii
 	return
+ENDIF
 ENDIF
 
 IFDEF SWR_POWER_METER
@@ -181,13 +180,14 @@ ENDIF
 IFDEF TEST
 	global f_calc_conv_bin_to_ascii
 	global f_calc_conv_mV_to_ascii
+	global f_calc_conv_dBm_to_ascii
 ENDIF
 IFDEF xWATT
 	global f_calc_conv_dBm_to_ascii
 ENDIF
 IFDEF SWR_POWER_METER
 	global f_calc_conv_W_to_ascii
-  global f_calc_conv_bin_to_bcd_32b
+	global f_calc_conv_bin_to_bcd_32b
 ENDIF
 
     end

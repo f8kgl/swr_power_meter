@@ -33,15 +33,15 @@ GPSIM_FLAGS := Y # mettre n pour la version non GPSIM
 #export DEBUG_ISSUE_n =
 ifeq ($(GPSIM_FLAGS),n)
 export DEBUG_ISSUE_n =
-OUTPUT_TEST = $(NAME)$(VERSION).TEST.hex
-OUTPUT_CALIBRATION = $(NAME)$(VERSION).CALIBRATION.hex
+OUTPUT_TEST = $(SWR_POWER_METER_HW)$(NAME)$(VERSION).TEST.hex
+OUTPUT_CALIBRATION = $(SWR_POWER_METER_HW)$(NAME)$(VERSION).CALIBRATION.hex
 OUTPUT_xWATT = $(xWATT_HW)$(NAME)$(VERSION).hex
 OUTPUT_SWR_POWER_METER = $(SWR_POWER_METER_HW)$(NAME)$(VERSION).hex
 else
 export DEBUG_ISSUE_n =
 export DEBUG_ISSUE_n = -DDEBUG_ISSUE_379 -DDEBUG_ISSUE_380 -DDEBUG_ISSUE_389
-OUTPUT_TEST = $(NAME)$(VERSION).TEST.GPSIM.hex
-OUTPUT_CALIBRATION = $(NAME)$(VERSION).CALIBRATION.GPSIM.hex
+OUTPUT_TEST = $(SWR_POWER_METER_HW)$(NAME)$(VERSION).TEST.GPSIM.hex
+OUTPUT_CALIBRATION = $(SWR_POWER_METER_HW)$(NAME)$(VERSION).CALIBRATION.GPSIM.hex
 OUTPUT_xWATT = $(xWATT_HW)$(NAME)$(VERSION).GPISM.hex
 OUTPUT_SWR_POWER_METER = $(SWR_POWER_METER_HW)$(NAME)$(VERSION).GPISM.hex
 endif
@@ -55,7 +55,7 @@ COMPS +=adc
 COMPS +=calc
 COMPS +=bp
 COMPS +=log
-COMPS +=flh
+#COMPS +=flh
 
 #Sources
 SRC_COMMUN = main.asm
@@ -74,25 +74,32 @@ OBJS_SWR_POWER_METER = $(OBJS_COMMUN_SWR_POWER_METER)
 #Librairies
 LIBS_TEST = $(COMPS:%=../bin/libtest%.a)
 LIBS_CALIBRATION = $(COMPS:%=../bin/libcalib%.a)
-LIBS_xWATT = $(COMPS:%=../bin/%.xWATT.a)
-LIBS_SWR_POWER_METER = $(COMPS:%=../bin/%.SWR_POWER_METER.a)
+LIBS_xWATT = $(COMPS:%=../bin/lib%.xWATT.a)
+LIBS_SWR_POWER_METER = $(COMPS:%=../bin/lib%.SWR_POWER_METER.a)
+#pas besoin du driver de flh pour le SWR POWER METER
+LIBS_TEST += ../bin/libtestflh.a
+LIBS_xWATT += ../bin/libflh.xWATT.a
+
 
 #Rules
-all : project update_gpsim_prj $(OUTPUT_TEST) $(OUTPUT_CALIBRATION) $(OUTPUT_xWATT)
+all : project update_gpsim_prj test calibration operationnel
 
-rule_test : project $(OUTPUT_TEST)
+test : project $(OUTPUT_TEST)
 
-rule_calibration : project $(OUTPUT_CALIBRATION)
+calibration : project $(OUTPUT_CALIBRATION)
 
-xWATT : project $(OUTPUT_xWATT)
+operationnel : project xWATT SWR_POWER_METER
 
-SWR_POWER_METER : project $(OUTPUT_SWR_POWER_METER)
+xWATT : $(OUTPUT_xWATT)
+
+SWR_POWER_METER : $(OUTPUT_SWR_POWER_METER)
 
 clean:
 	rm -f *.o
 	rm -f *.lst
 	rm -f ../bin/*.stc
 	rm -f ../bin/swr_power_meter_f8kgl*
+	rm -f ../bin/xWATT_f8kgl*
 	rm -f ../bin/lib*
 	find ../ -name '*.o' -exec rm -r {} \;
 	find ../ -name '*.lst' -exec rm -r {} \;
@@ -129,26 +136,26 @@ $(OUTPUT_CALIBRATION) :
 
 #Règle des firmware operationnel
 $(OUTPUT_xWATT) : $(OBJS_xWATT) $(LIBS_xWATT)
-	$(LD) $(LDFLAGS) -DxWATT -DOPERATIONNEL $(DEBUG_LDFLAGS) -s $(SCRIPT) -o ../bin/$(OUTPUT) $^
+	$(LD) $(LDFLAGS) $(DEBUG_LDFLAGS) -s $(SCRIPT) -o ../bin/$(OUTPUT_xWATT) $^
 	rm $^
 	rm *.lst
 	rm -f ../src/sw/data/*.lst
 
 $(OUTPUT_SWR_POWER_METER) : $(OBJS_SWR_POWER_METER) $(LIBS_SWR_POWER_METER)
-	$(LD) $(LDFLAGS) -DSWR_POWER_METER $(DEBUG_LDFLAGS) -s $(SCRIPT) -o ../bin/$(OUTPUT) $^
+	$(LD) $(LDFLAGS) $(DEBUG_LDFLAGS) -s $(SCRIPT) -o ../bin/$(OUTPUT_SWR_POWER_METER) $^
 	rm $^
 	rm *.lst
 	rm -f ../src/sw/data/*.lst
 
 #Règle d'une librairie de test (ie compilation des composants sw)
 ../bin/libtest%.a:
-	make -C $(@:../bin/libtest%.a=../src/sw/%)
+	make -C $(@:../bin/libtest%.a=../src/sw/%) ../../$@
 
 #Règle d'une librairie du fw opérationnel (ie compilation des composants sw)
 ../bin/lib%.xWATT.a:
-	make -C $(@:../bin/lib%.xWATT.a=../src/sw/%)
+	make -C $(@:../bin/lib%.xWATT.a=../src/sw/%) ../../$@
 ../bin/lib%.SWR_POWER_METER.a:
-	make -C $(@:../bin/lib%.SWR_POWER_METER.a=../src/sw/%)
+	make -C $(@:../bin/lib%.SWR_POWER_METER.a=../src/sw/%) ../../$@
 
 
 #Règle d’un objet de test (ie compilation des sources commun avec le flag TEST)

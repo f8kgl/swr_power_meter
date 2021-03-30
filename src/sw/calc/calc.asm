@@ -5,31 +5,50 @@
 
 
 	udata
+_v_calc_tmp res 1
 IFDEF TEST
 v_calc_aarg res 4
 _v_calc_barg res 2
-_v_calc_tmp res 1
 _v_calc_bin_in res 2
 _v_calc_bcd_out res 2
 _v_calc_count res 1
 v_calc_10logADC res 2
 _v_calc_Kconv_dBm res 2
 _v_calc_bin_P_dBm res 2
+ENDIF
+IFDEF xWATT
+_v_calc_bin_in res 2
+_v_calc_bcd_out res 2
+_v_calc_count res 1
+v_calc_10logADC res 2
+_v_calc_Kconv_dBm res 2
+_v_calc_bin_P_dBm res 2
+ENDIF
+IFDEF SWR_POWER_METER
+v_calc_aarg res 4
+_v_calc_barg res 2
 _v_calc_Kconv_inv res 2
 ENDIF
 
-	extern v_flh_offset_addr
-	extern f_flh_get_word_10logADC
-IFDEF TEST
+	extern f_eep_int_readbyte
 	extern v_fwd_and_ref_bin
+IFDEF TEST
 	extern v_fwd_and_ref_mV
 	extern v_Pfwd_and_ref_dBm
-	extern f_eep_int_readbyte
+	extern v_flh_offset_addr
+	extern f_flh_get_word_10logADC
+ENDIF
+IFDEF xWATT
+	extern v_Pfwd_and_ref_dBm
+	extern v_flh_offset_addr
+	extern f_flh_get_word_10logADC
+ENDIF
+IFDEF SWR_POWER_METER
 	extern f_calc_conv_bin_to_bcd_32b
 ENDIF
 
 	code
-IFDEF TEST
+IFNDEF SWR_POWER_METER
   ;-----------------------------------------
   ;Fonction : Conversion hexa-bcd
   ;Nom : f_calc_conv_to_bcd
@@ -65,7 +84,7 @@ _f_calc_dble_dabble_bcd1
 ENDIF
 
 
-IFDEF TEST
+
 _f_calc_parse_fwd_bin
   swapf INDF0,W
   andlw 0x0F
@@ -87,7 +106,7 @@ _f_calc_parse_ref_bin
   clrf INDF1
   movff POSTINC0,INDF1
 	return
-ENDIF
+
 
   ;**********************************************************************************************
   ;**********************************************************************************************
@@ -100,7 +119,8 @@ ENDIF
   ;       Result: AARG  <--  AARG * BARG
   ;**********************************************************************************************
   ;**********************************************************************************************
-IFDEF TEST
+IFNDEF CALIBRATION
+IFNDEF xWATT
 _f_calc_fxm1616u
 	    movff	v_calc_aarg+1,_v_calc_tmp
 
@@ -132,6 +152,7 @@ _f_calc_fxm1616u
   		ADDWFC	v_calc_aarg,F
 
   		return
+ENDIF
 ENDIF
 
 IFDEF TEST
@@ -177,7 +198,8 @@ ELSE
 ENDIF ;ISSUE_379
 ENDIF
 
-IFDEF TEST
+IFNDEF SWR_POWER_METER
+IFNDEF CALIBRATION
 _f_calc_Kconv_sub_10logADC
 ;;Kconv - 10*log(ADC) sur 12 bits
 ;;; résultat dans _v_calc_bin_P_dBm aligné à gauche
@@ -204,6 +226,7 @@ _f_calc_Kconv_sub_10logADC_1
 	decfsz _v_calc_count
 	goto _f_calc_Kconv_sub_10logADC_1
 	return
+ENDIF
 ENDIF
 
 
@@ -261,7 +284,8 @@ ENDIF
 	return
 ENDIF
 
-IFDEF TEST
+IFNDEF SWR_POWER_METER
+IFNDEF CALIBRATION
 f_calc_P_dBm
 
 	;Port = FWD
@@ -321,8 +345,9 @@ _f_calc_P_dBm_1
 _f_calc_P_dBm_2
 	return
 ENDIF
+ENDIF
 
-IFDEF TEST
+IFDEF SWR_POWER_METER
 f_calc_P_W
 
 	;Recherche de la valeur de Kconv(dBm) pour chaque port (FWD)
@@ -354,6 +379,13 @@ IFDEF TEST
 	global f_calc_V_mV
 	global f_calc_P_dBm
 	global v_calc_10logADC
+	global v_calc_aarg
+ENDIF
+IFDEF xWATT
+	global f_calc_P_dBm
+	global v_calc_10logADC
+ENDIF
+IFDEF SWR_POWER_METER
 	global f_calc_P_W
 	global v_calc_aarg
 ENDIF

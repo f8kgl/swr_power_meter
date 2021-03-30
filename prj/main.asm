@@ -57,10 +57,10 @@ ENDIF
 
 	udata
 v_fwd_and_ref_bin res 3 ;FWD=12bits - REF=12bits => 24bits = 8*3
+v_tmp res 2
 
 IFDEF TEST
 v_menu res 1
-v_tmp res 2
 v_fwd_and_ref_ascii res 6
 v_fwd_and_ref_mV res 4 ;2 octets par port (4 bits BCD par digit)
 v_fwd_and_ref_mV_ascii res 8 ;4 digits par port

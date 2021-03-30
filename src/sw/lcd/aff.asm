@@ -6,22 +6,28 @@
 
   	udata
 v_lcd_charpos res 1
-IFDEF TEST
 v_lcd_tmp res 1
 v_lcd_string res 3 ;a priori, la taille max est de 3 : FWD, REF, ADC
 v_lcd_string_len res 1
 v_lcd_string_pos res 1
 v_lcd_p_string res 2
 v_lcd_dec res 2
-ENDIF
+
 
 	extern f_lcd_aff_char
 	extern f_lcd_setposcursor
 	extern f_eep_int_readbyte
 	extern c_bootmsgL1
 	extern c_bootmsgL2
+IFNDEF SWR_POWER_METER
+IFNDEF CALIBRATION
 	extern v_Pfwd_and_ref_dBm_ascii
+ENDIF
+ENDIF
+IFDEF SWR_POWER_METER
 	extern v_Pfwd_W_ascii
+ENDIF
+	
 
 
 	code
@@ -125,8 +131,8 @@ f_lcd_aff_fwd_and_ref
 	call f_lcd_aff
 	return
 
+IFNDEF SWR_POWER_METER
 f_lcd_aff_PdBm_ascii
-
 	call f_lcd_aff_fwd_and_ref
 	movlw 0x05
 	call f_lcd_setposcursor
@@ -148,7 +154,8 @@ f_lcd_aff_PdBm_ascii
 	call f_lcd_aff_char
 
 	return
-
+ENDIF
+	
 f_lcd_aff_adc_ascii
 	;;Affichage des valeurs d’ADC brute
 	call f_lcd_aff_fwd_and_ref
@@ -211,6 +218,7 @@ f_lcd_aff_adc_ascii
 	call f_lcd_aff_char
 	return
 
+IFDEF SWR_POWER_METER
 f_lcd_aff_P_W_ascii
 	movlw 0x00
 	call f_lcd_setposcursor
@@ -246,6 +254,7 @@ f_lcd_aff_P_W_ascii
 	call _f_lcd_set_ref_string
 	call f_lcd_aff
 	return
+ENDIF
 
 	global f_lcd_affboot
 	global f_lcd_aff
@@ -254,7 +263,14 @@ f_lcd_aff_P_W_ascii
 	global v_lcd_string_len
 	global v_lcd_string_pos
 	global v_lcd_p_string
+IFDEF TEST
 	global f_lcd_aff_PdBm_ascii
+ENDIF
+IFDEF xWATT
+	global f_lcd_aff_PdBm_ascii
+ENDIF
+IFDEF SWR_POWER_METER
 	global f_lcd_aff_P_W_ascii
+ENDIF
 
 	end
