@@ -66,10 +66,10 @@ SRC_COMMUN +=../src/sw/data/lcdmsg.asm
 #Objets
 OBJS_COMMUN_TEST = $(SRC_COMMUN:%.asm=%.TEST.o)
 OBJS_TEST = $(OBJS_COMMUN_TEST)
-OBJ_TEST += ../src/sw/data/10logADC.TEST.o
+OBJS_TEST += ../src/sw/data/10logADC.TEST.o
 OBJS_COMMUN_xWATT = $(SRC_COMMUN:%.asm=%.xWATT.o)
 OBJS_xWATT = $(OBJS_COMMUN_xWATT)
-OBJ_xWATT += ../src/sw/data/10logADC.xWATT.o
+OBJS_xWATT += ../src/sw/data/10logADC.xWATT.o
 OBJS_COMMUN_SWR_POWER_METER = $(SRC_COMMUN:%.asm=%.SWR_POWER_METER.o)
 OBJS_SWR_POWER_METER = $(OBJS_COMMUN_SWR_POWER_METER)
 
