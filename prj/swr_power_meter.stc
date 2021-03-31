@@ -1,5 +1,6 @@
 load s swr_power_meter_f8kgl-V0.8.TEST.GPSIM.cod
 frequency 4000000
 load c netlist.stc
-load e p18f1320 kconv_fwd.31032021054219.xWATT.hex
-load e p18f1320 kconv_fwd.31032021054219.SWR_POWER_METER.hex
+load e p18f1320 kconv_fwd.31032021213413.xWATT.hex
+load e p18f1320 kconv_ref.31032021213413.xWATT.hex
+load e p18f1320 kconv_fwd.31032021213413.SWR_POWER_METER.hex

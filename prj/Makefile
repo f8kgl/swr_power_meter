@@ -120,6 +120,7 @@ update_gpsim_prj:
 calibration_gpsim:
 	gcc $(DEBUG_ISSUE_n) -Wall ../src/tools/calibrator/calibrator.c -o ../src/tools/calibrator/calibrator -lm
 	../src/tools/calibrator/calibrator -t -a 2 -p 0.000001 -f
+	../src/tools/calibrator/calibrator -t -a 2 -p 0.000001 -r
 	mv kconv*.hex ../bin
 
 

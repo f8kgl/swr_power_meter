@@ -98,10 +98,10 @@ f_create_hex_file(t_calib *p_calib, char port[3])
     checksum++;
     sprintf(&(line[2][0]),":0200%02X00%02X%02X%02X\n",EEP_ADDR_KCONV_DBM_FWD_TEST,byte[1],byte[0],checksum);
   } else {
-    checksum = 0x02 + EEP_ADDR_KCONV_DBM_REF_TEST + 0x00 + 0x00;
+    checksum = 0x02 + EEP_ADDR_KCONV_DBM_REF_TEST + byte[0] + byte[1];
     checksum =~checksum;
     checksum++;
-    sprintf(&(line[2][0]),":0200%02X000000%02X\n",EEP_ADDR_KCONV_DBM_REF_TEST,checksum);
+    sprintf(&(line[2][0]),":0200%02X00%02X%02X%02X\n",EEP_ADDR_KCONV_DBM_REF_TEST,byte[1],byte[0],checksum);
   }
 
   if (strcmp(port,"FWD")==0) {
@@ -153,6 +153,7 @@ f_create_hex_file(t_calib *p_calib, char port[3])
   write(fp,&(line[5][0]),length);
   close(fp);
 
+  if (strcmp(port,"FWD")==0) {
   sprintf(filename,"kconv_fwd.%02d%02d%04d%02d%02d%02d.SWR_POWER_METER.hex",
   timeInfos->tm_mday,timeInfos->tm_mon+1,timeInfos->tm_year+1900,
   timeInfos->tm_hour, timeInfos->tm_min, timeInfos->tm_sec);
@@ -184,7 +185,7 @@ f_create_hex_file(t_calib *p_calib, char port[3])
     write(fp,&(line[i][0]),length);
   }
   close(fp);
-
+  }
   return 0;
 }
 
