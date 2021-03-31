@@ -159,7 +159,7 @@ IFNDEF CALIBRATION
 f_calc_conv_dBm_to_ascii
 	lfsr FSR0, v_Pfwd_and_ref_dBm
 	lfsr FSR1, v_Pfwd_and_ref_dBm_ascii
-	movlw D'04'
+	movlw D'03'
 	movwf _v_calc_conv_count
 	call _f_calc_conv_bin_to_ascii
 	return
