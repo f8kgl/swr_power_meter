@@ -316,6 +316,25 @@ f_lcd_aff_P_W_ascii
 	return
 ENDIF
 
+
+IFDEF OPERATIONNEL
+f_lcd_aff_no_calibration
+	movlw 0x00
+	movwf v_lcd_charpos
+_f_lcd_aff_no_calibration_2
+	movf v_lcd_charpos, w ; put counter value in W
+	call c_no_calibrationmsg ; get a character from the text table
+	xorlw 0x00 ; is it a zero?
+	btfsc STATUS, Z
+	goto _f_lcd_aff_no_calibration_3 ; display next message if finished
+	call f_lcd_aff_char
+	incf v_lcd_charpos, f
+	incf v_lcd_charpos, f
+	goto _f_lcd_aff_no_calibration_2
+_f_lcd_aff_no_calibration_3
+	return
+ENDIF
+
 	global f_lcd_affboot
 	global f_lcd_aff
 	global f_lcd_aff_adc_ascii
@@ -331,6 +350,9 @@ IFDEF xWATT
 ENDIF
 IFDEF SWR_POWER_METER
 	global f_lcd_aff_P_W_ascii
+ENDIF
+IFNDEF CALIBRATION
+	global f_lcd_aff_no_calibration
 ENDIF
 
 	end

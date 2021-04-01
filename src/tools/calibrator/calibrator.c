@@ -118,7 +118,14 @@ f_create_hex_file(t_calib *p_calib, char port[3])
     sprintf(&(line[4][0]),":0200%02X00%04X%02X\n",EEP_ADDR_KCONV_UNIT_TEST,p_calib->unit,checksum);
   }
 
-  sprintf(&(line[5][0]),":00000001FF\n");
+   byte[1] = 0xFF;
+   byte[0] = 0xFF;
+   checksum = 0x02 + EEP_ADDR_CALIBRATION_DONE + byte[0] + byte[1];
+   checksum =~checksum;
+   checksum++;
+   sprintf(&(line[5][0]),":0200%02X00%02X%02X%02X\n",EEP_ADDR_CALIBRATION_DONE,byte[1],byte[0],checksum);
+ 
+	sprintf(&(line[6][0]),":00000001FF\n");
 
   if (strcmp(port,"FWD")==0)
     sprintf(filename,"kconv_fwd.%02d%02d%04d%02d%02d%02d.xWATT.hex",
@@ -138,6 +145,7 @@ f_create_hex_file(t_calib *p_calib, char port[3])
 #endif
     printf("%s",&(line[i][0]));
   printf("%s",&(line[5][0]));
+ printf("%s",&(line[6][0]));
 
   fp = open(filename, O_WRONLY | O_CREAT | O_APPEND, 0666);
 #ifdef DEBUG_ISSUE_389
@@ -151,7 +159,10 @@ f_create_hex_file(t_calib *p_calib, char port[3])
   }
   length = strlen(&(line[5][0]));
   write(fp,&(line[5][0]),length);
-  close(fp);
+ length = strlen(&(line[6][0]));
+  write(fp,&(line[6][0]),length);
+  
+ close(fp);
 
   if (strcmp(port,"FWD")==0) {
   sprintf(filename,"kconv_fwd.%02d%02d%04d%02d%02d%02d.SWR_POWER_METER.hex",
@@ -166,7 +177,7 @@ f_create_hex_file(t_calib *p_calib, char port[3])
   for (i=0;i<2;i++)
     printf("%s",&(line[i][0]));
 #endif
-  for (i=3;i<=5;i++)
+  for (i=3;i<=6;i++)
     printf("%s",&(line[i][0]));
   printf("------------------------------------------------------\n");
 
@@ -180,7 +191,7 @@ f_create_hex_file(t_calib *p_calib, char port[3])
     write(fp,&(line[i][0]),length);
   }
 #endif
-  for (i=3;i<=5;i++) {
+  for (i=3;i<=6;i++) {
     length = strlen(&(line[i][0]));
     write(fp,&(line[i][0]),length);
   }

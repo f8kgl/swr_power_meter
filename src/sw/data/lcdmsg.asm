@@ -111,37 +111,41 @@ _c_bootmsgL2_2
 	retlw 'L'
 	retlw 0x00
 
-IFDEF TEST
-c_msg_n_and_rdac
+
+
+IFDEF OPERATIONNEL
+c_no_calibrationmsg
 	movwf v_lcdmsg_temp
-	movlw HIGH _c_msg_n_and_rdac_2
+	movlw HIGH _c_no_calibrationmsg_2
 	movwf PCLATH
-	movlw _c_msg_n_and_rdac_2
+	movlw _c_no_calibrationmsg_2
 	addwf v_lcdmsg_temp,W
 	btfsc STATUS,C
 	incf PCLATH ;retenu à 1 => pas de changement de page
 	movf v_lcdmsg_temp,w
 	addwf PCL, f
-_c_msg_n_and_rdac_2
-	retlw 'G'
-	retlw '='
+_c_no_calibrationmsg_2
 	retlw ' '
+	retlw 'N'
+	retlw 'O'
 	retlw ' '
-	retlw 'D'
-	retlw 'A'
 	retlw 'C'
-	retlw '='
-	retlw ' '
-	retlw ' '
-	retlw ' '
-	retlw 'h'
+	retlw 'A'
+	retlw 'L'
+	retlw 'I'
+	retlw 'B'
+	retlw 'R'
+	retlw 'A'
+	retlw 'T'
+	retlw 'I'
+	retlw 'O'
+	retlw 'N'
 	retlw 0x00
 ENDIF
 
 	global c_bootmsgL1
 	global c_bootmsgL2
-IFDEF TEST
-	global c_msg_n_and_rdac
+IFDEF OPERATIONNEL
+	global c_no_calibrationmsg
 ENDIF
-
 	end

@@ -43,6 +43,8 @@ IFDEF TEST
 ENDIF
 IFDEF CALIBRATION
 ENDIF
+IFDEF OPERATIONNEL
+	extern f_lcd_aff_no_calibration
 IFDEF SWR_POWER_METER
 	extern f_calc_P_W
 	extern f_calc_conv_W_to_ascii
@@ -53,7 +55,7 @@ IFDEF xWATT
 	extern f_calc_conv_dBm_to_ascii
 	extern f_lcd_aff_PdBm_ascii
 ENDIF
-
+ENDIF
 
 	udata
 v_fwd_and_ref_bin res 3 ;FWD=12bits - REF=12bits => 24bits = 8*3
@@ -145,6 +147,7 @@ IFDEF CALIBRATION
 ENDIF
 IFDEF OPERATIONNEL
 	clrf v_bande
+	call f_check_calibration
 ENDIF
 
 
@@ -378,6 +381,23 @@ IFDEF TEST
 ENDIF
 
 	return
+
+IFDEF OPERATIONNEL
+f_check_calibration
+	;si pas de calibration, afficher le msg "NO CALIBRATION !!!"
+	movlw EEP_CALIBRATION_DONE
+	call f_eep_int_readbyte
+	movwf v_tmp
+	tstfsz v_tmp
+	goto f_check_calibration_end
+	call f_lcd_aff_no_calibration
+_f_check_calibration_loop
+	goto _f_check_calibration_loop
+f_check_calibration_end	
+	return
+ENDIF
+
+
 
 	global v_fwd_and_ref_bin
 IFDEF TEST
