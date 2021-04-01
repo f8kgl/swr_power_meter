@@ -67,7 +67,7 @@ v_fwd_and_ref_ascii res 6
 v_fwd_and_ref_mV res 4 ;2 octets par port (4 bits BCD par digit)
 v_fwd_and_ref_mV_ascii res 8 ;4 digits par port
 v_Pfwd_and_ref_dBm res 3;3 octets (12 bits par port)
-v_Pfwd_and_ref_dBm_ascii res 6;3 digits par port
+v_Pfwd_and_ref_dBm_ascii res 8;3 digits par port et la virgule
 ENDIF
 IFDEF CALIBRATION
 ENDIF
@@ -80,7 +80,7 @@ v_Pfwd_W_ascii res 10
 ENDIF
 IFDEF xWATT
 v_Pfwd_and_ref_dBm res 3;3 octets (12 bits par port)
-v_Pfwd_and_ref_dBm_ascii res 6;3 digits par port
+v_Pfwd_and_ref_dBm_ascii res 8;3 digits par port et la virgule
 ENDIF
 
 	code
@@ -393,7 +393,7 @@ f_check_calibration
 	call f_lcd_aff_no_calibration
 _f_check_calibration_loop
 	goto _f_check_calibration_loop
-f_check_calibration_end	
+f_check_calibration_end
 	return
 ENDIF
 

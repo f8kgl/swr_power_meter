@@ -154,7 +154,7 @@ f_lcd_aff_PdBm_ascii
 	movlw '-'
 	call f_lcd_aff_char
 
-	movlw D'03'
+	movlw D'04'
 	movwf v_lcd_string_len
 	movlw v_Pfwd_and_ref_dBm_ascii
 	movwf v_lcd_p_string+1
@@ -186,7 +186,7 @@ ENDIF
 	movlw '-'
 	call f_lcd_aff_char
 
-	movlw D'03'
+	movlw D'04'
 	movwf v_lcd_string_len
 	movlw v_Pfwd_and_ref_dBm_ascii+3
 	movwf v_lcd_p_string+1

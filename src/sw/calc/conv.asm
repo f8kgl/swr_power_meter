@@ -162,6 +162,31 @@ f_calc_conv_dBm_to_ascii
 	movlw D'03'
 	movwf _v_calc_conv_count
 	call _f_calc_conv_bin_to_ascii
+  ;insertion du '.'
+  movlw D'08'
+  movwf _v_calc_conv_tmp
+  bcf STATUS,C
+_f_calc_conv_dBm_to_ascii2
+  rrcf v_Pfwd_and_ref_dBm_ascii+2
+  rrcf v_Pfwd_and_ref_dBm_ascii+3
+  rrcf v_Pfwd_and_ref_dBm_ascii+4
+  rrcf v_Pfwd_and_ref_dBm_ascii+5
+  rrcf v_Pfwd_and_ref_dBm_ascii+6
+  decfsz _v_calc_conv_tmp
+  goto _f_calc_conv_dBm_to_ascii2
+  movlw '.'
+  movwf v_Pfwd_and_ref_dBm_ascii+2
+
+  movlw D'08'
+  movwf _v_calc_conv_tmp
+  bcf STATUS,C
+_f_calc_conv_dBm_to_ascii3
+  rrcf v_Pfwd_and_ref_dBm_ascii+6
+  rrcf v_Pfwd_and_ref_dBm_ascii+7
+  decfsz _v_calc_conv_tmp
+  goto _f_calc_conv_dBm_to_ascii3
+  movlw '.'
+  movwf v_Pfwd_and_ref_dBm_ascii+6
 	return
 ENDIF
 ENDIF

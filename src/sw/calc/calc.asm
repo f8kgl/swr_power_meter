@@ -76,7 +76,7 @@ _f_calc_dble_dabble_bcd1
     addwfc  _v_calc_bcd_out,W
     daw
     movwf   _v_calc_bcd_out
-    rlcf    _v_calc_bcd_out,F
+    ;rlcf    _v_calc_bcd_out,F
     decfsz  _v_calc_count,f
     bra     _f_calc_dble_dabble_bcd1
 
@@ -216,7 +216,7 @@ _f_calc_Kconv_sub_10logADC
                                 ;(although the Z flag is not valid).
 
 	;; rlcf _v_calc_bin_P_dBm à faire 4 fois avec propagation de la retenue
-	;; pour aligner à gauche
+	;; pour aligner à gauche pour la conversion BCD à suivre
 	bcf 	STATUS,C
 	movlw D'04'
 	movwf _v_calc_count
@@ -225,6 +225,7 @@ _f_calc_Kconv_sub_10logADC_1
 	rlcf _v_calc_bin_P_dBm
 	decfsz _v_calc_count
 	goto _f_calc_Kconv_sub_10logADC_1
+
 	return
 ENDIF
 ENDIF
@@ -286,6 +287,18 @@ ENDIF
 
 IFNDEF SWR_POWER_METER
 IFNDEF CALIBRATION
+_f_calc_left_align_P_dBm
+	;; alignement à gauche
+	bcf 	STATUS,C
+	movlw D'04'
+	movwf _v_calc_count
+_f_calc_left_align_P_dBm2
+	rlcf _v_calc_bcd_out+1
+	rlcf _v_calc_bcd_out
+	decfsz _v_calc_count
+	goto _f_calc_left_align_P_dBm2
+	return
+
 _f_calc_P_dBm
 	;SI ADC = 000, PdBm = 0xFF
 	tstfsz v_flh_offset_addr
@@ -370,8 +383,10 @@ ENDIF
 	movff _v_calc_bin_P_dBm,_v_calc_bin_in
 	movff _v_calc_bin_P_dBm+1,_v_calc_bin_in+1
 	call _f_calc_dble_dabble_bcd
+	call _f_calc_left_align_P_dBm
 	movff _v_calc_bcd_out,v_Pfwd_and_ref_dBm
 	movff _v_calc_bcd_out+1,v_Pfwd_and_ref_dBm+1
+
 IF 0
 _f_calc_P_dBm_2
 ENDIF
@@ -397,7 +412,7 @@ ENDIF
 	movff _v_calc_bin_P_dBm,_v_calc_bin_in
 	movff _v_calc_bin_P_dBm+1,_v_calc_bin_in+1
 	call _f_calc_dble_dabble_bcd
-	
+
 	movf v_Pfwd_and_ref_dBm+1,W
 	andlw 0xF0
 	movwf _v_calc_tmp
@@ -412,7 +427,7 @@ ENDIF
 	andlw 0x0F
 	iorwf _v_calc_tmp,W
 	movwf v_Pfwd_and_ref_dBm+2
-	
+
 IF 0
 	movff _v_calc_bcd_out,v_Pfwd_and_ref_dBm+1
 	movff _v_calc_bcd_out+1,v_Pfwd_and_ref_dBm+2
