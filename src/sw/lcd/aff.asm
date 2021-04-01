@@ -27,7 +27,7 @@ ENDIF
 IFDEF SWR_POWER_METER
 	extern v_Pfwd_W_ascii
 ENDIF
-	
+
 
 
 	code
@@ -153,13 +153,13 @@ f_lcd_aff_PdBm_ascii
 	call f_lcd_setposcursor
 	movlw '-'
 	call f_lcd_aff_char
-	
+
 	movlw D'03'
 	movwf v_lcd_string_len
 	movlw v_Pfwd_and_ref_dBm_ascii
 	movwf v_lcd_p_string+1
 	call f_lcd_aff
-IF 0	
+IF 0
 	movf v_Pfwd_and_ref_dBm_ascii,W
 	call f_lcd_aff_char
 	movf v_Pfwd_and_ref_dBm_ascii+1,W
@@ -185,7 +185,7 @@ ENDIF
 	call f_lcd_setposcursor
 	movlw '-'
 	call f_lcd_aff_char
-	
+
 	movlw D'03'
 	movwf v_lcd_string_len
 	movlw v_Pfwd_and_ref_dBm_ascii+3
@@ -215,7 +215,7 @@ ENDIF
 
 	return
 ENDIF
-	
+
 f_lcd_aff_adc_ascii
 	;;Affichage des valeurs d’ADC brute
 	call f_lcd_aff_fwd_and_ref
@@ -351,7 +351,7 @@ ENDIF
 IFDEF SWR_POWER_METER
 	global f_lcd_aff_P_W_ascii
 ENDIF
-IFNDEF CALIBRATION
+IFDEF OPERATIONNEL
 	global f_lcd_aff_no_calibration
 ENDIF
 
