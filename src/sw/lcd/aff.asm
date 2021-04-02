@@ -188,7 +188,7 @@ ENDIF
 
 	movlw D'04'
 	movwf v_lcd_string_len
-	movlw v_Pfwd_and_ref_dBm_ascii+3
+	movlw v_Pfwd_and_ref_dBm_ascii+4
 	movwf v_lcd_p_string+1
 	call f_lcd_aff
 
@@ -204,14 +204,13 @@ IF 0
 	call _f_lcd_set_dBm_string
 	call f_lcd_aff
 ENDIF
-IF 0
+
 	movlw 'd'
 	call f_lcd_aff_char
 	movlw 'B'
 	call f_lcd_aff_char
 	movlw 'm'
 	call f_lcd_aff_char
-ENDIF
 
 	return
 ENDIF

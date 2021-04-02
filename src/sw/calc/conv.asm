@@ -165,8 +165,8 @@ f_calc_conv_dBm_to_ascii
   ;insertion du '.'
   movlw D'08'
   movwf _v_calc_conv_tmp
-  bcf STATUS,C
 _f_calc_conv_dBm_to_ascii2
+  bcf STATUS,C
   rrcf v_Pfwd_and_ref_dBm_ascii+2
   rrcf v_Pfwd_and_ref_dBm_ascii+3
   rrcf v_Pfwd_and_ref_dBm_ascii+4
@@ -179,8 +179,8 @@ _f_calc_conv_dBm_to_ascii2
 
   movlw D'08'
   movwf _v_calc_conv_tmp
-  bcf STATUS,C
 _f_calc_conv_dBm_to_ascii3
+  bcf STATUS,C
   rrcf v_Pfwd_and_ref_dBm_ascii+6
   rrcf v_Pfwd_and_ref_dBm_ascii+7
   decfsz _v_calc_conv_tmp
