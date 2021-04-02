@@ -252,15 +252,11 @@ f_calc_V_mV
   ;; Conversion 12 bits en BCD
 	movlw   D'12'  ;ou 11 ?
 	movwf   _v_calc_count
-IF 0
 	movff v_calc_aarg+2,_v_calc_bin_in
 	movff v_calc_aarg+3,_v_calc_bin_in+1
-ENDIF
 	call _f_calc_dble_dabble_bcd
-IF 0
 	movff _v_calc_bcd_out,v_fwd_and_ref_mV
 	movff _v_calc_bcd_out+1,v_fwd_and_ref_mV+1
-ENDIF
 
 	;;REF
 	;;FXM1616U (ADC,(5000)10) 
