@@ -853,7 +853,7 @@ U 1 1 60639A97
 P 15380 6760
 F 0 "J7" H 15480 6642 50  0000 L CNN
 F 1 "Conn_Coaxial" H 15480 6733 50  0000 L CNN
-F 2 "Connector_Coaxial:SMA_Amphenol_132291_Vertical" H 15380 6760 50  0001 C CNN
+F 2 "Connector_Coaxial:MMCX_Molex_73415-0961_Horizontal_0.8mm-PCB" H 15380 6760 50  0001 C CNN
 F 3 " ~" H 15380 6760 50  0001 C CNN
 	1    15380 6760
 	1    0    0    -1  
@@ -1411,7 +1411,7 @@ U 1 1 604A1ADF
 P 15130 1400
 F 0 "J4" H 15230 1282 50  0000 L CNN
 F 1 "Conn_Coaxial" H 15230 1373 50  0000 L CNN
-F 2 "Connector_Coaxial:SMA_Amphenol_132291_Vertical" H 15130 1400 50  0001 C CNN
+F 2 "Connector_Coaxial:MMCX_Molex_73415-0961_Horizontal_0.8mm-PCB" H 15130 1400 50  0001 C CNN
 F 3 " ~" H 15130 1400 50  0001 C CNN
 	1    15130 1400
 	1    0    0    1   
