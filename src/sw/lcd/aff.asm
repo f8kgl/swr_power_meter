@@ -159,27 +159,9 @@ f_lcd_aff_PdBm_ascii
 	movlw v_Pfwd_and_ref_dBm_ascii
 	movwf v_lcd_p_string+1
 	call f_lcd_aff
-IF 0
-	movf v_Pfwd_and_ref_dBm_ascii,W
-	call f_lcd_aff_char
-	movf v_Pfwd_and_ref_dBm_ascii+1,W
-	call f_lcd_aff_char
-	movlw '.'
-	call f_lcd_aff_char
-	movf v_Pfwd_and_ref_dBm_ascii+2,W
-	call f_lcd_aff_char
-ENDIF
 
 	call _f_lcd_set_dBm_string
 	call f_lcd_aff
-IF 0
-	movlw 'd'
-	call f_lcd_aff_char
-	movlw 'B'
-	call f_lcd_aff_char
-	movlw 'm'
-	call f_lcd_aff_char
-ENDIF
 
 	movlw 0x15
 	call f_lcd_setposcursor
@@ -191,20 +173,6 @@ ENDIF
 	movlw v_Pfwd_and_ref_dBm_ascii+4
 	movwf v_lcd_p_string+1
 	call f_lcd_aff
-
-IF 0
-	movf v_Pfwd_and_ref_dBm_ascii+3,W
-	call f_lcd_aff_char
-	movf v_Pfwd_and_ref_dBm_ascii+4,W
-	call f_lcd_aff_char
-	movlw '.'
-	call f_lcd_aff_char
-	movf v_Pfwd_and_ref_dBm_ascii+5,W
-	call f_lcd_aff_char
-	call _f_lcd_set_dBm_string
-	call f_lcd_aff
-ENDIF
-
 	movlw 'd'
 	call f_lcd_aff_char
 	movlw 'B'

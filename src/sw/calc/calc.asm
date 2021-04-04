@@ -108,6 +108,53 @@ _f_calc_parse_ref_bin
 	return
 
 
+IFNDEF SWR_POWER_METER
+IFNDEF CALIBRATION
+_f_calc_left_align_P_dBm
+	;; alignement à gauche
+	bcf 	STATUS,C
+	movlw D'04'
+	movwf _v_calc_count
+_f_calc_left_align_P_dBm2
+	rlcf _v_calc_bcd_out+1
+	rlcf _v_calc_bcd_out
+	decfsz _v_calc_count
+	goto _f_calc_left_align_P_dBm2
+	return
+
+_f_calc_P_dBm
+	;SI ADC = 000, PdBm = 0xFF
+	tstfsz v_flh_offset_addr
+	goto _f_calc_P_dBm_1
+	tstfsz v_flh_offset_addr+1
+	goto _f_calc_P_dBm_1
+
+	movlw 0xFF
+	movwf v_Pfwd_and_ref_dBm
+	movlw 0xF0
+	movwf v_Pfwd_and_ref_dBm+1
+	goto _f_calc_P_dBm_2
+
+_f_calc_P_dBm_1
+	decf v_flh_offset_addr+1
+	movlw 0x02
+	mulwf v_flh_offset_addr+1 ;LSB
+	movff PRODL,v_flh_offset_addr+1
+	movff PRODH,_v_calc_tmp
+	movlw 0x02
+	mulwf v_flh_offset_addr ;MSB
+	movf PRODL,W
+	addwf _v_calc_tmp,f
+	movff _v_calc_tmp,v_flh_offset_addr
+	call f_flh_get_word_10logADC
+
+	;PdBm = Kconv - 10*log(ADC)
+	call _f_calc_Kconv_sub_10logADC
+_f_calc_P_dBm_2
+	return
+ENDIF
+ENDIF
+
   ;**********************************************************************************************
   ;**********************************************************************************************
   ;
@@ -283,49 +330,6 @@ ENDIF
 
 IFNDEF SWR_POWER_METER
 IFNDEF CALIBRATION
-_f_calc_left_align_P_dBm
-	;; alignement à gauche
-	bcf 	STATUS,C
-	movlw D'04'
-	movwf _v_calc_count
-_f_calc_left_align_P_dBm2
-	rlcf _v_calc_bcd_out+1
-	rlcf _v_calc_bcd_out
-	decfsz _v_calc_count
-	goto _f_calc_left_align_P_dBm2
-	return
-
-_f_calc_P_dBm
-	;SI ADC = 000, PdBm = 0xFF
-	tstfsz v_flh_offset_addr
-	goto _f_calc_P_dBm_1
-	tstfsz v_flh_offset_addr+1
-	goto _f_calc_P_dBm_1
-
-	movlw 0xFF
-	movwf v_Pfwd_and_ref_dBm
-	movlw 0xF0
-	movwf v_Pfwd_and_ref_dBm+1
-	goto _f_calc_P_dBm_2
-
-_f_calc_P_dBm_1
-	decf v_flh_offset_addr+1
-	movlw 0x02
-	mulwf v_flh_offset_addr+1 ;LSB
-	movff PRODL,v_flh_offset_addr+1
-	movff PRODH,_v_calc_tmp
-	movlw 0x02
-	mulwf v_flh_offset_addr ;MSB
-	movf PRODL,W
-	addwf _v_calc_tmp,f
-	movff _v_calc_tmp,v_flh_offset_addr
-	call f_flh_get_word_10logADC
-
-	;PdBm = Kconv - 10*log(ADC)
-	call _f_calc_Kconv_sub_10logADC
-_f_calc_P_dBm_2
-	return
-
 f_calc_P_dBm
 
 	;Port = FWD
@@ -343,35 +347,6 @@ f_calc_P_dBm
 	lfsr FSR1, v_flh_offset_addr
 	call _f_calc_parse_fwd_bin
 
-IF 0
-	;SI ADC = 000, PdBm = 0xFF
-	tstfsz v_flh_offset_addr
-	goto _f_calc_P_dBm_1
-	tstfsz v_flh_offset_addr+1
-	goto _f_calc_P_dBm_1
-
-	movlw 0xFF
-	movwf v_Pfwd_and_ref_dBm
-	movlw 0xF0
-	movwf v_Pfwd_and_ref_dBm+1
-	goto _f_calc_P_dBm_2
-
-_f_calc_P_dBm_1
-	decf v_flh_offset_addr+1
-	movlw 0x02
-	mulwf v_flh_offset_addr+1 ;LSB
-	movff PRODL,v_flh_offset_addr+1
-	movff PRODH,_v_calc_tmp
-	movlw 0x02
-	mulwf v_flh_offset_addr ;MSB
-	movf PRODL,W
-	addwf _v_calc_tmp,f
-	movff _v_calc_tmp,v_flh_offset_addr
-	call f_flh_get_word_10logADC
-
-	;PdBm = Kconv - 10*log(ADC)
-	call _f_calc_Kconv_sub_10logADC
-ENDIF
 	call _f_calc_P_dBm
   ;; Conversion 12 bits en BCD
 	movlw   D'12'  ;ou 11 ?
@@ -382,10 +357,6 @@ ENDIF
 	call _f_calc_left_align_P_dBm
 	movff _v_calc_bcd_out,v_Pfwd_and_ref_dBm
 	movff _v_calc_bcd_out+1,v_Pfwd_and_ref_dBm+1
-
-IF 0
-_f_calc_P_dBm_2
-ENDIF
 
 	;REF
 	;Recherche de la valeur de Kconv(dBm) pour chaque port (FWD)
@@ -423,11 +394,6 @@ ENDIF
 	andlw 0x0F
 	iorwf _v_calc_tmp,W
 	movwf v_Pfwd_and_ref_dBm+2
-
-IF 0
-	movff _v_calc_bcd_out,v_Pfwd_and_ref_dBm+1
-	movff _v_calc_bcd_out+1,v_Pfwd_and_ref_dBm+2
-ENDIF
 
 	return
 ENDIF
