@@ -83,8 +83,6 @@ _f_calc_dble_dabble_bcd1
 	return
 ENDIF
 
-
-
 _f_calc_parse_fwd_bin
   swapf INDF0,W
   andlw 0x0F
@@ -368,7 +366,7 @@ f_calc_P_dBm
 	movwf _v_calc_Kconv_dBm+1
 
   ;Recherche de 10*log(ADC) dans la LUT
-	lfsr FSR0, v_fwd_and_ref_bin
+	lfsr FSR0, v_fwd_and_ref_bin+1
 	lfsr FSR1, v_flh_offset_addr
 	call _f_calc_parse_ref_bin
 
