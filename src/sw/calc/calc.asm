@@ -377,6 +377,7 @@ f_calc_P_dBm
 	movff _v_calc_bin_P_dBm,_v_calc_bin_in
 	movff _v_calc_bin_P_dBm+1,_v_calc_bin_in+1
 	call _f_calc_dble_dabble_bcd
+	call _f_calc_left_align_P_dBm
 
 	movf v_Pfwd_and_ref_dBm+1,W
 	andlw 0xF0
