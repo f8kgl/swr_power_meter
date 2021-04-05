@@ -44,7 +44,7 @@ https://sourceforge.net/projects/gputils/files/gputils/1.5.0/gputils-1.5.0-1.tar
 1. Désinstaller la version courante de la distribution
 2. Télécharger la version 0.31.0 en suivant ce lien :
 https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
-4. Installation
+3. Installation
 
 	$tar -xvzf gpsim-0.31.0.tar.gz
 
@@ -59,58 +59,48 @@ https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 
 	$sudo /sbin/ldconfig
 
+4.Librairie et module GPSIM
+4.1. Création de lien symboliques vers les sources de la librairie, des modules, et le Makefile
 
-5.Utilisation
+		$cd .../gpsim0.31/modules   #répertoire ou gpsim a été dézippé
+
+		$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/Makefile.am
+
+		$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/ltc2305.cc
+
+		$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/ltc2305.h
+
+		$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/swrpowermeterf8kgl.cc
+
+4.2. compiler les fichiers ajoutés
+
+		$cd .../gpsim0.31/ #répertoire ou gpsim a été dézippé
+
+		$ autoreconf
+
+		$./configure
+
+		$make
+
+		$sudo make install
+
+		$sudo /sbin/ldconfig
+
+
+***Utilisation du projet swr_power_meter_f8kgl
+1.Télécharger le projet : git clone https://github.com/f8kgl/swr_power_meter
 	$ cd .../prj
-	$ make all
-
-	$ cd .../bin
-	$ gpsim -c swr_power_meter.stc
+	$ make test
 
 
-6.Librairie et module
-	1. Création de lien symboliques vers les sources de la librairie, des modules, et le Makefile
 
-	$cd .../gpsim0.31/modules   #répertoire ou gpsim a été dézippé
-
-	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/Makefile.am
-
-	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/ltc2305.cc
-
-	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/ltc2305.h
-
-	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/lt1818.cc
-
-	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/lt1818.h
-
-	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/detector.cc
-
-	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/detector.h
-
-
-	$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/swrpowermeterf8kgl.cc
-
-	2. compiler les fichiers ajoutés
-
-	$cd .../gpsim0.31/ #répertoire ou gpsim a été dézippé
-
-	$ autoreconf
-
-	$./configure
-
-	$make
-
-	$sudo make install
-
-	$sudo /sbin/ldconfig
-	
-7.Calibrator
+2.Calibrator
     $ cd .../prj
     $ make calibration_gpsim
-	
+
 	le make génère le fichier .hex de calibration, à flasher dans l'EEPROM du PIC
-	
-	Usage : 
+
+	Usage :
 	calibrator [-o][-t][-f][-r][-a adc_value][-p P_in]
 	-o : calibration pour le fw opérationnel
 	-t : calibration pour le fw de test
@@ -118,3 +108,10 @@ https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 	-r : Port REF
 	-a : valeur d'ADC (ADC_m)
 	-p : Valeur de puissance en W (Pfwd)
+
+3.imulation
+3.1Modifier le fichier swr_power_meter.stc pour utiliser le fichier de calibration généré à l'étape précédente
+
+3.2 Lancement de gpsim
+ $ cd .../bin
+ $ gpsim -c swr_power_meter.stc
