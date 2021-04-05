@@ -114,9 +114,9 @@ _f_calc_left_align_P_dBm
 	movlw D'04'
 	movwf _v_calc_count
 _f_calc_left_align_P_dBm2
-	rlcf _v_calc_bcd_out+1
-	rlcf _v_calc_bcd_out
-	decfsz _v_calc_count
+	rlcf _v_calc_bcd_out+1,f
+	rlcf _v_calc_bcd_out,f
+	decfsz _v_calc_count,f
 	goto _f_calc_left_align_P_dBm2
 	return
 
@@ -134,7 +134,7 @@ _f_calc_P_dBm
 	goto _f_calc_P_dBm_2
 
 _f_calc_P_dBm_1
-	decf v_flh_offset_addr+1
+	decf v_flh_offset_addr+1,f
 	movlw 0x02
 	mulwf v_flh_offset_addr+1 ;LSB
 	movff PRODL,v_flh_offset_addr+1
@@ -231,7 +231,7 @@ _f_calc_div_by_4096_1
  	rrcf v_calc_aarg+1,f
  	rrcf v_calc_aarg+2,f
  	rrcf v_calc_aarg+3,f
-  decfsz _v_calc_count
+  decfsz _v_calc_count,f
   goto _f_calc_div_by_4096_1
   return
 ELSE
@@ -253,11 +253,11 @@ _f_calc_Kconv_sub_10logADC
 	movff _v_calc_Kconv_dBm+1,_v_calc_bin_P_dBm+1
 
     movf    v_calc_10logADC+1,W
-    subwf   _v_calc_bin_P_dBm+1
+    subwf   _v_calc_bin_P_dBm+1,f
     movf    v_calc_10logADC,W
     btfss   STATUS,C
     incfsz  v_calc_10logADC,W
-    subwf   _v_calc_bin_P_dBm           ;dest = dest - source, WITH VALID CARRY
+    subwf   _v_calc_bin_P_dBm,f           ;dest = dest - source, WITH VALID CARRY
                                 ;(although the Z flag is not valid).
 
 	;; rlcf _v_calc_bin_P_dBm à faire 4 fois avec propagation de la retenue
@@ -266,9 +266,9 @@ _f_calc_Kconv_sub_10logADC
 	movlw D'04'
 	movwf _v_calc_count
 _f_calc_Kconv_sub_10logADC_1
-	rlcf _v_calc_bin_P_dBm+1
-	rlcf _v_calc_bin_P_dBm
-	decfsz _v_calc_count
+	rlcf _v_calc_bin_P_dBm+1,f
+	rlcf _v_calc_bin_P_dBm,f
+	decfsz _v_calc_count,f
 	goto _f_calc_Kconv_sub_10logADC_1
 
 	return

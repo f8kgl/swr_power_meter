@@ -18,7 +18,7 @@ v_log_tmp res 1
   code
 
 _f_log_get_next_addr
-	movlw ADDR_EEP_NEXT_ADDR_TO_WRITE
+	movlw LOW ADDR_EEP_NEXT_ADDR_TO_WRITE
 	call f_eep_int_readbyte
 	movwf v_log_addr
 	return
@@ -112,7 +112,7 @@ _f_log_write_loop4
   movwf v_log_addr
 _f_log_write_loop_end
   movff v_log_addr,v_eep_int_byte_to_write
-  movlw ADDR_EEP_NEXT_ADDR_TO_WRITE
+  movlw LOW ADDR_EEP_NEXT_ADDR_TO_WRITE
   call f_eep_int_writebyte
 
 _f_log_write_loop_end2

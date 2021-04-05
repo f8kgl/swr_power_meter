@@ -82,7 +82,7 @@ f_adc_read
 
 	call _f_adc_send_read_fwd_cde
 	call _f_adc_read
-	swapf _v_adc
+	swapf _v_adc,f
 	movff _v_adc,INDF0
 	swapf _v_adc+1,W
 	andlw 0x0F

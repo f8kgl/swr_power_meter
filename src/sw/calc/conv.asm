@@ -129,7 +129,7 @@ _f_calc_conv_bin_to_ascii
 	andlw 0x0F
 	call _f_calc_conv_ascii_table
 	movwf POSTINC1
-	decfsz _v_calc_conv_count
+	decfsz _v_calc_conv_count,f
 	goto _f_calc_conv_bin_to_ascii
 	return
 
@@ -167,12 +167,12 @@ f_calc_conv_dBm_to_ascii
   movwf _v_calc_conv_tmp
 _f_calc_conv_dBm_to_ascii2
   bcf STATUS,C
-  rrcf v_Pfwd_and_ref_dBm_ascii+2
-  rrcf v_Pfwd_and_ref_dBm_ascii+3
-  rrcf v_Pfwd_and_ref_dBm_ascii+4
-  rrcf v_Pfwd_and_ref_dBm_ascii+5
-  rrcf v_Pfwd_and_ref_dBm_ascii+6
-  decfsz _v_calc_conv_tmp
+  rrcf v_Pfwd_and_ref_dBm_ascii+2,f
+  rrcf v_Pfwd_and_ref_dBm_ascii+3,f
+  rrcf v_Pfwd_and_ref_dBm_ascii+4,f
+  rrcf v_Pfwd_and_ref_dBm_ascii+5,f
+  rrcf v_Pfwd_and_ref_dBm_ascii+6,f
+  decfsz _v_calc_conv_tmp,f
   goto _f_calc_conv_dBm_to_ascii2
   movlw '.'
   movwf v_Pfwd_and_ref_dBm_ascii+2
@@ -181,9 +181,9 @@ _f_calc_conv_dBm_to_ascii2
   movwf _v_calc_conv_tmp
 _f_calc_conv_dBm_to_ascii3
   bcf STATUS,C
-  rrcf v_Pfwd_and_ref_dBm_ascii+6
-  rrcf v_Pfwd_and_ref_dBm_ascii+7
-  decfsz _v_calc_conv_tmp
+  rrcf v_Pfwd_and_ref_dBm_ascii+6,f
+  rrcf v_Pfwd_and_ref_dBm_ascii+7,f
+  decfsz _v_calc_conv_tmp,f
   goto _f_calc_conv_dBm_to_ascii3
   movlw '.'
   movwf v_Pfwd_and_ref_dBm_ascii+6
