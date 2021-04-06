@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source "C:\\Users\\PC RADIO\\Documents\\GitHub\\swr_power_meter\\src\\hw\\TOSMETRE.sch")
-    (date "04/04/2021 17:58:03")
+    (date "06/04/2021 11:30:09")
     (tool "Eeschema (5.1.9)-1")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
