@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source "C:\\Users\\PC RADIO\\Documents\\GitHub\\swr_power_meter\\src\\hw\\TOSMETRE.sch")
-    (date "06/04/2021 11:30:09")
+    (date "06/04/2021 11:43:31")
     (tool "Eeschema (5.1.9)-1")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -121,7 +121,7 @@
       (tstamp 605A51F3))
     (comp (ref J6)
       (value Conn_01x02_Male)
-      (footprint Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical)
+      (footprint Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical_SMD_Pin1Left)
       (datasheet ~)
       (libsource (lib Connector) (part Conn_01x02_Male) (description "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"))
       (sheetpath (names /) (tstamps /))
@@ -247,7 +247,7 @@
       (tstamp 607506F7))
     (comp (ref J1)
       (value Barrel_Jack_Switch)
-      (footprint Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical)
+      (footprint Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical_SMD_Pin1Left)
       (datasheet ~)
       (libsource (lib Connector) (part Barrel_Jack_Switch) (description "DC Barrel Jack with an internal switch"))
       (sheetpath (names /) (tstamps /))

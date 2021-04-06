@@ -30,7 +30,7 @@ U 1 1 604422C7
 P 2780 4540
 F 0 "J3" H 2888 5021 50  0000 C CNN
 F 1 "Conn_01x08_Male" H 2888 4930 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical" H 2780 4540 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical_SMD_Pin1Right" H 2780 4540 50  0001 C CNN
 F 3 "~" H 2780 4540 50  0001 C CNN
 	1    2780 4540
 	1    0    0    -1  
@@ -41,7 +41,7 @@ U 1 1 60442C11
 P 5190 4300
 F 0 "J5" V 5252 4012 50  0000 R CNN
 F 1 "Conn_01x05_Male" V 5130 4570 50  0000 R CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical" H 5190 4300 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical_SMD_Pin1Left" H 5190 4300 50  0001 C CNN
 F 3 "~" H 5190 4300 50  0001 C CNN
 	1    5190 4300
 	0    -1   1    0   
@@ -988,7 +988,7 @@ U 1 1 607506F7
 P 2000 8770
 F 0 "J2" H 2108 8951 50  0000 C CNN
 F 1 "Conn_01x02_Male" H 2108 8860 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 2000 8770 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical_SMD_Pin1Left" H 2000 8770 50  0001 C CNN
 F 3 "~" H 2000 8770 50  0001 C CNN
 	1    2000 8770
 	1    0    0    -1  

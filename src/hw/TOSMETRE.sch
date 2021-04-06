@@ -573,7 +573,7 @@ U 1 1 605D26E6
 P 6830 6130
 F 0 "J6" H 6802 6104 50  0000 R CNN
 F 1 "Conn_01x02_Male" H 6802 6013 50  0000 R CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 6830 6130 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical_SMD_Pin1Left" H 6830 6130 50  0001 C CNN
 F 3 "~" H 6830 6130 50  0001 C CNN
 	1    6830 6130
 	-1   0    0    -1  
@@ -999,7 +999,7 @@ U 1 1 60752619
 P 1930 9790
 F 0 "J1" H 1987 10107 50  0000 C CNN
 F 1 "Barrel_Jack_Switch" H 1987 10016 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 1980 9750 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical_SMD_Pin1Left" H 1980 9750 50  0001 C CNN
 F 3 "~" H 1980 9750 50  0001 C CNN
 	1    1930 9790
 	1    0    0    -1  
