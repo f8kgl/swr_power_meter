@@ -93,7 +93,7 @@ IOPort_ltc2305::IOPort_ltc2305(unsigned int _num_iopins)
 }
 #define R2 1
 #define R1 1
-#define VAL_CORR 0.0369435000074
+#define VAL_CORR 0.0369458274479
 unsigned int IOPort_ltc2305::get(unsigned int config)
 {
   double voltage = 0.0;
