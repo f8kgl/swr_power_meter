@@ -160,6 +160,11 @@ loop
 	MOVFF	v_tmp,v_log_data+4
 	MOVFF	v_tmp+1,v_log_data+5
 
+
+	clrf v_fwd_and_ref_bin
+	clrf v_fwd_and_ref_bin+1
+	clrf v_fwd_and_ref_bin+2
+
 	lfsr FSR0, v_fwd_and_ref_bin
 	call f_adc_read
 
