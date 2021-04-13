@@ -70,7 +70,7 @@ https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 
 		$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/ltc2305.h
 
-		$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/swrpowermeterf8kgl.cc
+		$ ln -s ~/devel/f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/swrpowermeterf8kgl_modules.cc
 
 2.4.2/ compiler les fichiers ajoutés
 
