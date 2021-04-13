@@ -22,9 +22,8 @@ lib_LTLIBRARIES = libgpsim_modules.la \
 libswrpowermeterf8kgl_modules_la_SOURCES = \
 	swrpowermeterf8kgl_modules.cc \
 	module_attribute.h \
-	ltc2305.cc ltc2305.h \
-	lt1818.cc lt1818.h
-
+	ltc2305.cc ltc2305.h
+	
 libswrpowermeterf8kgl_modules_la_LIBADD = ../eXdbm/libgpsim_eXdbm.la -lstdc++ -lpopt \
   @X_LDFLAGS@ @Y_LDFLAGS@ @LIBREADLINE@ ../src/libgpsim.la
 

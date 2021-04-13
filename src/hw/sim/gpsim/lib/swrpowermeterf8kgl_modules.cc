@@ -71,7 +71,6 @@ support:
 #include "i2c-eeprom.h"
 #include "i2c.h"
 #include "ltc2305.h"
-#include "lt1818.h"
 
 
 Module_Types available_modules[] = {
