@@ -110,7 +110,11 @@ https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 	-p : Valeur de puissance en W (Pfwd)
 
 3.3/Simulation
-3.3.1/Modifier le fichier swr_power_meter.stc pour utiliser le fichier de calibration généré à l'étape précédente
+3.3.1/Modifier le fichier prj/swr_power_meter.stc pour utiliser le fichier de calibration généré à l'étape précédente. Effecteur la mise à jour du projet gpsim :
+
+   $ cd .../prj
+	 $ make update_gpsim
+
 
 3.3.2/ Lancement de gpsim
  $ cd .../bin
