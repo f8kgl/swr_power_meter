@@ -1514,8 +1514,6 @@ F 3 "~" H 13010 1080 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	2010 580  2010 5930
-Wire Wire Line
 	14930 1400 14700 1400
 Wire Wire Line
 	13010 1400 13270 1400
@@ -1681,4 +1679,6 @@ Wire Wire Line
 	11400 5420 11400 5550
 Wire Wire Line
 	11400 5420 11590 5420
+Wire Wire Line
+	2010 570  2010 5930
 $EndSCHEMATC
