@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <office:document xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:config="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpt="http://openoffice.org/2005/report" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:officeooo="http://openoffice.org/2009/office" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:drawooo="http://openoffice.org/2010/draw" xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:formx="urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0" xmlns:css3t="http://www.w3.org/TR/css3-text/" office:version="1.2" office:mimetype="application/vnd.oasis.opendocument.text">
- <office:meta><meta:creation-date>2021-02-12T10:14:28.346000000</meta:creation-date><dc:date>2021-04-18T11:40:24.996190366</dc:date><meta:editing-duration>PT5H19M27S</meta:editing-duration><meta:editing-cycles>81</meta:editing-cycles><meta:generator>LibreOffice/6.1.5.2$Linux_X86_64 LibreOffice_project/10$Build-2</meta:generator><dc:creator>F4BJH Fabrice DECROP LONGET</dc:creator><meta:document-statistic meta:table-count="17" meta:image-count="0" meta:object-count="2" meta:page-count="16" meta:paragraph-count="564" meta:word-count="2119" meta:character-count="12982" meta:non-whitespace-character-count="11374"/></office:meta>
+ <office:meta><meta:creation-date>2021-02-12T10:14:28.346000000</meta:creation-date><dc:date>2021-04-18T16:11:22.284515358</dc:date><meta:editing-duration>PT5H19M33S</meta:editing-duration><meta:editing-cycles>82</meta:editing-cycles><meta:generator>LibreOffice/6.1.5.2$Linux_X86_64 LibreOffice_project/10$Build-2</meta:generator><dc:creator>F4BJH Fabrice DECROP LONGET</dc:creator><meta:document-statistic meta:table-count="17" meta:image-count="0" meta:object-count="2" meta:page-count="16" meta:paragraph-count="574" meta:word-count="2144" meta:character-count="13380" meta:non-whitespace-character-count="11757"/></office:meta>
  <office:settings>
   <config:config-item-set config:name="ooo:view-settings">
-   <config:config-item config:name="ViewAreaTop" config:type="long">129963</config:config-item>
+   <config:config-item config:name="ViewAreaTop" config:type="long">307975</config:config-item>
    <config:config-item config:name="ViewAreaLeft" config:type="long">0</config:config-item>
    <config:config-item config:name="ViewAreaWidth" config:type="long">35482</config:config-item>
    <config:config-item config:name="ViewAreaHeight" config:type="long">11326</config:config-item>
@@ -13,12 +13,12 @@
    <config:config-item-map-indexed config:name="Views">
     <config:config-item-map-entry>
      <config:config-item config:name="ViewId" config:type="string">view2</config:config-item>
-     <config:config-item config:name="ViewLeft" config:type="long">8103</config:config-item>
-     <config:config-item config:name="ViewTop" config:type="long">132733</config:config-item>
+     <config:config-item config:name="ViewLeft" config:type="long">11552</config:config-item>
+     <config:config-item config:name="ViewTop" config:type="long">309090</config:config-item>
      <config:config-item config:name="VisibleLeft" config:type="long">0</config:config-item>
-     <config:config-item config:name="VisibleTop" config:type="long">129963</config:config-item>
+     <config:config-item config:name="VisibleTop" config:type="long">307975</config:config-item>
      <config:config-item config:name="VisibleRight" config:type="long">35481</config:config-item>
-     <config:config-item config:name="VisibleBottom" config:type="long">141288</config:config-item>
+     <config:config-item config:name="VisibleBottom" config:type="long">319299</config:config-item>
      <config:config-item config:name="ZoomType" config:type="short">0</config:config-item>
      <config:config-item config:name="ViewLayoutColumns" config:type="short">1</config:config-item>
      <config:config-item config:name="ViewLayoutBookMode" config:type="boolean">false</config:config-item>
@@ -102,7 +102,7 @@
    <config:config-item config:name="UnxForceZeroExtLeading" config:type="boolean">false</config:config-item>
    <config:config-item config:name="TabAtLeftIndentForParagraphsInList" config:type="boolean">false</config:config-item>
    <config:config-item config:name="PrintRightPages" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="Rsid" config:type="int">5268248</config:config-item>
+   <config:config-item config:name="Rsid" config:type="int">5397941</config:config-item>
    <config:config-item config:name="MathBaselineAlignment" config:type="boolean">true</config:config-item>
    <config:config-item config:name="MsWordCompTrailingBlanks" config:type="boolean">false</config:config-item>
    <config:config-item config:name="InvertBorderSpacing" config:type="boolean">false</config:config-item>
@@ -121,7 +121,7 @@
    <config:config-item config:name="EmptyDbFieldHidesPara" config:type="boolean">true</config:config-item>
    <config:config-item config:name="AddVerticalFrameOffsets" config:type="boolean">false</config:config-item>
    <config:config-item config:name="ProtectForm" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="PrintEmptyPages" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrintEmptyPages" config:type="boolean">false</config:config-item>
    <config:config-item config:name="PrintControls" config:type="boolean">true</config:config-item>
    <config:config-item config:name="PrintHiddenText" config:type="boolean">false</config:config-item>
    <config:config-item config:name="PrintAnnotationMode" config:type="short">0</config:config-item>
@@ -1908,40 +1908,52 @@
   <style:style style:name="P310" style:family="paragraph" style:parent-style-name="Heading_20_2">
    <style:text-properties officeooo:paragraph-rsid="0040f0e6"/>
   </style:style>
-  <style:style style:name="P311" style:family="paragraph" style:parent-style-name="Heading_20_3">
-   <style:text-properties fo:color="#5983b0" officeooo:rsid="003f301a" officeooo:paragraph-rsid="003f301a"/>
+  <style:style style:name="P311" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+   <style:text-properties officeooo:rsid="00406f4e" officeooo:paragraph-rsid="00406f4e"/>
   </style:style>
-  <style:style style:name="P312" style:family="paragraph" style:parent-style-name="Heading_20_3">
-   <style:text-properties fo:color="#5983b0" officeooo:rsid="003f301a" officeooo:paragraph-rsid="004d0b19"/>
+  <style:style style:name="P312" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+   <style:text-properties officeooo:rsid="005081b1" officeooo:paragraph-rsid="005081b1"/>
   </style:style>
-  <style:style style:name="P313" style:family="paragraph" style:parent-style-name="Heading_20_3">
-   <style:text-properties fo:color="#5983b0" officeooo:rsid="00488dfe" officeooo:paragraph-rsid="00488dfe"/>
+  <style:style style:name="P313" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+   <style:text-properties officeooo:rsid="0051368a" officeooo:paragraph-rsid="0051368a"/>
   </style:style>
-  <style:style style:name="P314" style:family="paragraph" style:parent-style-name="Heading_20_3">
-   <style:text-properties fo:color="#5983b0" officeooo:rsid="00497ed4" officeooo:paragraph-rsid="00497ed4"/>
+  <style:style style:name="P314" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+   <style:text-properties fo:font-weight="bold" officeooo:rsid="0051368a" officeooo:paragraph-rsid="0051368a" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
   </style:style>
   <style:style style:name="P315" style:family="paragraph" style:parent-style-name="Heading_20_3">
-   <style:text-properties fo:color="#5983b0" officeooo:rsid="004c7a88" officeooo:paragraph-rsid="004c7a88"/>
+   <style:text-properties fo:color="#5983b0" officeooo:rsid="003f301a" officeooo:paragraph-rsid="003f301a"/>
   </style:style>
   <style:style style:name="P316" style:family="paragraph" style:parent-style-name="Heading_20_3">
-   <style:text-properties fo:color="#5983b0" officeooo:rsid="004d0b19" officeooo:paragraph-rsid="004d0b19"/>
+   <style:text-properties fo:color="#5983b0" officeooo:rsid="003f301a" officeooo:paragraph-rsid="004d0b19"/>
   </style:style>
   <style:style style:name="P317" style:family="paragraph" style:parent-style-name="Heading_20_3">
-   <style:text-properties fo:color="#5983b0" officeooo:rsid="00486bed" officeooo:paragraph-rsid="00486bed"/>
+   <style:text-properties fo:color="#5983b0" officeooo:rsid="00488dfe" officeooo:paragraph-rsid="00488dfe"/>
   </style:style>
   <style:style style:name="P318" style:family="paragraph" style:parent-style-name="Heading_20_3">
+   <style:text-properties fo:color="#5983b0" officeooo:rsid="00497ed4" officeooo:paragraph-rsid="00497ed4"/>
+  </style:style>
+  <style:style style:name="P319" style:family="paragraph" style:parent-style-name="Heading_20_3">
+   <style:text-properties fo:color="#5983b0" officeooo:rsid="004c7a88" officeooo:paragraph-rsid="004c7a88"/>
+  </style:style>
+  <style:style style:name="P320" style:family="paragraph" style:parent-style-name="Heading_20_3">
+   <style:text-properties fo:color="#5983b0" officeooo:rsid="004d0b19" officeooo:paragraph-rsid="004d0b19"/>
+  </style:style>
+  <style:style style:name="P321" style:family="paragraph" style:parent-style-name="Heading_20_3">
+   <style:text-properties fo:color="#5983b0" officeooo:rsid="00486bed" officeooo:paragraph-rsid="00486bed"/>
+  </style:style>
+  <style:style style:name="P322" style:family="paragraph" style:parent-style-name="Heading_20_3">
    <style:text-properties fo:color="#5983b0" officeooo:rsid="004e6a74" officeooo:paragraph-rsid="004e6a74"/>
   </style:style>
-  <style:style style:name="P319" style:family="paragraph" style:parent-style-name="Heading_20_4">
+  <style:style style:name="P323" style:family="paragraph" style:parent-style-name="Heading_20_4">
    <style:text-properties fo:color="#5983b0"/>
   </style:style>
-  <style:style style:name="P320" style:family="paragraph" style:parent-style-name="Heading_20_4">
+  <style:style style:name="P324" style:family="paragraph" style:parent-style-name="Heading_20_4">
    <style:text-properties fo:color="#5983b0" officeooo:rsid="00406f4e" officeooo:paragraph-rsid="00406f4e"/>
   </style:style>
-  <style:style style:name="P321" style:family="paragraph" style:parent-style-name="Heading_20_4">
+  <style:style style:name="P325" style:family="paragraph" style:parent-style-name="Heading_20_4">
    <style:text-properties fo:color="#729fcf" officeooo:rsid="0046d84d" officeooo:paragraph-rsid="0046d84d"/>
   </style:style>
-  <style:style style:name="P322" style:family="paragraph">
+  <style:style style:name="P326" style:family="paragraph">
    <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" fo:line-height="100%" fo:text-align="start" fo:text-indent="0cm" style:text-autospace="ideograph-alpha" style:punctuation-wrap="hanging" style:line-break="strict" style:writing-mode="lr-tb">
     <style:tab-stops/>
    </style:paragraph-properties>
@@ -2164,6 +2176,9 @@
    <style:text-properties officeooo:rsid="00506318"/>
   </style:style>
   <style:style style:name="T73" style:family="text">
+   <style:text-properties officeooo:rsid="005081b1"/>
+  </style:style>
+  <style:style style:name="T74" style:family="text">
    <style:text-properties fo:font-variant="normal" fo:text-transform="none" style:use-window-font-color="true" style:text-outline="false" style:text-line-through-style="none" style:text-line-through-type="none" style:text-position="0% 100%" style:font-name="Liberation Serif" fo:font-size="10pt" fo:letter-spacing="normal" fo:language="fr" fo:country="FR" fo:font-style="normal" fo:text-shadow="none" style:text-underline-style="none" fo:font-weight="normal" style:text-underline-mode="continuous" style:text-overline-mode="continuous" style:text-line-through-mode="continuous" style:letter-kerning="true" fo:background-color="transparent" style:font-name-asian="NSimSun" style:font-size-asian="10.5pt" style:language-asian="zh" style:country-asian="CN" style:font-style-asian="normal" style:font-weight-asian="normal" style:font-name-complex="Lucida Sans" style:font-size-complex="12pt" style:language-complex="hi" style:country-complex="IN" style:font-style-complex="normal" style:font-weight-complex="normal" style:text-emphasize="none" style:text-scale="100%" style:font-relief="none" style:text-overline-style="none" style:text-overline-color="font-color"/>
   </style:style>
   <style:style style:name="fr1" style:family="graphic" style:parent-style-name="Formula">
@@ -2849,7 +2864,7 @@
    <text:p text:style-name="P60"/>
    <text:p text:style-name="P61">Tests</text:p>
    <text:p text:style-name="P60">V 0.<text:span text:style-name="T2">8</text:span></text:p>
-   <text:p text:style-name="P17"><text:span text:style-name="T1">F</text:span>0EOS-F4BJH-<text:date style:data-style-name="N37" text:date-value="2021-04-18T11:40:25.082574156">18/04/21</text:date>-Vauréal Amitié Radio</text:p>
+   <text:p text:style-name="P17"><text:span text:style-name="T1">F</text:span>0EOS-F4BJH-<text:date style:data-style-name="N37" text:date-value="2021-04-18T16:11:22.351296418">18/04/21</text:date>-Vauréal Amitié Radio</text:p>
    <text:p text:style-name="P17"/>
    <text:p text:style-name="P17"/>
    <text:p text:style-name="P17"/>
@@ -3033,7 +3048,7 @@
     </text:list-item>
    </text:list>
    <text:p text:style-name="Text_20_body"><text:soft-page-break/></text:p>
-   <text:list xml:id="list114025865651144" text:continue-numbering="true" text:style-name="L8">
+   <text:list xml:id="list161122924241886" text:continue-numbering="true" text:style-name="L8">
     <text:list-item>
      <text:p text:style-name="P305">GPSIM</text:p>
      <text:list>
@@ -3073,7 +3088,7 @@
    <text:p text:style-name="P304"><text:tab/><text:tab/>$ ln -s .../swr_power_meter/src/hw/sim/gpsim/lib/ltc2305.cc</text:p>
    <text:p text:style-name="P304"><text:tab/><text:tab/>$ ln -s .../swr_power_meter//f8kgl/swr_power_meter/src/hw/sim/gpsim/lib/ltc2305.h</text:p>
    <text:p text:style-name="P304"><text:tab/><text:tab/>$ ln -s .../swr_power_meter/src/hw/sim/gpsim/lib/swrpowermeterf8kgl_modules.cc</text:p>
-   <text:list xml:id="list114025239962126" text:continue-numbering="true" text:style-name="L8">
+   <text:list xml:id="list161123687949955" text:continue-numbering="true" text:style-name="L8">
     <text:list-item>
      <text:list>
       <text:list-item>
@@ -3142,7 +3157,7 @@
     </text:list-item>
    </text:list>
    <text:p text:style-name="P290"/>
-   <text:list xml:id="list114026492853072" text:continue-numbering="true" text:style-name="L8">
+   <text:list xml:id="list161124019738103" text:continue-numbering="true" text:style-name="L8">
     <text:list-item>
      <text:list>
       <text:list-item>
@@ -3205,7 +3220,7 @@
       <text:p text:style-name="P222">$ make clean</text:p>
       <text:p text:style-name="P269">$ make calibration_gpsim</text:p>
       <text:p text:style-name="P222">$ make update_gpsim_prj</text:p>
-      <text:p text:style-name="P222">$ make <text:span text:style-name="T70">all</text:span></text:p>
+      <text:p text:style-name="P222">$ make <text:span text:style-name="T72">test</text:span></text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row>
@@ -3213,12 +3228,17 @@
       <text:p text:style-name="P222">Résultats attendus</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau1.B2" office:value-type="string">
-      <text:p text:style-name="P222"><office:annotation>
-        <dc:creator>Auteur inconnu</dc:creator>
-        <dc:date>2021-03-12T12:10:52.260000000</dc:date>
-        <text:p text:style-name="P322"><text:span text:style-name="T73">Liste fichiers générés</text:span></text:p>
-        <text:p text:style-name="P322"><text:span text:style-name="T73">Compil OK</text:span></text:p>
-       </office:annotation></text:p>
+      <text:p text:style-name="P222"><text:span text:style-name="T73">Pas d’erreur de compilation, ni de warning</text:span></text:p>
+      <text:p text:style-name="P312">Liste des fichiers générés dans bin : </text:p>
+      <text:p text:style-name="P312">kconv_fwd.nnn.SWR_POWER_METER.hex</text:p>
+      <text:p text:style-name="P312">kconv_fwd.nnn.xWATT.hex</text:p>
+      <text:p text:style-name="P312">kconv_ref.nnn.xWATT.hex</text:p>
+      <text:p text:style-name="P312">swr_power_meter_f8kgl-V0.8.TEST.GPSIM.cod</text:p>
+      <text:p text:style-name="P312">swr_power_meter_f8kgl-V0.8.TEST.GPSIM.cod</text:p>
+      <text:p text:style-name="P312">swr_power_meter_f8kgl-V0.8.TEST.GPSIM.cod</text:p>
+      <text:p text:style-name="P312">swr_power_meter_f8kgl-V0.8.TEST.GPSIM.cod</text:p>
+      <text:p text:style-name="P312">swr_power_meter_f8kgl-V0.8.TEST.GPSIM.cod</text:p>
+      <text:p text:style-name="P312">swr_power_meter.stc</text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row>
@@ -3234,7 +3254,7 @@
       <text:p text:style-name="P222">Restrictions V0.8</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau1.B7" office:value-type="string">
-      <text:p text:style-name="P269">Pas de firmware de calibration</text:p>
+      <text:p text:style-name="P269">Pas de firmware de calibration, <text:span text:style-name="T73">ni opérationnel</text:span></text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row>
@@ -3301,10 +3321,11 @@
       <text:p text:style-name="P222"><office:annotation>
         <dc:creator>Auteur inconnu</dc:creator>
         <dc:date>2021-03-12T12:21:17.293000000</dc:date>
-        <text:p text:style-name="P322"><text:span text:style-name="T73">Décrire le nom des fenêtres qui sont censées s’ouvrir</text:span></text:p>
+        <text:p text:style-name="P326"><text:span text:style-name="T74">Décrire le nom des fenêtres qui sont censées s’ouvrir</text:span></text:p>
        </office:annotation></text:p>
      </table:table-cell>
     </table:table-row>
+    <text:soft-page-break/>
     <table:table-row>
      <table:table-cell table:style-name="Tableau2.A6" office:value-type="string">
       <text:p text:style-name="P222">Test V0.8</text:p>
@@ -3340,7 +3361,7 @@
    </table:table>
    <text:p text:style-name="P42"/>
    <text:p text:style-name="P42"/>
-   <text:h text:style-name="P76" text:outline-level="4"><text:bookmark-start text:name="__RefHeading___Toc2518_1964132755"/><text:soft-page-break/><text:span text:style-name="T63">2.1.1.3-T</text:span>races de debug dans gpsim<text:bookmark-end text:name="__RefHeading___Toc2518_1964132755"/></text:h>
+   <text:h text:style-name="P76" text:outline-level="4"><text:bookmark-start text:name="__RefHeading___Toc2518_1964132755"/><text:span text:style-name="T63">2.1.1.3-T</text:span>races de debug dans gpsim<text:bookmark-end text:name="__RefHeading___Toc2518_1964132755"/></text:h>
    <table:table table:name="Tableau3" table:style-name="Tableau3">
     <table:table-column table:style-name="Tableau3.A"/>
     <table:table-column table:style-name="Tableau3.B"/>
@@ -3713,7 +3734,7 @@
          <text:p text:style-name="P242">V</text:p>
         </table:table-cell>
         <table:table-cell table:style-name="Tableau5.A2" office:value-type="string">
-         <text:p text:style-name="P242">n</text:p>
+         <text:p text:style-name="P313">n</text:p>
         </table:table-cell>
         <table:table-cell table:style-name="Tableau5.A2" office:value-type="string">
          <text:p text:style-name="P245">.</text:p>
@@ -3726,6 +3747,7 @@
       <text:p text:style-name="P234"/>
      </table:table-cell>
     </table:table-row>
+    <text:soft-page-break/>
     <table:table-row>
      <table:table-cell table:style-name="Tableau4.A6" office:value-type="string">
       <text:p text:style-name="P225">Test V0.8</text:p>
@@ -3766,7 +3788,7 @@
      <text:p text:style-name="P294"/>
     </text:list-header>
    </text:list>
-   <text:h text:style-name="P70" text:outline-level="3"><text:soft-page-break/>2.1.2.2-Initialisation des composants SW</text:h>
+   <text:h text:style-name="P70" text:outline-level="3">2.1.2.2-Initialisation des composants SW</text:h>
    <text:p text:style-name="P43"/>
    <table:table table:name="Tableau6" table:style-name="Tableau6">
     <table:table-column table:style-name="Tableau6.A"/>
@@ -3845,7 +3867,7 @@
      </table:table-cell>
     </table:table-row>
    </table:table>
-   <text:list xml:id="list114025605148464" text:continue-numbering="true" text:style-name="L5">
+   <text:list xml:id="list161124220810937" text:continue-numbering="true" text:style-name="L5">
     <text:list-header>
      <text:p text:style-name="P287"/>
      <text:p text:style-name="P294"/>
@@ -3898,7 +3920,7 @@
       <text:p text:style-name="P237"><office:annotation>
         <dc:creator>Auteur inconnu</dc:creator>
         <dc:date>2021-03-15T15:02:52.800000000</dc:date>
-        <text:p text:style-name="P322"><text:span text:style-name="T73">Compléter avec la valeur de RCON attendue, et autres registres s’il y en a et la valeur des timers attendus</text:span></text:p>
+        <text:p text:style-name="P326"><text:span text:style-name="T74">Compléter avec la valeur de RCON attendue, et autres registres s’il y en a et la valeur des timers attendus</text:span></text:p>
        </office:annotation></text:p>
      </table:table-cell>
     </table:table-row>
@@ -3919,6 +3941,7 @@
       <text:p text:style-name="P268">La tempo de 160us remonte 147us</text:p>
      </table:table-cell>
     </table:table-row>
+    <text:soft-page-break/>
     <table:table-row>
      <table:table-cell table:style-name="Tableau8.A2" office:value-type="string">
       <text:p text:style-name="P225">Test V1.0</text:p>
@@ -3941,7 +3964,7 @@
    <text:p text:style-name="P55"/>
    <text:p text:style-name="P55"/>
    <text:p text:style-name="P55"/>
-   <text:h text:style-name="P71" text:outline-level="3"><text:soft-page-break/>2.1.2.4-Menu tension</text:h>
+   <text:h text:style-name="P71" text:outline-level="3">2.1.2.4-Menu tension</text:h>
    <text:p text:style-name="P57"/>
    <table:table table:name="Tableau9" table:style-name="Tableau9">
     <table:table-column table:style-name="Tableau9.A"/>
@@ -4290,7 +4313,7 @@
         </table:table-cell>
        </table:table-row>
       </table:table>
-      <text:p text:style-name="P140"><text:s/>Dans le menu puissance en dBm</text:p>
+      <text:p text:style-name="P140"><text:soft-page-break/><text:s/>Dans le menu puissance en dBm</text:p>
       <text:p text:style-name="P140"/>
       <table:table table:name="Tableau12" table:style-name="Tableau12">
        <table:table-column table:style-name="Tableau12.A"/>
@@ -4440,7 +4463,7 @@
      </table:table-cell>
     </table:table-row>
    </table:table>
-   <text:p text:style-name="P139"><text:soft-page-break/></text:p>
+   <text:p text:style-name="P139"/>
    <text:h text:style-name="P73" text:outline-level="3">2.1.2.6-LCD</text:h>
    <text:p text:style-name="P58"/>
    <table:table table:name="Tableau13" table:style-name="Tableau13">
@@ -4547,6 +4570,7 @@
       <text:p text:style-name="P273">Vérifier qu’en l’absence de calibration, le LCD affiche « NO CALIBRATION »</text:p>
      </table:table-cell>
     </table:table-row>
+    <text:soft-page-break/>
     <table:table-row>
      <table:table-cell table:style-name="Tableau15.A2" office:value-type="string">
       <text:p text:style-name="P228">Conditions</text:p>
@@ -4691,10 +4715,9 @@
       <text:p text:style-name="P228">Test V0.8</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau15.B6" office:value-type="string">
-      <text:p text:style-name="P191">OK|NOK</text:p>
+      <text:p text:style-name="P314">N/A</text:p>
      </table:table-cell>
     </table:table-row>
-    <text:soft-page-break/>
     <table:table-row>
      <table:table-cell table:style-name="Tableau15.A7" office:value-type="string">
       <text:p text:style-name="P228">Restrictions V0.8</text:p>
@@ -4730,18 +4753,18 @@
    <text:p text:style-name="P41"><office:annotation>
      <dc:creator>Auteur inconnu</dc:creator>
      <dc:date>2021-04-01T10:59:33.189000000</dc:date>
-     <text:p text:style-name="P322"><text:span text:style-name="T73">Test automatique de non régression. Contrôle sur le contenu des mémoires (sortie I2C, BCD et ASCII)</text:span></text:p>
+     <text:p text:style-name="P326"><text:span text:style-name="T74">Test automatique de non régression. Contrôle sur le contenu des mémoires (sortie I2C, BCD et ASCII)</text:span></text:p>
     </office:annotation></text:p>
    <text:p text:style-name="P45"><office:annotation>
      <dc:creator>Auteur inconnu</dc:creator>
      <dc:date>2021-03-12T09:55:23.401000000</dc:date>
-     <text:p text:style-name="P322"><text:span text:style-name="T73">Dans le plan de test de simu, il apparâit nécessaire de faire varier R1 et R2. Et donc de refaire une calibration !!!</text:span></text:p>
+     <text:p text:style-name="P326"><text:span text:style-name="T74">Dans le plan de test de simu, il apparâit nécessaire de faire varier R1 et R2. Et donc de refaire une calibration !!!</text:span></text:p>
     </office:annotation><text:s/></text:p>
    <text:p text:style-name="P45"/>
    <text:p text:style-name="P45"><office:annotation>
      <dc:creator>Auteur inconnu</dc:creator>
      <dc:date>2021-04-01T10:50:50.650000000</dc:date>
-     <text:p text:style-name="P322"><text:span text:style-name="T73">Test ADC=000 aussi</text:span></text:p>
+     <text:p text:style-name="P326"><text:span text:style-name="T74">Test ADC=000 aussi</text:span></text:p>
     </office:annotation></text:p>
    <text:h text:style-name="P67" text:outline-level="3"><text:bookmark-start text:name="__RefHeading___Toc2182_1964132755"/>2.1.4-Mesure de puissance en dBm<text:bookmark-end text:name="__RefHeading___Toc2182_1964132755"/></text:h>
    <text:p text:style-name="P45"/>
@@ -4760,7 +4783,7 @@
    <text:p text:style-name="P45"/>
    <text:h text:style-name="P14" text:outline-level="2"><text:bookmark-start text:name="__RefHeading___Toc2186_1964132755"/>2.2-Mesure de performance<text:bookmark-end text:name="__RefHeading___Toc2186_1964132755"/></text:h>
    <text:p text:style-name="P300"/>
-   <text:h text:style-name="P75" text:outline-level="3">2.2.1-Temps de conversion ADC</text:h>
+   <text:h text:style-name="P75" text:outline-level="3"><text:soft-page-break/>2.2.1-Temps de conversion ADC</text:h>
    <text:p text:style-name="P301"/>
    <text:p text:style-name="P301"/>
    <table:table table:name="Tableau17" table:style-name="Tableau17">
@@ -4798,12 +4821,11 @@
       <text:p text:style-name="P276">Activation de la trace<office:annotation>
         <dc:creator>Auteur inconnu</dc:creator>
         <dc:date>2021-04-01T15:22:57.371000000</dc:date>
-        <text:p text:style-name="P322"><text:span text:style-name="T73">Définir l’octet d’activation en EEP</text:span></text:p>
-        <text:p text:style-name="P322"><text:span text:style-name="T73">Et remonter la valeur du timer entre la trame wirte et la trame read #180</text:span></text:p>
+        <text:p text:style-name="P326"><text:span text:style-name="T74">Définir l’octet d’activation en EEP</text:span></text:p>
+        <text:p text:style-name="P326"><text:span text:style-name="T74">Et remonter la valeur du timer entre la trame wirte et la trame read #180</text:span></text:p>
        </office:annotation></text:p>
      </table:table-cell>
     </table:table-row>
-    <text:soft-page-break/>
     <table:table-row>
      <table:table-cell table:style-name="Tableau17.A2" office:value-type="string">
       <text:p text:style-name="P229">Résultats attendus</text:p>
