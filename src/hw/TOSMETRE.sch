@@ -1032,7 +1032,7 @@ U 1 1 6076A86E
 P 3070 9220
 F 0 "SW1" V 3024 9350 50  0000 L CNN
 F 1 "SW_DIP_x01" V 3115 9350 50  0000 L CNN
-F 2 "Connector_PinHeader_1.00mm:PinHeader_1x02_P1.00mm_Vertical" H 3070 9220 50  0001 C CNN
+F 2 "Connector_PinHeader_1.00mm:PinHeader_1x02_P1.00mm_Vertical_SMD_Pin1Left" H 3070 9220 50  0001 C CNN
 F 3 "~" H 3070 9220 50  0001 C CNN
 	1    3070 9220
 	0    1    1    0   

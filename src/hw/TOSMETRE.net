@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source "C:\\Users\\PC RADIO\\Documents\\GitHub\\swr_power_meter\\src\\hw\\TOSMETRE.sch")
-    (date "18/04/2021 18:11:45")
+    (date "19/04/2021 16:24:22")
     (tool "Eeschema (5.1.9)-1")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -254,7 +254,7 @@
       (tstamp 60752619))
     (comp (ref SW1)
       (value SW_DIP_x01)
-      (footprint Connector_PinHeader_1.00mm:PinHeader_1x02_P1.00mm_Vertical)
+      (footprint Connector_PinHeader_1.00mm:PinHeader_1x02_P1.00mm_Vertical_SMD_Pin1Left)
       (datasheet ~)
       (libsource (lib Switch) (part SW_DIP_x01) (description "1x DIP Switch, Single Pole Single Throw (SPST) switch, small symbol"))
       (sheetpath (names /) (tstamps /))
