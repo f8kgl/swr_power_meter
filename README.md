@@ -29,7 +29,7 @@ Le projet a été développé par André F0EOS, et Fabrice F4BJH. Portons égale
 https://sourceforge.net/projects/gputils/files/gputils/1.5.0/gputils-1.5.0-1.tar.gz/download
 1.3/ Installation
 
-	$ tar –xvzf gputils-1.5.0-1.tar.gz
+	$ tar -xvzf gputils-1.5.0-1.tar.gz
 
 	$ cd gputils-1.5.0-1.tar.gz
 
