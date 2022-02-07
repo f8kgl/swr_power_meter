@@ -24,10 +24,10 @@ Le projet a été développé par André F0EOS, et Fabrice F4BJH. Portons égale
 
 1/GPUTILS
 
-1.1/ Désinstaller la version courante de la distribution
-1.2/ Télécharger la version 1.5.0-1 en suivant ce lien :
-https://sourceforge.net/projects/gputils/files/gputils/1.5.0/gputils-1.5.0-1.tar.gz/download
-1.3/ Installation
+1.1/ Désinstaller la version courante de la distribution  
+1.2/ Télécharger la version 1.5.0-1 en suivant ce lien :  
+https://sourceforge.net/projects/gputils/files/gputils/1.5.0/gputils-1.5.0-1.tar.gz/download  
+1.3/ Installation  
 
 	$ tar -xvzf gputils-1.5.0-1.tar.gz
 
@@ -40,11 +40,11 @@ https://sourceforge.net/projects/gputils/files/gputils/1.5.0/gputils-1.5.0-1.tar
 	$sudo make install
 
 
-2/GPSIM
-2.1/ Désinstaller la version courante de la distribution
-2.2/ Télécharger la version 0.31.0 en suivant ce lien :
-https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
-2.3/ Installation
+2/GPSIM  
+2.1/ Désinstaller la version courante de la distribution  
+2.2/ Télécharger la version 0.31.0 en suivant ce lien :  
+https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/  
+2.3/ Installation  
 
 	$tar -xvzf gpsim-0.31.0.tar.gz
 
@@ -59,8 +59,8 @@ https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 
 	$sudo /sbin/ldconfig
 
-2.4/Librairie et module GPSIM
-2.4.1/ Création de lien symboliques vers les sources de la librairie, des modules, et le Makefile
+2.4/Librairie et module GPSIM  
+2.4.1/ Création de lien symboliques vers les sources de la librairie, des modules, et le Makefile  
 
 		$cd .../gpsim0.31/modules   #répertoire ou gpsim a été dézippé
 
@@ -72,7 +72,7 @@ https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 
 		$ ln -s .../swr_power_meter/src/hw/sim/gpsim/lib/swrpowermeterf8kgl_modules.cc
 
-2.4.2/ compiler les fichiers ajoutés
+2.4.2/ compiler les fichiers ajoutés  
 
 		$cd .../gpsim0.31/ #répertoire ou gpsim a été dézippé
 
@@ -87,18 +87,18 @@ https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 		$sudo /sbin/ldconfig
 
 
-3/Utilisation du projet swr_power_meter_f8kgl
-3.1/Télécharger le projet : git clone https://github.com/f8kgl/swr_power_meter
+3/Utilisation du projet swr_power_meter_f8kgl  
+3.1/Télécharger le projet : git clone https://github.com/f8kgl/swr_power_meter  
 	$ cd .../prj
 	$ make test
 
 
 
-3.2/Calibrator
-    $ cd .../prj
-    $ make calibration_gpsim
+3.2/Calibrator  
+    $ cd .../prj  
+    $ make calibration_gpsim  
 
-	le make génère le fichier .hex de calibration, à flasher dans l'EEPROM du PIC
+	le make génère le fichier .hex de calibration, à flasher dans l'EEPROM du PIC  
 
 	Usage :
 	calibrator [-o][-t][-f][-r][-a adc_value][-p P_in]
@@ -109,13 +109,13 @@ https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 	-a : valeur d'ADC (ADC_m)
 	-p : Valeur de puissance en W (Pfwd)
 
-3.3/Simulation
-3.3.1/Modifier le fichier prj/swr_power_meter.stc pour utiliser le fichier de calibration généré à l'étape précédente. Effecteur la mise à jour du projet gpsim :
+3.3/Simulation  
+3.3.1/Modifier le fichier prj/swr_power_meter.stc pour utiliser le fichier de calibration généré à l'étape précédente. Effecteur la mise à jour du projet gpsim :  
 
    $ cd .../prj
 	 $ make update_gpsim
 
 
-3.3.2/ Lancement de gpsim
+3.3.2/ Lancement de gpsim  
  $ cd .../bin
  $ gpsim -c swr_power_meter.stc
