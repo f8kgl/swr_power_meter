@@ -2793,8 +2793,8 @@
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-0000604b2f63)
     (property "Reference" "U4" (id 0) (at 242.062 122.682 0))
-    (property "Value" "LTC2305" (id 1) (at 242.316 125.984 0))
-    (property "Footprint" "Package_SO:MSOP-8_3x3mm_P0.65mm" (id 2) (at 266.446 104.14 0)
+    (property "Value" "" (id 1) (at 242.316 125.984 0))
+    (property "Footprint" "" (id 2) (at 266.446 104.14 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://datasheets.maximintegrated.com/en/ds/MAX31826.pdf" (id 3) (at 247.396 109.22 0)
@@ -4392,7 +4392,7 @@
       (reference "U3") (unit 1) (value "LT1818") (footprint "Package_TO_SOT_SMD:TSOT-23-5")
     )
     (path "/00000000-0000-0000-0000-0000604b2f63"
-      (reference "U4") (unit 1) (value "LTC2305") (footprint "Package_SO:MSOP-8_3x3mm_P0.65mm")
+      (reference "U4") (unit 1) (value "LTC2305") (footprint "Package_SO:MSOP-12_3x4mm_P0.65mm")
     )
     (path "/00000000-0000-0000-0000-000060639a0d"
       (reference "U5") (unit 1) (value "LT1818") (footprint "Package_TO_SOT_SMD:TSOT-23-5")
