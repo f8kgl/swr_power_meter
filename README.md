@@ -52,7 +52,6 @@ https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 
 	$./configure
 
-
 	$make
 
 	$sudo make install
