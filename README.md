@@ -91,6 +91,8 @@ https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 	$ cd .../prj
 	$ make test
 
+	$ cd .../prj
+	$ make calibration 
 
 
 3.2/Calibrator  
@@ -118,3 +120,5 @@ https://sourceforge.net/projects/gpsim/files/gpsim/0.31.0/
 3.3.2/ Lancement de gpsim  
  $ cd .../bin
  $ gpsim -c swr_power_meter.stc
+
+ $ gpsim -c <hardware>.CALIBRATION.stc

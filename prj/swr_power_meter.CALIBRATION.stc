@@ -1,0 +1,3 @@
+load swr_power_meter_f8kgl-V1.0.CALIBRATION.cod
+frequency 4000000
+load c netlist.stc

@@ -143,16 +143,11 @@ ENDIF
 IFDEF TEST
 	clrf v_menu ; menu mesure par défaut au démarrage
 ENDIF
-IFDEF CALIBRATION
-ENDIF
-IFDEF OPERATIONNEL
-	clrf v_bande
-	call f_check_calibration
-ENDIF
 
 
 loop
 
+IFDEF TEST
 	;;
 	;;Lecture des valeurs ADC FWD et REF
 	;;
@@ -173,21 +168,13 @@ loop
 	clrf v_bp_status
 	call f_bp_test_bande
 	btfss v_bp_status,BIT_BANDE
-IFDEF TEST
+	
 	goto choix_menu
 
 	incf v_menu,f
 	;; Effacer le LCD (lcd_clear)
 	call f_lcd_clear
-ENDIF
-IFDEF CALIBRATION
-ENDIF
-IFDEF OPERATIONNEL
-	incf v_bande
-ENDIF
 
-
-IFDEF TEST
 choix_menu
 
 	movf	v_menu,w
@@ -269,9 +256,7 @@ menu_puissance_dBm
 	call f_lcd_aff_PdBm_ascii
 
 	goto loop
-ENDIF
-IFDEF CALIBRATION
-ENDIF
+
 IFDEF SWR_POWER_METER
 	;;
 	;; Calcul de Pfwd et Pref en W
@@ -305,7 +290,10 @@ IFDEF xWATT
 	goto loop
 
 ENDIF
-
+ENDIF ;;IFDEF TEST
+IFDEF CALIBRATION
+	goto loop
+ENDIF
 
 ;-----------------------------------------
 ;Fonction : temporisation de 3s
@@ -335,7 +323,7 @@ IFDEF TEST
 	movwf v_log_data
 ENDIF
 IFDEF CALIBRATION
-	movlw 'T'
+	movlw 'C'
 	movwf v_log_data
 ENDIF
 IFDEF OPERATIONNEL
@@ -411,12 +399,6 @@ IFDEF TEST
 	global v_fwd_and_ref_mV_ascii
 	global v_Pfwd_and_ref_dBm
 	global v_Pfwd_and_ref_dBm_ascii
-ENDIF
-IFDEF CALIBRATION
-	global v_fwd_and_ref_ascii
-ENDIF
-IFDEF OPERATIONNEL
-	global v_bande
 ENDIF
 IFDEF SWR_POWER_METER
 	global v_Pfwd_W

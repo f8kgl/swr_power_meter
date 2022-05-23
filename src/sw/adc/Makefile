@@ -10,8 +10,8 @@ COMP = adc
 SRC = adc.asm
 
 OBJ_TEST = $(SRC:.asm=.TEST.o)
-OBJ_xWATT = $(SRC:.asm=.xWATT.o)
-OBJ_SWR_POWER_METER = $(SRC:.asm=.SWR_POWER_METER.o)
+OBJ_xWATT_CALIBRATION = $(SRC:.asm=.xWATT.CALIBRATION..o)
+OBJ_SWR_POWER_METER_CALIBRATION = $(SRC:.asm=.SWR_POWER_METER.CALIBRATION..o)
 
 
 ../../../bin/libtest$(COMP).a : $(OBJ_TEST)
