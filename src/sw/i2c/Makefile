@@ -5,7 +5,7 @@ LD = gplib
 LDFLAGS = -c
 INC_DIR = -I../inc/
 
-COMP = i2c 
+COMP = i2c
 
 SRC = driver.asm
 SRC +=frame.asm
